@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fotovoltaika pro bytové domy — Energohub.info</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/fve.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="navbar-container">
+    <nav class="navbar">
+      <a href="index.html" class="navbar-logo">
+        <img src="assets/images/Logo.svg" alt="Energohub">
+      </a>
+
+      <ul class="navbar-links">
+        <li class="nav-dropdown">
+          <a href="index.html#pruvodce" class="nav-dropdown__trigger">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></a>
+          <ul class="nav-dropdown__menu">
+            <div class="nav-dropdown__menu-inner">
+              <li><a href="pruvodce-jom.html">Jednotné odběrné místo (JOM)</a></li>
+              <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
+              <li class="nav-dropdown__item--soon"><span>Teplo a TUV</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Okna a dveře</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Zateplení</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Doporučené pořadí realizace</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+            </div>
+          </ul>
+        </li>
+        <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+        <li><a href="slovnik.html">Slovník pojmů</a></li>
+        <li><a href="index.html#o-nas">O nás</a></li>
+        <li><a href="kontakty.html">Kontakty</a></li>
+      </ul>
+
+      <a href="kontakty.html" class="navbar-cta">Chci vědět více</a>
+
+      <button class="navbar-burger" id="navBurger" aria-label="Otevřít menu" aria-expanded="false">
+        <span class="navbar-burger__bar"></span>
+        <span class="navbar-burger__bar"></span>
+        <span class="navbar-burger__bar"></span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Mobilní menu -->
+  <div class="navbar-mobile" id="navMobile" aria-hidden="true">
+    <nav class="navbar-mobile__nav">
+      <ul class="navbar-mobile__links">
+        <li><a href="index.html#pruvodce">Průvodci opatření</a></li>
+        <li><a href="pruvodce-jom.html">— Jednotné odběrné místo</a></li>
+        <li><a href="pruvodce-fve.html">— Fotovoltaika</a></li>
+        <li class="navbar-mobile__divider"></li>
+        <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+        <li><a href="slovnik.html">Slovník pojmů</a></li>
+        <li><a href="index.html#o-nas">O nás</a></li>
+        <li><a href="kontakty.html">Kontakty</a></li>
+      </ul>
+      <a href="kontakty.html" class="navbar-mobile__cta">Chci vědět více</a>
+    </nav>
+  </div>
+</header>
+
+<section class="fve-hero">
+  <iframe
+    class="fve-hero__3d-frame"
+    src="embed_2/index.html"
+    title="3D vizualizace fotovoltaické elektrárny"
+    frameborder="0"
+    scrolling="no"
+    allowtransparency="true"
+  ></iframe>
+  <div class="fve-hero__scrim"></div>
+
+  <div class="fve-hero__topbar">
+    <a class="fve-breadcrumb" href="index.html#pruvodce">← Zpět na přehled průvodců</a>
+    <nav class="guide-steps" aria-label="Postup úspor">
+      <a href="pruvodce-jom.html" class="guide-steps__item">JOM</a>
+      <span class="guide-steps__item guide-steps__item--active" aria-current="page">FVE</span>
+      <span class="guide-steps__item">TČ</span>
+      <span class="guide-steps__item">ZAT</span>
+    </nav>
+  </div>
+
+  <div class="fve-hero__container">
+    <p class="fve-eyebrow">Průvodce — Fotovoltaika</p>
+    <h1 class="fve-hero__title">Fotovoltaika pro bytový dům</h1>
+    <p class="fve-hero__text">
+      Zjistěte, jak střecha vašeho domu může vyrábět elektřinu pro společné prostory nebo přímo pro byty — a kdy se investice reálně vrátí.
+    </p>
+    <div class="fve-hero__actions">
+      <a href="#kalkulacka" class="btn btn-primary">Spočítat úspory</a>
+      <a href="#jak-to-funguje" class="btn btn-secondary">Procházet průvodce</a>
+    </div>
+  </div>
+
+</section>
+
+<nav class="fve-subnav" aria-label="Obsah stránky">
+  <div class="fve-subnav__inner">
+  <div class="fve-subnav__list">
+    <a href="#jak-to-funguje"    class="fve-subnav__link"><span class="fve-subnav__num">01</span>Jak to funguje</a>
+    <a href="#kdy-ma-smysl"      class="fve-subnav__link"><span class="fve-subnav__num">02</span>Kdy má smysl</a>
+    <a href="#koupe-pronajem"    class="fve-subnav__link"><span class="fve-subnav__num">03</span>Koupě × Pronájem</a>
+    <a href="#faze-realizace"    class="fve-subnav__link"><span class="fve-subnav__num">04</span>Fáze realizace</a>
+    <a href="#naklady"           class="fve-subnav__link"><span class="fve-subnav__num">05</span>Náklady</a>
+    <a href="#dotace"            class="fve-subnav__link"><span class="fve-subnav__num">06</span>Dotace</a>
+    <a href="#legislativa"       class="fve-subnav__link"><span class="fve-subnav__num">07</span>Legislativa</a>
+    <a href="#hodnoceni-nabidky" class="fve-subnav__link"><span class="fve-subnav__num">08</span>Hodnocení nabídky</a>
+    <a href="#bezpecnost"        class="fve-subnav__link"><span class="fve-subnav__num">09</span>Bezpečnost</a>
+    <a href="#kalkulacka"        class="fve-subnav__link"><span class="fve-subnav__num">10</span>Kalkulačka</a>
+    <a href="#pripadova-studie"  class="fve-subnav__link"><span class="fve-subnav__num">11</span>Případová studie</a>
+    <a href="#faq"               class="fve-subnav__link"><span class="fve-subnav__num">12</span>FAQ</a>
+  </div>
+  </div>
+</nav>
+
+<section class="fve-explain" id="jak-to-funguje">
+  <div class="fve-explain__container">
+
+    <div class="fve-explain__header">
+      <p class="fve-eyebrow">Jak to funguje</p>
+      <h2 class="fve-explain__title">Od střechy k zásuvce</h2>
+      <p class="fve-explain__lead">FV panely na střeše vyrábí elektřinu ze slunečního světla. Střídač ji převede do podoby, kterou budova spotřebuje, a rozvaděč ji rozdělí tam, kde je zrovna potřeba — do společných prostor, do&nbsp;bytů nebo do baterie. Přebytky odchází do distribuční sítě.</p>
+      <p class="fve-explain__lead">Přebytky výroby, které budova v daný moment nespotřebuje, putují do bateriového úložiště nebo do sítě. Baterie zachytí denní přebytky a uvolní je v hodinách, kdy panely nevyrábí — čímž snižuje množství elektřiny, které musí budova nakoupit od distributora.</p>
+    </div>
+
+    <div class="fve-explain__photo">
+      <img src="assets/images/Edukace.png" alt="Edukace o fungování FVE systému" loading="lazy">
+    </div>
+
+  </div>
+</section>
+
+<section class="fve-worth" id="kdy-ma-smysl">
+  <div class="fve-worth__container">
+
+    <div class="fve-worth__header">
+      <p class="fve-eyebrow">Kdy má smysl</p>
+      <h2 class="fve-worth__title">Kdy se FVE vyplatí — a kdy ne</h2>
+      <p class="fve-worth__note">Bateriové úložiště dokáže zachytit část denní výroby, která by jinak beze zbytku odešla do sítě, a uvolnit ji v hodinách skutečné spotřeby. U bytových domů se ale poměr kapacity baterie k výkonu FVE obvykle drží nižší než u rodinných domů, protože JOM sám o sobě zvyšuje vlastní spotřebu tím, že rozvádí vyrobenou elektřinu mezi víc bytových jednotek a společné prostory. Jestli se baterie vyplatí a v jaké velikosti, je vhodné posoudit případ od případu — ne jako automatickou součást každé instalace.</p>
+    </div>
+
+    <div class="fve-worth__grid">
+
+      <!-- + karta: fotka vpravo, obsah vlevo -->
+      <div class="fve-worth-card fve-worth-card--yes">
+        <div class="fve-worth-card__photo" aria-hidden="true"></div>
+        <div class="fve-worth-card__overlay" aria-hidden="true"></div>
+        <div class="fve-worth-card__content">
+          <div class="fve-worth-card__header">
+            <div class="fve-worth-card__icon fve-worth-card__icon--yes">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <line x1="10" y1="4" x2="10" y2="16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                <line x1="4"  y1="10" x2="16" y2="10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="fve-worth-card__title">Kdy se to vyplatí</h3>
+          </div>
+          <ul class="fve-worth-list fve-worth-list--yes">
+            <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Střecha míří na jih nebo jihovýchod</li>
+            <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Volná plocha střechy odpovídá plánovanému výkonu — orientačně 5 m² na 1 kWp u šikmé střechy, 10 m² na 1 kWp u ploché</li>
+            <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Roční spotřeba elektřiny domu přesahuje 20&nbsp;000&nbsp;kWh</li>
+            <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>SVJ nebo družstvo uvažuje v horizontu 10 a více let</li>
+            <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>V plánu je zavedení sdílení elektřiny (JOM) nebo elektromobility</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- − karta: fotka vlevo, obsah vpravo -->
+      <div class="fve-worth-card fve-worth-card--no">
+        <div class="fve-worth-card__photo" aria-hidden="true"></div>
+        <div class="fve-worth-card__overlay" aria-hidden="true"></div>
+        <div class="fve-worth-card__content">
+          <div class="fve-worth-card__header">
+            <h3 class="fve-worth-card__title">Kdy se to nevyplatí</h3>
+            <div class="fve-worth-card__icon fve-worth-card__icon--no">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <line x1="4" y1="10" x2="16" y2="10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <ul class="fve-worth-list fve-worth-list--no">
+            <li>Střecha je silně zastíněna nebo míří na sever<svg class="fve-worth-arrow fve-worth-arrow--no" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 2L12 12M12 12H5M12 12V5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+            <li>Střecha čeká v příštích 3–5 letech rekonstrukci<svg class="fve-worth-arrow fve-worth-arrow--no" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 2L12 12M12 12H5M12 12V5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+            <li>Spotřeba elektřiny domu je pod 10&nbsp;000&nbsp;kWh ročně<svg class="fve-worth-arrow fve-worth-arrow--no" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 2L12 12M12 12H5M12 12V5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+            <li>SVJ nemůže investici financovat ani úvěrem<svg class="fve-worth-arrow fve-worth-arrow--no" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 2L12 12M12 12H5M12 12V5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+            <li>Plánuje se demolice nebo prodej budovy<svg class="fve-worth-arrow fve-worth-arrow--no" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 2L12 12M12 12H5M12 12V5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="fve-compare" id="koupe-pronajem">
+  <div class="fve-compare__container">
+
+    <div class="fve-compare__header">
+      <p class="fve-eyebrow">Koupě × Pronájem</p>
+      <h2 class="fve-compare__title">Dva způsoby pořízení fotovoltaiky</h2>
+    </div>
+
+    <div class="fve-compare__panels">
+
+      <div class="fve-compare__panel">
+        <h3 class="fve-compare__panel-title">Pronájem</h3>
+        <ul class="fve-worth-list fve-worth-list--yes">
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Cena elektřiny o 10–20 % nižší než distribuční tarif, garantovaná po dobu smlouvy.</li>
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Zbytek výnosů ze systému zůstává poskytovateli.</li>
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Typický model s odpisem cca 10 let.</li>
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Možnost dřívějšího odkupu (např. po 5 letech) za poměrovou část zůstatkové ceny.</li>
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Baterie má kratší životnost než panely (10–15 let oproti 25–30 u panelů) — smlouva by měla výslovně uvádět, kdo nese náklad výměny a za jakých podmínek.</li>
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Nevyžaduje počáteční investici SVJ — systém financuje poskytovatel.</li>
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Smlouva by měla řešit i mimořádné situace: co se stane při prodeji budovy, zániku SVJ jako právnické osoby nebo při ukončení činnosti poskytovatele.</li>
+        </ul>
+      </div>
+
+      <div class="fve-compare__panel">
+        <h3 class="fve-compare__panel-title">Vlastní koupě</h3>
+        <ul class="fve-worth-list fve-worth-list--yes">
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Veškerý výnos ze systému plyne přímo do domu.</li>
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>SVJ je vlastníkem zařízení od prvního dne.</li>
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Financování je od roku 2026 dostupné především formou bezúročného úvěru z programu Nová zelená úsporám — stát hradí bance úroky po celou dobu splácení, SVJ splácí jen půjčenou částku. Přímá dotace zůstává jen pro byty obývané nízkopříjmovými domácnostmi.</li>
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Počáteční investice je vyšší než u pronájmu; ekonomika závisí na způsobu financování (vlastní zdroje, úvěr, kombinace s fondem oprav).</li>
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Výměna baterie po 10–15 letech je předvídatelný náklad, který je vhodné zahrnout do ekonomické analýzy projektu při rozhodování.</li>
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Životnost samotných panelů se pohybuje kolem 25–30 let, výrazně déle než u baterie.</li>
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>SVJ nese odpovědnost za běžnou údržbu, revize a pojištění zařízení po celou dobu provozu.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="fve-phases" id="faze-realizace">
+  <div class="fve-phases__container">
+
+    <div class="fve-phases__header">
+      <p class="fve-eyebrow">Fáze realizace</p>
+      <h2 class="fve-phases__title">Jak probíhá realizace FVE</h2>
+    </div>
+
+    <div class="fve-phases__accordion" id="fvePhases">
+
+      <!-- Fáze 1 -->
+      <div class="fve-phase is-active" data-phase="0">
+        <div class="fve-phase__collapsed">
+          <span class="fve-phase__cnum" aria-hidden="true">01</span>
+          <span class="fve-phase__ctitle">Návrh řešení</span>
+        </div>
+        <div class="fve-phase__expanded">
+          <span class="fve-phase__enum">01</span>
+          <h3 class="fve-phase__etitle">Návrh řešení</h3>
+          <ul class="fve-phase__elist">
+            <li>Energetický audit budovy a střechy</li>
+            <li>Simulace výroby a spotřeby elektřiny</li>
+            <li>Ekonomická analýza návratnosti</li>
+            <li>Výpočet optimálního výkonu v kWp</li>
+            <li>Zohlednění plánovaného JOM v návrhu — ovlivňuje optimální výkon systému i to, jestli má smysl doplnit bateriové úložiště</li>
+            <li>Předběžné posouzení, do které výkonové kategorie (do 100 kW / nad 100 kW) instalace spadá — určuje rozsah povolovacích kroků v dalším bodě</li>
+          </ul>
+          <div class="fve-phase__estat">
+            <strong>35–55 %</strong>orientační úspora nákladů na elektřinu; konkrétní hodnota závisí hlavně na tom, jestli je FVE kombinovaná s JOM, a na poměru výkonu systému ke spotřebě domu.
+          </div>
+          <div class="fve-phase__nav">
+            <button class="fve-phase__btn fve-phase__btn--next" type="button" aria-label="Další fáze">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fáze 2 -->
+      <div class="fve-phase" data-phase="1">
+        <div class="fve-phase__collapsed">
+          <span class="fve-phase__cnum" aria-hidden="true">02</span>
+          <span class="fve-phase__ctitle">Projekt a povolení</span>
+        </div>
+        <div class="fve-phase__expanded">
+          <span class="fve-phase__enum">02</span>
+          <h3 class="fve-phase__etitle">Projekt a povolení</h3>
+          <ul class="fve-phase__elist">
+            <li>Projektová dokumentace pro stavební úřad</li>
+            <li>Stavební povolení nebo ohlášení stavby — rozsah se liší podle výkonu (do 100 kW zjednodušený režim, nad 100 kW plnohodnotné povolovací řízení)</li>
+            <li>Souhlas shromáždění SVJ nebo bytového družstva podle stanov</li>
+            <li>Smlouva o připojení s distributorem</li>
+            <li>Výběrové řízení na dodavatele</li>
+          </ul>
+          <div class="fve-phase__estat">
+            <strong>30 dní</strong>zákonná lhůta, do které se distributor musí vyjádřit k žádosti o připojení zařízení do nízkého napětí; u vyšší napěťové hladiny (větší instalace) je lhůta 60 dní.
+          </div>
+          <div class="fve-phase__nav">
+            <button class="fve-phase__btn fve-phase__btn--prev" type="button" aria-label="Předchozí fáze">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+            </button>
+            <button class="fve-phase__btn fve-phase__btn--next" type="button" aria-label="Další fáze">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fáze 3 -->
+      <div class="fve-phase" data-phase="2">
+        <div class="fve-phase__collapsed">
+          <span class="fve-phase__cnum" aria-hidden="true">03</span>
+          <span class="fve-phase__ctitle">Instalace</span>
+        </div>
+        <div class="fve-phase__expanded">
+          <span class="fve-phase__enum">03</span>
+          <h3 class="fve-phase__etitle">Instalace</h3>
+          <ul class="fve-phase__elist">
+            <li>Montáž nosné konstrukce a FV panelů</li>
+            <li>Instalace střídačů a případně bateriových úložišť</li>
+            <li>Elektroinstalace ve společných prostorách</li>
+            <li>Realizace požárně bezpečnostního řešení — kabeláž v kovovém žlabu, nouzové odpojení přístupné na střeše, oddělený prostor pro technologii</li>
+            <li>Montáž hlavního elektroměru a podružných měřidel, pokud se instalace realizuje současně se zavedením JOM</li>
+            <li>Nastavení monitorovacího systému</li>
+          </ul>
+          <div class="fve-phase__estat">
+            <strong>3–5 dní</strong>orientační doba montáže systému o výkonu 50 kWp na klíč, bez zohlednění čekací doby na povolení a připojení k síti.
+          </div>
+          <div class="fve-phase__nav">
+            <button class="fve-phase__btn fve-phase__btn--prev" type="button" aria-label="Předchozí fáze">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+            </button>
+            <button class="fve-phase__btn fve-phase__btn--next" type="button" aria-label="Další fáze">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fáze 4 -->
+      <div class="fve-phase" data-phase="3">
+        <div class="fve-phase__collapsed">
+          <span class="fve-phase__cnum" aria-hidden="true">04</span>
+          <span class="fve-phase__ctitle">Uvedení do provozu</span>
+        </div>
+        <div class="fve-phase__expanded">
+          <span class="fve-phase__enum">04</span>
+          <h3 class="fve-phase__etitle">Uvedení do provozu</h3>
+          <ul class="fve-phase__elist">
+            <li>Výchozí elektrotechnická revize — povinná podmínka pro připojení k distribuční síti</li>
+            <li>Revize bateriového úložiště, pokud je součástí systému</li>
+            <li>Přejímka technického řešení distributorem a výměna nebo instalace elektroměru</li>
+            <li>Spuštění systému a první výroba</li>
+            <li>Proškolení správce budovy</li>
+            <li>Předání veškeré dokumentace SVJ</li>
+          </ul>
+          <div class="fve-phase__estat">
+            <strong>24/7</strong>průběžný monitoring výroby v reálném čase.
+          </div>
+          <div class="fve-phase__nav">
+            <button class="fve-phase__btn fve-phase__btn--prev" type="button" aria-label="Předchozí fáze">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="fve-costs" id="naklady">
+  <div class="fve-costs__container">
+
+    <div class="fve-costs__header">
+      <p class="fve-eyebrow">Orientační náklady</p>
+      <h2 class="fve-costs__title">Kolik stojí FVE pro bytový dům?</h2>
+      <p class="fve-costs__desc">Ukázka pro typický bytový dům se 12 bytovými jednotkami a plochou střechou. Skutečná cena závisí na konkrétních podmínkách projektu.</p>
+    </div>
+
+    <div class="fve-costs__main">
+
+      <!-- Souhrn -->
+      <div class="fve-costs__summary">
+        <div class="fve-costs__total-label">Orientační náklady celkem</div>
+        <div class="fve-costs__total-value">1 400 000 – 1 900 000 Kč</div>
+        <div class="fve-costs__per-unit">~117 000 – 158 000 Kč na bytovou jednotku</div>
+
+        <p class="fve-costs__grant-note">
+          Financování je od roku 2026 dostupné formou bezúročného úvěru z&nbsp;programu Nová zelená úsporám.
+          <a href="#dotace" class="fve-costs__grant-link">Více o financování →</a>
+        </p>
+
+        <div class="fve-costs__pills">
+          <div class="fve-costs__pill">
+            <span class="fve-costs__pill-label">Instalovaný výkon</span>
+            <span class="fve-costs__pill-value">40 kWp</span>
+          </div>
+          <div class="fve-costs__pill">
+            <span class="fve-costs__pill-label">Roční výroba</span>
+            <span class="fve-costs__pill-value">~38 000 kWh</span>
+          </div>
+          <div class="fve-costs__pill">
+            <span class="fve-costs__pill-label">Návratnost investice</span>
+            <span class="fve-costs__pill-value">6–11 let</span>
+          </div>
+          <div class="fve-costs__pill">
+            <span class="fve-costs__pill-label">Max. bezúročný úvěr NZÚ</span>
+            <span class="fve-costs__pill-value">250 000 Kč na bytovou jednotku</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Donut graf -->
+      <div class="fve-costs__chart-wrap">
+        <div class="fve-costs__chart">
+          <svg class="fve-costs__svg" viewBox="0 0 320 320" aria-hidden="true"></svg>
+          <div class="fve-costs__chart-center">
+            <span class="fve-costs__center-pct"></span>
+            <span class="fve-costs__center-name"></span>
+            <span class="fve-costs__center-amount"></span>
+          </div>
+        </div>
+        <p class="fve-costs__chart-hint">Klepněte na část grafu pro detail</p>
+      </div>
+
+    </div>
+
+    <!-- Rozpis nákladů -->
+    <div class="fve-costs__breakdown">
+      <h3 class="fve-costs__breakdown-title">Rozpis nákladů <span class="fve-costs__breakdown-note">— příklad pro 1 650 000 Kč</span></h3>
+      <ul class="fve-costs__breakdown-list">
+        <li class="fve-costs__breakdown-item">
+          <span class="fve-costs__breakdown-dot" style="background:#b7f13d"></span>
+          <span class="fve-costs__breakdown-name">FV panely (40× 400 Wp)</span>
+          <div class="fve-costs__breakdown-bar-wrap">
+            <div class="fve-costs__breakdown-bar" style="width:37%;background:#b7f13d"></div>
+          </div>
+          <span class="fve-costs__breakdown-amount">600 000 Kč</span>
+          <span class="fve-costs__breakdown-pct">37 %</span>
+        </li>
+        <li class="fve-costs__breakdown-item">
+          <span class="fve-costs__breakdown-dot" style="background:#7aad1e"></span>
+          <span class="fve-costs__breakdown-name">Střídač + bateriové úložiště 20 kWh</span>
+          <div class="fve-costs__breakdown-bar-wrap">
+            <div class="fve-costs__breakdown-bar" style="width:23%;background:#7aad1e"></div>
+          </div>
+          <span class="fve-costs__breakdown-amount">380 000 Kč</span>
+          <span class="fve-costs__breakdown-pct">23 %</span>
+        </li>
+        <li class="fve-costs__breakdown-item">
+          <span class="fve-costs__breakdown-dot" style="background:#4e7314"></span>
+          <span class="fve-costs__breakdown-name">Elektroinstalace a rozvaděče</span>
+          <div class="fve-costs__breakdown-bar-wrap">
+            <div class="fve-costs__breakdown-bar" style="width:15%;background:#4e7314"></div>
+          </div>
+          <span class="fve-costs__breakdown-amount">250 000 Kč</span>
+          <span class="fve-costs__breakdown-pct">15 %</span>
+        </li>
+        <li class="fve-costs__breakdown-item">
+          <span class="fve-costs__breakdown-dot" style="background:rgba(183,241,61,0.55)"></span>
+          <span class="fve-costs__breakdown-name">Nosná konstrukce (střešní)</span>
+          <div class="fve-costs__breakdown-bar-wrap">
+            <div class="fve-costs__breakdown-bar" style="width:12%;background:rgba(183,241,61,0.55)"></div>
+          </div>
+          <span class="fve-costs__breakdown-amount">200 000 Kč</span>
+          <span class="fve-costs__breakdown-pct">12 %</span>
+        </li>
+        <li class="fve-costs__breakdown-item">
+          <span class="fve-costs__breakdown-dot" style="background:rgba(255,255,255,0.35)"></span>
+          <span class="fve-costs__breakdown-name">Projektová dokumentace a povolení</span>
+          <div class="fve-costs__breakdown-bar-wrap">
+            <div class="fve-costs__breakdown-bar" style="width:7%;background:rgba(255,255,255,0.35)"></div>
+          </div>
+          <span class="fve-costs__breakdown-amount">120 000 Kč</span>
+          <span class="fve-costs__breakdown-pct">7 %</span>
+        </li>
+        <li class="fve-costs__breakdown-item">
+          <span class="fve-costs__breakdown-dot" style="background:rgba(255,255,255,0.2)"></span>
+          <span class="fve-costs__breakdown-name">Uvedení do provozu a revize</span>
+          <div class="fve-costs__breakdown-bar-wrap">
+            <div class="fve-costs__breakdown-bar" style="width:6%;background:rgba(255,255,255,0.2)"></div>
+          </div>
+          <span class="fve-costs__breakdown-amount">100 000 Kč</span>
+          <span class="fve-costs__breakdown-pct">6 %</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Info karty -->
+    <div class="fve-costs__info">
+      <div class="fve-costs__info-card">
+        <div class="fve-costs__info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22V12M12 12C12 7 7 4 2 4c0 5 3 10 10 8M12 12c0-5 5-8 10-8-1 5-4 9-10 8"/>
+          </svg>
+        </div>
+        <h3 class="fve-costs__info-title">Nová zelená úsporám</h3>
+        <p class="fve-costs__info-text">Státní dotační program může pokrýt významnou část nákladů na FVE pro bytové domy. Výše závisí na parametrech projektu a aktuální výzvě programu. Dotace se vztahuje i na bateriové úložiště jako součást FVE systému.</p>
+        <a href="#dotace" class="fve-costs__info-link">Více o dotacích →</a>
+      </div>
+      <div class="fve-costs__info-card">
+        <div class="fve-costs__info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2"/>
+            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M12 12v4M10 14h4"/>
+          </svg>
+        </div>
+        <h3 class="fve-costs__info-title">SVJ úvěr</h3>
+        <p class="fve-costs__info-text">Banky a specializované instituce nabízejí účelové úvěry pro SVJ a bytová družstva. Instalaci tak lze zahájit bez nutnosti jednorázového výběru celé částky z fondu oprav.</p>
+        <a href="#" class="fve-costs__info-link">Možnosti financování →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="fve-grants" id="dotace">
+  <div class="fve-grants__container">
+
+    <!-- Hlavička -->
+    <div class="fve-grants__header">
+      <p class="fve-eyebrow">Dotace a legislativa</p>
+      <h2 class="fve-grants__title">Přehled dotačních programů a legislativní rámec</h2>
+      <p class="fve-grants__intro">Stránka shrnuje aktuální podporu, legislativní podmínky a nejčastější otázky SVJ k FVE pro bytové domy.</p>
+    </div>
+
+    <!-- Velká čísla -->
+    <div class="fve-grants__stats">
+      <div class="fve-grants__stat">
+        <span class="fve-grants__stat-value">350 000</span>
+        <span class="fve-grants__stat-unit">Kč</span>
+        <span class="fve-grants__stat-label">základní výše bezúročného úvěru na FVE do 5 kWp</span>
+      </div>
+      <div class="fve-grants__stat">
+        <span class="fve-grants__stat-value">0 %</span>
+        <span class="fve-grants__stat-label">úrok bezúročného úvěru NZÚ — SVJ splácí jen půjčenou částku, úroky hradí stát</span>
+      </div>
+      <div class="fve-grants__stat">
+        <span class="fve-grants__stat-value">2024</span>
+        <span class="fve-grants__stat-label">rok, od kdy novela energetického zákona (Lex OZE II) umožňuje SVJ sdílet elektřinu z FVE</span>
+      </div>
+    </div>
+
+    <!-- NZÚ karta + foto -->
+    <div class="fve-grants__main">
+
+      <div class="fve-grants__nzu-card">
+        <div class="fve-grants__nzu-header">
+          <span class="fve-grants__nzu-badge">Nová zelená úsporám</span>
+          <span class="fve-grants__nzu-operator">SFŽP ČR</span>
+        </div>
+        <h3 class="fve-grants__nzu-title">Financování FVE pro bytové domy</h3>
+        <p class="fve-grants__nzu-text">Hlavní forma podpory administrovaná Státním fondem životního prostředí (SFŽP). Pokrývá náklady na fotovoltaické panely, střídač, bateriové úložiště i projektovou dokumentaci formou bezúročného úvěru, ne dotace.</p>
+
+        <ul class="fve-grants__nzu-list">
+          <li>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg>
+            Žadatelé: SVJ, bytová družstva, vlastníci bytových domů
+          </li>
+          <li>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg>
+            Výše úvěru: 350 000 Kč za prvních 5 kWp, + 40 000 Kč za každý další kWp, + 15 000 Kč za každou kWh bateriového úložiště — bez pevného horního stropu
+          </li>
+          <li>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg>
+            Podmínky: minimálně 5 kWp, maximálně 3 kWp na bytovou jednotku, alespoň 2 zapojené byty, třífázové připojení, budova zkolaudovaná před 1.&nbsp;1.&nbsp;2023
+          </li>
+          <li>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg>
+            Splatnost úvěru: do 1,5 mil. Kč maximálně 10 let, nad 1,5 mil. Kč maximálně 15 let
+          </li>
+          <li>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg>
+            Přímá dotace bez povinnosti splácet je dostupná jen pro byty s nízkopříjmovými domácnostmi (program NZÚ Light) jako součást komplexní renovace domu — netýká se samostatné FVE
+          </li>
+        </ul>
+
+        <a href="https://www.sfzp.cz/dotace-a-pujcky/nova-zelena-usporam/" target="_blank" rel="noopener" class="fve-grants__nzu-cta">
+          Více na sfzp.cz
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+
+      <div class="fve-grants__photo">
+        <img src="assets/images/case2.png" alt="Fotovoltaické panely na bytovém domě" loading="lazy">
+      </div>
+
+    </div>
+
+    <!-- Legislativa -->
+    <div class="fve-grants__law">
+      <h3 class="fve-grants__law-title">Legislativní rámec</h3>
+      <div class="fve-grants__law-grid">
+
+        <div class="fve-grants__law-item">
+          <div class="fve-grants__law-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/>
+            </svg>
+          </div>
+          <div>
+            <p class="fve-grants__law-name">Sdílení elektřiny v SVJ</p>
+            <p class="fve-grants__law-desc">Od roku 2024 mohou SVJ na základě novely energetického zákona (Lex OZE II) legálně sdílet elektřinu z FVE mezi bytovými jednotkami v rámci jedné budovy, aniž by k tomu bylo nutné zakládat samostatnou právnickou osobu.</p>
+          </div>
+        </div>
+
+        <div class="fve-grants__law-item">
+          <div class="fve-grants__law-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+            </svg>
+          </div>
+          <div>
+            <p class="fve-grants__law-name">Ohlášení vs. stavební povolení</p>
+            <p class="fve-grants__law-desc">FVE do 100 kW na stávající budově se řeší jako drobná stavba bez klasického stavebního povolení — postačí ohlášení záměru. Nad 100 kW je nutné povolovací řízení u stavebního úřadu; do 250 kW jde o jeho zjednodušenou podobu, nad touto hranicí o řízení v plném rozsahu.</p>
+          </div>
+        </div>
+
+        <div class="fve-grants__law-item">
+          <div class="fve-grants__law-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+            </svg>
+          </div>
+          <div>
+            <p class="fve-grants__law-name">Připojení k distribuční soustavě</p>
+            <p class="fve-grants__law-desc">SVJ musí uzavřít smlouvu o připojení s místním distributorem (ČEZ Distribuce, EG.D nebo PREdistribuce). Distributor má ze zákona lhůtu 30 dní na vyjádření k žádosti u zařízení připojovaného do nízkého napětí, u vyšší napěťové hladiny (větší instalace) 60 dní.</p>
+          </div>
+        </div>
+
+        <div class="fve-grants__law-item">
+          <div class="fve-grants__law-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="fve-grants__law-name">Certifikace zařízení</p>
+            <p class="fve-grants__law-desc">Střídače musí splňovat normu ČSN EN 50549 pro připojení k distribuční soustavě. FV panely podléhají normám IEC 61215 a IEC 61730.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="fve-grants__faq">
+      <h3 class="fve-grants__faq-title">Nejčastější otázky</h3>
+
+      <details class="fve-grants__faq-item">
+        <summary class="fve-grants__faq-q">Kdo může žádat o podporu z Nové zelené úsporám?</summary>
+        <div class="fve-grants__faq-a">
+          <p>O podporu může žádat SVJ nebo bytové družstvo jako právnická osoba — nikoli jednotliví vlastníci bytů. Žádost podává statutární zástupce SVJ (předseda výboru) prostřednictvím online portálu SFŽP. K žádosti je potřeba zpracovaný renovační pas (zjednodušený průkaz energetické náročnosti budovy od registrovaného energetického poradce) a projektová dokumentace od autorizovaného projektanta.</p>
+        </div>
+      </details>
+
+      <details class="fve-grants__faq-item">
+        <summary class="fve-grants__faq-q">Lze bezúročný úvěr NZÚ kombinovat s dalším financováním?</summary>
+        <div class="fve-grants__faq-a">
+          <p>Ano. Bezúročný úvěr pokrývá částku danou vzorcem podle výkonu FVE a kapacity baterie (viz sekce Financování výše) — pokud investice tento rámec přesáhne, zbývající částku SVJ obvykle řeší z vlastních zdrojů nebo běžným bankovním úvěrem. Konkrétní seznam bank a stavebních spořitelen zapojených do programu NZÚ zveřejní Státní fond životního prostředí nejpozději koncem srpna 2026.</p>
+        </div>
+      </details>
+
+      <details class="fve-grants__faq-item">
+        <summary class="fve-grants__faq-q">Potřebujeme stavební povolení?</summary>
+        <div class="fve-grants__faq-a">
+          <p>Pro FVE do výkonu 100 kW na stávající budově postačí ohlášení záměru na místním stavebním úřadu — klasické stavební povolení není vyžadováno. Nad 100 kW jde o povolovací řízení, do 250 kW ve zjednodušené podobě, nad touto hranicí v plném rozsahu. Většina bytových domů s 12–30 byty se s běžně navrhovaným výkonem FVE do tohoto limitu pohodlně vejde.</p>
+        </div>
+      </details>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ LEGISLATIVNÍ HRANICE A PROVEDENÍ ═══ -->
+<section class="fve-limit" id="legislativa">
+  <div class="fve-limit__container">
+
+    <div class="fve-limit__header">
+      <p class="fve-eyebrow">Legislativní hranice a provedení</p>
+      <h2 class="fve-limit__title">Hranice 100 kW a co z ní plyne</h2>
+    </div>
+
+    <div class="fve-limit__grid">
+
+      <!-- Karta: do 100 kW -->
+      <div class="fve-limit-card">
+        <h3 class="fve-limit-card__kw">Do 100 kW</h3>
+        <ul class="fve-worth-list fve-worth-list--yes">
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Instalace na střeše nebo stěně domu se povoluje jednodušší cestou než běžná stavba — stavební úřad ji zpravidla neřeší jako stavební záměr, podmínkou zůstává splnění požárních předpisů.</li>
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Není potřeba čekat na povolení od Energetického regulačního úřadu ani instalovat zařízení, kterým by mohl dodavatel elektřiny na dálku omezovat výkon elektrárny.</li>
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Připojení k síti probíhá standardním způsobem přes provozovatele sítě, který má na vyřízení žádosti zákonem daný čas.</li>
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>V pásmu 50 až 100 kW se přístup jednotlivých stavebních úřadů může lišit, protože pro tuto velikost zatím chybí jednotný předpis.</li>
+        </ul>
+      </div>
+
+      <!-- Karta: nad 100 kW -->
+      <div class="fve-limit-card">
+        <h3 class="fve-limit-card__kw">Nad 100 kW</h3>
+        <ul class="fve-worth-list fve-worth-list--yes">
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Instalace prochází povolovacím řízením u stavebního úřadu; do 250 kW jde o jeho zjednodušenou verzi, nad touto hranicí o řízení v plném rozsahu.</li>
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>K řízení se vyjadřuje i hasičský záchranný sbor.</li>
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Pokud se panely staví přímo na zemědělské půdě, a ne na střeše domu, je navíc potřeba souhlas úřadu s vynětím pozemku ze zemědělského fondu — u bytových domů jde o výjimečnou situaci.</li>
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>U domů v památkově chráněných oblastech se k záměru vyjadřuje i památkový úřad, a to bez ohledu na velikost elektrárny.</li>
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Ze zákona musí být elektrárna vybavená zařízením, které umožní provozovateli sítě na dálku omezit její výkon kvůli stabilitě sítě.</li>
+          <li><svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Celá příprava a povolení trvá déle než u menších instalací do 100 kW.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Umístění baterie -->
+    <!-- Provedení instalace -->
+    <div class="fve-limit__execution">
+      <h3 class="fve-limit__execution-title">Provedení instalace</h3>
+      <p class="fve-limit__execution-text">Kvalita provedení ovlivňuje bezpečnost systému, jeho životnost i jednoduchost servisního zásahu. Profesionální rozvaděč a kabeláž se od základního provedení liší zejména v přehlednosti, použitých komponentech a odolnosti vůči vlhkosti.</p>
+      <div class="fve-limit__execution-grid">
+        <div>
+          <div class="fve-limit__execution-photo">
+            <!-- vlastní fotka: profesionální rozvaděč -->
+          </div>
+          <p class="fve-limit__execution-caption">Profesionální provedení</p>
+        </div>
+        <div>
+          <div class="fve-limit__execution-photo">
+            <!-- vlastní fotka: základní provedení -->
+          </div>
+          <p class="fve-limit__execution-caption">Základní provedení</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ CO MÁTE ZA SVÉ PENÍZE CHTÍT ═══ -->
+<section class="fve-price" id="hodnoceni-nabidky">
+  <div class="fve-price__container">
+
+    <div class="fve-price__header">
+      <p class="fve-eyebrow">Hodnocení nabídky</p>
+      <h2 class="fve-price__title">Na co se zaměřit při hodnocení nabídky</h2>
+    </div>
+
+    <!-- Tab přepínač -->
+    <div class="fve-price__tabs">
+      <button class="fve-price__tab is-active" data-tab="dum">
+        <span class="fve-price__tab-num">01</span>
+        <span class="fve-price__tab-label">Rodinný dům</span>
+      </button>
+      <button class="fve-price__tab" data-tab="firmy">
+        <span class="fve-price__tab-num">02</span>
+        <span class="fve-price__tab-label">Firmy</span>
+      </button>
+      <button class="fve-price__tab" data-tab="obce">
+        <span class="fve-price__tab-num">03</span>
+        <span class="fve-price__tab-label">Obce</span>
+      </button>
+    </div>
+
+    <!-- ─── PANEL 01: Rodinný dům ─── -->
+    <div class="fve-price__tab-panel is-active" data-panel="dum">
+
+      <div class="fve-price__hero-img">
+        <img src="assets/images/example1.png" alt="" loading="lazy">
+      </div>
+
+      <div class="fve-price__cols">
+
+        <div>
+          <h3 class="fve-price__col-title">Příklad: Rodinný dům s baterií</h3>
+          <ul class="fve-price__example-list">
+            <li>
+              <span class="fve-price__example-label">Výkon instalace</span>
+              <span class="fve-price__example-value">10 kWp</span>
+            </li>
+            <li>
+              <span class="fve-price__example-label">Kapacita baterie</span>
+              <span class="fve-price__example-value">10 kWh</span>
+            </li>
+            <li>
+              <span class="fve-price__example-label">Odhadovaná roční výroba</span>
+              <span class="fve-price__example-value">9 000–10 000 kWh</span>
+            </li>
+            <li>
+              <span class="fve-price__example-label">Cena systému bez baterie</span>
+              <span class="fve-price__example-value">220 000–355 000 Kč</span>
+            </li>
+            <li>
+              <span class="fve-price__example-label">Cena systému s baterií</span>
+              <span class="fve-price__example-value">320 000–505 000 Kč</span>
+            </li>
+            <li>
+              <span class="fve-price__example-label">Návratnost investice (bez dotace)</span>
+              <span class="fve-price__example-value">9–14 let</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="fve-price__col-title">Co vše má být v ceně</h3>
+          <ul class="fve-price__checklist">
+            <li>
+              <svg class="fve-price__check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.5L5.5 11L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Projektová dokumentace a statický posudek střechy
+            </li>
+            <li>
+              <svg class="fve-price__check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.5L5.5 11L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Stavební ohlášení nebo povolení a vyřízení připojení k distribuční síti
+            </li>
+            <li>
+              <svg class="fve-price__check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.5L5.5 11L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Dodávka a montáž panelů včetně nosné konstrukce
+            </li>
+            <li>
+              <svg class="fve-price__check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.5L5.5 11L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Dodávka a instalace střídače
+            </li>
+            <li>
+              <svg class="fve-price__check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.5L5.5 11L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Elektroinstalace, kabeláž a rozvaděče
+            </li>
+            <li>
+              <svg class="fve-price__check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.5L5.5 11L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Revize elektroinstalace a uvedení do provozu
+            </li>
+            <li class="fve-price__checklist-item--expandable">
+              <details class="fve-price__battery-details">
+                <summary>
+                  <svg class="fve-price__check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.5L5.5 11L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Baterie — jako samostatná vyčíslená položka, ne skrytá v základní ceně
+                  <svg class="fve-price__battery-chevron" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4.5L6 8.5L10 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </summary>
+                <ul class="fve-price__checklist fve-price__checklist--sub">
+                  <li>Kapacita baterie: rozlišit instalovanou (brutto) a užitnou (netto) kapacitu — rozdíl bývá 10–20 %</li>
+                  <li>Garantovaný počet cyklů při 80% hloubce vybití — typicky 3 000–6 000 u LFP chemie</li>
+                  <li>Záruka na zbývající kapacitu: minimálně 70 % po 10 letech nebo po stanoveném počtu cyklů</li>
+                  <li>Chemie článků: LFP (lithium-železo-fosfát) je pro obytné budovy bezpečnější variantou než NMC</li>
+                </ul>
+              </details>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="fve-price__breakdown">
+        <h3 class="fve-price__breakdown-title">Orientační položkový rozpis</h3>
+        <ul class="fve-price__breakdown-list">
+          <li class="fve-price__breakdown-item">
+            <span class="fve-price__breakdown-dot" style="background:#b7f13d"></span>
+            <span class="fve-price__breakdown-name">Panely + nosná konstrukce</span>
+            <span class="fve-price__breakdown-bar-wrap" style="background:rgba(183,241,61,0.12)"><span class="fve-price__breakdown-bar" style="width:37%;background:#b7f13d"></span></span>
+            <span class="fve-price__breakdown-amount">120 000–180 000 Kč</span>
+            <span class="fve-price__breakdown-pct">37 %</span>
+          </li>
+          <li class="fve-price__breakdown-item">
+            <span class="fve-price__breakdown-dot" style="background:#7aad1e"></span>
+            <span class="fve-price__breakdown-name">Střídač</span>
+            <span class="fve-price__breakdown-bar-wrap" style="background:rgba(122,173,30,0.12)"><span class="fve-price__breakdown-bar" style="width:16%;background:#7aad1e"></span></span>
+            <span class="fve-price__breakdown-amount">40 000–70 000 Kč</span>
+            <span class="fve-price__breakdown-pct">16 %</span>
+          </li>
+          <li class="fve-price__breakdown-item">
+            <span class="fve-price__breakdown-dot" style="background:#4e7314"></span>
+            <span class="fve-price__breakdown-name">Instalace a kabeláž</span>
+            <span class="fve-price__breakdown-bar-wrap" style="background:rgba(78,115,20,0.18)"><span class="fve-price__breakdown-bar" style="width:15%;background:#4e7314"></span></span>
+            <span class="fve-price__breakdown-amount">40 000–60 000 Kč</span>
+            <span class="fve-price__breakdown-pct">15 %</span>
+          </li>
+          <li class="fve-price__breakdown-item">
+            <span class="fve-price__breakdown-dot" style="background:rgba(183,241,61,0.55)"></span>
+            <span class="fve-price__breakdown-name">Revize a projektová dokumentace</span>
+            <span class="fve-price__breakdown-bar-wrap" style="background:rgba(183,241,61,0.07)"><span class="fve-price__breakdown-bar" style="width:7%;background:rgba(183,241,61,0.55)"></span></span>
+            <span class="fve-price__breakdown-amount">15 000–30 000 Kč</span>
+            <span class="fve-price__breakdown-pct">7 %</span>
+          </li>
+          <li class="fve-price__breakdown-item">
+            <span class="fve-price__breakdown-dot" style="background:rgba(255,255,255,0.35)"></span>
+            <span class="fve-price__breakdown-name">Připojení k distribuční síti</span>
+            <span class="fve-price__breakdown-bar-wrap" style="background:rgba(255,255,255,0.05)"><span class="fve-price__breakdown-bar" style="width:3%;background:rgba(255,255,255,0.35)"></span></span>
+            <span class="fve-price__breakdown-amount">5 000–15 000 Kč</span>
+            <span class="fve-price__breakdown-pct">3 %</span>
+          </li>
+          <li class="fve-price__breakdown-item">
+            <span class="fve-price__breakdown-dot" style="background:rgba(255,255,255,0.20)"></span>
+            <span class="fve-price__breakdown-name">Baterie 10 kWh <em>(oddělitelná položka)</em></span>
+            <span class="fve-price__breakdown-bar-wrap" style="background:rgba(255,255,255,0.04)"><span class="fve-price__breakdown-bar" style="width:22%;background:rgba(255,255,255,0.20)"></span></span>
+            <span class="fve-price__breakdown-amount">100 000–150 000 Kč</span>
+            <span class="fve-price__breakdown-pct">—</span>
+          </li>
+          <li class="fve-price__breakdown-item fve-price__breakdown-item--total">
+            <span></span>
+            <span class="fve-price__breakdown-name">Celkem s baterií</span>
+            <span></span>
+            <span class="fve-price__breakdown-amount">320 000–505 000 Kč</span>
+            <span></span>
+          </li>
+        </ul>
+        <p class="fve-price__breakdown-footnote">Všechny ceny jsou orientační. Skutečná cena závisí na výkonu systému, lokalitě, složitosti instalace a použitých komponentech.</p>
+      </div>
+
+    </div><!-- /panel dum -->
+
+    <!-- ─── PANEL 02: Firmy ─── -->
+    <div class="fve-price__tab-panel" data-panel="firmy">
+
+      <div class="fve-price__hero-img">
+        <img src="assets/images/Firma.png" alt="" loading="lazy">
+      </div>
+
+      <div class="fve-price__cols">
+
+        <div>
+          <h3 class="fve-price__col-title">Příklad: Firma s bateriovým úložištěm</h3>
+          <ul class="fve-price__example-list">
+            <li>
+              <span class="fve-price__example-label">Výkon instalace</span>
+              <span class="fve-price__example-value">99 kWp</span>
+            </li>
+            <li>
+              <span class="fve-price__example-label">Kapacita baterie (peak-shaving)</span>
+              <span class="fve-price__example-value">50 kWh</span>
+            </li>
+            <li>
+              <span class="fve-price__example-label">Odhadovaná roční výroba</span>
+              <span class="fve-price__example-value">92 000–98 000 kWh</span>
+            </li>
+            <li>
+              <span class="fve-price__example-label">Cena systému bez baterie</span>
+              <span class="fve-price__example-value">2 200 000–2 900 000 Kč</span>
+            </li>
+            <li>
+              <span class="fve-price__example-label">Cena systému s baterií</span>
+              <span class="fve-price__example-value">2 700 000–3 650 000 Kč</span>
+            </li>
+            <li>
+              <span class="fve-price__example-label">Návratnost investice (bez dotace)</span>
+              <span class="fve-price__example-value">5–8 let</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="fve-price__col-title">Co vše má být v ceně</h3>
+          <ul class="fve-price__checklist">
+            <li>
+              <svg class="fve-price__check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.5L5.5 11L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Projektová dokumentace, statický posudek střechy/haly a požárně bezpečnostní řešení
+            </li>
+            <li>
+              <svg class="fve-price__check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.5L5.5 11L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Ohlášení stavby (do 100 kW) a vyřízení smlouvy o připojení s distributorem
+            </li>
+            <li>
+              <svg class="fve-price__check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.5L5.5 11L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Dodávka a montáž panelů včetně nosné konstrukce
+            </li>
+            <li>
+              <svg class="fve-price__check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.5L5.5 11L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Dodávka a instalace střídače (u větších systémů obvykle víc kusů)
+            </li>
+            <li>
+              <svg class="fve-price__check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.5L5.5 11L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Elektroinstalace, kabeláž, rozvaděče a hlavní jistič
+            </li>
+            <li>
+              <svg class="fve-price__check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.5L5.5 11L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Revize elektroinstalace a uvedení do provozu
+            </li>
+            <li class="fve-price__checklist-item--expandable">
+              <details class="fve-price__battery-details">
+                <summary>
+                  <svg class="fve-price__check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.5L5.5 11L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Bateriové úložiště pro peak-shaving — jako samostatná vyčíslená položka, ne skrytá v základní ceně
+                  <svg class="fve-price__battery-chevron" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4.5L6 8.5L10 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </summary>
+                <ul class="fve-price__checklist fve-price__checklist--sub">
+                  <li>Peak-shaving snižuje krátkodobé špičky odběru, a tím i rezervovaný příkon u distributora — úspora na fixní složce faktury nezávislá na ceně elektřiny</li>
+                  <li>Garantovaný počet cyklů při 80% hloubce vybití — typicky 3 000–6 000 u LFP chemie</li>
+                  <li>Záruka na zbývající kapacitu: minimálně 70 % po 10 letech nebo po stanoveném počtu cyklů</li>
+                  <li>Chemie článků: LFP je pro provozní budovy bezpečnější variantou než NMC</li>
+                </ul>
+              </details>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="fve-price__breakdown">
+        <h3 class="fve-price__breakdown-title">Orientační položkový rozpis</h3>
+        <ul class="fve-price__breakdown-list">
+          <li class="fve-price__breakdown-item">
+            <span class="fve-price__breakdown-dot" style="background:#b7f13d"></span>
+            <span class="fve-price__breakdown-name">Panely + nosná konstrukce</span>
+            <span class="fve-price__breakdown-bar-wrap" style="background:rgba(183,241,61,0.12)"><span class="fve-price__breakdown-bar" style="width:38%;background:#b7f13d"></span></span>
+            <span class="fve-price__breakdown-amount">840 000–1 100 000 Kč</span>
+            <span class="fve-price__breakdown-pct">38 %</span>
+          </li>
+          <li class="fve-price__breakdown-item">
+            <span class="fve-price__breakdown-dot" style="background:#7aad1e"></span>
+            <span class="fve-price__breakdown-name">Střídač</span>
+            <span class="fve-price__breakdown-bar-wrap" style="background:rgba(122,173,30,0.12)"><span class="fve-price__breakdown-bar" style="width:14%;background:#7aad1e"></span></span>
+            <span class="fve-price__breakdown-amount">310 000–410 000 Kč</span>
+            <span class="fve-price__breakdown-pct">14 %</span>
+          </li>
+          <li class="fve-price__breakdown-item">
+            <span class="fve-price__breakdown-dot" style="background:#4e7314"></span>
+            <span class="fve-price__breakdown-name">Elektroinstalace a rozvaděče</span>
+            <span class="fve-price__breakdown-bar-wrap" style="background:rgba(78,115,20,0.18)"><span class="fve-price__breakdown-bar" style="width:17%;background:#4e7314"></span></span>
+            <span class="fve-price__breakdown-amount">370 000–490 000 Kč</span>
+            <span class="fve-price__breakdown-pct">17 %</span>
+          </li>
+          <li class="fve-price__breakdown-item">
+            <span class="fve-price__breakdown-dot" style="background:rgba(183,241,61,0.55)"></span>
+            <span class="fve-price__breakdown-name">Projektová dokumentace, povolení a PBŘ</span>
+            <span class="fve-price__breakdown-bar-wrap" style="background:rgba(183,241,61,0.07)"><span class="fve-price__breakdown-bar" style="width:12%;background:rgba(183,241,61,0.55)"></span></span>
+            <span class="fve-price__breakdown-amount">260 000–350 000 Kč</span>
+            <span class="fve-price__breakdown-pct">12 %</span>
+          </li>
+          <li class="fve-price__breakdown-item">
+            <span class="fve-price__breakdown-dot" style="background:rgba(255,255,255,0.35)"></span>
+            <span class="fve-price__breakdown-name">Připojení k distribuční síti</span>
+            <span class="fve-price__breakdown-bar-wrap" style="background:rgba(255,255,255,0.05)"><span class="fve-price__breakdown-bar" style="width:8%;background:rgba(255,255,255,0.35)"></span></span>
+            <span class="fve-price__breakdown-amount">180 000–230 000 Kč</span>
+            <span class="fve-price__breakdown-pct">8 %</span>
+          </li>
+          <li class="fve-price__breakdown-item">
+            <span class="fve-price__breakdown-dot" style="background:rgba(255,255,255,0.22)"></span>
+            <span class="fve-price__breakdown-name">Uvedení do provozu a revize</span>
+            <span class="fve-price__breakdown-bar-wrap" style="background:rgba(255,255,255,0.04)"><span class="fve-price__breakdown-bar" style="width:11%;background:rgba(255,255,255,0.22)"></span></span>
+            <span class="fve-price__breakdown-amount">240 000–320 000 Kč</span>
+            <span class="fve-price__breakdown-pct">11 %</span>
+          </li>
+          <li class="fve-price__breakdown-item">
+            <span class="fve-price__breakdown-dot" style="background:rgba(255,255,255,0.14)"></span>
+            <span class="fve-price__breakdown-name">Baterie 50 kWh <em>(oddělitelná položka)</em></span>
+            <span class="fve-price__breakdown-bar-wrap" style="background:rgba(255,255,255,0.04)"><span class="fve-price__breakdown-bar" style="width:22%;background:rgba(255,255,255,0.14)"></span></span>
+            <span class="fve-price__breakdown-amount">500 000–750 000 Kč</span>
+            <span class="fve-price__breakdown-pct">—</span>
+          </li>
+          <li class="fve-price__breakdown-item fve-price__breakdown-item--total">
+            <span></span>
+            <span class="fve-price__breakdown-name">Celkem s baterií</span>
+            <span></span>
+            <span class="fve-price__breakdown-amount">2 700 000–3 650 000 Kč</span>
+            <span></span>
+          </li>
+        </ul>
+        <p class="fve-price__breakdown-footnote">Všechny ceny jsou orientační. Skutečná cena závisí na výkonu systému, profilu spotřeby, lokalitě a použitých komponentech.</p>
+      </div>
+
+    </div><!-- /panel firmy -->
+
+    <!-- ─── PANEL 03: Obce ─── -->
+    <div class="fve-price__tab-panel" data-panel="obce">
+
+      <div class="fve-price__hero-img">
+        <img src="assets/images/Obec.png" alt="" loading="lazy">
+      </div>
+
+      <div class="fve-price__cols">
+
+        <div>
+          <h3 class="fve-price__col-title">Příklad: Obec (veřejná budova, Obecní úřad)</h3>
+          <ul class="fve-price__example-list">
+            <li>
+              <span class="fve-price__example-label">Výkon instalace</span>
+              <span class="fve-price__example-value">30 kWp</span>
+            </li>
+            <li>
+              <span class="fve-price__example-label">Bateriové úložiště</span>
+              <span class="fve-price__example-value">nevyžadováno</span>
+            </li>
+            <li>
+              <span class="fve-price__example-label">Odhadovaná roční výroba</span>
+              <span class="fve-price__example-value">28 000–32 000 kWh</span>
+            </li>
+            <li>
+              <span class="fve-price__example-label">Cena systému</span>
+              <span class="fve-price__example-value">650 000–850 000 Kč</span>
+            </li>
+            <li>
+              <span class="fve-price__example-label">Návratnost investice (bez dotace)</span>
+              <span class="fve-price__example-value">5–7 let</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="fve-price__col-title">Co vše má být v ceně</h3>
+          <ul class="fve-price__checklist">
+            <li>
+              <svg class="fve-price__check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.5L5.5 11L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Energetický audit budovy a projektová dokumentace
+            </li>
+            <li>
+              <svg class="fve-price__check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.5L5.5 11L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Ohlášení stavby (do 100 kW) a vyřízení smlouvy o připojení s distributorem
+            </li>
+            <li>
+              <svg class="fve-price__check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.5L5.5 11L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Dodávka a montáž panelů včetně nosné konstrukce
+            </li>
+            <li>
+              <svg class="fve-price__check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.5L5.5 11L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Dodávka a instalace střídače
+            </li>
+            <li>
+              <svg class="fve-price__check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.5L5.5 11L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Elektroinstalace, kabeláž a rozvaděče
+            </li>
+            <li>
+              <svg class="fve-price__check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.5L5.5 11L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Revize elektroinstalace a uvedení do provozu
+            </li>
+            <li>
+              <svg class="fve-price__check" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7.5L5.5 11L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Výběrové řízení na dodavatele podle zákona o zadávání veřejných zakázek — u obcí a příspěvkových organizací je povinné podle výše zakázky, na rozdíl od firem a SVJ
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="fve-price__breakdown">
+        <h3 class="fve-price__breakdown-title">Orientační položkový rozpis</h3>
+        <ul class="fve-price__breakdown-list">
+          <li class="fve-price__breakdown-item">
+            <span class="fve-price__breakdown-dot" style="background:#b7f13d"></span>
+            <span class="fve-price__breakdown-name">Panely + nosná konstrukce</span>
+            <span class="fve-price__breakdown-bar-wrap" style="background:rgba(183,241,61,0.12)"><span class="fve-price__breakdown-bar" style="width:40%;background:#b7f13d"></span></span>
+            <span class="fve-price__breakdown-amount">260 000–330 000 Kč</span>
+            <span class="fve-price__breakdown-pct">40 %</span>
+          </li>
+          <li class="fve-price__breakdown-item">
+            <span class="fve-price__breakdown-dot" style="background:#7aad1e"></span>
+            <span class="fve-price__breakdown-name">Střídač</span>
+            <span class="fve-price__breakdown-bar-wrap" style="background:rgba(122,173,30,0.12)"><span class="fve-price__breakdown-bar" style="width:14%;background:#7aad1e"></span></span>
+            <span class="fve-price__breakdown-amount">90 000–120 000 Kč</span>
+            <span class="fve-price__breakdown-pct">14 %</span>
+          </li>
+          <li class="fve-price__breakdown-item">
+            <span class="fve-price__breakdown-dot" style="background:#4e7314"></span>
+            <span class="fve-price__breakdown-name">Elektroinstalace a rozvaděče</span>
+            <span class="fve-price__breakdown-bar-wrap" style="background:rgba(78,115,20,0.18)"><span class="fve-price__breakdown-bar" style="width:17%;background:#4e7314"></span></span>
+            <span class="fve-price__breakdown-amount">110 000–150 000 Kč</span>
+            <span class="fve-price__breakdown-pct">17 %</span>
+          </li>
+          <li class="fve-price__breakdown-item">
+            <span class="fve-price__breakdown-dot" style="background:rgba(183,241,61,0.55)"></span>
+            <span class="fve-price__breakdown-name">Projektová dokumentace a energetický audit</span>
+            <span class="fve-price__breakdown-bar-wrap" style="background:rgba(183,241,61,0.07)"><span class="fve-price__breakdown-bar" style="width:12%;background:rgba(183,241,61,0.55)"></span></span>
+            <span class="fve-price__breakdown-amount">80 000–100 000 Kč</span>
+            <span class="fve-price__breakdown-pct">12 %</span>
+          </li>
+          <li class="fve-price__breakdown-item">
+            <span class="fve-price__breakdown-dot" style="background:rgba(255,255,255,0.35)"></span>
+            <span class="fve-price__breakdown-name">Připojení k distribuční síti</span>
+            <span class="fve-price__breakdown-bar-wrap" style="background:rgba(255,255,255,0.05)"><span class="fve-price__breakdown-bar" style="width:8%;background:rgba(255,255,255,0.35)"></span></span>
+            <span class="fve-price__breakdown-amount">50 000–70 000 Kč</span>
+            <span class="fve-price__breakdown-pct">8 %</span>
+          </li>
+          <li class="fve-price__breakdown-item">
+            <span class="fve-price__breakdown-dot" style="background:rgba(255,255,255,0.22)"></span>
+            <span class="fve-price__breakdown-name">Uvedení do provozu a revize</span>
+            <span class="fve-price__breakdown-bar-wrap" style="background:rgba(255,255,255,0.04)"><span class="fve-price__breakdown-bar" style="width:9%;background:rgba(255,255,255,0.22)"></span></span>
+            <span class="fve-price__breakdown-amount">60 000–80 000 Kč</span>
+            <span class="fve-price__breakdown-pct">9 %</span>
+          </li>
+          <li class="fve-price__breakdown-item fve-price__breakdown-item--total">
+            <span></span>
+            <span class="fve-price__breakdown-name">Celkem</span>
+            <span></span>
+            <span class="fve-price__breakdown-amount">650 000–850 000 Kč</span>
+            <span></span>
+          </li>
+        </ul>
+        <p class="fve-price__breakdown-footnote">Všechny ceny jsou orientační. Skutečná cena závisí na výkonu systému, profilu spotřeby budovy, lokalitě a použitých komponentech.</p>
+      </div>
+
+    </div><!-- /panel obce -->
+
+    <!-- Červené vlajky -->
+    <h3 class="fve-price__flags-title">Na co si dát pozor</h3>
+    <div class="fve-price__flags-grid">
+
+      <div class="fve-price__flag-card">
+        <div class="fve-price__flag-icon">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <line x1="10" y1="5" x2="10" y2="13" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <circle cx="10" cy="16.5" r="1.3" fill="currentColor"/>
+          </svg>
+        </div>
+        <h4 class="fve-price__flag-title">Moc nízká cenová nabídka</h4>
+        <ul class="fve-phase__elist">
+          <li>Chybějící položky v rozpočtu — revize, projektová dokumentace nebo připojení k síti</li>
+          <li>Nižší třída komponentů (panely bez certifikace IEC, neznačkový střídač)</li>
+          <li>Cena se dodatečně dorovnává vícepracemi po podpisu smlouvy</li>
+        </ul>
+        <div class="fve-price__flag-note">→ Vyžádat si položkový rozpis a porovnat alespoň 3 nabídky</div>
+      </div>
+
+      <div class="fve-price__flag-card">
+        <div class="fve-price__flag-icon">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <line x1="10" y1="5" x2="10" y2="13" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <circle cx="10" cy="16.5" r="1.3" fill="currentColor"/>
+          </svg>
+        </div>
+        <h4 class="fve-price__flag-title">Moc vysoká cenová nabídka</h4>
+        <ul class="fve-phase__elist">
+          <li>Prodej „za dotaci" — základní cena nafouknutá v očekávání dotačního příspěvku</li>
+          <li>Zbytečně předimenzovaný systém — výkon neodpovídá skutečné spotřebě domu</li>
+          <li>Položky v ceně nejsou specifikovány nebo jsou sloučeny do globální sumy</li>
+        </ul>
+        <div class="fve-price__flag-note">→ Nechat si nezávisle ověřit navržený výkon a složení systému</div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ CO PATŘÍ KE KAŽDÉ BEZPEČNÉ INSTALACI ═══ -->
+<section class="fve-demand" id="bezpecnost">
+  <div class="fve-demand__container">
+
+    <div class="fve-demand__header">
+      <p class="fve-eyebrow">Bezpečnost a dokumentace</p>
+      <h2 class="fve-demand__title">Co patří ke každé bezpečné instalaci</h2>
+    </div>
+
+    <div class="fve-demand__accordion" id="fveDemand">
+
+      <!-- 01 -->
+      <div class="fve-demand-item is-open" data-item="0">
+        <div class="fve-demand-item__collapsed">
+          <span class="fve-demand-item__cnum" aria-hidden="true">01</span>
+          <span class="fve-demand-item__ctitle">Statický posudek střechy</span>
+          <svg class="fve-demand-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="fve-demand-item__expanded">
+          <div class="fve-demand-item__exp-inner">
+            <span class="fve-demand-item__enum">01</span>
+            <h3 class="fve-demand-item__etitle">Statický posudek střechy</h3>
+            <ul class="fve-phase__elist">
+              <li>Montáž FVE přidává střeše zatížení: ploché střechy obvykle kolem 45 kg/m², šikmé střechy obvykle do 25 kg/m²; u starších budov může být statická kapacita omezená.</li>
+              <li>Posudek potvrzuje, že nosná konstrukce střechy i budovy zatížení unese.</li>
+              <li>Bez posudku pojišťovna nemusí uznat pojistnou událost spojenou s poškozením střechy nebo konstrukce.</li>
+              <li>Posudek je možné objednat nezávisle na dodavateli — jde o ochranu před přenosem odpovědnosti na SVJ.</li>
+              <li>Zpracovává ho autorizovaný statik vedený u České komory autorizovaných inženýrů a techniků (ČKAIT).</li>
+            </ul>
+            <div class="fve-demand-item__nav">
+              <button class="fve-phase__btn fve-demand-item__btn--next" type="button" aria-label="Další">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 -->
+      <div class="fve-demand-item" data-item="1">
+        <div class="fve-demand-item__collapsed">
+          <span class="fve-demand-item__cnum" aria-hidden="true">02</span>
+          <span class="fve-demand-item__ctitle">Požárně bezpečnostní řešení (PBŘ)</span>
+          <svg class="fve-demand-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="fve-demand-item__expanded">
+          <div class="fve-demand-item__exp-inner">
+            <span class="fve-demand-item__enum">02</span>
+            <h3 class="fve-demand-item__etitle">Požárně bezpečnostní řešení (PBŘ)</h3>
+            <ul class="fve-phase__elist">
+              <li>Kabely vedeny v kovovém žlabu — plastový se při požáru taví a šíří plamen.</li>
+              <li>Stop tlačítko přístupné na střeše; bez něj lze FVE odpojit jen ve sklepě, což komplikuje zásah hasičů při požáru na střeše.</li>
+              <li>Technologie (střídač, baterie) v odděleném zděném prostoru s požárními dveřmi.</li>
+              <li>Odpínače stringů pro bezpečné odpojení jednotlivých sekcí panelů.</li>
+              <li>Umístění baterie musí splňovat požadavky na požárně dělený prostor — samostatná místnost nebo prostor oddělený od únikových cest.</li>
+              <li>Vzdálenost od hořlavých materiálů a obytných/společných prostor podle typu a kapacity úložiště.</li>
+              <li>Dostatečné odvětrání prostoru, kde je baterie umístěna.</li>
+              <li>Panely zůstávají za denního světla pod napětím i po odpojení od sítě — bezpečnostní opatření s tím musí počítat.</li>
+              <li>V bytovém domě je toto řešení součástí PBŘ jako celku — dodavatel by ho měl mít zpracované při návrhu, ne až dodatečně.</li>
+            </ul>
+            <div class="fve-demand-item__nav">
+              <button class="fve-phase__btn fve-demand-item__btn--prev" type="button" aria-label="Předchozí">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+              </button>
+              <button class="fve-phase__btn fve-demand-item__btn--next" type="button" aria-label="Další">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 -->
+      <div class="fve-demand-item" data-item="2">
+        <div class="fve-demand-item__collapsed">
+          <span class="fve-demand-item__cnum" aria-hidden="true">03</span>
+          <span class="fve-demand-item__ctitle">Projektová dokumentace</span>
+          <svg class="fve-demand-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="fve-demand-item__expanded">
+          <div class="fve-demand-item__exp-inner">
+            <span class="fve-demand-item__enum">03</span>
+            <h3 class="fve-demand-item__etitle">Projektová dokumentace</h3>
+            <ul class="fve-phase__elist">
+              <li>Je vhodná i tam, kde není zákonem povinná — u FVE do 100 kW, kde postačuje ohlášení.</li>
+              <li>U bytových domů jde o veřejný zájem: sdílený majetek, pohyb více osob, vyšší požadavky na prokazatelnost rozhodnutí.</li>
+              <li>Dokumentace v plném rozsahu usnadňuje pojistné řízení, servisní zásahy a případné právní spory.</li>
+              <li>Při absenci dokumentace bývá obtížné zjistit, kdo co instaloval a podle jakého projektu.</li>
+            </ul>
+            <div class="fve-demand-item__nav">
+              <button class="fve-phase__btn fve-demand-item__btn--prev" type="button" aria-label="Předchozí">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+              </button>
+              <button class="fve-phase__btn fve-demand-item__btn--next" type="button" aria-label="Další">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 -->
+      <div class="fve-demand-item" data-item="3">
+        <div class="fve-demand-item__collapsed">
+          <span class="fve-demand-item__cnum" aria-hidden="true">04</span>
+          <span class="fve-demand-item__ctitle">Hasicí přístroj</span>
+          <svg class="fve-demand-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="fve-demand-item__expanded">
+          <div class="fve-demand-item__exp-inner">
+            <span class="fve-demand-item__enum">04</span>
+            <h3 class="fve-demand-item__etitle">Hasicí přístroj</h3>
+            <ul class="fve-phase__elist">
+              <li>U starších staveb zákon hasicí přístroj v blízkosti FVE instalace nevyžaduje.</li>
+              <li>Riziko vzniku požáru je reálné: tepelný únik z baterií, mobilních telefonů nebo robotických vysavačů v technických místnostech.</li>
+              <li>Poměr nákladů: hasicí přístroj v ceně okolo 250 Kč vs. hodnota domu v řádech milionů korun.</li>
+              <li>Pojišťovny mohou při absenci základního protipožárního vybavení krátit nebo odmítnout pojistné plnění.</li>
+            </ul>
+            <div class="fve-demand-item__nav">
+              <button class="fve-phase__btn fve-demand-item__btn--prev" type="button" aria-label="Předchozí">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+              </button>
+              <button class="fve-phase__btn fve-demand-item__btn--next" type="button" aria-label="Další">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 -->
+      <div class="fve-demand-item" data-item="4">
+        <div class="fve-demand-item__collapsed">
+          <span class="fve-demand-item__cnum" aria-hidden="true">05</span>
+          <span class="fve-demand-item__ctitle">Revize specifická pro bateriové úložiště</span>
+          <svg class="fve-demand-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="fve-demand-item__expanded">
+          <div class="fve-demand-item__exp-inner">
+            <span class="fve-demand-item__enum">05</span>
+            <h3 class="fve-demand-item__etitle">Revize specifická pro bateriové úložiště</h3>
+            <ul class="fve-phase__elist">
+              <li>Li-ion baterie podléhají jiné revizní normě než FVE samotné — revizní technik musí mít způsobilost pro tuto technologii.</li>
+              <li>Revize ověřuje stav BMS (systém správy baterie), funkci ochrany proti přebití a hlubokému vybití a správnost ventilace místnosti.</li>
+              <li>Pojišťovny stále častěji vyžadují revizní zprávu pro bateriové úložiště jako podmínku pojistné smlouvy nebo podmínku plnění.</li>
+              <li>Bez revize nelze prokazatelně doložit stav systému při pojistné události nebo při prodeji nemovitosti.</li>
+              <li>První revize se doporučuje spolu s uvedením systému do provozu, další pak v intervalu podle doporučení výrobce baterie.</li>
+              <li>Revizní zprávu je vhodné uchovávat spolu s ostatní dokumentací domu — usnadní budoucí servis i případnou reklamaci.</li>
+            </ul>
+            <div class="fve-demand-item__nav">
+              <button class="fve-phase__btn fve-demand-item__btn--prev" type="button" aria-label="Předchozí">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="fve-calc" id="kalkulacka">
+  <div class="fve-calc__container">
+
+    <!-- Hlavička -->
+    <div class="fve-calc__header">
+      <p class="fve-eyebrow">Kalkulačka</p>
+      <h2 class="fve-calc__title">Kolik FVE ušetří ročně?</h2>
+      <div class="fve-calc__flow">
+        <span class="fve-calc__flow-step fve-calc__flow-step--active">Kalkulačka</span>
+        <span class="fve-calc__flow-arrow">→</span>
+        <span class="fve-calc__flow-step">Formulář</span>
+        <span class="fve-calc__flow-arrow">→</span>
+        <span class="fve-calc__flow-step">Nabídka dodavatelů</span>
+      </div>
+    </div>
+
+    <!-- KROK 1: Kalkulačka -->
+    <div class="fve-calc__step fve-calc__step--calc" id="stepCalc">
+
+      <!-- Slider: počet bytů — celá šířka -->
+      <div class="fve-calc__slider-section">
+        <label class="fve-calc__label">Počet bytových jednotek</label>
+        <div class="fve-calc__slider-row">
+          <input type="range" class="fve-calc__slider" id="calcApts" min="2" max="60" value="12" step="1">
+          <input type="number" class="fve-calc__number" id="calcAptsNum" min="2" max="60" value="12">
+        </div>
+      </div>
+
+      <!-- Vstupy karta: 3 sloupce -->
+      <div class="fve-calc__inputs">
+
+        <div class="fve-calc__field">
+          <label class="fve-calc__label">Orientace střechy</label>
+          <div class="fve-calc__chips" role="group">
+            <label class="fve-calc__chip"><input type="radio" name="calcOrient" value="J" checked> J</label>
+            <label class="fve-calc__chip"><input type="radio" name="calcOrient" value="JZ"> JZ</label>
+            <label class="fve-calc__chip"><input type="radio" name="calcOrient" value="JV"> JV</label>
+            <label class="fve-calc__chip"><input type="radio" name="calcOrient" value="V"> V</label>
+            <label class="fve-calc__chip"><input type="radio" name="calcOrient" value="Z"> Z</label>
+            <label class="fve-calc__chip"><input type="radio" name="calcOrient" value="S"> S</label>
+          </div>
+        </div>
+
+        <div class="fve-calc__field">
+          <label class="fve-calc__label" for="calcConsumption">Měsíční spotřeba / byt</label>
+          <div class="fve-calc__input-unit">
+            <input type="number" class="fve-calc__number fve-calc__number--wide" id="calcConsumption" min="50" max="1000" value="200">
+            <span class="fve-calc__unit">kWh</span>
+          </div>
+        </div>
+
+        <div class="fve-calc__field">
+          <label class="fve-calc__label">Zateplení budovy</label>
+          <div class="fve-calc__chips" role="group">
+            <label class="fve-calc__chip"><input type="radio" name="calcInsul" value="weak"> Slabé</label>
+            <label class="fve-calc__chip"><input type="radio" name="calcInsul" value="mid" checked> Střední</label>
+            <label class="fve-calc__chip"><input type="radio" name="calcInsul" value="good"> Dobré</label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Přepínač baterie -->
+      <div class="fve-calc__battery-row">
+        <div class="fve-calc__battery-field">
+          <label class="fve-calc__label">Bateriové úložiště</label>
+          <div class="fve-calc__chips" role="group">
+            <label class="fve-calc__chip"><input type="radio" name="calcBattery" value="no" checked> Bez baterie</label>
+            <label class="fve-calc__chip"><input type="radio" name="calcBattery" value="yes"> S baterií</label>
+          </div>
+        </div>
+        <p class="fve-calc__battery-note" id="calcBatteryNote">Bez baterie: orientační vlastní spotřeba ~50 % roční výroby. Přebytky odchází do distribuční sítě.</p>
+      </div>
+
+      <!-- Výsledky + sloupcový graf -->
+      <div class="fve-calc__output">
+
+        <div class="fve-calc__bignums">
+          <div class="fve-calc__result">
+            <span class="fve-calc__result-value" id="resPayback">7 – 10</span>
+            <div class="fve-calc__result-meta">
+              <span class="fve-calc__result-unit">let návratnost</span>
+              <span class="fve-calc__result-label">Orientační doba návratnosti</span>
+            </div>
+          </div>
+          <div class="fve-calc__result">
+            <span class="fve-calc__result-value" id="resSavingsYear">80 – 130</span>
+            <div class="fve-calc__result-meta">
+              <span class="fve-calc__result-unit">tis. Kč / rok</span>
+              <span class="fve-calc__result-label">Ušetřeno za rok</span>
+            </div>
+          </div>
+          <div class="fve-calc__result">
+            <span class="fve-calc__result-value" id="resSavingsMth">550 – 750</span>
+            <div class="fve-calc__result-meta">
+              <span class="fve-calc__result-unit">Kč / měsíc / byt</span>
+              <span class="fve-calc__result-label">Úspora na jeden byt</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="fve-calc__chart">
+          <p class="fve-calc__chart-title">Porovnání ročních úspor</p>
+          <div class="fve-calc__chart-area">
+            <div class="fve-calc__chart-bar fve-calc__chart-bar--jom" id="barJom" style="height:300px">
+              <div class="fve-calc__bar-inner fve-calc__bar-inner--jom">
+                <span class="fve-calc__bar-name">S JOM</span>
+                <span class="fve-calc__bar-val" id="barJomVal">80 – 130 tis. Kč</span>
+              </div>
+            </div>
+            <div class="fve-calc__chart-bar fve-calc__chart-bar--nojom" id="barNoJom" style="height:113px">
+              <div class="fve-calc__bar-inner fve-calc__bar-inner--nojom">
+                <span class="fve-calc__bar-name">Bez JOM</span>
+                <span class="fve-calc__bar-val" id="barNoJomVal">48 – 65 tis. Kč</span>
+              </div>
+            </div>
+          </div>
+          <p class="fve-calc__chart-note">S JOM pokryje FVE celý dům, nejen společné prostory.</p>
+        </div>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="fve-calc__cta">
+        <button class="btn btn-primary fve-calc__cta-btn" id="btnToForm" type="button">Získat přesnou nabídku</button>
+        <p class="fve-calc__cta-note">Detailní formulář připraví podklady pro konkrétní nabídky od dodavatelů.</p>
+      </div>
+
+    </div><!-- /stepCalc -->
+
+    <!-- KROK 2: Formulář -->
+    <div class="fve-calc__step fve-calc__step--form" id="stepForm" hidden>
+
+      <button class="fve-calc__back" id="btnBack" type="button">
+        <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Zpět na kalkulačku
+      </button>
+
+      <div class="fve-form__summary">
+        <p class="fve-form__summary-label">Parametry z kalkulačky</p>
+        <ul class="fve-form__summary-list" id="formSummaryList"></ul>
+      </div>
+
+      <form class="fve-form__form" id="fveForm" novalidate>
+
+        <p class="fve-form__section-title">Kontaktní údaje</p>
+        <div class="fve-form__grid-2">
+          <div class="fve-form__field">
+            <label class="fve-form__label" for="fJmeno">Jméno a příjmení</label>
+            <input class="fve-form__input" id="fJmeno" name="jmeno" type="text" required>
+          </div>
+          <div class="fve-form__field">
+            <label class="fve-form__label" for="fEmail">E-mail</label>
+            <input class="fve-form__input" id="fEmail" name="email" type="email" required>
+          </div>
+          <div class="fve-form__field">
+            <label class="fve-form__label" for="fTel">Telefon</label>
+            <input class="fve-form__input" id="fTel" name="telefon" type="tel">
+          </div>
+          <div class="fve-form__field">
+            <label class="fve-form__label">Role v SVJ</label>
+            <div class="fve-calc__chips" role="group">
+              <label class="fve-calc__chip"><input type="radio" name="role" value="predseda"> Předseda výboru</label>
+              <label class="fve-calc__chip"><input type="radio" name="role" value="clen"> Člen výboru</label>
+              <label class="fve-calc__chip"><input type="radio" name="role" value="spravce"> Správce</label>
+              <label class="fve-calc__chip"><input type="radio" name="role" value="jine"> Jiné</label>
+            </div>
+          </div>
+        </div>
+
+        <p class="fve-form__section-title">Adresa budovy</p>
+        <div class="fve-form__grid-3">
+          <div class="fve-form__field fve-form__grid-3--wide">
+            <label class="fve-form__label" for="fUlice">Ulice a č. p.</label>
+            <input class="fve-form__input" id="fUlice" name="ulice" type="text" required>
+          </div>
+          <div class="fve-form__field">
+            <label class="fve-form__label" for="fMesto">Město</label>
+            <input class="fve-form__input" id="fMesto" name="mesto" type="text" required>
+          </div>
+          <div class="fve-form__field">
+            <label class="fve-form__label" for="fPsc">PSČ</label>
+            <input class="fve-form__input" id="fPsc" name="psc" type="text" pattern="[0-9]{5}" required>
+          </div>
+        </div>
+
+        <p class="fve-form__section-title">Projektové preference</p>
+        <div class="fve-form__field">
+          <label class="fve-form__label">Financování</label>
+          <div class="fve-calc__chips" role="group">
+            <label class="fve-calc__chip"><input type="radio" name="financovani" value="koupe"> Vlastní koupě</label>
+            <label class="fve-calc__chip"><input type="radio" name="financovani" value="pronajem"> Pronájem (PPA)</label>
+            <label class="fve-calc__chip"><input type="radio" name="financovani" value="nevim"> Nevím</label>
+          </div>
+        </div>
+        <div class="fve-form__field" style="margin-top:16px">
+          <label class="fve-form__label">Časový horizont</label>
+          <div class="fve-calc__chips" role="group">
+            <label class="fve-calc__chip"><input type="radio" name="horizont" value="6m"> Do 6 měsíců</label>
+            <label class="fve-calc__chip"><input type="radio" name="horizont" value="12m"> 6–12 měsíců</label>
+            <label class="fve-calc__chip"><input type="radio" name="horizont" value="2r"> 1–2 roky</label>
+            <label class="fve-calc__chip"><input type="radio" name="horizont" value="zjistuju"> Zatím zjišťuji</label>
+          </div>
+        </div>
+
+        <p class="fve-form__section-title">Poznámka <span style="font-weight:400;opacity:.6">(nepovinné)</span></p>
+        <div class="fve-form__field">
+          <textarea class="fve-form__input fve-form__textarea" name="poznamka" rows="4" placeholder="Specifické požadavky nebo otázky"></textarea>
+        </div>
+
+        <label class="fve-form__checkbox">
+          <input type="checkbox" name="gdpr" required>
+          <span>Souhlasím se zpracováním osobních údajů za účelem zprostředkování nabídek.</span>
+        </label>
+
+        <button type="submit" class="btn btn-primary fve-form__submit">Odeslat poptávku</button>
+
+        <p class="fve-form__process-note">Po odeslání obdrží SVJ 2–4 nabídky do 5 pracovních dnů. Dodavatelé vidí zadané parametry a kontakt; výběr a závazek zůstávají na SVJ. Platformu hradí dodavatelé.</p>
+
+      </form>
+
+      <div class="fve-form__thanks" id="formThanks" hidden>
+        <svg class="fve-form__thanks-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="2"/>
+          <path d="M14 24l7 7 13-14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3 class="fve-form__thanks-title">Formulář byl odeslán</h3>
+        <p class="fve-form__thanks-desc">Dodavatelé obdrží podklady a připraví nabídky. Výsledky očekávejte do 5 pracovních dnů na zadaný e-mail.</p>
+      </div>
+
+    </div><!-- /stepForm -->
+
+  </div>
+</section>
+
+<section class="fve-case" id="pripadova-studie">
+  <div class="fve-case__container">
+
+    <p class="fve-eyebrow">Případová studie</p>
+    <h2 class="fve-case__title">Bytový dům v Praze 2</h2>
+
+    <div class="fve-case__photo-wrap">
+      <img class="fve-case__photo" src="assets/images/case_study.png" alt="Bytový dům Korunní, Praha 2">
+    </div>
+
+    <div class="fve-case__body">
+
+      <!-- Vlevo: popis + seznam -->
+      <div class="fve-case__left">
+        <h3 class="fve-case__subtitle">Korunní 47, Praha 2</h3>
+        <p class="fve-case__desc">
+          Šestipodlažní bytový dům s 24 byty, orientace střechy na jihojihovýchod. SVJ hledalo způsob, jak trvale snížit zálohy na energie. Kombinace FVE, baterie a JOM dnes pokrývá 58 % roční spotřeby celého domu — zálohy klesly první rok provozu přesně dle projektu.
+        </p>
+        <p class="fve-case__desc">
+          Klíčem k pokrytí 58 % roční spotřeby není jen výkon panelů — bez baterie 30 kWh by výrobní špičky z poledne odcházely do sítě nevyužity. Baterie zachytí denní přebytky a prostřednictvím JOM je uvolní do bytů večer, čímž minimalizuje množství elektřiny nakoupené od distributora.
+        </p>
+        <ul class="fve-case__list">
+          <li>FVE 42 kWp, 168 panelů na střeše (k ověření — viz poznámka výše)</li>
+          <li>Bateriové úložiště 30 kWh</li>
+          <li>JOM — sdílení vyrobené elektřiny napříč byty</li>
+          <li>4 nabíjecí stanice pro elektromobily v suterénu</li>
+          <li>Energetický management (EMS)</li>
+        </ul>
+      </div>
+
+      <!-- Vpravo: čtyři metriky, čistá typografie -->
+      <div class="fve-case__metrics">
+        <div class="fve-case__metric">
+          <span class="fve-case__metric-value">1 450 000 Kč</span>
+          <span class="fve-case__metric-label">Celková investice (z toho 450 tis. Kč financováno bezúročným úvěrem z programu Nová zelená úsporám)</span>
+        </div>
+        <div class="fve-case__metric">
+          <span class="fve-case__metric-value">43 000 kWh</span>
+          <span class="fve-case__metric-label">Roční výroba FVE</span>
+        </div>
+        <div class="fve-case__metric">
+          <span class="fve-case__metric-value">6,1 let</span>
+          <span class="fve-case__metric-label">Prostá návratnost investice</span>
+        </div>
+        <div class="fve-case__metric fve-case__metric--accent">
+          <span class="fve-case__metric-value">825 Kč / měsíc</span>
+          <span class="fve-case__metric-label">úspora na jeden byt</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="fve-faq" id="faq">
+  <div class="fve-faq__container">
+    <p class="fve-eyebrow">FAQ</p>
+    <h2 class="fve-faq__title">Odpovědi na nejčastější otázky</h2>
+
+    <div class="fve-faq__list">
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Je FVE v bytovém domě vůbec možná?</summary>
+        <div class="fve-faq__a">
+          <p>Ano — pro SVJ je to dnes standardní cesta. Instalace na střechu bytového domu do výkonu 100 kW se řeší jako drobná stavba bez klasického stavebního povolení. Nutné je hlasování vlastníků; potřebná většina se řídí stanovami SVJ, nejčastěji jde o nadpoloviční většinu přítomných nebo o kvalifikovanou většinu (např. 2/3) u rozsáhlejších technických zásahů.</p>
+        </div>
+      </details>
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Jak funguje sdílení elektřiny a čím se liší od JOM?</summary>
+        <div class="fve-faq__a">
+          <p>Existují dva různé modely. Jednotné odběrné místo (JOM) sloučí celý dům do jednoho odběrného místa vůči distributorovi — elektřina se pak rozvádí mezi byty uvnitř domu, bez průchodu přes distribuční síť. Sdílení elektřiny (komunitní energetika) naopak ponechává každému bytu vlastní odběrné místo a virtuálně mezi nimi přerozděluje vyrobenou elektřinu přes distribuční síť pomocí Elektroenergetického datového centra, podle klíče nastaveného SVJ. Přebytky nad rámec nastavené alokace se prodávají nebo ukládají do baterie.</p>
+        </div>
+      </details>
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Je potřeba souhlas všech vlastníků?</summary>
+        <div class="fve-faq__a">
+          <p>Ne, k rozhodnutí o instalaci FVE stačí kvorum určené stanovami SVJ, nejčastěji nadpoloviční většina přítomných na shromáždění nebo kvalifikovaná většina vlastnických podílů. U zavedení JOM je ale potřeba počítat s tím, že jednotlivec, který souhlas neudělí, může technicky zůstat na svém původním samostatném odběrném místě — jde totiž o jeho osobní smlouvu s dodavatelem elektřiny.</p>
+        </div>
+      </details>
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Jak dlouho trvá celá realizace?</summary>
+        <div class="fve-faq__a">
+          <p>Projekt a případná povolení: 2–4 měsíce. Samotná instalace na střeše: 2–5 dní podle velikosti systému. Zprovoznění, nastavení JOM nebo sdílení elektřiny a registrace u distributora: dalších 1–2 týdny. Od prvního jednání SVJ po první kilowatthodinu ze střechy tak uplyne typicky 3–6 měsíců.</p>
+        </div>
+      </details>
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Co se děje s přebytky elektřiny, které budova nespotřebuje?</summary>
+        <div class="fve-faq__a">
+          <p>Přebytky, které nezachytí baterie a nespotřebují byty, se prodávají zpět do distribuční sítě za výkupní cenu, typicky 1–1,5 Kč/kWh. Bateriové úložiště zachytí špičky výroby a přesune je do večerních hodin — snižuje tím množství prodávané energie za nízkou cenu a zvyšuje míru vlastní spotřeby.</p>
+        </div>
+      </details>
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Jaká je životnost FVE systému?</summary>
+        <div class="fve-faq__a">
+          <p>Solární panely jsou nejdlouhověčnější částí systému — výrobci garantují minimálně 80 % výkonu po 25 letech, reálná životnost přesahuje 30 let. Střídač (invertor) vydrží 10–15 let a bývá jedinou větší výměnou za dobu provozu. Baterie mají životnost 10–15 let dle hloubky vybíjení.</p>
+        </div>
+      </details>
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Jak se rozdělují úspory mezi jednotlivé byty?</summary>
+        <div class="fve-faq__a">
+          <p>SVJ si sám nastaví klíč rozdělení — nejčastěji podle podílu na společných částech domu (stejně jako fond oprav) nebo podle skutečné spotřeby jednotlivých bytů. Klíč lze kdykoli změnit rozhodnutím shromáždění. Detailní pravidla se zapracují do interní směrnice SVJ nebo smlouvy o JOM.</p>
+        </div>
+      </details>
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Ovlivní instalace FVE pojistné bytového domu?</summary>
+        <div class="fve-faq__a">
+          <p>Zpravidla ne — FVE je dnes standardní technologie a většina pojišťoven ji do pojistné smlouvy zahrne bez navýšení pojistného. Před instalací je vhodné informovat pojišťovnu a ověřit, zda smlouva pokrývá i technologii na střeše. Některé pojišťovny nabízejí rozšíření o připojištění FVE systému.</p>
+        </div>
+      </details>
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Jak dlouho vydrží baterie a co se děje, když kapacita klesne?</summary>
+        <div class="fve-faq__a">
+          <p>Výrobci LFP baterií garantují typicky 3 000–6 000 plných cyklů při 80% hloubce vybití — při jednom cyklu denně to odpovídá přibližně 8–16 letům provozu. Kapacita baterie v průběhu let postupně klesá; po dosažení zárukou stanovené hranice (obvykle 70–80 % původní kapacity) je baterie funkční, ale ukládá méně energie. Výměna celého úložiště nebo jeho části je předvídatelný náklad — kvalitní nabídky ji vyčíslují předem jako součást ekonomické analýzy projektu.</p>
+        </div>
+      </details>
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Jaké je požární riziko Li-ion baterie v bytovém domě?</summary>
+        <div class="fve-faq__a">
+          <p>Li-ion baterie při poruše nebo přehřátí mohou způsobit tzv. tepelný únik (thermal runaway) — intenzivní hoření, které je obtížné hasit standardními prostředky. Proto se baterie v bytových domech umísťují do oddělených větraných technických místností s požárními dveřmi a specifickým požárně bezpečnostním řešením (PBŘ). LFP chemie (lithium-železo-fosfát) je v tomto ohledu výrazně bezpečnější než starší NMC nebo NCA chemie. V místnosti s baterií je vhodné mít hasicí přístroj určený pro lithiové baterie a provádět pravidelné revize.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- Slovník pojmů -->
+<section class="fve-glossary">
+  <div class="fve-glossary__terms">
+    <a href="slovnik.html#term-fve" class="fve-glossary__term">FVE</a>
+    <a href="slovnik.html#term-jom" class="fve-glossary__term">JOM</a>
+    <a href="slovnik.html#term-stridac" class="fve-glossary__term">Střídač</a>
+    <a href="slovnik.html#term-kwp" class="fve-glossary__term">kWp</a>
+    <a href="slovnik.html#term-bateriove-uloziste" class="fve-glossary__term">Bateriové úložiště</a>
+    <a href="slovnik.html#term-ems" class="fve-glossary__term">EMS</a>
+    <a href="slovnik.html#term-komunitni-energetika" class="fve-glossary__term">Komunitní energetika</a>
+    <a href="slovnik.html#term-svj" class="fve-glossary__term">SVJ</a>
+    <a href="slovnik.html#term-nzu" class="fve-glossary__term">NZÚ</a>
+    <a href="slovnik.html#term-vykupni-cena" class="fve-glossary__term">Výkupní cena</a>
+    <a href="slovnik.html#term-distribucni-soustava" class="fve-glossary__term">Distribuční soustava</a>
+    <a href="slovnik.html#term-bilancni-mereni" class="fve-glossary__term">Bilanční měření</a>
+    <a href="slovnik.html#term-vlastni-spotreba" class="fve-glossary__term">Vlastní spotřeba</a>
+    <a href="slovnik.html#term-ppds" class="fve-glossary__term">PPDS</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-glow"></div>
+
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">
+          <img src="assets/images/Logo.svg" alt="Energohub">
+        </a>
+        <p class="footer-tagline">Nezávislý průvodce úsporami energie pro SVJ a bytová družstva.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Mapa stránek</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#pruvodce">Průvodci opatření</a></li>
+          <li><a href="pruvodce-jom.html">Jednotné odběrné místo</a></li>
+          <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
+          <li><a href="slovnik.html">Slovník pojmů</a></li>
+          <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+          <li><a href="index.html#o-nas">O nás</a></li>
+          <li><a href="kontakty.html">Kontakty</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Informace</h4>
+        <ul class="footer-links">
+          <li><a href="#">Podmínky použití</a></li>
+          <li><a href="#">Ochrana osobních údajů</a></li>
+          <li><a href="#">Reklamační řád</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-join">
+        <h4 class="footer-col-title">Sledujte nás</h4>
+
+        <div class="footer-social">
+          <a href="#" class="footer-social-icon" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.4h2.48l.37-2.88h-2.85V8.94c0-.83.23-1.4 1.42-1.4h1.52V4.98c-.26-.04-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.88h2.47V21h2.93z"></path></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="3.7"></circle><circle cx="17.1" cy="6.9" r="0.9" fill="currentColor" stroke="none"></circle></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H4.1V20h2.84V8.5zM5.5 4c-.97 0-1.7.73-1.7 1.65 0 .9.71 1.65 1.67 1.65h.02c.99 0 1.7-.74 1.7-1.65C7.19 4.73 6.48 4 5.5 4zM20 13.4c0-3-1.6-4.4-3.74-4.4-1.72 0-2.49 0.95-2.92 1.62V8.5h-2.84c.04.8 0 11.5 0 11.5h2.84v-6.42c0-.34.02-.69.13-.93.28-.69.91-1.41 1.98-1.41 1.4 0 1.96 1.06 1.96 2.62V20H20v-6.6z"></path></svg>
+          </a>
+        </div>
+
+        <form class="footer-newsletter" id="footerNewsletter">
+          <input type="email" name="email" placeholder="Zadejte e-mail" aria-label="E-mailová adresa" required>
+          <button type="submit" aria-label="Odebírat novinky">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6"></path>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Energohub.info. Všechna práva vyhrazena.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/fve-subnav.js"></script>
+<script src="js/fve-tabs.js"></script>
+<script src="js/fve-diagram.js"></script>
+<script src="js/fve-phases.js"></script>
+<script src="js/fve-demand.js"></script>
+<script src="js/fve-costs.js"></script>
+<script src="js/fve-calc.js"></script>
+<script src="js/fve-form.js"></script>
+<script src="js/footer.js"></script>
+<script src="js/navbar.js"></script>
+<script>
+(function () {
+  var frame = document.querySelector('.fve-hero__3d-frame');
+  frame.addEventListener('load', function () {
+    try {
+      var doc = frame.contentDocument || frame.contentWindow.document;
+      var s = doc.createElement('style');
+      s.textContent = [
+        '.hero-canvas { transform: translateX(18%) !important; }',
+        '.controls { left: 68% !important; transform: translateX(-50%) !important; bottom: 28px !important; right: auto !important; }'
+      ].join(' ');
+      doc.head.appendChild(s);
+    } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,301 @@
+/* ===== Kontakt Hero ===== */
+
+.kontakt-hero {
+  background: #05050a;
+  min-height: 46vh;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  overflow: hidden;
+  padding: 140px 80px 72px;
+}
+
+.kontakt-hero::after {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 50%;
+  height: 80%;
+  background: radial-gradient(ellipse, rgba(183,241,61,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.kontakt-hero__content {
+  position: relative;
+  z-index: 1;
+  animation: kontakt-fadein 0.55s ease both;
+}
+
+.kontakt-hero__title {
+  font: 700 clamp(40px, 3.5vw, 64px)/1.1 var(--font-heading);
+  color: var(--text-white);
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  margin-top: 12px;
+}
+
+.kontakt-hero__text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 480px;
+}
+
+@keyframes kontakt-fadein {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Kontakt Main ===== */
+
+.kontakt-main {
+  background: #05050a;
+  padding: 80px 0 120px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.kontakt-main.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.kontakt-main__container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+.kontakt-main__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* ===== Kontaktní info ===== */
+
+.kontakt-info__title {
+  font: 700 22px/1.2 var(--font-heading);
+  color: var(--text-white);
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.kontakt-info__list {
+  list-style: none;
+  margin-bottom: 32px;
+}
+
+.kontakt-info__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.kontakt-info__item:first-child {
+  padding-top: 0;
+}
+
+.kontakt-info__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  border: 1px solid rgba(183,241,61,0.25);
+  background: rgba(183,241,61,0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lime);
+}
+
+.kontakt-info__icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.kontakt-info__body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.kontakt-info__label {
+  font: 400 12px/1 var(--font-body);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.kontakt-info__value {
+  font: 600 16px/1.4 var(--font-body);
+  color: var(--text-white);
+  text-decoration: none;
+}
+
+a.kontakt-info__value {
+  transition: color 0.2s ease;
+}
+
+a.kontakt-info__value:hover {
+  color: var(--lime);
+}
+
+.kontakt-info__note {
+  font: 400 13px/1.6 var(--font-body);
+  color: rgba(255,255,255,0.58);
+}
+
+/* ===== Formulář ===== */
+
+.kontakt-form {
+  margin-top: -80px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  padding: 40px;
+}
+
+.kontakt-form__title {
+  font: 700 22px/1.2 var(--font-heading);
+  color: var(--text-white);
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.kontakt-form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.kontakt-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.kontakt-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.kontakt-form__field label {
+  font: 500 13px/1 var(--font-body);
+  color: var(--text-muted);
+}
+
+.kontakt-form input,
+.kontakt-form textarea {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 9px;
+  color: var(--text-white);
+  font: 400 15px/1.5 var(--font-body);
+  padding: 12px 14px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s ease;
+  resize: vertical;
+}
+
+.kontakt-form input::placeholder,
+.kontakt-form textarea::placeholder {
+  color: rgba(255,255,255,0.35);
+}
+
+.kontakt-form input:focus,
+.kontakt-form textarea:focus {
+  border-color: var(--lime);
+}
+
+.kontakt-form__submit {
+  margin-top: 8px;
+  align-self: flex-start;
+}
+
+/* Success stav */
+
+.kontakt-form__success {
+  text-align: center;
+  padding: 56px 0 40px;
+}
+
+.kontakt-form__success-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  background: rgba(183,241,61,0.12);
+  border: 1px solid rgba(183,241,61,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lime);
+}
+
+.kontakt-form__success-title {
+  font: 700 20px/1.2 var(--font-heading);
+  color: var(--text-white);
+  margin-bottom: 10px;
+}
+
+.kontakt-form__success-text {
+  font: 400 15px/1.6 var(--font-body);
+  color: var(--text-muted);
+}
+
+/* ===== Responsivita ===== */
+
+@media (max-width: 1100px) {
+  .kontakt-hero {
+    padding: 140px 20px 64px;
+  }
+  .kontakt-main__container {
+    padding: 0 20px;
+  }
+  .kontakt-main__grid {
+    gap: 48px;
+  }
+}
+
+@media (max-width: 760px) {
+  .kontakt-hero {
+    padding: 120px 16px 52px;
+    min-height: 0;
+  }
+  .kontakt-hero__title {
+    font-size: 32px;
+  }
+  .kontakt-hero__text {
+    font-size: 16px;
+  }
+  .kontakt-main {
+    padding: 56px 0 80px;
+  }
+  .kontakt-main__container {
+    padding: 0 16px;
+  }
+  .kontakt-main__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .kontakt-form {
+    margin-top: 0;
+    padding: 24px;
+  }
+  .kontakt-form__row {
+    grid-template-columns: 1fr;
+  }
+}

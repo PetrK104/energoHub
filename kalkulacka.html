@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalkulačka úspor — Energohub.info</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/fve.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="navbar-container">
+    <nav class="navbar">
+      <a href="index.html" class="navbar-logo">
+        <img src="assets/images/Logo.svg" alt="Energohub">
+      </a>
+      <ul class="navbar-links">
+        <li class="nav-dropdown">
+          <a href="index.html#pruvodce" class="nav-dropdown__trigger">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></a>
+          <ul class="nav-dropdown__menu">
+            <div class="nav-dropdown__menu-inner">
+              <li><a href="pruvodce-jom.html">Jednotné odběrné místo (JOM)</a></li>
+              <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
+              <li class="nav-dropdown__item--soon"><span>Teplo a TUV</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Okna a dveře</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Zateplení</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Doporučené pořadí realizace</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+            </div>
+          </ul>
+        </li>
+        <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+        <li><a href="slovnik.html">Slovník pojmů</a></li>
+        <li><a href="index.html#o-nas">O nás</a></li>
+        <li><a href="index.html#kontakty">Kontakty</a></li>
+      </ul>
+      <a href="index.html#kontakty" class="navbar-cta">Chci vědět více</a>
+
+      <button class="navbar-burger" id="navBurger" aria-label="Otevřít menu" aria-expanded="false">
+        <span class="navbar-burger__bar"></span>
+        <span class="navbar-burger__bar"></span>
+        <span class="navbar-burger__bar"></span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Mobilní menu -->
+  <div class="navbar-mobile" id="navMobile" aria-hidden="true">
+    <nav class="navbar-mobile__nav">
+      <ul class="navbar-mobile__links">
+        <li><a href="index.html#pruvodce">Průvodci opatření</a></li>
+        <li><a href="pruvodce-jom.html">— Jednotné odběrné místo</a></li>
+        <li><a href="pruvodce-fve.html">— Fotovoltaika</a></li>
+        <li class="navbar-mobile__divider"></li>
+        <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+        <li><a href="slovnik.html">Slovník pojmů</a></li>
+        <li><a href="index.html#o-nas">O nás</a></li>
+        <li><a href="index.html#kontakty">Kontakty</a></li>
+      </ul>
+      <a href="index.html#kontakty" class="navbar-mobile__cta">Chci vědět více</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="kalk-hero">
+  <div class="kalk-hero__inner">
+    <p class="fve-eyebrow">Nástroj pro SVJ a bytová družstva</p>
+    <h1 class="kalk-hero__title">Kalkulačka úspor</h1>
+    <p class="kalk-hero__perex">Zadáním základních údajů o domě kalkulačka orientačně odhadne výši úspor u JOM, fotovoltaiky, tepelného čerpadla a zateplení — a ukáže, jak se tato opatření navzájem financují.</p>
+    <a href="#kalkulacka" class="btn btn-primary">Spustit kalkulačku</a>
+  </div>
+</section>
+
+<!-- Wizard -->
+<section class="kalk-wizard-section" id="kalkulacka">
+  <div class="kalk-wizard">
+
+    <!-- Stepper -->
+    <div class="kalk-stepper" id="kalkStepper">
+      <div class="kalk-step-item is-active" data-step="0">
+        <div class="kalk-step-dot">1</div>
+        <span class="kalk-step-label">Základní údaje</span>
+      </div>
+      <div class="kalk-step-line"></div>
+      <div class="kalk-step-item" data-step="1">
+        <div class="kalk-step-dot">2</div>
+        <span class="kalk-step-label">JOM</span>
+      </div>
+      <div class="kalk-step-line"></div>
+      <div class="kalk-step-item" data-step="2">
+        <div class="kalk-step-dot">3</div>
+        <span class="kalk-step-label">FVE</span>
+      </div>
+      <div class="kalk-step-line"></div>
+      <div class="kalk-step-item" data-step="3">
+        <div class="kalk-step-dot">4</div>
+        <span class="kalk-step-label">Teplo a TUV</span>
+      </div>
+      <div class="kalk-step-line"></div>
+      <div class="kalk-step-item" data-step="4">
+        <div class="kalk-step-dot">5</div>
+        <span class="kalk-step-label">Okna a dveře</span>
+      </div>
+      <div class="kalk-step-line"></div>
+      <div class="kalk-step-item" data-step="5">
+        <div class="kalk-step-dot">6</div>
+        <span class="kalk-step-label">Souhrn</span>
+      </div>
+    </div>
+
+    <!-- Panel: Výběr řešení -->
+    <div class="kalk-panel kalk-panel--select" id="kalkPanelSelect">
+
+      <div class="kalk-select-header">
+        <h2 class="kalk-select-title">Co chcete řešit?</h2>
+        <span class="kalk-select-hint">Můžete vybrat více možností</span>
+      </div>
+
+      <div class="kalk-select-grid">
+
+        <label class="kalk-select-card" data-key="jom">
+          <input type="checkbox" name="solution" value="jom">
+          <div class="kalk-select-body">
+            <strong class="kalk-select-name">Jednotné odběrné místo</strong>
+            <span class="kalk-select-desc">Sloučení odběrných míst</span>
+          </div>
+          <div class="kalk-select-img-wrap">
+            <img class="kalk-select-img" src="assets/images/cards/card_1.png?v=2" alt="JOM">
+          </div>
+        </label>
+
+        <label class="kalk-select-card" data-key="fve">
+          <input type="checkbox" name="solution" value="fve">
+          <div class="kalk-select-body">
+            <strong class="kalk-select-name">Fotovoltaika</strong>
+            <span class="kalk-select-desc">Vlastní výroba elektřiny ze slunce</span>
+          </div>
+          <div class="kalk-select-img-wrap">
+            <img class="kalk-select-img" src="assets/images/cards/card_2.png" alt="FVE">
+          </div>
+        </label>
+
+        <label class="kalk-select-card" data-key="tc">
+          <input type="checkbox" name="solution" value="tc">
+          <div class="kalk-select-body">
+            <strong class="kalk-select-name">Teplo a TUV</strong>
+            <span class="kalk-select-desc">Vytápění a ohřev vody — tepelná čerpadla a alternativy</span>
+          </div>
+          <div class="kalk-select-img-wrap">
+            <img class="kalk-select-img" src="assets/images/cards/card_3.png?v=3" alt="Teplo a TUV">
+          </div>
+        </label>
+
+        <label class="kalk-select-card" data-key="zatepleni">
+          <input type="checkbox" name="solution" value="zatepleni">
+          <div class="kalk-select-body">
+            <strong class="kalk-select-name">Okna a dveře</strong>
+            <span class="kalk-select-desc">Výměna oken a vstupních dveří, snížení tepelných ztrát</span>
+          </div>
+          <div class="kalk-select-img-wrap">
+            <img class="kalk-select-img" src="assets/images/cards/card_4.png?v=3" alt="Okna a dveře">
+          </div>
+        </label>
+
+      </div>
+
+      <button id="kalkSelectNext" class="btn btn-primary" disabled>Pokračovat →</button>
+    </div>
+
+    <!-- Panel 0: Základní údaje -->
+    <div class="kalk-card kalk-panel" id="kalkPanel0" data-step-key="basic">
+      <h2 class="kalk-panel__title">Základní údaje o domě</h2>
+      <p class="kalk-panel__lead">Tyto informace použijeme ve všech výpočtech — zadejte je jednou a kalkulačka je přenese do každého kroku.</p>
+
+      <div class="kalk-fields">
+        <div class="kalk-field">
+          <label class="kalk-label" for="kalkByty">Počet bytů / odběrných míst</label>
+          <input type="number" id="kalkByty" class="kalk-input" min="2" max="500" placeholder="např. 24">
+        </div>
+        <div class="kalk-field">
+          <label class="kalk-label" for="kalkSpotreba">Roční spotřeba elektřiny celého domu (kWh)</label>
+          <input type="number" id="kalkSpotreba" class="kalk-input" min="1000" max="2000000" placeholder="např. 85 000">
+          <span class="kalk-hint">Najdete na faktuře nebo u správce domu. Orientačně: 24 bytů ≈ 80 000–120 000 kWh/rok.</span>
+        </div>
+        <div class="kalk-field">
+          <label class="kalk-label">Velikost dostupné střechy pro FVE</label>
+          <div class="kalk-radios">
+            <label class="kalk-radio">
+              <input type="radio" name="kalkStrecha" value="small">
+              <span class="kalk-radio__dot"></span>
+              <span class="kalk-radio__body">
+                <strong>Malá</strong> — do 200 m² <span class="kalk-radio__sub">~15–20 kWp</span>
+              </span>
+            </label>
+            <label class="kalk-radio">
+              <input type="radio" name="kalkStrecha" value="medium" checked>
+              <span class="kalk-radio__dot"></span>
+              <span class="kalk-radio__body">
+                <strong>Střední</strong> — 200–400 m² <span class="kalk-radio__sub">~35–45 kWp</span>
+              </span>
+            </label>
+            <label class="kalk-radio">
+              <input type="radio" name="kalkStrecha" value="large">
+              <span class="kalk-radio__dot"></span>
+              <span class="kalk-radio__body">
+                <strong>Velká</strong> — 400+ m² <span class="kalk-radio__sub">~55–65 kWp</span>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="kalk-footer">
+        <button class="btn btn-primary" id="kalkStart">Spočítat úspory</button>
+        <button class="kalk-btn-back" id="kalkBackToSelect">← Změnit výběr</button>
+        <p class="kalk-disclaimer">Výsledky jsou orientační odhady. Přesná čísla závisí na velikosti domu, aktuální spotřebě, orientaci střechy a podmínkách tarifu.</p>
+      </div>
+    </div>
+
+    <!-- Panel 1: JOM -->
+    <div class="kalk-card kalk-panel" id="kalkPanel1" data-step-key="jom" hidden>
+      <div class="kalk-panel-body">
+        <div class="kalk-panel-left">
+          <div class="kalk-step-badge">Krok 1 ze 4</div>
+          <h2 class="kalk-panel__title">Sloučení odběrných míst (JOM)</h2>
+          <p class="kalk-panel__lead">JOM sjednotí všechna odběrná místa pod jednu smlouvu. Dům přestane platit distribuční poplatky zvlášť za každý byt — a to je základ pro efektivní sdílení energie z FVE.</p>
+
+          <div class="kalk-result-row">
+            <div class="kalk-result-box kalk-result-box--lime">
+              <span class="kalk-result-label">Orientační roční úspora</span>
+              <span class="kalk-result-big" id="jomUspora">—</span>
+            </div>
+            <div class="kalk-result-box">
+              <span class="kalk-result-label">Úspora na byt / rok</span>
+              <span class="kalk-result-big" id="jomNaByt">—</span>
+            </div>
+          </div>
+
+          <div class="kalk-footer">
+            <button class="btn btn-primary kalk-btn-next">Pokračovat →</button>
+            <button class="kalk-btn-back">← Zpět</button>
+          </div>
+        </div>
+
+        <div class="kalk-panel-right">
+          <div class="kalk-chart-block">
+            <h3 class="kalk-chart-title">Roční distribuční náklady domu</h3>
+            <div class="kalk-vbars">
+              <div class="kalk-vbar-group">
+                <div class="kalk-vbar-track">
+                  <div class="kalk-vbar-fill kalk-vbar-fill--dim" id="jomBarBefore" style="height:100%"></div>
+                </div>
+                <span class="kalk-vbar-val" id="jomValBefore">—</span>
+                <span class="kalk-vbar-label">Bez JOM</span>
+              </div>
+              <div class="kalk-vbar-group">
+                <div class="kalk-vbar-track">
+                  <div class="kalk-vbar-fill kalk-vbar-fill--lime" id="jomBarAfter" style="height:0%"></div>
+                </div>
+                <span class="kalk-vbar-val" id="jomValAfter">—</span>
+                <span class="kalk-vbar-label">S JOM</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="kalk-insight">
+            <p>JOM je nejrychlejší první krok — administrativně nenáročný a levný. Zároveň <strong>zvyšuje efektivitu FVE o 20–30 %</strong>, protože umožní sdílet elektřinu napříč všemi byty, ne jen ve společných prostorách.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 2: FVE -->
+    <div class="kalk-card kalk-panel" id="kalkPanel2" data-step-key="fve" hidden>
+      <div class="kalk-panel-body">
+        <div class="kalk-panel-left">
+          <div class="kalk-step-badge">Krok 2 ze 4</div>
+          <h2 class="kalk-panel__title">Fotovoltaická elektrárna (FVE)</h2>
+
+          <details class="kalk-refine">
+            <summary>Upřesnit výpočet</summary>
+            <div class="kalk-refine__body">
+              <label class="kalk-refine__field">Orientace střechy
+                <select id="fveOrientace">
+                  <option value="1.0" selected>Jih — nejlepší výnos</option>
+                  <option value="0.90">Jihovýchod / Jihozápad</option>
+                  <option value="0.75">Východ / Západ</option>
+                </select>
+              </label>
+              <label class="kalk-refine__field">Cena elektřiny ze sítě (Kč/kWh)
+                <input type="number" id="fveCenaEl" value="5.0" step="0.1" min="3" max="10">
+              </label>
+            </div>
+          </details>
+
+          <p class="kalk-panel__lead">JOM umožní sdílet elektřinu napříč všemi byty — vlastní spotřeba z FVE stoupne z ~45 % na ~65 %, což výrazně zkracuje návratnost.</p>
+
+          <div class="kalk-result-row">
+            <div class="kalk-result-box kalk-result-box--lime">
+              <span class="kalk-result-label">Roční úspora s JOM</span>
+              <span class="kalk-result-big" id="fveUspora">—</span>
+            </div>
+            <div class="kalk-result-box">
+              <span class="kalk-result-label">Instalovaný výkon</span>
+              <span class="kalk-result-big" id="fveVykon">—</span>
+            </div>
+            <div class="kalk-result-box">
+              <span class="kalk-result-label">Návratnost investice</span>
+              <span class="kalk-result-big" id="fveNavratnost">—</span>
+            </div>
+          </div>
+
+          <div class="kalk-footer">
+            <button class="btn btn-primary kalk-btn-next">Pokračovat →</button>
+            <button class="kalk-btn-back">← Zpět</button>
+          </div>
+        </div>
+
+        <div class="kalk-panel-right">
+          <div class="kalk-cascade">
+            Díky JOM ušetříte <strong id="fveCascadeJom">—</strong>/rok — to pokryje přibližně <strong id="fveCascadePct">—</strong> % ročních splátek úvěru na FVE.
+          </div>
+
+          <div class="kalk-chart-block">
+            <h3 class="kalk-chart-title">Využití vlastní výroby FVE</h3>
+            <div class="kalk-vbars">
+              <div class="kalk-vbar-group">
+                <div class="kalk-vbar-track">
+                  <div class="kalk-vbar-fill kalk-vbar-fill--dim" id="fveColBase"></div>
+                </div>
+                <span class="kalk-vbar-val" id="fveValBase">—</span>
+                <span class="kalk-vbar-label">Bez JOM</span>
+              </div>
+              <div class="kalk-vbar-group">
+                <div class="kalk-vbar-track">
+                  <div class="kalk-vbar-fill kalk-vbar-fill--lime" id="fveColJom"></div>
+                </div>
+                <span class="kalk-vbar-val" id="fveValJom">—</span>
+                <span class="kalk-vbar-label">S JOM</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="kalk-insight">
+            <p>Orientační investice: <strong id="fveInvestice">—</strong>. Úspora z JOM (<span id="fveJomLink">—</span>/rok) pokryje přibližně <strong id="fvePokryti">—</strong> % ročních splátek úvěru na FVE.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 3: TČ -->
+    <div class="kalk-card kalk-panel" id="kalkPanel3" data-step-key="tc" hidden>
+      <div class="kalk-panel-body">
+        <div class="kalk-panel-left">
+          <div class="kalk-step-badge">Krok 3 ze 4</div>
+          <h2 class="kalk-panel__title">Teplo a TUV</h2>
+
+          <details class="kalk-refine">
+            <summary>Upřesnit výpočet</summary>
+            <div class="kalk-refine__body">
+              <label class="kalk-refine__field">Současný typ vytápění
+                <select id="tcTyp">
+                  <option value="1.0" selected>Zemní plyn</option>
+                  <option value="1.2">Elektřina (přímotop)</option>
+                  <option value="0.85">Uhlí / tuhá paliva</option>
+                  <option value="0.95">Dálkové teplo</option>
+                </select>
+              </label>
+              <label class="kalk-refine__field">Roční náklady na vytápění (Kč/rok)
+                <input type="number" id="tcNakladyInput" placeholder="např. 180 000" min="10000" step="1000">
+              </label>
+            </div>
+          </details>
+
+          <p class="kalk-panel__lead">Tepelné čerpadlo přeměňuje elektřinu na teplo s účinností 300–400 %. Pokrývá vytápění i přípravu teplé užitkové vody (TUV). Kombinace s vlastní elektřinou z FVE výrazně snižuje provozní náklady oproti plynu nebo elektrickému přímotopu.</p>
+
+          <div class="kalk-result-row">
+            <div class="kalk-result-box kalk-result-box--lime">
+              <span class="kalk-result-label">Roční úspora oproti plynu</span>
+              <span class="kalk-result-big" id="tcUspora">—</span>
+            </div>
+            <div class="kalk-result-box">
+              <span class="kalk-result-label">Nové roční náklady na teplo</span>
+              <span class="kalk-result-big" id="tcNaklady">—</span>
+            </div>
+          </div>
+
+          <div class="kalk-footer">
+            <button class="btn btn-primary kalk-btn-next">Pokračovat →</button>
+            <button class="kalk-btn-back">← Zpět</button>
+          </div>
+        </div>
+
+        <div class="kalk-panel-right">
+          <div class="kalk-cascade">
+            FVE dodá levnou elektřinu za průměrně <strong id="tcCascadeCena">—</strong> Kč/kWh — to sníží provozní náklady TČ oproti síťové ceně o <strong id="tcCascadeUspora">—</strong>/rok.
+          </div>
+
+          <div class="kalk-chart-block">
+            <h3 class="kalk-chart-title">Srovnání ročních nákladů na teplo a TUV</h3>
+            <div class="kalk-vbars">
+              <div class="kalk-vbar-group">
+                <div class="kalk-vbar-track">
+                  <div class="kalk-vbar-fill kalk-vbar-fill--dim" id="tcBarPlyn" style="height:100%"></div>
+                </div>
+                <span class="kalk-vbar-val" id="tcValPlyn">—</span>
+                <span class="kalk-vbar-label">Dnes (plyn)</span>
+              </div>
+              <div class="kalk-vbar-group">
+                <div class="kalk-vbar-track">
+                  <div class="kalk-vbar-fill kalk-vbar-fill--mid" id="tcBarBezFve" style="height:0%"></div>
+                </div>
+                <span class="kalk-vbar-val" id="tcValBezFve">—</span>
+                <span class="kalk-vbar-label">TČ bez FVE</span>
+              </div>
+              <div class="kalk-vbar-group">
+                <div class="kalk-vbar-track">
+                  <div class="kalk-vbar-fill kalk-vbar-fill--lime" id="tcBarSFve" style="height:0%"></div>
+                </div>
+                <span class="kalk-vbar-val" id="tcValSFve">—</span>
+                <span class="kalk-vbar-label">TČ + FVE</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="kalk-insight">
+            <p>Tepelné čerpadlo je třetí krok — teprve poté, co má dům levnější elektřinu z FVE, dává jeho provoz výrazně lepší ekonomiku. Kondenzační plynový kotel může sloužit jako záloha pro mrazivé dny.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 4: Zateplení -->
+    <div class="kalk-card kalk-panel" id="kalkPanel4" data-step-key="zatepleni" hidden>
+      <div class="kalk-panel-body">
+        <div class="kalk-panel-left">
+          <div class="kalk-step-badge">Krok 4 ze 4</div>
+          <h2 class="kalk-panel__title">Okna a dveře</h2>
+
+          <details class="kalk-refine">
+            <summary>Upřesnit výpočet</summary>
+            <div class="kalk-refine__body">
+              <label class="kalk-refine__field">Současný stav oken a dveří v budově
+                <select id="zatStav">
+                  <option value="0.40" selected>Stará okna — před rokem 1990</option>
+                  <option value="0.25">Částečně vyměněná — 1990–2010</option>
+                  <option value="0.15">Nová okna — po roce 2010</option>
+                </select>
+              </label>
+            </div>
+          </details>
+
+          <p class="kalk-panel__lead">Výměna oken a vstupních dveří sníží tepelné ztráty budovy a zlepší akustický komfort. Přínos závisí na stáří a stavu stávajících prvků — nejstarší okna mohou odpovídat 30–40 % celkových tepelných ztrát obálkou budovy.</p>
+
+          <div class="kalk-result-row">
+            <div class="kalk-result-box kalk-result-box--lime">
+              <span class="kalk-result-label">Roční úspora na vytápění</span>
+              <span class="kalk-result-big" id="zatUspora">—</span>
+            </div>
+            <div class="kalk-result-box">
+              <span class="kalk-result-label">Nové náklady na teplo po výměně</span>
+              <span class="kalk-result-big" id="zatNaklady">—</span>
+            </div>
+          </div>
+
+          <div class="kalk-footer">
+            <button class="btn btn-primary kalk-btn-next">Zobrazit celkový plán</button>
+            <button class="kalk-btn-back">← Zpět</button>
+          </div>
+        </div>
+
+        <div class="kalk-panel-right">
+          <div class="kalk-cascade">
+            TČ + FVE sníží náklady na teplo na <strong id="zatCascadeTc">—</strong>/rok — výměna oken tuto základnu dále zkrátí o <strong id="zatCascadeUspora">—</strong>/rok.
+          </div>
+
+          <div class="kalk-chart-block">
+            <h3 class="kalk-chart-title">Spotřeba tepla před a po výměně oken</h3>
+            <div class="kalk-vbars">
+              <div class="kalk-vbar-group">
+                <div class="kalk-vbar-track">
+                  <div class="kalk-vbar-fill kalk-vbar-fill--dim" id="zatBarBefore" style="height:100%"></div>
+                </div>
+                <span class="kalk-vbar-val" id="zatValBefore">—</span>
+                <span class="kalk-vbar-label">Stará okna</span>
+              </div>
+              <div class="kalk-vbar-group">
+                <div class="kalk-vbar-track">
+                  <div class="kalk-vbar-fill kalk-vbar-fill--lime" id="zatBarAfter" style="height:0%"></div>
+                </div>
+                <span class="kalk-vbar-val" id="zatValAfter">—</span>
+                <span class="kalk-vbar-label">Nová okna</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="kalk-insight">
+            <p>Výměna oken je obvykle čtvrtým krokem — po zajištění levnějšího zdroje energie. Nejstarší jednoduchá nebo zdvojená okna mohou být zodpovědná za velkou část tepelných ztrát domu.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 5: Souhrn -->
+    <div class="kalk-card kalk-panel" id="kalkPanel5" data-step-key="summary" hidden>
+
+      <!-- Header s přepínačem -->
+      <div class="kalk-sum-header">
+        <div>
+          <h2 class="kalk-panel__title">Váš plán úspor</h2>
+          <p class="kalk-panel__lead">Orientační úspory při realizaci opatření ve správném pořadí.</p>
+        </div>
+        <div class="kalk-period-toggle">
+          <button class="kalk-period-btn is-active" id="sumToggleRok" type="button">Za rok</button>
+          <button class="kalk-period-btn" id="sumToggleMes" type="button">Za měsíc</button>
+        </div>
+      </div>
+
+      <!-- Hlavní sloupcový graf -->
+      <div class="kalk-sum-chart">
+
+        <!-- JOM -->
+        <div class="kalk-sum-col" id="sumColJom">
+          <div class="kalk-sum-track">
+            <div class="kalk-sum-fill" id="sumBarJom" style="height:0%"></div>
+            <span class="kalk-sum-val">
+              <span class="kalk-sum-num" id="sumNumJom">—</span>
+              <span class="kalk-sum-suffix" id="sumSufJom">Kč/rok</span>
+            </span>
+          </div>
+          <div class="kalk-sum-name">JOM</div>
+          <div class="kalk-sum-cascade-box">
+            <p class="kalk-sum-cascade">Pokryje <strong id="sumCasJomPct">—</strong> % splátky FVE úvěru</p>
+          </div>
+        </div>
+
+        <!-- FVE -->
+        <div class="kalk-sum-col" id="sumColFve">
+          <div class="kalk-sum-track">
+            <div class="kalk-sum-fill" id="sumBarFve" style="height:0%"></div>
+            <span class="kalk-sum-val">
+              <span class="kalk-sum-num" id="sumNumFve">—</span>
+              <span class="kalk-sum-suffix" id="sumSufFve">Kč/rok</span>
+            </span>
+          </div>
+          <div class="kalk-sum-name">FVE</div>
+          <div class="kalk-sum-cascade-box">
+            <p class="kalk-sum-cascade">Ušetří TČ <strong id="sumCasFve">—</strong> na elektřině</p>
+          </div>
+        </div>
+
+        <!-- TČ -->
+        <div class="kalk-sum-col" id="sumColTc">
+          <div class="kalk-sum-track">
+            <div class="kalk-sum-fill" id="sumBarTc" style="height:0%"></div>
+            <span class="kalk-sum-val">
+              <span class="kalk-sum-num" id="sumNumTc">—</span>
+              <span class="kalk-sum-suffix" id="sumSufTc">Kč/rok</span>
+            </span>
+          </div>
+          <div class="kalk-sum-name">Teplo a TUV</div>
+          <div class="kalk-sum-cascade-box">
+            <p class="kalk-sum-cascade">Sníží základ zateplení o <strong id="sumCasTc">—</strong></p>
+          </div>
+        </div>
+
+        <!-- Zateplení -->
+        <div class="kalk-sum-col" id="sumColZat">
+          <div class="kalk-sum-track">
+            <div class="kalk-sum-fill" id="sumBarZat" style="height:0%"></div>
+            <span class="kalk-sum-val">
+              <span class="kalk-sum-num" id="sumNumZat">—</span>
+              <span class="kalk-sum-suffix" id="sumSufZat">Kč/rok</span>
+            </span>
+          </div>
+          <div class="kalk-sum-name">Okna a dveře</div>
+          <div class="kalk-sum-cascade-box">
+            <p class="kalk-sum-cascade">Maximalizuje dlouhodobou úsporu</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Jednoduchá tabulka -->
+      <table class="kalk-sum-table">
+        <tbody>
+          <tr id="sumRowJom">
+            <td>JOM</td>
+            <td id="sumTblJom">—</td>
+          </tr>
+          <tr id="sumRowFve">
+            <td>FVE</td>
+            <td id="sumTblFve">—</td>
+          </tr>
+          <tr id="sumRowTc">
+            <td>Teplo a TUV</td>
+            <td id="sumTblTc">—</td>
+          </tr>
+          <tr id="sumRowZat">
+            <td>Okna a dveře</td>
+            <td id="sumTblZat">—</td>
+          </tr>
+          <tr class="kalk-sum-table__total">
+            <td>Celkem</td>
+            <td id="sumTblTotal">—</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="kalk-sum-disclaimer">Všechny výsledky jsou orientační odhady. Přesná čísla závisí na velikosti domu, aktuální spotřebě, orientaci střechy, stavu technologií a podmínkách smlouvy s dodavatelem. Kalkulačka nezohledňuje dotace ani konkrétní nabídky dodavatelů.</p>
+
+      <!-- Kontaktní formulář -->
+      <div class="kalk-contact">
+        <h3 class="kalk-contact__title">Přesný výpočet pro konkrétní dům</h3>
+        <p class="kalk-contact__lead">Odesláním výsledků přichází detailní analýza od dodavatelů zaregistrovaných na platformě — zpravidla do 2 pracovních dnů.</p>
+
+        <form class="kalk-form" id="kalkForm">
+          <div class="kalk-form-grid">
+            <div class="kalk-field">
+              <label class="kalk-label" for="kalkJmeno">Jméno a příjmení</label>
+              <input type="text" id="kalkJmeno" class="kalk-input" placeholder="Jan Novák" required>
+            </div>
+            <div class="kalk-field">
+              <label class="kalk-label" for="kalkEmail">E-mail</label>
+              <input type="email" id="kalkEmail" class="kalk-input" placeholder="jan@svj-example.cz" required>
+            </div>
+            <div class="kalk-field">
+              <label class="kalk-label" for="kalkTel">Telefon <span class="kalk-optional">(nepovinné)</span></label>
+              <input type="tel" id="kalkTel" class="kalk-input" placeholder="+420 777 000 000">
+            </div>
+          </div>
+          <label class="kalk-consent">
+            <input type="checkbox" required>
+            <span>Souhlasím se zpracováním osobních údajů pro účely odpovědi na poptávku.</span>
+          </label>
+          <button type="submit" class="btn btn-primary">Odeslat plán úspor</button>
+        </form>
+      </div>
+
+      <div class="kalk-footer kalk-footer--summary">
+        <button class="kalk-btn-back">← Zpět</button>
+      </div>
+    </div>
+
+    <!-- Poděkování -->
+    <div class="kalk-card kalk-thankyou" id="kalkThankyou" hidden>
+      <div class="kalk-thankyou__icon">✓</div>
+      <h3 class="kalk-thankyou__title">Plán úspor byl odeslán</h3>
+      <p class="kalk-thankyou__text">Odpověď s detailní analýzou přijde do 2 pracovních dnů.</p>
+      <a href="index.html" class="btn btn-primary">Zpět na hlavní stránku</a>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-glow"></div>
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">
+          <img src="assets/images/Logo.svg" alt="Energohub">
+        </a>
+        <p class="footer-tagline">Nezávislý průvodce úsporami energie pro SVJ a bytová družstva.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Mapa stránek</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#pruvodce">Průvodci opatření</a></li>
+          <li><a href="pruvodce-jom.html">Jednotné odběrné místo</a></li>
+          <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
+          <li><a href="slovnik.html">Slovník pojmů</a></li>
+          <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+          <li><a href="index.html#o-nas">O nás</a></li>
+          <li><a href="index.html#kontakty">Kontakty</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Informace</h4>
+        <ul class="footer-links">
+          <li><a href="#">Podmínky použití</a></li>
+          <li><a href="#">Ochrana osobních údajů</a></li>
+          <li><a href="#">Reklamační řád</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-join">
+        <h4 class="footer-col-title">Sledujte nás</h4>
+        <div class="footer-social">
+          <a href="#" class="footer-social-icon" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.4h2.48l.37-2.88h-2.85V8.94c0-.83.23-1.4 1.42-1.4h1.52V4.98c-.26-.04-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.88h2.47V21h2.93z"></path></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="3.7"></circle><circle cx="17.1" cy="6.9" r="0.9" fill="currentColor" stroke="none"></circle></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H4.1V20h2.84V8.5zM5.5 4c-.97 0-1.7.73-1.7 1.65 0 .9.71 1.65 1.67 1.65h.02c.99 0 1.7-.74 1.7-1.65C7.19 4.73 6.48 4 5.5 4zM20 13.4c0-3-1.6-4.4-3.74-4.4-1.72 0-2.49 0.95-2.92 1.62V8.5h-2.84c.04.8 0 11.5 0 11.5h2.84v-6.42c0-.34.02-.69.13-.93.28-.69.91-1.41 1.98-1.41 1.4 0 1.96 1.06 1.96 2.62V20H20v-6.6z"></path></svg>
+          </a>
+        </div>
+        <form class="footer-newsletter" id="footerNewsletter">
+          <input type="email" name="email" placeholder="Zadejte e-mail" aria-label="E-mailová adresa" required>
+          <button type="submit" aria-label="Odebírat novinky">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Energohub.info. Všechna práva vyhrazena.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/footer.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/kalkulacka.js"></script>
+</body>
+</html>

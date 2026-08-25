@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slovník pojmů — Energohub.info</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/fve.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="navbar-container">
+    <nav class="navbar">
+      <a href="index.html" class="navbar-logo">
+        <img src="assets/images/Logo.svg" alt="Energohub">
+      </a>
+
+      <ul class="navbar-links">
+        <li class="nav-dropdown">
+          <a href="index.html#pruvodce" class="nav-dropdown__trigger">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></a>
+          <ul class="nav-dropdown__menu">
+            <div class="nav-dropdown__menu-inner">
+              <li><a href="pruvodce-jom.html">Jednotné odběrné místo (JOM)</a></li>
+              <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
+              <li class="nav-dropdown__item--soon"><span>Teplo a TUV</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Okna a dveře</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Zateplení</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Doporučené pořadí realizace</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+            </div>
+          </ul>
+        </li>
+        <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+        <li><a href="slovnik.html">Slovník pojmů</a></li>
+        <li><a href="index.html#o-nas">O nás</a></li>
+        <li><a href="kontakty.html">Kontakty</a></li>
+      </ul>
+
+      <a href="kontakty.html" class="navbar-cta">Chci vědět více</a>
+
+      <button class="navbar-burger" id="navBurger" aria-label="Otevřít menu" aria-expanded="false">
+        <span class="navbar-burger__bar"></span>
+        <span class="navbar-burger__bar"></span>
+        <span class="navbar-burger__bar"></span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Mobilní menu -->
+  <div class="navbar-mobile" id="navMobile" aria-hidden="true">
+    <nav class="navbar-mobile__nav">
+      <ul class="navbar-mobile__links">
+        <li><a href="index.html#pruvodce">Průvodci opatření</a></li>
+        <li><a href="pruvodce-jom.html">— Jednotné odběrné místo</a></li>
+        <li><a href="pruvodce-fve.html">— Fotovoltaika</a></li>
+        <li class="navbar-mobile__divider"></li>
+        <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+        <li><a href="slovnik.html">Slovník pojmů</a></li>
+        <li><a href="index.html#o-nas">O nás</a></li>
+        <li><a href="kontakty.html">Kontakty</a></li>
+      </ul>
+      <a href="kontakty.html" class="navbar-mobile__cta">Chci vědět více</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="slovnik-hero">
+  <div class="slovnik-hero__inner">
+    <h1 class="slovnik-hero__title">Slovník pojmů</h1>
+    <p class="slovnik-hero__perex">Na stránce najdete veškeré významy slov, které patří k jednotlivým oborům.</p>
+
+    <div class="slovnik__search-wrap">
+      <input
+        type="search"
+        id="slovnikSearch"
+        class="slovnik__search"
+        placeholder="Vyhledávejte podle slova…"
+        autocomplete="off"
+      >
+    </div>
+
+    <nav class="slovnik__alphabet" id="slovnikAlphabet" aria-label="Filtr podle písmene">
+      <button class="slovnik__letter-btn is-disabled" data-letter="a">Aa</button>
+      <button class="slovnik__letter-btn" data-letter="b">Bb</button>
+      <button class="slovnik__letter-btn is-disabled" data-letter="c">Cc</button>
+      <button class="slovnik__letter-btn" data-letter="d">Dd</button>
+      <button class="slovnik__letter-btn" data-letter="e">Ee</button>
+      <button class="slovnik__letter-btn" data-letter="f">Ff</button>
+      <button class="slovnik__letter-btn is-disabled" data-letter="g">Gg</button>
+      <button class="slovnik__letter-btn is-disabled" data-letter="h">Hh</button>
+      <button class="slovnik__letter-btn is-disabled" data-letter="i">Ii</button>
+      <button class="slovnik__letter-btn" data-letter="j">Jj</button>
+      <button class="slovnik__letter-btn" data-letter="k">Kk</button>
+      <button class="slovnik__letter-btn" data-letter="l">Ll</button>
+      <button class="slovnik__letter-btn is-disabled" data-letter="m">Mm</button>
+      <button class="slovnik__letter-btn" data-letter="n">Nn</button>
+      <button class="slovnik__letter-btn is-disabled" data-letter="o">Oo</button>
+      <button class="slovnik__letter-btn" data-letter="p">Pp</button>
+      <button class="slovnik__letter-btn is-disabled" data-letter="q">Qq</button>
+      <button class="slovnik__letter-btn" data-letter="r">Rr</button>
+      <button class="slovnik__letter-btn" data-letter="s">Ss</button>
+      <button class="slovnik__letter-btn is-disabled" data-letter="t">Tt</button>
+      <button class="slovnik__letter-btn is-disabled" data-letter="u">Uu</button>
+      <button class="slovnik__letter-btn" data-letter="v">Vv</button>
+      <button class="slovnik__letter-btn is-disabled" data-letter="w">Ww</button>
+      <button class="slovnik__letter-btn is-disabled" data-letter="x">Xx</button>
+      <button class="slovnik__letter-btn is-disabled" data-letter="y">Yy</button>
+      <button class="slovnik__letter-btn is-disabled" data-letter="z">Zz</button>
+    </nav>
+  </div>
+</section>
+
+<!-- Pojmy -->
+<main class="slovnik-main">
+  <div class="slovnik-main__container">
+
+    <!-- B -->
+    <section class="slovnik__section" id="letter-b" data-letter-section="b">
+      <h2 class="slovnik__letter-heading">Bb</h2>
+      <div class="slovnik__grid">
+
+        <article class="slovnik__term" id="term-bateriove-uloziste" data-term="Bateriové úložiště">
+          <h3 class="slovnik__term-name">Bateriové úložiště</h3>
+          <p class="slovnik__term-def">Zařízení pro ukládání elektrické energie vyrobené z obnovitelných zdrojů. Umožňuje využít přebytky z fotovoltaiky i v době, kdy slunce nesvítí.</p>
+          <div class="slovnik__term-pages">
+            <a href="pruvodce-fve.html" class="slovnik__term-link">Fotovoltaika</a>
+          </div>
+        </article>
+
+        <article class="slovnik__term" id="term-bilancni-mereni" data-term="Bilanční měření">
+          <h3 class="slovnik__term-name">Bilanční měření</h3>
+          <p class="slovnik__term-def">Způsob měření spotřeby elektřiny, při kterém se od celkového odběru odečítá vlastní výroba. Majitel platí jen za čistý rozdíl.</p>
+          <div class="slovnik__term-pages">
+            <a href="pruvodce-fve.html" class="slovnik__term-link">Fotovoltaika</a>
+            <a href="pruvodce-jom.html" class="slovnik__term-link">JOM</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- D -->
+    <section class="slovnik__section" id="letter-d" data-letter-section="d">
+      <h2 class="slovnik__letter-heading">Dd</h2>
+      <div class="slovnik__grid">
+
+        <article class="slovnik__term" id="term-distribucni-soustava" data-term="Distribuční soustava">
+          <h3 class="slovnik__term-name">Distribuční soustava</h3>
+          <p class="slovnik__term-def">Síť elektrického vedení, přes kterou proudí elektřina od výrobce ke spotřebiteli. Provozuje ji distributor, například ČEZ Distribuce nebo EG.D.</p>
+          <div class="slovnik__term-pages">
+            <a href="pruvodce-fve.html" class="slovnik__term-link">Fotovoltaika</a>
+            <a href="pruvodce-jom.html" class="slovnik__term-link">JOM</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- E -->
+    <section class="slovnik__section" id="letter-e" data-letter-section="e">
+      <h2 class="slovnik__letter-heading">Ee</h2>
+      <div class="slovnik__grid">
+
+        <article class="slovnik__term" id="term-ems" data-term="EMS">
+          <h3 class="slovnik__term-name">EMS</h3>
+          <p class="slovnik__term-def">Energy Management System — systém řízení energie v budově. Automaticky rozhoduje, kdy elektřinu spotřebovat, uložit do baterie nebo prodat do sítě.</p>
+          <div class="slovnik__term-pages">
+            <a href="pruvodce-fve.html" class="slovnik__term-link">Fotovoltaika</a>
+          </div>
+        </article>
+
+        <article class="slovnik__term" id="term-energeticke-spolecenstvi" data-term="Energetické společenství">
+          <h3 class="slovnik__term-name">Energetické společenství</h3>
+          <p class="slovnik__term-def">Forma sdílení elektřiny mezi více budovami nebo účastníky v rámci jedné distribuční oblasti. Na rozdíl od JOM může zahrnovat i nesousední odběrná místa.</p>
+          <div class="slovnik__term-pages">
+            <a href="pruvodce-jom.html" class="slovnik__term-link">JOM</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- F -->
+    <section class="slovnik__section" id="letter-f" data-letter-section="f">
+      <h2 class="slovnik__letter-heading">Ff</h2>
+      <div class="slovnik__grid">
+
+        <article class="slovnik__term" id="term-fve" data-term="FVE">
+          <h3 class="slovnik__term-name">FVE</h3>
+          <p class="slovnik__term-def">Fotovoltaická elektrárna — soustava solárních panelů přeměňující sluneční záření na elektřinu. Instaluje se na střechy nebo pozemky budov.</p>
+          <div class="slovnik__term-pages">
+            <a href="pruvodce-fve.html" class="slovnik__term-link">Fotovoltaika</a>
+            <a href="pruvodce-jom.html" class="slovnik__term-link">JOM</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- J -->
+    <section class="slovnik__section" id="letter-j" data-letter-section="j">
+      <h2 class="slovnik__letter-heading">Jj</h2>
+      <div class="slovnik__grid">
+
+        <article class="slovnik__term" id="term-jom" data-term="JOM">
+          <h3 class="slovnik__term-name">JOM</h3>
+          <p class="slovnik__term-def">Jednotné odběrné místo — právní a technické řešení umožňující bytovému domu vystupovat jako jeden celek vůči dodavateli elektřiny a sdílet vyrobenou energii napříč byty.</p>
+          <div class="slovnik__term-pages">
+            <a href="pruvodce-fve.html" class="slovnik__term-link">Fotovoltaika</a>
+            <a href="pruvodce-jom.html" class="slovnik__term-link">JOM</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- K -->
+    <section class="slovnik__section" id="letter-k" data-letter-section="k">
+      <h2 class="slovnik__letter-heading">Kk</h2>
+      <div class="slovnik__grid">
+
+        <article class="slovnik__term" id="term-komunitni-energetika" data-term="Komunitní energetika">
+          <h3 class="slovnik__term-name">Komunitní energetika</h3>
+          <p class="slovnik__term-def">Systém, ve kterém skupina spotřebitelů společně vyrábí, sdílí nebo spravuje energii. Zahrnuje energetická společenství, JOM i sdílení mezi sousedy.</p>
+          <div class="slovnik__term-pages">
+            <a href="pruvodce-fve.html" class="slovnik__term-link">Fotovoltaika</a>
+          </div>
+        </article>
+
+        <article class="slovnik__term" id="term-kwp" data-term="kWp">
+          <h3 class="slovnik__term-name">kWp</h3>
+          <p class="slovnik__term-def">Kilowatt-peak — jednotka výkonu fotovoltaické elektrárny za ideálních slunečních podmínek. Udává maximální instalovaný výkon panelů.</p>
+          <div class="slovnik__term-pages">
+            <a href="pruvodce-fve.html" class="slovnik__term-link">Fotovoltaika</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- L -->
+    <section class="slovnik__section" id="letter-l" data-letter-section="l">
+      <h2 class="slovnik__letter-heading">Ll</h2>
+      <div class="slovnik__grid">
+
+        <article class="slovnik__term" id="term-lex-oze-ii" data-term="LEX OZE II">
+          <h3 class="slovnik__term-name">LEX OZE II</h3>
+          <p class="slovnik__term-def">Novela energetického zákona účinná od roku 2024, která umožnila vznik JOM a zavedla pravidla pro sdílení elektřiny z obnovitelných zdrojů v bytových domech.</p>
+          <div class="slovnik__term-pages">
+            <a href="pruvodce-jom.html" class="slovnik__term-link">JOM</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- N -->
+    <section class="slovnik__section" id="letter-n" data-letter-section="n">
+      <h2 class="slovnik__letter-heading">Nn</h2>
+      <div class="slovnik__grid">
+
+        <article class="slovnik__term" id="term-nzu" data-term="NZÚ">
+          <h3 class="slovnik__term-name">NZÚ</h3>
+          <p class="slovnik__term-def">Nová zelená úsporám — dotační program Státního fondu životního prostředí ČR podporující energetické úspory a obnovitelné zdroje v budovách.</p>
+          <div class="slovnik__term-pages">
+            <a href="pruvodce-fve.html" class="slovnik__term-link">Fotovoltaika</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- P -->
+    <section class="slovnik__section" id="letter-p" data-letter-section="p">
+      <h2 class="slovnik__letter-heading">Pp</h2>
+      <div class="slovnik__grid">
+
+        <article class="slovnik__term" id="term-podruzna-meridla" data-term="Podružná měřidla">
+          <h3 class="slovnik__term-name">Podružná měřidla</h3>
+          <p class="slovnik__term-def">Elektroměry instalované v jednotlivých bytech nebo prostorách, které měří spotřebu elektřiny nezávisle na hlavním měřidle budovy.</p>
+          <div class="slovnik__term-pages">
+            <a href="pruvodce-jom.html" class="slovnik__term-link">JOM</a>
+          </div>
+        </article>
+
+        <article class="slovnik__term" id="term-ppds" data-term="PPDS">
+          <h3 class="slovnik__term-name">PPDS</h3>
+          <p class="slovnik__term-def">Pravidla provozování distribučních soustav — technická a administrativní pravidla stanovující podmínky připojení k distribuční síti a výroby elektřiny.</p>
+          <div class="slovnik__term-pages">
+            <a href="pruvodce-fve.html" class="slovnik__term-link">Fotovoltaika</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- R -->
+    <section class="slovnik__section" id="letter-r" data-letter-section="r">
+      <h2 class="slovnik__letter-heading">Rr</h2>
+      <div class="slovnik__grid">
+
+        <article class="slovnik__term" id="term-rozuctovani-energie" data-term="Rozúčtování energie">
+          <h3 class="slovnik__term-name">Rozúčtování energie</h3>
+          <p class="slovnik__term-def">Proces rozdělení nákladů na elektřinu mezi jednotlivé byty v rámci JOM, typicky podle naměřené spotřeby nebo smluvených podílů.</p>
+          <div class="slovnik__term-pages">
+            <a href="pruvodce-jom.html" class="slovnik__term-link">JOM</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- S -->
+    <section class="slovnik__section" id="letter-s" data-letter-section="s">
+      <h2 class="slovnik__letter-heading">Ss</h2>
+      <div class="slovnik__grid">
+
+        <article class="slovnik__term" id="term-sdileni-elektriny" data-term="Sdílení elektřiny">
+          <h3 class="slovnik__term-name">Sdílení elektřiny</h3>
+          <p class="slovnik__term-def">Mechanismus umožňující přerozdělení vyrobené elektřiny z FVE mezi více odběrných míst v rámci jedné budovy nebo energetického společenství.</p>
+          <div class="slovnik__term-pages">
+            <a href="pruvodce-jom.html" class="slovnik__term-link">JOM</a>
+          </div>
+        </article>
+
+        <article class="slovnik__term" id="term-som" data-term="SOM">
+          <h3 class="slovnik__term-name">SOM</h3>
+          <p class="slovnik__term-def">Společné odběrné místo — alternativa k JOM s odlišnými technickými a právními podmínkami. Umožňuje sdílení energie ve specifických konfiguracích bytových domů.</p>
+          <div class="slovnik__term-pages">
+            <a href="pruvodce-jom.html" class="slovnik__term-link">JOM</a>
+          </div>
+        </article>
+
+        <article class="slovnik__term" id="term-stridac" data-term="Střídač">
+          <h3 class="slovnik__term-name">Střídač</h3>
+          <p class="slovnik__term-def">Elektronické zařízení převádějící stejnosměrný proud z fotovoltaických panelů na střídavý proud použitelný v domácnosti nebo prodatelný do sítě.</p>
+          <div class="slovnik__term-pages">
+            <a href="pruvodce-fve.html" class="slovnik__term-link">Fotovoltaika</a>
+          </div>
+        </article>
+
+        <article class="slovnik__term" id="term-svj" data-term="SVJ">
+          <h3 class="slovnik__term-name">SVJ</h3>
+          <p class="slovnik__term-def">Společenství vlastníků jednotek — právnická osoba zastupující vlastníky bytů v bytovém domě. Rozhoduje o společných záležitostech domu, včetně investic do energetiky.</p>
+          <div class="slovnik__term-pages">
+            <a href="pruvodce-fve.html" class="slovnik__term-link">Fotovoltaika</a>
+            <a href="pruvodce-jom.html" class="slovnik__term-link">JOM</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- V -->
+    <section class="slovnik__section" id="letter-v" data-letter-section="v">
+      <h2 class="slovnik__letter-heading">Vv</h2>
+      <div class="slovnik__grid">
+
+        <article class="slovnik__term" id="term-vlastni-spotreba" data-term="Vlastní spotřeba">
+          <h3 class="slovnik__term-name">Vlastní spotřeba</h3>
+          <p class="slovnik__term-def">Podíl vyrobené elektřiny z FVE spotřebovaný přímo v budově bez průchodu distribuční sítí. Čím vyšší vlastní spotřeba, tím vyšší úspory.</p>
+          <div class="slovnik__term-pages">
+            <a href="pruvodce-fve.html" class="slovnik__term-link">Fotovoltaika</a>
+            <a href="pruvodce-jom.html" class="slovnik__term-link">JOM</a>
+          </div>
+        </article>
+
+        <article class="slovnik__term" id="term-vykupni-cena" data-term="Výkupní cena">
+          <h3 class="slovnik__term-name">Výkupní cena</h3>
+          <p class="slovnik__term-def">Cena, za kterou distributor nebo obchodník odkupuje přebytky elektřiny vyrobené z obnovitelných zdrojů a dodané do sítě.</p>
+          <div class="slovnik__term-pages">
+            <a href="pruvodce-fve.html" class="slovnik__term-link">Fotovoltaika</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-glow"></div>
+
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">
+          <img src="assets/images/Logo.svg" alt="Energohub">
+        </a>
+        <p class="footer-tagline">Nezávislý průvodce úsporami energie pro SVJ a bytová družstva.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Mapa stránek</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#pruvodce">Průvodci opatření</a></li>
+          <li><a href="pruvodce-jom.html">Jednotné odběrné místo</a></li>
+          <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
+          <li><a href="slovnik.html">Slovník pojmů</a></li>
+          <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+          <li><a href="index.html#o-nas">O nás</a></li>
+          <li><a href="kontakty.html">Kontakty</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Informace</h4>
+        <ul class="footer-links">
+          <li><a href="#">Podmínky použití</a></li>
+          <li><a href="#">Ochrana osobních údajů</a></li>
+          <li><a href="#">Reklamační řád</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-join">
+        <h4 class="footer-col-title">Sledujte nás</h4>
+
+        <div class="footer-social">
+          <a href="#" class="footer-social-icon" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.4h2.48l.37-2.88h-2.85V8.94c0-.83.23-1.4 1.42-1.4h1.52V4.98c-.26-.04-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.88h2.47V21h2.93z"></path></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="3.7"></circle><circle cx="17.1" cy="6.9" r="0.9" fill="currentColor" stroke="none"></circle></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H4.1V20h2.84V8.5zM5.5 4c-.97 0-1.7.73-1.7 1.65 0 .9.71 1.65 1.67 1.65h.02c.99 0 1.7-.74 1.7-1.65C7.19 4.73 6.48 4 5.5 4zM20 13.4c0-3-1.6-4.4-3.74-4.4-1.72 0-2.49 0.95-2.92 1.62V8.5h-2.84c.04.8 0 11.5 0 11.5h2.84v-6.42c0-.34.02-.69.13-.93.28-.69.91-1.41 1.98-1.41 1.4 0 1.96 1.06 1.96 2.62V20H20v-6.6z"></path></svg>
+          </a>
+        </div>
+
+        <form class="footer-newsletter" id="footerNewsletter">
+          <input type="email" name="email" placeholder="Zadejte e-mail" aria-label="E-mailová adresa" required>
+          <button type="submit" aria-label="Odebírat novinky">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6"></path>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Energohub.info. Všechna práva vyhrazena.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/footer.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/slovnik.js"></script>
+</body>
+</html>

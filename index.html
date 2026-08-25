@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Energohub.info — Srozumitelně k úsporám ve vašem domě</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="navbar-container">
+    <nav class="navbar">
+      <a href="index.html" class="navbar-logo">
+        <img src="assets/images/Logo.svg" alt="Energohub">
+      </a>
+
+      <ul class="navbar-links">
+        <li class="nav-dropdown">
+          <a href="index.html#pruvodce" class="nav-dropdown__trigger">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></a>
+          <ul class="nav-dropdown__menu">
+            <div class="nav-dropdown__menu-inner">
+              <li><a href="pruvodce-jom.html">Jednotné odběrné místo (JOM)</a></li>
+              <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
+              <li class="nav-dropdown__item--soon"><span>Teplo a TUV</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Okna a dveře</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Zateplení</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Doporučené pořadí realizace</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+            </div>
+          </ul>
+        </li>
+        <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+        <li><a href="slovnik.html">Slovník pojmů</a></li>
+        <li><a href="index.html#o-nas">O nás</a></li>
+        <li><a href="kontakty.html">Kontakty</a></li>
+      </ul>
+
+      <a href="kontakty.html" class="navbar-cta">Chci vědět více</a>
+
+      <button class="navbar-burger" id="navBurger" aria-label="Otevřít menu" aria-expanded="false">
+        <span class="navbar-burger__bar"></span>
+        <span class="navbar-burger__bar"></span>
+        <span class="navbar-burger__bar"></span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Mobilní menu -->
+  <div class="navbar-mobile" id="navMobile" aria-hidden="true">
+    <nav class="navbar-mobile__nav">
+      <ul class="navbar-mobile__links">
+        <li><a href="index.html#pruvodce">Průvodci opatření</a></li>
+        <li><a href="pruvodce-jom.html">— Jednotné odběrné místo</a></li>
+        <li><a href="pruvodce-fve.html">— Fotovoltaika</a></li>
+        <li class="navbar-mobile__divider"></li>
+        <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+        <li><a href="slovnik.html">Slovník pojmů</a></li>
+        <li><a href="index.html#o-nas">O nás</a></li>
+        <li><a href="kontakty.html">Kontakty</a></li>
+      </ul>
+      <a href="kontakty.html" class="navbar-mobile__cta">Chci vědět více</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="hero">
+  <iframe
+    class="hero-3d-frame"
+    id="hero3dFrame"
+    src="3d_main/index.html"
+    title="3D vizualizace bytového domu s energetickými úsporami"
+    frameborder="0"
+    scrolling="no"
+    allowtransparency="true"
+  ></iframe>
+
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title">Jak snížit náklady na energie v bytovém domě</h1>
+      <p class="hero-text">
+        Edukační portál pro výbory SVJ a správce bytových domů. Průvodci energetickými opatřeními, kalkulačky úspor a propojení s ověřenými dodavateli.
+      </p>
+
+      <div class="hero-nav">
+        <a class="hero-nav__item" href="pruvodce-jom.html">
+          <span class="hero-nav__item-text">
+            <span class="hero-nav__item-title">Jednotné odběrné místo</span>
+            <span class="hero-nav__item-desc">Průvodce sloučením odběrných míst.</span>
+          </span>
+          <span class="hero-nav__item-arrow" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+
+        <a class="hero-nav__item" href="pruvodce-fve.html">
+          <span class="hero-nav__item-text">
+            <span class="hero-nav__item-title">Fotovoltaika</span>
+            <span class="hero-nav__item-desc">Průvodce instalací solární elektrárny a bateriového úložiště.</span>
+          </span>
+          <span class="hero-nav__item-arrow" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+
+        <a class="hero-nav__item">
+          <span class="hero-nav__item-text">
+            <span class="hero-nav__item-title">Teplo a TUV</span>
+            <span class="hero-nav__item-desc">Průvodce vytápěním a přípravou teplé vody.</span>
+          </span>
+          <span class="hero-nav__item-arrow" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+
+        <a class="hero-nav__item">
+          <span class="hero-nav__item-text">
+            <span class="hero-nav__item-title">Okna a dveře</span>
+            <span class="hero-nav__item-desc">Průvodce výměnou oken a vstupních dveří.</span>
+          </span>
+          <span class="hero-nav__item-arrow" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+
+        <a class="hero-nav__item">
+          <span class="hero-nav__item-text">
+            <span class="hero-nav__item-title">Zateplení</span>
+            <span class="hero-nav__item-desc">Průvodce zateplením fasády, střechy a podlahy.</span>
+          </span>
+          <span class="hero-nav__item-arrow" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="guides" id="pruvodce">
+  <div class="guides-container">
+    <div class="guides-heading">
+      <h2 class="guides-title">Průvodci energetickými opatřeními</h2>
+      <p class="guides-text">Každý průvodce obsahuje přehled technických a právních podmínek, typické náklady a jejich návratnost pro daný typ opatření v bytovém domě.</p>
+    </div>
+
+    <div class="guides-grid">
+      <article class="guide-card guide-card--wide">
+        <a href="pruvodce-jom.html" class="guide-card__stretch" aria-hidden="true" tabindex="-1"></a>
+        <div class="guide-card-body">
+          <h3 class="guide-card-title">Jednotné odběrné místo (JOM)</h3>
+          <p class="guide-card-text">Průvodce sloučením odběrných míst — legislativa, technické podmínky, postup hlasování v SVJ a orientační ekonomika přechodu.</p>
+          <a href="pruvodce-jom.html" class="guide-link">Přejít na průvodce <span class="guide-link-arrow">→</span></a>
+        </div>
+        <div class="guide-card-illustration-wrap">
+          <img class="guide-card-illustration" src="assets/images/cards/card_1.png?v=2" alt="Jednotné odběrné místo">
+        </div>
+      </article>
+
+      <article class="guide-card guide-card--fve">
+        <a href="pruvodce-fve.html" class="guide-card__stretch" aria-hidden="true" tabindex="-1"></a>
+        <div class="guide-card-body">
+          <h3 class="guide-card-title">Fotovoltaika</h3>
+          <p class="guide-card-text">Průvodce instalací solární elektrárny a bateriového úložiště — technické podmínky, legislativa, rozúčtování elektřiny mezi byty a orientační ekonomika.</p>
+          <a href="pruvodce-fve.html" class="guide-link">Přejít na průvodce <span class="guide-link-arrow">→</span></a>
+        </div>
+        <div class="guide-card-illustration-wrap">
+          <img class="guide-card-illustration" src="assets/images/cards/card_2.png?v=3" alt="Fotovoltaika">
+        </div>
+      </article>
+
+      <article class="guide-card guide-card--soon">
+        <div class="guide-card-body">
+          <h3 class="guide-card-title">Teplo a TUV</h3>
+          <p class="guide-card-text">Průvodce vytápěním a přípravou teplé vody — tepelná čerpadla, kondenzační kotle, solární kolektory a podmínky jejich instalace v bytovém domě.</p>
+          <a href="#" class="guide-link" tabindex="-1">Přejít na průvodce <span class="guide-link-arrow">→</span></a>
+        </div>
+        <div class="guide-card-illustration-wrap">
+          <img class="guide-card-illustration" src="assets/images/cards/card_3.png?v=3" alt="Teplo a TUV">
+        </div>
+        <div class="guide-card-soon">
+          <span class="guide-card-soon-title">Teplo a TUV</span>
+          <span class="guide-card-soon-badge">Připravujeme</span>
+        </div>
+      </article>
+
+      <article class="guide-card guide-card--soon">
+        <div class="guide-card-body">
+          <h3 class="guide-card-title">Okna a dveře</h3>
+          <p class="guide-card-text">Průvodce výměnou oken a vstupních dveří — technické parametry, dotační možnosti, návaznost na zateplení fasády a postup v SVJ.</p>
+          <a href="#" class="guide-link" tabindex="-1">Přejít na průvodce <span class="guide-link-arrow">→</span></a>
+        </div>
+        <div class="guide-card-illustration-wrap">
+          <img class="guide-card-illustration" src="assets/images/cards/card_4.png?v=3" alt="Okna a dveře">
+        </div>
+        <div class="guide-card-soon">
+          <span class="guide-card-soon-title">Okna a dveře</span>
+          <span class="guide-card-soon-badge">Připravujeme</span>
+        </div>
+      </article>
+
+      <article class="guide-card guide-card--soon">
+        <div class="guide-card-body">
+          <h3 class="guide-card-title">Zateplení</h3>
+          <p class="guide-card-text">Průvodce zateplením fasády, střechy a podlahy — technické požadavky, dotační programy, stavební povolení a návaznost na ostatní opatření.</p>
+          <a href="#" class="guide-link" tabindex="-1">Přejít na průvodce <span class="guide-link-arrow">→</span></a>
+        </div>
+        <div class="guide-card-illustration-wrap">
+          <img class="guide-card-illustration" src="assets/images/cards/card_5.png" alt="Zateplení">
+        </div>
+        <div class="guide-card-soon">
+          <span class="guide-card-soon-title">Zateplení</span>
+          <span class="guide-card-soon-badge">Připravujeme</span>
+        </div>
+      </article>
+
+      <article class="guide-card guide-card--wide guide-card--soon">
+        <div class="guide-card-body">
+          <h3 class="guide-card-title">Doporučené pořadí realizace</h3>
+          <p class="guide-card-text">Přehled doporučeného pořadí opatření — proč záleží na návaznosti kroků a jak jednotlivá opatření ovlivňují ekonomiku těch následujících.</p>
+          <a href="#" class="guide-link" tabindex="-1">Přejít na průvodce <span class="guide-link-arrow">→</span></a>
+        </div>
+        <div class="guide-card-illustration-wrap">
+          <img class="guide-card-illustration" src="assets/images/cards/card_6.png" alt="Doporučené pořadí realizace">
+        </div>
+        <div class="guide-card-soon">
+          <span class="guide-card-soon-title">Doporučené pořadí realizace</span>
+          <span class="guide-card-soon-badge">Připravujeme</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="calc-section" id="kalkulacka-nahled">
+  <div class="calc-section__img-left">
+    <img src="assets/images/all_left.png?v=2" alt="">
+  </div>
+
+  <div class="calc-section__center">
+    <p class="fve-eyebrow">Kalkulačka úspor</p>
+    <h2 class="calc-section__title">Kolik ušetří bytový dům na energiích?</h2>
+    <p class="calc-section__text">Orientační výpočet na základě počtu bytů a roční spotřeby. Pro podrobné porovnání všech opatření je k dispozici plná kalkulačka.</p>
+    <a href="kalkulacka.html" class="calc-section__btn">Otevřít plnou kalkulačku</a>
+  </div>
+
+  <div class="calc-section__img-right">
+    <img src="assets/images/all_right.png?v=2" alt="">
+  </div>
+</section>
+
+<section class="process" id="jak-fungujeme">
+ <div class="process-pin">
+  <div class="process-container">
+    <div class="process-heading">
+      <h2 class="process-title">Jak EnergoHub funguje</h2>
+      <p class="process-text">Portál pokrývá všechny fáze rozhodování — od prvního přehledu podmínek až po výběr dodavatele a nastavení rozúčtování.</p>
+    </div>
+
+    <div class="process-steps" id="processSteps">
+
+      <!-- 01: číslo vlevo, text vpravo -->
+      <div class="process-step" data-step="0">
+        <div class="process-step__num-cell">
+          <span class="process-step__num">01</span>
+        </div>
+        <div class="process-step__dot" aria-hidden="true"></div>
+        <div class="process-step__content">
+          <h3 class="process-step__title">Posouzení potenciálu</h3>
+          <p class="process-step__desc">Přehled podmínek, ve kterých se dům nachází, a identifikace opatření s největším potenciálem úspor.</p>
+        </div>
+      </div>
+
+      <!-- 02: text vlevo, číslo vpravo -->
+      <div class="process-step" data-step="1">
+        <div class="process-step__content">
+          <h3 class="process-step__title">Výběr opatření</h3>
+          <p class="process-step__desc">Porovnání technických a ekonomických parametrů dostupných řešení pro daný typ a stav domu.</p>
+        </div>
+        <div class="process-step__dot" aria-hidden="true"></div>
+        <div class="process-step__num-cell">
+          <span class="process-step__num">02</span>
+        </div>
+      </div>
+
+      <!-- 03: číslo vlevo, text vpravo -->
+      <div class="process-step" data-step="2">
+        <div class="process-step__num-cell">
+          <span class="process-step__num">03</span>
+        </div>
+        <div class="process-step__dot" aria-hidden="true"></div>
+        <div class="process-step__content">
+          <h3 class="process-step__title">Výběr dodavatele</h3>
+          <p class="process-step__desc">SVJ obdrží nabídky od dodavatelů dle zadaných parametrů a vybírá na základě vlastního posouzení.</p>
+        </div>
+      </div>
+
+      <!-- 04: text vlevo, číslo vpravo -->
+      <div class="process-step" data-step="3">
+        <div class="process-step__content">
+          <h3 class="process-step__title">Provoz a rozúčtování</h3>
+          <p class="process-step__desc">Nastavení měření, rozúčtování úspor mezi byty a sledování skutečné výkonnosti systému po realizaci.</p>
+        </div>
+        <div class="process-step__dot" aria-hidden="true"></div>
+        <div class="process-step__num-cell">
+          <span class="process-step__num">04</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+ </div>
+</section>
+
+<section class="showcase" id="showcase">
+  <div class="showcase-frame">
+    <img class="showcase-image is-active" src="assets/images/case1.png" alt="Bytový dům se solární elektrárnou na střeše" data-index="0">
+    <img class="showcase-image" src="assets/images/case2.png" alt="Fotovoltaická elektrárna na ploché střeše bytového domu" data-index="1">
+    <img class="showcase-image" src="assets/images/case3.png" alt="Detail zateplení fasády bytového domu" data-index="2">
+
+    <div class="showcase-controls">
+      <button type="button" class="showcase-arrow" id="showcasePrev" aria-label="Předchozí fotografie">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 5l-7 7 7 7"></path>
+        </svg>
+      </button>
+      <button type="button" class="showcase-arrow" id="showcaseNext" aria-label="Další fotografie">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="home-faq" id="faq">
+  <div class="home-faq__container">
+
+    <div class="home-faq__header">
+      <p class="fve-eyebrow">FAQ</p>
+      <h2 class="home-faq__title">Nejčastější otázky</h2>
+    </div>
+
+    <div class="home-faq__list">
+
+      <details class="home-faq__item">
+        <summary class="home-faq__q">Co je EnergoHub a jak portál funguje?</summary>
+        <div class="home-faq__a">
+          <p>EnergoHub je edukační portál pro předsedy a členy výborů SVJ a bytových družstev. Obsahuje průvodce energetickými úpravami bytových domů — od jednotného odběrného místa přes fotovoltaiku až po tepelná čerpadla a zateplení — a orientační kalkulačku úspor. Portál technologie nedodává ani nerealizuje; přes formulář lze zadat poptávku a obdržet podklady od dodavatelů zaregistrovaných na platformě.</p>
+        </div>
+      </details>
+
+      <details class="home-faq__item">
+        <summary class="home-faq__q">Pro koho jsou průvodci určeni?</summary>
+        <div class="home-faq__a">
+          <p>Průvodci jsou stavěni pro předsedy výborů SVJ a bytových družstev, kteří energetické úpravy domu připravují nebo je budou obhajovat na shromáždění. Každý průvodce obsahuje podmínky, za kterých se opatření vyplatí, i situace, kdy se nedoporučuje — včetně čísel s uvedenými předpoklady a přehledu právního rámce.</p>
+        </div>
+      </details>
+
+      <details class="home-faq__item">
+        <summary class="home-faq__q">Jak je portál financován a jak to ovlivňuje obsah?</summary>
+        <div class="home-faq__a">
+          <p>Portál je financován dodavateli, kteří platí za přístup k poptávkám zaslaným přes platformu. Průvodci a kalkulačka jsou psány jako edukační materiál nezávisle na tom, zda poptávka bude odeslána. Výběr konkrétního dodavatele zůstává zcela na SVJ; portál žádnou firmu nepreferuje ani nepředřazuje.</p>
+        </div>
+      </details>
+
+      <details class="home-faq__item">
+        <summary class="home-faq__q">Co kalkulačka počítá a jak přesné jsou výsledky?</summary>
+        <div class="home-faq__a">
+          <p>Kalkulačka odhaduje orientační roční úspory a dobu návratnosti na základě počtu bytů, odhadované spotřeby a zvoleného typu opatření. Výsledky jsou hrubé odhady — nezohledňují konkrétní tarif, stav střechy, technický stav rozvodů ani podmínky případné dotace. Slouží k prvnímu srovnání opatření, ne jako podklad pro investiční rozhodnutí.</p>
+        </div>
+      </details>
+
+      <details class="home-faq__item">
+        <summary class="home-faq__q">Co se stane po odeslání poptávky?</summary>
+        <div class="home-faq__a">
+          <p>Vyplněné kontaktní údaje a výsledky kalkulačky jsou odeslány dodavatelům zaregistrovaným na platformě, jejichž parametry odpovídají zadanému projektu. Odpověď zpravidla přichází do 2–5 pracovních dnů. Poptávka je nezávazná; SVJ není povinno žádný ze zaslaných podkladů přijmout. Kontaktní údaje jsou zpracovávány výhradně pro účely doručení odpovědí.</p>
+        </div>
+      </details>
+
+      <details class="home-faq__item">
+        <summary class="home-faq__q">Je nutné zadat poptávku, aby bylo možné průvodce využívat?</summary>
+        <div class="home-faq__a">
+          <p>Ne. Průvodci, kalkulačka a slovník jsou k dispozici bez odeslání poptávky. Poptávkový formulář je volitelný krok pro SVJ, která hledají konkrétní podklady od dodavatelů.</p>
+        </div>
+      </details>
+
+      <details class="home-faq__item">
+        <summary class="home-faq__q">Která energetická opatření portál pokrývá?</summary>
+        <div class="home-faq__a">
+          <p>Průvodci jsou v současné době dostupné pro jednotné odběrné místo (JOM) a fotovoltaiku (FVE). Průvodci pro teplo a TUV, výměnu oken a dveří a zateplení jsou v přípravě. Kalkulačka orientačně odhaduje úspory pro všechna čtyři opatření i bez průvodce.</p>
+        </div>
+      </details>
+
+      <details class="home-faq__item">
+        <summary class="home-faq__q">Kde najdu vysvětlení odborných pojmů?</summary>
+        <div class="home-faq__a">
+          <p>Slovník pojmů vysvětluje základní termíny z oblasti energetiky a práva, které se v průvodcích používají — od JOM a FVE přes distribuční soustavu až po rozúčtování energie. Odkaz na slovník je v hlavní navigaci.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-glow"></div>
+
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="footer-logo">
+          <img src="assets/images/Logo.svg" alt="Energohub">
+        </a>
+        <p class="footer-tagline">Nezávislý průvodce úsporami energie pro SVJ a bytová družstva.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Mapa stránek</h4>
+        <ul class="footer-links">
+          <li><a href="#pruvodce">Průvodci opatření</a></li>
+          <li><a href="pruvodce-jom.html">Jednotné odběrné místo</a></li>
+          <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
+          <li><a href="slovnik.html">Slovník pojmů</a></li>
+          <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+          <li><a href="#o-nas">O nás</a></li>
+          <li><a href="kontakty.html">Kontakty</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Informace</h4>
+        <ul class="footer-links">
+          <li><a href="#">Podmínky použití</a></li>
+          <li><a href="#">Ochrana osobních údajů</a></li>
+          <li><a href="#">Reklamační řád</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-join">
+        <h4 class="footer-col-title">Sledujte nás</h4>
+
+        <div class="footer-social">
+          <a href="#" class="footer-social-icon" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.4h2.48l.37-2.88h-2.85V8.94c0-.83.23-1.4 1.42-1.4h1.52V4.98c-.26-.04-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.88h2.47V21h2.93z"></path></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="3.7"></circle><circle cx="17.1" cy="6.9" r="0.9" fill="currentColor" stroke="none"></circle></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H4.1V20h2.84V8.5zM5.5 4c-.97 0-1.7.73-1.7 1.65 0 .9.71 1.65 1.67 1.65h.02c.99 0 1.7-.74 1.7-1.65C7.19 4.73 6.48 4 5.5 4zM20 13.4c0-3-1.6-4.4-3.74-4.4-1.72 0-2.49 0.95-2.92 1.62V8.5h-2.84c.04.8 0 11.5 0 11.5h2.84v-6.42c0-.34.02-.69.13-.93.28-.69.91-1.41 1.98-1.41 1.4 0 1.96 1.06 1.96 2.62V20H20v-6.6z"></path></svg>
+          </a>
+        </div>
+
+        <form class="footer-newsletter" id="footerNewsletter">
+          <input type="email" name="email" placeholder="E-mailová adresa" aria-label="E-mailová adresa" required>
+          <button type="submit" aria-label="Odebírat novinky">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6"></path>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Energohub.info. Všechna práva vyhrazena.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/showcase.js"></script>
+<script src="js/process.js?v=2"></script>
+<script>
+  (function () {
+    var frame = document.getElementById('hero3dFrame');
+    frame.addEventListener('load', function () {
+      try {
+        var doc = frame.contentDocument || frame.contentWindow.document;
+        var s = doc.createElement('style');
+        // Skryjeme vlastní text/CTA hero3d, ale zachováme controls (přepínač) a canvas
+        s.textContent = [
+          '.hero-left, .stats { display: none !important; }',
+          '.hero-canvas { transform: translateX(20%) !important; }',
+          '.controls { left: 70% !important; transform: translateX(-50%) !important; bottom: 28px !important; right: auto !important; }'
+        ].join(' ');
+        doc.head.appendChild(s);
+      } catch (e) {}
+    });
+  })();
+</script>
+<script src="js/footer.js"></script>
+<script src="js/navbar.js"></script>
+</body>
+</html>

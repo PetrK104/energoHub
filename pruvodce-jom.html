@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jednotné odběrné místo — Energohub.info</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/fve.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="navbar-container">
+    <nav class="navbar">
+      <a href="index.html" class="navbar-logo">
+        <img src="assets/images/Logo.svg" alt="Energohub">
+      </a>
+
+      <ul class="navbar-links">
+        <li class="nav-dropdown">
+          <a href="index.html#pruvodce" class="nav-dropdown__trigger">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></a>
+          <ul class="nav-dropdown__menu">
+            <div class="nav-dropdown__menu-inner">
+              <li><a href="pruvodce-jom.html">Jednotné odběrné místo (JOM)</a></li>
+              <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
+              <li class="nav-dropdown__item--soon"><span>Teplo a TUV</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Okna a dveře</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Zateplení</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Doporučené pořadí realizace</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+            </div>
+          </ul>
+        </li>
+        <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+        <li><a href="slovnik.html">Slovník pojmů</a></li>
+        <li><a href="index.html#o-nas">O nás</a></li>
+        <li><a href="kontakty.html">Kontakty</a></li>
+      </ul>
+
+      <a href="kontakty.html" class="navbar-cta">Chci vědět více</a>
+
+      <button class="navbar-burger" id="navBurger" aria-label="Otevřít menu" aria-expanded="false">
+        <span class="navbar-burger__bar"></span>
+        <span class="navbar-burger__bar"></span>
+        <span class="navbar-burger__bar"></span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Mobilní menu -->
+  <div class="navbar-mobile" id="navMobile" aria-hidden="true">
+    <nav class="navbar-mobile__nav">
+      <ul class="navbar-mobile__links">
+        <li><a href="index.html#pruvodce">Průvodci opatření</a></li>
+        <li><a href="pruvodce-jom.html">— Jednotné odběrné místo</a></li>
+        <li><a href="pruvodce-fve.html">— Fotovoltaika</a></li>
+        <li class="navbar-mobile__divider"></li>
+        <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+        <li><a href="slovnik.html">Slovník pojmů</a></li>
+        <li><a href="index.html#o-nas">O nás</a></li>
+        <li><a href="kontakty.html">Kontakty</a></li>
+      </ul>
+      <a href="kontakty.html" class="navbar-mobile__cta">Chci vědět více</a>
+    </nav>
+  </div>
+</header>
+
+<section class="fve-hero fve-hero--jom">
+  <iframe
+    class="fve-hero__3d-frame"
+    src="embed/index.html"
+    title="3D vizualizace jednotného odběrného místa"
+    frameborder="0"
+    scrolling="no"
+    allowtransparency="true"
+  ></iframe>
+  <div class="fve-hero__scrim"></div>
+
+  <div class="fve-hero__topbar">
+    <a class="fve-breadcrumb" href="index.html#pruvodce">← Zpět na přehled průvodců</a>
+    <nav class="guide-steps" aria-label="Postup úspor">
+      <span class="guide-steps__item guide-steps__item--active" aria-current="page">JOM</span>
+      <a href="pruvodce-fve.html" class="guide-steps__item">FVE</a>
+      <span class="guide-steps__item">TČ</span>
+      <span class="guide-steps__item">ZAT</span>
+    </nav>
+  </div>
+
+  <div class="fve-hero__container">
+    <p class="fve-eyebrow">Průvodce — Jednotné odběrné místo</p>
+    <h1 class="fve-hero__title">Jednotné odběrné místo pro bytový dům</h1>
+    <p class="fve-hero__text">
+      Průvodce vysvětluje, jak sdílení elektřiny napříč byty funguje v praxi — co JOM mění na odběrném místě domu a jak se promítá do záloh na energie.
+    </p>
+    <div class="fve-hero__actions">
+      <a href="#co-je-jom" class="btn btn-primary">Jak JOM funguje</a>
+      <a href="#co-je-jom" class="btn btn-secondary">Procházet průvodce</a>
+    </div>
+  </div>
+
+</section>
+
+<nav class="fve-subnav" aria-label="Obsah stránky">
+  <div class="fve-subnav__inner">
+  <div class="fve-subnav__list">
+    <a href="#co-je-jom"      class="fve-subnav__link"><span class="fve-subnav__num">01</span>Co je JOM</a>
+    <a href="#jaky-model"     class="fve-subnav__link"><span class="fve-subnav__num">02</span>Jaký model zvolit</a>
+    <a href="#komu-sedi"      class="fve-subnav__link"><span class="fve-subnav__num">03</span>Komu JOM sedí</a>
+    <a href="#kdy-smysl"      class="fve-subnav__link"><span class="fve-subnav__num">04</span>Kdy to dává smysl</a>
+    <a href="#porovnani"      class="fve-subnav__link"><span class="fve-subnav__num">05</span>Porovnání variant</a>
+    <a href="#jak-funguje"    class="fve-subnav__link"><span class="fve-subnav__num">06</span>Jak to funguje</a>
+    <a href="#faze-realizace" class="fve-subnav__link"><span class="fve-subnav__num">07</span>Fáze realizace</a>
+    <a href="#dopad"          class="fve-subnav__link"><span class="fve-subnav__num">08</span>Dopad na náklady</a>
+    <a href="#dotaznik"       class="fve-subnav__link"><span class="fve-subnav__num">09</span>Kalkulačka</a>
+    <a href="#faq"            class="fve-subnav__link"><span class="fve-subnav__num">10</span>FAQ</a>
+  </div>
+  </div>
+</nav>
+
+<section class="fve-explain" id="co-je-jom">
+  <div class="fve-explain__container">
+
+    <div class="fve-explain__header">
+      <p class="fve-eyebrow">Co je JOM</p>
+      <h2 class="fve-explain__title">Celý dům jako jeden odběratel</h2>
+      <p class="fve-explain__lead">
+        Ve standardním modelu má každý byt samostatný elektroměr a vlastní smlouvu s dodavatelem. Elektřina vyrobená fotovoltaikou na střeše tak fakticky nemůže volně putovat do jednotlivých bytů — každý přechod přes hranici odběrného místa naráží na síťové poplatky a regulatorní překážky.<br><br>
+        JOM (Jednotné odběrné místo) tento model mění. Na základě novely energetického zákona Lex OZE II, účinné od roku 2024, může celý bytový dům vystupovat vůči distributorovi jako jediný odběratel — s jedním hlavním elektroměrem a jednou smlouvou s dodavatelem. Elektřina z FVE panelů proudí přes střídač do vnitřní sítě domu, kde se rozděluje mezi společné prostory a byty podle nastaveného systému řízení energie. Do distribuční sítě odchází pouze to, co dům skutečně nevyužije. Výsledkem je podstatně vyšší míra vlastní spotřeby (podílu vyrobené elektřiny, který dům spotřebuje sám a neodešle do sítě), nižší zálohy na energie a transparentní rozúčtování mezi bytovými jednotkami.
+      </p>
+    </div>
+
+    <div class="fve-explain__photo">
+      <img src="assets/images/jom_1.png" alt="Schéma fungování jednotného odběrného místa" loading="lazy">
+    </div>
+
+  </div>
+</section>
+
+<section class="jom-compare" id="jaky-model">
+  <div class="jom-compare__container">
+
+    <div class="jom-compare__header">
+      <p class="fve-eyebrow">Jaký model zvolit</p>
+      <h2 class="jom-compare__title">JOM nebo komunitní energetika?</h2>
+      <p class="jom-compare__lead">
+        Zákon LEX OZE II z roku 2024 otevřel dvě legální cesty ke sdílení elektřiny z fotovoltaiky. Která varianta je vhodná, závisí hlavně na počtu budov a způsobu správy.
+      </p>
+    </div>
+
+    <div class="jom-compare__grid">
+
+      <div class="jom-compare__card jom-compare__card--active">
+        <div class="jom-compare__card-header">
+          <h3 class="jom-compare__card-title">Jednotné odběrné místo (JOM)</h3>
+          <p class="jom-compare__card-sub">Jeden dům, jeden elektroměr</p>
+        </div>
+        <ul class="jom-compare__list jom-compare__list--active">
+          <li><svg class="jom-compare__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Jedno sloučené odběrné místo pro celý dům</li>
+          <li><svg class="jom-compare__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Jedna smlouva s dodavatelem pro všechny byty</li>
+          <li><svg class="jom-compare__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Elektřina se sdílí uvnitř domu bez přechodu přes distribuční síť</li>
+          <li><svg class="jom-compare__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Nevyžaduje registraci u Elektroenergetického datového centra (EDC) ani zakládání spolku</li>
+          <li><svg class="jom-compare__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Vhodné pro SVJ a bytové domy s jednou budovou</li>
+          <li><svg class="jom-compare__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Vyšší vlastní spotřeba vyrobené elektřiny zkracuje dobu návratnosti investice</li>
+        </ul>
+      </div>
+
+      <div class="jom-compare__card">
+        <div class="jom-compare__card-header">
+          <h3 class="jom-compare__card-title">Energetické společenství</h3>
+          <p class="jom-compare__card-sub">Více budov, více odběratelů</p>
+        </div>
+        <ul class="jom-compare__list">
+          <li><svg class="jom-compare__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Více samostatných odběrných míst v různých budovách</li>
+          <li><svg class="jom-compare__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Každý účastník může mít vlastního dodavatele elektřiny</li>
+          <li><svg class="jom-compare__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Sdílení elektřiny probíhá přes distribuční síť, s registrací skupiny u Elektroenergetického datového centra (EDC)</li>
+          <li><svg class="jom-compare__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Vyžaduje založení právnické osoby (např. spolku nebo družstva) a registraci u Energetického regulačního úřadu</li>
+          <li><svg class="jom-compare__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Vhodné pro obce, více bytových domů nebo větší celky</li>
+          <li><svg class="jom-compare__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Vyšší flexibilita, ale náročnější správa</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="jom-ideal" id="komu-sedi">
+  <div class="jom-ideal__container">
+
+    <div class="jom-ideal__header">
+      <p class="fve-eyebrow">Komu JOM sedí</p>
+      <h2 class="jom-ideal__title">Pro koho se JOM nejvíce vyplatí</h2>
+    </div>
+
+    <ul class="jom-ideal__list">
+      <li class="jom-ideal__item">
+        <span class="jom-ideal__num">01</span>
+        <span class="jom-ideal__text">SVJ a bytové domy s 15 a více jednotkami</span>
+      </li>
+      <li class="jom-ideal__item">
+        <span class="jom-ideal__num">02</span>
+        <span class="jom-ideal__text">Domy s vyšší spotřebou ve společných prostorách — výtahy, osvětlení, technologie</span>
+      </li>
+      <li class="jom-ideal__item">
+        <span class="jom-ideal__num">03</span>
+        <span class="jom-ideal__text">Objekty, kde cílem je zapojit do sdílení elektřiny i jednotlivé byty</span>
+      </li>
+      <li class="jom-ideal__item">
+        <span class="jom-ideal__num">04</span>
+        <span class="jom-ideal__text">SVJ, která chtějí minimalizovat přetoky energie do sítě</span>
+      </li>
+      <li class="jom-ideal__item">
+        <span class="jom-ideal__num">05</span>
+        <span class="jom-ideal__text">Projekty zaměřené na návratnost 3–6 let</span>
+      </li>
+      <li class="jom-ideal__item">
+        <span class="jom-ideal__num">06</span>
+        <span class="jom-ideal__text">Domy ochotné sjednotit dodavatele elektřiny pod jednu smlouvu</span>
+      </li>
+    </ul>
+
+  </div>
+</section>
+
+<section class="jom-worth" id="kdy-smysl">
+  <div class="jom-worth__container">
+
+    <div class="jom-worth__grid">
+
+      <!-- HORNÍ ŘADA: text vlevo, čísla vpravo -->
+      <div class="jom-worth__top">
+        <div class="jom-worth__top-text">
+          <p class="fve-eyebrow">Kdy to dává smysl</p>
+          <h2 class="jom-worth__title">Plný přínos JOM se projeví v kombinaci s FVE na střeše</h2>
+          <p class="jom-worth__text">
+            Samotné JOM znamená hlavně změnu ve způsobu, jakým dům odebírá elektřinu — skutečný přínos přichází ve chvíli, kdy dům zároveň vyrábí elektřinu. Fotovoltaika na střeše a JOM tvoří tandem: FVE dodává elektřinu do domu, JOM zajistí, aby co nejvíce z ní zůstalo v domě a neskončilo v síti za nevýhodnou výkupní cenu.
+          </p>
+          <p class="jom-worth__text">
+            Největší přínos mají domy s vyšší spotřebou ve společných prostorách, pravidelnou denní spotřebou v bytech a ochotou sjednotit dodavatele elektřiny. Čím větší dům, tím vyšší bývá absolutní úspora.
+          </p>
+        </div>
+
+        <div class="jom-worth__top-stats">
+          <div class="jom-worth__stats">
+            <div class="jom-worth__stat">
+              <div class="jom-worth__stat-row">
+                <span class="jom-worth__stat-value">70 – 90 %</span>
+              </div>
+              <span class="jom-worth__stat-label">typická míra vlastní spotřeby vyrobené elektřiny s JOM — oproti přibližně 30 % bez JOM</span>
+            </div>
+            <div class="jom-worth__stat">
+              <div class="jom-worth__stat-row">
+                <span class="jom-worth__stat-value">3 – 6</span>
+                <span class="jom-worth__stat-unit">let</span>
+              </div>
+              <span class="jom-worth__stat-label">orientační návratnost investice do FVE s JOM při správném návrhu a vhodném financování</span>
+            </div>
+            <div class="jom-worth__stat">
+              <div class="jom-worth__stat-row">
+                <span class="jom-worth__stat-value">2024</span>
+              </div>
+              <span class="jom-worth__stat-label">rok, od kdy novela energetického zákona (Lex OZE II) umožňuje JOM realizovat pro bytové domy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DOLNÍ ŘADA: dvě karty vedle sebe -->
+      <div class="jom-worth__cards">
+
+        <!-- Karta FVE + JOM -->
+        <div class="jom-worth__card jom-worth__card--active">
+          <div class="jom-worth__card-top">
+            <span class="jom-worth__card-label jom-worth__card-label--active">FVE + JOM</span>
+            <div class="jom-worth__toggle" id="jomToggle">
+              <button class="jom-worth__toggle-btn is-active" data-target="koupe">Koupě</button>
+              <button class="jom-worth__toggle-btn" data-target="pronajem">Pronájem</button>
+            </div>
+          </div>
+
+          <div class="jom-worth__card-body">
+            <ul class="jom-worth__card-list">
+              <li>
+                <span class="jom-worth__card-key">Roční úspora domu</span>
+                <span class="jom-worth__card-val jom-worth__card-val--lime"
+                      data-koupe="150 000 – 250 000 Kč"
+                      data-pronajem="80 000 – 140 000 Kč">150 000 – 250 000 Kč</span>
+              </li>
+              <li>
+                <span class="jom-worth__card-key">Návratnost / délka smlouvy</span>
+                <span class="jom-worth__card-val jom-worth__card-val--lime"
+                      data-koupe="3–6 let"
+                      data-pronajem="10–20 let (bez investice)">3–6 let</span>
+              </li>
+              <li>
+                <span class="jom-worth__card-key">Vlastní spotřeba FVE</span>
+                <span class="jom-worth__card-val jom-worth__card-val--lime">~70–90 %</span>
+              </li>
+              <li>
+                <span class="jom-worth__card-key">Přetoky do sítě</span>
+                <span class="jom-worth__card-val jom-worth__card-val--lime">minimální, prodejné</span>
+              </li>
+              <li>
+                <span class="jom-worth__card-key">Administrativa</span>
+                <span class="jom-worth__card-val"
+                      data-koupe="jedna smlouva za celý dům"
+                      data-pronajem="smlouva s pronajímatelem">jedna smlouva za celý dům</span>
+              </li>
+            </ul>
+
+            <ul class="jom-worth__pros">
+              <li class="jom-worth__pro" data-mode-show="koupe">
+                <svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Dům vlastní systém — aktivum ve správě SVJ
+              </li>
+              <li class="jom-worth__pro" data-mode-show="koupe">
+                <svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Přetoky lze prodávat — jedno odběrné místo do sítě
+              </li>
+              <li class="jom-worth__pro" data-mode-show="koupe">
+                <svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Úspora z JOM financuje splátky FVE úvěru
+              </li>
+              <li class="jom-worth__pro" data-mode-show="pronajem" hidden>
+                <svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Žádná počáteční investice — vhodné pro SVJ bez rezerv
+              </li>
+              <li class="jom-worth__pro" data-mode-show="pronajem" hidden>
+                <svg class="fve-worth-arrow fve-worth-arrow--yes" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Pronajímatel zajišťuje servis a pojištění systému
+              </li>
+              <li class="jom-worth__pro" data-mode-show="pronajem" hidden>
+                <svg class="jom-worth__arrow-dim" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Uvedená úspora je čistá hodnota pro dům — část výnosu ze systému (včetně výnosu z prodeje přetoků) připadá pronajímateli
+              </li>
+              <li class="jom-worth__pro" data-mode-show="pronajem" hidden>
+                <svg class="jom-worth__arrow-dim" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Závislost na podmínkách smlouvy (délka, exit klauzule)
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Karta FVE bez JOM -->
+        <div class="jom-worth__card jom-worth__card--muted">
+          <div class="jom-worth__card-top">
+            <span class="jom-worth__card-label">FVE bez JOM</span>
+          </div>
+
+          <div class="jom-worth__card-body">
+            <ul class="jom-worth__card-list">
+              <li>
+                <span class="jom-worth__card-key">Roční úspora domu</span>
+                <span class="jom-worth__card-val">40 000 – 80 000 Kč</span>
+              </li>
+              <li>
+                <span class="jom-worth__card-key">Návratnost investice</span>
+                <span class="jom-worth__card-val">8–14 let</span>
+              </li>
+              <li>
+                <span class="jom-worth__card-key">Vlastní spotřeba FVE</span>
+                <span class="jom-worth__card-val">~25–35 %</span>
+              </li>
+              <li>
+                <span class="jom-worth__card-key">Přetoky do sítě</span>
+                <span class="jom-worth__card-val">vysoké (nevýhodná cena)</span>
+              </li>
+              <li>
+                <span class="jom-worth__card-key">Administrativa</span>
+                <span class="jom-worth__card-val">každý byt samostatně</span>
+              </li>
+            </ul>
+
+            <ul class="jom-worth__pros">
+              <li class="jom-worth__con">
+                <svg class="jom-worth__arrow-dim" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                FVE pokrývá jen společné prostory, elektřina se nesdílí ani virtuálně s jednotlivými byty
+              </li>
+              <li class="jom-worth__con">
+                <svg class="jom-worth__arrow-dim" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Přebytečná výroba se prodává za nevýhodnou výkupní cenu, protože ji nemá kdo v domě spotřebovat
+              </li>
+              <li class="jom-worth__con">
+                <svg class="jom-worth__arrow-dim" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Každý byt platí distribuci zvlášť — vyšší celkový náklad domu
+              </li>
+              <li class="jom-worth__con">
+                <svg class="jom-worth__arrow-dim" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Návratnost 2–3× delší než kombinace FVE + JOM
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <p class="jom-worth__note">Orientační hodnoty pro typický bytový dům s 15–48 bytovými jednotkami, při průměrné ceně elektřiny v řádu 5–6 Kč/kWh. Skutečná výše závisí na velikosti domu, výkonu FVE, orientaci střechy a podmínkách smlouvy.</p>
+
+  </div>
+</section>
+
+<section class="jom-edc" id="porovnani">
+  <div class="jom-edc__container">
+
+    <div class="jom-edc__header">
+      <p class="fve-eyebrow">Porovnání variant</p>
+      <h2 class="jom-edc__title">EDC nebo JOM?</h2>
+      <p class="jom-edc__lead">Při instalaci FVE v bytovém domě existují dvě cesty sdílení vyrobené elektřiny. Na první pohled podobné — výsledky se ale výrazně liší.</p>
+    </div>
+
+    <div class="jom-edc__variants">
+
+      <!-- Varianta 1: EDC -->
+      <div class="jom-edc__variant jom-edc__variant--edc">
+        <div class="jom-edc__variant-text">
+          <h3 class="jom-edc__card-title">Varianta 1: FVE + EDC + rozúčtování</h3>
+          <ul class="jom-edc__list">
+            <li>
+              <svg class="jom-edc__arrow jom-edc__arrow--dim" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Každý byt si udržuje vlastní smlouvu s dodavatelem — různí dodavatelé v jednom domě jsou možní, ale sdílení probíhá jen uvnitř budovy.
+            </li>
+            <li>
+              <svg class="jom-edc__arrow jom-edc__arrow--dim" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Přebytky nelze prodávat; lze je jen bezplatně poskytnout ostatním zapojeným odběrným místům v domě.
+            </li>
+            <li>
+              <svg class="jom-edc__arrow jom-edc__arrow--dim" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Rozúčtování provádí EDC s pevně nastaveným neměnným klíčem — výstupem je jen datový export (CSV/Excel), se kterým si SVJ musí pracovat samo.
+            </li>
+            <li>
+              <svg class="jom-edc__arrow jom-edc__arrow--dim" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Výsledná úspora bývá orientačně kolem 20 % — výrazně méně než při JOM se stejnou instalací (~50 %).
+            </li>
+            <li>
+              <svg class="jom-edc__arrow jom-edc__arrow--dim" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Nižší technický zásah do elektroinstalace domu a ke schválení zpravidla stačí většina hlasů podle stanov SVJ.
+            </li>
+          </ul>
+        </div>
+        <div class="jom-edc__variant-img">
+          <img src="assets/images/EDC.png" alt="" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Varianta 2: JOM — doporučená -->
+      <div class="jom-edc__variant jom-edc__variant--jom">
+        <div class="jom-edc__variant-text">
+          <div class="jom-edc__card-badge">Doporučeno</div>
+          <h3 class="jom-edc__card-title">Varianta 2: FVE + JOM + rozúčtování</h3>
+          <ul class="jom-edc__list">
+            <li>
+              <svg class="jom-edc__arrow jom-edc__arrow--lime" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Dům vystupuje jako jediné odběrné místo — odpadají poplatky za rezervovaný příkon a jistič za každý byt zvlášť (úspora v řádu desítek až stovek tisíc Kč ročně).
+            </li>
+            <li>
+              <svg class="jom-edc__arrow jom-edc__arrow--lime" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Přebytky z FVE lze prodávat — dům může uzavřít standardní smlouvu o výkupu bez omezení množství.
+            </li>
+            <li>
+              <svg class="jom-edc__arrow jom-edc__arrow--lime" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Rozúčtování si dělá dům sám (obvykle podle vlastnického podílu) — flexibilní a transparentní, bez závislosti na externím datovém centru.
+            </li>
+            <li>
+              <svg class="jom-edc__arrow jom-edc__arrow--lime" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Větší odběratel má lepší vyjednávací pozici u dodavatele — možnost sjednat výhodnější cenu elektřiny než jednotlivé byty samostatně.
+            </li>
+            <li>
+              <svg class="jom-edc__arrow jom-edc__arrow--lime" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Vyžaduje větší technický zásah (výměna elektroměrového rozvaděče, podružné elektroměry v bytech) a zpravidla náročnější souhlas vlastníků.
+            </li>
+          </ul>
+        </div>
+        <div class="jom-edc__variant-img">
+          <img src="assets/images/JOM.png" alt="" loading="lazy">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="jom-savings">
+      <h3 class="jom-savings__title">Žebříček úspor na bytovou jednotku / rok</h3>
+      <div class="jom-savings__rows">
+
+        <div class="jom-savings__row">
+          <div class="jom-savings__row-label">
+            Samotné JOM
+            <span class="jom-savings__row-sub">jednofázový / třífázový elektroměr</span>
+          </div>
+          <div class="jom-savings__row-track">
+            <div class="jom-savings__row-fill jom-savings__row-fill--lime" style="width:28%"></div>
+          </div>
+          <span class="jom-savings__row-val">~3 500 / 7 000 Kč</span>
+        </div>
+
+        <div class="jom-savings__row">
+          <div class="jom-savings__row-label">
+            JOM + FVE
+            <span class="jom-savings__row-sub">vlastní rozúčtování, bez distribuce</span>
+          </div>
+          <div class="jom-savings__row-track">
+            <div class="jom-savings__row-fill jom-savings__row-fill--mid" style="width:62%"></div>
+          </div>
+          <span class="jom-savings__row-val">přes 10 000 Kč</span>
+        </div>
+
+        <div class="jom-savings__row">
+          <div class="jom-savings__row-label">
+            JOM + FVE + teplo/TUV
+            <span class="jom-savings__row-sub">vlastní kotelna</span>
+          </div>
+          <div class="jom-savings__row-track">
+            <div class="jom-savings__row-fill jom-savings__row-fill--lime-soft" style="width:100%"></div>
+          </div>
+          <span class="jom-savings__row-val">~o polovinu nižší náklady</span>
+        </div>
+
+      </div>
+      <p class="jom-savings__note">Orientační hodnoty na bytovou jednotku/rok; závisí na typu elektroměru, celkové spotřebě domu a tarifu.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="jom-how" id="jak-funguje">
+  <div class="jom-how__container">
+
+    <div class="jom-how__header">
+      <p class="fve-eyebrow">Jak to funguje</p>
+      <h2 class="jom-how__title">Od samostatných odběrů k jednomu JOM</h2>
+      <p class="jom-how__lead">
+        Dnes má každý byt vlastní elektroměr a smlouvu s dodavatelem — distributor vidí každou jednotku odděleně. Po přechodu na JOM vznikne jedno hlavní odběrné místo pro celý dům s podružnými měřidly v bytech. Posuvník na obrázku přepíná pohled mezi stavem před zavedením JOM a po něm.
+      </p>
+    </div>
+
+    <div class="jom-panel" id="jomPanel">
+
+      <!-- Textové sloupce: PŘED | PO -->
+      <div class="jom-panel__text-row">
+
+        <div class="jom-panel__col jom-panel__col--before">
+          <span class="jom-panel__col-label">Před JOM</span>
+          <ul class="jom-panel__list">
+            <li>Každý byt platí zálohy a smlouvu samostatně</li>
+            <li>FVE přetoky odchází do sítě za nevýhodnou výkupní cenu</li>
+            <li>Elektřina ze střechy nedosáhne přímo do bytů</li>
+            <li>Distributor eviduje každou bytovou jednotku zvlášť</li>
+          </ul>
+        </div>
+
+        <div class="jom-panel__col jom-panel__col--after">
+          <span class="jom-panel__col-label">Po zavedení JOM</span>
+          <ul class="jom-panel__list">
+            <li>Jedna smlouva a jedna záloha za celý dům</li>
+            <li>Elektřina z FVE zásobuje byty i společné prostory podle nastaveného rozvržení</li>
+            <li>Každý byt čerpá vyrobenou elektřinu přímo</li>
+            <li>Pravidelné rozúčtování dle skutečné spotřeby každé bytové jednotky</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Obrazová část -->
+      <div class="jom-panel__images">
+        <div class="jom-panel__img-wrap" id="jomImgWrap">
+
+          <img class="jom-panel__img-base" src="assets/images/Before.png?v=3" alt="Stav před JOM" draggable="false">
+
+          <div class="jom-panel__img-clip" id="jomImgClip">
+            <img class="jom-panel__img-top" id="jomImgTop" src="assets/images/After.png?v=4" alt="Stav po zavedení JOM" draggable="false">
+          </div>
+
+          <div class="jom-panel__handle" id="jomHandle" aria-hidden="true">
+            <div class="jom-panel__knob">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M8 12l-4-4m0 0l4-4m-4 4h16m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="fve-phases" id="faze-realizace">
+  <div class="fve-phases__container">
+
+    <div class="fve-phases__header">
+      <p class="fve-eyebrow">Fáze realizace</p>
+      <h2 class="fve-phases__title">Jak probíhá přechod na JOM</h2>
+    </div>
+
+    <div class="fve-phases__accordion" id="fvePhases">
+
+      <div class="fve-phase is-active" data-phase="0">
+        <div class="fve-phase__collapsed">
+          <span class="fve-phase__cnum" aria-hidden="true">01</span>
+          <span class="fve-phase__ctitle">Souhlas vlastníků / SVJ</span>
+        </div>
+        <div class="fve-phase__expanded">
+          <span class="fve-phase__enum">01</span>
+          <h3 class="fve-phase__etitle">Souhlas vlastníků / SVJ</h3>
+          <ul class="fve-phase__elist">
+            <li>Příprava podkladů pro shromáždění — technický popis JOM a ekonomická analýza</li>
+            <li>Svolání shromáždění SVJ nebo bytového družstva</li>
+            <li>Hlasování: potřebná většina se řídí stanovami — u technických úprav společných částí bývá vyžadována vyšší než prostá většina, konkrétní práh je vždy potřeba ověřit ve stanovách daného domu</li>
+            <li>Schválení změny dodavatele elektřiny a způsobu rozúčtování</li>
+            <li>Zápis ze shromáždění jako závazný podklad pro další kroky</li>
+          </ul>
+          <div class="fve-phase__nav">
+            <button class="fve-phase__btn fve-phase__btn--next" type="button" aria-label="Další fáze">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="fve-phase" data-phase="1">
+        <div class="fve-phase__collapsed">
+          <span class="fve-phase__cnum" aria-hidden="true">02</span>
+          <span class="fve-phase__ctitle">Změna smlouvy</span>
+        </div>
+        <div class="fve-phase__expanded">
+          <span class="fve-phase__enum">02</span>
+          <h3 class="fve-phase__etitle">Změna smlouvy</h3>
+          <ul class="fve-phase__elist">
+            <li>Výběr dodavatele elektřiny pro celý dům — všichni přejdou na jednoho dodavatele</li>
+            <li>Výpověď stávajících individuálních smluv jednotlivých bytových jednotek — s ohledem na jejich výpovědní lhůty, aby nedošlo k výpadku dodávky</li>
+            <li>Uzavření nové smlouvy pro JOM jako celek (vyšší odebíraný výkon)</li>
+            <li>Koordinace s distributorem (ČEZ Distribuce, EG.D nebo PREdistribuce) — oznámení změny, distributor má na vyjádření zákonem danou lhůtu</li>
+            <li>Nastavení způsobu úhrady záloh: platí SVJ nebo bytové družstvo za celý dům</li>
+          </ul>
+          <div class="fve-phase__nav">
+            <button class="fve-phase__btn fve-phase__btn--prev" type="button" aria-label="Předchozí fáze">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button class="fve-phase__btn fve-phase__btn--next" type="button" aria-label="Další fáze">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="fve-phase" data-phase="2">
+        <div class="fve-phase__collapsed">
+          <span class="fve-phase__cnum" aria-hidden="true">03</span>
+          <span class="fve-phase__ctitle">Instalace měřidel</span>
+        </div>
+        <div class="fve-phase__expanded">
+          <span class="fve-phase__enum">03</span>
+          <h3 class="fve-phase__etitle">Instalace měřidel</h3>
+          <ul class="fve-phase__elist">
+            <li>Montáž hlavního elektroměru na přípojkovém místě celého domu</li>
+            <li>Instalace podružných měřidel do každé bytové jednotky a společných prostor — tato měřidla nemusí mít fakturační přesnost ani kalibraci, protože neslouží k oficiálnímu vyúčtování vůči dodavateli, jen k internímu rozúčtování v domě</li>
+            <li>Propojení měřidel s FVE systémem — střídač, případně bateriové úložiště</li>
+            <li>Výchozí revize elektroinstalace — povinná podmínka pro připojení k distribuční síti</li>
+            <li>Přejímka technického řešení distributorem a předání systému do provozu</li>
+          </ul>
+          <div class="fve-phase__nav">
+            <button class="fve-phase__btn fve-phase__btn--prev" type="button" aria-label="Předchozí fáze">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button class="fve-phase__btn fve-phase__btn--next" type="button" aria-label="Další fáze">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="fve-phase" data-phase="3">
+        <div class="fve-phase__collapsed">
+          <span class="fve-phase__cnum" aria-hidden="true">04</span>
+          <span class="fve-phase__ctitle">Nastavení rozúčtování</span>
+        </div>
+        <div class="fve-phase__expanded">
+          <span class="fve-phase__enum">04</span>
+          <h3 class="fve-phase__etitle">Nastavení rozúčtování</h3>
+          <ul class="fve-phase__elist">
+            <li>Definice metodiky rozdělení nákladů mezi bytové jednotky (dle skutečné spotřeby)</li>
+            <li>Nastavení pravidel pro podíl každé jednotky na vyrobené elektřině z FVE</li>
+            <li>Zakotvení zvoleného klíče rozúčtování v pravidlech domu, aby bylo pro všechny vlastníky závazné</li>
+            <li>Implementace softwarového řešení pro průběžné sledování spotřeby v bytech</li>
+            <li>Příprava vzorového ročního vyúčtování pro vlastníky</li>
+            <li>Úprava záloh na energie dle první sezóny provozu — klíč rozúčtování je vhodné po prvním roce provozu zkontrolovat a případně doladit</li>
+          </ul>
+          <div class="fve-phase__nav">
+            <button class="fve-phase__btn fve-phase__btn--prev" type="button" aria-label="Předchozí fáze">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 19l-7-7 7-7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="jom-impact" id="dopad">
+  <div class="jom-impact__container">
+
+    <div class="jom-impact__header">
+      <p class="fve-eyebrow">Dopad na náklady</p>
+      <h2 class="jom-impact__title">Jak JOM snižuje náklady a proč záleží na pořadí</h2>
+      <p class="jom-impact__lead">
+        JOM přináší dvojí efekt: vyjednávací sílu jednoho odběratele místo desítek drobných smluv, a hlavně schopnost sdílet elektřinu z vlastní FVE napříč celým domem bez ztrát. Plný ekonomický dopad JOM se projeví teprve v kombinaci s fotovoltaikou — právě proto se JOM typicky realizuje jako první krok, který otevírá cestu k dalším opatřením.
+      </p>
+    </div>
+
+    <div class="jom-impact__chart">
+      <p class="jom-impact__chart-title">Orientační počáteční investice</p>
+      <div class="jom-impact__bars">
+
+        <div class="jom-impact__bar-row">
+          <span class="jom-impact__bar-label">JOM</span>
+          <div class="jom-impact__bar-track">
+            <div class="jom-impact__bar jom-impact__bar--jom" style="width: 8%"></div>
+          </div>
+          <span class="jom-impact__bar-val">50 – 300 tis. Kč</span>
+        </div>
+
+        <div class="jom-impact__bar-row">
+          <span class="jom-impact__bar-label">FVE</span>
+          <div class="jom-impact__bar-track">
+            <div class="jom-impact__bar jom-impact__bar--fve" style="width: 48%"></div>
+          </div>
+          <span class="jom-impact__bar-val">1,2 – 1,9 mil. Kč</span>
+        </div>
+
+        <div class="jom-impact__bar-row">
+          <span class="jom-impact__bar-label">TČ</span>
+          <div class="jom-impact__bar-track">
+            <div class="jom-impact__bar jom-impact__bar--tc" style="width: 100%"></div>
+          </div>
+          <span class="jom-impact__bar-val">1,5 – 4 mil. Kč</span>
+        </div>
+
+      </div>
+      <p class="jom-impact__chart-note">Hodnoty jsou orientační pro typický bytový dům (15–48 jednotek). Skutečná výše závisí na konkrétním projektu, stavu domu a podmínkách financování.</p>
+    </div>
+
+    <div class="jom-impact__flow">
+      <p class="jom-impact__flow-title">Doporučené pořadí realizace</p>
+      <p class="jom-impact__flow-sub">
+        Správné pořadí umožňuje financovat každý další krok z úspor toho předchozího.
+      </p>
+
+      <div class="jom-impact__steps">
+
+        <div class="jom-impact__step jom-impact__step--active">
+          <span class="jom-impact__step-num">01</span>
+          <h4 class="jom-impact__step-name">JOM</h4>
+          <p class="jom-impact__step-desc">Administrativně nenáročný první krok, předpoklad pro sdílení FVE</p>
+          <span class="jom-impact__step-roi">návratnost &lt; 1 rok</span>
+        </div>
+
+        <div class="jom-impact__arrow jom-impact__arrow--d0" aria-hidden="true">
+          <div class="jom-impact__arrow-line"><div class="jom-impact__arrow-pulse"></div></div>
+        </div>
+
+        <div class="jom-impact__step">
+          <span class="jom-impact__step-num">02</span>
+          <h4 class="jom-impact__step-name">FVE</h4>
+          <p class="jom-impact__step-desc">Vlastní výroba elektřiny, JOM zajistí její efektivní využití v celém domě</p>
+          <span class="jom-impact__step-roi">návratnost 3–6 let</span>
+        </div>
+
+        <div class="jom-impact__arrow jom-impact__arrow--d1" aria-hidden="true">
+          <div class="jom-impact__arrow-line"><div class="jom-impact__arrow-pulse"></div></div>
+        </div>
+
+        <div class="jom-impact__step">
+          <span class="jom-impact__step-num">03</span>
+          <h4 class="jom-impact__step-name">Tepelné čerpadlo</h4>
+          <p class="jom-impact__step-desc">Využívá levnější elektřinu z FVE, kondenzační kotel jako záloha</p>
+          <span class="jom-impact__step-roi">návratnost 6–10 let</span>
+        </div>
+
+        <div class="jom-impact__arrow jom-impact__arrow--d2" aria-hidden="true">
+          <div class="jom-impact__arrow-line"><div class="jom-impact__arrow-pulse"></div></div>
+        </div>
+
+        <div class="jom-impact__step">
+          <span class="jom-impact__step-num">04</span>
+          <h4 class="jom-impact__step-name">Zateplení</h4>
+          <p class="jom-impact__step-desc">Výrazná dlouhodobá úspora tepla, realizuje se jako poslední</p>
+          <span class="jom-impact__step-roi">návratnost 10+ let</span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Dotazník JOM -->
+<section class="jom-quiz" id="dotaznik">
+  <div class="jom-quiz__container">
+
+    <div class="jom-quiz__header">
+      <p class="fve-eyebrow">Kalkulačka</p>
+      <h2 class="jom-quiz__title">Za jakých podmínek se JOM vyplatí</h2>
+    </div>
+
+    <div class="jom-quiz__stepper">
+      <div class="jom-quiz__step-item is-active" data-step="1">
+        <span class="jom-quiz__step-dot">1</span>
+        <span class="jom-quiz__step-label">Základní údaje</span>
+      </div>
+      <div class="jom-quiz__step-line"></div>
+      <div class="jom-quiz__step-item" data-step="2">
+        <span class="jom-quiz__step-dot">2</span>
+        <span class="jom-quiz__step-label">Spotřeba a FVE</span>
+      </div>
+      <div class="jom-quiz__step-line"></div>
+      <div class="jom-quiz__step-item" data-step="3">
+        <span class="jom-quiz__step-dot">3</span>
+        <span class="jom-quiz__step-label">Kontaktní údaje</span>
+      </div>
+    </div>
+
+    <div class="jom-quiz__card">
+
+      <!-- Panel 1 -->
+      <div class="jom-quiz__panel" id="quizPanel1">
+        <div class="jom-quiz__grid jom-quiz__grid--4">
+
+          <div class="jom-quiz__col">
+            <div class="jom-quiz__field">
+              <label class="fve-calc__label" for="quizApts">Počet bytů v domě</label>
+              <input type="number" class="jom-quiz__input" id="quizApts" min="2" max="500" placeholder="Zadejte počet">
+            </div>
+            <div class="jom-quiz__field">
+              <label class="fve-calc__label" for="quizType">Typ domu</label>
+              <select class="jom-quiz__select" id="quizType">
+                <option value="">Vyberte typ domu</option>
+                <option value="svj">Bytový dům SVJ</option>
+                <option value="druzstvo">Bytové družstvo</option>
+                <option value="obecni">Obecní dům</option>
+                <option value="jine">Jiné</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="jom-quiz__col">
+            <div class="jom-quiz__field">
+              <label class="fve-calc__label">Máte nebo plánujete FVE?</label>
+              <div class="jom-quiz__radios" role="group">
+                <label class="jom-quiz__radio"><input type="radio" name="quizFve" value="have"><span>Máme již FVE</span></label>
+                <label class="jom-quiz__radio"><input type="radio" name="quizFve" value="plan"><span>Plánujeme FVE</span></label>
+                <label class="jom-quiz__radio"><input type="radio" name="quizFve" value="none"><span>Zatím neplánujeme</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="jom-quiz__col">
+            <div class="jom-quiz__field">
+              <label class="fve-calc__label">Aktuální stav smluv</label>
+              <div class="jom-quiz__radios" role="group">
+                <label class="jom-quiz__radio"><input type="radio" name="quizContracts" value="individual"><span>Každý byt má vlastní smlouvu</span></label>
+                <label class="jom-quiz__radio"><input type="radio" name="quizContracts" value="common"><span>Společná smlouva už existuje</span></label>
+                <label class="jom-quiz__radio"><input type="radio" name="quizContracts" value="unknown"><span>Nevíme</span></label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="jom-quiz__footer">
+          <button type="button" class="btn btn-primary jom-quiz__btn-next" data-next="2">Pokračovat</button>
+        </div>
+      </div>
+
+      <!-- Panel 2 -->
+      <div class="jom-quiz__panel" id="quizPanel2" hidden>
+        <div class="jom-quiz__grid jom-quiz__grid--3">
+
+          <div class="jom-quiz__col">
+            <div class="jom-quiz__field">
+              <label class="fve-calc__label">Odhadovaná měsíční spotřeba domu</label>
+              <div class="jom-quiz__radios" role="group">
+                <label class="jom-quiz__radio"><input type="radio" name="quizConsumption" value="low"><span>do 1 000 kWh</span></label>
+                <label class="jom-quiz__radio"><input type="radio" name="quizConsumption" value="mid"><span>1 000–3 000 kWh</span></label>
+                <label class="jom-quiz__radio"><input type="radio" name="quizConsumption" value="high"><span>nad 3 000 kWh</span></label>
+                <label class="jom-quiz__radio"><input type="radio" name="quizConsumption" value="unknown"><span>Nevím</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="jom-quiz__col">
+            <div class="jom-quiz__field">
+              <label class="fve-calc__label">Bateriové úložiště?</label>
+              <div class="jom-quiz__radios" role="group">
+                <label class="jom-quiz__radio"><input type="radio" name="quizBattery" value="have"><span>Máme</span></label>
+                <label class="jom-quiz__radio"><input type="radio" name="quizBattery" value="plan"><span>Plánujeme</span></label>
+                <label class="jom-quiz__radio"><input type="radio" name="quizBattery" value="none"><span>Nemáme</span></label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="jom-quiz__footer">
+          <button type="button" class="jom-quiz__btn-back" data-back="1">← Zpět</button>
+          <button type="button" class="btn btn-primary jom-quiz__btn-next" data-next="3">Ukázat výsledek</button>
+        </div>
+      </div>
+
+      <!-- Panel 3 -->
+      <div class="jom-quiz__panel" id="quizPanel3" hidden>
+
+        <div class="jom-quiz__result-banner" id="quizResultBanner">
+          <div class="jom-quiz__result-badge" id="quizResultBadge"></div>
+          <p class="jom-quiz__result-text" id="quizResultText"></p>
+        </div>
+
+        <form id="quizForm" novalidate>
+          <div class="jom-quiz__form-grid">
+            <div class="jom-quiz__field">
+              <label class="fve-calc__label" for="quizName">Jméno a příjmení</label>
+              <input type="text" class="jom-quiz__input" id="quizName" autocomplete="name" required>
+            </div>
+            <div class="jom-quiz__field">
+              <label class="fve-calc__label" for="quizEmail">E-mail</label>
+              <input type="email" class="jom-quiz__input" id="quizEmail" autocomplete="email" required>
+            </div>
+            <div class="jom-quiz__field">
+              <label class="fve-calc__label" for="quizPhone">Telefon <span class="jom-quiz__optional">(nepovinný)</span></label>
+              <input type="tel" class="jom-quiz__input" id="quizPhone" autocomplete="tel">
+            </div>
+            <div class="jom-quiz__field">
+              <label class="fve-calc__label" for="quizOrg">Název SVJ / organizace</label>
+              <input type="text" class="jom-quiz__input" id="quizOrg" autocomplete="organization">
+            </div>
+          </div>
+          <label class="jom-quiz__consent">
+            <input type="checkbox" id="quizConsent" required>
+            <span>Souhlasím se zpracováním osobních údajů pro účely odpovědi na poptávku.</span>
+          </label>
+          <div class="jom-quiz__footer">
+            <button type="button" class="jom-quiz__btn-back" data-back="2">← Zpět</button>
+            <button type="submit" class="btn btn-primary">Odeslat poptávku</button>
+          </div>
+        </form>
+
+      </div>
+
+      <!-- Poděkování -->
+      <div class="jom-quiz__thankyou" id="quizThankyou" hidden>
+        <div class="jom-quiz__thankyou-icon">✓</div>
+        <h3 class="jom-quiz__thankyou-title">Odpověď přijde do 2 pracovních dnů</h3>
+        <p class="jom-quiz__thankyou-text">Poptávka byla odeslána. K dispozici je celý průvodce JOM a kalkulačka FVE.</p>
+        <a href="#co-je-jom" class="btn btn-primary">Zpět na průvodce</a>
+      </div>
+
+    </div>
+
+    <p class="jom-quiz__disclaimer">Poptávka je nezávazná. Osobní údaje jsou zpracovávány pouze pro účely odpovědi na poptávku.</p>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="fve-faq" id="faq">
+  <div class="fve-faq__container">
+    <p class="fve-eyebrow">FAQ</p>
+    <h2 class="fve-faq__title">Odpovědi na nejčastější otázky</h2>
+
+    <div class="fve-faq__list">
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Co přesně JOM znamená a jak funguje?</summary>
+        <div class="fve-faq__a">
+          <p>JOM (Jednotné odběrné místo) znamená, že celý bytový dům vystupuje vůči distributorovi elektřiny jako jeden odběratel — existuje jedno hlavní odběrné místo a jedna smlouva s dodavatelem. Elektřina vyrobená fotovoltaikou na střeše se přes střídač distribuuje do vnitřní sítě domu, kde se rozděluje mezi společné prostory a byty podle nastaveného systému řízení energie. Do distribuční sítě odchází jen to, co dům skutečně nevyužije.</p>
+        </div>
+      </details>
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Na jakém zákoně je JOM postaveno?</summary>
+        <div class="fve-faq__a">
+          <p>JOM je možné realizovat díky novele energetického zákona označované jako Lex OZE II, která vstoupila v účinnost v roce 2024. Tato novela vytvořila legislativní rámec, který SVJ umožňuje vystupovat vůči distributorovi jako jeden odběratel a stanovila pravidla pro rozúčtování energie mezi byty.</p>
+        </div>
+      </details>
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Musí mít všichni vlastníci stejného dodavatele elektřiny?</summary>
+        <div class="fve-faq__a">
+          <p>Ano, to je jedna ze základních podmínek JOM. Všichni vlastníci bytových jednotek přejdou na jednoho dodavatele elektřiny — SVJ pak uzavře jednu smlouvu za celý dům. Jde o kompromis, který výrazně zjednodušuje administrativu: místo desítek individuálních smluv existuje jediná, s výhodnějším tarifem díky vyššímu odebíranému výkonu.</p>
+        </div>
+      </details>
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Jak se JOM liší od komunitní energetiky?</summary>
+        <div class="fve-faq__a">
+          <p>JOM je ideální pro jeden bytový dům — existuje jedno sloučené odběrné místo, jeden dodavatel a elektřina se sdílí uvnitř domu bez přechodu přes distribuční síť. Komunitní energetika (energetické společenství) je naopak vhodná pro více budov nebo obcí: každý účastník může mít vlastního dodavatele, ale sdílení probíhá přes distribuční síť a správa je administrativně náročnější.</p>
+        </div>
+      </details>
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Jak velký dům potřebujeme, aby se JOM vyplatilo?</summary>
+        <div class="fve-faq__a">
+          <p>Čím větší dům, tím vyšší bývají absolutní úspory — víc bytů znamená vyšší celkovou spotřebu, lepší využití elektřiny z FVE a silnější vyjednávací pozici při sjednávání smlouvy s dodavatelem. Důležitá je také pravidelná spotřeba ve společných prostorách: výtahy, osvětlení a technologie zvyšují míru vlastní spotřeby vyrobené elektřiny.</p>
+        </div>
+      </details>
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Jak probíhá rozúčtování elektřiny mezi byty?</summary>
+        <div class="fve-faq__a">
+          <p>SVJ nastaví pravidla rozdělení nákladů mezi bytové jednotky — nejčastěji podle skutečné spotřeby měřené podružnými měřidly instalovanými v každém bytě. Každá domácnost obdrží roční vyúčtování s přehledem spotřeby a podílu na vyrobené elektřině z FVE. Pravidla se zapracují do interní směrnice SVJ a lze je kdykoli změnit rozhodnutím shromáždění.</p>
+        </div>
+      </details>
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Jak rychlá je návratnost investice do JOM?</summary>
+        <div class="fve-faq__a">
+          <p>Samotný přechod na JOM (bez FVE) přináší úsporu z výhodnějšího tarifu a snížené administrativy — u větších domů se investice může vrátit i pod 1 rok, u menších domů obvykle v řádu jednotek let. V kombinaci s fotovoltaikou se celková investice vrátí za 3–6 let, záleží na velikosti domu, výkonu FVE a způsobu financování. Právě proto doporučujeme realizovat JOM jako první krok — jeho úspory pak spolufinancují pořízení fotovoltaiky.</p>
+        </div>
+      </details>
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Je pro zavedení JOM nutný souhlas shromáždění SVJ?</summary>
+        <div class="fve-faq__a">
+          <p>Ano. Přechod na JOM vyžaduje schválení shromážděním SVJ nebo bytového družstva; potřebná většina se řídí stanovami — u technických úprav společných částí bývá vyžadována vyšší než prostá většina. I po schválení shromážděním může jednotlivý vlastník technicky zůstat na svém původním samostatném odběrném místě, protože jde o jeho osobní smlouvu s dodavatelem elektřiny — zápis ze shromáždění ale slouží jako závazný podklad pro změnu smlouvy u ostatních a pro komunikaci s distributorem.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- Slovníček pojmů -->
+<section class="fve-glossary">
+  <div class="fve-glossary__terms">
+    <a href="slovnik.html#term-jom" class="fve-glossary__term">JOM</a>
+    <a href="slovnik.html#term-som" class="fve-glossary__term">SOM</a>
+    <a href="slovnik.html#term-svj" class="fve-glossary__term">SVJ</a>
+    <a href="slovnik.html#term-lex-oze-ii" class="fve-glossary__term">LEX OZE II</a>
+    <a href="slovnik.html#term-sdileni-elektriny" class="fve-glossary__term">Sdílení elektřiny</a>
+    <a href="slovnik.html#term-energeticke-spolecenstvi" class="fve-glossary__term">Energetické společenství</a>
+    <a href="slovnik.html#term-rozuctovani-energie" class="fve-glossary__term">Rozúčtování energie</a>
+    <a href="slovnik.html#term-distribucni-soustava" class="fve-glossary__term">Distribuční soustava</a>
+    <a href="slovnik.html#term-bilancni-mereni" class="fve-glossary__term">Bilanční měření</a>
+    <a href="slovnik.html#term-fve" class="fve-glossary__term">FVE</a>
+    <a href="slovnik.html#term-podruzna-meridla" class="fve-glossary__term">Podružná měřidla</a>
+    <a href="slovnik.html#term-vlastni-spotreba" class="fve-glossary__term">Vlastní spotřeba</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-glow"></div>
+
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">
+          <img src="assets/images/Logo.svg" alt="Energohub">
+        </a>
+        <p class="footer-tagline">Nezávislý průvodce úsporami energie pro SVJ a bytová družstva.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Mapa stránek</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#pruvodce">Průvodci opatření</a></li>
+          <li><a href="pruvodce-jom.html">Jednotné odběrné místo</a></li>
+          <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
+          <li><a href="slovnik.html">Slovník pojmů</a></li>
+          <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+          <li><a href="index.html#o-nas">O nás</a></li>
+          <li><a href="kontakty.html">Kontakty</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Informace</h4>
+        <ul class="footer-links">
+          <li><a href="#">Podmínky použití</a></li>
+          <li><a href="#">Ochrana osobních údajů</a></li>
+          <li><a href="#">Reklamační řád</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-join">
+        <h4 class="footer-col-title">Sledujte nás</h4>
+
+        <div class="footer-social">
+          <a href="#" class="footer-social-icon" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.4h2.48l.37-2.88h-2.85V8.94c0-.83.23-1.4 1.42-1.4h1.52V4.98c-.26-.04-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.88h2.47V21h2.93z"></path></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="3.7"></circle><circle cx="17.1" cy="6.9" r="0.9" fill="currentColor" stroke="none"></circle></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H4.1V20h2.84V8.5zM5.5 4c-.97 0-1.7.73-1.7 1.65 0 .9.71 1.65 1.67 1.65h.02c.99 0 1.7-.74 1.7-1.65C7.19 4.73 6.48 4 5.5 4zM20 13.4c0-3-1.6-4.4-3.74-4.4-1.72 0-2.49 0.95-2.92 1.62V8.5h-2.84c.04.8 0 11.5 0 11.5h2.84v-6.42c0-.34.02-.69.13-.93.28-.69.91-1.41 1.98-1.41 1.4 0 1.96 1.06 1.96 2.62V20H20v-6.6z"></path></svg>
+          </a>
+        </div>
+
+        <form class="footer-newsletter" id="footerNewsletter">
+          <input type="email" name="email" placeholder="Zadejte e-mail" aria-label="E-mailová adresa" required>
+          <button type="submit" aria-label="Odebírat novinky">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6"></path>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Energohub.info. Všechna práva vyhrazena.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/fve-subnav.js"></script>
+<script src="js/footer.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/jom-slider.js"></script>
+<script src="js/fve-phases.js"></script>
+<script src="js/jom-quiz.js"></script>
+<script src="js/jom-worth.js"></script>
+<script>
+(function () {
+  var frame = document.querySelector('.fve-hero__3d-frame');
+  if (!frame) return;
+  frame.addEventListener('load', function () {
+    try {
+      var doc = frame.contentDocument || frame.contentWindow.document;
+      var s = doc.createElement('style');
+      s.textContent = [
+        '.hero-left, .stats { display: none !important; }',
+        '.hero-canvas { transform: translateX(23%) !important; }',
+        '.controls { left: 73% !important; transform: translateX(-50%) !important; bottom: 28px !important; right: auto !important; }'
+      ].join(' ');
+      doc.head.appendChild(s);
+    } catch (e) {}
+  });
+})();
+</script></body>
+</html>
