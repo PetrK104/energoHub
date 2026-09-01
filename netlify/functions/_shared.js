@@ -1,6 +1,4 @@
 const { createClient } = require('@supabase/supabase-js');
-const path = require('path');
-require('dotenv').config({ path: path.join(process.cwd(), '.env') });
 
 function adminClient() {
   return createClient(
