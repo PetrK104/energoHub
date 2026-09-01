@@ -152,7 +152,9 @@
 
   function init() {
     if (!window.supabase) { console.error('Supabase SDK nenačten'); return }
-    sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+    sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+      auth: { persistSession: false }
+    })
     sb.auth.onAuthStateChange(handleAuthChange)
     bindEvents()
     addBotRow()
