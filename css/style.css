@@ -1462,7 +1462,7 @@ body {
   }
 
   .guides-title {
-    font-size: 28px;
+    font-size: 24px;
   }
 
   .guide-card-title {
@@ -1688,7 +1688,7 @@ body {
   }
 
   .process-title {
-    font-size: 28px;
+    font-size: 24px;
   }
 
   .process-steps {
@@ -1697,7 +1697,7 @@ body {
   }
 
   .process-step__num {
-    font-size: 72px;
+    font-size: 64px;
   }
 
   .process-step__num-cell,
@@ -1755,7 +1755,7 @@ body {
   }
 
   .process-step__num {
-    font-size: 72px;
+    font-size: 64px;
     margin-bottom: 10px;
   }
 
@@ -2195,9 +2195,9 @@ a.guide-steps__item:hover {
   .home-faq__container { padding: 0 16px; }
 }
 @media (max-width: 768px) {
-  .home-faq__title { font-size: 28px; }
+  .home-faq__title { font-size: 24px; }
 }
 @media (max-width: 480px) {
-  .home-faq__title { font-size: 28px; }
+  .home-faq__title { font-size: 24px; }
   .home-faq__q { font-size: 18px; }
 }
