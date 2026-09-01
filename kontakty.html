@@ -35,7 +35,7 @@
           </ul>
         </li>
         <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
-        <li><a href="slovnik.html">Slovník pojmů</a></li>
+        <li><a href="forum.html">Fórum</a></li>
         <li><a href="index.html#o-nas">O nás</a></li>
         <li><a href="kontakty.html" aria-current="page">Kontakty</a></li>
       </ul>
@@ -59,7 +59,7 @@
         <li><a href="pruvodce-fve.html">— Fotovoltaika</a></li>
         <li class="navbar-mobile__divider"></li>
         <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
-        <li><a href="slovnik.html">Slovník pojmů</a></li>
+        <li><a href="forum.html">Fórum</a></li>
         <li><a href="index.html#o-nas">O nás</a></li>
         <li><a href="kontakty.html">Kontakty</a></li>
       </ul>
@@ -71,110 +71,119 @@
 <!-- Hero -->
 <section class="kontakt-hero">
   <div class="kontakt-hero__content">
-    <a class="fve-breadcrumb" href="index.html">← Zpět na hlavní stránku</a>
     <p class="fve-eyebrow">Kontakt</p>
-    <h1 class="kontakt-hero__title">Napište nám</h1>
+    <h1 class="kontakt-hero__title">Kontakty</h1>
     <p class="kontakt-hero__text">Rádi odpovíme na váš dotaz — ozveme se do 24 hodin v pracovní dny.</p>
+
+    <div class="kontakt-cards__grid">
+
+      <div class="kontakt-card">
+        <img class="kontakt-card__icon" src="assets/images/mail.svg" alt="" aria-hidden="true">
+        <div class="kontakt-card__texts">
+          <p class="kontakt-card__label">E-mail</p>
+          <span class="kontakt-card__value">info@example.cz</span>
+        </div>
+      </div>
+
+      <div class="kontakt-card">
+        <img class="kontakt-card__icon" src="assets/images/call.svg" alt="" aria-hidden="true">
+        <div class="kontakt-card__texts">
+          <p class="kontakt-card__label">Telefon</p>
+          <span class="kontakt-card__value">+420 xxx xxx xxx</span>
+        </div>
+      </div>
+
+      <div class="kontakt-card">
+        <img class="kontakt-card__icon" src="assets/images/location_on.svg" alt="" aria-hidden="true">
+        <div class="kontakt-card__texts">
+          <p class="kontakt-card__label">Adresa</p>
+          <span class="kontakt-card__value">Ulice xxx, PSČ, Město</span>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
-<!-- Hlavní obsah -->
-<section class="kontakt-main">
-  <div class="kontakt-main__container">
-    <div class="kontakt-main__grid">
+<!-- Formulář -->
+<section class="kontakt-form-section">
+  <div class="kontakt-form-section__container">
+    <h2 class="kontakt-form-section__title">Napište nám</h2>
 
-      <!-- Kontaktní údaje -->
-      <div class="kontakt-info">
-        <h2 class="kontakt-info__title">Kontaktní údaje</h2>
-
-        <ul class="kontakt-info__list">
-          <li class="kontakt-info__item">
-            <span class="kontakt-info__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-            </span>
-            <div class="kontakt-info__body">
-              <span class="kontakt-info__label">E-mail</span>
-              <a href="mailto:info@energohub.info" class="kontakt-info__value">info@energohub.info</a>
-            </div>
-          </li>
-
-          <li class="kontakt-info__item">
-            <span class="kontakt-info__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path>
-              </svg>
-            </span>
-            <div class="kontakt-info__body">
-              <span class="kontakt-info__label">Telefon</span>
-              <a href="tel:+420777123456" class="kontakt-info__value">+420 777 123 456</a>
-            </div>
-          </li>
-
-          <li class="kontakt-info__item">
-            <span class="kontakt-info__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="7" width="20" height="14" rx="2"></rect>
-                <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"></path>
-              </svg>
-            </span>
-            <div class="kontakt-info__body">
-              <span class="kontakt-info__label">IČO</span>
-              <span class="kontakt-info__value">123 45 678</span>
-            </div>
-          </li>
-
-          <li class="kontakt-info__item">
-            <span class="kontakt-info__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-            </span>
-            <div class="kontakt-info__body">
-              <span class="kontakt-info__label">Adresa</span>
-              <span class="kontakt-info__value">Václavské náměstí 1<br>110 00 Praha 1</span>
-            </div>
-          </li>
-        </ul>
-
-        <p class="kontakt-info__note">Odpovídáme do 24 hodin v pracovní dny. Pokud se jedná o technický dotaz k webu, připojte prosím odkaz nebo popis problému.</p>
-      </div>
-
-      <!-- Formulář -->
-      <form class="kontakt-form" id="kontaktForm" novalidate>
-        <h2 class="kontakt-form__title">Pošlete nám zprávu</h2>
-
-        <div class="kontakt-form__fields">
-          <div class="kontakt-form__row">
-            <div class="kontakt-form__field">
-              <label for="kontakt-name">Jméno *</label>
-              <input type="text" id="kontakt-name" name="name" placeholder="Jan Novák" required autocomplete="name">
-            </div>
-            <div class="kontakt-form__field">
-              <label for="kontakt-email">E-mail *</label>
-              <input type="email" id="kontakt-email" name="email" placeholder="jan@example.cz" required autocomplete="email">
-            </div>
+    <form class="kontakt-form" id="kontaktForm" novalidate>
+      <div class="kontakt-form__fields">
+        <div class="kontakt-form__row">
+          <div class="kontakt-form__field">
+            <label for="kontakt-name">Jméno *</label>
+            <input type="text" id="kontakt-name" name="name" placeholder="Jan Novák" required autocomplete="name">
           </div>
           <div class="kontakt-form__field">
-            <label for="kontakt-message">Zpráva *</label>
-            <textarea id="kontakt-message" name="message" rows="6" placeholder="Váš dotaz nebo zpráva..." required></textarea>
+            <label for="kontakt-email">E-mail *</label>
+            <input type="email" id="kontakt-email" name="email" placeholder="jan@example.cz" required autocomplete="email">
           </div>
-          <button type="submit" class="btn btn-primary kontakt-form__submit">Odeslat zprávu</button>
         </div>
+        <div class="kontakt-form__field">
+          <label for="kontakt-message">Zpráva *</label>
+          <textarea id="kontakt-message" name="message" rows="6" placeholder="Váš dotaz nebo zpráva..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary kontakt-form__submit">Odeslat zprávu</button>
+      </div>
 
-        <div class="kontakt-form__success" hidden>
-          <div class="kontakt-form__success-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-          </div>
-          <p class="kontakt-form__success-title">Zpráva odeslána!</p>
-          <p class="kontakt-form__success-text">Ozveme se vám co nejdříve,<br>obvykle do 24 hodin v pracovní dny.</p>
+      <div class="kontakt-form__success" hidden>
+        <div class="kontakt-form__success-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
         </div>
-      </form>
+        <p class="kontakt-form__success-title">Zpráva odeslána!</p>
+        <p class="kontakt-form__success-text">Ozveme se vám co nejdříve,<br>obvykle do 24 hodin v pracovní dny.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="fve-faq">
+  <div class="fve-faq__container">
+    <p class="fve-eyebrow">FAQ</p>
+    <h2 class="fve-faq__title">Nejčastější otázky</h2>
+
+    <div class="fve-faq__list">
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Jak rychle odpovídáte na dotazy?</summary>
+        <div class="fve-faq__a">
+          <p>Snažíme se odpovědět do 24 hodin v pracovní dny. Složitější dotazy mohou vyžadovat delší čas na zpracování, vždy vás ale informujeme o průběhu řešení.</p>
+        </div>
+      </details>
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Poskytujete individuální poradenství pro naše SVJ?</summary>
+        <div class="fve-faq__a">
+          <p>Ano. Energohub.info slouží jako nezávislý průvodce — nejsme svázáni s žádným dodavatelem ani instalatérskou firmou. Rádi vám poradíme, jaký postup dává pro váš dům největší smysl, a doporučíme vhodné kroky bez skrytých zájmů.</p>
+        </div>
+      </details>
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Je poradenství zdarma?</summary>
+        <div class="fve-faq__a">
+          <p>Základní orientační poradenství prostřednictvím formuláře nebo e-mailu je zdarma. Pro detailní analýzu konkrétního domu nebo asistenci při výběrovém řízení na dodavatele vás odkážeme na relevantní odborníky.</p>
+        </div>
+      </details>
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Mohu se obrátit na Energohub i jako jednotlivec, ne jen jako SVJ?</summary>
+        <div class="fve-faq__a">
+          <p>Samozřejmě. Obsah webu je zaměřen primárně na SVJ a bytová družstva, ale rádi odpovíme i na dotazy jednotlivých vlastníků bytů nebo členů výborů, kteří chtějí téma lépe pochopit před hlasováním na shromáždění.</p>
+        </div>
+      </details>
+
+      <details class="fve-faq__item">
+        <summary class="fve-faq__q">Jaké informace mám uvést v dotazu, aby byla odpověď co nejužitečnější?</summary>
+        <div class="fve-faq__a">
+          <p>Čím více kontextu poskytnete, tím lépe. Ideálně uveďte: počet bytů a odběrných míst v domě, roční spotřebu elektřiny (nebo alespoň výši plateb za energie), zda už máte JOM, a co vás konkrétně zajímá — zda řešíte FVE, zateplení, dotace nebo obecné úspory.</p>
+        </div>
+      </details>
 
     </div>
   </div>
@@ -199,6 +208,7 @@
           <li><a href="pruvodce-jom.html">Jednotné odběrné místo</a></li>
           <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
           <li><a href="slovnik.html">Slovník pojmů</a></li>
+          <li><a href="forum.html">Diskuzní fórum</a></li>
           <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
           <li><a href="index.html#o-nas">O nás</a></li>
           <li><a href="kontakty.html">Kontakty</a></li>

@@ -122,6 +122,7 @@ body {
   padding-top: 12px;
   list-style: none;
   min-width: 280px;
+  z-index: 50;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;

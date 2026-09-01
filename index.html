@@ -33,7 +33,7 @@
           </ul>
         </li>
         <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
-        <li><a href="slovnik.html">Slovník pojmů</a></li>
+        <li><a href="forum.html">Fórum</a></li>
         <li><a href="index.html#o-nas">O nás</a></li>
         <li><a href="kontakty.html">Kontakty</a></li>
       </ul>
@@ -57,7 +57,7 @@
         <li><a href="pruvodce-fve.html">— Fotovoltaika</a></li>
         <li class="navbar-mobile__divider"></li>
         <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
-        <li><a href="slovnik.html">Slovník pojmů</a></li>
+        <li><a href="forum.html">Fórum</a></li>
         <li><a href="index.html#o-nas">O nás</a></li>
         <li><a href="kontakty.html">Kontakty</a></li>
       </ul>
@@ -424,6 +424,7 @@
           <li><a href="pruvodce-jom.html">Jednotné odběrné místo</a></li>
           <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
           <li><a href="slovnik.html">Slovník pojmů</a></li>
+          <li><a href="forum.html">Diskuzní fórum</a></li>
           <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
           <li><a href="#o-nas">O nás</a></li>
           <li><a href="kontakty.html">Kontakty</a></li>
@@ -473,24 +474,6 @@
 
 <script src="js/showcase.js"></script>
 <script src="js/process.js?v=2"></script>
-<script>
-  (function () {
-    var frame = document.getElementById('hero3dFrame');
-    frame.addEventListener('load', function () {
-      try {
-        var doc = frame.contentDocument || frame.contentWindow.document;
-        var s = doc.createElement('style');
-        // Skryjeme vlastní text/CTA hero3d, ale zachováme controls (přepínač) a canvas
-        s.textContent = [
-          '.hero-left, .stats { display: none !important; }',
-          '.hero-canvas { transform: translateX(20%) !important; }',
-          '.controls { left: 70% !important; transform: translateX(-50%) !important; bottom: 28px !important; right: auto !important; }'
-        ].join(' ');
-        doc.head.appendChild(s);
-      } catch (e) {}
-    });
-  })();
-</script>
 <script src="js/footer.js"></script>
 <script src="js/navbar.js"></script>
 </body>

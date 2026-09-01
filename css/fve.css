@@ -82,7 +82,7 @@
   padding: 0 80px;
   z-index: 3;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr auto;
   align-items: center;
   pointer-events: none;
 }
@@ -145,7 +145,7 @@
 .fve-hero__title {
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 52px;
+  font-size: clamp(46px, 3.2vw, 62px);
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--text-white);
@@ -4778,7 +4778,7 @@
 }
 
 .slovnik-hero__title {
-  font: 800 52px/1.1 var(--font-heading);
+  font: 700 clamp(46px, 3.2vw, 62px)/1.1 var(--font-heading);
   color: var(--text-white);
   margin: 0 0 16px;
 }
@@ -4917,15 +4917,46 @@
 
 .kalk-hero {
   background: #05050a;
-  text-align: center;
-  padding: 180px 48px 100px;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.kalk-hero__inner { max-width: 680px; margin: 0 auto; }
+.kalk-hero::before {
+  content: '';
+  position: absolute;
+  left: 35%;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: url('../assets/images/calc.png') center center / cover no-repeat;
+  z-index: 0;
+}
+
+.kalk-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, #05050ae6 0%, #05050a99 28%, #05050a14 48%, #05050a00 60%),
+    rgba(5,5,10,0.5);
+}
+
+.kalk-hero__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 80px 80px;
+}
 
 .kalk-hero__title {
-  font: 800 56px/1.1 var(--font-heading);
+  font: 700 clamp(46px, 3.2vw, 62px)/1.1 var(--font-heading);
   color: var(--text-white);
   margin: 12px 0 20px;
 }
@@ -4934,6 +4965,7 @@
   font: 400 18px/1.65 var(--font-body);
   color: var(--text-muted);
   margin: 0 0 40px;
+  max-width: 560px;
 }
 
 /* Wizard wrapper */
@@ -5843,8 +5875,17 @@ details[open].kalk-refine > summary::after { transform: rotate(180deg); }
   .kalk-panel-body { grid-template-columns: 1fr; gap: 40px; }
 }
 
+@media (max-width: 1100px) {
+  .kalk-hero__inner {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
 @media (max-width: 760px) {
-  .kalk-hero { padding: 120px 24px 72px; }
+  .kalk-hero { min-height: 0; }
+  .kalk-hero::before { left: 0; }
+  .kalk-hero__inner { padding: 120px 24px 60px; }
   .kalk-hero__title { font-size: 36px; }
   .kalk-hero__perex { font-size: 16px; }
   .kalk-wizard { padding: 0 24px; }

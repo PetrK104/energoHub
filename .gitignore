@@ -1,0 +1,9 @@
+# Local Netlify folder
+.netlify
+
+# Environment variables — NEVER commit to git
+.env
+.env.local
+
+# Závislosti — Netlify nainstaluje samo
+node_modules/
