@@ -4939,7 +4939,7 @@
   .slovnik-main { padding: 0 16px 64px; }
   .slovnik__letter-heading { font-size: 56px; }
   .slovnik__grid { grid-template-columns: 1fr; gap: 32px; }
-  .slovnik__letter-btn { font-size: 13px; padding: 10px 10px; }
+  .slovnik__letter-btn { font-size: 18px; padding: 12px 14px; }
 }
 
 /* ===== Kalkulačka úspor ===== */

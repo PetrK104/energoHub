@@ -218,6 +218,23 @@
   transform: translateY(-1px);
 }
 
+.forum-hero__explore-btn {
+  display: inline-block;
+  padding: 14px 32px;
+  border: 1.5px solid var(--lime);
+  border-radius: 8px;
+  background: rgba(183,241,61,0.04);
+  color: var(--lime);
+  font: 700 16px/1 var(--font-body);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.forum-hero__explore-btn:hover {
+  background: rgba(183,241,61,0.10);
+  transform: translateY(-1px);
+}
+
 .forum-hero__title {
   font: 700 clamp(46px, 3.2vw, 62px)/1.1 var(--font-heading);
   color: var(--text-white);
@@ -380,9 +397,16 @@
 /* ===== Příspěvek — flat řádkový styl ===== */
 
 .forum-post {
-  padding: 18px 0;
+  padding: 18px 14px;
+  margin: 0 -14px;
   border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
   cursor: pointer;
+  transition: background 0.15s;
+}
+
+.forum-post:hover:not(:has(.forum-post__quick-reply:hover)) {
+  background: rgba(255,255,255,0.04);
 }
 
 .forum-post:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
@@ -394,7 +418,7 @@
   transition: color 0.15s;
 }
 
-.forum-post:hover .forum-post__title { color: var(--lime); }
+.forum-post:hover:not(:has(.forum-post__quick-reply:hover)) .forum-post__title { color: var(--lime); }
 
 .forum-post__preview {
   font: 400 17px/1.65 var(--font-body);
@@ -444,6 +468,56 @@
 
 .forum-post__meta-replies svg { width: 20px; height: 20px; }
 
+/* ===== Rychlá odpověď na kartě ===== */
+
+.forum-post__quick-reply {
+  padding: 12px 0 4px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 10px;
+}
+
+.forum-post__quick-reply-row {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.forum-post__quick-reply-row:focus-within {
+  border-color: rgba(183,241,61,0.4);
+}
+
+.forum-post__quick-reply-form input[type=text] {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  color: var(--text-white);
+  font: 400 14px/1 var(--font-body);
+  padding: 12px 16px;
+}
+
+.forum-post__quick-reply-form input[type=text]::placeholder { color: rgba(255,255,255,0.3); }
+
+.forum-post__quick-reply-form input[type=text]:focus { outline: none; }
+
+.forum-post__quick-reply-error {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #f87171;
+}
+
+.forum-post__quick-reply-submit {
+  flex-shrink: 0;
+  margin: 4px;
+  padding: 8px 20px;
+  font-size: 13px;
+  border-radius: 6px;
+}
+
 /* ===== Prázdný stav ===== */
 
 .forum-empty {
@@ -451,6 +525,66 @@
   padding: 64px 0;
   font: 400 16px/1.6 var(--font-body);
   color: rgba(255,255,255,0.35);
+}
+
+/* ===== Stránkování ===== */
+
+.forum-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 28px 0 8px;
+}
+
+.forum-pagination__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  color: rgba(255,255,255,0.35);
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+}
+
+.forum-pagination__arrow:hover:not(:disabled) {
+  color: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.06);
+}
+
+.forum-pagination__arrow:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.forum-pagination__page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 6px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  color: rgba(255,255,255,0.4);
+  font: 500 14px/1 var(--font-body);
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+}
+
+.forum-pagination__page:hover:not(.is-active) {
+  color: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.06);
+}
+
+.forum-pagination__page.is-active {
+  color: var(--lime);
+  background: rgba(183,241,61,0.08);
 }
 
 /* ===== Modal ===== */
@@ -634,12 +768,28 @@
   max-width: 620px;
 }
 
+.forum-modal__switch {
+  margin-top: 14px;
+  text-align: center;
+  font: 400 14px/1 var(--font-body);
+  color: rgba(255,255,255,0.35);
+}
+
 .forum-modal__error {
   font: 400 14px/1.5 var(--font-body);
   color: #f87171;
   padding: 10px 14px;
   background: rgba(248,113,113,0.08);
   border: 1px solid rgba(248,113,113,0.25);
+  border-radius: 8px;
+}
+
+.forum-modal__success {
+  font: 400 14px/1.5 var(--font-body);
+  color: #4ade80;
+  padding: 10px 14px;
+  background: rgba(74,222,128,0.08);
+  border: 1px solid rgba(74,222,128,0.25);
   border-radius: 8px;
 }
 

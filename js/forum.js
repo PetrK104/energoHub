@@ -22,6 +22,9 @@
   var allThreads      = []
   var autoStartTurns  = 0
   var userCache       = {}  // userId → username
+  var pendingAction   = null
+  var currentPage     = 1
+  var THREADS_PER_PAGE = 5
 
   // === DOM — hero auth ===
   var heroAuthPanel        = document.getElementById('heroAuthPanel')
@@ -50,6 +53,7 @@
   var forumList       = document.getElementById('forumList')
   var forumLoading    = document.getElementById('forumLoading')
   var forumEmpty      = document.getElementById('forumEmpty')
+  var forumPagination = document.getElementById('forumPagination')
   var forumSearch     = document.getElementById('forumSearch')
   var forumNewBtn     = document.getElementById('forumNewBtn')
 
@@ -69,8 +73,17 @@
   var authModal         = document.getElementById('authModal')
   var authModalBackdrop = document.getElementById('authModalBackdrop')
   var authModalClose    = document.getElementById('authModalClose')
+  var authModalTitle    = document.getElementById('authModalTitle')
   var authForm          = document.getElementById('authForm')
   var authError         = document.getElementById('authError')
+  var authSwitchToRegister = document.getElementById('authSwitchToRegister')
+  var authSwitchToLogin    = document.getElementById('authSwitchToLogin')
+  var authRegisterForm     = document.getElementById('authRegisterForm')
+  var authRegError         = document.getElementById('authRegError')
+  var authRegSuccess       = document.getElementById('authRegSuccess')
+  var authRegUsernameInput = document.getElementById('authRegUsernameInput')
+  var authRegEmailInput    = document.getElementById('authRegEmailInput')
+  var authRegPasswordInput = document.getElementById('authRegPasswordInput')
 
   var forumModal         = document.getElementById('forumModal')
   var forumModalBackdrop = document.getElementById('forumModalBackdrop')
@@ -88,6 +101,10 @@
   var addBotModalClose    = document.getElementById('addBotModalClose')
   var addBotForm          = document.getElementById('addBotForm')
   var addBotError         = document.getElementById('addBotError')
+
+  var heroExplorePanel     = document.getElementById('heroExplorePanel')
+  var heroExploreBtn       = document.getElementById('heroExploreBtn')
+  var heroUserCard         = document.getElementById('heroUserCard')
 
   var heroDeleteAccountBtn  = document.getElementById('heroDeleteAccountBtn')
   var deleteAccountWrap     = document.getElementById('deleteAccountWrap')
@@ -198,11 +215,23 @@
       heroEyeClosed.hidden = !isHidden
     })
 
+    // Hero — explore button (nepřihlášený stav)
+    heroExploreBtn.addEventListener('click', function () {
+      document.querySelector('.forum-main').scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
+
     // Hero auth — user panel
     heroSignOutBtn.addEventListener('click', handleSignOut)
 
     // Nové vlákno (toolbar)
-    forumNewBtn.addEventListener('click', openForumModal)
+    forumNewBtn.addEventListener('click', function () {
+      if (!currentUser) {
+        pendingAction = 'newThread'
+        openAuthModal()
+      } else {
+        openForumModal()
+      }
+    })
 
     // Auth modal (pro login hint v detailu vlákna)
     authModalClose.addEventListener('click', closeAuthModal)
@@ -212,10 +241,29 @@
       var d = new FormData(authForm)
       handleSignIn(d.get('email'), d.get('password'), authError, authForm)
     })
+
+    authSwitchToRegister.addEventListener('click', function () {
+      authForm.hidden = true
+      authRegisterForm.hidden = false
+      authModalTitle.textContent = 'Registrace'
+    })
+    authSwitchToLogin.addEventListener('click', function () {
+      authRegisterForm.hidden = true
+      authForm.hidden = false
+      authModalTitle.textContent = 'Přihlášení'
+    })
+    authRegisterForm.addEventListener('submit', function (e) {
+      e.preventDefault()
+      var username = authRegUsernameInput.value
+      var email    = authRegEmailInput.value
+      var password = authRegPasswordInput.value
+      handleSignUpModal(username, email, password)
+    })
+
     if (loginHintBtn) loginHintBtn.addEventListener('click', openAuthModal)
     if (loginHintRegisterBtn) loginHintRegisterBtn.addEventListener('click', function () {
-      showHeroMode('register')
-      document.querySelector('.forum-hero').scrollIntoView({ behavior: 'smooth', block: 'start' })
+      openAuthModal()
+      authSwitchToRegister.click()
     })
 
     // Nové vlákno modal
@@ -230,6 +278,7 @@
     // Vyhledávání
     forumSearch.addEventListener('input', function () {
       searchQuery = forumSearch.value.trim().toLowerCase()
+      currentPage = 1
       renderThreads(allThreads)
     })
 
@@ -237,6 +286,7 @@
     document.querySelectorAll('.forum-filter-tab').forEach(function (btn) {
       btn.addEventListener('click', function () {
         activeFilter = btn.dataset.filter
+        currentPage = 1
         document.querySelectorAll('.forum-filter-tab').forEach(function (b) {
           b.classList.toggle('is-active', b === btn)
         })
@@ -245,7 +295,8 @@
     })
 
     // Detail
-    backBtn.addEventListener('click', showListView)
+    backBtn.addEventListener('click', function () { history.back() })
+    window.addEventListener('popstate', function () { if (currentThread) showListView() })
     toggleBotBtn.addEventListener('click', handleToggleBotMode)
     addBotToThreadBtn.addEventListener('click', openAddBotModal)
     threadHeader.addEventListener('click', function (e) {
@@ -335,16 +386,16 @@
 
   function updateAuthUI() {
     if (currentUser) {
-      heroAuthPanel.hidden = true
-      heroUserPanel.hidden = false
+      heroExplorePanel.hidden = true
+      heroUserCard.hidden = false
       heroUserEmail.textContent        = currentUsername || '…'
       heroUserEmailAddress.textContent = currentUser.email
       forumNewBtn.hidden = false
       deleteAccountWrap.hidden = false
     } else {
-      heroAuthPanel.hidden = false
-      heroUserPanel.hidden = true
-      forumNewBtn.hidden = true
+      heroExplorePanel.hidden = false
+      heroUserCard.hidden = true
+      forumNewBtn.hidden = false
       deleteAccountWrap.hidden = true
     }
 
@@ -369,6 +420,16 @@
       return
     }
     if (!authModal.hidden) closeAuthModal()
+    if (pendingAction === 'newThread') {
+      pendingAction = null
+      openForumModal()
+    } else if (pendingAction && pendingAction.type === 'reply') {
+      var tid = pendingAction.threadId
+      var savedText = pendingAction.text
+      pendingAction = null
+      var form = document.querySelector('.forum-post__quick-reply-form[data-thread-id="' + tid + '"]')
+      if (form && savedText) handleInlineReply(tid, savedText, form)
+    }
   }
 
   function showHeroMode(mode) {
@@ -447,6 +508,77 @@
     heroRegisterForm.reset()
   }
 
+  async function handleSignUpModal(username, email, password) {
+    authRegError.hidden   = true
+    authRegSuccess.hidden = true
+
+    var showErr = function (msg) {
+      authRegError.textContent = msg
+      authRegError.hidden = false
+    }
+
+    email    = (email    || '').trim()
+    password = (password || '').trim()
+    username = (username || '').trim()
+
+    if (!username || username.length < 3) return showErr('Uživatelské jméno musí mít alespoň 3 znaky.')
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showErr('Zadejte platnou e-mailovou adresu.')
+    if (!password || password.length < 6) return showErr('Heslo musí mít alespoň 6 znaků.')
+
+    var submitBtn = authRegisterForm.querySelector('button[type=submit]')
+    submitBtn.disabled = true
+
+    var result = await sb.auth.signUp({ email: email, password: password })
+
+    if (result.error) {
+      showErr(result.error.message)
+      submitBtn.disabled = false
+      return
+    }
+
+    var token = result.data.session ? result.data.session.access_token : null
+    if (token && username) {
+      try {
+        var r = await fetch('/.netlify/functions/upsert-profile', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+          body:    JSON.stringify({ username: username })
+        })
+        var d = await r.json()
+        if (!r.ok) {
+          showErr(d.error || 'Chyba při ukládání jména.')
+          submitBtn.disabled = false
+          return
+        }
+      } catch (err) {
+        showErr('Chyba připojení: ' + err.message)
+        submitBtn.disabled = false
+        return
+      }
+      submitBtn.disabled = false
+      if (!authModal.hidden) closeAuthModal()
+      if (pendingAction === 'newThread') {
+        pendingAction = null
+        openForumModal()
+      } else if (pendingAction && pendingAction.type === 'reply') {
+        var tid = pendingAction.threadId
+        pendingAction = null
+        toggleQuickReply(tid)
+      }
+    } else if (username) {
+      localStorage.setItem('pendingUsername', username)
+      submitBtn.disabled = false
+      authRegSuccess.textContent = 'Zkontrolujte svůj e-mail a potvrďte registraci.'
+      authRegSuccess.hidden = false
+      authRegisterForm.reset()
+    } else {
+      submitBtn.disabled = false
+      authRegSuccess.textContent = 'Zkontrolujte svůj e-mail a potvrďte registraci.'
+      authRegSuccess.hidden = false
+      authRegisterForm.reset()
+    }
+  }
+
   async function handleSignOut() {
     await sb.auth.signOut()
   }
@@ -496,12 +628,18 @@
   }
 
   function openAuthModal() {
-    authModal.hidden = false
+    authForm.hidden = false
+    authRegisterForm.hidden = true
+    authModalTitle.textContent = 'Přihlášení'
     authForm.reset()
+    authRegisterForm.reset()
     authError.hidden = true
+    authRegError.hidden = true
+    authRegSuccess.hidden = true
+    authModal.hidden = false
     document.body.style.overflow = 'hidden'
     setTimeout(function () {
-      var input = authModal.querySelector('input')
+      var input = authModal.querySelector('input:not([hidden])')
       if (input) input.focus()
     }, 50)
   }
@@ -519,6 +657,7 @@
     currentThread = null
     autoStartTurns = 0
     unsubscribeRealtime()
+    history.replaceState(null, '', location.pathname + location.search)
   }
 
   async function loadThreads() {
@@ -554,16 +693,22 @@
     forumEmpty.hidden = filtered.length > 0
     if (!filtered.length) {
       forumList.innerHTML = ''
+      forumPagination.hidden = true
       forumEmpty.textContent = searchQuery || activeFilter
         ? 'Žádná vlákna neodpovídají filtru.'
         : 'Zatím žádná vlákna. Buďte první!'
       return
     }
 
+    var totalPages = Math.ceil(filtered.length / THREADS_PER_PAGE)
+    if (currentPage > totalPages) currentPage = totalPages
+    var start = (currentPage - 1) * THREADS_PER_PAGE
+    var paged = filtered.slice(start, start + THREADS_PER_PAGE)
+
     var personIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path></svg>'
     var bubbleIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>'
 
-    forumList.innerHTML = filtered.map(function (t) {
+    forumList.innerHTML = paged.map(function (t) {
       var msgs  = t.messages || []
       var fullText = t.body || ''
       var preview = fullText.length > 130
@@ -578,7 +723,16 @@
           '<div class="forum-post__meta">' +
             '<span class="forum-post__meta-date">' + escapeHtml(formatDateTime(t.created_at)) + '</span>' +
             '<span class="forum-post__meta-author">' + personIcon + escapeHtml(userCache[t.created_by] || 'Anonymní') + '</span>' +
-            '<span class="forum-post__meta-replies">' + bubbleIcon + count + '</span>' +
+            '<span class="forum-post__meta-replies">' + bubbleIcon + '<span class="forum-post__reply-count">' + count + '</span></span>' +
+          '</div>' +
+          '<div class="forum-post__quick-reply" id="qr-' + t.id + '">' +
+            '<form class="forum-post__quick-reply-form" data-thread-id="' + t.id + '" novalidate>' +
+              '<div class="forum-post__quick-reply-row">' +
+                '<input type="text" placeholder="Napište odpověď…" autocomplete="off">' +
+                '<button type="submit" class="btn btn-primary forum-post__quick-reply-submit">Odeslat</button>' +
+              '</div>' +
+              '<p class="forum-post__quick-reply-error" hidden></p>' +
+            '</form>' +
           '</div>' +
         '</article>'
       )
@@ -595,6 +749,99 @@
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openByEl() }
       })
     })
+
+    forumList.querySelectorAll('.forum-post__quick-reply').forEach(function (panel) {
+      panel.addEventListener('click', function (e) { e.stopPropagation() })
+    })
+
+    forumList.querySelectorAll('.forum-post__quick-reply-form').forEach(function (form) {
+      var input = form.querySelector('input[type=text]')
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault()
+        var text = input.value.trim()
+        if (!text) return
+        if (!currentUser) {
+          pendingAction = { type: 'reply', threadId: form.dataset.threadId, text: text }
+          openAuthModal()
+          return
+        }
+        handleInlineReply(form.dataset.threadId, text, form)
+      })
+    })
+
+    // Stránkování
+    if (totalPages <= 1) {
+      forumPagination.hidden = true
+    } else {
+      forumPagination.hidden = false
+      var prevSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>'
+      var nextSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>'
+
+      var pages = ''
+      for (var p = 1; p <= totalPages; p++) {
+        pages += '<button class="forum-pagination__page' + (p === currentPage ? ' is-active' : '') + '" data-page="' + p + '">' + p + '</button>'
+      }
+
+      forumPagination.innerHTML =
+        '<button class="forum-pagination__arrow" id="pgPrev" aria-label="Předchozí stránka"' + (currentPage === 1 ? ' disabled' : '') + '>' + prevSvg + '</button>' +
+        pages +
+        '<button class="forum-pagination__arrow" id="pgNext" aria-label="Další stránka"' + (currentPage === totalPages ? ' disabled' : '') + '>' + nextSvg + '</button>'
+
+      forumPagination.querySelector('#pgPrev').addEventListener('click', function () {
+        if (currentPage > 1) { currentPage--; renderThreads(allThreads) }
+      })
+      forumPagination.querySelector('#pgNext').addEventListener('click', function () {
+        if (currentPage < totalPages) { currentPage++; renderThreads(allThreads) }
+      })
+      forumPagination.querySelectorAll('.forum-pagination__page').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          currentPage = parseInt(btn.dataset.page)
+          renderThreads(allThreads)
+        })
+      })
+    }
+  }
+
+  function toggleQuickReply(threadId) {
+    var panel = document.getElementById('qr-' + threadId)
+    if (!panel) return
+    panel.hidden = !panel.hidden
+    if (!panel.hidden) panel.querySelector('textarea').focus()
+  }
+
+  async function handleInlineReply(threadId, text, formEl) {
+    var submitBtn = formEl.querySelector('button[type=submit]')
+    var errorEl   = formEl.querySelector('.forum-post__quick-reply-error')
+    submitBtn.disabled = true
+    errorEl.hidden = true
+
+    var token = await getToken()
+    if (!token) { submitBtn.disabled = false; return }
+
+    try {
+      var r = await fetch('/.netlify/functions/send-reply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+        body: JSON.stringify({ thread_id: threadId, text: text })
+      })
+      var d = await r.json()
+      if (!r.ok) {
+        errorEl.textContent = d.error || 'Chyba při odesílání.'
+        errorEl.hidden = false
+        submitBtn.disabled = false
+        return
+      }
+      formEl.querySelector('input[type=text]').value = ''
+      document.getElementById('qr-' + threadId).hidden = true
+      var countEl = document.querySelector('[data-id="' + threadId + '"] .forum-post__reply-count')
+      if (countEl) countEl.textContent = (parseInt(countEl.textContent) || 0) + 1
+      submitBtn.disabled = false
+    } catch (err) {
+      errorEl.textContent = 'Chyba připojení: ' + err.message
+      errorEl.hidden = false
+      submitBtn.disabled = false
+    }
   }
 
   // === DETAIL VIEW ===
@@ -608,6 +855,7 @@
     updateBotBar()
     await loadMessages(thread.id)
     subscribeRealtime(thread.id)
+    history.pushState({ threadId: thread.id }, '', '#' + thread.id)
   }
 
   function renderThreadHeader(thread) {

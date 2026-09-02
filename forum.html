@@ -76,68 +76,14 @@
     <h1 class="forum-hero__title">Diskuzní fórum</h1>
     <p class="forum-hero__text">Ptejte se, sdílejte zkušenosti a pomáhejte ostatním SVJ a bytovým družstvům.</p>
 
-    <div class="forum-hero__auth">
+    <!-- Nepřihlášený stav: Prozkoumat témata -->
+    <div id="heroExplorePanel" style="margin-top:32px;">
+      <button class="forum-hero__explore-btn" id="heroExploreBtn">Prozkoumat témata</button>
+    </div>
 
-      <!-- Nepřihlášený stav -->
-      <div id="heroAuthPanel">
-
-        <h2 class="forum-hero__auth-heading" id="heroAuthHeading">Přihlášení</h2>
-        <p class="forum-hero__auth-sub" id="heroAuthSub">Vítejte zpět, přihlaste se ke svému účtu.</p>
-
-        <form id="heroLoginForm" novalidate>
-          <div class="forum-hero__input-wrap">
-            <input type="email" name="email" placeholder="E-mail" required autocomplete="email">
-            <svg class="forum-hero__input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="8" r="4"></circle>
-              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path>
-            </svg>
-          </div>
-          <div class="forum-hero__input-wrap">
-            <input type="password" name="password" id="heroPasswordInput" placeholder="Heslo" required autocomplete="current-password">
-            <button type="button" class="forum-hero__eye-btn" id="heroPasswordToggle" aria-label="Zobrazit/skrýt heslo" tabindex="-1">
-              <svg id="heroEyeOpen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                <circle cx="12" cy="12" r="3"></circle>
-              </svg>
-              <svg id="heroEyeClosed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" hidden>
-                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
-                <line x1="1" y1="1" x2="23" y2="23"></line>
-              </svg>
-            </button>
-          </div>
-          <p class="forum-hero__auth-error" id="heroLoginError" hidden></p>
-          <button type="submit" class="btn btn-primary">Přihlásit se</button>
-          <p class="forum-hero__auth-switch">Nemáte účet? <button type="button" class="forum-hero__auth-switch-btn" id="heroSwitchToRegister">Registrovat se</button></p>
-        </form>
-
-        <form id="heroRegisterForm" novalidate hidden>
-          <div class="forum-hero__input-wrap">
-            <input type="text" name="username" id="heroUsernameInput" placeholder="Uživatelské jméno" required autocomplete="nickname" minlength="3" maxlength="30">
-            <svg class="forum-hero__input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="8" r="4"></circle>
-              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path>
-            </svg>
-          </div>
-          <div class="forum-hero__input-wrap">
-            <input type="email" name="email" placeholder="E-mail" required autocomplete="email">
-            <svg class="forum-hero__input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-          </div>
-          <div class="forum-hero__input-wrap">
-            <input type="password" name="password" placeholder="Heslo (min. 6 znaků)" required autocomplete="new-password">
-          </div>
-          <p class="forum-hero__auth-error" id="heroRegisterError" hidden></p>
-          <p class="forum-hero__auth-success" id="heroRegisterSuccess" hidden>Zkontrolujte e-mail a klikněte na potvrzovací odkaz.</p>
-          <button type="submit" class="btn btn-primary">Registrovat se</button>
-          <p class="forum-hero__auth-switch">Máte účet? <button type="button" class="forum-hero__auth-switch-btn" id="heroSwitchToLogin">Přihlásit se</button></p>
-        </form>
-
-      </div>
-
-      <!-- Přihlášený stav: ikona + jméno + email + odhlásit -->
-      <div class="forum-hero__user" id="heroUserPanel" hidden>
+    <!-- Přihlášený stav: user panel -->
+    <div class="forum-hero__auth" id="heroUserCard" hidden>
+      <div class="forum-hero__user" id="heroUserPanel">
         <div class="forum-hero__user-info">
           <div class="forum-hero__user-details">
             <span class="forum-hero__user-name" id="heroUserEmail"></span>
@@ -152,7 +98,28 @@
         </div>
         <button class="forum-hero__signout-btn" id="heroSignOutBtn">Odhlásit se</button>
       </div>
+    </div>
 
+    <!-- Formuláře (skryté, pouze pro JS reference) -->
+    <div id="heroAuthPanel" hidden>
+      <h2 id="heroAuthHeading" hidden></h2>
+      <p id="heroAuthSub" hidden></p>
+      <form id="heroLoginForm" novalidate hidden>
+        <input type="email" name="email" autocomplete="email">
+        <input type="password" name="password" id="heroPasswordInput" autocomplete="current-password">
+        <button type="button" id="heroPasswordToggle">
+          <svg id="heroEyeOpen" viewBox="0 0 24 24"></svg>
+          <svg id="heroEyeClosed" viewBox="0 0 24 24" hidden></svg>
+        </button>
+        <p id="heroLoginError" hidden></p>
+        <button type="button" id="heroSwitchToRegister" hidden></button>
+      </form>
+      <form id="heroRegisterForm" novalidate hidden>
+        <input type="text" id="heroUsernameInput" autocomplete="nickname">
+        <p id="heroRegisterError" hidden></p>
+        <p id="heroRegisterSuccess" hidden></p>
+        <button type="button" id="heroSwitchToLogin" hidden></button>
+      </form>
     </div>
   </div>
 </section>
@@ -172,7 +139,7 @@
           </svg>
           <input type="search" id="forumSearch" placeholder="Hledat v diskuzi…" autocomplete="off" aria-label="Vyhledat příspěvky">
         </div>
-        <button class="btn btn-primary" id="forumNewBtn" hidden>+ Nové vlákno</button>
+        <button class="btn btn-primary" id="forumNewBtn">+ Nové vlákno</button>
       </div>
 
       <div class="forum-filter-tabs" role="group" aria-label="Filtrovat podle průvodce">
@@ -184,6 +151,7 @@
       <div class="forum-list" id="forumList" aria-live="polite"></div>
       <div class="forum-loading" id="forumLoading">Načítám vlákna…</div>
       <div class="forum-empty" id="forumEmpty" hidden>Zatím žádná vlákna. Buďte první!</div>
+      <nav class="forum-pagination" id="forumPagination" hidden aria-label="Stránkování"></nav>
 
       <div class="forum-delete-account-wrap" id="deleteAccountWrap" hidden>
         <button class="forum-delete-account-btn" id="heroDeleteAccountBtn">Smazat profil</button>
@@ -250,6 +218,27 @@
         </div>
         <p class="forum-modal__error" id="authError" hidden></p>
         <button type="submit" class="btn btn-primary">Přihlásit se</button>
+        <p class="forum-modal__switch">Nemáte účet? <button type="button" class="btn-link" id="authSwitchToRegister">Zaregistrujte se</button></p>
+      </div>
+    </form>
+    <form id="authRegisterForm" hidden novalidate>
+      <div class="forum-modal__fields">
+        <div class="forum-modal__field">
+          <label for="authRegUsernameInput">Uživatelské jméno *</label>
+          <input type="text" id="authRegUsernameInput" placeholder="Vaše jméno" required autocomplete="username">
+        </div>
+        <div class="forum-modal__field">
+          <label for="authRegEmailInput">E-mail *</label>
+          <input type="email" id="authRegEmailInput" placeholder="jan@example.cz" required autocomplete="email">
+        </div>
+        <div class="forum-modal__field">
+          <label for="authRegPasswordInput">Heslo *</label>
+          <input type="password" id="authRegPasswordInput" placeholder="••••••••" required autocomplete="new-password">
+        </div>
+        <p class="forum-modal__error" id="authRegError" hidden></p>
+        <p class="forum-modal__success" id="authRegSuccess" hidden></p>
+        <button type="submit" class="btn btn-primary">Vytvořit účet</button>
+        <p class="forum-modal__switch">Máte účet? <button type="button" class="btn-link" id="authSwitchToLogin">Přihlaste se</button></p>
       </div>
     </form>
   </div>
