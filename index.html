@@ -7,10 +7,14 @@
 <title>Energohub.info — Srozumitelně k úsporám ve vašem domě</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/figtree/v9/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_eYR25ZyEA25WTzZO8.woff2" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<div id="page-loader" aria-hidden="true">
+  <img class="loader-logo" src="assets/images/Logo.svg" alt="">
+</div>
 
 <header class="site-header">
   <div class="navbar-container">
@@ -156,7 +160,7 @@
           <a href="pruvodce-jom.html" class="guide-link">Přejít na průvodce <span class="guide-link-arrow">→</span></a>
         </div>
         <div class="guide-card-illustration-wrap">
-          <img class="guide-card-illustration" src="assets/images/cards/card_1.png?v=2" alt="Jednotné odběrné místo">
+          <img class="guide-card-illustration" src="assets/images/cards/card_1.webp" alt="Jednotné odběrné místo" loading="lazy">
         </div>
       </article>
 
@@ -168,7 +172,7 @@
           <a href="pruvodce-fve.html" class="guide-link">Přejít na průvodce <span class="guide-link-arrow">→</span></a>
         </div>
         <div class="guide-card-illustration-wrap">
-          <img class="guide-card-illustration" src="assets/images/cards/card_2.png?v=3" alt="Fotovoltaika">
+          <img class="guide-card-illustration" src="assets/images/cards/card_2.webp" alt="Fotovoltaika" loading="lazy">
         </div>
       </article>
 
@@ -179,7 +183,7 @@
           <a href="#" class="guide-link" tabindex="-1">Přejít na průvodce <span class="guide-link-arrow">→</span></a>
         </div>
         <div class="guide-card-illustration-wrap">
-          <img class="guide-card-illustration" src="assets/images/cards/card_3.png?v=3" alt="Teplo a TUV">
+          <img class="guide-card-illustration" src="assets/images/cards/card_3.webp" alt="Teplo a TUV" loading="lazy">
         </div>
         <div class="guide-card-soon">
           <span class="guide-card-soon-title">Teplo a TUV</span>
@@ -194,7 +198,7 @@
           <a href="#" class="guide-link" tabindex="-1">Přejít na průvodce <span class="guide-link-arrow">→</span></a>
         </div>
         <div class="guide-card-illustration-wrap">
-          <img class="guide-card-illustration" src="assets/images/cards/card_4.png?v=3" alt="Okna a dveře">
+          <img class="guide-card-illustration" src="assets/images/cards/card_4.webp" alt="Okna a dveře" loading="lazy">
         </div>
         <div class="guide-card-soon">
           <span class="guide-card-soon-title">Okna a dveře</span>
@@ -209,7 +213,7 @@
           <a href="#" class="guide-link" tabindex="-1">Přejít na průvodce <span class="guide-link-arrow">→</span></a>
         </div>
         <div class="guide-card-illustration-wrap">
-          <img class="guide-card-illustration" src="assets/images/cards/card_5.png" alt="Zateplení">
+          <img class="guide-card-illustration" src="assets/images/cards/card_5.webp" alt="Zateplení" loading="lazy">
         </div>
         <div class="guide-card-soon">
           <span class="guide-card-soon-title">Zateplení</span>
@@ -224,7 +228,7 @@
           <a href="#" class="guide-link" tabindex="-1">Přejít na průvodce <span class="guide-link-arrow">→</span></a>
         </div>
         <div class="guide-card-illustration-wrap">
-          <img class="guide-card-illustration" src="assets/images/cards/card_6.png" alt="Doporučené pořadí realizace">
+          <img class="guide-card-illustration" src="assets/images/cards/card_6.webp" alt="Doporučené pořadí realizace" loading="lazy">
         </div>
         <div class="guide-card-soon">
           <span class="guide-card-soon-title">Doporučené pořadí realizace</span>
@@ -236,19 +240,11 @@
 </section>
 
 <section class="calc-section" id="kalkulacka-nahled">
-  <div class="calc-section__img-left">
-    <img src="assets/images/all_left.png?v=2" alt="">
-  </div>
-
   <div class="calc-section__center">
     <p class="fve-eyebrow">Kalkulačka úspor</p>
     <h2 class="calc-section__title">Kolik ušetří bytový dům na energiích?</h2>
     <p class="calc-section__text">Orientační výpočet na základě počtu bytů a roční spotřeby. Pro podrobné porovnání všech opatření je k dispozici plná kalkulačka.</p>
     <a href="kalkulacka.html" class="calc-section__btn">Otevřít plnou kalkulačku</a>
-  </div>
-
-  <div class="calc-section__img-right">
-    <img src="assets/images/all_right.png?v=2" alt="">
   </div>
 </section>
 
@@ -317,9 +313,9 @@
 
 <section class="showcase" id="showcase">
   <div class="showcase-frame">
-    <img class="showcase-image is-active" src="assets/images/case1.png" alt="Bytový dům se solární elektrárnou na střeše" data-index="0">
-    <img class="showcase-image" src="assets/images/case2.png" alt="Fotovoltaická elektrárna na ploché střeše bytového domu" data-index="1">
-    <img class="showcase-image" src="assets/images/case3.png" alt="Detail zateplení fasády bytového domu" data-index="2">
+    <img class="showcase-image is-active" src="assets/images/case1.webp" alt="Bytový dům se solární elektrárnou na střeše" data-index="0" loading="lazy">
+    <img class="showcase-image" src="assets/images/case2.webp" alt="Fotovoltaická elektrárna na ploché střeše bytového domu" data-index="1" loading="lazy">
+    <img class="showcase-image" src="assets/images/case3.webp" alt="Detail zateplení fasády bytového domu" data-index="2" loading="lazy">
 
     <div class="showcase-controls">
       <button type="button" class="showcase-arrow" id="showcasePrev" aria-label="Předchozí fotografie">
@@ -477,5 +473,25 @@
 <script src="js/process.js?v=2"></script>
 <script src="js/footer.js"></script>
 <script src="js/navbar.js"></script>
+<script src="js/hero-toggle.js"></script>
+<script>
+(function () {
+  var frame = document.getElementById('hero3dFrame');
+  var loader = document.getElementById('page-loader');
+  if (!loader) return;
+  var done = false;
+  function hide() {
+    if (done) return; done = true;
+    loader.classList.add('is-hidden');
+    loader.addEventListener('transitionend', function () {
+      loader.style.display = 'none';
+    }, { once: true });
+  }
+  if (frame) {
+    frame.addEventListener('load', function () { setTimeout(hide, 400); });
+  }
+  setTimeout(hide, 6000);
+})();
+</script>
 </body>
 </html>

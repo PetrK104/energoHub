@@ -7,11 +7,16 @@
 <title>Jednotné odběrné místo — Energohub.info</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/figtree/v9/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_eYR25ZyEA25WTzZO8.woff2" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/fve.css">
+<link rel="stylesheet" href="css/guide-shared.css">
+<link rel="stylesheet" href="css/jom.css">
 </head>
 <body>
+<div id="page-loader" aria-hidden="true">
+  <img class="loader-logo" src="assets/images/Logo.svg" alt="">
+</div>
 
 <header class="site-header">
   <div class="navbar-container">
@@ -133,7 +138,7 @@
     </div>
 
     <div class="fve-explain__photo">
-      <img src="assets/images/jom_1.png" alt="Schéma fungování jednotného odběrného místa" loading="lazy">
+      <img src="assets/images/jom_1.webp" alt="Schéma fungování jednotného odběrného místa" loading="lazy">
     </div>
 
   </div>
@@ -441,7 +446,7 @@
           </ul>
         </div>
         <div class="jom-edc__variant-img">
-          <img src="assets/images/EDC.png" alt="" loading="lazy">
+          <img src="assets/images/EDC.webp" alt="" loading="lazy">
         </div>
       </div>
 
@@ -474,7 +479,7 @@
           </ul>
         </div>
         <div class="jom-edc__variant-img">
-          <img src="assets/images/JOM.png" alt="" loading="lazy">
+          <img src="assets/images/JOM.webp" alt="" loading="lazy">
         </div>
       </div>
 
@@ -566,10 +571,10 @@
       <div class="jom-panel__images">
         <div class="jom-panel__img-wrap" id="jomImgWrap">
 
-          <img class="jom-panel__img-base" src="assets/images/Before.png?v=3" alt="Stav před JOM" draggable="false">
+          <img class="jom-panel__img-base" src="assets/images/Before.webp" alt="Stav před JOM" draggable="false" loading="lazy">
 
           <div class="jom-panel__img-clip" id="jomImgClip">
-            <img class="jom-panel__img-top" id="jomImgTop" src="assets/images/After.png?v=4" alt="Stav po zavedení JOM" draggable="false">
+            <img class="jom-panel__img-top" id="jomImgTop" src="assets/images/After.webp" alt="Stav po zavedení JOM" draggable="false" loading="lazy">
           </div>
 
           <div class="jom-panel__handle" id="jomHandle" aria-hidden="true">
@@ -1126,5 +1131,22 @@
 <script src="js/jom-slider.js"></script>
 <script src="js/fve-phases.js"></script>
 <script src="js/jom-quiz.js"></script>
-<script src="js/jom-worth.js"></script></body>
+<script src="js/jom-worth.js"></script>
+<script>
+(function () {
+  var iframe = document.querySelector('.fve-hero__3d-frame');
+  function hideLoader() {
+    var loader = document.getElementById('page-loader');
+    if (!loader) return;
+    loader.classList.add('is-hidden');
+    loader.addEventListener('transitionend', function () {
+      loader.style.display = 'none';
+    }, { once: true });
+  }
+  if (iframe) {
+    iframe.addEventListener('load', function () { setTimeout(hideLoader, 400); });
+  }
+  setTimeout(hideLoader, 6000);
+})();
+</script></body>
 </html>

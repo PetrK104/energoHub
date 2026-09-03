@@ -7,11 +7,14 @@
 <title>Fotovoltaika pro bytové domy — Energohub.info</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/figtree/v9/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_eYR25ZyEA25WTzZO8.woff2" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/guide-shared.css">
 <link rel="stylesheet" href="css/fve.css">
 </head>
 <body>
+<div id="page-loader" aria-hidden="true"><img class="loader-logo" src="assets/images/Logo.svg" alt=""></div>
 
 <header class="site-header">
   <div class="navbar-container">
@@ -133,7 +136,7 @@
     </div>
 
     <div class="fve-explain__photo">
-      <img src="assets/images/Edukace.png" alt="Edukace o fungování FVE systému" loading="lazy">
+      <img src="assets/images/Edukace.webp" alt="Edukace o fungování FVE systému" loading="lazy">
     </div>
 
   </div>
@@ -591,7 +594,7 @@
       </div>
 
       <div class="fve-grants__photo">
-        <img src="assets/images/case2.png" alt="Fotovoltaické panely na bytovém domě" loading="lazy">
+        <img src="assets/images/case2.webp" alt="Fotovoltaické panely na bytovém domě" loading="lazy">
       </div>
 
     </div>
@@ -772,7 +775,7 @@
     <div class="fve-price__tab-panel is-active" data-panel="dum">
 
       <div class="fve-price__hero-img">
-        <img src="assets/images/example1.png" alt="" loading="lazy">
+        <img src="assets/images/example1.webp" alt="" loading="lazy">
       </div>
 
       <div class="fve-price__cols">
@@ -916,7 +919,7 @@
     <div class="fve-price__tab-panel" data-panel="firmy">
 
       <div class="fve-price__hero-img">
-        <img src="assets/images/Firma.png" alt="" loading="lazy">
+        <img src="assets/images/Firma.webp" alt="" loading="lazy">
       </div>
 
       <div class="fve-price__cols">
@@ -1067,7 +1070,7 @@
     <div class="fve-price__tab-panel" data-panel="obce">
 
       <div class="fve-price__hero-img">
-        <img src="assets/images/Obec.png" alt="" loading="lazy">
+        <img src="assets/images/Obec.webp" alt="" loading="lazy">
       </div>
 
       <div class="fve-price__cols">
@@ -1637,7 +1640,7 @@
     <h2 class="fve-case__title">Bytový dům v Praze 2</h2>
 
     <div class="fve-case__photo-wrap">
-      <img class="fve-case__photo" src="assets/images/case_study.png" alt="Bytový dům Korunní, Praha 2">
+      <img class="fve-case__photo" src="assets/images/case_study.webp" alt="Bytový dům Korunní, Praha 2" loading="lazy">
     </div>
 
     <div class="fve-case__body">
@@ -1862,5 +1865,22 @@
 <script src="js/fve-calc.js"></script>
 <script src="js/fve-form.js"></script><script src="js/footer.js"></script>
 <script src="js/navbar.js"></script>
+<script>
+(function () {
+  var iframe = document.querySelector('.fve-hero__3d-frame');
+  function hideLoader() {
+    var loader = document.getElementById('page-loader');
+    if (!loader) return;
+    loader.classList.add('is-hidden');
+    loader.addEventListener('transitionend', function () {
+      loader.style.display = 'none';
+    }, { once: true });
+  }
+  if (iframe) {
+    iframe.addEventListener('load', function () { setTimeout(hideLoader, 400); });
+  }
+  setTimeout(hideLoader, 6000);
+})();
+</script>
 </body>
 </html>
