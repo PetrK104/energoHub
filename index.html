@@ -12,9 +12,7 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div id="page-loader" aria-hidden="true">
-  <img class="loader-logo" src="assets/images/Logo.svg" alt="">
-</div>
+
 
 <header class="site-header">
   <div class="navbar-container">
@@ -474,24 +472,6 @@
 <script src="js/footer.js"></script>
 <script src="js/navbar.js"></script>
 <script src="js/hero-toggle.js"></script>
-<script>
-(function () {
-  var frame = document.getElementById('hero3dFrame');
-  var loader = document.getElementById('page-loader');
-  if (!loader) return;
-  var done = false;
-  function hide() {
-    if (done) return; done = true;
-    loader.classList.add('is-hidden');
-    loader.addEventListener('transitionend', function () {
-      loader.style.display = 'none';
-    }, { once: true });
-  }
-  if (frame) {
-    frame.addEventListener('load', function () { setTimeout(hide, 400); });
-  }
-  setTimeout(hide, 6000);
-})();
-</script>
+
 </body>
 </html>

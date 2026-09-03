@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="css/fve.css">
 </head>
 <body>
-<div id="page-loader" aria-hidden="true"><img class="loader-logo" src="assets/images/Logo.svg" alt=""></div>
 
 <header class="site-header">
   <div class="navbar-container">
@@ -74,7 +73,7 @@
 <section class="fve-hero">
   <iframe
     class="fve-hero__3d-frame"
-    src="embed_2/index.html"
+    src="embed/index.html"
     title="3D vizualizace fotovoltaické elektrárny"
     frameborder="0"
     scrolling="no"
@@ -1865,22 +1864,5 @@
 <script src="js/fve-calc.js"></script>
 <script src="js/fve-form.js"></script><script src="js/footer.js"></script>
 <script src="js/navbar.js"></script>
-<script>
-(function () {
-  var iframe = document.querySelector('.fve-hero__3d-frame');
-  function hideLoader() {
-    var loader = document.getElementById('page-loader');
-    if (!loader) return;
-    loader.classList.add('is-hidden');
-    loader.addEventListener('transitionend', function () {
-      loader.style.display = 'none';
-    }, { once: true });
-  }
-  if (iframe) {
-    iframe.addEventListener('load', function () { setTimeout(hideLoader, 400); });
-  }
-  setTimeout(hideLoader, 6000);
-})();
-</script>
 </body>
 </html>

@@ -14,9 +14,7 @@
 <link rel="stylesheet" href="css/jom.css">
 </head>
 <body>
-<div id="page-loader" aria-hidden="true">
-  <img class="loader-logo" src="assets/images/Logo.svg" alt="">
-</div>
+
 
 <header class="site-header">
   <div class="navbar-container">
@@ -1132,21 +1130,5 @@
 <script src="js/fve-phases.js"></script>
 <script src="js/jom-quiz.js"></script>
 <script src="js/jom-worth.js"></script>
-<script>
-(function () {
-  var iframe = document.querySelector('.fve-hero__3d-frame');
-  function hideLoader() {
-    var loader = document.getElementById('page-loader');
-    if (!loader) return;
-    loader.classList.add('is-hidden');
-    loader.addEventListener('transitionend', function () {
-      loader.style.display = 'none';
-    }, { once: true });
-  }
-  if (iframe) {
-    iframe.addEventListener('load', function () { setTimeout(hideLoader, 400); });
-  }
-  setTimeout(hideLoader, 6000);
-})();
-</script></body>
+</body>
 </html>
