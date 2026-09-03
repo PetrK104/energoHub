@@ -1137,7 +1137,12 @@
   iframe.addEventListener('load', function () {
     setTimeout(function () { iframe.classList.add('is-loaded'); }, 300);
   });
-  setTimeout(function () { iframe.classList.add('is-loaded'); }, 7000);
+  // Race condition: iframe již načten z cache
+  if (iframe.contentDocument && iframe.contentDocument.readyState === 'complete') {
+    setTimeout(function () { iframe.classList.add('is-loaded'); }, 300);
+  }
+  // Fallback
+  setTimeout(function () { iframe.classList.add('is-loaded'); }, 3000);
 })();
 </script>
 </body>
