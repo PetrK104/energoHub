@@ -91,7 +91,7 @@
   if (frame) {
     frame.addEventListener("load", onFrameLoad);
     frame.addEventListener("load", function () {
-      setTimeout(function () { frame.classList.add("is-loaded"); }, 800);
+      setTimeout(function () { frame.classList.add("is-loaded"); }, 550);
     });
     // Fallback — pokud load event nepřijde
     setTimeout(function () { frame.classList.add("is-loaded"); }, 7000);
