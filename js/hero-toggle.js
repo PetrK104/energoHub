@@ -27,33 +27,13 @@
         doc.head.appendChild(styleEl);
       }
 
-      if (window.innerWidth <= 447) {
-        // Single horizontal row — use inline styles to beat all iframe media queries
-        set(ctrl, "left", "53%");
-        set(ctrl, "transform", "translateX(-50%)");
-        set(ctrl, "bottom", "0");
-        set(ctrl, "right", "auto");
-        set(ctrl, "flex-direction", "row");
-        set(ctrl, "flex-wrap", "nowrap");
-        set(ctrl, "align-items", "center");
-        set(ctrl, "width", "max-content");
-        set(ctrl, "max-width", (window.innerWidth - 24) + "px");
-
-        doc.querySelectorAll(".seg").forEach(function (seg) {
-          set(seg, "flex-direction", "row");
-          set(seg, "width", "auto");
-          set(seg, "justify-content", "center");
-        });
-
-        styleEl.textContent = "";
-
-      } else if (window.innerWidth <= 889) {
+      if (window.innerWidth <= 889) {
         // Mobile stacked layout — clear any inline styles, use <style> tag
         ctrl.removeAttribute("style");
         doc.querySelectorAll(".seg").forEach(function (seg) { seg.removeAttribute("style"); });
         styleEl.textContent =
           ".controls{" +
-            "left:53%!important;" +
+            "left:69%!important;" +
             "transform:translateX(-50%)!important;" +
             "bottom:10%!important;" +
             "right:auto!important;" +
