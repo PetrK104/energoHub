@@ -1130,5 +1130,15 @@
 <script src="js/fve-phases.js"></script>
 <script src="js/jom-quiz.js"></script>
 <script src="js/jom-worth.js"></script>
+<script>
+(function () {
+  var iframe = document.querySelector('.fve-hero__3d-frame');
+  if (!iframe) return;
+  iframe.addEventListener('load', function () {
+    setTimeout(function () { iframe.classList.add('is-loaded'); }, 300);
+  });
+  setTimeout(function () { iframe.classList.add('is-loaded'); }, 7000);
+})();
+</script>
 </body>
 </html>

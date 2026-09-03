@@ -1864,5 +1864,15 @@
 <script src="js/fve-calc.js"></script>
 <script src="js/fve-form.js"></script><script src="js/footer.js"></script>
 <script src="js/navbar.js"></script>
+<script>
+(function () {
+  var iframe = document.querySelector('.fve-hero__3d-frame');
+  if (!iframe) return;
+  iframe.addEventListener('load', function () {
+    setTimeout(function () { iframe.classList.add('is-loaded'); }, 300);
+  });
+  setTimeout(function () { iframe.classList.add('is-loaded'); }, 7000);
+})();
+</script>
 </body>
 </html>

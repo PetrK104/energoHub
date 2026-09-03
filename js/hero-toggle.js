@@ -88,7 +88,14 @@
   }
 
   var frame = document.getElementById("hero3dFrame");
-  if (frame) frame.addEventListener("load", onFrameLoad);
+  if (frame) {
+    frame.addEventListener("load", onFrameLoad);
+    frame.addEventListener("load", function () {
+      setTimeout(function () { frame.classList.add("is-loaded"); }, 800);
+    });
+    // Fallback — pokud load event nepřijde
+    setTimeout(function () { frame.classList.add("is-loaded"); }, 7000);
+  }
   window.addEventListener("resize", positionControls);
   window.addEventListener("scroll", positionControls, { passive: true });
 })();
