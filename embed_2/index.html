@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Energohub — 3D scéna</title>
+    <script>
+      if (window.parent !== window) {
+        var s = document.createElement('style');
+        s.textContent = '.hero-canvas{transform:translateX(18%)!important}.controls{left:68%!important;transform:translateX(-50%)!important;bottom:28px!important;right:auto!important}';
+        document.head.appendChild(s);
+      }
+    </script>
+    <style>html,body,#root{background:#05050a;margin:0}</style>
+    <script type="module" crossorigin src="./assets/index-CCunHyqe.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-02EIRhj1.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      window.addEventListener('load', function () {
+        ['./hdri/venice_sunset_1k.hdr', './hdri/dikhololo_night_1k.hdr'].forEach(function (url) {
+          fetch(url, { priority: 'low' }).catch(function () {});
+        });
+        if (window.parent !== window) {
+          var ov = document.createElement('div');
+          ov.style.cssText = 'position:fixed;inset:0;background:#05050a;z-index:9999;pointer-events:none;opacity:0;transition:opacity .3s ease';
+          document.body.appendChild(ov);
+          document.addEventListener('click', function (e) {
+            if (!e.target.closest('.controls')) return;
+            ov.style.transition = 'none';
+            ov.offsetHeight;
+            ov.style.opacity = '1';
+            var f = 0;
+            function tick() {
+              if (++f < 12) requestAnimationFrame(tick);
+              else { ov.style.transition = 'opacity .3s ease'; ov.style.opacity = '0'; }
+            }
+            requestAnimationFrame(tick);
+          }, { once: true });
+        }
+      });
+    </script>
+  </body>
+</html>

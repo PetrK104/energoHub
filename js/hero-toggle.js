@@ -71,13 +71,11 @@
   if (frame) {
     frame.addEventListener("load", onFrameLoad);
     frame.addEventListener("load", function () {
-      setTimeout(function () { frame.classList.add("is-loaded"); }, 550);
+      setTimeout(function () { frame.classList.add("is-loaded"); }, 300);
     });
-    // Race condition: iframe již načten z cache před připojením listeneru
     if (frame.contentDocument && frame.contentDocument.readyState === "complete") {
-      setTimeout(function () { frame.classList.add("is-loaded"); }, 550);
+      setTimeout(function () { frame.classList.add("is-loaded"); }, 300);
     }
-    // Fallback
     setTimeout(function () { frame.classList.add("is-loaded"); }, 3000);
   }
   window.addEventListener("resize", positionControls);

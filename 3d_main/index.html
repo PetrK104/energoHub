@@ -18,5 +18,12 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      window.addEventListener('load', function () {
+        ['./hdri/venice_sunset_1k.hdr', './hdri/dikhololo_night_1k.hdr'].forEach(function (url) {
+          fetch(url, { priority: 'low' }).catch(function () {});
+        });
+      });
+    </script>
   </body>
 </html>
