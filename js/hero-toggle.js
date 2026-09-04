@@ -67,16 +67,15 @@
     setTimeout(positionControls, 1500);
   }
 
+  var loader = document.getElementById("page-loader");
+  if (loader) {
+    var delay = Math.max(0, 1500 - Math.round(performance.now()));
+    setTimeout(function () { loader.classList.add("is-hidden"); }, delay);
+  }
+
   var frame = document.getElementById("hero3dFrame");
   if (frame) {
     frame.addEventListener("load", onFrameLoad);
-    frame.addEventListener("load", function () {
-      setTimeout(function () { frame.classList.add("is-loaded"); }, 300);
-    });
-    if (frame.contentDocument && frame.contentDocument.readyState === "complete") {
-      setTimeout(function () { frame.classList.add("is-loaded"); }, 300);
-    }
-    setTimeout(function () { frame.classList.add("is-loaded"); }, 3000);
   }
   window.addEventListener("resize", positionControls);
   window.addEventListener("scroll", positionControls, { passive: true });

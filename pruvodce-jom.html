@@ -7,13 +7,14 @@
 <title>Jednotné odběrné místo — Energohub.info</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/figtree/v9/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_eYR25ZyEA25WTzZO8.woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/guide-shared.css">
 <link rel="stylesheet" href="css/jom.css">
 </head>
 <body>
+
+<div id="page-loader" aria-hidden="true"><img class="loader-logo" src="assets/images/Logo.svg" alt=""></div>
 
 
 <header class="site-header">
@@ -107,6 +108,8 @@
 </section>
 
 <nav class="fve-subnav" aria-label="Obsah stránky">
+  <button class="fve-subnav__arrow fve-subnav__arrow--left" aria-label="Posunout doleva">&#8249;</button>
+  <button class="fve-subnav__arrow fve-subnav__arrow--right" aria-label="Posunout doprava">&#8250;</button>
   <div class="fve-subnav__inner">
   <div class="fve-subnav__list">
     <a href="#co-je-jom"      class="fve-subnav__link"><span class="fve-subnav__num">01</span>Co je JOM</a>
@@ -1130,20 +1133,6 @@
 <script src="js/fve-phases.js" defer></script>
 <script src="js/jom-quiz.js" defer></script>
 <script src="js/jom-worth.js" defer></script>
-<script>
-(function () {
-  var iframe = document.querySelector('.fve-hero__3d-frame');
-  if (!iframe) return;
-  iframe.addEventListener('load', function () {
-    setTimeout(function () { iframe.classList.add('is-loaded'); }, 300);
-  });
-  // Race condition: iframe již načten z cache
-  if (iframe.contentDocument && iframe.contentDocument.readyState === 'complete') {
-    setTimeout(function () { iframe.classList.add('is-loaded'); }, 300);
-  }
-  // Fallback
-  setTimeout(function () { iframe.classList.add('is-loaded'); }, 3000);
-})();
-</script>
+<script>(function(){var l=document.getElementById('page-loader');if(l&&l.style.display!=='none'){var d=Math.max(0,1200-Math.round(performance.now()));setTimeout(function(){l.classList.add('is-hidden');},d);}})();</script>
 </body>
 </html>
