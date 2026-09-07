@@ -667,7 +667,7 @@
 
     var result = await sb
       .from('threads')
-      .select('id, topic, body, created_at, created_by, messages(id, text, sender_type, created_at)')
+      .select('id, topic, body, bot_mode, created_at, created_by, messages(id, text, sender_type, created_at)')
       .order('created_at', { ascending: false })
 
     forumLoading.hidden = true

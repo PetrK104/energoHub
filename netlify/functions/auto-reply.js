@@ -3,7 +3,26 @@ const { adminClient } = require('./_shared');
 
 const GLOBAL_INSTRUCTIONS = "Odpovídej vždy v češtině. Veď přirozený konverzační příspěvek do diskuzního vlákna, reaguj konkrétně na to, co bylo řečeno naposled. Buď stručný: 2 až 5 vět. Nepředstavuj se jménem, jen piš svůj příspěvek přímo. Zůstaň důsledně ve své roli.";
 const STALE_REPLY_DAYS = 3;
-const MAX_THREADS_PER_RUN = 3;
+const MAX_THREADS_PER_RUN = 2;
+
+async function claudeCall(system, messages) {
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': process.env.ANTHROPIC_API_KEY,
+      'anthropic-version': '2023-06-01'
+    },
+    body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 1000, system, messages })
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    console.error('[auto-reply] Claude API error', res.status, err);
+    return null;
+  }
+  const data = await res.json();
+  return (data.content || []).filter(b => b.type === 'text').map(b => b.text).join('\n').trim() || null;
+}
 
 async function botReply(supabase, thread, bots, messages) {
   const lastBotMsg = [...(messages || [])].reverse().find(m => m.sender_type === 'bot');
