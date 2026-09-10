@@ -311,6 +311,40 @@
   </div>
 </div>
 
+<section class="calc-section forum-poll">
+  <div class="calc-section__center forum-poll__inner">
+
+    <!-- Krok 1: Hlasování -->
+    <div class="forum-poll__step" id="pollStep1">
+      <p class="forum-poll__q">Pomohl vám obsah na webu?</p>
+      <div class="forum-poll__choices">
+        <button class="forum-poll__choice forum-poll__choice--yes" id="pollYes" type="button">Ano</button>
+        <button class="forum-poll__choice forum-poll__choice--no" id="pollNo" type="button">Ne</button>
+      </div>
+    </div>
+
+    <!-- Krok 2: Zpětná vazba -->
+    <div class="forum-poll__step" id="pollStep2" hidden>
+      <div class="forum-poll__header">
+        <p class="forum-poll__q">Co bychom mohli zlepšit?</p>
+        <p class="forum-poll__sub">Váš názor nám pomůže web vylepšit.</p>
+      </div>
+      <textarea class="forum-poll__textarea" id="pollText" rows="3" placeholder="Napište nám…"></textarea>
+      <button class="forum-poll__submit" id="pollSubmit" type="button">Odeslat</button>
+    </div>
+
+    <!-- Krok 3: Poděkování -->
+    <div class="forum-poll__step" id="pollStep3" hidden>
+      <div class="forum-poll__thanks-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <p class="forum-poll__q">Děkujeme za zpětnou vazbu!</p>
+      <p class="forum-poll__sub">Pomáháte nám dělat web lepším.</p>
+    </div>
+
+  </div>
+</section>
+
 <footer class="site-footer">
   <div class="footer-glow"></div>
 
@@ -393,6 +427,17 @@
 <script src="js/navbar.js" defer></script>
 <script src="js/footer.js" defer></script>
 <script src="js/forum.js" defer></script>
+<script>
+(function(){
+  var s1=document.getElementById('pollStep1');
+  var s2=document.getElementById('pollStep2');
+  var s3=document.getElementById('pollStep3');
+  function show(el){[s1,s2,s3].forEach(function(s){s.hidden=true;});el.hidden=false;}
+  document.getElementById('pollYes').addEventListener('click',function(){show(s3);});
+  document.getElementById('pollNo').addEventListener('click',function(){show(s2);});
+  document.getElementById('pollSubmit').addEventListener('click',function(){show(s3);});
+})();
+</script>
 
 </body>
 </html>

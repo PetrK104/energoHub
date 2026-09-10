@@ -408,6 +408,33 @@
 
     <p class="jom-worth__note">Orientační hodnoty pro typický bytový dům s 15–48 bytovými jednotkami, při průměrné ceně elektřiny v řádu 5–6 Kč/kWh. Skutečná výše závisí na velikosti domu, výkonu FVE, orientaci střechy a podmínkách smlouvy.</p>
 
+    <!-- Vizualizace sdílení výroby -->
+    <div class="jom-sharing">
+
+      <h3 class="jom-sharing__title">Jak výroba přechází mezi byty</h3>
+
+      <figure class="jom-sharing__fig">
+        <img src="assets/images/vizualizace_sdileni.webp" alt="Vizualizace sdílení elektřiny v bytovém domě s JOM a FVE" class="jom-sharing__img">
+      </figure>
+
+      <div class="jom-sharing__detail">
+        <div class="jom-sharing__prices">
+          <div class="jom-sharing__price jom-sharing__price--cheap">
+            <span class="jom-sharing__price-val">3,50&nbsp;Kč<span>/kWh</span></span>
+            <span class="jom-sharing__price-label">Interní cena ze sdílení v rámci JOM</span>
+          </div>
+          <div class="jom-sharing__price-sep">vs.</div>
+          <div class="jom-sharing__price">
+            <span class="jom-sharing__price-val">8,00&nbsp;Kč<span>/kWh</span></span>
+            <span class="jom-sharing__price-label">Standardní cena ze sítě</span>
+          </div>
+        </div>
+
+        <p class="jom-sharing__note">Bytový dům, 24 bytů, FVE 20&nbsp;kWp + JOM. Systém vyrobí ročně přibližně 20&nbsp;000&nbsp;kWh — každý byt obdrží alokovaný podíl odpovídající spoluvlastnickému podílu (průměrně ~833&nbsp;kWh/rok, klíč analogicky k fondu oprav). Odjede-li majitel bytu č.&nbsp;12 na tři měsíce, jeho alokaci (~210&nbsp;kWh) odeberou sousedé za 3,50&nbsp;Kč/kWh místo 8,00&nbsp;Kč ze sítě. Ve ročním vyúčtování byt č.&nbsp;12 obdrží za tento podíl přibližně 735&nbsp;Kč. Sousedé ušetří přibližně 4,50&nbsp;Kč na každé takto odebrané kWh. Stejný princip platí pro důchodce s nízkou spotřebou nebo byt obývaný jen o víkendech — každý nevyužitý podíl na výrobě se automaticky přesouvá k těm, kdo právě spotřebovávají.</p>
+      </div>
+
+    </div>
+
   </div>
 </section>
 
@@ -429,15 +456,15 @@
           <ul class="jom-edc__list">
             <li>
               <svg class="jom-edc__arrow jom-edc__arrow--dim" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              EDC dodává pouze datový podklad (CSV/Excel); zpracování a rozeslání vyúčtování bytům zůstává plně na SVJ.
+            </li>
+            <li>
+              <svg class="jom-edc__arrow jom-edc__arrow--dim" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               Každý byt si udržuje vlastní smlouvu s dodavatelem — různí dodavatelé v jednom domě jsou možní, ale sdílení probíhá jen uvnitř budovy.
             </li>
             <li>
               <svg class="jom-edc__arrow jom-edc__arrow--dim" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Přebytky nelze prodávat; lze je jen bezplatně poskytnout ostatním zapojeným odběrným místům v domě.
-            </li>
-            <li>
-              <svg class="jom-edc__arrow jom-edc__arrow--dim" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Rozúčtování provádí EDC s pevně nastaveným neměnným klíčem — výstupem je jen datový export (CSV/Excel), se kterým si SVJ musí pracovat samo.
+              Přebytky lze sdílet i ven ze skupiny, ale za cenu ztráty úlevy na distribučním poplatku — domy proto zpravidla volí nesdílet ven a ponechat si úsporu na distribuci (~40 % celkové ceny energie).
             </li>
             <li>
               <svg class="jom-edc__arrow jom-edc__arrow--dim" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -450,7 +477,7 @@
           </ul>
         </div>
         <div class="jom-edc__variant-img">
-          <img src="assets/images/EDC.webp" alt="" loading="lazy">
+          <img src="assets/images/EDC.webp?v=2" alt="" loading="lazy">
         </div>
       </div>
 
@@ -462,15 +489,15 @@
           <ul class="jom-edc__list">
             <li>
               <svg class="jom-edc__arrow jom-edc__arrow--lime" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Rozúčtování si dělá dům sám (obvykle podle vlastnického podílu) — flexibilní a transparentní, bez závislosti na externím datovém centru.
+            </li>
+            <li>
+              <svg class="jom-edc__arrow jom-edc__arrow--lime" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               Dům vystupuje jako jediné odběrné místo — odpadají poplatky za rezervovaný příkon a jistič za každý byt zvlášť (úspora v řádu desítek až stovek tisíc Kč ročně).
             </li>
             <li>
               <svg class="jom-edc__arrow jom-edc__arrow--lime" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Přebytky z FVE lze prodávat — dům může uzavřít standardní smlouvu o výkupu bez omezení množství.
-            </li>
-            <li>
-              <svg class="jom-edc__arrow jom-edc__arrow--lime" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Rozúčtování si dělá dům sám (obvykle podle vlastnického podílu) — flexibilní a transparentní, bez závislosti na externím datovém centru.
+              Přebytky z FVE lze prodávat — dům uzavře standardní smlouvu o výkupu a prodej nepřináší žádné vedlejší distribuční náklady, na rozdíl od EDC.
             </li>
             <li>
               <svg class="jom-edc__arrow jom-edc__arrow--lime" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -478,12 +505,12 @@
             </li>
             <li>
               <svg class="jom-edc__arrow jom-edc__arrow--lime" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Vyžaduje větší technický zásah (výměna elektroměrového rozvaděče, podružné elektroměry v bytech) a zpravidla náročnější souhlas vlastníků.
+              <span>Vyžaduje větší technický zásah do elektroinstalace a zpravidla náročnější souhlas vlastníků.<span class="jom-edc__tip" tabindex="0"><span class="jom-edc__tip-icon" aria-label="Více informací">i</span><span class="jom-edc__tip-popup" role="tooltip">Nejde jen o výměnu elektroměru. U typických paneláků z 90. let s hliníkovými rozvody bývá kvůli nové revizní zprávě nutná renovace vnitřní infrastruktury — stoupačky, jističe, ochrany. ČEZ a distributor vlastní síť jen po patici domu; zbytek energetické sítě patří SVJ nebo družstvu, a technický zásah proto leží plně na straně domu.</span></span></span>
             </li>
           </ul>
         </div>
         <div class="jom-edc__variant-img">
-          <img src="assets/images/JOM.webp" alt="" loading="lazy">
+          <img src="assets/images/JOM.webp?v=2" alt="" loading="lazy">
         </div>
       </div>
 
@@ -610,17 +637,18 @@
       <div class="fve-phase is-active" data-phase="0">
         <div class="fve-phase__collapsed">
           <span class="fve-phase__cnum" aria-hidden="true">01</span>
-          <span class="fve-phase__ctitle">Souhlas vlastníků / SVJ</span>
+          <span class="fve-phase__ctitle">Průzkum, nabídka a souhlas</span>
           <svg class="fve-phase__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         <div class="fve-phase__expanded">
           <span class="fve-phase__enum">01</span>
-          <h3 class="fve-phase__etitle">Souhlas vlastníků / SVJ</h3>
+          <h3 class="fve-phase__etitle">Průzkum, nabídka a souhlas</h3>
           <ul class="fve-phase__elist">
-            <li>Příprava podkladů pro shromáždění — technický popis JOM a ekonomická analýza</li>
+            <li>Zpracování technického a ekonomického průzkumu proveditelnosti JOM pro daný subjekt (SVJ / bytové družstvo)</li>
+            <li>Příprava nabídky pro subjekt, včetně podkladů pro schvalovací proces — technický popis JOM a ekonomická analýza</li>
             <li>Svolání shromáždění SVJ nebo bytového družstva</li>
-            <li>Hlasování: potřebná většina se řídí stanovami — u technických úprav společných částí bývá vyžadována vyšší než prostá většina, konkrétní práh je vždy potřeba ověřit ve stanovách daného domu</li>
-            <li>Schválení změny dodavatele elektřiny a způsobu rozúčtování</li>
+            <li>Hlasování: potřebná většina se řídí stanovami — u technických úprav společných částí bývá vyžadována vyšší než prostá většina, konkrétní práh je vždy potřeba ověřit ve stanovách daného subjektu</li>
+            <li>Schválení nabídky, změny dodavatele elektřiny a způsobu rozúčtování</li>
             <li>Zápis ze shromáždění jako závazný podklad pro další kroky</li>
           </ul>
           <div class="fve-phase__nav">
@@ -634,18 +662,18 @@
       <div class="fve-phase" data-phase="1">
         <div class="fve-phase__collapsed">
           <span class="fve-phase__cnum" aria-hidden="true">02</span>
-          <span class="fve-phase__ctitle">Změna smlouvy</span>
+          <span class="fve-phase__ctitle">Administrativa</span>
           <svg class="fve-phase__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         <div class="fve-phase__expanded">
           <span class="fve-phase__enum">02</span>
-          <h3 class="fve-phase__etitle">Změna smlouvy</h3>
+          <h3 class="fve-phase__etitle">Administrativa</h3>
           <ul class="fve-phase__elist">
-            <li>Výběr dodavatele elektřiny pro celý dům — všichni přejdou na jednoho dodavatele</li>
-            <li>Výpověď stávajících individuálních smluv jednotlivých bytových jednotek — s ohledem na jejich výpovědní lhůty, aby nedošlo k výpadku dodávky</li>
-            <li>Uzavření nové smlouvy pro JOM jako celek (vyšší odebíraný výkon)</li>
-            <li>Koordinace s distributorem (ČEZ Distribuce, EG.D nebo PREdistribuce) — oznámení změny, distributor má na vyjádření zákonem danou lhůtu</li>
-            <li>Nastavení způsobu úhrady záloh: platí SVJ nebo bytové družstvo za celý dům</li>
+            <li>Zpracování projektové dokumentace v rozsahu potřebném pro sloučení odběrných míst</li>
+            <li>Podání žádosti o sloučení odběrných míst u distributora (ČEZ Distribuce, EG.D nebo PREdistribuce) — vyřizuje se u distributora, ne u obchodníka s elektřinou</li>
+            <li>Sloučením původní jednotlivá odběrná místa bytů zanikají</li>
+            <li>Vyčkání na vyjádření distributora — ze zákona 30 dní u nízkého napětí, 60 dní u vyšší napěťové hladiny; skutečná doba se v praxi může podle kapacity sítě v dané lokalitě lišit</li>
+            <li>Výběr a sjednání nového dodavatele elektřiny pro nové sloučené odběrné místo, domluvené předem, aby nedošlo k výpadku dodávky</li>
           </ul>
           <div class="fve-phase__nav">
             <button class="fve-phase__btn fve-phase__btn--prev" type="button" aria-label="Předchozí fáze">
@@ -661,18 +689,16 @@
       <div class="fve-phase" data-phase="2">
         <div class="fve-phase__collapsed">
           <span class="fve-phase__cnum" aria-hidden="true">03</span>
-          <span class="fve-phase__ctitle">Instalace měřidel</span>
+          <span class="fve-phase__ctitle">Technická příprava</span>
           <svg class="fve-phase__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         <div class="fve-phase__expanded">
           <span class="fve-phase__enum">03</span>
-          <h3 class="fve-phase__etitle">Instalace měřidel</h3>
+          <h3 class="fve-phase__etitle">Technická příprava</h3>
           <ul class="fve-phase__elist">
-            <li>Montáž hlavního elektroměru na přípojkovém místě celého domu</li>
-            <li>Instalace podružných měřidel do každé bytové jednotky a společných prostor — tato měřidla nemusí mít fakturační přesnost ani kalibraci, protože neslouží k oficiálnímu vyúčtování vůči dodavateli, jen k internímu rozúčtování v domě</li>
-            <li>Propojení měřidel s FVE systémem — střídač, případně bateriové úložiště</li>
+            <li>Vybudování nového společného odběrného místa — skříň s fakturačním elektroměrem na patici</li>
+            <li>Renovace vnitřní elektroinstalace (stoupačky, jističe), aby prošla revizí</li>
             <li>Výchozí revize elektroinstalace — povinná podmínka pro připojení k distribuční síti</li>
-            <li>Přejímka technického řešení distributorem a předání systému do provozu</li>
           </ul>
           <div class="fve-phase__nav">
             <button class="fve-phase__btn fve-phase__btn--prev" type="button" aria-label="Předchozí fáze">
@@ -688,19 +714,45 @@
       <div class="fve-phase" data-phase="3">
         <div class="fve-phase__collapsed">
           <span class="fve-phase__cnum" aria-hidden="true">04</span>
-          <span class="fve-phase__ctitle">Nastavení rozúčtování</span>
+          <span class="fve-phase__ctitle">Fyzické sloučení</span>
           <svg class="fve-phase__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         <div class="fve-phase__expanded">
           <span class="fve-phase__enum">04</span>
+          <h3 class="fve-phase__etitle">Fyzické sloučení</h3>
+          <ul class="fve-phase__elist">
+            <li>V domluvený den distributor odpojí všechny původní elektroměry a osadí hlavní fakturační elektroměr na patici</li>
+            <li>Současně se instalují certifikovaná fakturační podružná měřidla do bytů a společných prostor — s platným kalibračním cejchem (obnova každých 5–10 let), aby bylo rozúčtování podle skutečné spotřeby právně nezpochybnitelné</li>
+            <li>Propojení měřidel s FVE systémem — střídač, případně bateriové úložiště</li>
+            <li>Vše musí proběhnout v jeden den — nelze měřit dvakrát ani nechat proces rozpracovaný</li>
+            <li>Přejímka technického řešení distributorem a předání systému do provozu</li>
+          </ul>
+          <div class="fve-phase__nav">
+            <button class="fve-phase__btn fve-phase__btn--prev" type="button" aria-label="Předchozí fáze">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+            </button>
+            <button class="fve-phase__btn fve-phase__btn--next" type="button" aria-label="Další fáze">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="fve-phase" data-phase="4">
+        <div class="fve-phase__collapsed">
+          <span class="fve-phase__cnum" aria-hidden="true">05</span>
+          <span class="fve-phase__ctitle">Nastavení rozúčtování</span>
+          <svg class="fve-phase__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="fve-phase__expanded">
+          <span class="fve-phase__enum">05</span>
           <h3 class="fve-phase__etitle">Nastavení rozúčtování</h3>
           <ul class="fve-phase__elist">
-            <li>Definice metodiky rozdělení nákladů mezi bytové jednotky (dle skutečné spotřeby)</li>
-            <li>Nastavení pravidel pro podíl každé jednotky na vyrobené elektřině z FVE</li>
-            <li>Zakotvení zvoleného klíče rozúčtování v pravidlech domu, aby bylo pro všechny vlastníky závazné</li>
-            <li>Implementace softwarového řešení pro průběžné sledování spotřeby v bytech</li>
+            <li>Rozúčtování spotřebované energie (odběr): dané kalibrovaným fakturačním měřidlem u každé jednotky — každá jednotka platí to, co skutečně spotřebovala, s rozlišením síťové a FVE sazby, obdobně jako u rozúčtování vody nebo tepla</li>
+            <li>Rozúčtování vlastní výrobny (FVE): nárok na vyrobenou elektřinu se dělí podle vlastnického podílu jednotlivých jednotek — stejný princip, jaký subjekt už používá u fondu oprav; technické nastavení v systému zajišťuje poskytovatel řešení</li>
+            <li>Dodavatel řešení pro JOM by měl nabídnout i platformu pro rozúčtování a vedení podružného měření — distributor (EDC) dává pouze podklady, ne faktické vyúčtování, proto je vlastní nástroj na rozúčtování (i od třetí strany) potřeba mít zajištěný</li>
             <li>Příprava vzorového ročního vyúčtování pro vlastníky</li>
-            <li>Úprava záloh na energie dle první sezóny provozu — klíč rozúčtování je vhodné po prvním roce provozu zkontrolovat a případně doladit</li>
+            <li>Úprava záloh na energie podle výsledků první sezóny provozu — klíč rozúčtování je vhodné po prvním roce zkontrolovat a případně doladit</li>
           </ul>
           <div class="fve-phase__nav">
             <button class="fve-phase__btn fve-phase__btn--prev" type="button" aria-label="Předchozí fáze">
@@ -1133,6 +1185,6 @@
 <script src="js/jom-quiz.js" defer></script>
 <script src="js/jom-worth.js" defer></script>
 <script>(function(){var l=document.getElementById('page-loader');if(l&&l.style.display!=='none'){var d=Math.max(0,1200-Math.round(performance.now()));setTimeout(function(){l.classList.add('is-hidden');},d);}})();</script>
-<script>(function(){if(!('ontouchstart' in window))return;var loader=document.getElementById('page-loader');if(loader)loader.style.pointerEvents='none';var frame=document.querySelector('.fve-hero__3d-frame');if(!frame)return;var ov=document.createElement('div');ov.style.cssText='position:fixed;left:0;right:0;bottom:0;height:min(480px,110vw);z-index:90;touch-action:pan-y;';document.body.appendChild(ov);function update(){var r=frame.getBoundingClientRect();var top=Math.max(0,r.top);var bottom=Math.min(window.innerHeight,r.bottom);if(bottom>top+4){ov.style.top=top+'px';ov.style.height=(bottom-top)+'px';}}update();window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);window.addEventListener('load',update);setTimeout(update,400);setTimeout(update,1200);var sx,sy;ov.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});ov.addEventListener('touchend',function(e){var t=e.changedTouches[0],dx=Math.abs(t.clientX-sx),dy=Math.abs(t.clientY-sy);if(dx<30&&dy<30){try{var r=frame.getBoundingClientRect(),cx=t.clientX-r.left,cy=t.clientY-r.top,el=frame.contentDocument.elementFromPoint(cx,cy);if(el){var btn=el.closest?el.closest('button,[role=button]'):null;(btn||el).click();}}catch(err){}}},{passive:true});})();</script>
+<script>(function(){if(!('ontouchstart' in window))return;var frame=document.querySelector('.fve-hero__3d-frame');if(!frame)return;function init(){try{var iwin=frame.contentWindow;if(!iwin)return;var prevY=0;iwin.addEventListener('touchstart',function(e){prevY=e.touches[0].clientY;},{passive:true,capture:true});iwin.addEventListener('touchmove',function(e){var dy=e.touches[0].clientY-prevY;prevY=e.touches[0].clientY;if(Math.abs(dy)>3)window.scrollBy(0,-dy);},{passive:true,capture:true});}catch(err){}}frame.addEventListener('load',init);})();</script>
 </body>
 </html>
