@@ -5,3 +5,8 @@
 
 [functions]
   node_bundler = "esbuild"
+
+[[headers]]
+  for = "/hdri/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

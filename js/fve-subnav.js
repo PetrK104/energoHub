@@ -12,7 +12,14 @@
     links.forEach(function (a) {
       var active = a.getAttribute('href') === '#' + id;
       a.classList.toggle('is-active', active);
-      if (active) a.scrollIntoView({ inline: 'nearest', block: 'nearest' });
+      if (active && inner) {
+        var linkLeft = a.offsetLeft;
+        var linkRight = a.offsetLeft + a.offsetWidth;
+        var visLeft = inner.scrollLeft;
+        var visRight = inner.scrollLeft + inner.clientWidth;
+        if (linkLeft < visLeft) inner.scrollLeft = linkLeft - 16;
+        else if (linkRight > visRight) inner.scrollLeft = linkRight - inner.clientWidth + 16;
+      }
     });
   }
 
