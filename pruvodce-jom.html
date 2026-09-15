@@ -14,7 +14,6 @@
 </head>
 <body>
 
-<div id="page-loader" aria-hidden="true"><img class="loader-logo" src="assets/images/Logo.svg" alt=""></div>
 
 
 <header class="site-header">
@@ -80,8 +79,10 @@
     frameborder="0"
     scrolling="no"
     allowtransparency="true"
+    loading="lazy"
   ></iframe>
   <div class="fve-hero__scrim"></div>
+  <div id="jomPoster" class="fve-hero__poster" aria-hidden="true"></div>
 
   <div class="fve-hero__topbar">
     <a class="fve-breadcrumb" href="index.html#pruvodce">← Zpět na přehled průvodců</a>
@@ -1265,7 +1266,7 @@
 <script src="js/fve-phases.js" defer></script>
 <script src="js/jom-quiz.js" defer></script>
 <script src="js/jom-worth.js" defer></script>
-<script>(function(){var l=document.getElementById('page-loader');if(l&&l.style.display!=='none'){var d=Math.max(0,1200-Math.round(performance.now()));setTimeout(function(){l.classList.add('is-hidden');},d);}})();</script>
+<script>(function(){var frame=document.querySelector('.fve-hero__3d-frame');var poster=document.getElementById('jomPoster');if(!frame||!poster)return;frame.addEventListener('load',function(){setTimeout(function(){poster.classList.add('is-loaded');setTimeout(function(){poster.remove();},600);},600);});})();</script>
 <script>(function(){if(!('ontouchstart' in window))return;var frame=document.querySelector('.fve-hero__3d-frame');if(!frame)return;function init(){try{var iwin=frame.contentWindow;if(!iwin)return;var prevY=0;iwin.addEventListener('touchstart',function(e){prevY=e.touches[0].clientY;},{passive:true,capture:true});iwin.addEventListener('touchmove',function(e){var dy=e.touches[0].clientY-prevY;prevY=e.touches[0].clientY;if(Math.abs(dy)>3)window.scrollBy(0,dy);},{passive:true,capture:true});}catch(err){}}frame.addEventListener('load',init);})();</script>
 <script>(function(){var btns=document.querySelectorAll('.jom-stoggle__btn');btns.forEach(function(btn){btn.addEventListener('click',function(){var panel=this.dataset.panel;btns.forEach(function(b){b.classList.remove('is-active');});document.querySelectorAll('.jom-stoggle__panel').forEach(function(p){p.classList.remove('is-active');});this.classList.add('is-active');var el=document.getElementById('jstPanel-'+panel);if(el)el.classList.add('is-active');});});})();</script>
 </body>

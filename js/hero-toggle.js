@@ -60,17 +60,53 @@
     } catch (e) {}
   }
 
+  var toggleBtns = [];
+
+  function showTransitionOverlay() {
+    toggleBtns.forEach(function (btn) {
+      btn.removeEventListener('mousedown', showTransitionOverlay);
+      btn.removeEventListener('touchstart', showTransitionOverlay);
+    });
+    var hero = document.querySelector('.hero');
+    if (!hero) return;
+    var ov = document.createElement('div');
+    ov.id = 'heroModeOverlay';
+    ov.className = 'hero-mode-overlay';
+    hero.appendChild(ov);
+    setTimeout(function () {
+      ov.classList.add('is-fading');
+      setTimeout(function () { ov.remove(); }, 850);
+    }, 1400);
+  }
+
+  function watchToggle() {
+    try {
+      var doc = frame.contentDocument || frame.contentWindow.document;
+      if (!doc) return;
+      var btns = doc.querySelectorAll('.icon-btn');
+      if (!btns.length) return;
+      toggleBtns = Array.from(btns);
+      toggleBtns.forEach(function (btn) {
+        btn.addEventListener('mousedown', showTransitionOverlay);
+        btn.addEventListener('touchstart', showTransitionOverlay, { passive: true });
+      });
+    } catch (e) {}
+  }
+
   function onFrameLoad() {
     positionControls();
     setTimeout(positionControls, 200);
     setTimeout(positionControls, 700);
     setTimeout(positionControls, 1500);
-  }
-
-  var loader = document.getElementById("page-loader");
-  if (loader) {
-    var delay = Math.max(0, 1500 - Math.round(performance.now()));
-    setTimeout(function () { loader.classList.add("is-hidden"); }, delay);
+    setTimeout(watchToggle, 700);
+    setTimeout(watchToggle, 1500);
+    var poster = document.getElementById('hero3dPoster');
+    if (poster) {
+      setTimeout(function () {
+        poster.classList.add('is-loaded');
+        setTimeout(function () { poster.remove(); }, 600);
+      }, 600);
+    }
   }
 
   var frame = document.getElementById("hero3dFrame");

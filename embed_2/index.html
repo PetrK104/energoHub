@@ -20,7 +20,7 @@
     <div id="root"></div>
     <script>
       window.addEventListener('load', function () {
-        ['./hdri/venice_sunset_1k.hdr', './hdri/dikhololo_night_1k.hdr'].forEach(function (url) {
+        ['/hdri/venice_sunset_512.hdr', '/hdri/dikhololo_night_512.hdr'].forEach(function (url) {
           fetch(url, { priority: 'low' }).catch(function () {});
         });
         if (window.parent !== window) {

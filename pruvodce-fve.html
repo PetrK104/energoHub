@@ -14,7 +14,6 @@
 </head>
 <body>
 
-<div id="page-loader" aria-hidden="true"><img class="loader-logo" src="assets/images/Logo.svg" alt=""></div>
 
 <header class="site-header">
   <div class="navbar-container">
@@ -79,8 +78,10 @@
     frameborder="0"
     scrolling="no"
     allowtransparency="true"
+    loading="lazy"
   ></iframe>
   <div class="fve-hero__scrim"></div>
+  <div id="fvePoster" class="fve-hero__poster" aria-hidden="true"></div>
 
   <div class="fve-hero__topbar">
     <a class="fve-breadcrumb" href="index.html#pruvodce">← Zpět na přehled průvodců</a>
@@ -2000,7 +2001,7 @@
 <script src="js/fve-calc.js" defer></script>
 <script src="js/fve-form.js" defer></script><script src="js/footer.js" defer></script>
 <script src="js/navbar.js" defer></script>
-<script>(function(){var l=document.getElementById('page-loader');if(l&&l.style.display!=='none'){var d=Math.max(0,1200-Math.round(performance.now()));setTimeout(function(){l.classList.add('is-hidden');},d);}})();</script>
+<script>(function(){var frame=document.querySelector('.fve-hero__3d-frame');var poster=document.getElementById('fvePoster');if(!frame||!poster)return;frame.addEventListener('load',function(){setTimeout(function(){poster.classList.add('is-loaded');setTimeout(function(){poster.remove();},600);},600);});})();</script>
 <script>(function(){function eq(){if(window.innerWidth>760)return;var a=document.querySelector('.fve-worth-card--yes'),b=document.querySelector('.fve-worth-card--no');if(!a||!b)return;a.style.height='';b.style.height='';var h=Math.max(a.offsetHeight,b.offsetHeight);a.style.height=h+'px';b.style.height=h+'px';}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',eq);}else{eq();}window.addEventListener('resize',eq);})();</script>
 <script>(function(){['phase01List','phase02List','phase03List','phase04List'].forEach(function(id){var list=document.getElementById(id);if(!list)return;var btnUp=list.parentElement.querySelector('.fve-phase__scroll-btn--up');var btnDown=list.parentElement.querySelector('.fve-phase__scroll-btn--down');function upd(){btnUp.disabled=list.scrollTop<=0;btnDown.disabled=list.scrollTop+list.clientHeight>=list.scrollHeight-1;}btnUp.addEventListener('click',function(){list.scrollBy({top:-110,behavior:'smooth'});});btnDown.addEventListener('click',function(){list.scrollBy({top:110,behavior:'smooth'});});list.addEventListener('scroll',upd);upd();});})();</script>
 <script>(function(){
