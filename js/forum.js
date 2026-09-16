@@ -25,6 +25,7 @@
   var pendingAction   = null
   var currentPage     = 1
   var THREADS_PER_PAGE = 5
+  var currentMode     = null  // 'users' | 'ai'
 
   // === DOM — hero auth ===
   var heroAuthPanel        = document.getElementById('heroAuthPanel')
@@ -184,6 +185,18 @@
         if (entries[0].isIntersecting) mainEl.classList.add('is-visible')
       }, { threshold: 0.05 }).observe(mainEl)
     }
+
+    window.forumSetMode = function (mode) {
+      currentMode = mode
+      currentPage = 1
+      searchQuery = ''
+      activeFilter = ''
+      if (forumSearch) forumSearch.value = ''
+      var activeTabs = document.querySelectorAll('.forum-filter-tab')
+      activeTabs.forEach(function (t) { t.classList.toggle('is-active', t.dataset.filter === '') })
+      showListView()
+      renderThreads(allThreads)
+    }
   }
 
   // === EVENTS ===
@@ -217,7 +230,7 @@
 
     // Hero — explore button (nepřihlášený stav)
     heroExploreBtn.addEventListener('click', function () {
-      document.querySelector('.forum-main').scrollIntoView({ behavior: 'smooth', block: 'start' })
+      document.getElementById('forumModeSelect').scrollIntoView({ behavior: 'smooth', block: 'start' })
     })
 
     // Hero auth — user panel
@@ -686,6 +699,9 @@
 
   function renderThreads(threads) {
     var filtered = threads.filter(function (t) {
+      var isAiThread = t.bot_mode === 'active' || t.bot_mode === 'disabled'
+      if (currentMode === 'ai'    && !isAiThread) return false
+      if (currentMode === 'users' &&  isAiThread) return false
       return matchesFilter(t.topic) &&
         (!searchQuery || (t.topic && t.topic.toLowerCase().indexOf(searchQuery) !== -1))
     })
@@ -1163,7 +1179,7 @@
     botRowCount = 0
     threadError.hidden = true
 
-    var isAdmin = currentRole === 'admin'
+    var isAdmin = currentRole === 'admin' && currentMode !== 'users'
     botSection.hidden = !isAdmin
     if (isAdmin) { addBotRow(); addBotRow() }
 

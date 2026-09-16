@@ -77,7 +77,7 @@
 
     <!-- Nepřihlášený stav: Prozkoumat témata -->
     <div id="heroExplorePanel" style="margin-top:32px;">
-      <button class="forum-hero__explore-btn" id="heroExploreBtn">Prozkoumat témata</button>
+      <button class="forum-hero__explore-btn" id="heroExploreBtn">Vstoupit do diskuze</button>
     </div>
 
     <!-- Přihlášený stav: user panel -->
@@ -123,9 +123,42 @@
   </div>
 </section>
 
+<!-- Výběr módu -->
+<section class="forum-mode-select" id="forumModeSelect">
+  <div class="forum-mode-select__container">
+    <div class="guides-grid forum-mode-select__grid">
+
+      <article class="guide-card forum-mode-card" id="modeCardUsers" data-mode="users" role="button" tabindex="0">
+        <div class="guide-card-body">
+          <h3 class="guide-card-title">Diskuze uživatelů</h3>
+          <p class="guide-card-text">Sdílejte zkušenosti s ostatními vlastníky bytů a SVJ — diskutujte o reálných situacích, cenách a doporučeních od lidí, kteří si tím prošli.</p>
+          <span class="guide-link">Vstoupit do diskuze <span class="guide-link-arrow">→</span></span>
+        </div>
+        <div class="guide-card-illustration-wrap">
+          <img class="guide-card-illustration" src="assets/images/Diskuze.webp" alt="Diskuze uživatelů" loading="lazy">
+        </div>
+      </article>
+
+      <article class="guide-card forum-mode-card" id="modeCardAI" data-mode="ai" role="button" tabindex="0">
+        <div class="guide-card-body">
+          <h3 class="guide-card-title">Diskuze s AI asistenty</h3>
+          <p class="guide-card-text">Ptejte se AI asistentů na vše ohledně JOM, FVE a úspor energie — rychlé odpovědi na technické i legislativní otázky kdykoliv.</p>
+          <span class="guide-link">Vstoupit do diskuze <span class="guide-link-arrow">→</span></span>
+        </div>
+        <div class="guide-card-illustration-wrap">
+          <img class="guide-card-illustration" src="assets/images/AI_diskuze.webp" alt="Diskuze s AI asistenty" loading="lazy">
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
 <!-- Hlavní obsah -->
-<section class="forum-main">
+<section class="forum-main" id="forumMain" hidden>
   <div class="forum-main__container">
+
+    <button class="forum-back-to-mode" id="forumBackToMode">← Zpět na výběr diskuze</button>
 
     <!-- ===== VIEW: SEZNAM VLÁKEN ===== -->
     <div id="viewList">
@@ -329,15 +362,13 @@
         <p class="forum-poll__q">Co bychom mohli zlepšit?</p>
         <p class="forum-poll__sub">Váš názor nám pomůže web vylepšit.</p>
       </div>
+      <input class="forum-poll__email" id="pollEmail" type="email" placeholder="Váš e-mail" required>
       <textarea class="forum-poll__textarea" id="pollText" rows="3" placeholder="Napište nám…"></textarea>
       <button class="forum-poll__submit" id="pollSubmit" type="button">Odeslat</button>
     </div>
 
     <!-- Krok 3: Poděkování -->
     <div class="forum-poll__step" id="pollStep3" hidden>
-      <div class="forum-poll__thanks-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-      </div>
       <p class="forum-poll__q">Děkujeme za zpětnou vazbu!</p>
       <p class="forum-poll__sub">Pomáháte nám dělat web lepším.</p>
     </div>
@@ -429,13 +460,56 @@
 <script src="js/forum.js" defer></script>
 <script>
 (function(){
+  var modeSelect = document.getElementById('forumModeSelect');
+  var forumMain  = document.getElementById('forumMain');
+
+  window.forumMode = null;
+
+  function enterMode(mode) {
+    window.forumMode  = mode;
+    modeSelect.hidden = true;
+    forumMain.hidden  = false;
+    if (window.forumSetMode) window.forumSetMode(mode);
+  }
+
+  document.querySelectorAll('.forum-mode-card').forEach(function(card) {
+    function activate() { enterMode(card.dataset.mode); }
+    card.addEventListener('click', activate);
+    card.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') activate(); });
+  });
+
+  document.getElementById('forumBackToMode').addEventListener('click', function() {
+    forumMain.hidden  = true;
+    modeSelect.hidden = false;
+    window.forumMode  = null;
+    if (window.forumSetMode) window.forumSetMode(null);
+  });
+})();
+</script>
+<script>
+(function(){
+  var SUPABASE_URL     = 'https://rfmwjcimgtpttgeshegs.supabase.co';
+  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJmbXdqY2ltZ3RwdHRnZXNoZWdzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3Mjg5NDcsImV4cCI6MjEwMzMwNDk0N30.ABcxqHUj6a_OvrVmrfcI4gAC6oWjecmr71mD-kuje4Y';
+
   var s1=document.getElementById('pollStep1');
   var s2=document.getElementById('pollStep2');
   var s3=document.getElementById('pollStep3');
   function show(el){[s1,s2,s3].forEach(function(s){s.hidden=true;});el.hidden=false;}
+
   document.getElementById('pollYes').addEventListener('click',function(){show(s3);});
   document.getElementById('pollNo').addEventListener('click',function(){show(s2);});
-  document.getElementById('pollSubmit').addEventListener('click',function(){show(s3);});
+
+  document.getElementById('pollSubmit').addEventListener('click',function(){
+    var message = (document.getElementById('pollText').value||'').trim();
+    var email   = (document.getElementById('pollEmail').value||'').trim();
+    if (!email || !message) return;
+    show(s3);
+    try {
+      var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      sb.from('poll_feedback').insert({ email: email||null, message: message })
+        .then(function(res){ if(res.error) console.error('poll_feedback:', res.error.message); });
+    } catch(e){ console.error('Supabase init error:', e); }
+  });
 })();
 </script>
 
