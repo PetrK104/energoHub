@@ -1,7 +1,7 @@
 (function () {
   var PRICE      = 5.5;    // Kč/kWh
   var YIELD      = 1050;   // kWh/kWp/rok
-  var COST_KWP   = 35000;  // Kč/kWp
+  var COST_KWP   = 25500;  // Kč/kWp (bez baterie; 27–31 tis. s LFP baterií)
   var RANGE      = 0.15;   // ±15 %
   var CHART_H    = 300;    // px
 
@@ -74,9 +74,15 @@
     var savMMin = Math.round(mthPerApt * (1 - RANGE));
     var savMMax = Math.round(mthPerApt * (1 + RANGE));
 
+    var costMin = Math.round(systemCost * (1 - RANGE) / 1000);
+    var costMax = Math.round(systemCost * (1 + RANGE) / 1000);
+
     elPayback.textContent     = payMin + ' – ' + payMax;
     elSavingsYear.textContent = savYMin + ' – ' + savYMax;
     elSavingsMth.textContent  = savMMin + ' – ' + savMMax;
+
+    var elCostTotal = document.getElementById('resCostTotal');
+    if (elCostTotal) elCostTotal.textContent = costMin + ' – ' + costMax;
 
     // Sloupcový graf — pravý sloupec závisí na stavu přepínače
     var refSavings, refMin, refMax;

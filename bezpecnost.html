@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<title>Bezpečnost FVE instalací — Energohub.info</title>
+<meta name="description" content="Statický posudek, požárně bezpečnostní řešení, dokumentace, hasicí přístroj a revize baterie. Co má SVJ požadovat u každé instalace fotovoltaiky.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/guide-shared.css">
+<link rel="stylesheet" href="css/fve.css">
+<link rel="stylesheet" href="css/bezpecnost.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="navbar-container">
+    <nav class="navbar">
+      <a href="index.html" class="navbar-logo">
+        <img src="assets/images/Logo.svg" alt="Energohub">
+      </a>
+
+      <ul class="navbar-links">
+        <li class="nav-dropdown">
+          <a href="index.html#pruvodce" class="nav-dropdown__trigger">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></a>
+          <ul class="nav-dropdown__menu">
+            <div class="nav-dropdown__menu-inner">
+              <li><a href="pruvodce-jom.html">Jednotné odběrné místo (JOM)</a></li>
+              <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
+              <li class="nav-dropdown__item--soon"><span>Teplo a TUV</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Okna a dveře</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Zateplení</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Doporučené pořadí realizace</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+            </div>
+          </ul>
+        </li>
+        <li><a href="bezpecnost.html">Bezpečnost</a></li>
+        <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+        <li><a href="forum.html">Fórum</a></li>
+        <li><a href="index.html#o-nas">O nás</a></li>
+        <li><a href="kontakty.html">Kontakty</a></li>
+      </ul>
+
+      <a href="kontakty.html" class="navbar-cta">Chci vědět více</a>
+
+      <button class="navbar-burger" id="navBurger" aria-label="Otevřít menu" aria-expanded="false">
+        <span class="navbar-burger__bar"></span>
+        <span class="navbar-burger__bar"></span>
+        <span class="navbar-burger__bar"></span>
+      </button>
+    </nav>
+  </div>
+
+  <div class="navbar-mobile" id="navMobile" aria-hidden="true">
+    <nav class="navbar-mobile__nav">
+      <ul class="navbar-mobile__links">
+        <li><a href="index.html#pruvodce">Průvodci opatření</a></li>
+        <li><a href="pruvodce-jom.html">— Jednotné odběrné místo</a></li>
+        <li><a href="pruvodce-fve.html">— Fotovoltaika</a></li>
+        <li class="navbar-mobile__divider"></li>
+        <li><a href="bezpecnost.html">Bezpečnost</a></li>
+        <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+        <li><a href="forum.html">Fórum</a></li>
+        <li><a href="index.html#o-nas">O nás</a></li>
+        <li><a href="kontakty.html">Kontakty</a></li>
+      </ul>
+      <a href="kontakty.html" class="navbar-mobile__cta">Chci vědět více</a>
+    </nav>
+  </div>
+</header>
+
+<main id="obsah">
+
+<!-- Hero -->
+<section class="bsec-hero">
+  <div class="bsec-hero__container">
+    <div class="bsec-hero__title-row">
+      <h1 class="bsec-hero__title">Bezpečnost FVE</h1>
+      <a href="pruvodce-fve.html" class="bsec-hero__fve-link">
+        Přečíst celý průvodce FVE
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <p class="bsec-hero__lead">Přehled toho, co bezpečná instalace vyžaduje — od statického posudku po revize. Co v ní chybí, může při škodě stát SVJ pojistné plnění i odpovědnost.</p>
+  </div>
+</section>
+
+<!-- Navigace — 5 karet -->
+<section class="bsec-nav">
+  <div class="bsec-nav__container">
+    <div class="bsec-nav__grid">
+
+      <a href="#staticky-posudek" class="bsec-nav__card">
+        <span class="bsec-nav__num">01</span>
+        <div class="bsec-nav__card-body">
+          <h2 class="bsec-nav__title">Statický posudek střechy</h2>
+          <p class="bsec-nav__desc">Dokument od autorizovaného statika, který potvrzuje, že střecha a nosná konstrukce domu unesou panely, sníh i vítr. Do 100&nbsp;kW ho zákon nenařizuje.</p>
+        </div>
+      </a>
+
+      <a href="#pbr" class="bsec-nav__card">
+        <span class="bsec-nav__num">02</span>
+        <div class="bsec-nav__card-body">
+          <h2 class="bsec-nav__title">Požárně bezpečnostní řešení</h2>
+          <p class="bsec-nav__desc">Projekt od autorizované osoby, který určuje, kde technologie stojí, jak jsou vedeny kabely, jak funguje vypínání a jaké jsou bezpečnostní požadavky pro hasiče. Zákon ho do 100&nbsp;kW nevyžaduje.</p>
+        </div>
+      </a>
+
+      <a href="#projektova-dokumentace" class="bsec-nav__card">
+        <span class="bsec-nav__num">03</span>
+        <div class="bsec-nav__card-body">
+          <h2 class="bsec-nav__title">Projektová dokumentace</h2>
+          <p class="bsec-nav__desc">Soubor výkresů a popisů zachycující, co přesně bylo instalováno, kde a jak. Základ pro pojistné řízení, servisní zásahy i případné spory s dodavatelem. Do 100&nbsp;kW není povinná.</p>
+        </div>
+      </a>
+
+      <a href="#hasici-pristroj" class="bsec-nav__card">
+        <span class="bsec-nav__num">04</span>
+        <div class="bsec-nav__card-body">
+          <h2 class="bsec-nav__title">Hasicí přístroj</h2>
+          <p class="bsec-nav__desc">Přenosný hasicí přístroj v blízkosti technické místnosti. Nejlevnější opatření na celém seznamu — zákon ho u starších staveb nevyžaduje, ale pojišťovny jeho absenci zohledňují při plnění.</p>
+        </div>
+      </a>
+
+      <a href="#revize-baterie" class="bsec-nav__card">
+        <span class="bsec-nav__num">05</span>
+        <div class="bsec-nav__card-body">
+          <h2 class="bsec-nav__title">Revize bateriového úložiště</h2>
+          <p class="bsec-nav__desc">Revize od technika způsobilého pro Li-ion baterie, která ověřuje stav BMS, ochrany proti přebití a hlubokému vybití a odvětrání místnosti. Pojišťovny ji stále častěji vyžadují jako podmínku plnění.</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- 01 Statický posudek -->
+<section class="bsec-topic" id="staticky-posudek">
+  <div class="bsec-topic__container">
+    <div class="bsec-topic__header">
+      <span class="bsec-topic__num">01</span>
+      <h2 class="bsec-topic__title">Statický posudek střechy</h2>
+    </div>
+    <div class="bsec-topic__body">
+
+      <div class="bsec-topic__subsect" id="s01-1">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">01.1</span>Co je statický posudek a proč ho potřebujete</h3>
+        <p class="bsec-topic__intro">Statický posudek je odborné posouzení, které ověří, jestli nosná konstrukce střechy unese váhu fotovoltaické elektrárny včetně sněhu a větru, které na ni budou dodatečně působit. Bez posudku hrozí riziko přetížení konstrukce, průhybů, poškození krytiny nebo v krajním případě <strong>statické poruchy střechy</strong>.</p>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s01-2">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">01.2</span>Kdy je posudek potřeba</h3>
+        <p class="bsec-topic__intro">U bytových domů se statický posudek prakticky vždy vyplatí zpracovat, protože instalace FVE mění zatížení nosné konstrukce, která bývá běžně vnímaná jako hotová a neměnná věc.</p>
+        <ul class="bsec-topic__list">
+          <li>Samotná FVE (panel + hliníková konstrukce) zatěžuje střechu reálně cca <strong>20–25&nbsp;kg/m²</strong> — bez ohledu na typ střechy.</li>
+          <li>U ploché střechy se systém nekotví, ale přitěžuje balastem — celková hmotnost na střeše pak může být vyšší, ale to není váha FVE samotné.</li>
+          <li>Skutečný problém u nových střech bývá <strong>malá rezerva nosnosti</strong> (latě a prkna místo trámů); u starších střech spíš hořlavost krytiny a stav krovu.</li>
+          <li>Posudek potvrzuje, že nosná konstrukce střechy i budovy zatížení unese, a chrání SVJ před přenosem odpovědnosti od dodavatele.</li>
+          <li><strong>Bez posudku pojišťovna nemusí uznat pojistnou událost</strong> spojenou s poškozením střechy nebo konstrukce.</li>
+          <li>Zpracovává ho autorizovaný statik vedený u České komory autorizovaných inženýrů a techniků (ČKAIT).</li>
+        </ul>
+        <p class="bsec-topic__intro">Samotné stavební povolení nemusí být nutné řešit, pokud instalace nezasahuje do nosných konstrukcí budovy a nemění se způsob užívání stavby — ale právě posouzení, zda do nosné konstrukce zasahuje nebo ji přetěžuje, je úkolem statika, ne laickým odhadem.</p>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s01-3">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">01.3</span>Co posudek zkoumá</h3>
+        <p class="bsec-topic__intro">Statik posuzuje střechu ve dvou stavech — před instalací a po ní — a kontroluje čtyři hlavní věci:</p>
+        <ul class="bsec-topic__list">
+          <li><strong>Váha konstrukce FVE</strong> — panely, nosný rám, kabeláž.</li>
+          <li><strong>Zatížení sněhem</strong> — sníh se může hromadit za panely nebo sesouvat z jejich plochy a tvořit nerovnoměrné zatížení.</li>
+          <li><strong>Zatížení větrem</strong> — vítr střechu nejen tlačí, ale u okrajů a rohů ji i „saje" a snaží se panely nadzvednout.</li>
+          <li><strong>Stav střechy samotné</strong> — jestli už dnes nemá skryté vady, které by ji oslabovaly.</li>
+        </ul>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s01-4">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">01.4</span>Kdo ho smí zpracovat a kdy ho objednat</h3>
+        <p class="bsec-topic__intro">Posudek musí zpracovat autorizovaná osoba — <strong>inženýr s autorizací ČKAIT v oboru statika a dynamika staveb</strong>, ne firma, která panely prodává nebo montuje. Objednat ho je potřeba na začátku, ideálně <strong>ještě před podpisem smlouvy s dodavatelem FVE</strong> — výsledek posudku totiž může ovlivnit, kolik panelů střecha unese, kam je lze umístit, nebo jaký kotvicí systém zvolit.</p>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s01-5">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">01.5</span>Jak číst závěr posudku</h3>
+        <p class="bsec-topic__intro">Posudek končí jedním ze tří závěrů:</p>
+        <div class="bsec-verdict">
+          <div class="bsec-verdict__item">
+            <div class="bsec-verdict__icon bsec-verdict__icon--ok">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="bsec-verdict__content">
+              <span class="bsec-verdict__label">Vyhovuje</span>
+              <p class="bsec-verdict__desc">Střecha zvládne navrhovanou zátěž bez úprav, projekt pokračuje podle původního návrhu.</p>
+            </div>
+          </div>
+          <div class="bsec-verdict__item">
+            <div class="bsec-verdict__icon bsec-verdict__icon--ok">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="bsec-verdict__content">
+              <span class="bsec-verdict__label">Vyhovuje s podmínkami</span>
+              <p class="bsec-verdict__desc">Nejčastější výsledek — typicky omezuje počet nebo rozmístění panelů, předepisuje konkrétní způsob kotvení nebo vyžaduje lokální zesílení konstrukce.</p>
+            </div>
+          </div>
+          <div class="bsec-verdict__item">
+            <div class="bsec-verdict__icon bsec-verdict__icon--no">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div class="bsec-verdict__content">
+              <span class="bsec-verdict__label">Nevyhovuje</span>
+              <p class="bsec-verdict__desc">V navrhované podobě projekt nelze realizovat — je potřeba konstrukci zesílit, snížit počet panelů nebo zvolit lehčí systém.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s01-6">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">01.6</span>Jakou formu posudek může mít</h3>
+        <p class="bsec-topic__intro">Pokud střecha v základním výpočtu plně nevyhoví, neznamená to automaticky konec projektu. Statik může FVE doporučit s podmínkou pravidelné údržby — konkrétně povinného odklízení mokrého sněhu, jehož tíha (až 150–300&nbsp;kg/m²) mnohonásobně převyšuje zatížení od samotné FVE (20–25&nbsp;kg/m²). Forma posudku se odvíjí od stáří budovy a dostupnosti projektové dokumentace.</p>
+        <div class="bsec-variants__grid">
+          <div class="bsec-variants__item">
+            <span class="bsec-variants__letter">a</span>
+            <div class="bsec-variants__content">
+              <h4 class="bsec-variants__name">Technické dobrozdání s podmínkou údržby</h4>
+              <p class="bsec-variants__desc">Nejjednodušší a nejrychlejší varianta pro budovy, kde existující dokumentace nebo stav střechy nevylučují FVE, ale nosnost má omezenou rezervu. Statik vydá vyjádření s podmínkou: SVJ se zaváže k pravidelnému odklízení mokrého sněhu, čímž kritické zatížení nenastane. Podmínka musí být zapracována do smlouvy a provozního řádu domu.</p>
+            </div>
+          </div>
+          <div class="bsec-variants__item">
+            <span class="bsec-variants__letter">b</span>
+            <div class="bsec-variants__content">
+              <h4 class="bsec-variants__name">Výpočet z dostupných podkladů</h4>
+              <p class="bsec-variants__desc">Pro novější budovy (zpravidla po roce 1980), kde existuje původní projektová dokumentace nebo typové podklady. Statik přepočítá nosnou konstrukci s přidaným zatížením od FVE bez nutnosti fyzického zaměření objektu. Výsledkem je plnohodnotný posudek s jednoznačným závěrem.</p>
+            </div>
+          </div>
+          <div class="bsec-variants__item">
+            <span class="bsec-variants__letter">c</span>
+            <div class="bsec-variants__content">
+              <h4 class="bsec-variants__name">Plný posudek se zaměřením na místě</h4>
+              <p class="bsec-variants__desc">Nezbytný u starších budov bez dochované dokumentace. Statik provede fyzickou prohlídku a zaměření konstrukce: průřezy krokví, stav dřeva, způsob kotvení. Teprve z naměřených hodnot sestaví výpočetní model. Jde o nejnákladnější variantu, ale u předválečných domů nebo budov se zaniklou dokumentací je to jediná cesta k prokazatelnému výsledku.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s01-7">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">01.7</span>Jak poznat kvalitní posudek</h3>
+        <ul class="bsec-topic__checklist">
+          <li>
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Vychází z prohlídky střechy přímo na místě, ne jen z výkresů.
+          </li>
+          <li>
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Je zpracovaný pro konkrétní dům a konkrétní navrhovaný počet a typ panelů, ne jako obecné prohlášení.
+          </li>
+          <li>
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Obsahuje jasný závěr (vyhovuje / s podmínkami / nevyhovuje).
+          </li>
+          <li>
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Je podepsaný a orazítkovaný autorizovaným inženýrem s uvedeným registračním číslem ČKAIT.
+          </li>
+        </ul>
+        <p class="bsec-topic__intro">Zvýšená obezřetnost je namístě, pokud dodavatel tvrdí, že střecha vyhovuje pouze ústně, nabízí posudek od jiného podobného domu, nebo posudek vznikl bez fyzické prohlídky střechy.</p>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s01-8">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">01.8</span>Praktický postup pro SVJ</h3>
+        <ol class="bsec-topic__steps">
+          <li>O objednání posudku obvykle rozhoduje shromáždění SVJ jako součást schvalování projektu FVE.</li>
+          <li>Posudek se zpracovává nezávisle na dodavateli panelů — SVJ si statika najde samo, nebo si nechá doporučit několik jmen a vybere si.</li>
+          <li>Hotový posudek se předává dodavateli, aby podle něj navrhl instalaci, případně pojišťovně nebo stavebnímu úřadu, pokud si ho vyžádají.</li>
+          <li>Zpracování trvá řádově dny až týdny podle složitosti střechy, cena se odvíjí od velikosti objektu a dostupnosti podkladů.</li>
+        </ol>
+      </div>
+
+      <div class="bsec-topic__why">
+        <span class="bsec-topic__why-label">Proč je to důležité</span>
+        <p class="bsec-topic__why-text">Bez statického posudku pojišťovna při zřícení střechy neplatí a SVJ může nést odpovědnost i za újmu na zdraví.</p>
+      </div>
+
+      <p class="bsec-topic__source">Informace vycházejí z vyhlášky č. 114/2023 Sb. — Vyhláška o požadavcích na bezpečnou instalaci výrobny elektřiny využívající obnovitelné zdroje energie s instalovaným výkonem do 50 kW</p>
+
+    </div>
+  </div>
+</section>
+
+<!-- 02 PBŘ -->
+<section class="bsec-topic bsec-topic--dark" id="pbr">
+  <div class="bsec-topic__container">
+    <div class="bsec-topic__header">
+      <span class="bsec-topic__num">02</span>
+      <h2 class="bsec-topic__title">Požárně bezpečnostní řešení (PBŘ)</h2>
+    </div>
+    <div class="bsec-topic__body">
+
+      <div class="bsec-topic__subsect" id="s02-1">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">02.1</span>Co je PBŘ a proč ho potřebujete</h3>
+        <p class="bsec-topic__intro">Požárně bezpečnostní řešení je projekt, který zpracovává autorizovaná osoba v oboru požární bezpečnosti staveb. Určuje, kde smí technologie FVE stát, jak jsou vedené kabely, jakým způsobem se celá instalace v případě potřeby vypne a jak mohou hasiči při zásahu bezpečně zasáhnout.</p>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s02-2">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">02.2</span>Kdy je PBŘ potřeba</h3>
+        <p class="bsec-topic__intro">Zákon PBŘ výslovně vyžaduje až u instalací nad <strong>100&nbsp;kW</strong> — podobně jako u statického posudku žádná formální povinnost pod touto hranicí neplatí. Nejde ale o bezpečnostní hranici, ale o administrativní — riziko požáru se s výkonem instalace neřídí stejně skokově jako povinnost mít PBŘ.</p>
+        <ul class="bsec-topic__list">
+          <li>Pod <strong>100&nbsp;kW</strong> tuto oblast reálně nikdo nekontroluje — chybí zákonná povinnost, a tím i institucionální dohled, i když nebezpečí zůstává stejné jako u větších instalací.</li>
+          <li>V bytovém domě se sdílenými únikovými cestami a desítkami obyvatel jde o riziko, které stojí za samostatné posouzení, i když ho zákon přímo nenařizuje.</li>
+          <li><strong>PBŘ i statický posudek bývají podmínkou pojišťovny</strong> — bez nich může pojišťovna při škodě plnění krátit nebo zcela odmítnout.</li>
+          <li>Odpovědnost v případě události nese SVJ, a to i za újmu na zdraví, pokud k ní v domě dojde.</li>
+        </ul>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s02-3">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">02.3</span>Co PBŘ řeší</h3>
+        <p class="bsec-topic__intro">PBŘ pro FVE se soustředí na čtyři oblasti:</p>
+        <ul class="bsec-topic__list">
+          <li><strong>Kde smí stát</strong> střídač, rozvaděče a baterie.</li>
+          <li><strong>Jak jsou vedené a chráněné</strong> kabely.</li>
+          <li><strong>Jak lze celou instalaci rychle a bezpečně vypnout</strong>.</li>
+          <li><strong>Jak nastavit systém</strong> tak, aby po vypnutí nezůstalo nikde nebezpečné napětí.</li>
+        </ul>
+        <p class="bsec-topic__intro">Cílem je, aby hasiči mohli při zásahu bezpečně pracovat i v domě s fotovoltaikou, a aby se požár z technologie nemohl rozšířit dál do budovy.</p>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s02-4">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">02.4</span>Kdo ho zpracovává a kdy objednat</h3>
+        <p class="bsec-topic__intro">PBŘ zpracovává autorizovaný inženýr v oboru požární bezpečnosti staveb, a to vždy po osobní prohlídce konkrétního objektu — rozsah řešení závisí na stáří budovy, konstrukčním systému, počtu podlaží a způsobu využití.</p>
+        <p class="bsec-topic__intro">Od <strong>1.&nbsp;ledna 2026</strong> platí zpřísněné pravidlo: PBŘ u staveb s mírným a vyšším požárním nebezpečím (kam FVE na bytových domech obvykle spadá) musí zpracovat inženýr se specializovanou autorizací <strong>„Požární bezpečnost staveb"</strong> — běžná autorizace projektanta v oboru pozemních staveb už nestačí. Odborníků s touto specializací je výrazně méně, což se může projevit na dostupnosti i ceně zpracování.</p>
+        <p class="bsec-topic__intro">Stejně jako statický posudek by PBŘ mělo vzniknout <strong>už ve fázi návrhu</strong>, ne až po instalaci technologie — dodavatel FVE by měl s jeho požadavky pracovat od začátku, ne je řešit dodatečně.</p>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s02-5">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">02.5</span>Klíčová opatření, která PBŘ určuje</h3>
+        <div class="bsec-variants__grid">
+          <div class="bsec-variants__item">
+            <span class="bsec-variants__letter">A</span>
+            <div class="bsec-variants__content">
+              <h4 class="bsec-variants__name">Materiálové provedení panelů</h4>
+              <p class="bsec-variants__desc">Fotovoltaický panel musí být tvořen nehořlavou konstrukcí třídy reakce na oheň <strong>A1 nebo A2</strong> (s výjimkou stínicí fólie a izolačních hmot) — stejnou třídu musí mít i konstrukce, na které je panel umístěn.</p>
+            </div>
+          </div>
+          <div class="bsec-variants__item">
+            <span class="bsec-variants__letter">B</span>
+            <div class="bsec-variants__content">
+              <h4 class="bsec-variants__name">Umístění technologie</h4>
+              <p class="bsec-variants__desc">Střídač a rozvaděče nesmí být připevněné přímo na hořlavou stěnu — podklad musí být nehořlavý (třída A1 nebo A2), nebo musí mít nehořlavou desku přesahující minimálně <strong>500&nbsp;mm</strong> na všechny strany. Ideálně patří do odděleného zděného prostoru s požárními dveřmi a vlastním větráním, které odvádí teplo i případné plyny.</p>
+            </div>
+          </div>
+          <div class="bsec-variants__item">
+            <span class="bsec-variants__letter">C</span>
+            <div class="bsec-variants__content">
+              <h4 class="bsec-variants__name">Baterie</h4>
+              <p class="bsec-variants__desc">Úložiště musí stát v samostatném, požárně odděleném prostoru mimo únikové cesty — ve vlastní místnosti, nebo za požární přepážkou.</p>
+            </div>
+          </div>
+          <div class="bsec-variants__item">
+            <span class="bsec-variants__letter">D</span>
+            <div class="bsec-variants__content">
+              <h4 class="bsec-variants__name">Kabeláž</h4>
+              <p class="bsec-variants__desc">Venkovní kabely na střeše a fasádě musí odolávat UV záření a prostupy přes požárně dělicí konstrukce musí být utěsněné certifikovaným systémem.</p>
+            </div>
+          </div>
+          <div class="bsec-variants__item">
+            <span class="bsec-variants__letter">E</span>
+            <div class="bsec-variants__content">
+              <h4 class="bsec-variants__name">Vypínací tlačítko</h4>
+              <p class="bsec-variants__desc">Vyhláška vyžaduje tzv. <strong>Total Stop</strong> u vstupu do objektu, aby ho hasiči našli bez nutnosti vstupovat do budovy — toto tlačítko odpojí celé odběrné místo. Objekt může mít navíc druhé, tzv. <strong>Central Stop</strong> tlačítko přímo u technologie, které vypíná jen část instalace; to už ale může vyžadovat PBŘ nad rámec vyhlášky. Od roku 2026/2027 jsou Central Stop a Total Stop nově zařazené jako požárně bezpečnostní zařízení s povinností pravidelné roční kontroly provozuschopnosti.</p>
+            </div>
+          </div>
+          <div class="bsec-variants__item">
+            <span class="bsec-variants__letter">F</span>
+            <div class="bsec-variants__content">
+              <h4 class="bsec-variants__name">Bezpečné napětí</h4>
+              <p class="bsec-variants__desc">Po aktivaci vypnutí musí v rozvodu klesnout napětí pod <strong>120&nbsp;V&nbsp;DC</strong> — běžný string panelů přitom generuje <strong>250–500&nbsp;V&nbsp;DC</strong>, které nelze bezpečně přerušit bez dalšího opatření (dálkový odpojovač, rapid shutdown, optimizéry nebo méně panelů v sérii).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s02-6">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">02.6</span>Časté chyby, kterých se vyvarovat</h3>
+        <ul class="bsec-topic__warnlist">
+          <li>
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8.5" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="14.5" r="1" fill="currentColor"/></svg>
+            <span><strong>Vypínací tlačítko v uzavřené technické místnosti za uzamčenými dveřmi</strong> — požadavek na dostupnost pro hasiče to nesplňuje; přesné umístění je proto dobré zapsat přímo do smlouvy s dodavatelem.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8.5" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="14.5" r="1" fill="currentColor"/></svg>
+            <span><strong>FVE technologie nebo baterie v místnosti s plynovým kotlem</strong> — kombinuje se tím elektrické a plynové riziko na jednom místě, komplikuje se zásah hasičů a v případě pojistné události se SVJ hůř obhajuje, že postupovalo bezpečně.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s02-7">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">02.7</span>Praktický postup pro SVJ</h3>
+        <p class="bsec-topic__intro">PBŘ pro FVE se zpracovává jako doplněk k požárně bezpečnostnímu řešení, které by měl mít v nějaké podobě každý bytový dům bez ohledu na fotovoltaiku — únikové cesty, nouzové osvětlení, hasicí přístroje, požární dveře a podobně. Nová technologie do něj přidává samostatný oddíl, nenahrazuje ale to, co v dokumentaci domu případně chybí z doby výstavby.</p>
+        <p class="bsec-topic__intro">Hotové řešení se předává dodavateli FVE, aby podle něj umístil technologii a kabeláž, a uchovává se spolu se statickým posudkem jako součást dokumentace k elektrárně — pro pojišťovnu i pro případnou kontrolu.</p>
+      </div>
+
+      <div class="bsec-topic__why">
+        <span class="bsec-topic__why-label">Proč je to důležité</span>
+        <p class="bsec-topic__why-text">Bytový dům je sdílená stavba — požár na střeše ohrožuje desítky osob najednou. Bez PBŘ zpracovaného před instalací přechází odpovědnost za škody i újmu na zdraví na SVJ a pojišťovna může plnění odmítnout.</p>
+      </div>
+
+      <p class="bsec-topic__source">Informace vycházejí z vyhlášky č. 114/2023 Sb. — Vyhláška o požadavcích na bezpečnou instalaci výrobny elektřiny využívající obnovitelné zdroje energie s instalovaným výkonem do 50 kW</p>
+
+    </div>
+  </div>
+</section>
+
+<!-- 03 Projektová dokumentace -->
+<section class="bsec-topic" id="projektova-dokumentace">
+  <div class="bsec-topic__container">
+    <div class="bsec-topic__header">
+      <span class="bsec-topic__num">03</span>
+      <h2 class="bsec-topic__title">Projektová dokumentace</h2>
+    </div>
+    <div class="bsec-topic__body">
+
+      <div class="bsec-topic__subsect" id="s03-1">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">03.1</span>Co je projektová dokumentace a proč ji potřebujete</h3>
+        <p class="bsec-topic__intro">Projektová dokumentace je soubor výkresů, schémat a technické zprávy, který zachycuje, co přesně bylo na FVE instalováno, kde a jak.</p>
+        <p class="bsec-topic__intro">Je to záznam toho, co skutečně vzniklo — a <strong>jediný doklad, se kterým se dá prokazatelně pracovat při pojistné události, prodeji bytu nebo sporu s dodavatelem</strong>.</p>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s03-2">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">03.2</span>Kdy je potřeba</h3>
+        <p class="bsec-topic__intro">U FVE do <strong>100&nbsp;kW</strong> aktuální stavební zákon nevyžaduje stavební povolení ani žádnou formu hlášení stavebnímu úřadu — za předpokladu, že instalace nezasahuje do nosných konstrukcí, nemění způsob užívání stavby a nejde o kulturně chráněnou budovu.</p>
+        <ul class="bsec-topic__list">
+          <li>U bytových domů jde o sdílený majetek a pohyb více osob, což klade vyšší nároky na to, aby bylo zpětně doložitelné, kdo za jaké rozhodnutí odpovídá.</li>
+          <li><strong>Proto se plnohodnotná projektová dokumentace vyplatí zpracovat i tam, kde ji zákon přímo nenařizuje.</strong></li>
+        </ul>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s03-3">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">03.3</span>Co dokumentace obsahuje</h3>
+        <ol class="bsec-topic__steps">
+          <li>Technickou zprávu s popisem instalace.</li>
+          <li>Výkresy umístění panelů a technologie.</li>
+          <li>Elektrická schémata zapojení.</li>
+          <li>Odkaz na statický posudek a požárně bezpečnostní řešení jako přílohy.</li>
+        </ol>
+        <p class="bsec-topic__intro">Díky tomu je z jednoho místa patrné, co bylo instalováno, podle jakého návrhu a s jakými bezpečnostními opatřeními.</p>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s03-4">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">03.4</span>Kdo ji zpracovává a kdy objednat</h3>
+        <p class="bsec-topic__intro">Dokumentaci zpracovává projektant — u instalací nad <strong>100&nbsp;kW</strong> jde o zákonnou povinnost, u menších instalací o osvědčenou praxi. Ideálně ji zpracovává stejný projektant, který navrhuje statické a požární řešení, aby na sebe všechny části navazovaly.</p>
+        <p class="bsec-topic__intro">Dokumentace vzniká <strong>souběžně s návrhem instalace</strong>, ne až po jejím dokončení — jinak hrozí, že bude popisovat něco jiného, než co bylo nakonec skutečně postaveno.</p>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s03-5">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">03.5</span>Praktický postup pro SVJ</h3>
+        <ul class="bsec-topic__list">
+          <li>Dokumentaci si SVJ vyžádá od dodavatele jako <strong>standardní součást zakázky</strong>, ne jako nadstandard — i pro instalace, kde ji zákon v plném rozsahu nevyžaduje.</li>
+          <li>Uchovává se spolu se <strong>statickým posudkem a PBŘ</strong> jako celek.</li>
+          <li>Bez ní bývá při případném sporu, servisním zásahu nebo pojistné události obtížné zjistit, kdo co instaloval a podle jakého návrhu.</li>
+        </ul>
+      </div>
+
+      <div class="bsec-topic__why">
+        <span class="bsec-topic__why-label">Proč je to důležité</span>
+        <p class="bsec-topic__why-text">Bez dokumentace nelze při pojistné události, prodeji nebo servisním zásahu prokázat, co, kdy a kdo instaloval — veškerá odpovědnost padá na SVJ a vymáhání záruky vůči dodavateli je téměř nemožné.</p>
+      </div>
+
+      <p class="bsec-topic__source">Informace vycházejí z vyhlášky č. 114/2023 Sb. — Vyhláška o požadavcích na bezpečnou instalaci výrobny elektřiny využívající obnovitelné zdroje energie s instalovaným výkonem do 50 kW</p>
+
+    </div>
+  </div>
+</section>
+
+<!-- 04 Hasicí přístroj -->
+<section class="bsec-topic bsec-topic--dark" id="hasici-pristroj">
+  <div class="bsec-topic__container">
+    <div class="bsec-topic__header">
+      <span class="bsec-topic__num">04</span>
+      <h2 class="bsec-topic__title">Hasicí přístroj</h2>
+    </div>
+    <div class="bsec-topic__body">
+
+      <div class="bsec-topic__subsect" id="s04-1">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">04.1</span>Co je a proč ho mít</h3>
+        <p class="bsec-topic__intro">Přenosný hasicí přístroj v blízkosti technické místnosti slouží ke zvládnutí požáru v jeho počáteční fázi, než dorazí hasiči. Je to <strong>nejjednodušší a nejdostupnější opatření z celého seznamu</strong> — stačí ho pořídit a umístit na správné místo.</p>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s04-2">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">04.2</span>Kdy je povinný, kdy jen doporučený</h3>
+        <p class="bsec-topic__intro">Povinnost mít hasicí přístroj v blízkosti FVE instalace se podle <strong>vyhlášky č.&nbsp;23/2008&nbsp;Sb.</strong> vztahuje na objekty zkolaudované po <strong>1.&nbsp;července 2008</strong>. Naše doporučení je ale mít hasicí přístroj v blízkosti technické místnosti vždy, bez ohledu na to, co říká vyhláška.</p>
+        <p class="bsec-topic__intro">U novějších staveb nebo tam, kde proběhla rekonstrukce, bývá přístroj běžnou součástí požárně bezpečnostního řešení. I tam, kde povinnost formálně chybí, jde o opatření, které se z hlediska bezpečnosti i nákladů <strong>vyplatí bez ohledu na stáří domu</strong>.</p>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s04-3">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">04.3</span>Jaký typ hasicího přístroje zvolit</h3>
+        <p class="bsec-topic__intro">K baterii se hodí přednostně hasicí přístroj určený přímo pro <strong>lithiové baterie</strong> — produkty s certifikací pro hašení Li-Ion článků, často v kombinaci se speciálním hasivem. Funguje ale i běžný <strong>práškový přístroj</strong>.</p>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s04-4">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">04.4</span>Proč se to vyplatí</h3>
+        <ul class="bsec-topic__list">
+          <li>Riziko vzniku požáru v technické místnosti je reálné — tepelný únik nehrozí jen od FVE baterie, ale stejně tak od mobilních telefonů nebo nabíjecích stanic uložených ve stejném prostoru.</li>
+          <li>Bez přístroje v dosahu není čím zasáhnout v prvních minutách a lokální závada se může rozrůst na celou místnost.</li>
+          <li><strong>Náklad v řádu stokorun je oproti hodnotě domu v řádu milionů korun zanedbatelný.</strong></li>
+          <li>Pojišťovny mohou při absenci základního protipožárního vybavení <strong>krátit nebo odmítnout pojistné plnění</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s04-5">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">04.5</span>Praktický postup pro SVJ</h3>
+        <ul class="bsec-topic__list">
+          <li>Přístroj se umísťuje <strong>v dosahu technické místnosti</strong>, ne uvnitř uzamčeného prostoru, kam se v případě potřeby nikdo rychle nedostane.</li>
+          <li>SVJ by mělo zajistit <strong>pravidelnou kontrolu provozuschopnosti</strong> — u přenosných hasicích přístrojů standardně jednou ročně.</li>
+          <li>Doklad o kontrole se uchovává spolu s ostatní dokumentací k FVE.</li>
+        </ul>
+      </div>
+
+      <div class="bsec-topic__why">
+        <span class="bsec-topic__why-label">Proč je to důležité</span>
+        <p class="bsec-topic__why-text">Pojišťovna může při požáru krátit nebo odmítnout plnění, pokud chybělo základní protipožární vybavení. Hasicí přístroj stojí pár stovek — škoda na bytovém domě bývá v řádu milionů.</p>
+      </div>
+
+      <p class="bsec-topic__source">Informace vycházejí z vyhlášky č. 114/2023 Sb. — Vyhláška o požadavcích na bezpečnou instalaci výrobny elektřiny využívající obnovitelné zdroje energie s instalovaným výkonem do 50 kW</p>
+
+    </div>
+  </div>
+</section>
+
+<!-- 05 Revize baterie -->
+<section class="bsec-topic bsec-topic--dark" id="revize-baterie">
+  <div class="bsec-topic__container">
+    <div class="bsec-topic__header">
+      <span class="bsec-topic__num">05</span>
+      <h2 class="bsec-topic__title">Revize bateriového úložiště</h2>
+    </div>
+    <div class="bsec-topic__body">
+
+      <div class="bsec-topic__subsect" id="s05-1">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">05.1</span>Co je a proč ji potřebujete</h3>
+        <p class="bsec-topic__intro">Revize bateriového úložiště je odborná prohlídka, kterou provádí <strong>revizní technik způsobilý pro technologii Li-ion baterií</strong>. Ověřuje správnost zapojení, funkci ochranných systémů baterie (tzv. BMS) a bezpečnost prostoru, kde je úložiště umístěné.</p>
+        <p class="bsec-topic__intro">Je to jiný úkon než výchozí revize FVE, kterou vyžaduje distribuční síť při připojení elektrárny — revize baterie se týká samotného úložiště a jeho bezpečného provozu.</p>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s05-2">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">05.2</span>Kdy je potřeba</h3>
+        <p class="bsec-topic__intro">Li-ion baterie podléhají samostatné revizní normě odlišné od té, podle které se reviduje FVE jako celek — revizní technik proto musí mít <strong>způsobilost přímo pro tuto technologii</strong>, ne jen obecně pro elektroinstalace.</p>
+        <ul class="bsec-topic__list">
+          <li>Výchozí revizi FVE vyžaduje distributor jako podmínku připojení.</li>
+          <li>Revizi samotné baterie <strong>stále častěji vyžadují pojišťovny</strong> jako podmínku pojistné smlouvy nebo podmínku plnění — i tam, kde ji jiný předpis přímo nenařizuje.</li>
+        </ul>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s05-3">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">05.3</span>Co revize ověřuje</h3>
+        <ul class="bsec-topic__list">
+          <li><strong>Stav systému správy baterie (BMS)</strong> — elektroniky, která hlídá nabíjení a vybíjení článků.</li>
+          <li>Funkci ochrany proti <strong>přebití a hlubokému vybití</strong>.</li>
+          <li>Správnost ventilace místnosti, kde je úložiště umístěné.</li>
+        </ul>
+        <p class="bsec-topic__intro">Cílem je ověřit, že baterie pracuje v bezpečných mezích a že prostor kolem ní odpovídá požadavkům na její provoz.</p>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s05-4">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">05.4</span>Proč se to vyplatí</h3>
+        <ul class="bsec-topic__list">
+          <li>Bez revize nelze prokazatelně doložit stav systému při pojistné události ani při prodeji nemovitosti — <strong>revizní zpráva je jediný doklad</strong>, kterým SVJ potvrdí, že úložiště bylo v pořádku ke dni kontroly.</li>
+          <li>Absence revize může komplikovat jednání s pojišťovnou i budoucí servis, stejně jako u ostatní dokumentace.</li>
+        </ul>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s05-5">
+        <h3 class="bsec-topic__subhead"><span class="bsec-topic__subnum">05.5</span>Praktický postup pro SVJ</h3>
+        <ul class="bsec-topic__list">
+          <li>První revize se doporučuje provést <strong>spolu s uvedením systému do provozu</strong>, další pak v intervalu podle doporučení výrobce konkrétní baterie — ten se liší podle typu a kapacity úložiště.</li>
+          <li>Revizní zprávu je vhodné uchovávat <strong>spolu se statickým posudkem, PBŘ a projektovou dokumentací</strong> jako součást jednoho celku — usnadní to budoucí servis, reklamaci i jednání s pojišťovnou.</li>
+        </ul>
+      </div>
+
+      <div class="bsec-topic__why">
+        <span class="bsec-topic__why-label">Proč je to důležité</span>
+        <p class="bsec-topic__why-text">Bez platné revizní zprávy nelze při pojistné události, prodeji nemovitosti nebo reklamaci doložit stav systému — pojišťovna může odmítnout plnění a vadu přičíst SVJ.</p>
+      </div>
+
+      <p class="bsec-topic__source">Informace vycházejí z vyhlášky č. 114/2023 Sb. — Vyhláška o požadavcích na bezpečnou instalaci výrobny elektřiny využívající obnovitelné zdroje energie s instalovaným výkonem do 50 kW</p>
+
+    </div>
+  </div>
+</section>
+
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-glow"></div>
+
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">
+          <img src="assets/images/Logo.svg" alt="Energohub">
+        </a>
+        <p class="footer-tagline">Nezávislý průvodce úsporami energie pro SVJ a bytová družstva.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Mapa stránek</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Hlavní stránka</a></li>
+          <li><a href="pruvodce-jom.html">Jednotné odběrné místo</a></li>
+          <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
+          <li><a href="bezpecnost.html">Bezpečnost</a></li>
+          <li><a href="slovnik.html">Slovník pojmů</a></li>
+          <li><a href="forum.html">Diskuzní fórum</a></li>
+          <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+          <li><a href="index.html#o-nas">O nás</a></li>
+          <li><a href="kontakty.html">Kontakty</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Informace</h4>
+        <ul class="footer-links">
+          <li><a href="#">Podmínky použití</a></li>
+          <li><a href="#">Ochrana osobních údajů</a></li>
+          <li><a href="#">Reklamační řád</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-join">
+        <h4 class="footer-col-title">Sledujte nás</h4>
+
+        <div class="footer-social">
+          <a href="#" class="footer-social-icon" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.4h2.48l.37-2.88h-2.85V8.94c0-.83.23-1.4 1.42-1.4h1.52V4.98c-.26-.04-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.88h2.47V21h2.93z"></path></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="3.7"></circle><circle cx="17.1" cy="6.9" r="0.9" fill="currentColor" stroke="none"></circle></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H4.1V20h2.84V8.5zM5.5 4c-.97 0-1.7.73-1.7 1.65 0 .9.71 1.65 1.67 1.65h.02c.99 0 1.7-.74 1.7-1.65C7.19 4.73 6.48 4 5.5 4zM20 13.4c0-3-1.6-4.4-3.74-4.4-1.72 0-2.49 0.95-2.92 1.62V8.5h-2.84c.04.8 0 11.5 0 11.5h2.84v-6.42c0-.34.02-.69.13-.93.28-.69.91-1.41 1.98-1.41 1.4 0 1.96 1.06 1.96 2.62V20H20v-6.6z"></path></svg>
+          </a>
+        </div>
+
+        <form class="footer-newsletter" id="footerNewsletter">
+          <input type="email" name="email" placeholder="Zadejte e-mail" aria-label="E-mailová adresa" required>
+          <button type="submit" aria-label="Odebírat novinky">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6"></path>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Energohub.info. Všechna práva vyhrazena.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/footer.js" defer></script>
+<script src="js/navbar.js" defer></script>
+
+</body>
+</html>

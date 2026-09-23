@@ -37,6 +37,7 @@
             </div>
           </ul>
         </li>
+        <li><a href="bezpecnost.html">Bezpečnost</a></li>
         <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
         <li><a href="forum.html">Fórum</a></li>
         <li><a href="index.html#o-nas">O nás</a></li>
@@ -61,6 +62,7 @@
         <li><a href="pruvodce-jom.html">— Jednotné odběrné místo</a></li>
         <li><a href="pruvodce-fve.html">— Fotovoltaika</a></li>
         <li class="navbar-mobile__divider"></li>
+        <li><a href="bezpecnost.html">Bezpečnost</a></li>
         <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
         <li><a href="forum.html">Fórum</a></li>
         <li><a href="index.html#o-nas">O nás</a></li>
@@ -512,6 +514,161 @@
           <figure class="jom-sharing__fig">
             <img src="assets/images/vizualizace_sdileni_2.webp" alt="Elektřina sdílená přes JOM za 3,50 Kč/kWh" class="jom-sharing__img">
           </figure>
+        </div>
+      </div>
+
+      <!-- Komparační tabulky -->
+      <div class="jom-comptables">
+        <div class="jom-comptables__grid">
+
+          <!-- 1. Matematika obou stran -->
+          <div class="jom-comptables__group">
+          <h4 class="jom-comptables__card-title"><span class="jom-comptables__num">01</span>Matematika obou stran</h4>
+          <div class="jom-comptables__card">
+            <div class="jom-comptables__table-wrap">
+              <table class="jom-comptables__table">
+                <colgroup><col class="jom-comptables__col--label"><col class="jom-comptables__col--nojom"><col class="jom-comptables__col--jom"></colgroup>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th class="jom-comptables__th--nojom">Bez JOM</th>
+                    <th class="jom-comptables__th--jom">S JOM</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="jom-comptables__row-label">Byt, který energii nevyužije<span class="jom-comptables__row-note">dovolená, důchodce s nízkou spotřebou</span></td>
+                    <td>Nevyužitý podíl na výrobě propadá, případně se prodává do sítě za nejistou (spotovou) cenu</td>
+                    <td class="jom-comptables__td--jom">Nevyužitý podíl automaticky odeberou sousedé za interní cenu — majitel dostane peníze v ročním vyúčtování, nehledě na to kdo sdílenou energii odebral</td>
+                  </tr>
+                  <tr>
+                    <td class="jom-comptables__row-label">Soused, který má vyšší spotřebu<span class="jom-comptables__row-note">homeoffice, …</span></td>
+                    <td>Chybějící energii nakupuje ze sítě za plnou cenu — včetně distribuční části</td>
+                    <td class="jom-comptables__td--jom">Stejnou energii odebere za interní cenu — ekvivalent bez distribuční části</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="jom-comptables__note"><svg class="jom-comptables__note-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Sdílení funguje jako oboustranný obchod uvnitř domu: kdo energii nevyužije, automaticky ji prodá sousedům a dostane za ni peníze, aniž by cokoliv řešil. Kdo ji odebere, zaplatí jen za elektřinu samotnou — bez distribuční přirážky, kterou by platil při nákupu ze sítě.</p>
+          </div>
+          </div>
+
+          <!-- 2. Kontrast se spotem -->
+          <div class="jom-comptables__group">
+          <h4 class="jom-comptables__card-title"><span class="jom-comptables__num">02</span>Kontrast se spotem</h4>
+          <div class="jom-comptables__card">
+            <div class="jom-comptables__table-wrap">
+              <table class="jom-comptables__table">
+                <colgroup><col class="jom-comptables__col--label"><col class="jom-comptables__col--nojom"><col class="jom-comptables__col--jom"></colgroup>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th class="jom-comptables__th--nojom">Bez JOM</th>
+                    <th class="jom-comptables__th--jom">S JOM</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="jom-comptables__row-label">Cena za přebytek</td>
+                    <td>kolísá podle aktuální nabídky a poptávky na trhu</td>
+                    <td class="jom-comptables__td--jom">pevná interní cena, daná dopředu</td>
+                  </tr>
+                  <tr>
+                    <td class="jom-comptables__row-label">Situace v letní špičce</td>
+                    <td>přebytek solární výroby v celé síti tlačí cenu k nule, v krajním případě až do záporných hodnot</td>
+                    <td class="jom-comptables__td--jom">poptávka sousedů v domě zůstává stejná bez ohledu na to, co se děje na trhu</td>
+                  </tr>
+                  <tr>
+                    <td class="jom-comptables__row-label">Co majitel reálně dostane</td>
+                    <td>v nejhorších dnech <strong>nic</strong>, nebo <strong>dokonce doplácí</strong> za odvod přebytku</td>
+                    <td class="jom-comptables__td--jom"><strong>dostává zaplaceno</strong> za každou sdílenou kWh — bez výjimky</td>
+                  </tr>
+                  <tr>
+                    <td class="jom-comptables__row-label">Jistota výnosu</td>
+                    <td>žádná — cena je mimo jeho kontrolu</td>
+                    <td class="jom-comptables__td--jom">garantovaná — cena je smluvně daná</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="jom-comptables__note"><svg class="jom-comptables__note-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Právě v okamžiku, kdy má majitel nejvíc přebytků — v létě, uprostřed dne — je prodej do sítě nejméně výhodný, protože se v tu chvíli přebytků snaží zbavit celá síť najednou. V bytovém domě je to přesně naopak: čím víc slunce, tím víc si sousedé mezi sebou vymění, a majitel vydělává i ve chvíli, kdy by na spotu mohl doplácet.</p>
+          </div>
+          </div>
+
+          <!-- 3. Váha distribuční části ceny -->
+          <div class="jom-comptables__group">
+          <h4 class="jom-comptables__card-title"><span class="jom-comptables__num">03</span>Váha distribuční části ceny</h4>
+          <div class="jom-comptables__card">
+            <div class="jom-comptables__table-wrap">
+              <table class="jom-comptables__table">
+                <colgroup><col class="jom-comptables__col--label"><col class="jom-comptables__col--nojom"><col class="jom-comptables__col--jom"></colgroup>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th class="jom-comptables__th--nojom">Bez JOM</th>
+                    <th class="jom-comptables__th--jom">S JOM</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="jom-comptables__row-label">Sazba, kterou má většina bytů v domě</td>
+                    <td>standardní — jednotarifová</td>
+                    <td class="jom-comptables__td--jom">stejná — JOM na sazbě nic nemění</td>
+                  </tr>
+                  <tr>
+                    <td class="jom-comptables__row-label">Podíl distribuce na ceně této sazby</td>
+                    <td>~40 % z každé odebrané kWh</td>
+                    <td class="jom-comptables__td--jom">—</td>
+                  </tr>
+                  <tr>
+                    <td class="jom-comptables__row-label">Co za distribuci zaplatíte na sdílené kWh</td>
+                    <td>plnou distribuční přirážku, na 100 % spotřeby</td>
+                    <td class="jom-comptables__td--jom">0 Kč — energie neopustí dům, distribuce se neúčtuje</td>
+                  </tr>
+                  <tr>
+                    <td class="jom-comptables__row-label">Dopad na většinu bytů v domě</td>
+                    <td>platí distribuci na každé kWh bez výjimky</td>
+                    <td class="jom-comptables__td--jom">ušetří přesně tuto distribuční část — protože jde právě o sazbu, kterou má většina z nich</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="jom-comptables__note"><svg class="jom-comptables__note-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Distribuce není okrajová položka, ale téměř polovina ceny za elektřinu u sazby, kterou má drtivá většina domácností v domě. Sdílení v JOM ji u sdílené energie kompletně obchází — a protože se týká většiny bytů, jde o nejširší a nejjistější zdroj úspory z celého principu.</p>
+          </div>
+          </div>
+
+          <!-- 4. Jednofázový vs. třífázový elektroměr -->
+          <div class="jom-comptables__group">
+          <h4 class="jom-comptables__card-title"><span class="jom-comptables__num">04</span>Jednofázový vs. třífázový elektroměr</h4>
+          <div class="jom-comptables__card">
+            <div class="jom-comptables__table-wrap">
+              <table class="jom-comptables__table">
+                <colgroup><col class="jom-comptables__col--label"><col class="jom-comptables__col--nojom"><col class="jom-comptables__col--jom"></colgroup>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th class="jom-comptables__th--nojom">Bez JOM</th>
+                    <th class="jom-comptables__th--jom">S JOM</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="jom-comptables__row-label">Byt s ústředním topením<span class="jom-comptables__row-note">jednofázový elektroměr</span></td>
+                    <td>platí distribuci a poplatky v plné výši na každou kWh, i když jde o nižší spotřebu</td>
+                    <td class="jom-comptables__td--jom">ušetří hlavně na distribuční části ceny sdílené energie</td>
+                  </tr>
+                  <tr>
+                    <td class="jom-comptables__row-label">Byt s vlastní elektrokotlem<span class="jom-comptables__row-note">třífázový elektroměr</span></td>
+                    <td>vyšší spotřeba i vyšší regulované poplatky — třífázové připojení samo o sobě nese vyšší fixní náklady</td>
+                    <td class="jom-comptables__td--jom">ušetří na distribuci stejně jako ostatní, navíc díky vyššímu objemu odběru vychází úspora v korunách výrazněji</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="jom-comptables__note"><svg class="jom-comptables__note-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Typ elektroměru neurčuje, jestli se sdílení vyplatí — vyplatí se oběma. Určuje ale, jak velká ta úspora reálně bude: byt s vlastním elektrickým zdrojem tepla má vyšší spotřebu, a tím i větší absolutní prostor pro úsporu, i když procentuálně jde o stejný princip jako u běžného bytu.</p>
+          </div>
+          </div>
+
         </div>
       </div>
 
@@ -1210,6 +1367,7 @@
           <li><a href="index.html">Hlavní stránka</a></li>
           <li><a href="pruvodce-jom.html">Jednotné odběrné místo</a></li>
           <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
+          <li><a href="bezpecnost.html">Bezpečnost</a></li>
           <li><a href="slovnik.html">Slovník pojmů</a></li>
           <li><a href="forum.html">Diskuzní fórum</a></li>
           <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>

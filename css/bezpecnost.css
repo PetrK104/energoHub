@@ -1,0 +1,133 @@
+/* ── Hero ─────────────────────────────────────────────────────────────── */
+.bsec-hero{background:#05050a;padding:120px 0 80px}
+.bsec-hero__container{width:100%;max-width:1440px;margin:0 auto;padding:0 80px}
+.bsec-hero__back{display:inline-flex;align-items:center;gap:6px;font:500 14px/1 var(--font-body);color:var(--text-muted);text-decoration:none;margin-bottom:32px;transition:color .15s}
+.bsec-hero__back:hover{color:var(--text-white)}
+.bsec-hero__back svg{width:16px;height:16px}
+.bsec-hero__title-row{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.bsec-hero__title{font:700 48px/1.1 var(--font-heading);color:var(--text-white);margin:12px 0 24px}
+.bsec-hero__fve-link{display:inline-flex;align-items:center;gap:8px;font:400 16px/1 var(--font-body);color:#6b6b78;text-decoration:none;transition:color .2s;white-space:nowrap;flex-shrink:0}
+.bsec-hero__fve-link svg{width:16px;height:16px;transition:transform .2s}
+.bsec-hero__fve-link:hover{color:var(--text-muted)}
+.bsec-hero__fve-link:hover svg{transform:translateX(3px)}
+.bsec-hero__lead{font:400 18px/1.7 var(--font-body);color:var(--text-muted);max-width:680px}
+
+/* ── Navigační karty ─────────────────────────────────────────────────── */
+.bsec-nav{background:#05050a;padding:0 0 80px}
+.bsec-nav__container{width:100%;max-width:1440px;margin:0 auto;padding:0 80px}
+.bsec-nav__grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.bsec-nav__card{grid-column:span 2}
+.bsec-nav__card:nth-child(4),.bsec-nav__card:nth-child(5){grid-column:span 3}
+.bsec-nav__card{display:flex;flex-direction:column;align-items:flex-start;gap:0;background:#ffffff08;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:24px 28px 20px;text-decoration:none;transition:border-color .2s,background .2s}
+.bsec-nav__card:hover{background:#ffffff0d;border-color:rgba(183,241,61,.35)}
+.bsec-nav__num{font:800 36px/1 var(--font-heading);color:var(--lime);margin-bottom:16px}
+.bsec-nav__card-body{flex:1;display:flex;flex-direction:column;gap:6px}
+.bsec-nav__title{font:700 17px/1.3 var(--font-heading);color:var(--text-white);margin:0}
+.bsec-nav__desc{font:400 15px/1.55 var(--font-body);color:var(--text-muted);margin:0}
+.bsec-nav__link{display:inline-flex;align-items:center;gap:6px;font:600 12px/1 var(--font-body);color:var(--lime);white-space:nowrap;margin-top:auto;align-self:flex-end}
+.bsec-nav__link svg{width:13px;height:13px;transition:transform .15s}
+.bsec-nav__card:hover .bsec-nav__link svg{transform:translateX(3px)}
+
+/* ── Detailní sekce ──────────────────────────────────────────────────── */
+.bsec-topic{background:#05050a;padding:120px 0;scroll-margin-top:90px}
+.bsec-topic--alt{background:#080810}
+.bsec-topic--dark{background:#0c0d12}
+.bsec-topic__container{width:100%;max-width:1440px;margin:0 auto;padding:0 80px}
+.bsec-topic__header{display:flex;flex-direction:column;gap:8px;margin-bottom:40px}
+.bsec-topic__num{font:800 56px/1 var(--font-heading);color:var(--lime)}
+.bsec-topic__title{font:700 32px/1.2 var(--font-heading);color:var(--text-white);margin:0}
+.bsec-topic__body{display:flex;flex-direction:column;gap:32px}
+.bsec-topic__intro{font:400 16px/1.65 var(--font-body);color:var(--text-muted);margin:0}
+
+/* Seznam odrážek */
+.bsec-topic__list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px}
+.bsec-topic__list li{font:400 16px/1.65 var(--font-body);color:var(--text-muted);padding-left:20px;position:relative}
+.bsec-topic__list li::before{content:"–";position:absolute;left:0;color:var(--lime);font-weight:700}
+.bsec-topic__sublist{list-style:none;padding:0;margin:10px 0 10px 0;display:flex;flex-direction:column;gap:6px}
+.bsec-topic__sublist li{font:400 15px/1.6 var(--font-body);color:var(--text-muted);padding-left:0}
+.bsec-topic__sublist li::before{display:none}
+.bsec-topic__list a{color:var(--lime);text-underline-offset:3px}
+.bsec-topic__list a:hover{opacity:.8}
+
+/* Proč? box */
+.bsec-topic__why{background:rgba(255,255,255,.05);border-left:3px solid var(--lime);border-radius:0 8px 8px 0;padding:20px 22px}
+.bsec-topic__why-label{display:block;font:700 11px/1 var(--font-body);letter-spacing:.09em;text-transform:uppercase;color:var(--lime);margin-bottom:10px}
+.bsec-topic__why-text{font:400 15px/1.6 var(--font-body);color:var(--text-muted);margin:0}
+
+/* ── Varianty posudku ────────────────────────────────────────────────── */
+.bsec-variants{margin-top:56px}
+.bsec-variants__title{font:700 20px/1.3 var(--font-heading);color:var(--text-white);margin:0 0 12px}
+.bsec-variants__intro{font:400 15px/1.7 var(--font-body);color:var(--text-muted);margin:0 0 32px}
+.bsec-variants__grid{display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(255,255,255,.1)}
+.bsec-variants__item{display:flex;gap:24px;align-items:flex-start;padding:24px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.bsec-variants__letter{flex-shrink:0;font:700 40px/1 var(--font-heading);color:rgba(255,255,255,.25);text-transform:uppercase;min-width:32px}
+.bsec-variants__content{flex:1}
+.bsec-variants__name{font:600 16px/1.3 var(--font-heading);color:var(--text-white);margin:0 0 8px}
+.bsec-variants__desc{font:400 16px/1.65 var(--font-body);color:var(--text-muted);margin:0}
+
+/* ── Podsekce uvnitř tématu ─────────────────────────────────────────── */
+.bsec-topic__subblock{display:flex;flex-direction:column;gap:24px;padding-top:40px;border-top:1px solid rgba(255,255,255,.1)}
+.bsec-topic__subsect{display:flex;flex-direction:column;gap:16px}
+.bsec-topic__subhead{font:700 20px/1.3 var(--font-heading);color:var(--text-white);margin:0}
+.bsec-topic__subnum{color:var(--lime);margin-right:8px}
+.bsec-topic__note{background:rgba(255,255,255,.04);border-radius:8px;padding:20px 22px;font:400 15px/1.65 var(--font-body);color:var(--text-muted);margin:0}
+/* Checklist s ikonami fajfky */
+.bsec-topic__checklist{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.bsec-topic__checklist li{display:flex;gap:12px;align-items:flex-start;font:400 16px/1.65 var(--font-body);color:var(--text-muted)}
+.bsec-topic__checklist li svg{flex-shrink:0;width:18px;height:18px;color:var(--lime);margin-top:3px}
+/* Verdikty posudku (01.5) — glass rámečky */
+.bsec-verdict{display:flex;flex-direction:column;gap:10px}
+.bsec-verdict__item{display:flex;gap:20px;align-items:center;background:rgba(255,255,255,.04);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:20px 24px}
+.bsec-verdict__icon{flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.bsec-verdict__icon--ok svg{color:var(--lime)}
+.bsec-verdict__icon--no svg{color:#c96060}
+.bsec-verdict__icon svg{width:28px;height:28px}
+.bsec-verdict__content{flex:1}
+.bsec-verdict__label{font:600 16px/1.3 var(--font-heading);color:var(--text-white);display:block;margin-bottom:4px}
+.bsec-verdict__desc{font:400 16px/1.65 var(--font-body);color:var(--text-muted);margin:0}
+/* Varovný seznam s ikonou vykřičníku */
+.bsec-topic__warnlist{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.bsec-topic__warnlist li{display:flex;gap:12px;align-items:flex-start;font:400 16px/1.65 var(--font-body);color:var(--text-muted)}
+.bsec-topic__warnlist li svg{flex-shrink:0;width:18px;height:18px;color:#c96060;margin-top:3px}
+/* Číslovaný seznam kroků */
+.bsec-topic__steps{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;counter-reset:step}
+.bsec-topic__steps li{display:flex;gap:16px;align-items:flex-start;font:400 16px/1.65 var(--font-body);color:var(--text-muted);counter-increment:step}
+.bsec-topic__steps li::before{content:counter(step) ".";flex-shrink:0;font:700 16px/1.65 var(--font-heading);color:var(--lime);min-width:24px}
+
+/* Zdroj */
+.bsec-topic__source{font:400 13px/1 var(--font-body);color:rgba(185,185,194,.55);margin:0;text-align:right}
+
+/* ── CTA ─────────────────────────────────────────────────────────────── */
+.bsec-cta{background:#05050a;padding:80px 0 120px}
+.bsec-cta__container{width:100%;max-width:1440px;margin:0 auto;padding:0 80px;display:flex;align-items:center;gap:32px}
+.bsec-cta__text{font:400 18px/1.5 var(--font-body);color:var(--text-muted);margin:0}
+
+/* ── Responzivita ────────────────────────────────────────────────────── */
+@media(max-width:1100px){
+  .bsec-hero__container,.bsec-nav__container,.bsec-topic__container,.bsec-cta__container{padding:0 20px}
+  .bsec-hero__title{font-size:36px}
+  .bsec-nav__num{font-size:36px;min-width:52px}
+  .bsec-nav__card{padding:20px 24px;gap:20px}
+  .bsec-topic__title{font-size:26px}
+  .bsec-topic__num{font-size:44px}
+  .bsec-outcome-grid{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .bsec-nav__grid{grid-template-columns:1fr}
+  .bsec-nav__card,.bsec-nav__card:nth-child(4),.bsec-nav__card:nth-child(5){grid-column:span 1}
+  .bsec-hero{padding:110px 0 56px}
+  .bsec-hero__container,.bsec-nav__container,.bsec-topic__container,.bsec-cta__container{padding:0 16px}
+  .bsec-hero__title{font-size:28px}
+  .bsec-hero__lead{font-size:16px}
+  .bsec-nav__card{padding:16px 16px 14px;gap:12px}
+  .bsec-nav__num{font-size:28px;margin-bottom:0}
+  .bsec-topic{padding:56px 0}
+  .bsec-topic__num{font-size:36px}
+  .bsec-topic__title{font-size:22px}
+  .bsec-cta__container{flex-direction:column;align-items:flex-start;gap:20px}
+}
+@media(max-width:550px){
+  .bsec-hero__title-row{flex-direction:column-reverse;align-items:center;gap:20px}
+  .bsec-hero__title{text-align:center;margin-bottom:12px}
+  .bsec-hero__lead{text-align:center;margin-left:auto;margin-right:auto}
+}
