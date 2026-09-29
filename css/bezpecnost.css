@@ -35,7 +35,7 @@
 .bsec-topic__container{width:100%;max-width:1440px;margin:0 auto;padding:0 80px}
 .bsec-topic__header{display:flex;flex-direction:column;gap:8px;margin-bottom:40px}
 .bsec-topic__num{font:800 56px/1 var(--font-heading);color:var(--lime)}
-.bsec-topic__title{font:700 32px/1.2 var(--font-heading);color:var(--text-white);margin:0}
+.bsec-topic__title{font:600 36px/1.2 var(--font-heading);color:var(--text-white);margin:0}
 .bsec-topic__body{display:flex;flex-direction:column;gap:32px}
 .bsec-topic__intro{font:400 16px/1.65 var(--font-body);color:var(--text-muted);margin:0}
 
@@ -108,7 +108,7 @@
   .bsec-hero__title{font-size:36px}
   .bsec-nav__num{font-size:36px;min-width:52px}
   .bsec-nav__card{padding:20px 24px;gap:20px}
-  .bsec-topic__title{font-size:26px}
+  .bsec-topic__title{font-size:28px}
   .bsec-topic__num{font-size:44px}
   .bsec-outcome-grid{grid-template-columns:1fr}
 }
@@ -123,7 +123,7 @@
   .bsec-nav__num{font-size:28px;margin-bottom:0}
   .bsec-topic{padding:56px 0}
   .bsec-topic__num{font-size:36px}
-  .bsec-topic__title{font-size:22px}
+  .bsec-topic__title{font-size:26px}
   .bsec-cta__container{flex-direction:column;align-items:flex-start;gap:20px}
 }
 @media(max-width:550px){
