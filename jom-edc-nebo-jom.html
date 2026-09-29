@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<title>EDC nebo JOM? — Průvodce JOM — Energohub.info</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/guide-shared.css">
+<link rel="stylesheet" href="css/jom.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="navbar-container">
+    <nav class="navbar">
+      <a href="index.html" class="navbar-logo">
+        <img src="assets/images/Logo.svg" alt="Energohub">
+      </a>
+
+      <ul class="navbar-links">
+        <li class="nav-dropdown">
+          <a href="index.html#pruvodce" class="nav-dropdown__trigger">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></a>
+          <ul class="nav-dropdown__menu">
+            <div class="nav-dropdown__menu-inner">
+              <li><a href="pruvodce-jom.html">Jednotné odběrné místo (JOM)</a></li>
+              <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
+              <li class="nav-dropdown__item--soon"><span>Teplo a TUV</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Okna a dveře</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Zateplení</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Doporučené pořadí realizace</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+            </div>
+          </ul>
+        </li>
+        <li><a href="bezpecnost.html">Bezpečnost</a></li>
+        <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+        <li><a href="forum.html">Fórum</a></li>
+        <li><a href="index.html#o-nas">O nás</a></li>
+        <li><a href="kontakty.html">Kontakty</a></li>
+      </ul>
+
+      <a href="kontakty.html" class="navbar-cta">Chci vědět více</a>
+
+      <button class="navbar-burger" id="navBurger" aria-label="Otevřít menu" aria-expanded="false">
+        <span class="navbar-burger__bar"></span>
+        <span class="navbar-burger__bar"></span>
+        <span class="navbar-burger__bar"></span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Mobilní menu -->
+  <div class="navbar-mobile" id="navMobile" aria-hidden="true">
+    <nav class="navbar-mobile__nav">
+      <ul class="navbar-mobile__links">
+        <li><a href="index.html#pruvodce">Průvodci opatření</a></li>
+        <li><a href="pruvodce-jom.html">— Jednotné odběrné místo</a></li>
+        <li><a href="pruvodce-fve.html">— Fotovoltaika</a></li>
+        <li class="navbar-mobile__divider"></li>
+        <li><a href="bezpecnost.html">Bezpečnost</a></li>
+        <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+        <li><a href="forum.html">Fórum</a></li>
+        <li><a href="index.html#o-nas">O nás</a></li>
+        <li><a href="kontakty.html">Kontakty</a></li>
+      </ul>
+      <a href="kontakty.html" class="navbar-mobile__cta">Chci vědět více</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ── Sub-page hero ── -->
+<section class="guide-sub-hero">
+  <div class="guide-sub-hero__container">
+    <nav class="guide-sub-hero__breadcrumb" aria-label="Drobečková navigace">
+      <a href="pruvodce-jom.html">Průvodce JOM</a>
+      <span aria-hidden="true">→</span>
+      <span>EDC vs. JOM — srovnání variant sdílení elektřiny</span>
+    </nav>
+    <h1 class="guide-sub-hero__title">EDC vs. JOM — srovnání variant sdílení elektřiny</h1>
+    <p class="guide-sub-hero__desc">Podrobné srovnání obou variant sdílení elektřiny — technické, ekonomické i administrativní rozdíly.</p>
+    <p class="guide-sub-hero__meta">
+      <svg class="guide-sub-hero__clock" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8"/><path d="M10 6v4l2.5 1.5"/></svg>
+      Doba čtení: 5 min.
+    </p>
+  </div>
+</section>
+
+<section class="jom-edc" id="porovnani" style="padding-top:100px;padding-bottom:0">
+  <div class="jom-edc__container">
+
+    <h2 class="guide-section-title">EDC a JOM: srovnání dvou způsobů sdílení elektřiny v bytovém domě</h2>
+
+    <div class="jom-edc__header">
+      <p class="jom-edc__lead">Při instalaci FVE v bytovém domě existují dvě cesty sdílení vyrobené elektřiny. Na první pohled podobné — výsledky se ale výrazně liší.</p>
+    </div>
+
+    <div class="jom-edc__variants">
+
+      <!-- Varianta 1: EDC -->
+      <div class="jom-edc__variant jom-edc__variant--edc">
+        <div class="jom-edc__variant-text">
+          <h3 class="jom-edc__card-title">Varianta 1: FVE + EDC + rozúčtování</h3>
+          <ul class="jom-edc__list">
+            <li>
+              <svg class="jom-edc__arrow jom-edc__arrow--dim" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              EDC dodává pouze datový podklad (CSV/Excel); zpracování a rozeslání vyúčtování bytům zůstává plně na SVJ.
+            </li>
+            <li>
+              <svg class="jom-edc__arrow jom-edc__arrow--dim" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Každý byt si udržuje vlastní smlouvu s dodavatelem — různí dodavatelé v jednom domě jsou možní, ale sdílení probíhá jen uvnitř budovy.
+            </li>
+            <li>
+              <svg class="jom-edc__arrow jom-edc__arrow--dim" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Přebytky lze sdílet i ven ze skupiny, ale za cenu ztráty úlevy na distribučním poplatku — domy proto zpravidla volí nesdílet ven a ponechat si úsporu na distribuci (~40 % celkové ceny energie).
+            </li>
+            <li>
+              <svg class="jom-edc__arrow jom-edc__arrow--dim" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Výsledná úspora bývá orientačně kolem 20 % — výrazně méně než při JOM se stejnou instalací (~50 %).
+            </li>
+            <li>
+              <svg class="jom-edc__arrow jom-edc__arrow--dim" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Nižší technický zásah do elektroinstalace domu a ke schválení zpravidla stačí většina hlasů podle stanov SVJ.
+            </li>
+          </ul>
+        </div>
+        <div class="jom-edc__variant-img">
+          <img src="assets/images/EDC.webp?v=2" alt="" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Varianta 2: JOM — doporučená -->
+      <div class="jom-edc__variant jom-edc__variant--jom">
+        <div class="jom-edc__variant-text">
+          <div class="jom-edc__card-badge">Doporučeno</div>
+          <h3 class="jom-edc__card-title">Varianta 2: FVE + JOM + rozúčtování</h3>
+          <ul class="jom-edc__list">
+            <li>
+              <svg class="jom-edc__arrow jom-edc__arrow--lime" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Rozúčtování si dělá dům sám (obvykle podle vlastnického podílu) — flexibilní a transparentní, bez závislosti na externím datovém centru.
+            </li>
+            <li>
+              <svg class="jom-edc__arrow jom-edc__arrow--lime" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Dům vystupuje jako jediné odběrné místo — odpadají poplatky za rezervovaný příkon a jistič za každý byt zvlášť (úspora v řádu desítek až stovek tisíc Kč ročně).
+            </li>
+            <li>
+              <svg class="jom-edc__arrow jom-edc__arrow--lime" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Přebytky z FVE lze prodávat — dům uzavře standardní smlouvu o výkupu a prodej nepřináší žádné vedlejší distribuční náklady, na rozdíl od EDC.
+            </li>
+            <li>
+              <svg class="jom-edc__arrow jom-edc__arrow--lime" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Větší odběratel má lepší vyjednávací pozici u dodavatele — možnost sjednat výhodnější cenu elektřiny než jednotlivé byty samostatně.
+            </li>
+            <li>
+              <svg class="jom-edc__arrow jom-edc__arrow--lime" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Vyžaduje větší technický zásah do elektroinstalace a zpravidla náročnější souhlas vlastníků.<span class="jom-edc__tip" tabindex="0"><span class="jom-edc__tip-icon" aria-label="Více informací">i</span><span class="jom-edc__tip-popup" role="tooltip">Nejde jen o výměnu elektroměru. U typických paneláků z 90. let s hliníkovými rozvody bývá kvůli nové revizní zprávě nutná renovace vnitřní infrastruktury — stoupačky, jističe, ochrany. ČEZ a distributor vlastní síť jen po patici domu; zbytek energetické sítě patří SVJ nebo družstvu, a technický zásah proto leží plně na straně domu.</span></span></span>
+            </li>
+          </ul>
+        </div>
+        <div class="jom-edc__variant-img">
+          <img src="assets/images/JOM.webp?v=2" alt="" loading="lazy">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="jom-savings">
+      <h3 class="jom-savings__title">Žebříček úspor na bytovou jednotku / rok</h3>
+      <div class="jom-savings__rows">
+
+        <div class="jom-savings__row">
+          <div class="jom-savings__row-label">
+            Samotné JOM
+            <span class="jom-savings__row-sub">jednofázový / třífázový elektroměr</span>
+          </div>
+          <div class="jom-savings__row-track">
+            <div class="jom-savings__row-fill jom-savings__row-fill--lime" style="width:28%"></div>
+          </div>
+          <span class="jom-savings__row-val">~3 500 / 7 000 Kč</span>
+        </div>
+
+        <div class="jom-savings__row">
+          <div class="jom-savings__row-label">
+            JOM + FVE
+            <span class="jom-savings__row-sub">vlastní rozúčtování, bez distribuce</span>
+          </div>
+          <div class="jom-savings__row-track">
+            <div class="jom-savings__row-fill jom-savings__row-fill--mid" style="width:62%"></div>
+          </div>
+          <span class="jom-savings__row-val">přes 10 000 Kč</span>
+        </div>
+
+        <div class="jom-savings__row">
+          <div class="jom-savings__row-label">
+            JOM + FVE + teplo/TUV
+            <span class="jom-savings__row-sub">vlastní kotelna</span>
+          </div>
+          <div class="jom-savings__row-track">
+            <div class="jom-savings__row-fill jom-savings__row-fill--lime-soft" style="width:100%"></div>
+          </div>
+          <span class="jom-savings__row-val">~o polovinu nižší náklady</span>
+        </div>
+
+      </div>
+      <p class="jom-savings__note">Orientační hodnoty na bytovou jednotku/rok; závisí na typu elektroměru, celkové spotřebě domu a tarifu.</p>
+    </div>
+</div>
+</section>
+
+
+<section class="guide-qa" style="padding-top:64px">
+  <div class="guide-qa__container">
+    <h2 class="guide-qa__title">Zjistěte více o dalších tématech JOM</h2>
+    <div class="guide-qa__cards">
+      <a href="jom-kdy-ma-smysl.html" class="guide-qa__card">
+        <div class="guide-qa__card-body">
+          <p class="guide-qa__card-title">Ekonomická výhodnost JOM pro bytový dům</p>
+          <p class="guide-qa__card-desc">Klíčové statistiky, srovnání FVE+JOM vs. FVE bez JOM a kdy je kombinace nejsilnější.</p>
+        </div>
+        <div class="guide-qa__card-arrow">→</div>
+      </a>
+      <a href="jom-jak-funguje-prechod.html" class="guide-qa__card">
+        <div class="guide-qa__card-body">
+          <p class="guide-qa__card-title">Přechod na JOM — realizace a technické podmínky</p>
+          <p class="guide-qa__card-desc">Fáze realizace krok za krokem, technické požadavky, dopad na náklady a doporučené pořadí opatření.</p>
+        </div>
+        <div class="guide-qa__card-arrow">→</div>
+      </a>
+      <a href="jom-sdileni-a-uspory.html" class="guide-qa__card">
+        <div class="guide-qa__card-body">
+          <p class="guide-qa__card-title">Sdílení elektřiny a úspory v bytovém domě na JOM</p>
+          <p class="guide-qa__card-desc">Kolik dům ušetří podle typu elektroměru, jak funguje sdílení přebytků a srovnání s prodejem do sítě.</p>
+        </div>
+        <div class="guide-qa__card-arrow">→</div>
+      </a>
+      <a href="pruvodce-jom.html" class="guide-qa__card guide-qa__card--back">
+        <div class="guide-qa__card-body">
+          <p class="guide-qa__card-title">Průvodce JOM — přehled všech témat</p>
+          <p class="guide-qa__card-desc">Zpět na přehled témat JOM pro bytové domy.</p>
+        </div>
+        <div class="guide-qa__card-arrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <a href="index.html" class="footer-logo">
+          <img src="assets/images/Logo.svg" alt="Energohub">
+        </a>
+        <p class="footer-tagline">Nezávislý průvodce energetickými opatřeními pro bytové domy a SVJ.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Průvodci</h4>
+        <ul class="footer-links">
+          <li><a href="pruvodce-jom.html">Jednotné odběrné místo</a></li>
+          <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Nástroje</h4>
+        <ul class="footer-links">
+          <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+          <li><a href="forum.html">Fórum</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Informace</h4>
+        <ul class="footer-links">
+          <li><a href="#">Podmínky použití</a></li>
+          <li><a href="#">Ochrana osobních údajů</a></li>
+          <li><a href="#">Reklamační řád</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-join">
+        <h4 class="footer-col-title">Sledujte nás</h4>
+
+        <div class="footer-social">
+          <a href="#" class="footer-social-icon" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.4h2.48l.37-2.88h-2.85V8.94c0-.83.23-1.4 1.42-1.4h1.52V4.98c-.26-.04-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.88h2.47V21h2.93z"></path></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="3.7"></circle><circle cx="17.1" cy="6.9" r="0.9" fill="currentColor" stroke="none"></circle></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H4.1V20h2.84V8.5zM5.5 4c-.97 0-1.7.73-1.7 1.65 0 .9.71 1.65 1.67 1.65h.02c.99 0 1.7-.74 1.7-1.65C7.19 4.73 6.48 4 5.5 4zM20 13.4c0-3-1.6-4.4-3.74-4.4-1.72 0-2.49 0.95-2.92 1.62V8.5h-2.84c.04.8 0 11.5 0 11.5h2.84v-6.42c0-.34.02-.69.13-.93.28-.69.91-1.41 1.98-1.41 1.4 0 1.96 1.06 1.96 2.62V20H20v-6.6z"></path></svg>
+          </a>
+        </div>
+
+        <form class="footer-newsletter" id="footerNewsletter">
+          <input type="email" name="email" placeholder="Zadejte e-mail" aria-label="E-mailová adresa" required>
+          <button type="submit" aria-label="Odebírat novinky">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6"></path>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Energohub.info. Všechna práva vyhrazena.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/navbar.js" defer></script>
+<script src="js/footer.js" defer></script>
+</body>
+</html>

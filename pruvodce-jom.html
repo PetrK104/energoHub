@@ -118,16 +118,12 @@
   <button class="fve-subnav__arrow fve-subnav__arrow--right" aria-label="Posunout doprava">&#8250;</button>
   <div class="fve-subnav__inner">
   <div class="fve-subnav__list">
-    <a href="#co-je-jom"      class="fve-subnav__link"><span class="fve-subnav__num">01</span>Co je JOM</a>
-    <a href="#jaky-model"     class="fve-subnav__link"><span class="fve-subnav__num">02</span>Jaký model zvolit</a>
-    <a href="#komu-sedi"      class="fve-subnav__link"><span class="fve-subnav__num">03</span>Komu JOM sedí</a>
-    <a href="#kdy-smysl"      class="fve-subnav__link"><span class="fve-subnav__num">04</span>Kdy to dává smysl</a>
-    <a href="#porovnani"      class="fve-subnav__link"><span class="fve-subnav__num">05</span>Porovnání variant</a>
-    <a href="#jak-funguje"    class="fve-subnav__link"><span class="fve-subnav__num">06</span>Jak to funguje</a>
-    <a href="#faze-realizace" class="fve-subnav__link"><span class="fve-subnav__num">07</span>Fáze realizace</a>
-    <a href="#dopad"          class="fve-subnav__link"><span class="fve-subnav__num">08</span>Dopad na náklady</a>
-    <a href="#dotaznik"       class="fve-subnav__link"><span class="fve-subnav__num">09</span>Kalkulačka</a>
-    <a href="#faq"            class="fve-subnav__link"><span class="fve-subnav__num">10</span>FAQ</a>
+    <a href="#co-je-jom"            class="fve-subnav__link"><span class="fve-subnav__num">01</span>Co je JOM</a>
+    <a href="#pruvodce-do-hloubky"  class="fve-subnav__link"><span class="fve-subnav__num">02</span>Témata</a>
+    <a href="#jaky-model"           class="fve-subnav__link"><span class="fve-subnav__num">03</span>Jaký model zvolit</a>
+    <a href="#komu-sedi"            class="fve-subnav__link"><span class="fve-subnav__num">04</span>Komu JOM sedí</a>
+    <a href="#dotaznik"             class="fve-subnav__link"><span class="fve-subnav__num">05</span>Kalkulačka</a>
+    <a href="#faq"                  class="fve-subnav__link"><span class="fve-subnav__num">06</span>FAQ</a>
   </div>
   </div>
 </nav>
@@ -148,6 +144,48 @@
       <img src="assets/images/jom_1.webp" alt="Schéma fungování jednotného odběrného místa" loading="lazy">
     </div>
 
+  </div>
+</section>
+
+<section class="guide-qa" id="pruvodce-do-hloubky">
+  <div class="guide-qa__container">
+    <p class="fve-eyebrow">Rozcestník témat</p>
+    <h2 class="guide-qa__title">Co vás zajímá podrobněji?</h2>
+    <div class="guide-qa__cards">
+
+      <a href="jom-kdy-ma-smysl.html" class="guide-qa__card">
+        <div class="guide-qa__card-body">
+          <p class="guide-qa__card-title">Ekonomická výhodnost JOM pro bytový dům</p>
+          <p class="guide-qa__card-desc">Klíčové statistiky, srovnání FVE+JOM vs. FVE bez JOM a kdy je kombinace nejsilnější.</p>
+        </div>
+        <div class="guide-qa__card-arrow">→</div>
+      </a>
+
+      <a href="jom-edc-nebo-jom.html" class="guide-qa__card">
+        <div class="guide-qa__card-body">
+          <p class="guide-qa__card-title">EDC nebo JOM — srovnání obou variant sdílení elektřiny</p>
+          <p class="guide-qa__card-desc">Podrobné srovnání obou variant sdílení elektřiny — technické, ekonomické i administrativní rozdíly.</p>
+        </div>
+        <div class="guide-qa__card-arrow">→</div>
+      </a>
+
+      <a href="jom-jak-funguje-prechod.html" class="guide-qa__card">
+        <div class="guide-qa__card-body">
+          <p class="guide-qa__card-title">Přechod na JOM — realizace a technické podmínky</p>
+          <p class="guide-qa__card-desc">Fáze realizace krok za krokem, technické požadavky, dopad na náklady a doporučené pořadí opatření.</p>
+        </div>
+        <div class="guide-qa__card-arrow">→</div>
+      </a>
+
+      <a href="jom-sdileni-a-uspory.html" class="guide-qa__card">
+        <div class="guide-qa__card-body">
+          <p class="guide-qa__card-title">Sdílení elektřiny a úspory v bytovém domě na JOM</p>
+          <p class="guide-qa__card-desc">Kolik dům ušetří podle typu elektroměru, jak funguje sdílení přebytků a srovnání s prodejem do sítě.</p>
+        </div>
+        <div class="guide-qa__card-arrow">→</div>
+      </a>
+
+    </div>
   </div>
 </section>
 
@@ -195,6 +233,7 @@
       </div>
 
     </div>
+
   </div>
 </section>
 
@@ -236,7 +275,7 @@
   </div>
 </section>
 
-<section class="jom-worth" id="kdy-smysl">
+<section class="jom-worth" id="kdy-smysl" style="display:none" aria-hidden="true">
   <div class="jom-worth__container">
 
     <div class="jom-worth__grid">
@@ -677,7 +716,7 @@
   </div>
 </section>
 
-<section class="jom-edc" id="porovnani">
+<section class="jom-edc" id="porovnani" style="display:none" aria-hidden="true">
   <div class="jom-edc__container">
 
     <div class="jom-edc__header">
@@ -799,7 +838,7 @@
   </div>
 </section>
 
-<section class="jom-how" id="jak-funguje">
+<section class="jom-how" id="jak-funguje" style="display:none" aria-hidden="true">
   <div class="jom-how__container">
 
     <div class="jom-how__header">
@@ -863,7 +902,7 @@
   </div>
 </section>
 
-<section class="fve-phases" id="faze-realizace">
+<section class="fve-phases" id="faze-realizace" style="display:none" aria-hidden="true">
   <div class="fve-phases__container">
 
     <div class="fve-phases__header">
@@ -1005,7 +1044,7 @@
   </div>
 </section>
 
-<section class="jom-impact" id="dopad">
+<section class="jom-impact" id="dopad" style="display:none" aria-hidden="true">
   <div class="jom-impact__container">
 
     <div class="jom-impact__header">
@@ -1097,6 +1136,8 @@
 
   </div>
 </section>
+
+<!-- ── Průvodce do hloubky: JOM podstránky ── -->
 
 <!-- Dotazník JOM -->
 <section class="jom-quiz" id="dotaznik">

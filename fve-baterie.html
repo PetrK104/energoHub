@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<title>Kdy řešit baterii k FVE — Energohub.info</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/guide-shared.css">
+<link rel="stylesheet" href="css/fve.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="navbar-container">
+    <nav class="navbar">
+      <a href="index.html" class="navbar-logo">
+        <img src="assets/images/Logo.svg" alt="Energohub">
+      </a>
+
+      <ul class="navbar-links">
+        <li class="nav-dropdown">
+          <a href="index.html#pruvodce" class="nav-dropdown__trigger">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></a>
+          <ul class="nav-dropdown__menu">
+            <div class="nav-dropdown__menu-inner">
+              <li><a href="pruvodce-jom.html">Jednotné odběrné místo (JOM)</a></li>
+              <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
+              <li class="nav-dropdown__item--soon"><span>Teplo a TUV</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Okna a dveře</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Zateplení</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Doporučené pořadí realizace</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+            </div>
+          </ul>
+        </li>
+        <li><a href="bezpecnost.html">Bezpečnost</a></li>
+        <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+        <li><a href="forum.html">Fórum</a></li>
+        <li><a href="index.html#o-nas">O nás</a></li>
+        <li><a href="kontakty.html">Kontakty</a></li>
+      </ul>
+
+      <a href="kontakty.html" class="navbar-cta">Chci vědět více</a>
+
+      <button class="navbar-burger" id="navBurger" aria-label="Otevřít menu" aria-expanded="false">
+        <span class="navbar-burger__bar"></span>
+        <span class="navbar-burger__bar"></span>
+        <span class="navbar-burger__bar"></span>
+      </button>
+    </nav>
+  </div>
+
+  <div class="navbar-mobile" id="navMobile" aria-hidden="true">
+    <nav class="navbar-mobile__nav">
+      <ul class="navbar-mobile__links">
+        <li><a href="index.html#pruvodce">Průvodci opatření</a></li>
+        <li><a href="pruvodce-jom.html">— Jednotné odběrné místo</a></li>
+        <li><a href="pruvodce-fve.html">— Fotovoltaika</a></li>
+        <li class="navbar-mobile__divider"></li>
+        <li><a href="bezpecnost.html">Bezpečnost</a></li>
+        <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+        <li><a href="forum.html">Fórum</a></li>
+        <li><a href="index.html#o-nas">O nás</a></li>
+        <li><a href="kontakty.html">Kontakty</a></li>
+      </ul>
+      <a href="kontakty.html" class="navbar-mobile__cta">Chci vědět více</a>
+    </nav>
+  </div>
+</header>
+
+<section class="guide-sub-hero">
+  <div class="guide-sub-hero__container">
+    <nav class="guide-sub-hero__breadcrumb" aria-label="Drobečková navigace">
+      <a href="pruvodce-fve.html">Průvodce FVE</a>
+      <span aria-hidden="true">→</span>
+      <span>Baterie k FVE — dimenzování a podmínky výnosnosti</span>
+    </nav>
+    <h1 class="guide-sub-hero__title">Baterie k FVE — dimenzování a podmínky výnosnosti</h1>
+    <p class="guide-sub-hero__desc">Kdy baterie přidává hodnotu, jak dimenzovat kapacitu a co znamená záloha pro výpadek sítě.</p>
+    <p class="guide-sub-hero__meta">
+      <svg class="guide-sub-hero__clock" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8"/><path d="M10 6v4l2.5 1.5"/></svg>
+      Doba čtení: 4 min.
+    </p>
+  </div>
+</section>
+
+<section class="fve-battery" id="kdy-resit-baterii" style="padding-top:100px;padding-bottom:0">
+  <div class="fve-battery__container">
+
+    <h2 class="guide-section-title">Kdy řešit baterii k FVE</h2>
+
+    <div class="fve-battery__numbered">
+      <div class="fve-battery__num-item">
+        <span class="fve-battery__num">01</span>
+        <p class="fve-battery__num-text"><strong>Výroba překonává spotřebu</strong> — denní výroba FVE je vyšší než denní odběr (příklad: výroba 15&nbsp;kWh, odběr ~5&nbsp;kWh). Přebytek bez baterie odchází do sítě za výrazně nižší výkupní cenu.</p>
+      </div>
+      <div class="fve-battery__num-item">
+        <span class="fve-battery__num">02</span>
+        <p class="fve-battery__num-text"><strong>Zákazník chce backup</strong> — lokalita s výpadky sítě nebo provoz citlivý na přerušení dodávky. Baterie s backup funkcí udrží napájení i bez sítě.</p>
+      </div>
+      <div class="fve-battery__num-item">
+        <span class="fve-battery__num">03</span>
+        <p class="fve-battery__num-text"><strong>Kdy baterie smysl nedává</strong> — pokud je spotřeba výrazně vyšší než výroba FVE, baterie nepřinesou užitek. Systém nestíhá baterii nabít a ta zůstane prakticky prázdná.</p>
+      </div>
+    </div>
+
+    <h2 class="fve-battery__sub">Jak velkou baterii k FVE vybrat?</h2>
+    <ul class="fve-battery__list">
+      <li class="fve-battery__item">
+        <svg class="fve-battery__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span><strong>Doporučený poměr: 1,2–2&nbsp;kWh baterie na každý kWp výkonu FVE.</strong> Příklad: FVE 10&nbsp;kWp → baterie 12–20&nbsp;kWh.</span>
+      </li>
+      <li class="fve-battery__item">
+        <svg class="fve-battery__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Příliš malá baterie se za slunného dne naplní dopoledne a zbytek výroby odchází levně do sítě — efekt baterie se ztrácí.</span>
+      </li>
+      <li class="fve-battery__item">
+        <svg class="fve-battery__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Příliš velká baterie se nikdy nenabije na plno — část kapacity zůstane trvale nevyužitá.</span>
+      </li>
+      <li class="fve-battery__item">
+        <svg class="fve-battery__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Program Nová zelená úsporám podporuje baterie v rozmezí 1,2–2 násobku výkonu FVE — mimo tento rozsah se dotace/úvěr na kapacitu nevztahuje.</span>
+      </li>
+      <li class="fve-battery__item">
+        <svg class="fve-battery__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Baterie pokrývá hlavně večerní a noční spotřebu — ne celou denní výrobu FVE.</span>
+      </li>
+      <li class="fve-battery__item">
+        <svg class="fve-battery__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>V zimě je výroba nižší — baterie proto nezajistí celoroční nezávislost na síti.</span>
+      </li>
+    </ul>
+
+    <div class="fve-battery__backup-layout">
+      <div class="fve-battery__backup-left">
+        <h2 class="fve-battery__sub">Rezervace kapacity pro backup</h2>
+        <ul class="fve-battery__list">
+          <li class="fve-battery__item">
+            <svg class="fve-battery__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Část kapacity baterie lze vyhradit jako zálohu pro výpadek sítě (např. 30&nbsp;%) — tato část se při běžném provozu nevyužívá k dennímu cyklování.</span>
+          </li>
+          <li class="fve-battery__item">
+            <svg class="fve-battery__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Vyhrazená rezerva zůstává trvale nedotknutelná — systém ji drží stranou i v dnech s vysokou výrobou nebo spotřebou.</span>
+          </li>
+          <li class="fve-battery__item">
+            <svg class="fve-battery__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Čím vyšší podíl kapacity je vyhrazen pro backup, tím menší část baterie reálně snižuje denní nákup elektřiny ze sítě.</span>
+          </li>
+          <li class="fve-battery__item">
+            <svg class="fve-battery__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Při výpočtu ekonomické návratnosti se počítá jen s využitelnou částí kapacity, ne s celkovou kapacitou baterie.</span>
+          </li>
+        </ul>
+        <p class="fve-battery__num-text" style="color:var(--text-white);font-weight:600;margin-bottom:16px">Příklad: baterie 20&nbsp;kWh s&nbsp;30% rezervou pro backup</p>
+        <ul class="fve-battery__plain-list">
+          <li>Rezerva pro backup (nedotknutelná): <strong>6&nbsp;kWh</strong></li>
+          <li>Využitelná kapacita pro běžný provoz: <strong>14&nbsp;kWh</strong></li>
+        </ul>
+      </div>
+      <div class="fve-battery__img-wrap">
+        <img src="assets/images/Baterie.webp" alt="Schéma rozdělení kapacity baterie na provozní a záložní část" loading="lazy">
+      </div>
+    </div>
+</div>
+</section>
+
+
+<section class="guide-qa" style="padding-top:64px">
+  <div class="guide-qa__container">
+    <h2 class="guide-qa__title">Zjistěte více o dalších tématech FVE</h2>
+    <div class="guide-qa__cards">
+      <a href="fve-kdy-ma-smysl.html" class="guide-qa__card">
+        <div class="guide-qa__card-body">
+          <p class="guide-qa__card-title">Ekonomická návratnost FVE pro bytový dům</p>
+          <p class="guide-qa__card-desc">Kritéria pro bytový dům: orientace střechy, spotřeba, časový horizont. Kdy investice smysl nedává.</p>
+        </div>
+        <div class="guide-qa__card-arrow">→</div>
+      </a>
+      <a href="fve-naklady.html" class="guide-qa__card">
+        <div class="guide-qa__card-body">
+          <p class="guide-qa__card-title">Náklady na FVE pro bytový dům</p>
+          <p class="guide-qa__card-desc">Interaktivní kalkulačka nákladů, položkový rozpis a orientační ceny pro různé výkony systému.</p>
+        </div>
+        <div class="guide-qa__card-arrow">→</div>
+      </a>
+      <a href="fve-dotace-a-legislativa.html" class="guide-qa__card">
+        <div class="guide-qa__card-body">
+          <p class="guide-qa__card-title">Dotace a legislativa pro FVE</p>
+          <p class="guide-qa__card-desc">Přehled dotačních programů (NZÚ, OPŽP), výše podpory, podmínky pro SVJ a legislativní hranice.</p>
+        </div>
+        <div class="guide-qa__card-arrow">→</div>
+      </a>
+      <a href="pruvodce-fve.html" class="guide-qa__card guide-qa__card--back">
+        <div class="guide-qa__card-body">
+          <p class="guide-qa__card-title">Průvodce FVE — přehled všech témat</p>
+          <p class="guide-qa__card-desc">Zpět na přehled témat fotovoltaiky pro bytové domy.</p>
+        </div>
+        <div class="guide-qa__card-arrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="footer-glow"></div>
+
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">
+          <img src="assets/images/Logo.svg" alt="Energohub">
+        </a>
+        <p class="footer-tagline">Nezávislý průvodce úsporami energie pro SVJ a bytová družstva.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Mapa stránek</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Hlavní stránka</a></li>
+          <li><a href="pruvodce-jom.html">Jednotné odběrné místo</a></li>
+          <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
+          <li><a href="bezpecnost.html">Bezpečnost</a></li>
+          <li><a href="slovnik.html">Slovník pojmů</a></li>
+          <li><a href="forum.html">Diskuzní fórum</a></li>
+          <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+          <li><a href="index.html#o-nas">O nás</a></li>
+          <li><a href="kontakty.html">Kontakty</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Informace</h4>
+        <ul class="footer-links">
+          <li><a href="#">Podmínky použití</a></li>
+          <li><a href="#">Ochrana osobních údajů</a></li>
+          <li><a href="#">Reklamační řád</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-join">
+        <h4 class="footer-col-title">Sledujte nás</h4>
+        <div class="footer-social">
+          <a href="#" class="footer-social-icon" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.4h2.48l.37-2.88h-2.85V8.94c0-.83.23-1.4 1.42-1.4h1.52V4.98c-.26-.04-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.88h2.47V21h2.93z"></path></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="3.7"></circle><circle cx="17.1" cy="6.9" r="0.9" fill="currentColor" stroke="none"></circle></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H4.1V20h2.84V8.5zM5.5 4c-.97 0-1.7.73-1.7 1.65 0 .9.71 1.65 1.67 1.65h.02c.99 0 1.7-.74 1.7-1.65C7.19 4.73 6.48 4 5.5 4zM20 13.4c0-3-1.6-4.4-3.74-4.4-1.72 0-2.49 0.95-2.92 1.62V8.5h-2.84c.04.8 0 11.5 0 11.5h2.84v-6.42c0-.34.02-.69.13-.93.28-.69.91-1.41 1.98-1.41 1.4 0 1.96 1.06 1.96 2.62V20H20v-6.6z"></path></svg>
+          </a>
+        </div>
+        <form class="footer-newsletter" id="footerNewsletter">
+          <input type="email" name="email" placeholder="Zadejte e-mail" aria-label="E-mailová adresa" required>
+          <button type="submit" aria-label="Odebírat novinky">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6"></path>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Energohub.info. Všechna práva vyhrazena.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/navbar.js" defer></script>
+<script src="js/footer.js" defer></script>
+</body>
+</html>

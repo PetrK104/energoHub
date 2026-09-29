@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<title>Náklady na FVE pro bytový dům — Energohub.info</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/guide-shared.css">
+<link rel="stylesheet" href="css/fve.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="navbar-container">
+    <nav class="navbar">
+      <a href="index.html" class="navbar-logo">
+        <img src="assets/images/Logo.svg" alt="Energohub">
+      </a>
+
+      <ul class="navbar-links">
+        <li class="nav-dropdown">
+          <a href="index.html#pruvodce" class="nav-dropdown__trigger">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></a>
+          <ul class="nav-dropdown__menu">
+            <div class="nav-dropdown__menu-inner">
+              <li><a href="pruvodce-jom.html">Jednotné odběrné místo (JOM)</a></li>
+              <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
+              <li class="nav-dropdown__item--soon"><span>Teplo a TUV</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Okna a dveře</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Zateplení</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Doporučené pořadí realizace</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+            </div>
+          </ul>
+        </li>
+        <li><a href="bezpecnost.html">Bezpečnost</a></li>
+        <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+        <li><a href="forum.html">Fórum</a></li>
+        <li><a href="index.html#o-nas">O nás</a></li>
+        <li><a href="kontakty.html">Kontakty</a></li>
+      </ul>
+
+      <a href="kontakty.html" class="navbar-cta">Chci vědět více</a>
+
+      <button class="navbar-burger" id="navBurger" aria-label="Otevřít menu" aria-expanded="false">
+        <span class="navbar-burger__bar"></span>
+        <span class="navbar-burger__bar"></span>
+        <span class="navbar-burger__bar"></span>
+      </button>
+    </nav>
+  </div>
+
+  <div class="navbar-mobile" id="navMobile" aria-hidden="true">
+    <nav class="navbar-mobile__nav">
+      <ul class="navbar-mobile__links">
+        <li><a href="index.html#pruvodce">Průvodci opatření</a></li>
+        <li><a href="pruvodce-jom.html">— Jednotné odběrné místo</a></li>
+        <li><a href="pruvodce-fve.html">— Fotovoltaika</a></li>
+        <li class="navbar-mobile__divider"></li>
+        <li><a href="bezpecnost.html">Bezpečnost</a></li>
+        <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+        <li><a href="forum.html">Fórum</a></li>
+        <li><a href="index.html#o-nas">O nás</a></li>
+        <li><a href="kontakty.html">Kontakty</a></li>
+      </ul>
+      <a href="kontakty.html" class="navbar-mobile__cta">Chci vědět více</a>
+    </nav>
+  </div>
+</header>
+
+<section class="guide-sub-hero">
+  <div class="guide-sub-hero__container">
+    <nav class="guide-sub-hero__breadcrumb" aria-label="Drobečková navigace">
+      <a href="pruvodce-fve.html">Průvodce FVE</a>
+      <span aria-hidden="true">→</span>
+      <span>Náklady na FVE pro bytový dům</span>
+    </nav>
+    <h1 class="guide-sub-hero__title">Náklady na FVE pro bytový dům</h1>
+    <p class="guide-sub-hero__desc">Interaktivní kalkulačka nákladů, položkový rozpis a orientační ceny pro různé výkony systému.</p>
+    <p class="guide-sub-hero__meta">
+      <svg class="guide-sub-hero__clock" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8"/><path d="M10 6v4l2.5 1.5"/></svg>
+      Doba čtení: 5 min.
+    </p>
+  </div>
+</section>
+
+<section class="fve-costs" id="naklady" style="padding-top:100px;padding-bottom:0">
+  <div class="fve-costs__container">
+
+
+    <div class="fve-costs__header">
+    <h2 class="guide-section-title">Orientační náklady na FVE pro bytový dům</h2>
+      <p class="fve-costs__desc">Cena roste s instalovaným výkonem a s tím, zda se FVE instaluje současně se zavedením JOM. Skutečná cena závisí na konkrétních podmínkách projektu.</p>
+    </div>
+
+    <div class="fve-costs__controls">
+      <div class="fve-costs__kwp-wrap">
+        <div class="fve-costs__kwp-labels">
+          <span>10 kWp</span><span>20 kWp</span><span>30 kWp</span><span>40 kWp</span><span>50 kWp</span>
+        </div>
+        <input class="fve-costs__kwp-slider" type="range" min="0" max="4" step="1" value="3" id="costsSlider">
+      </div>
+      <div class="fve-costs__jom-toggle">
+        <button class="fve-costs__jom-btn is-active" data-jom="0" type="button">Bez JOM</button>
+        <button class="fve-costs__jom-btn" data-jom="1" type="button">S JOM</button>
+      </div>
+    </div>
+
+    <div class="fve-costs__main">
+
+      <!-- Souhrn -->
+      <div class="fve-costs__summary">
+        <div class="fve-costs__total-label">Orientační náklady celkem</div>
+        <div class="fve-costs__total-value" id="costsTotalValue">920 000 – 1 120 000 Kč</div>
+
+        <p class="fve-costs__grant-note">
+          Financování je od roku 2026 dostupné formou bezúročného úvěru z&nbsp;programu Nová zelená úsporám.
+          <a href="fve-dotace-a-legislativa.html" class="fve-costs__grant-link">Více o financování →</a>
+        </p>
+
+        <div class="fve-costs__pills">
+          <div class="fve-costs__pill">
+            <span class="fve-costs__pill-label">Instalovaný výkon</span>
+            <span class="fve-costs__pill-value" id="costsPillKwp">40 kWp</span>
+          </div>
+          <div class="fve-costs__pill">
+            <span class="fve-costs__pill-label">Roční výroba</span>
+            <span class="fve-costs__pill-value" id="costsPillOutput">~38 000 kWh</span>
+          </div>
+          <div class="fve-costs__pill">
+            <span class="fve-costs__pill-label">Návratnost investice</span>
+            <span class="fve-costs__pill-value">5–10 let</span>
+          </div>
+          <div class="fve-costs__pill">
+            <span class="fve-costs__pill-label">Max. bezúročný úvěr NZÚ</span>
+            <span class="fve-costs__pill-value">250 000 Kč / byt. jedn.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Donut graf -->
+      <div class="fve-costs__chart-wrap">
+        <div class="fve-costs__chart">
+          <svg class="fve-costs__svg" viewBox="0 0 320 320" aria-hidden="true"></svg>
+          <div class="fve-costs__chart-center">
+            <span class="fve-costs__center-pct"></span>
+            <span class="fve-costs__center-name"></span>
+            <span class="fve-costs__center-amount"></span>
+          </div>
+        </div>
+        <p class="fve-costs__chart-hint">Klepněte na část grafu pro detail</p>
+      </div>
+
+    </div>
+
+    <!-- Rozpis nákladů -->
+    <div class="fve-costs__breakdown">
+      <h3 class="fve-costs__breakdown-title" id="costsBreakdownTitle">Rozpis nákladů <span class="fve-costs__breakdown-note">— příklad pro 1 250 000 Kč</span></h3>
+      <ul class="fve-costs__breakdown-list" id="costsBreakdownList"></ul>
+    </div>
+
+    <!-- Info karty -->
+    <div class="fve-costs__info">
+      <div class="fve-costs__info-card">
+        <div class="fve-costs__info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22V12M12 12C12 7 7 4 2 4c0 5 3 10 10 8M12 12c0-5 5-8 10-8-1 5-4 9-10 8"/>
+          </svg>
+        </div>
+        <h3 class="fve-costs__info-title">Nová zelená úsporám</h3>
+        <p class="fve-costs__info-text">Státní dotační program může pokrýt významnou část nákladů na FVE pro bytové domy. Výše závisí na parametrech projektu a aktuální výzvě programu. Dotace se vztahuje i na bateriové úložiště jako součást FVE systému.</p>
+        <a href="fve-dotace-a-legislativa.html" class="fve-costs__info-link">Více o dotacích →</a>
+      </div>
+      <div class="fve-costs__info-card">
+        <div class="fve-costs__info-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2"/>
+            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M12 12v4M10 14h4"/>
+          </svg>
+        </div>
+        <h3 class="fve-costs__info-title">SVJ úvěr</h3>
+        <p class="fve-costs__info-text">Banky a specializované instituce nabízejí účelové úvěry pro SVJ a bytová družstva. Instalaci tak lze zahájit bez nutnosti jednorázového výběru celé částky z fondu oprav.</p>
+        <a href="#" class="fve-costs__info-link">Možnosti financování →</a>
+      </div>
+    </div>
+
+    <!-- Odkaz na detail úspor -->
+    <div class="fve-insight fve-insight--section" style="margin-top:48px">
+      <p class="fve-insight__text">Chcete přesný rozpad úspor podle typu elektroměru v bytě? Podívejte se, jak se jednotlivé byty podílejí na celkové úspoře domu.</p>
+      <p style="margin-top:16px"><a href="jom-sdileni-a-uspory.html" class="fve-costs__info-link" style="font-size:16px">Kolik se dům dělí o úsporu — rozpad podle typu elektroměru →</a></p>
+    </div>
+</div>
+</section>
+
+<section class="guide-qa" style="padding-top:64px">
+  <div class="guide-qa__container">
+    <h2 class="guide-qa__title">Zjistěte více o dalších tématech FVE</h2>
+    <div class="guide-qa__cards">
+      <a href="fve-kdy-ma-smysl.html" class="guide-qa__card">
+        <div class="guide-qa__card-body">
+          <p class="guide-qa__card-title">Ekonomická návratnost FVE pro bytový dům</p>
+          <p class="guide-qa__card-desc">Kritéria pro bytový dům: orientace střechy, spotřeba, časový horizont. Kdy investice smysl nedává.</p>
+        </div>
+        <div class="guide-qa__card-arrow">→</div>
+      </a>
+      <a href="fve-baterie.html" class="guide-qa__card">
+        <div class="guide-qa__card-body">
+          <p class="guide-qa__card-title">Baterie k FVE — dimenzování a podmínky výnosnosti</p>
+          <p class="guide-qa__card-desc">Kdy baterie přidává hodnotu, jak dimenzovat kapacitu a co znamená záloha pro výpadek sítě.</p>
+        </div>
+        <div class="guide-qa__card-arrow">→</div>
+      </a>
+      <a href="fve-dotace-a-legislativa.html" class="guide-qa__card">
+        <div class="guide-qa__card-body">
+          <p class="guide-qa__card-title">Dotace a legislativa pro FVE</p>
+          <p class="guide-qa__card-desc">Přehled dotačních programů (NZÚ, OPŽP), výše podpory, podmínky pro SVJ a legislativní hranice.</p>
+        </div>
+        <div class="guide-qa__card-arrow">→</div>
+      </a>
+      <a href="pruvodce-fve.html" class="guide-qa__card guide-qa__card--back">
+        <div class="guide-qa__card-body">
+          <p class="guide-qa__card-title">Průvodce FVE — přehled všech témat</p>
+          <p class="guide-qa__card-desc">Zpět na přehled témat fotovoltaiky pro bytové domy.</p>
+        </div>
+        <div class="guide-qa__card-arrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="footer-glow"></div>
+
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">
+          <img src="assets/images/Logo.svg" alt="Energohub">
+        </a>
+        <p class="footer-tagline">Nezávislý průvodce úsporami energie pro SVJ a bytová družstva.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Mapa stránek</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Hlavní stránka</a></li>
+          <li><a href="pruvodce-jom.html">Jednotné odběrné místo</a></li>
+          <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
+          <li><a href="bezpecnost.html">Bezpečnost</a></li>
+          <li><a href="slovnik.html">Slovník pojmů</a></li>
+          <li><a href="forum.html">Diskuzní fórum</a></li>
+          <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+          <li><a href="index.html#o-nas">O nás</a></li>
+          <li><a href="kontakty.html">Kontakty</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Informace</h4>
+        <ul class="footer-links">
+          <li><a href="#">Podmínky použití</a></li>
+          <li><a href="#">Ochrana osobních údajů</a></li>
+          <li><a href="#">Reklamační řád</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-join">
+        <h4 class="footer-col-title">Sledujte nás</h4>
+        <div class="footer-social">
+          <a href="#" class="footer-social-icon" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.4h2.48l.37-2.88h-2.85V8.94c0-.83.23-1.4 1.42-1.4h1.52V4.98c-.26-.04-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.88h2.47V21h2.93z"></path></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="3.7"></circle><circle cx="17.1" cy="6.9" r="0.9" fill="currentColor" stroke="none"></circle></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H4.1V20h2.84V8.5zM5.5 4c-.97 0-1.7.73-1.7 1.65 0 .9.71 1.65 1.67 1.65h.02c.99 0 1.7-.74 1.7-1.65C7.19 4.73 6.48 4 5.5 4zM20 13.4c0-3-1.6-4.4-3.74-4.4-1.72 0-2.49 0.95-2.92 1.62V8.5h-2.84c.04.8 0 11.5 0 11.5h2.84v-6.42c0-.34.02-.69.13-.93.28-.69.91-1.41 1.98-1.41 1.4 0 1.96 1.06 1.96 2.62V20H20v-6.6z"></path></svg>
+          </a>
+        </div>
+        <form class="footer-newsletter" id="footerNewsletter">
+          <input type="email" name="email" placeholder="Zadejte e-mail" aria-label="E-mailová adresa" required>
+          <button type="submit" aria-label="Odebírat novinky">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6"></path>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Energohub.info. Všechna práva vyhrazena.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/navbar.js" defer></script>
+<script src="js/footer.js" defer></script>
+<script src="js/fve-costs.js" defer></script>
+<script>(function(){
+  var STEPS=[10,20,30,40,50];
+  var RATE={panely:12000,konstrukce:4000,stridac:1500,elektro:3000,dok:3000,revize:2000};
+  var JOM_ADDON=200000;
+  var RANGES=[
+    {bez:[230000,280000],s:[430000,480000]},
+    {bez:[460000,560000],s:[660000,760000]},
+    {bez:[690000,840000],s:[890000,1040000]},
+    {bez:[920000,1120000],s:[1120000,1320000]},
+    {bez:[1150000,1400000],s:[1350000,1600000]}
+  ];
+  var COLORS=['#b7f13d','rgba(183,241,61,.45)','#7aad1e','#4e7314','rgba(255,255,255,.28)','rgba(255,255,255,.14)'];
+  var NAMES_BASE=['FV panely','Nosná konstrukce','Střídač','Elektroinstalace a rozvaděče','Projektová dokumentace a povolení','Uvedení do provozu a revize'];
+  var NAMES_JOM=['FV panely','Nosná konstrukce','Střídač','Elektroinstalace a rozvaděče (vč. JOM)','Projektová dokumentace a povolení','Uvedení do provozu a revize'];
+
+  var slider=document.getElementById('costsSlider');
+  var jomBtns=document.querySelectorAll('.fve-costs__jom-btn');
+  var elTotal=document.getElementById('costsTotalValue');
+  var elKwp=document.getElementById('costsPillKwp');
+  var elOut=document.getElementById('costsPillOutput');
+  var elTitle=document.getElementById('costsBreakdownTitle');
+  var elList=document.getElementById('costsBreakdownList');
+  var stepIdx=3;
+  var withJom=false;
+
+  function fmtN(n){return n.toLocaleString('cs-CZ');}
+
+  function getAmounts(kwp,jom){
+    return [
+      RATE.panely*kwp,
+      RATE.konstrukce*kwp,
+      RATE.stridac*kwp,
+      RATE.elektro*kwp+(jom?JOM_ADDON:0),
+      RATE.dok*kwp,
+      RATE.revize*kwp
+    ];
+  }
+
+  function buildSegments(kwp,jom){
+    var amounts=getAmounts(kwp,jom);
+    var total=amounts.reduce(function(s,a){return s+a;},0);
+    var names=jom?NAMES_JOM:NAMES_BASE;
+    return amounts.map(function(a,i){
+      return {name:names[i],amount:fmtN(a)+' Kč',pct:Math.round(a/total*100),color:COLORS[i]};
+    });
+  }
+
+  function buildBreakdownHTML(kwp,jom){
+    var amounts=getAmounts(kwp,jom);
+    var total=amounts.reduce(function(s,a){return s+a;},0);
+    var names=jom?NAMES_JOM:NAMES_BASE;
+    return amounts.map(function(a,i){
+      var pct=Math.round(a/total*100);
+      return '<li class="fve-costs__breakdown-item">'+
+        '<span class="fve-costs__breakdown-dot" style="background:'+COLORS[i]+'"></span>'+
+        '<span class="fve-costs__breakdown-name">'+names[i]+'</span>'+
+        '<div class="fve-costs__breakdown-bar-wrap"><div class="fve-costs__breakdown-bar" style="width:'+pct+'%;background:'+COLORS[i]+'"></div></div>'+
+        '<span class="fve-costs__breakdown-amount">'+fmtN(a)+' Kč</span>'+
+        '<span class="fve-costs__breakdown-pct">'+pct+' %</span>'+
+        '</li>';
+    }).join('');
+  }
+
+  function update(){
+    var kwp=STEPS[stepIdx];
+    var range=withJom?RANGES[stepIdx].s:RANGES[stepIdx].bez;
+    var mid=Math.round((range[0]+range[1])/2);
+    if(elTotal)elTotal.textContent=fmtN(range[0])+' – '+fmtN(range[1])+' Kč';
+    if(elKwp)elKwp.textContent=kwp+' kWp';
+    if(elOut)elOut.textContent='~'+fmtN(kwp*950)+' kWh';
+    if(elTitle)elTitle.querySelector('span').textContent='— příklad pro '+fmtN(mid)+' Kč';
+    if(elList)elList.innerHTML=buildBreakdownHTML(kwp,withJom);
+    if(window.renderFveCosts)window.renderFveCosts(buildSegments(kwp,withJom));
+  }
+
+  if(slider)slider.addEventListener('input',function(){stepIdx=+this.value;update();});
+  jomBtns.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      withJom=this.dataset.jom==='1';
+      jomBtns.forEach(function(b){b.classList.remove('is-active');});
+      this.classList.add('is-active');
+      update();
+    });
+  });
+
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',update);}
+  else{update();}
+})();</script>
+</body>
+</html>
