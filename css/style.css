@@ -1867,7 +1867,7 @@ a.guide-steps__item:hover .guide-steps__label {
 .home-faq__q {
   font-family:var(--font-heading);
   font-size:20px;
-  font-weight:600;
+  font-weight:500;
   color:var(--text-white);
   padding:26px 0;
   cursor:pointer;
