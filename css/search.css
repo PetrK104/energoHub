@@ -1,0 +1,253 @@
+/* ── Lupa v navbaru ─────────────────────────────────────────────────────── */
+.navbar-search {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  transition: color .2s ease, background .18s;
+  padding: 0;
+}
+.navbar-search:hover { color: var(--text-white); background: rgba(255,255,255,.08); }
+.navbar-search:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
+
+/* ── Overlay ────────────────────────────────────────────────────────────── */
+#searchOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(5,5,6,.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 96px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .16s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  #searchOverlay { transition: none; }
+}
+#searchOverlay.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Dialog kontejner ───────────────────────────────────────────────────── */
+.search-dialog {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 20px;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100dvh - 140px);
+}
+
+/* ── Input řádek ────────────────────────────────────────────────────────── */
+.search-input-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+.search-icon-wrap {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  display: flex;
+  pointer-events: none;
+}
+.search-input {
+  width: 100%;
+  background: rgba(18,18,20,.98);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 8px;
+  padding: 15px 44px 15px 48px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-white);
+  outline: none;
+  caret-color: var(--lime);
+  transition: border-color .15s;
+  /* prevent zoom on iOS */
+  -webkit-appearance: none;
+}
+.search-input::placeholder        { color: var(--text-muted); opacity: .55; }
+.search-input:focus               { border-color: rgba(183,241,61,.45); }
+/* hide native × in search inputs */
+.search-input::-webkit-search-cancel-button { display: none; }
+
+.search-clear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(185,185,194,.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color .15s;
+}
+.search-clear:hover { color: var(--text-white); }
+.search-clear[hidden] { display: none; }
+
+/* ── ARIA live (visually hidden) ────────────────────────────────────────── */
+.search-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ── Tělo (výsledky / hint / empty) ────────────────────────────────────── */
+.search-body {
+  margin-top: 6px;
+  border-radius: 8px;
+  background: rgba(14,14,16,.98);
+  border: 1px solid var(--card-border);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,.12) transparent;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* ── Výsledek ───────────────────────────────────────────────────────────── */
+.search-result {
+  display: block;
+  padding: 14px 20px;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  outline: none;
+  transition: background .1s;
+}
+.search-result:last-child { border-bottom: none; }
+.search-result:hover,
+.search-result[aria-selected="true"] {
+  background: rgba(255,255,255,.055);
+}
+.search-result:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--lime);
+  border-radius: 0;
+}
+.search-result__title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text-white);
+  margin-bottom: 3px;
+  line-height: 1.3;
+}
+.search-result__desc {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 6px;
+}
+.search-result__cat {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: rgba(183,241,61,.65);
+}
+
+/* Zvýraznění shody */
+mark {
+  background: rgba(183,241,61,.18);
+  color: var(--lime);
+  border-radius: 2px;
+  padding: 0 2px;
+  font-style: normal;
+}
+
+/* ── Prázdný stav: nápověda ─────────────────────────────────────────────── */
+.search-hint-panel {
+  padding: 20px;
+}
+.search-hint-title {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: rgba(185,185,194,.45);
+  margin-bottom: 4px;
+}
+.search-hint-list {
+  display: flex;
+  flex-direction: column;
+}
+.search-hint-item {
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  padding: 11px 0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-muted);
+  cursor: pointer;
+  text-align: left;
+  transition: color .15s;
+}
+.search-hint-item:last-child { border-bottom: none; }
+.search-hint-item:hover { color: var(--text-white); }
+.search-hint-item:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; border-radius: 2px; }
+
+/* ── Prázdný stav: žádné výsledky ───────────────────────────────────────── */
+.search-empty-panel {
+  padding: 28px 24px;
+}
+.search-empty-text {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-white);
+  margin-bottom: 12px;
+}
+.search-empty-tips {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: rgba(185,185,194,.6);
+  line-height: 1.9;
+  padding-left: 18px;
+  margin: 0 0 16px;
+}
+.search-empty-link {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--lime);
+  text-decoration: none;
+  transition: opacity .15s;
+}
+.search-empty-link:hover { opacity: .8; text-decoration: underline; }
+.search-empty-link:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; border-radius: 2px; }
+
+/* ── Mobil ──────────────────────────────────────────────────────────────── */
+@media (max-width: 760px) {
+  #searchOverlay {
+    padding-top: 72px;
+    align-items: flex-start;
+  }
+  .search-dialog {
+    margin: 0 16px;
+    max-height: calc(100dvh - 88px);
+  }
+}

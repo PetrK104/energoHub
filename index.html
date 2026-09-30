@@ -5,11 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="format-detection" content="telephone=no">
 <meta name="description" content="Edukační portál pro výbory SVJ a správce bytových domů. Průvodci energetickými opatřeními, kalkulačky úspor a propojení s ověřenými dodavateli.">
+<meta name="keywords" content="úspory na energiích, SVJ energetická opatření, bytový dům elektřina, jak snížit faktury za energie, energetický průvodce SVJ, nezávislost na elektřině, JOM FVE bytový dům, kalkulačka úspor SVJ">
+<meta name="category" content="Obecné">
 <title>Energohub.info — Srozumitelně k úsporám ve vašem domě</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/search.css">
 </head>
 <body>
 
@@ -42,7 +45,15 @@
         <li><a href="kontakty.html">Kontakty</a></li>
       </ul>
 
-      <a href="kontakty.html" class="navbar-cta">Chci vědět více</a>
+      <div class="navbar-actions">
+        <button class="navbar-search" id="searchOpen" aria-label="Hledat"
+                aria-keyshortcuts="/ Control+k">
+          <svg width="22" height="22" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <circle cx="7.5" cy="7.5" r="5" stroke="currentColor" stroke-width="1.8"/>
+            <line x1="11.5" y1="11.5" x2="16" y2="16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
 
       <button class="navbar-burger" id="navBurger" aria-label="Otevřít menu" aria-expanded="false">
         <span class="navbar-burger__bar"></span>
@@ -479,5 +490,6 @@
 <script src="js/hero-toggle.js" defer></script>
 <script>(function(){if(!('ontouchstart' in window))return;var loader=document.getElementById('page-loader');if(loader)loader.style.pointerEvents='none';var frame=document.querySelector('.hero-3d-frame');if(!frame)return;var ov=document.createElement('div');ov.style.cssText='position:fixed;left:0;right:0;bottom:0;height:min(640px,130vw);z-index:90;touch-action:pan-y;';document.body.appendChild(ov);function update(){var r=frame.getBoundingClientRect();var top=Math.max(0,r.top);var bottom=Math.min(window.innerHeight,r.bottom);if(bottom>top+4){ov.style.top=top+'px';ov.style.height=(bottom-top)+'px';}}update();window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);window.addEventListener('load',update);setTimeout(update,400);setTimeout(update,1200);var sx,sy;ov.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});ov.addEventListener('touchend',function(e){var t=e.changedTouches[0],dx=Math.abs(t.clientX-sx),dy=Math.abs(t.clientY-sy);if(dx<30&&dy<30){try{var r=frame.getBoundingClientRect(),cx=t.clientX-r.left,cy=t.clientY-r.top,el=frame.contentDocument.elementFromPoint(cx,cy);if(el){var btn=el.closest?el.closest('button,[role=button]'):null;(btn||el).click();}}catch(err){}}},{passive:true});})();</script>
 
+<script type="module" src="assets/js/search-overlay.js"></script>
 </body>
 </html>

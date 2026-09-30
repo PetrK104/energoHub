@@ -1,0 +1,5 @@
+node_modules/
+build-search.mjs
+test-search.mjs
+resize-hdr.py
+css/fve.css.bak

@@ -10,3 +10,10 @@ node_modules/
 
 # Generovaný vyhledávací index
 search.json
+
+# macOS metadata
+.DS_Store
+**/.DS_Store
+
+# Zálohy
+*.bak

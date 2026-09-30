@@ -6,6 +6,8 @@
 <meta name="format-detection" content="telephone=no">
 <title>Bezpečnost FVE instalací — Energohub.info</title>
 <meta name="description" content="Statický posudek, požárně bezpečnostní řešení, dokumentace, hasicí přístroj a revize baterie. Co má SVJ požadovat u každé instalace fotovoltaiky.">
+<meta name="keywords" content="bezpečnost fotovoltaiky, statický posudek střechy, požárně bezpečnostní řešení PBŘ, revize FVE, hasicí přístroj fotovoltaika, pojistné plnění FVE, bezpečná instalace solárních panelů, revize baterií, požár FVE">
+<meta name="category" content="Fotovoltaika">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,6 +15,7 @@
 <link rel="stylesheet" href="css/guide-shared.css">
 <link rel="stylesheet" href="css/fve.css">
 <link rel="stylesheet" href="css/bezpecnost.css">
+<link rel="stylesheet" href="css/search.css">
 </head>
 <body>
 
@@ -44,7 +47,15 @@
         <li><a href="kontakty.html">Kontakty</a></li>
       </ul>
 
-      <a href="kontakty.html" class="navbar-cta">Chci vědět více</a>
+      <div class="navbar-actions">
+        <button class="navbar-search" id="searchOpen" aria-label="Hledat"
+                aria-keyshortcuts="/ Control+k">
+          <svg width="22" height="22" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <circle cx="7.5" cy="7.5" r="5" stroke="currentColor" stroke-width="1.8"/>
+            <line x1="11.5" y1="11.5" x2="16" y2="16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
 
       <button class="navbar-burger" id="navBurger" aria-label="Otevřít menu" aria-expanded="false">
         <span class="navbar-burger__bar"></span>
@@ -662,5 +673,6 @@
 <script src="js/footer.js" defer></script>
 <script src="js/navbar.js" defer></script>
 
+<script type="module" src="assets/js/search-overlay.js"></script>
 </body>
 </html>

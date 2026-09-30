@@ -36,7 +36,7 @@ function tokenize(q) {
 }
 
 function stem(w) {
-  return w.length > 5 ? w.slice(0, -2) : w;
+  return w.length > 6 ? w.slice(0, -2) : w;
 }
 
 function search(query) {

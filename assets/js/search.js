@@ -23,7 +23,7 @@ function tokenize(query) {
 // Naivní česká kmenová přípona — ořeže 2 znaky u slov >5 znaků
 // nabídky → nabíd, hodnocení → hodnoce
 function stem(word) {
-  return word.length > 5 ? word.slice(0, -2) : word;
+  return word.length > 6 ? word.slice(0, -2) : word;
 }
 
 export function createSearch() {
