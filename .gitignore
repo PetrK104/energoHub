@@ -7,3 +7,6 @@
 
 # Závislosti — Netlify nainstaluje samo
 node_modules/
+
+# Generovaný vyhledávací index
+search.json
