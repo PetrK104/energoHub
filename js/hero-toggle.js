@@ -27,7 +27,19 @@
         doc.head.appendChild(styleEl);
       }
 
-      if (window.innerWidth <= 889) {
+      if (window.innerWidth <= 447) {
+        // Velmi malé obrazovky — dvouřádkový box, posunout na dolní hranu scény
+        ctrl.removeAttribute("style");
+        doc.querySelectorAll(".seg").forEach(function (seg) { seg.removeAttribute("style"); });
+        styleEl.textContent =
+          ".controls{" +
+            "left:69%!important;" +
+            "transform:translateX(-50%)!important;" +
+            "bottom:2%!important;" +
+            "right:auto!important;" +
+          "}" +
+          ".seg{width:100%!important;justify-content:center!important;}";
+      } else if (window.innerWidth <= 889) {
         // Mobile stacked layout — clear any inline styles, use <style> tag
         ctrl.removeAttribute("style");
         doc.querySelectorAll(".seg").forEach(function (seg) { seg.removeAttribute("style"); });
