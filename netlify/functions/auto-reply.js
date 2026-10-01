@@ -4,6 +4,7 @@ const { adminClient } = require('./_shared');
 const GLOBAL_INSTRUCTIONS = "Odpovídej vždy v češtině. Veď přirozený konverzační příspěvek do diskuzního vlákna, reaguj konkrétně na to, co bylo řečeno naposled. Buď stručný: 2 až 5 vět. Nepředstavuj se jménem, jen piš svůj příspěvek přímo. Zůstaň důsledně ve své roli.";
 const STALE_REPLY_DAYS = 3;
 const MAX_THREADS_PER_RUN = 2;
+const MAX_BOT_REPLIES = 10;
 
 async function claudeCall(system, messages) {
   const res = await fetch('https://api.anthropic.com/v1/messages', {
@@ -74,10 +75,21 @@ const handler = async () => {
       .from('messages').select('created_at').eq('thread_id', thread.id)
       .order('created_at', { ascending: false }).limit(1).maybeSingle();
     const lastActivity = lastMsg ? lastMsg.created_at : thread.created_at;
-    if (lastActivity < replyCutoff) staleThreads.push(thread);
+    if (lastActivity < replyCutoff) {
+      const { count } = await supabase
+        .from('messages').select('*', { count: 'exact', head: true })
+        .eq('thread_id', thread.id).eq('sender_type', 'bot');
+      if ((count || 0) < MAX_BOT_REPLIES) staleThreads.push(thread);
+    }
   }
 
-  const toProcess = staleThreads.slice(0, MAX_THREADS_PER_RUN);
+  staleThreads.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+  const toProcess = [];
+  if (staleThreads.length > 0) toProcess.push(staleThreads[0]);
+  if (staleThreads.length > 1) {
+    const older = staleThreads.slice(1);
+    toProcess.push(older[Math.floor(Math.random() * older.length)]);
+  }
   console.log('[auto-reply] Stale vláken:', staleThreads.length, '— zpracovávám:', toProcess.length);
 
   for (const thread of toProcess) {
@@ -94,4 +106,4 @@ const handler = async () => {
   return { statusCode: 200 };
 };
 
-exports.handler = schedule('0 10 * * *', handler);
+exports.handler = schedule('0 10 */3 * *', handler);

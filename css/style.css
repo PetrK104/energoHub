@@ -1840,7 +1840,7 @@ a.guide-steps__item:hover .guide-steps__label {
 
 }
 .home-faq {
-  padding:100px 0 120px
+  padding:80px 0 80px
 }
 .home-faq__container {
   width:100%;
@@ -1916,7 +1916,7 @@ a.guide-steps__item:hover .guide-steps__label {
 }
 @media(max-width:760px) {
   .home-faq {
-    padding:64px 0
+    padding:56px 0
   }
   .home-faq__container {
     padding:0 16px

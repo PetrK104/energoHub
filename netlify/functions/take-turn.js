@@ -24,6 +24,13 @@ exports.handler = async (event) => {
       return { statusCode: 200, body: JSON.stringify({ skipped: true, reason: 'bot_mode je disabled' }) };
     }
 
+    const { count: botCount } = await supabase
+      .from('messages').select('*', { count: 'exact', head: true })
+      .eq('thread_id', thread_id).eq('sender_type', 'bot');
+    if ((botCount || 0) >= 10) {
+      return { statusCode: 200, body: JSON.stringify({ skipped: true, reason: 'Vlákno dosáhlo limitu 10 bot odpovědí' }) };
+    }
+
     const { data: bots, error: botsErr } = await supabase
       .from('bots').select('*').eq('thread_id', thread_id).order('turn_order', { ascending: true });
     if (botsErr || !bots || bots.length === 0) {
