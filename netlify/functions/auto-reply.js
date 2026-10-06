@@ -97,4 +97,4 @@ const handler = async () => {
   return { statusCode: 200 };
 };
 
-exports.handler = schedule('* * * * *', handler);
+exports.handler = schedule('0 10 * * *', handler);
