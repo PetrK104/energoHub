@@ -230,7 +230,9 @@
 
     // Hero — explore button (nepřihlášený stav)
     heroExploreBtn.addEventListener('click', function () {
-      document.getElementById('forumModeSelect').scrollIntoView({ behavior: 'smooth', block: 'start' })
+      var el = document.getElementById('forumModeSelect')
+      var r = el.getBoundingClientRect()
+      window.scrollTo({ top: window.scrollY + r.top - 160, behavior: 'smooth' })
     })
 
     // Hero auth — user panel
@@ -866,6 +868,8 @@
     currentThread = thread
     viewList.hidden = true
     viewDetail.hidden = false
+    var rect = viewDetail.getBoundingClientRect()
+    window.scrollTo({ top: window.scrollY + rect.top - 160, behavior: 'smooth' })
     renderThreadHeader(thread)
     updateAuthUI()
     updateBotBar()
