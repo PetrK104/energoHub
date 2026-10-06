@@ -484,6 +484,14 @@
     modeSelect.hidden = true;
     forumMain.hidden  = false;
     if (window.forumSetMode) window.forumSetMode(mode);
+    var btn = document.getElementById('heroExploreBtn');
+    if (btn) btn.hidden = true;
+    var navH = (document.querySelector('.navbar') || {offsetHeight: 80}).offsetHeight;
+    var target = document.getElementById('forumMain');
+    if (target) {
+      var top = target.getBoundingClientRect().top + window.scrollY - navH - 16;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    }
   }
 
   document.querySelectorAll('.forum-mode-card').forEach(function(card) {
@@ -497,6 +505,8 @@
     modeSelect.hidden = false;
     window.forumMode  = null;
     if (window.forumSetMode) window.forumSetMode(null);
+    var btn = document.getElementById('heroExploreBtn');
+    if (btn) btn.hidden = false;
   });
 })();
 </script>
