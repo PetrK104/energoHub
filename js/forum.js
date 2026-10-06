@@ -59,6 +59,7 @@
   var forumNewBtn     = document.getElementById('forumNewBtn')
 
   var backBtn         = document.getElementById('backBtn')
+  var forumBackToMode = document.getElementById('forumBackToMode')
   var threadHeader    = document.getElementById('threadHeader')
   var botBar          = document.getElementById('botBar')
   var botModeLabel    = document.getElementById('botModeLabel')
@@ -230,7 +231,19 @@
 
     // Hero — explore button (nepřihlášený stav)
     heroExploreBtn.addEventListener('click', function () {
-      document.getElementById('forumModeSelect').scrollIntoView({ behavior: 'smooth', block: 'start' })
+      var modeSelect = document.getElementById('forumModeSelect')
+      var forumMain  = document.getElementById('forumMain')
+      if (forumMain && !forumMain.hidden) {
+        forumMain.hidden  = true
+        modeSelect.hidden = false
+        window.forumMode  = null
+        if (window.forumSetMode) window.forumSetMode(null)
+      }
+      if (modeSelect) {
+        var navH = (document.querySelector('.navbar') || { offsetHeight: 80 }).offsetHeight
+        var top = modeSelect.getBoundingClientRect().top + window.scrollY - navH - 48
+        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
+      }
     })
 
     // Hero auth — user panel
@@ -667,6 +680,8 @@
   function showListView() {
     viewList.hidden = false
     viewDetail.hidden = true
+    if (forumBackToMode) forumBackToMode.hidden = false
+    window.scrollTo({ top: 0, behavior: 'instant' })
     currentThread = null
     autoStartTurns = 0
     unsubscribeRealtime()
@@ -866,11 +881,17 @@
     currentThread = thread
     viewList.hidden = true
     viewDetail.hidden = false
+    if (forumBackToMode) forumBackToMode.hidden = true
     renderThreadHeader(thread)
     updateAuthUI()
     updateBotBar()
     await loadMessages(thread.id)
     subscribeRealtime(thread.id)
+    if (backBtn) {
+      var navH = document.querySelector('.navbar') ? document.querySelector('.navbar').offsetHeight : 80
+      var top = backBtn.getBoundingClientRect().top + window.scrollY - navH - 48
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
+    }
     history.pushState({ threadId: thread.id }, '', '#' + thread.id)
   }
 

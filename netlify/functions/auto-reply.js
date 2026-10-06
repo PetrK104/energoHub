@@ -5,7 +5,7 @@ const GLOBAL_INSTRUCTIONS = "Odpovídej vždy v češtině. Veď přirozený kon
 const STALE_REPLY_DAYS = 3;
 const MAX_THREADS_PER_RUN = 2;
 
-async function claudeCall(system, messages) {
+const claudeCall = async (system, messages) => {
   const res = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: {
@@ -22,9 +22,9 @@ async function claudeCall(system, messages) {
   }
   const data = await res.json();
   return (data.content || []).filter(b => b.type === 'text').map(b => b.text).join('\n').trim() || null;
-}
+};
 
-async function botReply(supabase, thread, bots, messages) {
+const botReply = async (supabase, thread, bots, messages) => {
   const lastBotMsg = [...(messages || [])].reverse().find(m => m.sender_type === 'bot');
   let nextIndex = 0;
   if (lastBotMsg) {
@@ -52,8 +52,11 @@ async function botReply(supabase, thread, bots, messages) {
   }
 
   const text = await claudeCall(bot.persona + '\n\n' + GLOBAL_INSTRUCTIONS, merged);
-  if (text) {
-    await supabase.from('messages').insert({ thread_id: thread.id, sender_type: 'bot', bot_id: bot.id, text });
+  if (!text) { console.log('[auto-reply] Claude vrátil prázdný text pro vlákno', thread.id); return; }
+  const { error: insertErr } = await supabase.from('messages').insert({ thread_id: thread.id, sender_type: 'bot', bot_id: bot.id, text });
+  if (insertErr) {
+    console.error('[auto-reply] Supabase insert error ve vlákně', thread.id, insertErr.message);
+  } else {
     console.log('[auto-reply] Bot', bot.name, 'napsal do vlákna', thread.id);
   }
 }
@@ -94,4 +97,4 @@ const handler = async () => {
   return { statusCode: 200 };
 };
 
-exports.handler = schedule('0 10 * * *', handler);
+exports.handler = schedule('* * * * *', handler);
