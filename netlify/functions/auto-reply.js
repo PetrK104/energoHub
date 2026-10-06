@@ -2,7 +2,7 @@ const { schedule } = require('@netlify/functions');
 const { adminClient } = require('./_shared');
 
 const GLOBAL_INSTRUCTIONS = "Odpovídej vždy v češtině. Veď přirozený konverzační příspěvek do diskuzního vlákna, reaguj konkrétně na to, co bylo řečeno naposled. Buď stručný: 2 až 5 vět. Nepředstavuj se jménem, jen piš svůj příspěvek přímo. Zůstaň důsledně ve své roli.";
-const STALE_REPLY_DAYS = 3;
+const STALE_REPLY_DAYS = 2;
 const MAX_THREADS_PER_RUN = 2;
 
 const claudeCall = async (system, messages) => {
@@ -71,22 +71,50 @@ const handler = async () => {
   }
 
   const replyCutoff = new Date(Date.now() - STALE_REPLY_DAYS * 24 * 60 * 60 * 1000).toISOString();
-  const staleThreads = [];
+
+  // Pro každé vlákno načti boty + poslední zprávu, vyřaď vlákna kde příští bot = autor poslední zprávy
+  const eligible = [];
   for (const thread of threads) {
+    const { data: bots } = await supabase.from('bots').select('*').eq('thread_id', thread.id).order('turn_order', { ascending: true });
+    if (!bots || bots.length === 0) continue;
+
     const { data: lastMsg } = await supabase
-      .from('messages').select('created_at').eq('thread_id', thread.id)
+      .from('messages').select('created_at, sender_type, bot_id').eq('thread_id', thread.id)
       .order('created_at', { ascending: false }).limit(1).maybeSingle();
+
     const lastActivity = lastMsg ? lastMsg.created_at : thread.created_at;
-    if (lastActivity < replyCutoff) staleThreads.push(thread);
+    if (lastActivity >= replyCutoff) continue; // příliš čerstvé
+
+    // Urči příštího bota na řadě
+    const lastBotMsg = lastMsg && lastMsg.sender_type === 'bot' ? lastMsg : null;
+    let nextIndex = 0;
+    if (lastBotMsg) {
+      const lastIdx = bots.findIndex(b => b.id === lastBotMsg.bot_id);
+      nextIndex = lastIdx === -1 ? 0 : (lastIdx + 1) % bots.length;
+    }
+    const nextBot = bots[nextIndex];
+
+    // Přeskoč pokud by příští bot psal sám sobě (poslední zpráva je od něj)
+    if (lastMsg && lastMsg.sender_type === 'bot' && lastMsg.bot_id === nextBot.id) continue;
+
+    eligible.push({ thread, bots, lastActivity });
   }
 
-  const toProcess = staleThreads.slice(0, MAX_THREADS_PER_RUN);
-  console.log('[auto-reply] Stale vláken:', staleThreads.length, '— zpracovávám:', toProcess.length);
+  // Seřaď podle poslední aktivity — novější vlákna mají přednost
+  eligible.sort((a, b) => new Date(b.lastActivity) - new Date(a.lastActivity));
 
-  for (const thread of toProcess) {
+  // Náhodně vyber z prvních 4 (nebo méně) aby se střídala vlákna
+  const pool = eligible.slice(0, 4);
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  const toProcess = pool.slice(0, MAX_THREADS_PER_RUN);
+
+  console.log('[auto-reply] Vhodných vláken:', eligible.length, '— zpracovávám:', toProcess.length);
+
+  for (const { thread, bots } of toProcess) {
     try {
-      const { data: bots } = await supabase.from('bots').select('*').eq('thread_id', thread.id).order('turn_order', { ascending: true });
-      if (!bots || bots.length === 0) continue;
       const { data: messages } = await supabase.from('messages').select('*, bots(name)').eq('thread_id', thread.id).order('created_at', { ascending: true });
       await botReply(supabase, thread, bots, messages || []);
     } catch (err) {
