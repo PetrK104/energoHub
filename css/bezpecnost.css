@@ -48,6 +48,8 @@
 .bsec-topic__sublist li::before{display:none}
 .bsec-topic__list a{color:var(--lime);text-underline-offset:3px}
 .bsec-topic__list a:hover{opacity:.8}
+.bsec-topic__intro a,.bsec-topic__checklist a,.bsec-topic__warnlist a,.bsec-topic__steps a{color:var(--lime);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.bsec-topic__intro a:hover,.bsec-topic__checklist a:hover,.bsec-topic__warnlist a:hover,.bsec-topic__steps a:hover{opacity:.8}
 
 /* Proč? box */
 .bsec-topic__why{background:rgba(255,255,255,.05);border-left:3px solid var(--lime);border-radius:0 8px 8px 0;padding:20px 22px}
@@ -96,6 +98,21 @@
 
 /* Zdroj */
 .bsec-topic__source{font:400 13px/1 var(--font-body);color:rgba(185,185,194,.55);margin:0;text-align:right}
+
+/* Odrážky uvnitř variant bloků (02.5) — barva textu, ne lime */
+.bsec-variants__content .bsec-topic__list li::before{color:var(--text-muted)}
+
+/* ── FAQ sekce ───────────────────────────────────────────────────────── */
+.bsec-faq{display:flex;flex-direction:column;gap:0}
+.bsec-faq__item{border-bottom:1px solid rgba(255,255,255,.08)}
+.bsec-faq__item:first-of-type{border-top:1px solid rgba(255,255,255,.08)}
+.bsec-faq__q{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;font:500 17px/1.4 var(--font-heading);color:var(--text-white);cursor:pointer;transition:color .2s}
+.bsec-faq__q::-webkit-details-marker{display:none}
+.bsec-faq__q::after{content:"+";font-size:22px;font-weight:300;color:var(--lime);flex-shrink:0;transition:transform .25s;line-height:1}
+.bsec-faq__item[open] .bsec-faq__q::after{transform:rotate(45deg)}
+.bsec-faq__item[open] .bsec-faq__q{color:var(--lime)}
+.bsec-faq__a{padding:0 0 24px}
+.bsec-faq__a p{font:400 15px/1.75 var(--font-body);color:var(--text-muted);margin:0;max-width:760px}
 
 /* ── CTA ─────────────────────────────────────────────────────────────── */
 .bsec-cta{background:#05050a;padding:80px 0 120px}

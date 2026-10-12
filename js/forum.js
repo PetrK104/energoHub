@@ -1167,10 +1167,6 @@
     var newThread = allThreads.find(function (t) { return String(t.id) === String(data.thread_id) })
     if (newThread) {
       await showDetailView(newThread)
-      if (bots.length > 0) {
-        autoStartTurns = bots.length - 1
-        setTimeout(function () { maybeTriggerBot() }, 800)
-      }
     }
   }
 

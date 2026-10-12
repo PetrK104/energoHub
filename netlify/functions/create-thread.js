@@ -1,4 +1,4 @@
-const { adminClient, getUserFromEvent } = require('./_shared');
+const { adminClient, getUserFromEvent, botReply } = require('./_shared');
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
@@ -40,6 +40,13 @@ exports.handler = async (event) => {
       const { error: botsErr } = await supabase.from('bots').insert(botRows);
       if (botsErr) {
         return { statusCode: 500, body: JSON.stringify({ error: '[bots insert] ' + botsErr.message, detail: botsErr.details, hint: botsErr.hint }) };
+      }
+
+      // První odpověď bota vždy server-side — nezávisí na tom, jestli admin sleduje prohlížeč
+      try {
+        await botReply(supabase, thread.id);
+      } catch (e) {
+        console.warn('[create-thread] botReply selhal:', e.message);
       }
     }
 
