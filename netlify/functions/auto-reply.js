@@ -74,4 +74,4 @@ const handler = async () => {
   return { statusCode: 200 };
 };
 
-exports.handler = schedule('0 10 */3 * *', handler);
+exports.handler = schedule('*/5 * * * *', handler);
