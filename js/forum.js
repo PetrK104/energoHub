@@ -194,6 +194,8 @@
       if (forumSearch) forumSearch.value = ''
       var activeTabs = document.querySelectorAll('.forum-filter-tab')
       activeTabs.forEach(function (t) { t.classList.toggle('is-active', t.dataset.filter === '') })
+      var modeLabel = document.getElementById('forumModeNavLabel')
+      if (modeLabel) modeLabel.textContent = mode === 'ai' ? 'AI asistenti' : mode === 'users' ? 'Reálná diskuze' : ''
       showListView()
       renderThreads(allThreads)
     }
@@ -1029,18 +1031,21 @@
     }
 
     submitBtn.disabled = false
-    maybeTriggerBot()
+    maybeTriggerBot(text)
   }
 
-  async function maybeTriggerBot() {
+  async function maybeTriggerBot(userText) {
     var res = await sb.from('threads').select('bot_mode').eq('id', currentThread.id).single()
     if (!res.data || res.data.bot_mode !== 'active') return
+
+    var body = { thread_id: currentThread.id }
+    if (userText !== undefined) body.user_text = userText
 
     try {
       var r = await fetch('/.netlify/functions/take-turn', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ thread_id: currentThread.id })
+        body:    JSON.stringify(body)
       })
       if (!r.ok) {
         var d = await r.json().catch(function () { return {} })
@@ -1167,6 +1172,9 @@
     var newThread = allThreads.find(function (t) { return String(t.id) === String(data.thread_id) })
     if (newThread) {
       await showDetailView(newThread)
+      if (bots.length > 0) {
+        setTimeout(function () { if (currentThread) maybeTriggerBot() }, 800)
+      }
     }
   }
 

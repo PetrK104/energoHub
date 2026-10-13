@@ -1,8 +1,18 @@
 const { createClient } = require('@supabase/supabase-js');
 
-const BOT_REPLY_LIMIT = 10;
+const BOT_REPLY_LIMIT = 10; // fallback pro vlákna bez bot_reply_limit
 
 const GLOBAL_INSTRUCTIONS = "Odpovídej vždy v češtině. Nepředstavuj se jménem, jen piš svůj příspěvek přímo. Zůstaň důsledně ve své roli.\n\nPiš vždy jako běžný člověk, který právě něco napsal do chatu nebo na fórum, ne jako AI asistent. Nikdy nepůsobíš vyváženě, vyčerpávajícím způsobem ani stylisticky uhlazeně tak, jak to typicky dělá jazykový model — to je první věc, podle které lidi AI text poznají. Délka odpovědi se má pokaždé výrazně lišit: někdy stačí jedna krátká věta nebo reakce o pár slovech, jindy je na místě delší odstavec s vlastním názorem nebo zkušeností, ale nikdy nepiš odpovědi stále podobně dlouhé nebo stejně strukturované, protože jednotná délka a stejný rytmus napříč odpověďmi je druhý nejsnazší způsob, jak poznat, že texty psal model. Vyhýbej se pomlčkám uprostřed vět (–, —) všude tam, kde by je běžný člověk v rychlé neformální zprávě nepoužil, a vyhýbej se typickým \"AI\" spojkám a frázím jako \"nicméně\", \"nadto\", \"je třeba zmínit\", \"v neposlední řadě\", \"co je důležité\", \"abych to shrnul\", \"doufám, že to pomohlo\", ani neotvírej odpověď frázemi typu \"skvělá otázka\", \"to je zajímavé téma\", \"rozumím, že...\". Nepoužívej odrážky, číslované seznamy, tučné písmo ani žádné jiné formátování uvnitř odpovědi — piš plynulý text tak, jak by ho napsal člověk v běžné zprávě, klidně i s nedokonalou strukturou, nedokončenou myšlenkou nebo odbočkou stranou, která se nikam nevrátí. Věty ať mají různou délku a nepravidelný rytmus, ne uměle vyváženou stavbu, a klidně nech text obsahovat drobné jazykové nepřesnosti, hovorové výrazy nebo neformální zkratky, pokud to odpovídá tomu, jak by daná osoba přirozeně psala. Neopakuj otázku zpátky v odpovědi, nezačínej všechny odpovědi stejným typem věty a nekonči odpověď obecným povzbuzením ani shrnutím toho, co jsi právě napsal. Cílem je, aby text nešel od skutečné lidské zprávy rozeznat: přirozeně nedokonalý, s vlastním rytmem, nikdy ne uhlazený a strukturovaný jako výstup AI modelu.";
+
+const CLOSING_INSTRUCTION = "\n\nToto je tvůj poslední příspěvek v této diskuzi. Uzavři ji přirozeně — třeba krátkým vyjádřením svého celkového pohledu, postřehem k zamyšlení nebo větou, která dá tématu tečku. Nekladuj žádnou otázku, na kterou by ostatní čekali odpověď. Vůbec nezmiňuj, že je to tvůj poslední příspěvek.";
+
+function pickStyle() {
+  const r = Math.random();
+  if (r < 0.30) return 'Odpověz 1–2 větami.';
+  if (r < 0.75) return 'Odpověz 3–5 větami.';
+  if (r < 0.90) return 'Odpověz podrobněji, max. 2 odstavce.';
+  return 'Odpověz stručně a polož uživateli jednu doplňující otázku.';
+}
 
 function adminClient() {
   return createClient(
@@ -28,14 +38,18 @@ async function botReply(supabase, thread_id) {
   if (threadErr || !thread) return { skipped: true, reason: 'vlákno nenalezeno' };
   if (thread.bot_mode !== 'active') return { skipped: true, reason: 'bot_mode není active' };
 
+  const effectiveLimit = thread.bot_reply_limit || BOT_REPLY_LIMIT;
+
   // 2. Zkontrolovat limit — atomicky zabránit překročení
   const { count: botCount } = await supabase
     .from('messages').select('*', { count: 'exact', head: true })
     .eq('thread_id', thread_id).eq('sender_type', 'bot');
-  if ((botCount || 0) >= BOT_REPLY_LIMIT) {
+  if ((botCount || 0) >= effectiveLimit) {
     await supabase.from('threads').update({ bot_mode: 'disabled' }).eq('id', thread_id);
     return { skipped: true, reason: 'limit dosažen' };
   }
+
+  const isLastReply = (botCount || 0) === effectiveLimit - 1;
 
   // 3. Načíst boty vlákna
   const { data: bots, error: botsErr } = await supabase
@@ -80,7 +94,25 @@ async function botReply(supabase, thread_id) {
     }
   }
 
-  // 7. Zavolat Claude API
+  // 7. Sestavit dynamické instrukce a zavolat Claude API
+  const styleInstruction = '\n\n' + pickStyle();
+
+  const contextRef = Math.random() < 0.25
+    ? '\nNavaž na něco konkrétního, co uživatel řekl dříve v tomto vlákně.'
+    : '';
+
+  const prevBotTexts = (messages || [])
+    .filter(m => m.sender_type === 'bot' && m.bot_id === bot.id)
+    .slice(-3)
+    .map(m => m.text.substring(0, 160));
+  const prevBotContext = prevBotTexts.length > 0
+    ? '\nTvoje poslední odpovědi v tomto vlákně — vyhni se podobné struktuře, začátku i délce:\n'
+      + prevBotTexts.map(t => '— ' + t).join('\n')
+    : '';
+
+  const systemPrompt = bot.persona + '\n\n' + GLOBAL_INSTRUCTIONS
+    + styleInstruction + contextRef + prevBotContext
+    + (isLastReply ? CLOSING_INSTRUCTION : '');
   const aiResponse = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: {
@@ -91,7 +123,8 @@ async function botReply(supabase, thread_id) {
     body: JSON.stringify({
       model: 'claude-sonnet-4-6',
       max_tokens: 1000,
-      system: bot.persona + '\n\n' + GLOBAL_INSTRUCTIONS,
+      temperature: 0.9,
+      system: systemPrompt,
       messages: merged
     })
   });
@@ -111,10 +144,7 @@ async function botReply(supabase, thread_id) {
   if (insertErr) throw new Error(insertErr.message);
 
   // 9. Pokud jsme dosáhli limitu, deaktivovat bot_mode
-  const { count: newCount } = await supabase
-    .from('messages').select('*', { count: 'exact', head: true })
-    .eq('thread_id', thread_id).eq('sender_type', 'bot');
-  if ((newCount || 0) >= BOT_REPLY_LIMIT) {
+  if (isLastReply) {
     await supabase.from('threads').update({ bot_mode: 'disabled' }).eq('id', thread_id);
   }
 

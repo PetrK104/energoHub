@@ -1,4 +1,4 @@
-const { adminClient, getUserFromEvent, botReply } = require('./_shared');
+const { adminClient, getUserFromEvent } = require('./_shared');
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
@@ -27,8 +27,14 @@ exports.handler = async (event) => {
 
     const supabase = adminClient();
 
+    const botReplyLimit = botList.length > 0 ? Math.floor(Math.random() * 14) + 3 : null; // 3–16
+
     const { data: thread, error: threadErr } = await supabase
-      .from('threads').insert({ topic, body, created_by: user.id, bot_mode: botList.length > 0 ? 'active' : 'disabled' }).select().single();
+      .from('threads').insert({
+        topic, body, created_by: user.id,
+        bot_mode: botList.length > 0 ? 'active' : 'disabled',
+        bot_reply_limit: botReplyLimit
+      }).select().single();
     if (threadErr) {
       return { statusCode: 500, body: JSON.stringify({ error: '[threads insert] ' + threadErr.message, detail: threadErr.details, hint: threadErr.hint }) };
     }
@@ -42,13 +48,7 @@ exports.handler = async (event) => {
         return { statusCode: 500, body: JSON.stringify({ error: '[bots insert] ' + botsErr.message, detail: botsErr.details, hint: botsErr.hint }) };
       }
 
-      // První odpověď bota vždy server-side — nezávisí na tom, jestli admin sleduje prohlížeč
-      try {
-        await botReply(supabase, thread.id);
-      } catch (e) {
-        console.warn('[create-thread] botReply selhal:', e.message);
-      }
-    }
+}
 
     return { statusCode: 200, body: JSON.stringify({ ok: true, thread_id: thread.id }) };
   } catch (e) {
