@@ -104,6 +104,8 @@
 }
 .search-clear:hover { color: var(--text-white); }
 .search-clear[hidden] { display: none; }
+.search-icon-wrap .ms-icon { font-size: 18px; }
+.search-clear .ms-icon { font-size: 16px; }
 
 /* ── ARIA live (visually hidden) ────────────────────────────────────────── */
 .search-live {

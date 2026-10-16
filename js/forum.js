@@ -725,8 +725,8 @@
     var start = (currentPage - 1) * THREADS_PER_PAGE
     var paged = filtered.slice(start, start + THREADS_PER_PAGE)
 
-    var personIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path></svg>'
-    var bubbleIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>'
+    var personIcon = '<span class="ms-icon" aria-hidden="true" style="font-size:16px">account_circle</span>'
+    var bubbleIcon = '<span class="ms-icon" aria-hidden="true" style="font-size:16px">chat_bubble</span>'
 
     forumList.innerHTML = paged.map(function (t) {
       var msgs  = t.messages || []
@@ -795,8 +795,8 @@
       forumPagination.hidden = true
     } else {
       forumPagination.hidden = false
-      var prevSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>'
-      var nextSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>'
+      var prevSvg = '<span class="ms-icon" style="font-size:16px">chevron_left</span>'
+      var nextSvg = '<span class="ms-icon" style="font-size:16px">chevron_right</span>'
 
       var pages = ''
       for (var p = 1; p <= totalPages; p++) {
@@ -932,7 +932,7 @@
     scrollMessages()
   }
 
-  var AVATAR_ICON = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8"/></svg>'
+  var AVATAR_ICON = '<span class="ms-icon" aria-hidden="true" style="font-size:20px">account_circle</span>'
 
   function buildMessageEl(msg) {
     var isHuman     = msg.sender_type === 'human'

@@ -94,12 +94,7 @@ function buildOverlay() {
   el.innerHTML = `
     <div class="search-dialog" id="searchDialog">
       <div class="search-input-wrap">
-        <span class="search-icon-wrap" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <circle cx="7.5" cy="7.5" r="5" stroke="currentColor" stroke-width="1.8"/>
-            <line x1="11.5" y1="11.5" x2="16" y2="16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </span>
+        <span class="search-icon-wrap" aria-hidden="true"><span class="ms-icon">search</span></span>
         <input class="search-input" id="searchInput"
           type="search" autocomplete="off" autocorrect="off"
           autocapitalize="off" spellcheck="false"
@@ -111,12 +106,7 @@ function buildOverlay() {
           aria-activedescendant=""
           aria-expanded="false"
         >
-        <button class="search-clear" id="searchClear" aria-label="Smazat" hidden type="button">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <line x1="1" y1="1" x2="13" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <line x1="13" y1="1" x2="1" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </button>
+        <button class="search-clear" id="searchClear" aria-label="Smazat" hidden type="button"><span class="ms-icon" aria-hidden="true">close</span></button>
       </div>
       <span aria-live="polite" aria-atomic="true" class="search-live" id="searchLive"></span>
       <div class="search-body" id="searchListbox"

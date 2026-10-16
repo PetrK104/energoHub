@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<meta name="description" content="Kdy je statický posudek střechy nutný, co zkoumá, kdo ho smí zpracovat a jak rozpoznat kvalitní výstup pro instalaci FVE.">
+<meta name="keywords" content="statický posudek střechy, statika střechy FVE, nosnost střechy fotovoltaika, ČKAIT autorizovaný statik, zatížení střechy panely, posudek před instalací FVE, statik bytový dům, posouzení nosné konstrukce střechy, statický posudek SVJ, statika a fotovoltaika">
+<meta name="category" content="Bezpečnost FVE">
+<title>Statický posudek střechy — Energohub.info</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/guide-shared.css">
+<link rel="stylesheet" href="css/bezpecnost.css">
+<link rel="stylesheet" href="css/search.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="navbar-container">
+    <nav class="navbar">
+      <a href="index.html" class="navbar-logo">
+        <img src="assets/images/Logo.svg" alt="Energohub">
+      </a>
+
+      <ul class="navbar-links">
+        <li class="nav-dropdown">
+          <a href="index.html#pruvodce" class="nav-dropdown__trigger">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></a>
+          <ul class="nav-dropdown__menu">
+            <div class="nav-dropdown__menu-inner">
+              <li><a href="pruvodce-jom.html">Jednotné odběrné místo (JOM)</a></li>
+              <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
+              <li class="nav-dropdown__item--soon"><span>Teplo a TUV</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Okna a dveře</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Zateplení</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+              <li class="nav-dropdown__item--soon"><span>Doporučené pořadí realizace</span><span class="nav-dropdown__badge">Připravujeme</span></li>
+            </div>
+          </ul>
+        </li>
+        <li><a href="bezpecnost.html">Bezpečnost</a></li>
+        <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+        <li><a href="forum.html">Fórum</a></li>
+        <li><a href="index.html#o-nas">O nás</a></li>
+        <li><a href="kontakty.html">Kontakty</a></li>
+      </ul>
+
+      <div class="navbar-actions">
+        <button class="navbar-search" id="searchOpen" aria-label="Hledat"
+                aria-keyshortcuts="/ Control+k"><span class="ms-icon" aria-hidden="true">search</span></button>
+      </div>
+
+      <button class="navbar-burger" id="navBurger" aria-label="Otevřít menu" aria-expanded="false">
+        <span class="navbar-burger__bar"></span>
+        <span class="navbar-burger__bar"></span>
+        <span class="navbar-burger__bar"></span>
+      </button>
+    </nav>
+  </div>
+
+  <div class="navbar-mobile" id="navMobile" aria-hidden="true">
+    <nav class="navbar-mobile__nav">
+      <ul class="navbar-mobile__links">
+        <li><a href="index.html#pruvodce">Průvodci opatření</a></li>
+        <li><a href="pruvodce-jom.html">— Jednotné odběrné místo</a></li>
+        <li><a href="pruvodce-fve.html">— Fotovoltaika</a></li>
+        <li class="navbar-mobile__divider"></li>
+        <li><a href="bezpecnost.html">Bezpečnost</a></li>
+        <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+        <li><a href="forum.html">Fórum</a></li>
+        <li><a href="index.html#o-nas">O nás</a></li>
+        <li><a href="kontakty.html">Kontakty</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="guide-sub-hero">
+  <div class="guide-sub-hero__container">
+    <nav class="guide-sub-hero__breadcrumb" aria-label="Drobečková navigace">
+      <a href="bezpecnost.html">Bezpečnost FVE</a>
+      <span aria-hidden="true">→</span>
+      <span>Statický posudek střechy</span>
+    </nav>
+    <h1 class="guide-sub-hero__title">Statický posudek střechy</h1>
+    <p class="guide-sub-hero__desc">Kdy je posudek nutný, co zkoumá, kdo ho smí zpracovat a jak rozpoznat kvalitní výstup.</p>
+    <p class="guide-sub-hero__meta">
+      <span class="ms-icon guide-sub-hero__clock" aria-hidden="true">schedule</span>
+      Doba čtení: 5 min.
+    </p>
+  </div>
+</section>
+
+<section class="bsec-topic" style="padding-top:100px;padding-bottom:60px">
+  <div class="bsec-topic__container">
+    <div class="bsec-topic__body" style="gap:64px">
+
+      <div class="bsec-topic__subsect" id="s01-1">
+        <h2 class="bsec-sub__heading">Co je statický posudek a proč ho potřebujete</h2>
+        <p class="bsec-topic__intro">Statický posudek je odborné posouzení, které ověří, jestli nosná konstrukce střechy unese váhu fotovoltaické elektrárny včetně sněhu a větru, které na ni budou dodatečně působit. Bez posudku hrozí riziko přetížení konstrukce, průhybů, poškození krytiny nebo v krajním případě <strong>statické poruchy střechy</strong>.</p>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s01-2">
+        <h2 class="bsec-sub__heading">Kdy je posudek potřeba</h2>
+        <p class="bsec-topic__intro">U bytových domů se statický posudek prakticky vždy vyplatí zpracovat, protože instalace FVE mění zatížení nosné konstrukce, která bývá běžně vnímaná jako hotová a neměnná věc.</p>
+        <p class="bsec-topic__intro">Česká asociace pojišťoven doporučuje zpracovat statické posouzení i tam, kde není potřeba stavební povolení.</p>
+        <ul class="bsec-topic__list">
+          <li>Samotná FVE (panel + hliníková konstrukce) zatěžuje střechu reálně cca <strong>20–25&nbsp;kg/m²</strong> — bez ohledu na typ střechy.</li>
+          <li>U ploché střechy se systém často nekotví, ale přitěžuje balastem. Balast se do zatížení střechy počítá, takže celkové přitížení bývá vyšší než u kotvených systémů.</li>
+          <li>Skutečným problémem u nových střech bývá <strong>malá nebo neznámá rezerva nosnosti</strong> (latě a prkna místo trámů); u starších střech spíš hořlavost krytiny a stav krovu.</li>
+          <li>Posudek potvrzuje, že nosná konstrukce střechy i budovy zatížení unese, a SVJ má doloženo, z čeho dodavatel při návrhu vycházel.</li>
+          <li><strong>Bez posudku pojišťovna nemusí uznat pojistnou událost</strong> spojenou s poškozením střechy nebo konstrukce.</li>
+          <li>Zpracovává ho autorizovaný statik vedený u České komory autorizovaných inženýrů a techniků (ČKAIT).</li>
+          <li>Samotné stavební povolení nemusí být nutné řešit, pokud instalace nezasahuje do nosných konstrukcí budovy a nemění se způsob užívání stavby — ale právě posouzení, zda do nosné konstrukce zasahuje nebo ji přetěžuje, je úkolem statika, ne laickým odhadem.</li>
+        </ul>
+      </div>
+
+      <div class="bsec-sub__img-layout">
+        <div class="bsec-topic__subsect" id="s01-3">
+          <h2 class="bsec-sub__heading">Co posudek zkoumá</h2>
+          <p class="bsec-topic__intro">Statik posuzuje střechu ve dvou stavech — před instalací a po ní — a kontroluje tyto hlavní věci:</p>
+          <ul class="bsec-topic__list">
+            <li><strong>Váha konstrukce FVE</strong> — panely, nosný rám, kabeláž.</li>
+            <li><strong>Zatížení sněhem</strong> — sníh se může hromadit za panely nebo sesouvat z jejich plochy a tvořit nerovnoměrné zatížení.</li>
+            <li><strong>Zatížení větrem</strong> — vítr střechu nejen tlačí, ale u okrajů a rohů ji i „saje" a snaží se panely nadzvednout.</li>
+            <li><strong>Stav střechy samotné</strong> — jestli už dnes nemá skryté vady, které by ji oslabovaly.</li>
+            <li><strong>Vítr</strong> — čím vyšší je sklon panelů, tím větší účinky větru lze očekávat.</li>
+            <li><strong>Fáze instalace</strong> — statik posuzuje i stav během montáže, například jednostranné zatížení střechy při vykládce panelů.</li>
+          </ul>
+        </div>
+        <div class="bsec-sub__img-wrap">
+          <img src="assets/images/posudek_strechy.webp" alt="Statický posudek střechy — kontrola nosné konstrukce" loading="lazy">
+        </div>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s01-4">
+        <h2 class="bsec-sub__heading">Kdo ho smí zpracovat a kdy ho objednat</h2>
+        <p class="bsec-topic__intro">Posudek musí zpracovat autorizovaná osoba — <strong>inženýr s autorizací ČKAIT v oboru statika a dynamika staveb</strong>, ne firma, která panely prodává nebo montuje. Objednat ho je potřeba na začátku, ideálně <strong>ještě před podpisem smlouvy s dodavatelem FVE</strong> — výsledek posudku totiž může ovlivnit, kolik panelů střecha unese, kam je lze umístit, nebo jaký kotvicí systém zvolit.</p>
+        <p class="bsec-topic__intro">Jde o obor IS00 (statika a dynamika staveb) podle zákona č. 360/1992 Sb. Posudek musí nést autorizační razítko.</p>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s01-5">
+        <h2 class="bsec-sub__heading">Jak číst závěr posudku</h2>
+        <p class="bsec-topic__intro">Posudek končí jedním ze tří závěrů:</p>
+        <div class="bsec-verdict">
+          <div class="bsec-verdict__item">
+            <div class="bsec-verdict__icon bsec-verdict__icon--ok">
+              <span class="ms-icon" aria-hidden="true">check</span>
+            </div>
+            <div class="bsec-verdict__content">
+              <span class="bsec-verdict__label">Vyhovuje</span>
+              <p class="bsec-verdict__desc">Střecha zvládne navrhovanou zátěž bez úprav, projekt pokračuje podle původního návrhu.</p>
+            </div>
+          </div>
+          <div class="bsec-verdict__item">
+            <div class="bsec-verdict__icon bsec-verdict__icon--ok">
+              <span class="ms-icon" aria-hidden="true">check</span>
+            </div>
+            <div class="bsec-verdict__content">
+              <span class="bsec-verdict__label">Vyhovuje s podmínkami</span>
+              <p class="bsec-verdict__desc">Nejčastější výsledek — typicky omezuje počet nebo rozmístění panelů, předepisuje konkrétní způsob kotvení nebo vyžaduje lokální zesílení konstrukce.</p>
+            </div>
+          </div>
+          <div class="bsec-verdict__item">
+            <div class="bsec-verdict__icon bsec-verdict__icon--no">
+              <span class="ms-icon" aria-hidden="true">close</span>
+            </div>
+            <div class="bsec-verdict__content">
+              <span class="bsec-verdict__label">Nevyhovuje</span>
+              <p class="bsec-verdict__desc">V navrhované podobě projekt nelze realizovat — je potřeba konstrukci zesílit, snížit počet panelů nebo zvolit lehčí systém.</p>
+            </div>
+          </div>
+        </div>
+        <p class="bsec-topic__intro">Závěr obvykle obsahuje také doporučení pro umístění a rozmístění panelů vzhledem ke statické rezervě a případný popis stavebních úprav na zesílení konstrukce.</p>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s01-6">
+        <h2 class="bsec-sub__heading">Jakou formu posudek může mít</h2>
+        <p class="bsec-topic__intro">Pokud střecha v základním výpočtu plně nevyhoví, neznamená to automaticky konec projektu. Statik může navrhnout jiné rozmístění panelů, zesílení konstrukce nebo lehčí systém. Zda je přípustná i podmínka údržby, například odklízení sněhu, rozhoduje statik v posudku. SVJ by se k ní mělo zavázat jen s vědomím, že ji bude muset trvale plnit. Zatížení sněhem závisí na sněhové oblasti a je mnohonásobně vyšší než zatížení od samotné FVE.</p>
+        <p class="bsec-topic__intro">Forma posudku se odvíjí od stáří budovy a dostupnosti projektové dokumentace.</p>
+        <div class="bsec-variants__grid">
+          <div class="bsec-variants__item">
+            <span class="bsec-variants__letter">a</span>
+            <div class="bsec-variants__content">
+              <h4 class="bsec-variants__name">Technické dobrozdání s podmínkou údržby</h4>
+              <p class="bsec-variants__desc">Nejjednodušší a nejrychlejší varianta pro budovy, kde existující dokumentace nebo stav střechy nevylučují FVE, ale nosnost má omezenou rezervu. Statik vydá vyjádření s podmínkou: SVJ se zaváže k pravidelnému odklízení mokrého sněhu, čímž kritické zatížení nenastane. Podmínka musí být zapracována do smlouvy a provozního řádu domu.</p>
+            </div>
+          </div>
+          <div class="bsec-variants__item">
+            <span class="bsec-variants__letter">b</span>
+            <div class="bsec-variants__content">
+              <h4 class="bsec-variants__name">Výpočet z dostupných podkladů</h4>
+              <p class="bsec-variants__desc">Pro novější budovy, kde existuje původní projektová dokumentace nebo typové podklady. Statik přepočítá nosnou konstrukci s přidaným zatížením z dostupných podkladů a jejich shodu se skutečným stavem ověří prohlídkou střechy na místě. Výsledkem je plnohodnotný posudek s jednoznačným závěrem.</p>
+            </div>
+          </div>
+          <div class="bsec-variants__item">
+            <span class="bsec-variants__letter">c</span>
+            <div class="bsec-variants__content">
+              <h4 class="bsec-variants__name">Plný posudek se zaměřením na místě</h4>
+              <p class="bsec-variants__desc">Nezbytný u starších budov bez dochované dokumentace. Statik provede fyzickou prohlídku a zaměření konstrukce: průřezy krokví, stav dřeva, způsob kotvení. Teprve z naměřených hodnot sestaví výpočetní model. Jde o nejnákladnější variantu, ale u předválečných domů nebo budov se zaniklou dokumentací je to jediná cesta k prokazatelnému výsledku.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bsec-sub__img-layout bsec-sub__img-layout--portrait">
+        <div class="bsec-sub__img-wrap">
+          <img src="assets/images/posudek_strechy2.webp" alt="Jak poznat kvalitní statický posudek střechy" loading="lazy">
+        </div>
+        <div class="bsec-topic__subsect" id="s01-7">
+          <h2 class="bsec-sub__heading">Jak poznat kvalitní posudek</h2>
+          <ul class="bsec-topic__checklist">
+            <li>
+              <span class="ms-icon" aria-hidden="true">check</span>
+              <span>Vychází z prohlídky střechy přímo na místě, ne jen z výkresů.</span>
+            </li>
+            <li>
+              <span class="ms-icon" aria-hidden="true">check</span>
+              <span>Je zpracovaný pro konkrétní dům a konkrétní navrhovaný počet a typ panelů, ne jako obecné prohlášení.</span>
+            </li>
+            <li>
+              <span class="ms-icon" aria-hidden="true">check</span>
+              <span>Obsahuje jasný závěr (vyhovuje / s podmínkami / nevyhovuje).</span>
+            </li>
+            <li>
+              <span class="ms-icon" aria-hidden="true">check</span>
+              <span>Je podepsaný a orazítkovaný autorizovaným inženýrem s uvedeným registračním číslem ČKAIT.</span>
+            </li>
+            <li>
+              <span class="ms-icon" aria-hidden="true">check</span>
+              <span>Uvádí hodnoty zatížení a výchozí předpoklady (vlastní tíha FVE, sníh, vítr).</span>
+            </li>
+            <li>
+              <span class="ms-icon" aria-hidden="true">check</span>
+              <span>Obsahuje doporučení pro rozmístění panelů vzhledem ke statické rezervě a případný návrh zesílení konstrukce.</span>
+            </li>
+          </ul>
+          <p class="bsec-topic__intro">Zvýšená obezřetnost je namístě, pokud dodavatel tvrdí, že střecha vyhovuje pouze ústně, nabízí posudek od jiného podobného domu, nebo posudek vznikl bez fyzické prohlídky střechy.</p>
+        </div>
+      </div>
+
+      <div class="bsec-topic__subsect" id="s01-8">
+        <h2 class="bsec-sub__heading">Praktický postup pro SVJ</h2>
+        <ul class="bsec-topic__list">
+          <li>O objednání posudku se obvykle rozhoduje v rámci schvalování projektu FVE podle stanov SVJ.</li>
+          <li>Posudek se zpracovává nezávisle na dodavateli panelů — SVJ si statika najde samo, nebo si nechá doporučit několik jmen a vybere si.</li>
+          <li>Hotový posudek se předává dodavateli, aby podle něj navrhl instalaci, případně pojišťovně nebo stavebnímu úřadu, pokud si ho vyžádají.</li>
+          <li>Zpracování i cena závisí na složitosti střechy a dostupnosti podkladů, proto si je vyžádejte v nabídce statika.</li>
+          <li>Do poptávky uveďte navrhovaný počet, typ a rozmístění panelů a typ kotvení a předejte statikovi dostupnou dokumentaci domu.</li>
+          <li>Hotový posudek předejte také zpracovateli PBŘ a hlavnímu projektantovi a zahrňte ho do dokumentace.</li>
+        </ul>
+      </div>
+
+      <p class="bsec-topic__source">Informace vycházejí ze stavebního zákona č. 283/2021 Sb. ve znění novel účinných od 1. 8. 2025, vyhlášky č. 131/2024 Sb., zákona č. 360/1992 Sb., ČSN EN 1991-1-3, doporučení České asociace pojišťoven (2024), příručky Solární asociace Protipožární bezpečnost u střešních solárních elektráren (2026) a odborných prezentací ČVUT (Defekty budov 2023).</p>
+
+    </div>
+  </div>
+</section>
+
+<section class="bsec-highlight">
+  <div class="bsec-highlight__container">
+    <p class="fve-eyebrow">Proč je to důležité</p>
+    <p class="bsec-highlight__text">Statický posudek ověří, že střecha zatížení unese, a dokládá, že se instalace navrhovala odpovědně. Česká asociace pojišťoven doporučuje posudek zpracovat i tehdy, když povolení není potřeba.</p>
+  </div>
+</section>
+
+
+<section class="guide-qa guide-qa--footer">
+  <div class="guide-qa__container">
+    <h2 class="guide-qa__title">Zjistěte více o bezpečnosti FVE</h2>
+    <div class="guide-qa__cards">
+      <a href="bezpecnost-pbr.html" class="guide-qa__card">
+        <span class="guide-qa__card-icon" aria-hidden="true">local_fire_department</span>
+        <div class="guide-qa__card-body">
+          <p class="guide-qa__card-title">Požárně bezpečnostní řešení (PBŘ) — detailní průvodce</p>
+          <p class="guide-qa__card-desc">Co PBŘ řeší, kdy je povinné, kdo ho zpracovává a jaká opatření musí obsahovat.</p>
+          <p class="guide-qa__card-meta"><span class="ms-icon" aria-hidden="true">schedule</span> Doba čtení: 8 min.</p>
+        </div>
+        <div class="guide-qa__card-arrow">→</div>
+      </a>
+      <a href="bezpecnost-projektova-dokumentace.html" class="guide-qa__card">
+        <span class="guide-qa__card-icon" aria-hidden="true">description</span>
+        <div class="guide-qa__card-body">
+          <p class="guide-qa__card-title">Projektová dokumentace FVE — detailní průvodce</p>
+          <p class="guide-qa__card-desc">Co dokumentace obsahuje, kdy je povinná, kdo ji zpracovává a co zkontrolovat při převzetí.</p>
+          <p class="guide-qa__card-meta"><span class="ms-icon" aria-hidden="true">schedule</span> Doba čtení: 5 min.</p>
+        </div>
+        <div class="guide-qa__card-arrow">→</div>
+      </a>
+      <a href="bezpecnost-hasici-pristroj.html" class="guide-qa__card">
+        <span class="guide-qa__card-icon" aria-hidden="true">fire_extinguisher</span>
+        <div class="guide-qa__card-body">
+          <p class="guide-qa__card-title">Hasicí přístroj k FVE — detailní průvodce</p>
+          <p class="guide-qa__card-desc">Jaký typ pořídit, kdy je povinný a jak ho správně umístit a pravidelně kontrolovat.</p>
+          <p class="guide-qa__card-meta"><span class="ms-icon" aria-hidden="true">schedule</span> Doba čtení: 3 min.</p>
+        </div>
+        <div class="guide-qa__card-arrow">→</div>
+      </a>
+      <a href="bezpecnost-revize-baterie.html" class="guide-qa__card">
+        <span class="guide-qa__card-icon" aria-hidden="true">battery_charging_20</span>
+        <div class="guide-qa__card-body">
+          <p class="guide-qa__card-title">Revize bateriového úložiště — detailní průvodce</p>
+          <p class="guide-qa__card-desc">Kdy je revize povinná, co ověřuje, jak vybrat revizního technika a co si vyžádat ve zprávě.</p>
+          <p class="guide-qa__card-meta"><span class="ms-icon" aria-hidden="true">schedule</span> Doba čtení: 4 min.</p>
+        </div>
+        <div class="guide-qa__card-arrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="site-search">
+  <div class="site-search__container">
+    <p class="site-search__title">Nenašli jste odpověď na svou otázku na této stránce?</p>
+    <p class="site-search__sub">Zkuste vyhledat dané téma na webu.</p>
+    <div class="search-input-wrap site-search__wrap">
+      <span class="search-icon-wrap" aria-hidden="true"><span class="ms-icon">search</span></span>
+      <input class="search-input" id="searchCtaInput"
+             type="search" autocomplete="off" autocorrect="off"
+             autocapitalize="off" spellcheck="false"
+             placeholder="Hledat na webu…"
+             aria-label="Hledat na webu">
+      <button class="search-clear" id="searchCtaClear" aria-label="Smazat" hidden type="button"><span class="ms-icon" aria-hidden="true">close</span></button>
+    </div>
+    <span class="search-live" id="searchCtaLive" aria-live="polite" aria-atomic="true"></span>
+    <div class="search-body search-cta__body" id="searchCtaBody" hidden></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-glow"></div>
+
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">
+          <img src="assets/images/Logo.svg" alt="Energohub">
+        </a>
+        <p class="footer-tagline">Nezávislý průvodce úsporami energie pro SVJ a bytová družstva.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Mapa stránek</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Hlavní stránka</a></li>
+          <li><a href="pruvodce-jom.html">Jednotné odběrné místo</a></li>
+          <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
+          <li><a href="bezpecnost.html">Bezpečnost</a></li>
+          <li><a href="slovnik.html">Slovník pojmů</a></li>
+          <li><a href="forum.html">Diskuzní fórum</a></li>
+          <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
+          <li><a href="index.html#o-nas">O nás</a></li>
+          <li><a href="kontakty.html">Kontakty</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Informace</h4>
+        <ul class="footer-links">
+          <li><a href="#">Podmínky použití</a></li>
+          <li><a href="#">Ochrana osobních údajů</a></li>
+          <li><a href="#">Reklamační řád</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-join">
+        <h4 class="footer-col-title">Sledujte nás</h4>
+        <div class="footer-social">
+          <a href="#" class="footer-social-icon" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.4h2.48l.37-2.88h-2.85V8.94c0-.83.23-1.4 1.42-1.4h1.52V4.98c-.26-.04-1.16-.11-2.2-.11-2.18 0-3.67 1.33-3.67 3.77v2.1H8.1v2.88h2.47V21h2.93z"></path></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="3.7"></circle><circle cx="17.1" cy="6.9" r="0.9" fill="currentColor" stroke="none"></circle></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H4.1V20h2.84V8.5zM5.5 4c-.97 0-1.7.73-1.7 1.65 0 .9.71 1.65 1.67 1.65h.02c.99 0 1.7-.74 1.7-1.65C7.19 4.73 6.48 4 5.5 4zM20 13.4c0-3-1.6-4.4-3.74-4.4-1.72 0-2.49 0.95-2.92 1.62V8.5h-2.84c.04.8 0 11.5 0 11.5h2.84v-6.42c0-.34.02-.69.13-.93.28-.69.91-1.41 1.98-1.41 1.4 0 1.96 1.06 1.96 2.62V20H20v-6.6z"></path></svg>
+          </a>
+        </div>
+        <form class="footer-newsletter" id="footerNewsletter">
+          <input type="email" name="email" placeholder="Zadejte e-mail" aria-label="E-mailová adresa" required>
+          <button type="submit" aria-label="Odebírat novinky">
+            <span class="ms-icon" aria-hidden="true">arrow_forward</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Energohub.info. Všechna práva vyhrazena.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/navbar.js" defer></script>
+<script src="js/footer.js" defer></script>
+<script type="module" src="assets/js/search-overlay.js"></script>
+<script type="module" src="assets/js/search-inline.js"></script>
+</body>
+</html>

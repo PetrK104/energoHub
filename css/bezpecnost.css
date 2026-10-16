@@ -15,7 +15,7 @@
 /* ── Navigační karty ─────────────────────────────────────────────────── */
 .bsec-nav{background:#05050a;padding:0 0 80px}
 .bsec-nav__container{width:100%;max-width:1440px;margin:0 auto;padding:0 80px}
-.bsec-nav__grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.bsec-nav__grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:48px}
 .bsec-nav__card{grid-column:span 2}
 .bsec-nav__card:nth-child(4),.bsec-nav__card:nth-child(5){grid-column:span 3}
 .bsec-nav__card{display:flex;flex-direction:column;align-items:flex-start;gap:0;background:#ffffff08;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:24px 28px 20px;text-decoration:none;transition:border-color .2s,background .2s}
@@ -56,6 +56,11 @@
 .bsec-topic__why-label{display:block;font:700 11px/1 var(--font-body);letter-spacing:.09em;text-transform:uppercase;color:var(--lime);margin-bottom:10px}
 .bsec-topic__why-text{font:400 15px/1.6 var(--font-body);color:var(--text-muted);margin:0}
 
+/* Proč? — standalone sekce (centred, #111318 bg) */
+.bsec-highlight{background:#111318;padding:80px 0;text-align:center}
+.bsec-highlight__container{width:100%;max-width:960px;margin:0 auto;padding:0 80px}
+.bsec-highlight__text{font:400 16px/1.7 var(--font-body);color:var(--text-muted);margin:16px 0 0}
+
 /* ── Varianty posudku ────────────────────────────────────────────────── */
 .bsec-variants{margin-top:56px}
 .bsec-variants__title{font:700 20px/1.3 var(--font-heading);color:var(--text-white);margin:0 0 12px}
@@ -70,27 +75,39 @@
 /* ── Podsekce uvnitř tématu ─────────────────────────────────────────── */
 .bsec-topic__subblock{display:flex;flex-direction:column;gap:24px;padding-top:40px;border-top:1px solid rgba(255,255,255,.1)}
 .bsec-topic__subsect{display:flex;flex-direction:column;gap:16px}
-.bsec-topic__subhead{font:700 20px/1.3 var(--font-heading);color:var(--text-white);margin:0}
+.bsec-topic__subhead{font:700 20px/1.3 var(--font-heading);color:var(--text-white);margin:0}.bsec-sub__heading{font:700 22px/1.2 var(--font-heading);color:var(--text-white);margin:0 0 -4px}.bsec-sub__img-layout{display:grid;grid-template-columns:1fr 1fr;gap:48px}.bsec-sub__img-wrap{position:relative;border-radius:8px;overflow:hidden;min-height:200px}.bsec-sub__img-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}@media(max-width:900px){.bsec-sub__img-layout{grid-template-columns:1fr}.bsec-sub__img-wrap{min-height:260px;order:-1}.bsec-sub__img-layout--portrait .bsec-sub__img-wrap{order:-1;min-height:260px;height:unset;max-width:none;width:100%;margin:0}.bsec-sub__img-layout--portrait-wide{gap:24px!important}.bsec-sub__img-text{gap:28px}.bsec-sub__img-layout--portrait-wide .bsec-sub__img-wrap{order:1;min-height:unset;height:280px;max-width:420px;width:100%;margin:0 auto}.bsec-sub__img-layout--img-right .bsec-sub__img-wrap{order:1}}
+.bsec-sub__img-text{display:flex;flex-direction:column;gap:64px}
+.bsec-sub__img-layout--portrait{gap:48px;align-items:stretch}
+.bsec-sub__img-layout--portrait .bsec-sub__img-wrap{min-height:300px}
+.bsec-sub__img-placeholder{position:absolute;top:0;bottom:0;left:0;right:0;border-radius:8px;background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.15)}
+.bsec-sub__img-layout--partial .bsec-sub__img-placeholder{top:10%;bottom:10%}
+.bsec-sub__img-layout--partial .bsec-sub__img-wrap img{top:10%;bottom:10%;height:auto}
 .bsec-topic__subnum{color:var(--lime);margin-right:8px}
 .bsec-topic__note{background:rgba(255,255,255,.04);border-radius:8px;padding:20px 22px;font:400 15px/1.65 var(--font-body);color:var(--text-muted);margin:0}
 /* Checklist s ikonami fajfky */
 .bsec-topic__checklist{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
 .bsec-topic__checklist li{display:flex;gap:12px;align-items:flex-start;font:400 16px/1.65 var(--font-body);color:var(--text-muted)}
 .bsec-topic__checklist li svg{flex-shrink:0;width:18px;height:18px;color:var(--lime);margin-top:3px}
+.bsec-topic__checklist li .ms-icon{flex-shrink:0;font-size:18px;color:var(--lime);margin-top:3px}
+.bsec-topic__checklist--cols{display:grid;grid-template-columns:1fr 1fr;gap:10px 40px}
+@media(max-width:600px){.bsec-topic__checklist--cols{grid-template-columns:1fr}}
+.bsec-topic__cols{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media(max-width:760px){.bsec-topic__cols{grid-template-columns:1fr}}
+.bsec-topic__col-title{font:600 13px/1 var(--font-body);color:#565656;text-transform:uppercase;letter-spacing:.08em;margin:0 0 16px}
 /* Verdikty posudku (01.5) — glass rámečky */
 .bsec-verdict{display:flex;flex-direction:column;gap:10px}
 .bsec-verdict__item{display:flex;gap:20px;align-items:center;background:rgba(255,255,255,.04);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:20px 24px}
 .bsec-verdict__icon{flex-shrink:0;display:flex;align-items:center;justify-content:center}
-.bsec-verdict__icon--ok svg{color:var(--lime)}
-.bsec-verdict__icon--no svg{color:#c96060}
-.bsec-verdict__icon svg{width:28px;height:28px}
+.bsec-verdict__icon--ok .ms-icon{color:var(--lime)}
+.bsec-verdict__icon--no .ms-icon{color:#c96060}
+.bsec-verdict__icon .ms-icon{font-size:28px}
 .bsec-verdict__content{flex:1}
 .bsec-verdict__label{font:600 16px/1.3 var(--font-heading);color:var(--text-white);display:block;margin-bottom:4px}
 .bsec-verdict__desc{font:400 16px/1.65 var(--font-body);color:var(--text-muted);margin:0}
 /* Varovný seznam s ikonou vykřičníku */
 .bsec-topic__warnlist{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
 .bsec-topic__warnlist li{display:flex;gap:12px;align-items:flex-start;font:400 16px/1.65 var(--font-body);color:var(--text-muted)}
-.bsec-topic__warnlist li svg{flex-shrink:0;width:18px;height:18px;color:#c96060;margin-top:3px}
+.bsec-topic__warnlist li .ms-icon{flex-shrink:0;font-size:18px;color:#c96060;margin-top:3px}
 /* Číslovaný seznam kroků */
 .bsec-topic__steps{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;counter-reset:step}
 .bsec-topic__steps li{display:flex;gap:16px;align-items:flex-start;font:400 16px/1.65 var(--font-body);color:var(--text-muted);counter-increment:step}
@@ -120,7 +137,11 @@
 .bsec-cta__text{font:400 18px/1.5 var(--font-body);color:var(--text-muted);margin:0}
 
 /* ── Responzivita ────────────────────────────────────────────────────── */
+@media(max-width:900px){
+  .bsec-topic__body{gap:32px!important}
+}
 @media(max-width:1100px){
+  .bsec-highlight__container{padding:0 20px}
   .bsec-hero__container,.bsec-nav__container,.bsec-topic__container,.bsec-cta__container{padding:0 20px}
   .bsec-hero__title{font-size:36px}
   .bsec-nav__num{font-size:36px;min-width:52px}
@@ -130,6 +151,9 @@
   .bsec-outcome-grid{grid-template-columns:1fr}
 }
 @media(max-width:760px){
+  .bsec-highlight{padding:56px 0}
+  .bsec-highlight__container{padding:0 16px}
+  .bsec-highlight__text{font-size:17px}
   .bsec-nav__grid{grid-template-columns:1fr}
   .bsec-nav__card,.bsec-nav__card:nth-child(4),.bsec-nav__card:nth-child(5){grid-column:span 1}
   .bsec-hero{padding:110px 0 56px}
@@ -142,6 +166,10 @@
   .bsec-topic__num{font-size:36px}
   .bsec-topic__title{font-size:26px}
   .bsec-cta__container{flex-direction:column;align-items:flex-start;gap:20px}
+}
+@media(max-width:560px){
+  .bsec-sub__img-layout--portrait-wide .bsec-sub__img-wrap{height:320px;min-height:unset;max-width:260px;margin:0 auto}
+.bsec-sub__img-layout--portrait-wide .bsec-sub__img-wrap img{object-fit:contain;border-radius:8px}
 }
 @media(max-width:550px){
   .bsec-hero__title-row{flex-direction:column-reverse;align-items:center;gap:20px}

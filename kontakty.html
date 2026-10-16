@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/kontakt.css">
 <link rel="stylesheet" href="css/search.css">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" rel="stylesheet">
 </head>
 <body>
 
@@ -47,12 +48,7 @@
 
       <div class="navbar-actions">
         <button class="navbar-search" id="searchOpen" aria-label="Hledat"
-                aria-keyshortcuts="/ Control+k">
-          <svg width="22" height="22" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-            <circle cx="7.5" cy="7.5" r="5" stroke="currentColor" stroke-width="1.8"/>
-            <line x1="11.5" y1="11.5" x2="16" y2="16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </button>
+                aria-keyshortcuts="/ Control+k"><span class="ms-icon" aria-hidden="true">search</span></button>
       </div>
 
       <button class="navbar-burger" id="navBurger" aria-label="Otevřít menu" aria-expanded="false">
@@ -91,7 +87,7 @@
     <div class="kontakt-cards__grid">
 
       <div class="kontakt-card">
-        <img class="kontakt-card__icon" src="assets/images/mail.svg" alt="" aria-hidden="true">
+        <span class="ms-icon kontakt-card__icon" aria-hidden="true">mail</span>
         <div class="kontakt-card__texts">
           <p class="kontakt-card__label">E-mail</p>
           <span class="kontakt-card__value">info@example.cz</span>
@@ -99,7 +95,7 @@
       </div>
 
       <div class="kontakt-card">
-        <img class="kontakt-card__icon" src="assets/images/call.svg" alt="" aria-hidden="true">
+        <span class="ms-icon kontakt-card__icon" aria-hidden="true">call</span>
         <div class="kontakt-card__texts">
           <p class="kontakt-card__label">Telefon</p>
           <span class="kontakt-card__value">+420 xxx xxx xxx</span>
@@ -107,7 +103,7 @@
       </div>
 
       <div class="kontakt-card">
-        <img class="kontakt-card__icon" src="assets/images/location_on.svg" alt="" aria-hidden="true">
+        <span class="ms-icon kontakt-card__icon" aria-hidden="true">location_on</span>
         <div class="kontakt-card__texts">
           <p class="kontakt-card__label">Adresa</p>
           <span class="kontakt-card__value">Ulice xxx, PSČ, Město</span>
@@ -115,6 +111,7 @@
       </div>
 
     </div>
+
   </div>
 </section>
 
@@ -144,9 +141,7 @@
 
       <div class="kontakt-form__success" hidden>
         <div class="kontakt-form__success-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
+          <span class="ms-icon" aria-hidden="true">check_circle</span>
         </div>
         <p class="kontakt-form__success-title">Zpráva odeslána!</p>
         <p class="kontakt-form__success-text">Ozveme se vám co nejdříve,<br>obvykle do 24 hodin v pracovní dny.</p>
@@ -198,6 +193,22 @@
         </div>
       </details>
 
+    </div>
+
+    <div class="fve-faq__search">
+      <p class="fve-faq__search-title">Nenašli jste odpověď na svou otázku?</p>
+      <p class="fve-faq__search-sub">Zkuste vyhledat dané téma na webu.</p>
+      <div class="search-input-wrap fve-faq__search-wrap">
+        <span class="search-icon-wrap" aria-hidden="true"><span class="ms-icon">search</span></span>
+        <input class="search-input" id="searchCtaInput"
+               type="search" autocomplete="off" autocorrect="off"
+               autocapitalize="off" spellcheck="false"
+               placeholder="Hledat na webu…"
+               aria-label="Hledat na webu">
+        <button class="search-clear" id="searchCtaClear" aria-label="Smazat" hidden type="button"><span class="ms-icon" aria-hidden="true">close</span></button>
+      </div>
+      <span class="search-live" id="searchCtaLive" aria-live="polite" aria-atomic="true"></span>
+      <div class="search-body search-cta__body" id="searchCtaBody" hidden></div>
     </div>
   </div>
 </section>
@@ -256,9 +267,7 @@
         <form class="footer-newsletter" id="footerNewsletter">
           <input type="email" name="email" placeholder="Zadejte e-mail" aria-label="E-mailová adresa" required>
           <button type="submit" aria-label="Odebírat novinky">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14M13 6l6 6-6 6"></path>
-            </svg>
+            <span class="ms-icon" aria-hidden="true">arrow_forward</span>
           </button>
         </form>
       </div>
@@ -275,5 +284,6 @@
 <script src="js/kontakt.js" defer></script>
 
 <script type="module" src="assets/js/search-overlay.js"></script>
+<script type="module" src="assets/js/search-inline.js"></script>
 </body>
 </html>

@@ -1848,6 +1848,9 @@ a.guide-steps__item:hover .guide-steps__label {
   margin:0 auto;
   padding:0 80px
 }
+.home-faq__header {
+  text-align: center;
+}
 .home-faq__title {
   font-family:var(--font-heading);
   font-size:clamp(36px,2.5vw,48px);
@@ -1858,6 +1861,101 @@ a.guide-steps__item:hover .guide-steps__label {
 .home-faq__list {
   width:100%
 }
+.home-faq__search {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.home-faq__search-title {
+  font: 700 clamp(26px,2vw,36px)/1.2 var(--font-heading);
+  color: var(--text-white);
+  text-align: center;
+  margin: 0;
+}
+.home-faq__search-sub {
+  font: 400 clamp(14px,1vw,16px)/1.6 var(--font-body);
+  color: var(--text-muted);
+  text-align: center;
+  margin: 0 0 8px;
+}
+.home-faq__search-wrap {
+  width: 100%;
+  max-width: 560px;
+}
+.fve-faq .fve-eyebrow,
+.fve-faq__title { text-align: center; }
+.fve-faq__search {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.fve-faq__search-title {
+  font: 700 clamp(26px,2vw,36px)/1.2 var(--font-heading);
+  color: var(--text-white);
+  text-align: center;
+  margin: 0;
+}
+.fve-faq__search-sub {
+  font: 400 clamp(14px,1vw,16px)/1.6 var(--font-body);
+  color: var(--text-muted);
+  text-align: center;
+  margin: 0 0 8px;
+}
+.fve-faq__search-wrap {
+  width: 100%;
+  max-width: 560px;
+}
+.site-search {
+  padding: 80px 24px;
+}
+.site-search__container {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.site-search__title {
+  font: 700 clamp(26px,2vw,36px)/1.2 var(--font-heading);
+  color: var(--text-white);
+  text-align: center;
+  margin: 0;
+}
+.site-search__sub {
+  font: 400 clamp(14px,1vw,16px)/1.6 var(--font-body);
+  color: var(--text-muted);
+  text-align: center;
+  margin: 0 0 8px;
+}
+.site-search__wrap {
+  width: 100%;
+  max-width: 560px;
+}
+.ms-icon {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 400;
+  font-size: inherit;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  -webkit-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  font-variation-settings: 'opsz' 20, 'wght' 400, 'FILL' 0, 'GRAD' 0;
+}
+.navbar-search .ms-icon { font-size: 22px; }
+.hero-nav__item-arrow .ms-icon { font-size: 20px; }
+.showcase-arrow .ms-icon { font-size: 24px; }
 .home-faq__item {
   border-bottom:1px solid rgba(255,255,255,.08)
 }
@@ -2001,6 +2099,13 @@ a.guide-steps__item:hover .guide-steps__label {
   .home-faq__q { font-size:18px }
 }
 
+.search-cta__body {
+  flex: none;
+  max-height: 420px;
+  margin-top: 8px;
+}
+.search-cta__body[hidden] { display: none; }
+
 #page-loader {
   position:fixed;
   inset:0;
@@ -2061,4 +2166,20 @@ a.guide-steps__item:hover .guide-steps__label {
 .hero-mode-overlay.is-fading {
   opacity:0
 }
+
+/* ── Co je EnergoHub? ────────────────────────────────────────────────── */
+.home-about{background:#05050a;padding:160px 0}
+.home-about__container{width:100%;max-width:1440px;margin:0 auto;padding:0 80px}
+.home-about__header{margin-bottom:64px}
+.home-about__title{font:600 clamp(36px,2.5vw,48px)/1.2 var(--font-heading);color:var(--text-white);margin:0 0 16px}
+.home-about__text{font:400 clamp(17px,1.18vw,23px)/1.6 var(--font-body);color:var(--text-muted);margin:0}
+.home-about__text--mt{margin-top:16px}
+.home-about__goals{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.home-about__goal{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px}
+.home-about__goal-icon{font-family:'Material Symbols Outlined';font-size:48px;line-height:1;font-weight:400;font-style:normal;font-variation-settings:'opsz' 48,'wght' 300,'FILL' 1,'GRAD' -25;background:linear-gradient(150deg,#f0ffb0 0%,#c8f050 35%,#8ec828 65%,#4a6e10 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 12px rgba(183,241,61,.28)) drop-shadow(0 3px 6px rgba(0,0,0,.45));user-select:none;letter-spacing:normal;text-transform:none;white-space:nowrap}
+.home-about__goal-text{display:flex;flex-direction:column;gap:8px;align-items:center}
+.home-about__goal-title{font:700 clamp(18px,1.4vw,22px)/1.2 var(--font-heading);color:var(--text-white);margin:0}
+.home-about__goal-desc{font:400 16px/1.65 var(--font-body);color:var(--text-muted);margin:0}
+@media(max-width:1100px){.home-about__container{padding:0 20px}.home-about__goals{gap:28px}}
+@media(max-width:760px){.home-about{padding:80px 0}.home-about__container{padding:0 16px}.home-about__goals{grid-template-columns:1fr;gap:32px}.home-about__goal{flex-direction:row;align-items:flex-start;text-align:left;gap:20px}.home-about__goal-text{align-items:flex-start}}
 

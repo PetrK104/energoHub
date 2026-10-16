@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/guide-shared.css">
 <link rel="stylesheet" href="css/jom.css">
@@ -48,12 +49,7 @@
 
       <div class="navbar-actions">
         <button class="navbar-search" id="searchOpen" aria-label="Hledat"
-                aria-keyshortcuts="/ Control+k">
-          <svg width="22" height="22" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-            <circle cx="7.5" cy="7.5" r="5" stroke="currentColor" stroke-width="1.8"/>
-            <line x1="11.5" y1="11.5" x2="16" y2="16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </button>
+                aria-keyshortcuts="/ Control+k"><span class="ms-icon" aria-hidden="true">search</span></button>
       </div>
 
       <button class="navbar-burger" id="navBurger" aria-label="Otevřít menu" aria-expanded="false">
@@ -93,7 +89,7 @@
     <h1 class="guide-sub-hero__title">Přechod na JOM — realizace a technické podmínky</h1>
     <p class="guide-sub-hero__desc">Fáze realizace krok za krokem, technické požadavky, dopad na náklady a doporučené pořadí opatření.</p>
     <p class="guide-sub-hero__meta">
-      <svg class="guide-sub-hero__clock" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8"/><path d="M10 6v4l2.5 1.5"/></svg>
+      <span class="ms-icon guide-sub-hero__clock" aria-hidden="true">schedule</span>
       Doba čtení: 8 min.
     </p>
   </div>
@@ -114,7 +110,7 @@
         <div class="fve-phase__collapsed">
           <span class="fve-phase__cnum" aria-hidden="true">01</span>
           <span class="fve-phase__ctitle">Průzkum, nabídka a souhlas</span>
-          <svg class="fve-phase__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          <span class="ms-icon fve-phase__chevron" aria-hidden="true">expand_more</span>
         </div>
         <div class="fve-phase__expanded">
           <span class="fve-phase__enum">01</span>
@@ -129,7 +125,8 @@
           </ul>
           <div class="fve-phase__nav">
             <button class="fve-phase__btn fve-phase__btn--next" type="button" aria-label="Další fáze">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              <span class="ms-icon fve-phase__btn-icon--lr" aria-hidden="true">chevron_right</span>
+              <span class="ms-icon fve-phase__btn-icon--ud" aria-hidden="true">expand_more</span>
             </button>
           </div>
         </div>
@@ -139,7 +136,7 @@
         <div class="fve-phase__collapsed">
           <span class="fve-phase__cnum" aria-hidden="true">02</span>
           <span class="fve-phase__ctitle">Administrativa</span>
-          <svg class="fve-phase__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          <span class="ms-icon fve-phase__chevron" aria-hidden="true">expand_more</span>
         </div>
         <div class="fve-phase__expanded">
           <span class="fve-phase__enum">02</span>
@@ -153,10 +150,12 @@
           </ul>
           <div class="fve-phase__nav">
             <button class="fve-phase__btn fve-phase__btn--prev" type="button" aria-label="Předchozí fáze">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+              <span class="ms-icon fve-phase__btn-icon--lr" aria-hidden="true">chevron_left</span>
+              <span class="ms-icon fve-phase__btn-icon--ud" aria-hidden="true">expand_less</span>
             </button>
             <button class="fve-phase__btn fve-phase__btn--next" type="button" aria-label="Další fáze">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              <span class="ms-icon fve-phase__btn-icon--lr" aria-hidden="true">chevron_right</span>
+              <span class="ms-icon fve-phase__btn-icon--ud" aria-hidden="true">expand_more</span>
             </button>
           </div>
         </div>
@@ -166,7 +165,7 @@
         <div class="fve-phase__collapsed">
           <span class="fve-phase__cnum" aria-hidden="true">03</span>
           <span class="fve-phase__ctitle">Technická příprava</span>
-          <svg class="fve-phase__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          <span class="ms-icon fve-phase__chevron" aria-hidden="true">expand_more</span>
         </div>
         <div class="fve-phase__expanded">
           <span class="fve-phase__enum">03</span>
@@ -178,10 +177,12 @@
           </ul>
           <div class="fve-phase__nav">
             <button class="fve-phase__btn fve-phase__btn--prev" type="button" aria-label="Předchozí fáze">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+              <span class="ms-icon fve-phase__btn-icon--lr" aria-hidden="true">chevron_left</span>
+              <span class="ms-icon fve-phase__btn-icon--ud" aria-hidden="true">expand_less</span>
             </button>
             <button class="fve-phase__btn fve-phase__btn--next" type="button" aria-label="Další fáze">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              <span class="ms-icon fve-phase__btn-icon--lr" aria-hidden="true">chevron_right</span>
+              <span class="ms-icon fve-phase__btn-icon--ud" aria-hidden="true">expand_more</span>
             </button>
           </div>
         </div>
@@ -191,7 +192,7 @@
         <div class="fve-phase__collapsed">
           <span class="fve-phase__cnum" aria-hidden="true">04</span>
           <span class="fve-phase__ctitle">Fyzické sloučení</span>
-          <svg class="fve-phase__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          <span class="ms-icon fve-phase__chevron" aria-hidden="true">expand_more</span>
         </div>
         <div class="fve-phase__expanded">
           <span class="fve-phase__enum">04</span>
@@ -205,10 +206,12 @@
           </ul>
           <div class="fve-phase__nav">
             <button class="fve-phase__btn fve-phase__btn--prev" type="button" aria-label="Předchozí fáze">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+              <span class="ms-icon fve-phase__btn-icon--lr" aria-hidden="true">chevron_left</span>
+              <span class="ms-icon fve-phase__btn-icon--ud" aria-hidden="true">expand_less</span>
             </button>
             <button class="fve-phase__btn fve-phase__btn--next" type="button" aria-label="Další fáze">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              <span class="ms-icon fve-phase__btn-icon--lr" aria-hidden="true">chevron_right</span>
+              <span class="ms-icon fve-phase__btn-icon--ud" aria-hidden="true">expand_more</span>
             </button>
           </div>
         </div>
@@ -218,7 +221,7 @@
         <div class="fve-phase__collapsed">
           <span class="fve-phase__cnum" aria-hidden="true">05</span>
           <span class="fve-phase__ctitle">Nastavení rozúčtování</span>
-          <svg class="fve-phase__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          <span class="ms-icon fve-phase__chevron" aria-hidden="true">expand_more</span>
         </div>
         <div class="fve-phase__expanded">
           <span class="fve-phase__enum">05</span>
@@ -232,7 +235,8 @@
           </ul>
           <div class="fve-phase__nav">
             <button class="fve-phase__btn fve-phase__btn--prev" type="button" aria-label="Předchozí fáze">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+              <span class="ms-icon fve-phase__btn-icon--lr" aria-hidden="true">chevron_left</span>
+              <span class="ms-icon fve-phase__btn-icon--ud" aria-hidden="true">expand_less</span>
             </button>
           </div>
         </div>
@@ -339,23 +343,29 @@
     <h2 class="guide-qa__title">Zjistěte více o dalších tématech JOM</h2>
     <div class="guide-qa__cards">
       <a href="jom-kdy-ma-smysl.html" class="guide-qa__card">
+        <span class="guide-qa__card-icon" aria-hidden="true">trending_up</span>
         <div class="guide-qa__card-body">
           <p class="guide-qa__card-title">Ekonomická výhodnost JOM pro bytový dům</p>
           <p class="guide-qa__card-desc">Klíčové statistiky, srovnání FVE+JOM vs. FVE bez JOM a kdy je kombinace nejsilnější.</p>
+          <p class="guide-qa__card-meta"><span class="ms-icon" aria-hidden="true">schedule</span> Doba čtení: 4 min.</p>
         </div>
         <div class="guide-qa__card-arrow">→</div>
       </a>
       <a href="jom-edc-nebo-jom.html" class="guide-qa__card">
+        <span class="guide-qa__card-icon" aria-hidden="true">compare_arrows</span>
         <div class="guide-qa__card-body">
           <p class="guide-qa__card-title">EDC nebo JOM — srovnání obou variant sdílení elektřiny</p>
           <p class="guide-qa__card-desc">Podrobné srovnání obou variant sdílení elektřiny — technické, ekonomické i administrativní rozdíly.</p>
+          <p class="guide-qa__card-meta"><span class="ms-icon" aria-hidden="true">schedule</span> Doba čtení: 5 min.</p>
         </div>
         <div class="guide-qa__card-arrow">→</div>
       </a>
       <a href="jom-sdileni-a-uspory.html" class="guide-qa__card">
+        <span class="guide-qa__card-icon" aria-hidden="true">hub</span>
         <div class="guide-qa__card-body">
           <p class="guide-qa__card-title">Sdílení elektřiny a úspory v bytovém domě na JOM</p>
           <p class="guide-qa__card-desc">Kolik dům ušetří podle typu elektroměru, jak funguje sdílení přebytků a srovnání s prodejem do sítě.</p>
+          <p class="guide-qa__card-meta"><span class="ms-icon" aria-hidden="true">schedule</span> Doba čtení: 6 min.</p>
         </div>
         <div class="guide-qa__card-arrow">→</div>
       </a>
@@ -367,6 +377,24 @@
         <div class="guide-qa__card-arrow">→</div>
       </a>
     </div>
+  </div>
+</section>
+
+<section class="site-search">
+  <div class="site-search__container">
+    <p class="site-search__title">Nenašli jste odpověď na svou otázku na této stránce?</p>
+    <p class="site-search__sub">Zkuste vyhledat dané téma na webu.</p>
+    <div class="search-input-wrap site-search__wrap">
+      <span class="search-icon-wrap" aria-hidden="true"><span class="ms-icon">search</span></span>
+      <input class="search-input" id="searchCtaInput"
+             type="search" autocomplete="off" autocorrect="off"
+             autocapitalize="off" spellcheck="false"
+             placeholder="Hledat na webu…"
+             aria-label="Hledat na webu">
+      <button class="search-clear" id="searchCtaClear" aria-label="Smazat" hidden type="button"><span class="ms-icon" aria-hidden="true">close</span></button>
+    </div>
+    <span class="search-live" id="searchCtaLive" aria-live="polite" aria-atomic="true"></span>
+    <div class="search-body search-cta__body" id="searchCtaBody" hidden></div>
   </div>
 </section>
 <footer class="site-footer">
@@ -422,9 +450,7 @@
         <form class="footer-newsletter" id="footerNewsletter">
           <input type="email" name="email" placeholder="Zadejte e-mail" aria-label="E-mailová adresa" required>
           <button type="submit" aria-label="Odebírat novinky">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14M13 6l6 6-6 6"></path>
-            </svg>
+            <span class="ms-icon" aria-hidden="true">arrow_forward</span>
           </button>
         </form>
       </div>
@@ -441,5 +467,6 @@
 <script src="js/jom-slider.js" defer></script>
 <script src="js/fve-phases.js" defer></script>
 <script type="module" src="assets/js/search-overlay.js"></script>
+<script type="module" src="assets/js/search-inline.js"></script>
 </body>
 </html>

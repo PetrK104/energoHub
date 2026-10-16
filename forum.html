@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/forum.css">
 <link rel="stylesheet" href="css/search.css">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" rel="stylesheet">
 </head>
 <body>
 
@@ -47,12 +48,7 @@
 
       <div class="navbar-actions">
         <button class="navbar-search" id="searchOpen" aria-label="Hledat"
-                aria-keyshortcuts="/ Control+k">
-          <svg width="22" height="22" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-            <circle cx="7.5" cy="7.5" r="5" stroke="currentColor" stroke-width="1.8"/>
-            <line x1="11.5" y1="11.5" x2="16" y2="16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </button>
+                aria-keyshortcuts="/ Control+k"><span class="ms-icon" aria-hidden="true">search</span></button>
       </div>
 
       <button class="navbar-burger" id="navBurger" aria-label="Otevřít menu" aria-expanded="false">
@@ -102,10 +98,7 @@
             <span class="forum-hero__user-email-addr" id="heroUserEmailAddress"></span>
           </div>
           <div class="forum-hero__user-avatar" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="8" r="4"></circle>
-              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path>
-            </svg>
+            <span class="ms-icon" aria-hidden="true" style="font-size:22px">account_circle</span>
           </div>
         </div>
         <button class="forum-hero__signout-btn" id="heroSignOutBtn">Odhlásit se</button>
@@ -120,8 +113,8 @@
         <input type="email" name="email" autocomplete="email">
         <input type="password" name="password" id="heroPasswordInput" autocomplete="current-password">
         <button type="button" id="heroPasswordToggle">
-          <svg id="heroEyeOpen" viewBox="0 0 24 24"></svg>
-          <svg id="heroEyeClosed" viewBox="0 0 24 24" hidden></svg>
+          <span class="ms-icon" id="heroEyeOpen" style="font-size:18px">visibility</span>
+          <span class="ms-icon" id="heroEyeClosed" style="font-size:18px" hidden>visibility_off</span>
         </button>
         <p id="heroLoginError" hidden></p>
         <button type="button" id="heroSwitchToRegister" hidden></button>
@@ -176,7 +169,7 @@
 
       <div class="forum-mode-nav">
         <button class="forum-mode-nav__back" id="forumBackToMode">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="ms-icon" aria-hidden="true">chevron_left</span>
           Výběr diskuze
         </button>
         <span class="forum-mode-nav__label" id="forumModeNavLabel"></span>
@@ -184,10 +177,7 @@
 
       <div class="forum-toolbar">
         <div class="forum-search-wrap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
+          <span class="ms-icon" aria-hidden="true" style="font-size:16px">search</span>
           <input type="search" id="forumSearch" placeholder="Hledat v diskuzi…" autocomplete="off" aria-label="Vyhledat příspěvky">
         </div>
         <button class="btn btn-primary" id="forumNewBtn">+ Nové vlákno</button>
@@ -449,9 +439,7 @@
         <form class="footer-newsletter" id="footerNewsletter">
           <input type="email" name="email" placeholder="Zadejte e-mail" aria-label="E-mailová adresa" required>
           <button type="submit" aria-label="Odebírat novinky">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14M13 6l6 6-6 6"></path>
-            </svg>
+            <span class="ms-icon" aria-hidden="true">arrow_forward</span>
           </button>
         </form>
       </div>

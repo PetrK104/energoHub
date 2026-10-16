@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/guide-shared.css">
 <link rel="stylesheet" href="css/fve.css">
@@ -48,12 +49,7 @@
 
       <div class="navbar-actions">
         <button class="navbar-search" id="searchOpen" aria-label="Hledat"
-                aria-keyshortcuts="/ Control+k">
-          <svg width="22" height="22" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-            <circle cx="7.5" cy="7.5" r="5" stroke="currentColor" stroke-width="1.8"/>
-            <line x1="11.5" y1="11.5" x2="16" y2="16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </button>
+                aria-keyshortcuts="/ Control+k"><span class="ms-icon" aria-hidden="true">search</span></button>
       </div>
 
       <button class="navbar-burger" id="navBurger" aria-label="Otevřít menu" aria-expanded="false">
@@ -91,7 +87,7 @@
     <h1 class="guide-sub-hero__title">Baterie k FVE — dimenzování a podmínky výnosnosti</h1>
     <p class="guide-sub-hero__desc">Kdy baterie přidává hodnotu, jak dimenzovat kapacitu a co znamená záloha pro výpadek sítě.</p>
     <p class="guide-sub-hero__meta">
-      <svg class="guide-sub-hero__clock" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8"/><path d="M10 6v4l2.5 1.5"/></svg>
+      <span class="ms-icon guide-sub-hero__clock" aria-hidden="true">schedule</span>
       Doba čtení: 4 min.
     </p>
   </div>
@@ -116,36 +112,40 @@
         <p class="fve-battery__num-text"><strong>Spotový nebo dynamický tarif</strong> — Cena elektřiny se mění po hodinách. Baterie umožňuje nakoupit levně a spotřebovat ve špičce; výsledek závisí na velikosti baterie a přesunu spotřeby.</p>
       </div>
 
-      <div class="fve-insight" style="margin-top:24px">
-        <span class="fve-insight__label">Kdy baterie smysl nedává</span>
-        <p class="fve-insight__text">Pokud je spotřeba výrazně vyšší než výroba FVE, není co ukládat. Baterii není z čeho nabít a zůstává prakticky prázdná. U firem může mít smysl při peak-shavingu (snižování odběrových špiček).</p>
-      </div>
     </div>
 
-    <h2 class="fve-battery__sub">Jak velkou baterii k FVE vybrat?</h2>
+    <h2 class="fve-battery__sub" style="margin-top:40px">Kdy baterie smysl nedává</h2>
     <ul class="fve-battery__list">
       <li class="fve-battery__item">
-        <svg class="fve-battery__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="ms-icon fve-battery__arrow" aria-hidden="true">north_east</span>
+        <span>Pokud je spotřeba výrazně vyšší než výroba FVE, není co ukládat. Baterii není z čeho nabít a zůstává prakticky prázdná. U firem může mít smysl při peak-shavingu (snižování odběrových špiček).</span>
+      </li>
+    </ul>
+
+    <h2 class="fve-battery__sub" style="margin-top:40px">Jak velkou baterii k FVE vybrat?</h2>
+    <ul class="fve-battery__list">
+      <li class="fve-battery__item">
+        <span class="ms-icon fve-battery__arrow" aria-hidden="true">north_east</span>
         <span><strong>Doporučený poměr: 1,2–2&nbsp;kWh baterie na každý kWp výkonu FVE.</strong> Příklad: FVE 10&nbsp;kWp → baterie 12–20&nbsp;kWh.</span>
       </li>
       <li class="fve-battery__item">
-        <svg class="fve-battery__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="ms-icon fve-battery__arrow" aria-hidden="true">north_east</span>
         <span>Příliš malá baterie se za slunného dne naplní dopoledne a zbytek výroby odchází levně do sítě — efekt baterie se ztrácí.</span>
       </li>
       <li class="fve-battery__item">
-        <svg class="fve-battery__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="ms-icon fve-battery__arrow" aria-hidden="true">north_east</span>
         <span>Příliš velká baterie se nikdy nenabije na plno — část kapacity zůstane trvale nevyužitá.</span>
       </li>
       <li class="fve-battery__item">
-        <svg class="fve-battery__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="ms-icon fve-battery__arrow" aria-hidden="true">north_east</span>
         <span>Program Nová zelená úsporám podporuje baterie v rozmezí 1,2–2 násobku výkonu FVE — mimo tento rozsah se dotace/úvěr na kapacitu nevztahuje.</span>
       </li>
       <li class="fve-battery__item">
-        <svg class="fve-battery__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="ms-icon fve-battery__arrow" aria-hidden="true">north_east</span>
         <span>Baterie pokrývá hlavně večerní a noční spotřebu — ne celou denní výrobu FVE.</span>
       </li>
       <li class="fve-battery__item">
-        <svg class="fve-battery__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="ms-icon fve-battery__arrow" aria-hidden="true">north_east</span>
         <span>V zimě je výroba nižší — baterie proto nezajistí celoroční nezávislost na síti.</span>
       </li>
     </ul>
@@ -155,19 +155,19 @@
         <h2 class="fve-battery__sub">Rezervace kapacity pro backup</h2>
         <ul class="fve-battery__list">
           <li class="fve-battery__item">
-            <svg class="fve-battery__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="ms-icon fve-battery__arrow" aria-hidden="true">north_east</span>
             <span>Část kapacity baterie lze vyhradit jako zálohu pro výpadek sítě (např. 30&nbsp;%) — tato část se při běžném provozu nevyužívá k dennímu cyklování.</span>
           </li>
           <li class="fve-battery__item">
-            <svg class="fve-battery__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="ms-icon fve-battery__arrow" aria-hidden="true">north_east</span>
             <span>Vyhrazená rezerva zůstává trvale nedotknutelná — systém ji drží stranou i v dnech s vysokou výrobou nebo spotřebou.</span>
           </li>
           <li class="fve-battery__item">
-            <svg class="fve-battery__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="ms-icon fve-battery__arrow" aria-hidden="true">north_east</span>
             <span>Čím vyšší podíl kapacity je vyhrazen pro backup, tím menší část baterie reálně snižuje denní nákup elektřiny ze sítě.</span>
           </li>
           <li class="fve-battery__item">
-            <svg class="fve-battery__arrow" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="ms-icon fve-battery__arrow" aria-hidden="true">north_east</span>
             <span>Při výpočtu ekonomické návratnosti se počítá jen s využitelnou částí kapacity, ne s celkovou kapacitou baterie.</span>
           </li>
         </ul>
@@ -190,23 +190,29 @@
     <h2 class="guide-qa__title">Zjistěte více o dalších tématech FVE</h2>
     <div class="guide-qa__cards">
       <a href="fve-kdy-ma-smysl.html" class="guide-qa__card">
+        <span class="guide-qa__card-icon" aria-hidden="true">trending_up</span>
         <div class="guide-qa__card-body">
           <p class="guide-qa__card-title">Ekonomická návratnost FVE pro bytový dům</p>
           <p class="guide-qa__card-desc">Kritéria pro bytový dům: orientace střechy, spotřeba, časový horizont. Kdy investice smysl nedává.</p>
+          <p class="guide-qa__card-meta"><span class="ms-icon" aria-hidden="true">schedule</span> Doba čtení: 4 min.</p>
         </div>
         <div class="guide-qa__card-arrow">→</div>
       </a>
       <a href="fve-naklady.html" class="guide-qa__card">
+        <span class="guide-qa__card-icon" aria-hidden="true">receipt_long</span>
         <div class="guide-qa__card-body">
           <p class="guide-qa__card-title">Náklady na FVE pro bytový dům</p>
           <p class="guide-qa__card-desc">Interaktivní kalkulačka nákladů, položkový rozpis a orientační ceny pro různé výkony systému.</p>
+          <p class="guide-qa__card-meta"><span class="ms-icon" aria-hidden="true">schedule</span> Doba čtení: 5 min.</p>
         </div>
         <div class="guide-qa__card-arrow">→</div>
       </a>
       <a href="fve-dotace-a-legislativa.html" class="guide-qa__card">
+        <span class="guide-qa__card-icon" aria-hidden="true">gavel</span>
         <div class="guide-qa__card-body">
           <p class="guide-qa__card-title">Dotace a legislativa pro FVE</p>
           <p class="guide-qa__card-desc">Přehled dotačních programů (NZÚ, OPŽP), výše podpory, podmínky pro SVJ a legislativní hranice.</p>
+          <p class="guide-qa__card-meta"><span class="ms-icon" aria-hidden="true">schedule</span> Doba čtení: 7 min.</p>
         </div>
         <div class="guide-qa__card-arrow">→</div>
       </a>
@@ -218,6 +224,24 @@
         <div class="guide-qa__card-arrow">→</div>
       </a>
     </div>
+  </div>
+</section>
+
+<section class="site-search">
+  <div class="site-search__container">
+    <p class="site-search__title">Nenašli jste odpověď na svou otázku na této stránce?</p>
+    <p class="site-search__sub">Zkuste vyhledat dané téma na webu.</p>
+    <div class="search-input-wrap site-search__wrap">
+      <span class="search-icon-wrap" aria-hidden="true"><span class="ms-icon">search</span></span>
+      <input class="search-input" id="searchCtaInput"
+             type="search" autocomplete="off" autocorrect="off"
+             autocapitalize="off" spellcheck="false"
+             placeholder="Hledat na webu…"
+             aria-label="Hledat na webu">
+      <button class="search-clear" id="searchCtaClear" aria-label="Smazat" hidden type="button"><span class="ms-icon" aria-hidden="true">close</span></button>
+    </div>
+    <span class="search-live" id="searchCtaLive" aria-live="polite" aria-atomic="true"></span>
+    <div class="search-body search-cta__body" id="searchCtaBody" hidden></div>
   </div>
 </section>
 <footer class="site-footer">
@@ -272,9 +296,7 @@
         <form class="footer-newsletter" id="footerNewsletter">
           <input type="email" name="email" placeholder="Zadejte e-mail" aria-label="E-mailová adresa" required>
           <button type="submit" aria-label="Odebírat novinky">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14M13 6l6 6-6 6"></path>
-            </svg>
+            <span class="ms-icon" aria-hidden="true">arrow_forward</span>
           </button>
         </form>
       </div>
@@ -289,5 +311,6 @@
 <script src="js/navbar.js" defer></script>
 <script src="js/footer.js" defer></script>
 <script type="module" src="assets/js/search-overlay.js"></script>
+<script type="module" src="assets/js/search-inline.js"></script>
 </body>
 </html>
