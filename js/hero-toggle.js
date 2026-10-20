@@ -112,18 +112,46 @@
     setTimeout(positionControls, 1500);
     setTimeout(watchToggle, 700);
     setTimeout(watchToggle, 1500);
+    waitForFirstFrame(hidePoster);
+  }
+
+  function hidePoster() {
     var poster = document.getElementById('hero3dPoster');
-    if (poster) {
-      setTimeout(function () {
-        poster.classList.add('is-loaded');
-        setTimeout(function () { poster.remove(); }, 600);
-      }, 600);
-    }
+    if (!poster || poster.classList.contains('is-loaded')) return;
+    poster.classList.add('is-loaded');
+    setTimeout(function () { poster.remove(); }, 600);
+  }
+
+  // Iframe "load" přijde hned po stažení JS, ale scéna se vykreslí až po
+  // načtení HDR a kompilaci shaderů. Poster proto držíme, dokud scéna nemá
+  // environment a neproběhnou dva snímky (první snímek = kompilace shaderů).
+  function waitForFirstFrame(done) {
+    var started = Date.now();
+    (function poll() {
+      var win;
+      try { win = frame.contentWindow; } catch (e) {}
+      var scene = win && win.__scene;
+      if (scene && scene.environment) {
+        // Pojistka: na skryté kartě rAF neběží — poster stejně skryjeme
+        setTimeout(done, 1500);
+        win.requestAnimationFrame(function () {
+          win.requestAnimationFrame(function () { setTimeout(done, 50); });
+        });
+        return;
+      }
+      if (Date.now() - started > 10000) { done(); return; }
+      setTimeout(poll, 100);
+    })();
   }
 
   var frame = document.getElementById("hero3dFrame");
   if (frame) {
     frame.addEventListener("load", onFrameLoad);
+    // Iframe už není lazy a může se načíst dřív, než se spustí tento defer skript
+    try {
+      var fdoc = frame.contentDocument;
+      if (fdoc && fdoc.readyState === "complete" && fdoc.URL !== "about:blank") onFrameLoad();
+    } catch (e) {}
   }
   window.addEventListener("resize", positionControls);
   window.addEventListener("scroll", positionControls, { passive: true });

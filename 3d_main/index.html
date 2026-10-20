@@ -13,17 +13,11 @@
       }
     </script>
     <style>html,body,#root{background:#05050a;margin:0}</style>
+    <link rel="preload" href="/hdri/dikhololo_night_512.hdr" as="fetch" crossorigin>
     <script type="module" crossorigin src="./assets/index-QgsBNWCT.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-D_svt-c5.css">
   </head>
   <body>
     <div id="root"></div>
-    <script>
-      window.addEventListener('load', function () {
-        ['/hdri/venice_sunset_512.hdr', '/hdri/dikhololo_night_512.hdr'].forEach(function (url) {
-          fetch(url, { priority: 'low' }).catch(function () {});
-        });
-      });
-    </script>
   </body>
 </html>

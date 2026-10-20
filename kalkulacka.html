@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="format-detection" content="telephone=no">
 <meta name="description" content="Orientační kalkulačka úspor pro bytový dům — zadejte základní údaje a zjistěte potenciál JOM, fotovoltaiky, tepelného čerpadla a zateplení.">
-<meta name="keywords" content="kalkulačka úspor elektřina bytový dům, výpočet úspor JOM, kolik ušetřím s FVE, kalkulátor energetických opatření, online kalkulačka SVJ, kolik ušetří bytový dům ročně, výpočet návratnosti FVE, výpočet návratnosti, kolik ušetřím s fve, kalkulačka úspor">
+<meta name="keywords" content="kalkulačka, kalkulace, kalkulace zdarma, výpočet úspor, výpočet, úspory, kolik ušetřím, návratnost, online kalkulačka, energetická kalkulačka, kolik ušetřím">
 <meta name="category" content="Obecné">
 <title>Kalkulačka úspor — Energohub.info</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,9 +38,17 @@
             </div>
           </ul>
         </li>
-        <li><a href="bezpecnost.html">Bezpečnost</a></li>
+        <li class="nav-dropdown">
+          <a href="bezpecnost.html" class="nav-dropdown__trigger">Ostatní <span class="nav-dropdown__arrow">▾</span></a>
+          <ul class="nav-dropdown__menu">
+            <div class="nav-dropdown__menu-inner">
+              <li><a href="bezpecnost.html">Bezpečnost</a></li>
+              <li><a href="dotace.html">Dotace a financování</a></li>
+              <li><a href="forum.html">Fórum</a></li>
+            </div>
+          </ul>
+        </li>
         <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
-        <li><a href="forum.html">Fórum</a></li>
         <li><a href="index.html#o-nas">O nás</a></li>
         <li><a href="kontakty.html">Kontakty</a></li>
       </ul>
@@ -65,9 +73,11 @@
         <li><a href="pruvodce-jom.html">— Jednotné odběrné místo</a></li>
         <li><a href="pruvodce-fve.html">— Fotovoltaika</a></li>
         <li class="navbar-mobile__divider"></li>
-        <li><a href="bezpecnost.html">Bezpečnost</a></li>
+        <li><a href="#">Ostatní</a></li>
+        <li><a href="bezpecnost.html">— Bezpečnost</a></li>
+        <li><a href="dotace.html">— Dotace a financování</a></li>
+        <li><a href="forum.html">— Fórum</a></li>
         <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
-        <li><a href="forum.html">Fórum</a></li>
         <li><a href="index.html#o-nas">O nás</a></li>
         <li><a href="kontakty.html">Kontakty</a></li>
       </ul>
@@ -126,7 +136,7 @@
     <div class="kalk-panel kalk-panel--select" id="kalkPanelSelect">
 
       <div class="kalk-select-header">
-        <h2 class="kalk-select-title">Co chcete řešit?</h2>
+        <h2 data-search-keys="kalkulačka úspor, výběr opatření, co chcete řešit, JOM, FVE, teplo, okna, energetická opatření" class="kalk-select-title" id="co-chcete-resit">Co chcete řešit?</h2>
         <span class="kalk-select-hint">Můžete vybrat více možností</span>
       </div>
 
@@ -183,7 +193,7 @@
 
     <!-- Panel 0: Základní údaje -->
     <div class="kalk-card kalk-panel" id="kalkPanel0" data-step-key="basic">
-      <h2 class="kalk-panel__title">Základní údaje o domě</h2>
+      <h2 data-search-keys="základní údaje, bytový dům, počet bytů, spotřeba, podlaží, parametry domu" class="kalk-panel__title">Základní údaje o domě</h2>
       <p class="kalk-panel__lead">Tyto informace použijeme ve všech výpočtech — zadejte je jednou a kalkulačka je přenese do každého kroku.</p>
 
       <div class="kalk-fields">
@@ -236,7 +246,7 @@
       <div class="kalk-panel-body">
         <div class="kalk-panel-left">
           <div class="kalk-step-badge">Krok 1 ze 4</div>
-          <h2 class="kalk-panel__title">Sloučení odběrných míst (JOM)</h2>
+          <h2 data-search-keys="JOM kalkulace, sloučení odběrných míst, výpočet JOM, úspory JOM, kalkulačka JOM" class="kalk-panel__title" id="slouceni-odbernych-mist-jom">Sloučení odběrných míst (JOM)</h2>
           <p class="kalk-panel__lead">JOM sjednotí všechna odběrná místa pod jednu smlouvu. Dům přestane platit distribuční poplatky zvlášť za každý byt — a to je základ pro efektivní sdílení energie z FVE.</p>
 
           <div class="kalk-result-row">
@@ -289,7 +299,7 @@
       <div class="kalk-panel-body">
         <div class="kalk-panel-left">
           <div class="kalk-step-badge">Krok 2 ze 4</div>
-          <h2 class="kalk-panel__title">Fotovoltaická elektrárna (FVE)</h2>
+          <h2 data-search-keys="FVE kalkulace, fotovoltaika výpočet, úspory FVE, výpočet fotovoltaiky, kalkulačka FVE" class="kalk-panel__title" id="fotovoltaicka-elektrarna-fve">Fotovoltaická elektrárna (FVE)</h2>
 
           <details class="kalk-refine">
             <summary>Upřesnit výpočet</summary>
@@ -367,7 +377,7 @@
       <div class="kalk-panel-body">
         <div class="kalk-panel-left">
           <div class="kalk-step-badge">Krok 3 ze 4</div>
-          <h2 class="kalk-panel__title">Teplo a TUV</h2>
+          <h2 data-search-keys="teplo kalkulace, teplá voda TUV, vytápění výpočet, úspory tepla, tepelné čerpadlo" class="kalk-panel__title" id="teplo-a-tuv">Teplo a TUV</h2>
 
           <details class="kalk-refine">
             <summary>Upřesnit výpočet</summary>
@@ -449,7 +459,7 @@
       <div class="kalk-panel-body">
         <div class="kalk-panel-left">
           <div class="kalk-step-badge">Krok 4 ze 4</div>
-          <h2 class="kalk-panel__title">Okna a dveře</h2>
+          <h2 data-search-keys="okna kalkulace, výměna oken, dveře, zateplení, úspory tepla, rekonstrukce" class="kalk-panel__title" id="okna-a-dvere">Okna a dveře</h2>
 
           <details class="kalk-refine">
             <summary>Upřesnit výpočet</summary>
@@ -521,7 +531,7 @@
       <!-- Header s přepínačem -->
       <div class="kalk-sum-header">
         <div>
-          <h2 class="kalk-panel__title">Váš plán úspor</h2>
+          <h2 data-search-keys="plán úspor, výsledek kalkulace, přehled úspor, shrnutí, celkové úspory, doporučení" class="kalk-panel__title" id="vas-plan-uspor">Váš plán úspor</h2>
           <p class="kalk-panel__lead">Orientační úspory při realizaci opatření ve správném pořadí.</p>
         </div>
         <div class="kalk-period-toggle">

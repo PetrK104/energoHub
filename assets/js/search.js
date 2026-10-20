@@ -6,10 +6,10 @@ const STOPWORDS = new Set([
 ]);
 
 const WEIGHTED_KEYS = [
-  { name: 'title',       weight: 3 },
-  { name: 'keywords',    weight: 2 },
-  { name: 'headings',    weight: 2 },
-  { name: 'description', weight: 1 },
+  { name: 'title',    weight: 3 },
+  { name: 'page',     weight: 2 },
+  { name: 'keywords', weight: 1 },
+  { name: 'category', weight: 1 },
 ];
 
 const SHARED_OPTS = { ignoreDiacritics: true, ignoreLocation: true, includeMatches: true };

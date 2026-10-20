@@ -1,0 +1,88 @@
+/* ── Varianta list (A/B/C sekce) ─────────────────────────────────────────── */
+.dotace-variant__list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.dotace-variant__list li {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-muted);
+  padding-left: 14px;
+  position: relative;
+}
+.dotace-variant__list li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: rgba(185,185,194,.4);
+}
+
+/* ── Definice dílčí / komplexní renovace ───────────────────────────────── */
+.dotace-defs {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(185,185,194,.6);
+  margin-top: 28px;
+  padding: 16px 20px;
+  border-left: 2px solid rgba(183,241,61,.3);
+  border-radius: 0 4px 4px 0;
+}
+
+/* ── Finance list (ikona + nadpis + popis) ──────────────────────────────── */
+.dotace-finance-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px 48px;
+}
+.dotace-finance-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.dotace-finance-list__icon {
+  color: var(--lime);
+  font-size: 28px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.dotace-finance-list__title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--text-white);
+  margin-bottom: 4px;
+}
+.dotace-finance-list__desc {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+@media (max-width: 760px) {
+  .dotace-finance-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Čísla kroků (1/2/3 reuse bsec-variants__letter) ──────────────────── */
+.dotace-step__num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Odkaz v textu ──────────────────────────────────────────────────────── */
+.dotace-link {
+  color: var(--lime);
+  text-decoration: none;
+}
+.dotace-link:hover {
+  text-decoration: underline;
+}

@@ -15,7 +15,8 @@
   box-sizing:border-box
 }
 html {
-  overflow-x:clip
+  overflow-x:clip;
+  scroll-padding-top:96px
 }
 body {
   overflow-x:hidden
@@ -2152,6 +2153,23 @@ a.guide-steps__item:hover .guide-steps__label {
 
 .hero-3d-poster.is-loaded {
   opacity:0
+}
+
+/* Statický snímek scény (1600×900, už včetně posunu canvasu uvnitř iframu) */
+.hero-3d-poster__img {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(1.15)
+}
+
+@media(max-width:889px) {
+  .hero-3d-poster__img {
+    display:none
+  }
+
 }
 
 .hero-mode-overlay {

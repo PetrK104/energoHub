@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="format-detection" content="telephone=no">
-<meta name="description" content="Přehled dotačních programů a legislativního rámce pro fotovoltaiku v bytových domech — NZÚ, licence ERÚ a povinnosti SVJ.">
-<meta name="keywords" content="dotace na fotovoltaiku, Nová zelená úsporám, příspěvek na solární panely, bezúročný úvěr FVE, zákon o sdílení elektřiny, Lex OZE II, stavební povolení FVE, dotace SVJ fotovoltaika, ERÚ souhlas, výše bezúročného úvěru na FVE, financovaní fve, Hranice 100 kW, Legislativní rámec fve, Certifikace zařízení fve, podmínky financovaní fve, jaké jsou mpžnosti dotace ma fve">
+<meta name="description" content="Podmínky bezúročného úvěru NZÚ a legislativní rámec FVE pro bytové domy — výpočtový vzorec, způsobilost SVJ a hranice 100 kW.">
+<meta name="keywords" content="NZÚ podmínky FVE, bezúročný úvěr FVE, Nová zelená úsporám bytový dům, podmínky způsobilosti FVE, vzorec NZÚ FVE, legislativa FVE, Lex OZE II, stavební povolení FVE, hranice 100 kW FVE, sdílení elektřiny SVJ, ERÚ, certifikace FVE, podmínky financování FVE">
 <meta name="category" content="Fotovoltaika">
-<title>Dotace a legislativa pro FVE — Energohub.info</title>
+<title>Podmínky a legislativa pro FVE — Energohub.info</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -40,9 +40,17 @@
             </div>
           </ul>
         </li>
-        <li><a href="bezpecnost.html">Bezpečnost</a></li>
+        <li class="nav-dropdown">
+          <a href="bezpecnost.html" class="nav-dropdown__trigger">Ostatní <span class="nav-dropdown__arrow">▾</span></a>
+          <ul class="nav-dropdown__menu">
+            <div class="nav-dropdown__menu-inner">
+              <li><a href="bezpecnost.html">Bezpečnost</a></li>
+              <li><a href="dotace.html">Dotace a financování</a></li>
+              <li><a href="forum.html">Fórum</a></li>
+            </div>
+          </ul>
+        </li>
         <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
-        <li><a href="forum.html">Fórum</a></li>
         <li><a href="index.html#o-nas">O nás</a></li>
         <li><a href="kontakty.html">Kontakty</a></li>
       </ul>
@@ -67,9 +75,11 @@
         <li><a href="pruvodce-jom.html">— Jednotné odběrné místo</a></li>
         <li><a href="pruvodce-fve.html">— Fotovoltaika</a></li>
         <li class="navbar-mobile__divider"></li>
-        <li><a href="bezpecnost.html">Bezpečnost</a></li>
+        <li><a href="#">Ostatní</a></li>
+        <li><a href="bezpecnost.html">— Bezpečnost</a></li>
+        <li><a href="dotace.html">— Dotace a financování</a></li>
+        <li><a href="forum.html">— Fórum</a></li>
         <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
-        <li><a href="forum.html">Fórum</a></li>
         <li><a href="index.html#o-nas">O nás</a></li>
         <li><a href="kontakty.html">Kontakty</a></li>
       </ul>
@@ -82,10 +92,10 @@
     <nav class="guide-sub-hero__breadcrumb" aria-label="Drobečková navigace">
       <a href="pruvodce-fve.html">Průvodce FVE</a>
       <span aria-hidden="true">→</span>
-      <span>Dotace a legislativa pro FVE</span>
+      <span>Podmínky a legislativa pro FVE</span>
     </nav>
-    <h1 class="guide-sub-hero__title">Dotace a legislativa pro FVE</h1>
-    <p class="guide-sub-hero__desc">Přehled dotačních programů (NZÚ, OPŽP), výše podpory, podmínky pro SVJ a legislativní hranice.</p>
+    <h1 class="guide-sub-hero__title">Podmínky a legislativa pro FVE</h1>
+    <p class="guide-sub-hero__desc">Bezúročný úvěr NZÚ — vzorec výpočtu, podmínky způsobilosti, legislativní rámec a hranice 100 kW pro FVE v bytovém domě.</p>
     <p class="guide-sub-hero__meta">
       <span class="ms-icon guide-sub-hero__clock" aria-hidden="true">schedule</span>
       Doba čtení: 7 min.
@@ -98,9 +108,9 @@
 
 
     <!-- Hlavička -->
-    <div class="fve-grants__header">
-    <h2 class="guide-section-title">Dotační programy a legislativní rámec pro FVE bytových domů</h2>
-      <p class="fve-grants__intro">Stránka shrnuje aktuální podporu, legislativní podmínky a nejčastější otázky SVJ k FVE pro bytové domy.</p>
+    <div class="fve-grants__header" style="margin-bottom:32px">
+    <h2 data-search-keys="NZÚ, Nová zelená úsporám, bezúročný úvěr FVE, podmínky NZÚ, vzorec NZÚ, financování FVE, způsobilost SVJ" class="guide-section-title" id="financovani-fve-z-nzu">Financování FVE z NZÚ</h2>
+
     </div>
 
     <!-- Velká čísla -->
@@ -217,7 +227,7 @@
     <!-- Detailní karty hranice 100 kW -->
     <div id="legislativa" style="margin-top:64px">
       <div class="fve-limit__header">
-        <h2 class="fve-limit__title">Hranice 100 kW — co z ní plyne v praxi</h2>
+        <h2 data-search-keys="100 kW limit, hranice výkonu FVE, licenční povinnost, přetoky, omezení, ERÚ, energie v praxi" class="fve-limit__title" id="hranice-100-kw-co-z-ni-plyne-v-praxi">Hranice 100 kW — co z ní plyne v praxi</h2>
       </div>
 
       <div class="fve-limit__grid">
@@ -274,23 +284,16 @@
       <h3 class="fve-grants__faq-title">Nejčastější otázky</h3>
 
       <details class="fve-grants__faq-item">
-        <summary class="fve-grants__faq-q">Kdo může žádat o podporu z Nové zelené úsporám?</summary>
-        <div class="fve-grants__faq-a">
-          <p>O podporu může žádat SVJ nebo bytové družstvo jako právnická osoba — nikoli jednotliví vlastníci bytů. Žádost podává statutární zástupce SVJ (předseda výboru) prostřednictvím online portálu SFŽP. K žádosti je potřeba zpracovaný renovační pas (zjednodušený průkaz energetické náročnosti budovy od registrovaného energetického poradce) a projektová dokumentace od autorizovaného projektanta.</p>
-        </div>
-      </details>
-
-      <details class="fve-grants__faq-item">
-        <summary class="fve-grants__faq-q">Lze bezúročný úvěr NZÚ kombinovat s dalším financováním?</summary>
-        <div class="fve-grants__faq-a">
-          <p>Ano. Bezúročný úvěr pokrývá částku danou vzorcem podle výkonu FVE a kapacity baterie (viz sekce Financování výše) — pokud investice tento rámec přesáhne, zbývající částku SVJ obvykle řeší z vlastních zdrojů nebo běžným bankovním úvěrem. Konkrétní seznam bank a stavebních spořitelen zapojených do programu NZÚ zveřejní Státní fond životního prostředí nejpozději koncem srpna 2026.</p>
-        </div>
-      </details>
-
-      <details class="fve-grants__faq-item">
         <summary class="fve-grants__faq-q">Potřebujeme stavební povolení?</summary>
         <div class="fve-grants__faq-a">
           <p>Pro FVE do výkonu 100 kW na stávající budově není potřeba ani stavební povolení, ani ohlášení záměru. Nad 100 kW je nutné stavební povolení — do 250 kW ve zjednodušeném řízení, nad touto hranicí v plném rozsahu. Většina bytových domů s 12–30 byty se s běžně navrhovaným výkonem FVE do tohoto limitu pohodlně vejde.</p>
+        </div>
+      </details>
+
+      <details class="fve-grants__faq-item">
+        <summary class="fve-grants__faq-q">Kolik FVE lze na bytový dům podpořit?</summary>
+        <div class="fve-grants__faq-a">
+          <p>Podmínky NZÚ stanovují maximálně 3 kWp na jednu bytovou jednotku. Dům s 20 byty tedy může získat bezúročný úvěr na FVE o výkonu nejvýše 60 kWp. Zároveň platí dolní hranice 5 kWp — menší instalace nejsou způsobilé. Základní výše úvěru odpovídá vzorci: 350 000 Kč za prvních 5 kWp + 40 000 Kč za každý další kWp + 15 000 Kč za každou kWh bateriového úložiště.</p>
         </div>
       </details>
 

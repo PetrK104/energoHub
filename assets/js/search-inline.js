@@ -2,7 +2,11 @@ import { createSearch } from './search.js';
 
 const IS_LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
 function pageUrl(url) {
-  return (IS_LOCAL && url !== '/') ? url + '.html' : url;
+  if (!IS_LOCAL) return url;
+  const hi = url.indexOf('#');
+  if (hi === -1) return url === '/' ? 'index.html' : url + '.html';
+  const path = url.slice(0, hi), hash = url.slice(hi);
+  return (path === '/' ? 'index.html' : path + '.html') + hash;
 }
 
 function esc(s) {
@@ -90,13 +94,35 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    bodyEl.innerHTML = hits.map((h, i) => {
-      const it = h.item;
-      return `<a class="search-result" href="${esc(pageUrl(it.url))}" id="scr-${i}">
-        <div class="search-result__title">${highlight(it.title, currentTokens)}</div>
-        ${it.description ? `<div class="search-result__desc">${highlight(it.description, currentTokens)}</div>` : ''}
-        <span class="search-result__cat">${esc(it.category)}</span>
-      </a>`;
+    const groups = [];
+    const groupMap = new Map();
+    for (const h of hits) {
+      const key = h.item.page || ('__' + h.item.url);
+      if (!groupMap.has(key)) {
+        const g = { pageTitle: h.item.page, category: h.item.category, hits: [] };
+        groups.push(g);
+        groupMap.set(key, g);
+      }
+      groupMap.get(key).hits.push(h);
+    }
+    let idx = 0;
+    bodyEl.innerHTML = groups.map(group => {
+      const header = group.pageTitle
+        ? `<div class="search-group__header">
+             <span class="search-group__page">${esc(group.pageTitle)}</span>
+             <span class="search-result__cat">${esc(group.category)}</span>
+           </div>`
+        : '';
+      const items = group.hits.map(h => {
+        const it = h.item;
+        const i = idx++;
+        const cls = group.pageTitle ? 'search-result search-result--grouped' : 'search-result';
+        return `<a class="${cls}" href="${esc(pageUrl(it.url))}" id="scr-${i}">
+          <div class="search-result__title">${highlight(it.title, currentTokens)}</div>
+          ${!group.pageTitle ? `<span class="search-result__cat">${esc(it.category)}</span>` : ''}
+        </a>`;
+      }).join('');
+      return header + items;
     }).join('');
 
     const n = hits.length;
