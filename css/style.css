@@ -2155,36 +2155,6 @@ a.guide-steps__item:hover .guide-steps__label {
   opacity:0
 }
 
-/* Statický snímek scény (1600×900, už včetně posunu canvasu uvnitř iframu) */
-.hero-3d-poster__img {
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter:brightness(1.15)
-}
-
-@media(max-width:889px) {
-  .hero-3d-poster__img {
-    display:none
-  }
-
-}
-
-.hero-mode-overlay {
-  position:absolute;
-  inset:0;
-  z-index:2;
-  background:#05050a;
-  pointer-events:none;
-  transition:opacity .85s ease
-}
-
-.hero-mode-overlay.is-fading {
-  opacity:0
-}
-
 /* ── Co je EnergoHub? ────────────────────────────────────────────────── */
 .home-about{background:#05050a;padding:160px 0}
 .home-about__container{width:100%;max-width:1440px;margin:0 auto;padding:0 80px}
