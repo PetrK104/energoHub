@@ -1885,6 +1885,9 @@ a.guide-steps__item:hover .guide-steps__label {
   width: 100%;
   max-width: 560px;
 }
+@media(max-width:760px) {
+  .home-faq__search-title { font-size:22px }
+}
 .fve-faq .fve-eyebrow,
 .fve-faq__title { text-align: center; }
 .fve-faq__search {
@@ -2011,7 +2014,7 @@ a.guide-steps__item:hover .guide-steps__label {
   .home-faq__container {
     padding:0 20px
   }
-
+  .home-faq__title { font-size:28px }
 }
 @media(max-width:760px) {
   .home-faq {
@@ -2020,6 +2023,7 @@ a.guide-steps__item:hover .guide-steps__label {
   .home-faq__container {
     padding:0 16px
   }
+  .home-faq__title { font-size:26px }
 
 }
 .fve-eyebrow {
@@ -2096,7 +2100,6 @@ a.guide-steps__item:hover .guide-steps__label {
   }
 
 
-  .home-faq__title { font-size:28px }
   .home-faq__q { font-size:18px }
 }
 
@@ -2171,6 +2174,6 @@ a.guide-steps__item:hover .guide-steps__label {
 .home-about__popular{margin-top:140px;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
 .home-about__popular .home-faq__search-title,.home-about__popular .home-faq__search-sub{text-align:left}
 .home-about__popular-cards{width:100%;margin-top:20px}
-@media(max-width:1100px){.home-about__container{padding:0 20px}.home-about__goals{gap:28px}}
-@media(max-width:760px){.home-about{padding:80px 0}.home-about__container{padding:0 16px}.home-about__goals{grid-template-columns:1fr;gap:32px}.home-about__goal{flex-direction:row;align-items:flex-start;text-align:left;gap:20px}.home-about__goal-text{align-items:flex-start}}
+@media(max-width:1100px){.home-about__container{padding:0 20px}.home-about__goals{gap:28px}.home-about__title{font-size:28px}.home-about__text{font-size:17px}}
+@media(max-width:760px){.home-about{padding:80px 0}.home-about__container{padding:0 16px}.home-about__title{font-size:26px}.home-about__goals{grid-template-columns:1fr;gap:32px}.home-about__goal{flex-direction:row;align-items:flex-start;text-align:left;gap:20px}.home-about__goal-text{align-items:flex-start}}
 
