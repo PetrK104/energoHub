@@ -1,0 +1,12 @@
+var KALK = {
+  JOM_NA_BYT:        2000,
+  FVE_VYROBA_NA_KWP: 950,
+  FVE_VLASTNI_PODIL: 0.65,
+  FVE_CENA_EL:       5.0,
+  FVE_ORIENT_H:      1.0,
+  FVE_ORIENT_L:      0.75,
+  FVE_MIN_VYKON:     20,
+  FVE_MAX_VYKON:     60,
+  FVE_VYKON_NA_BYT:  40 / 24,
+  SPOTREBA_NA_BYT:   3333
+};

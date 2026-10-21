@@ -3,7 +3,7 @@
   var state = {
     byty: 0, spotreba: 0, strecha: 'medium',
     fveOrientace: 1.0,
-    fveCenaEl: 5.0,
+    fveCenaEl: KALK.FVE_CENA_EL,
     tcNakladyRucne: 0,
     tcTypKoef: 1.0,
     zatFaktor: 0.40,
@@ -108,16 +108,16 @@
     var strecha  = state.strecha;
 
     // JOM
-    var uspora_jom    = byty * 2000;
+    var uspora_jom    = byty * KALK.JOM_NA_BYT;
     var naklady_bez   = byty * 8000;
     var naklady_s_jom = naklady_bez - uspora_jom;
 
     // FVE
-    var vykonMap = { small: 20, medium: 40, large: 60 };
+    var vykonMap = { small: KALK.FVE_MIN_VYKON, medium: 40, large: KALK.FVE_MAX_VYKON };
     var vykon    = vykonMap[strecha];
-    var vyroba   = vykon * 950 * state.fveOrientace;
+    var vyroba   = vykon * KALK.FVE_VYROBA_NA_KWP * state.fveOrientace;
     var vlastni_bez_jom = Math.min(vyroba * 0.45, spotreba * 0.40);
-    var vlastni_s_jom   = Math.min(vyroba * 0.65, spotreba * 0.65);
+    var vlastni_s_jom   = Math.min(vyroba * KALK.FVE_VLASTNI_PODIL, spotreba * KALK.FVE_VLASTNI_PODIL);
     var uspora_fve      = vlastni_s_jom * state.fveCenaEl;
     var investice_fve   = vykon * 50000;
     var navratnost_fve  = investice_fve / uspora_fve;

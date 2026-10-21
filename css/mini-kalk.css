@@ -1,0 +1,172 @@
+.calc-section .calc-section__center {
+  padding-bottom: 20px;
+}
+
+.calc-section__full {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 clamp(24px, 4vw, 80px) 80px;
+}
+.calc-section__full .calc-section__btn {
+  margin-top: 40px;
+}
+
+.mini-kalk {
+  background: #0f1014;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 8px;
+  padding: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* ── Slider row ─────────────────────────────────────────────── */
+.mini-kalk__slider-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+.mini-kalk__label {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-white);
+}
+.mini-kalk__num {
+  width: 72px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-white);
+  text-align: center;
+  outline: none;
+  -moz-appearance: textfield;
+}
+.mini-kalk__num::-webkit-inner-spin-button,
+.mini-kalk__num::-webkit-outer-spin-button { -webkit-appearance: none; }
+.mini-kalk__num:focus { border-color: rgba(183,241,61,.5); }
+
+/* ── Range input ────────────────────────────────────────────── */
+.mini-kalk__range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  background: rgba(255,255,255,.12);
+}
+.mini-kalk__range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 8px rgba(183,241,61,.4);
+  cursor: pointer;
+  transition: box-shadow .15s;
+}
+.mini-kalk__range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  background: var(--lime);
+  box-shadow: 0 0 8px rgba(183,241,61,.4);
+  cursor: pointer;
+}
+.mini-kalk__range:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba(183,241,61,.25);
+}
+.mini-kalk__range::-moz-range-track {
+  height: 6px;
+  border-radius: 3px;
+  background: transparent;
+}
+
+/* ── Output heading ─────────────────────────────────────────── */
+.mini-kalk__output-heading {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 28px 0 20px;
+}
+
+/* ── Three-column outputs ───────────────────────────────────── */
+.mini-kalk__outputs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.mini-kalk__col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 24px;
+}
+.mini-kalk__col:first-child {
+  padding-left: 0;
+  border-right: 1px solid rgba(255,255,255,.08);
+}
+.mini-kalk__col:nth-child(2) {
+  border-right: 1px solid rgba(255,255,255,.08);
+}
+.mini-kalk__col:last-child {
+  padding-right: 0;
+}
+.mini-kalk__val--main {
+  font-family: var(--font-heading);
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 700;
+  color: var(--lime);
+  line-height: 1.2;
+}
+.mini-kalk__val {
+  font-family: var(--font-heading);
+  font-size: clamp(16px, 1.5vw, 20px);
+  font-weight: 600;
+  color: var(--text-white);
+  line-height: 1.2;
+}
+.mini-kalk__sublabel {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ── Note ───────────────────────────────────────────────────── */
+.mini-kalk__note {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.6;
+  color: rgba(185,185,194,.45);
+  margin-top: 24px;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .mini-kalk {
+    padding: 24px 20px;
+  }
+  .mini-kalk__outputs {
+    grid-template-columns: 1fr;
+  }
+  .mini-kalk__col {
+    padding: 16px 0;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .mini-kalk__col:last-child {
+    border-bottom: none;
+  }
+}
