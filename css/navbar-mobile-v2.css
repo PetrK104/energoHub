@@ -1,0 +1,111 @@
+/* ── Mobile nav v2 — pouze index.html ───────────────────────── */
+
+.navbar-mobile--v2 {
+  left: 20px;
+  right: 20px;
+  margin-top: -1px;
+}
+.navbar-mobile--v2.is-open {
+  background: #ffffff0f;
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255,255,255,.12);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+}
+.navbar--menu-open {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+@media(max-width:760px) {
+  .navbar-mobile--v2 {
+    left: 16px;
+    right: 16px;
+  }
+}
+
+.navbar-mobile--v2 .navbar-mobile__nav {
+  padding: 8px 12px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* ── Sdílený řádek (summary i <a>) ─────────────────────────── */
+.nm2__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  list-style: none;
+  transition: background .15s;
+}
+.nm2__row:hover {
+  background: rgba(255,255,255,.05);
+}
+
+/* skrýt výchozí šipku <summary> */
+.nm2__accordion > summary { list-style: none; }
+.nm2__accordion > summary::-webkit-details-marker { display: none; }
+
+/* ── Název ──────────────────────────────────────────────────── */
+.nm2__title {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255,255,255,.65);
+  flex: 1;
+  transition: color .15s;
+}
+
+/* ── Šipka accordionu ───────────────────────────────────────── */
+.nm2__arrow {
+  font-size: 18px;
+  color: rgba(255,255,255,.3);
+  transition: transform .2s ease, color .15s;
+  margin-left: auto;
+}
+
+/* ── Otevřený accordion ─────────────────────────────────────── */
+.nm2__accordion[open] > .nm2__row .nm2__arrow {
+  transform: rotate(180deg);
+  color: rgba(183,241,61,.6);
+}
+.nm2__accordion[open] > .nm2__row .nm2__icon,
+.nm2__accordion[open] > .nm2__row .nm2__title {
+  color: var(--lime);
+}
+
+/* ── Sub-položky ────────────────────────────────────────────── */
+.nm2__sub {
+  list-style: none;
+  margin: 2px 0 6px 20px;
+  padding: 0 0 0 20px;
+  border-left: 1px solid rgba(183,241,61,.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  animation: nm2-fadein .18s ease;
+}
+@keyframes nm2-fadein {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.nm2__sub-link {
+  display: block;
+  padding: 9px 8px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(255,255,255,.5);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: color .15s, background .15s;
+}
+.nm2__sub-link:hover {
+  color: rgba(255,255,255,.9);
+  background: rgba(255,255,255,.04);
+}

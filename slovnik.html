@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="css/slovnik.css">
 <link rel="stylesheet" href="css/search.css">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" rel="stylesheet">
+<link rel="stylesheet" href="css/navbar-mobile-v2.css">
 </head>
 <body>
 
@@ -68,21 +69,45 @@
   </div>
 
   <!-- Mobilní menu -->
-  <div class="navbar-mobile" id="navMobile" aria-hidden="true">
+  <div class="navbar-mobile navbar-mobile--v2" id="navMobile" aria-hidden="true">
     <nav class="navbar-mobile__nav">
-      <ul class="navbar-mobile__links">
-        <li><a href="index.html#pruvodce">Průvodci opatření</a></li>
-        <li><a href="pruvodce-jom.html">— Jednotné odběrné místo</a></li>
-        <li><a href="pruvodce-fve.html">— Fotovoltaika</a></li>
-        <li class="navbar-mobile__divider"></li>
-        <li><a href="#">Poradna</a></li>
-        <li><a href="bezpecnost.html">— Bezpečnost</a></li>
-        <li><a href="dotace.html">— Dotace a financování</a></li>
-        <li><a href="forum.html">— Fórum</a></li>
-        <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
-        <li><a href="index.html#o-nas">O nás</a></li>
-        <li><a href="kontakty.html">Kontakty</a></li>
-      </ul>
+
+      <!-- Průvodci — accordion -->
+      <details class="nm2__accordion">
+        <summary class="nm2__row">
+          <span class="nm2__title">Průvodci</span>
+          <span class="ms-icon nm2__arrow" aria-hidden="true">expand_more</span>
+        </summary>
+        <ul class="nm2__sub">
+          <li><a href="pruvodce-jom.html" class="nm2__sub-link">Jednotné odběrné místo</a></li>
+          <li><a href="pruvodce-fve.html" class="nm2__sub-link">Fotovoltaika</a></li>
+        </ul>
+      </details>
+
+      <!-- Poradna — accordion -->
+      <details class="nm2__accordion">
+        <summary class="nm2__row">
+          <span class="nm2__title">Poradna</span>
+          <span class="ms-icon nm2__arrow" aria-hidden="true">expand_more</span>
+        </summary>
+        <ul class="nm2__sub">
+          <li><a href="bezpecnost.html" class="nm2__sub-link">Bezpečnost</a></li>
+          <li><a href="dotace.html" class="nm2__sub-link">Dotace a financování</a></li>
+          <li><a href="forum.html" class="nm2__sub-link">Fórum</a></li>
+        </ul>
+      </details>
+
+      <!-- Standalone -->
+      <a href="kalkulacka.html" class="nm2__row nm2__row--link">
+        <span class="nm2__title">Kalkulačka úspor</span>
+      </a>
+      <a href="index.html#o-nas" class="nm2__row nm2__row--link">
+        <span class="nm2__title">O nás</span>
+      </a>
+      <a href="kontakty.html" class="nm2__row nm2__row--link">
+        <span class="nm2__title">Kontakty</span>
+      </a>
+
     </nav>
   </div>
 </header>
@@ -469,6 +494,7 @@
   </div>
 </footer>
 
+<script>(function(){var menu=document.getElementById('navMobile');var navbar=document.querySelector('.navbar');if(!menu||!navbar)return;new MutationObserver(function(){navbar.classList.toggle('navbar--menu-open',menu.classList.contains('is-open'));}).observe(menu,{attributes:true,attributeFilter:['class']});})();</script>
 <script src="js/footer.js" defer></script>
 <script src="js/navbar.js" defer></script>
 <script src="js/slovnik.js" defer></script>
