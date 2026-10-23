@@ -12,6 +12,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+<link rel="preload" href="embed_2/assets/index-q1j9l2i6.js" as="script" crossorigin fetchpriority="high">
+<link rel="preload" href="embed_2/assets/index-n_mh-w3Q.css" as="style">
+<link rel="preload" href="/hdri/dikhololo_night_512.hdr" as="fetch" crossorigin>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/guide-shared.css">
 <link rel="stylesheet" href="css/fve.css">
@@ -122,7 +125,7 @@
     frameborder="0"
     scrolling="no"
     allowtransparency="true"
-    loading="lazy"
+    fetchpriority="high"
   ></iframe>
   <div class="fve-hero__scrim"></div>
   <div id="fvePoster" class="fve-hero__poster" aria-hidden="true"></div>
@@ -1896,7 +1899,7 @@
 <script src="js/fve-form.js" defer></script><script>(function(){var menu=document.getElementById('navMobile');var navbar=document.querySelector('.navbar');if(!menu||!navbar)return;new MutationObserver(function(){navbar.classList.toggle('navbar--menu-open',menu.classList.contains('is-open'));}).observe(menu,{attributes:true,attributeFilter:['class']});})();</script>
 <script src="js/footer.js" defer></script>
 <script src="js/navbar.js" defer></script>
-<script>(function(){var frame=document.querySelector('.fve-hero__3d-frame');var poster=document.getElementById('fvePoster');if(!frame||!poster)return;frame.addEventListener('load',function(){setTimeout(function(){poster.classList.add('is-loaded');setTimeout(function(){poster.remove();},600);},600);});})();</script>
+<script>(function(){var frame=document.querySelector('.fve-hero__3d-frame');var poster=document.getElementById('fvePoster');if(!frame||!poster)return;var done=false;function hide(){if(done)return;done=true;poster.classList.add('is-loaded');setTimeout(function(){poster.remove();},600);}window.addEventListener('message',function(e){if(e.data&&e.data.type==='hero3d:ready'&&e.source===frame.contentWindow)hide();});var t0=Date.now();(function poll(){var w;try{w=frame.contentWindow;}catch(e){}if((w&&w.__heroReady)||Date.now()-t0>10000){hide();return;}setTimeout(poll,150);})();})();</script>
 <script>(function(){function eq(){if(window.innerWidth>760)return;var a=document.querySelector('.fve-worth-card--yes'),b=document.querySelector('.fve-worth-card--no');if(!a||!b)return;a.style.height='';b.style.height='';var h=Math.max(a.offsetHeight,b.offsetHeight);a.style.height=h+'px';b.style.height=h+'px';}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',eq);}else{eq();}window.addEventListener('resize',eq);})();</script>
 <script>(function(){['phase01List','phase02List','phase03List','phase04List'].forEach(function(id){var list=document.getElementById(id);if(!list)return;var btnUp=list.parentElement.querySelector('.fve-phase__scroll-btn--up');var btnDown=list.parentElement.querySelector('.fve-phase__scroll-btn--down');function upd(){btnUp.disabled=list.scrollTop<=0;btnDown.disabled=list.scrollTop+list.clientHeight>=list.scrollHeight-1;}btnUp.addEventListener('click',function(){list.scrollBy({top:-110,behavior:'smooth'});});btnDown.addEventListener('click',function(){list.scrollBy({top:110,behavior:'smooth'});});list.addEventListener('scroll',upd);upd();});})();</script>
 <script>(function(){

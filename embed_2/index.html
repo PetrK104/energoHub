@@ -2,7 +2,6 @@
 <html lang="cs">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Energohub — 3D scéna</title>
     <script>
@@ -13,34 +12,11 @@
       }
     </script>
     <style>html,body,#root{background:#05050a;margin:0}</style>
-    <script type="module" crossorigin src="./assets/index-CCunHyqe.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-02EIRhj1.css">
+    <link rel="preload" href="/hdri/dikhololo_night_512.hdr" as="fetch" crossorigin>
+    <script type="module" crossorigin src="./assets/index-q1j9l2i6.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-n_mh-w3Q.css">
   </head>
   <body>
     <div id="root"></div>
-    <script>
-      window.addEventListener('load', function () {
-        ['/hdri/venice_sunset_512.hdr', '/hdri/dikhololo_night_512.hdr'].forEach(function (url) {
-          fetch(url, { priority: 'low' }).catch(function () {});
-        });
-        if (window.parent !== window) {
-          var ov = document.createElement('div');
-          ov.style.cssText = 'position:fixed;inset:0;background:#05050a;z-index:9999;pointer-events:none;opacity:0;transition:opacity .3s ease';
-          document.body.appendChild(ov);
-          document.addEventListener('click', function (e) {
-            if (!e.target.closest('.controls')) return;
-            ov.style.transition = 'none';
-            ov.offsetHeight;
-            ov.style.opacity = '1';
-            var f = 0;
-            function tick() {
-              if (++f < 12) requestAnimationFrame(tick);
-              else { ov.style.transition = 'opacity .3s ease'; ov.style.opacity = '0'; }
-            }
-            requestAnimationFrame(tick);
-          }, { once: true });
-        }
-      });
-    </script>
   </body>
 </html>
