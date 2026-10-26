@@ -2177,3 +2177,31 @@ a.guide-steps__item:hover .guide-steps__label {
 @media(max-width:1100px){.home-about__container{padding:0 20px}.home-about__goals{gap:28px}.home-about__title{font-size:28px}.home-about__text{font-size:17px}}
 @media(max-width:760px){.home-about{padding:80px 0}.home-about__container{padding:0 16px}.home-about__title{font-size:26px}.home-about__goals{grid-template-columns:1fr;gap:32px}.home-about__goal{flex-direction:row;align-items:flex-start;text-align:left;gap:20px}.home-about__goal-text{align-items:flex-start}}
 
+
+/* ── Typografie a neaktivní položky ──────────────────────────────────── */
+h1,h2,h3,.hero-title,.hero-nav__item-title{text-wrap:balance}
+p,.hero-nav__item-desc,.guide-qa__card-desc,.home-faq__a p{text-wrap:pretty}
+.hero-nav__item--soon{cursor:default}
+.hero-nav__item--soon:hover{background:var(--hero-card-bg);border-color:var(--hero-card-border)}
+
+/* ── Rytmus mezer mezi sekcemi ───────────────────────────────────────── */
+:root {
+  --space-section: clamp(64px, 8vw, 120px);
+  --space-head:    clamp(32px, 4vw, 56px);
+}
+
+.home-about { padding: var(--space-section) 0; }
+.home-about__header { margin-bottom: var(--space-head); }
+.home-about__popular { margin-top: var(--space-section); }
+
+.calc-section__center { padding: var(--space-section) 24px; }
+
+.process { padding: var(--space-section) 0; }
+.process-heading { margin-bottom: var(--space-head); }
+.process-steps { row-gap: clamp(40px, 5vw, 72px); }
+
+.showcase { padding: 0; }
+
+.home-faq { padding: var(--space-section) 0; }
+.home-faq__title { margin: 8px 0 var(--space-head); }
+.home-faq__search { margin-top: var(--space-head); }
