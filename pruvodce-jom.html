@@ -316,7 +316,7 @@
       </li>
       <li class="jom-ideal__item">
         <span class="jom-ideal__num">05</span>
-        <span class="jom-ideal__text">Projekty zaměřené na návratnost 3–6 let</span>
+        <span class="jom-ideal__text">Projekty zaměřené na návratnost 5–7 let</span>
       </li>
       <li class="jom-ideal__item">
         <span class="jom-ideal__num">06</span>
@@ -349,13 +349,13 @@
           <div class="jom-worth__stats">
             <div class="jom-worth__stat">
               <div class="jom-worth__stat-row">
-                <span class="jom-worth__stat-value">70 – 90 %</span>
+                <span class="jom-worth__stat-value">65 – 75 %</span>
               </div>
-              <span class="jom-worth__stat-label">typická míra vlastní spotřeby vyrobené elektřiny s JOM – oproti přibližně 30 % bez JOM</span>
+              <span class="jom-worth__stat-label">typická míra vlastní spotřeby vyrobené elektřiny s JOM – oproti přibližně 20 % bez JOM</span>
             </div>
             <div class="jom-worth__stat">
               <div class="jom-worth__stat-row">
-                <span class="jom-worth__stat-value">3 – 6</span>
+                <span class="jom-worth__stat-value">5 – 7</span>
                 <span class="jom-worth__stat-unit">let</span>
               </div>
               <span class="jom-worth__stat-label">orientační návratnost investice do FVE s JOM při správném návrhu a vhodném financování</span>
@@ -394,12 +394,12 @@
               <li>
                 <span class="jom-worth__card-key">Návratnost / délka smlouvy</span>
                 <span class="jom-worth__card-val jom-worth__card-val--lime"
-                      data-koupe="3–6 let"
-                      data-pronajem="10–20 let (bez investice)">3–6 let</span>
+                      data-koupe="5–7 let"
+                      data-pronajem="10–20 let (bez investice)">5–7 let</span>
               </li>
               <li>
                 <span class="jom-worth__card-key">Vlastní spotřeba FVE</span>
-                <span class="jom-worth__card-val jom-worth__card-val--lime">~70–90 %</span>
+                <span class="jom-worth__card-val jom-worth__card-val--lime">~65–75 % (s baterií 80–90 %)</span>
               </li>
               <li>
                 <span class="jom-worth__card-key">Přetoky do sítě</span>
@@ -500,7 +500,7 @@
       </div>
     </div>
 
-    <p class="jom-worth__note">Orientační hodnoty pro typický bytový dům s 15–48 bytovými jednotkami, při průměrné ceně elektřiny v řádu 5–6 Kč/kWh. Skutečná výše závisí na velikosti domu, výkonu FVE, orientaci střechy a podmínkách smlouvy.</p>
+    <p class="jom-worth__note">Orientační hodnoty pro typický bytový dům s 15–25 bytovými jednotkami, při průměrné ceně elektřiny v řádu 5–6 Kč/kWh. Skutečná výše závisí na velikosti domu, výkonu FVE, orientaci střechy a podmínkách smlouvy.</p>
 
     <!-- Kolik dům skutečně ušetří -->
     <div class="jom-savecalc">
@@ -590,11 +590,11 @@
       <div class="jom-sharing__grid">
         <div class="jom-sharing__pair">
           <div class="jom-sharing__price">
-            <span class="jom-sharing__price-val">8,00&nbsp;Kč <span>/ kWh</span></span>
+            <span class="jom-sharing__price-val"><b data-kalk-cena="2" style="font:inherit">6,00</b>&nbsp;Kč <span>/ kWh</span></span>
             <span class="jom-sharing__price-label">Standardní cena ze sítě – bez sdílení</span>
           </div>
           <figure class="jom-sharing__fig">
-            <img src="assets/images/vizualizace_sdileni_1.webp" alt="Elektřina nakupovaná ze sítě za 8 Kč/kWh – bez sdílení přes JOM" class="jom-sharing__img">
+            <img src="assets/images/vizualizace_sdileni_1.webp" alt="Elektřina nakupovaná ze sítě – bez sdílení přes JOM" class="jom-sharing__img">
           </figure>
         </div>
         <div class="jom-sharing__pair">
@@ -1407,7 +1407,7 @@
       <details class="fve-faq__item">
         <summary class="fve-faq__q">Jak rychlá je návratnost investice do JOM?</summary>
         <div class="fve-faq__a">
-          <p>Samotný přechod na JOM (bez FVE) přináší úsporu z výhodnějšího tarifu a snížené administrativy – u větších domů se investice může vrátit i pod 1 rok, u menších domů obvykle v řádu jednotek let. V kombinaci s fotovoltaikou se celková investice vrátí za 3–6 let, záleží na velikosti domu, výkonu FVE a způsobu financování. Právě proto doporučujeme realizovat JOM jako první krok – jeho úspory pak spolufinancují pořízení fotovoltaiky.</p>
+          <p>Samotný přechod na JOM (bez FVE) přináší úsporu z výhodnějšího tarifu a snížené administrativy – u větších domů se investice může vrátit i pod 1 rok, u menších domů obvykle v řádu jednotek let. V kombinaci s fotovoltaikou se celková investice vrátí za 5–7 let, záleží na velikosti domu, výkonu FVE a způsobu financování. Právě proto doporučujeme realizovat JOM jako první krok – jeho úspory pak spolufinancují pořízení fotovoltaiky.</p>
         </div>
       </details>
 
@@ -1525,6 +1525,7 @@
 
 <script src="js/fve-subnav.js" defer></script>
 <script>(function(){var menu=document.getElementById('navMobile');var navbar=document.querySelector('.navbar');if(!menu||!navbar)return;new MutationObserver(function(){navbar.classList.toggle('navbar--menu-open',menu.classList.contains('is-open'));}).observe(menu,{attributes:true,attributeFilter:['class']});})();</script>
+<script src="js/kalk-constants.js"></script>
 <script src="js/footer.js" defer></script>
 <script src="js/navbar.js" defer></script>
 <script src="js/jom-slider.js" defer></script>

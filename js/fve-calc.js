@@ -1,16 +1,18 @@
 (function () {
-  var PRICE      = 5.5;    // Kč/kWh
-  var YIELD      = 1050;   // kWh/kWp/rok
+  var PRICE      = (window.KALK && KALK.FVE_CENA_EL) || 6.0;    // Kč/kWh, zdroj: js/kalk-constants.js
+  var YIELD      = 1000;   // kWh/kWp/rok
   var COST_KWP   = 25500;  // Kč/kWp (bez baterie; 27–31 tis. s LFP baterií)
   var RANGE      = 0.15;   // ±15 %
   var CHART_H    = 300;    // px
 
   // Podíl vlastní spotřeby (self-consumption ratio)
-  // Bez baterie: model počítá s 50 % pokrytím roční spotřeby přes JOM.
+  // Bez baterie: model počítá s 65 % pokrytím roční spotřeby přes JOM.
   // S baterií: baterie zvyšuje self-consumption o 15 pp — konzervativní střed rozsahu
   // 15–20 pp zjištěného pro bytové budovy s denním cyklem (Fraunhofer ISE 2022).
-  var SELF_NO_BATTERY = 0.50;
-  var SELF_BATTERY    = 0.65;
+  var SELF_NO_BATTERY = (window.KALK && KALK.FVE_VLASTNI_PODIL) || 0.65;   // s JOM, bez baterie (js/kalk-constants.js)
+  var SELF_NO_JOM     = (window.KALK && KALK.FVE_VLASTNI_BEZ_JOM) || 0.20;   // bez JOM, bez baterie (js/kalk-constants.js)
+  var BATTERY_BOOST   = 0.15;   // baterie přidává 15 procentních bodů
+  var JOM_ADDON       = 200000; // Kč, stejná hodnota jako v js/fve-costs.js
 
   // Cena bateriového úložiště na bytovou jednotku
   // Orientační kapacita: 0,5 kWh/byt; instalovaný LFP systém v ČR 2024–2025: ~20 000 Kč/kWh.
@@ -32,6 +34,8 @@
   var barNoJom       = document.getElementById('barNoJom');
   var barNoJomV      = document.getElementById('barNoJomVal');
   var elBatteryNote  = document.getElementById('calcBatteryNote');
+  var elJomNote      = document.getElementById('calcJomNote');
+  var elChartNote    = document.getElementById('calcChartNote');
 
   if (!sliderApts || !elPayback) return;
 
@@ -46,36 +50,41 @@
     var orient     = radio('calcOrient') || 'J';
     var insul      = radio('calcInsul')  || 'mid';
     var hasBattery = radio('calcBattery') === 'yes';
+    var hasJom     = radio('calcJom') !== 'no';
 
     var oFactor   = ORIENT[orient] || 1;
     var iFactor   = INSUL[insul]   || 1;
-    var selfRatio = hasBattery ? SELF_BATTERY : SELF_NO_BATTERY;
 
     // Celková roční spotřeba budovy
     var totalAnnual = apts * consump * 12 * iFactor;
 
-    // Bez JOM — jen společné prostory (nemění se s baterií)
-    var commonAnnual = apts * 600;
-    var savingsNoJom = commonAnnual * PRICE;
+    // Podíl vlastní spotřeby podle varianty (JOM × baterie)
+    function selfRatio(jom, battery) {
+      var base = jom ? SELF_NO_BATTERY : SELF_NO_JOM;
+      return base + (battery ? BATTERY_BOOST : 0);
+    }
 
-    // S JOM — podíl pokrytý FVE závisí na přepínači baterie
-    var sizeJom     = totalAnnual * selfRatio / (YIELD * oFactor);
+    // Stejný systém pro obě varianty (dimenzovaný pro dům s JOM), aby šlo srovnat, co JOM přináší
+    var sizeKwp     = totalAnnual * selfRatio(true, hasBattery) / (YIELD * oFactor);
     var batteryCost = hasBattery ? apts * BATTERY_COST_PER_APT : 0;
-    var systemCost  = sizeJom * COST_KWP + batteryCost;
-    var savingsJom  = totalAnnual * selfRatio * PRICE;
-    var payback     = systemCost / savingsJom;
-    var mthPerApt   = savingsJom / 12 / apts;
+    function systemCost(jom) { return sizeKwp * COST_KWP + batteryCost + (jom ? JOM_ADDON : 0); }
+    function savings(jom, battery) { return totalAnnual * selfRatio(jom, battery) * PRICE; }
+
+    var cost       = systemCost(hasJom);
+    var savingsSel = savings(hasJom, hasBattery);
+    var payback    = cost / savingsSel;
+    var mthPerApt  = savingsSel / 12 / apts;
 
     // Rozsahy ±15 %
     var payMin  = Math.max(1, +(payback   * (1 - RANGE)).toFixed(1));
     var payMax  = +(payback   * (1 + RANGE)).toFixed(1);
-    var savYMin = Math.round(savingsJom / 1000 * (1 - RANGE));
-    var savYMax = Math.round(savingsJom / 1000 * (1 + RANGE));
+    var savYMin = Math.round(savingsSel / 1000 * (1 - RANGE));
+    var savYMax = Math.round(savingsSel / 1000 * (1 + RANGE));
     var savMMin = Math.round(mthPerApt * (1 - RANGE));
     var savMMax = Math.round(mthPerApt * (1 + RANGE));
 
-    var costMin = Math.round(systemCost * (1 - RANGE) / 1000);
-    var costMax = Math.round(systemCost * (1 + RANGE) / 1000);
+    var costMin = Math.round(cost * (1 - RANGE) / 1000);
+    var costMax = Math.round(cost * (1 + RANGE) / 1000);
 
     elPayback.textContent     = payMin + ' – ' + payMax;
     elSavingsYear.textContent = savYMin + ' – ' + savYMax;
@@ -84,34 +93,34 @@
     var elCostTotal = document.getElementById('resCostTotal');
     if (elCostTotal) elCostTotal.textContent = costMin + ' – ' + costMax;
 
-    // Sloupcový graf — pravý sloupec závisí na stavu přepínače
-    var refSavings, refMin, refMax;
-    if (hasBattery) {
-      // Referenční hodnota: stejný systém bez baterie (50 % pokrytí)
-      refSavings = totalAnnual * SELF_NO_BATTERY * PRICE;
-      barJom.querySelector('.fve-calc__bar-name').textContent   = 'S baterií + JOM';
-      barNoJom.querySelector('.fve-calc__bar-name').textContent = 'Bez baterie';
-    } else {
-      // Referenční hodnota: jen společné prostory bez JOM
-      refSavings = savingsNoJom;
-      barJom.querySelector('.fve-calc__bar-name').textContent   = 'S JOM';
-      barNoJom.querySelector('.fve-calc__bar-name').textContent = 'Bez JOM';
+    // Sloupcový graf — vždy stejné srovnání S JOM × Bez JOM (stejný systém, baterie dle výběru);
+    // vybraná varianta je zvýrazněná, druhá ztlumená
+    var savJom   = savings(true,  hasBattery);
+    var savNoJom = savings(false, hasBattery);
+    var maxSav   = Math.max(savJom, savNoJom);
+    barJom.style.height   = Math.max(6, Math.round(savJom   / maxSav * CHART_H)) + 'px';
+    barNoJom.style.height = Math.max(6, Math.round(savNoJom / maxSav * CHART_H)) + 'px';
+    barJom.style.opacity   = hasJom ? '1' : '.4';
+    barNoJom.style.opacity = hasJom ? '.4' : '1';
+
+    barJomV.textContent   = Math.round(savJom   / 1000 * (1 - RANGE)) + ' – ' + Math.round(savJom   / 1000 * (1 + RANGE)) + ' tis. Kč';
+    barNoJomV.textContent = Math.round(savNoJom / 1000 * (1 - RANGE)) + ' – ' + Math.round(savNoJom / 1000 * (1 + RANGE)) + ' tis. Kč';
+    if (elChartNote) {
+      elChartNote.textContent = 'Stejný systém ' + (hasBattery ? 's baterií' : 'bez baterie') +
+        '. S JOM využijí vyrobenou elektřinu všechny byty, bez JOM hlavně společné prostory.';
     }
 
-    var refPct = Math.min(Math.round((refSavings / savingsJom) * 100), 100);
-    barJom.style.height   = CHART_H + 'px';
-    barNoJom.style.height = Math.max(6, Math.round((refPct / 100) * CHART_H)) + 'px';
-
-    refMin = Math.round(refSavings / 1000 * (1 - RANGE));
-    refMax = Math.round(refSavings / 1000 * (1 + RANGE));
-    barJomV.textContent   = savYMin + ' – ' + savYMax + ' tis. Kč';
-    barNoJomV.textContent = refMin + ' – ' + refMax + ' tis. Kč';
-
-    // Poznámka pod přepínačem
+    // Poznámky pod přepínači
+    function pct(x) { return Math.round(x * 100); }
+    if (elJomNote) {
+      elJomNote.textContent = hasJom
+        ? 'S JOM: dům sdílí vyrobenou elektřinu mezi byty, orientační vlastní spotřeba ~' + pct(selfRatio(true, false)) + ' % roční výroby. Cena zahrnuje JOM (rozvaděč, měření, ~' + (JOM_ADDON / 1000) + ' 000 Kč).'
+        : 'Bez JOM: výrobu využijí hlavně společné prostory, orientační vlastní spotřeba ~' + pct(selfRatio(false, false)) + ' % roční výroby. Systém je stejný jako u varianty s JOM, většina výroby (zhruba 75–85 %) tak odtéká do sítě. Pozor: bezúročný úvěr NZÚ nepodporuje FVE jen pro společné prostory – elektřinu musí přednostně využívat byty.';
+    }
     if (elBatteryNote) {
       elBatteryNote.textContent = hasBattery
-        ? 'S baterií: orientační vlastní spotřeba ~65 % roční výroby (odhad pro bytové domy; závisí na kapacitě úložiště a křivce spotřeby). Cena zahrnuje odhadovaný náklad baterie ' + (BATTERY_COST_PER_APT / 1000).toFixed(0) + ' 000 Kč/byt.'
-        : 'Bez baterie: orientační vlastní spotřeba ~50 % roční výroby. Přebytky odchází do distribuční sítě.';
+        ? 'S baterií: vlastní spotřeba roste o ~' + pct(BATTERY_BOOST) + ' procentních bodů (odhad pro bytové domy; závisí na kapacitě úložiště a křivce spotřeby). Cena zahrnuje odhadovaný náklad baterie ' + (BATTERY_COST_PER_APT / 1000).toFixed(0) + ' 000 Kč/byt.'
+        : 'Bez baterie: přebytky odchází do distribuční sítě.';
     }
   }
 
@@ -132,6 +141,9 @@
     el.addEventListener('change', recalculate);
   });
   document.querySelectorAll('input[name="calcInsul"]').forEach(function (el) {
+    el.addEventListener('change', recalculate);
+  });
+  document.querySelectorAll('input[name="calcJom"]').forEach(function (el) {
     el.addEventListener('change', recalculate);
   });
   document.querySelectorAll('input[name="calcBattery"]').forEach(function (el) {

@@ -168,15 +168,15 @@
           </div>
           <div class="fve-costs__pill">
             <span class="fve-costs__pill-label">Roční výroba</span>
-            <span class="fve-costs__pill-value" id="costsPillOutput">~38 000 kWh</span>
+            <span class="fve-costs__pill-value" id="costsPillOutput">~40 000 kWh</span>
           </div>
           <div class="fve-costs__pill">
             <span class="fve-costs__pill-label">Návratnost investice</span>
-            <span class="fve-costs__pill-value">5–10 let</span>
+            <span class="fve-costs__pill-value">5–7 let</span>
           </div>
           <div class="fve-costs__pill">
-            <span class="fve-costs__pill-label">Max. bezúročný úvěr NZÚ</span>
-            <span class="fve-costs__pill-value">250 000 Kč / byt. jedn.</span>
+            <span class="fve-costs__pill-label">Strop úvěru NZÚ (dílčí renovace)</span>
+            <span class="fve-costs__pill-value">250 000 Kč / byt</span>
           </div>
         </div>
       </div>
@@ -209,8 +209,8 @@
           <span class="ms-icon" aria-hidden="true">eco</span>
         </div>
         <h3 class="fve-costs__info-title">Nová zelená úsporám</h3>
-        <p class="fve-costs__info-text">Státní dotační program může pokrýt významnou část nákladů na FVE pro bytové domy. Výše závisí na parametrech projektu a aktuální výzvě programu. Dotace se vztahuje i na bateriové úložiště jako součást FVE systému.</p>
-        <a href="fve-dotace-a-legislativa.html" class="fve-costs__info-link">Více o dotacích →</a>
+        <p class="fve-costs__info-text">Program NZÚ poskytuje SVJ na FVE bezúročný úvěr – úroky hradí stát, SVJ splácí jen půjčenou částku. Výše úvěru se počítá podle výkonu FVE (350 000 Kč za prvních 5 kWp + 40 000 Kč za každý další kWp) a kapacity baterie, celkově nejvýše 250 000 Kč na byt. Úvěr cenu instalace nesnižuje, odstraňuje jen náklady na financování.</p>
+        <a href="fve-dotace-a-legislativa.html" class="fve-costs__info-link">Více o financování →</a>
       </div>
       <div class="fve-costs__info-card">
         <div class="fve-costs__info-icon">
@@ -425,7 +425,7 @@
     var mid=Math.round((range[0]+range[1])/2);
     if(elTotal)elTotal.textContent=fmtN(range[0])+' – '+fmtN(range[1])+' Kč';
     if(elKwp)elKwp.textContent=kwp+' kWp';
-    if(elOut)elOut.textContent='~'+fmtN(kwp*950)+' kWh';
+    if(elOut)elOut.textContent='~'+fmtN(kwp*1000)+' kWh';
     if(elTitle)elTitle.querySelector('span').textContent='– příklad pro '+fmtN(mid)+' Kč';
     if(elList)elList.innerHTML=buildBreakdownHTML(kwp,withJom);
     if(window.renderFveCosts)window.renderFveCosts(buildSegments(kwp,withJom));

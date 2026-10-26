@@ -10,6 +10,9 @@
     period: 'rok',
     selected: { jom: false, fve: false, tc: false, zatepleni: false }
   };
+
+  var cenaInit = document.getElementById('fveCenaEl');
+  if (cenaInit) cenaInit.value = KALK.FVE_CENA_EL;
   var results = {};
 
   var STEP_META = {
@@ -95,7 +98,7 @@
     var zatStav = document.getElementById('zatStav');
 
     if (orient)  state.fveOrientace   = parseFloat(orient.value)  || 1.0;
-    if (cenaEl)  state.fveCenaEl      = parseFloat(cenaEl.value)  || 5.0;
+    if (cenaEl)  state.fveCenaEl      = parseFloat(cenaEl.value)  || KALK.FVE_CENA_EL;
     if (tcTyp)   state.tcTypKoef      = parseFloat(tcTyp.value)   || 1.0;
     if (tcRuc && tcRuc.value) state.tcNakladyRucne = parseInt(tcRuc.value, 10) || 0;
     if (zatStav) state.zatFaktor      = parseFloat(zatStav.value) || 0.40;
@@ -116,7 +119,7 @@
     var vykonMap = { small: KALK.FVE_MIN_VYKON, medium: 40, large: KALK.FVE_MAX_VYKON };
     var vykon    = vykonMap[strecha];
     var vyroba   = vykon * KALK.FVE_VYROBA_NA_KWP * state.fveOrientace;
-    var vlastni_bez_jom = Math.min(vyroba * 0.45, spotreba * 0.40);
+    var vlastni_bez_jom = Math.min(vyroba * KALK.FVE_VLASTNI_BEZ_JOM, spotreba * KALK.FVE_VLASTNI_BEZ_JOM);
     var vlastni_s_jom   = Math.min(vyroba * KALK.FVE_VLASTNI_PODIL, spotreba * KALK.FVE_VLASTNI_PODIL);
     var uspora_fve      = vlastni_s_jom * state.fveCenaEl;
     var investice_fve   = vykon * 50000;

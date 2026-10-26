@@ -540,15 +540,15 @@
           </div>
           <div class="fve-costs__pill">
             <span class="fve-costs__pill-label">Roční výroba</span>
-            <span class="fve-costs__pill-value" id="costsPillOutput">~38 000 kWh</span>
+            <span class="fve-costs__pill-value" id="costsPillOutput">~40 000 kWh</span>
           </div>
           <div class="fve-costs__pill">
             <span class="fve-costs__pill-label">Návratnost investice</span>
-            <span class="fve-costs__pill-value">5–10 let</span>
+            <span class="fve-costs__pill-value">5–7 let</span>
           </div>
           <div class="fve-costs__pill">
-            <span class="fve-costs__pill-label">Max. bezúročný úvěr NZÚ</span>
-            <span class="fve-costs__pill-value">250 000 Kč / byt. jedn.</span>
+            <span class="fve-costs__pill-label">Strop úvěru NZÚ (dílčí renovace)</span>
+            <span class="fve-costs__pill-value">250 000 Kč / byt</span>
           </div>
         </div>
       </div>
@@ -581,8 +581,8 @@
           <span class="ms-icon" aria-hidden="true">eco</span>
         </div>
         <h3 class="fve-costs__info-title">Nová zelená úsporám</h3>
-        <p class="fve-costs__info-text">Státní dotační program může pokrýt významnou část nákladů na FVE pro bytové domy. Výše závisí na parametrech projektu a aktuální výzvě programu. Dotace se vztahuje i na bateriové úložiště jako součást FVE systému.</p>
-        <a href="#dotace" class="fve-costs__info-link">Více o dotacích →</a>
+        <p class="fve-costs__info-text">Program NZÚ poskytuje SVJ na FVE bezúročný úvěr – úroky hradí stát, SVJ splácí jen půjčenou částku. Výše úvěru se počítá podle výkonu FVE (350 000 Kč za prvních 5 kWp + 40 000 Kč za každý další kWp) a kapacity baterie, celkově nejvýše 250 000 Kč na byt. Úvěr cenu instalace nesnižuje, odstraňuje jen náklady na financování.</p>
+        <a href="#dotace" class="fve-costs__info-link">Více o financování →</a>
       </div>
       <div class="fve-costs__info-card">
         <div class="fve-costs__info-icon">
@@ -720,11 +720,19 @@
           </li>
           <li>
             <span class="ms-icon" aria-hidden="true">check</span>
-            Výše úvěru: 350 000 Kč za prvních 5 kWp, + 40 000 Kč za každý další kWp, + 15 000 Kč za každou kWh bateriového úložiště – bez pevného horního stropu
+            Výše úvěru: 350 000 Kč za prvních 5 kWp, + 40 000 Kč za každý další kWp, + 15 000 Kč za každou kWh bateriového úložiště – celkově nejvýše 250 000 Kč na byt (strop úvěru u dílčí renovace). U samotné FVE obvykle rozhoduje limit 3 kWp na byt
           </li>
           <li>
             <span class="ms-icon" aria-hidden="true">check</span>
-            Podmínky: minimálně 5 kWp, maximálně 3 kWp na bytovou jednotku, alespoň 2 zapojené byty, třífázové připojení, budova zkolaudovaná před 1.&nbsp;1.&nbsp;2023
+            Podmínky: minimálně 5 kWp, maximálně 3 kWp na bytovou jednotku, alespoň 2 zapojené byty, třífázové připojení, budova zkolaudovaná před 1.&nbsp;1.&nbsp;2023, pouze nový systém (ne rozšíření stávajícího)
+          </li>
+          <li>
+            <span class="ms-icon" aria-hidden="true">check</span>
+            Využití elektřiny: musí ji přednostně využívat byty, přebytek může krýt společné prostory. FVE jen pro společné prostory se nepodporuje. Baterie je volitelná, lithiová, nejvýše 2&nbsp;kWh na každý kWp výkonu FVE
+          </li>
+          <li>
+            <span class="ms-icon" aria-hidden="true">check</span>
+            Vlastníci v SVJ: podíl právnických osob (kromě obcí a bytových družstev) nejvýše 50&nbsp;%, žádný jednotlivý vlastník nad 25&nbsp;%
           </li>
           <li>
             <span class="ms-icon" aria-hidden="true">check</span>
@@ -1463,18 +1471,31 @@
           </div>
         </div>
 
-      </div>
 
-      <!-- Přepínač baterie -->
-      <div class="fve-calc__battery-row">
-        <div class="fve-calc__battery-field">
-          <label class="fve-calc__label">Bateriové úložiště</label>
-          <div class="fve-calc__chips" role="group">
-            <label class="fve-calc__chip"><input type="radio" name="calcBattery" value="no" checked> Bez baterie</label>
-            <label class="fve-calc__chip"><input type="radio" name="calcBattery" value="yes"> S baterií</label>
+        <!-- Baterie (po třech základních vstupech) -->
+        <div class="fve-calc__field fve-calc__field--wide">
+          <div class="fve-calc__battery-field">
+            <label class="fve-calc__label">Bateriové úložiště</label>
+            <div class="fve-calc__chips" role="group">
+              <label class="fve-calc__chip"><input type="radio" name="calcBattery" value="no" checked> Bez baterie</label>
+              <label class="fve-calc__chip"><input type="radio" name="calcBattery" value="yes"> S baterií</label>
+            </div>
           </div>
+          <p class="fve-calc__battery-note" id="calcBatteryNote">Bez baterie: přebytky odchází do distribuční sítě.</p>
         </div>
-        <p class="fve-calc__battery-note" id="calcBatteryNote">Bez baterie: orientační vlastní spotřeba ~50 % roční výroby. Přebytky odchází do distribuční sítě.</p>
+
+        <!-- JOM (poslední volba) -->
+        <div class="fve-calc__field fve-calc__field--wide">
+          <div class="fve-calc__battery-field">
+            <label class="fve-calc__label">Sdílení elektřiny (JOM)</label>
+            <div class="fve-calc__chips" role="group">
+              <label class="fve-calc__chip"><input type="radio" name="calcJom" value="yes" checked> S JOM</label>
+              <label class="fve-calc__chip"><input type="radio" name="calcJom" value="no"> Bez JOM</label>
+            </div>
+          </div>
+          <p class="fve-calc__battery-note" id="calcJomNote"></p>
+        </div>
+
       </div>
 
       <!-- Výsledky + sloupcový graf -->
@@ -1527,7 +1548,7 @@
               </div>
             </div>
           </div>
-          <p class="fve-calc__chart-note">S JOM pokryje FVE celý dům, nejen společné prostory.</p>
+          <p class="fve-calc__chart-note" id="calcChartNote">S JOM pokryje FVE celý dům, nejen společné prostory.</p>
         </div>
 
       </div>
@@ -1646,6 +1667,7 @@
       </div>
 
     </div><!-- /stepForm -->
+
 
   </div>
 </section>
@@ -1895,6 +1917,7 @@
 <script src="js/fve-phases.js" defer></script>
 <script src="js/fve-demand.js" defer></script>
 <script src="js/fve-costs.js" defer></script>
+<script src="js/kalk-constants.js"></script>
 <script src="js/fve-calc.js" defer></script>
 <script src="js/fve-form.js" defer></script><script>(function(){var menu=document.getElementById('navMobile');var navbar=document.querySelector('.navbar');if(!menu||!navbar)return;new MutationObserver(function(){navbar.classList.toggle('navbar--menu-open',menu.classList.contains('is-open'));}).observe(menu,{attributes:true,attributeFilter:['class']});})();</script>
 <script src="js/footer.js" defer></script>
@@ -1971,7 +1994,7 @@
     var mid=Math.round((range[0]+range[1])/2);
     if(elTotal)elTotal.textContent=fmtN(range[0])+' – '+fmtN(range[1])+' Kč';
     if(elKwp)elKwp.textContent=kwp+' kWp';
-    if(elOut)elOut.textContent='~'+fmtN(kwp*950)+' kWh';
+    if(elOut)elOut.textContent='~'+fmtN(kwp*1000)+' kWh';
     if(elTitle)elTitle.querySelector('span').textContent='– příklad pro '+fmtN(mid)+' Kč';
     if(elList)elList.innerHTML=buildBreakdownHTML(kwp,withJom);
     if(window.renderFveCosts)window.renderFveCosts(buildSegments(kwp,withJom));
