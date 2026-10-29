@@ -84,3 +84,8 @@ body .fve-faq--spaced{padding-top:160px}
   body .guide-qa--footer::before{top:56px}
   body .site-search{padding-top:56px}
 }
+
+/* Nadpis „Zjistěte více…" – stejný styl jako „Nejčtenější témata na webu" na hlavní stránce */
+.guide-qa--footer .guide-qa__title{font:600 clamp(26px,2vw,36px)/1.2 var(--font-heading)}
+.site-search__title{font-weight:600}
+@media(max-width:760px){.guide-qa--footer .guide-qa__title{font-size:24px}.site-search__title{font-size:22px}}

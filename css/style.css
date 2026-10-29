@@ -2235,3 +2235,7 @@ p,.hero-nav__item-desc,.guide-qa__card-desc,.home-faq__a p{text-wrap:pretty}
 .showcase{padding-top:var(--sec-half);padding-bottom:var(--sec-half)}
 .home-faq{padding-top:var(--sec-half)}
 @media(max-width:1100px){.home-about{padding-top:112px}}
+
+/* „Nejčtenější témata na webu" – stejný styl jako „Doporučené pořadí realizace" */
+.home-about__popular .home-faq__search-title{font:600 clamp(26px,2vw,36px)/1.2 var(--font-heading)}
+@media(max-width:760px){.home-about__popular .home-faq__search-title{font-size:24px}}

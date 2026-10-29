@@ -5,3 +5,7 @@
 #dopad.jom-impact{padding-top:160px;padding-bottom:0}
 #kdy-smysl .jom-savecalc{margin-top:160px}
 @media(max-width:1100px){#vysledek-prechodu,#dopad.jom-impact{padding-top:112px}#kdy-smysl .jom-savecalc{margin-top:112px}}
+
+/* Doporučené pořadí realizace – stejná škála jako nadpis „Zjistěte více…" */
+.jom-impact__flow-title{font:600 clamp(26px,2vw,36px)/1.2 var(--font-heading)}
+@media(max-width:760px){.jom-impact__flow-title{font-size:24px}}
