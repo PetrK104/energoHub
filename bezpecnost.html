@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/guide-shared.css">
 <link rel="stylesheet" href="css/fve.css">
-<link rel="stylesheet" href="css/bezpecnost.css">
+<link rel="stylesheet" href="css/bezpecnost.css?v=5">
 <link rel="stylesheet" href="css/search.css">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" rel="stylesheet">
 <link rel="stylesheet" href="css/navbar-mobile-v2.css">
@@ -30,7 +30,7 @@
 
       <ul class="navbar-links">
         <li class="nav-dropdown">
-          <a href="index.html#pruvodce" class="nav-dropdown__trigger">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></a>
+          <span class="nav-dropdown__trigger" tabindex="0" aria-haspopup="true">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></span>
           <ul class="nav-dropdown__menu">
             <div class="nav-dropdown__menu-inner">
               <li><a href="pruvodce-jom.html">Jednotné odběrné místo (JOM)</a></li>
@@ -42,7 +42,7 @@
           </ul>
         </li>
         <li class="nav-dropdown">
-          <a href="bezpecnost.html" class="nav-dropdown__trigger">Poradna <span class="nav-dropdown__arrow">▾</span></a>
+          <span class="nav-dropdown__trigger" tabindex="0" aria-haspopup="true">Poradna <span class="nav-dropdown__arrow">▾</span></span>
           <ul class="nav-dropdown__menu">
             <div class="nav-dropdown__menu-inner">
               <li><a href="bezpecnost.html">Bezpečnost</a></li>
@@ -129,7 +129,7 @@
 </section>
 
 <!-- Navigační karty témat -->
-<section class="bsec-hero" style="padding-top:40px">
+<section class="bsec-hero">
   <div class="bsec-hero__container">
     <div class="bsec-nav__grid">
 
@@ -137,7 +137,7 @@
         <span class="bsec-nav__num">01</span>
         <div class="bsec-nav__card-body">
           <h2 data-search-keys="statický posudek, střecha, nosnost střechy, statik, FVE bezpečnost, posudek konstrukce" class="bsec-nav__title" id="staticky-posudek-strechy">Statický posudek střechy</h2>
-          <p class="bsec-nav__desc">Dokument od autorizovaného statika, který potvrzuje, že střecha a nosná konstrukce domu unesou panely, sníh i vítr. Do 100&nbsp;kW ho zákon nenařizuje.</p>
+          <p class="bsec-nav__desc">Posudek statika o únosnosti střechy. Do 100&nbsp;kW je FVE bez povolení, jen pokud nezasahuje do nosných konstrukcí; zatížení ověřuje statik.</p>
         </div>
       </a>
 
@@ -153,7 +153,7 @@
         <span class="bsec-nav__num">03</span>
         <div class="bsec-nav__card-body">
           <h2 data-search-keys="projektová dokumentace, projekt FVE, dokumentace, stavební povolení, elektroprojekt" class="bsec-nav__title" id="projektova-dokumentace">Projektová dokumentace</h2>
-          <p class="bsec-nav__desc">Soubor výkresů a popisů zachycující, co přesně bylo instalováno, kde a jak. Základ pro pojistné řízení, servisní zásahy i případné spory s dodavatelem. Do 100&nbsp;kW není povinná.</p>
+          <p class="bsec-nav__desc">Výkresy a technický popis instalace. Do 100&nbsp;kW ji stavební zákon úředně nevyžaduje, schéma zapojení a technické řešení jsou ale povinné pro připojení k distribuční soustavě a výchozí revizi.</p>
         </div>
       </a>
 
@@ -161,7 +161,7 @@
         <span class="bsec-nav__num">04</span>
         <div class="bsec-nav__card-body">
           <h2 data-search-keys="hasicí přístroj, hasící přístroj, požár FVE, hasič, hašení, bezpečnost FVE" class="bsec-nav__title" id="hasici-pristroj">Hasicí přístroj</h2>
-          <p class="bsec-nav__desc">Přenosný hasicí přístroj v blízkosti technické místnosti. Nejlevnější opatření na celém seznamu – zákon ho u starších staveb nevyžaduje, ale pojišťovny jeho absenci zohledňují při plnění.</p>
+          <p class="bsec-nav__desc">Přenosný hasicí přístroj u technické místnosti. Nejlevnější opatření – starší domy ho historicky mít nemusely, pro FVE ho ale vyžadují požadavky požární prevence a normy pro elektrická zařízení.</p>
         </div>
       </a>
 
@@ -169,7 +169,7 @@
         <span class="bsec-nav__num">05</span>
         <div class="bsec-nav__card-body">
           <h2 data-search-keys="revize baterie, bateriové úložiště, revize, bezpečnost baterie, kontrola baterie" class="bsec-nav__title" id="revize-baterioveho-uloziste">Revize bateriového úložiště</h2>
-          <p class="bsec-nav__desc">Revize od technika způsobilého pro Li-ion baterie, která ověřuje stav BMS, ochrany proti přebití a hlubokému vybití a odvětrání místnosti. Pojišťovny ji stále častěji vyžadují jako podmínku plnění.</p>
+          <p class="bsec-nav__desc">Revize od technika způsobilého pro Li-ion baterie, která ověřuje stav BMS, ochrany proti přebití a hlubokému vybití a odvětrání místnosti. Je povinnou součástí výchozí revize elektrického zařízení (zákon č. 250/2021 Sb.).</p>
         </div>
       </a>
 
@@ -191,14 +191,15 @@
       <details class="home-faq__item">
         <summary class="home-faq__q">Je statický posudek potřeba, i když instalace FVE nevyžaduje stavební povolení?</summary>
         <div class="home-faq__a">
-          <p>Zákon u instalací do 100&nbsp;kW povolení nevyžaduje a statický posudek nenařizuje. Doporučuje se ale vždy. Česká asociace pojišťoven ho doporučuje zpracovat i bez povinnosti, protože bez posudku může pojišťovna při poškození střechy nebo nosné konstrukce plnění krátit nebo odmítnout.</p>
+          <p>Zákon u instalací do 100&nbsp;kW povolení nevyžaduje a statický posudek nenařizuje. Doporučuje se ale vždy.<span class="jom-edc__tip" tabindex="0"><span class="jom-edc__tip-icon" aria-label="Více informací">i</span><span class="jom-edc__tip-popup" role="tooltip">Instalace do 100&nbsp;kW spadá mezi drobné stavby bez nutnosti povolení záměru pouze za podmínky, že nezasahuje do nosných konstrukcí budovy a nemění způsob jejího užívání (příloha č. 1 zákona č. 283/2021 Sb.). K ověření, zda dodatečné zatížení nezasáhne limitní únosnost nosné konstrukce, je posouzení statikem v praxi nezbytným podkladem.</span></span></p>
+          <p>Česká asociace pojišťoven ho doporučuje zpracovat i bez povinnosti, protože bez posudku může pojišťovna při poškození střechy nebo nosné konstrukce plnění krátit nebo odmítnout.</p>
         </div>
       </details>
 
       <details class="home-faq__item">
         <summary class="home-faq__q">Co se stane, když FVE nemá PBŘ a dojde k požáru?</summary>
         <div class="home-faq__a">
-          <p>Pod 100&nbsp;kW zákon požárně bezpečnostní řešení (PBŘ) nevyžaduje, požadavky na požární bezpečnost ale platí i tak. Bez PBŘ je obtížné doložit jejich splnění. Pojišťovna pak může plnění krátit nebo odmítnout a odpovědnost za vzniklou škodu může nést SVJ.</p>
+          <p>Stavební úřad u drobných staveb do 100&nbsp;kW PBŘ nepředkládá, avšak u bytových domů (SVJ) si instalace technologie, kabelové trasy přes požární úseky a umístění baterií vyžadují posouzení požárním specialistou k zajištění souladu s předpisy požární ochrany. Bez PBŘ je obtížné doložit tento soulad. Pojišťovna pak může plnění krátit nebo odmítnout a odpovědnost za vzniklou škodu může nést SVJ.</p>
         </div>
       </details>
 
@@ -212,14 +213,14 @@
       <details class="home-faq__item">
         <summary class="home-faq__q">Jak často se kontroluje hasicí přístroj u FVE?</summary>
         <div class="home-faq__a">
-          <p>Přenosné hasicí přístroje jsou požárně bezpečnostní zařízení a kontrola provozuschopnosti se provádí nejméně jednou za rok, dále po každém použití nebo při pochybnosti o provozuschopnosti. Periodické zkoušky se provádějí po 3 letech u vodních a pěnových přístrojů a po 5 letech u ostatních. Doklad o kontrole patří do dokumentace k FVE.</p>
+          <p>Přenosné hasicí přístroje jsou vyhrazené věcné prostředky požární ochrany. Kontrola provozuschopnosti se provádí nejméně 1× ročně a periodické zkoušky jednou za 3 roky u vodních a pěnových a jednou za 5 let u ostatních. Doklad o kontrole patří do dokumentace k FVE.</p>
         </div>
       </details>
 
       <details class="home-faq__item">
         <summary class="home-faq__q">Je revize bateriového úložiště povinná, nebo jen doporučená?</summary>
         <div class="home-faq__a">
-          <p>Rozlišují se dvě revize. Výchozí revize celého fotovoltaického systému je podmínkou připojení k distribuční síti a týká se všech instalací, s baterií i bez ní. Samostatná revize úložiště podle normy pro Li-ion baterie se doporučuje – pojišťovny ji stále častěji vyžadují jako podmínku smlouvy nebo plnění, i když ji jiný předpis přímo nenařizuje.</p>
+          <p>Výchozí revize celého fotovoltaického systému je podmínkou připojení k distribuční síti a týká se všech instalací, s baterií i bez ní. Revize bateriového úložiště je povinnou součástí výchozí revize vyhrazeného elektrického zařízení dle zákona č. 250/2021 Sb. a příslušných technických norem, nikoliv pouze nezávazným doporučením.</p>
         </div>
       </details>
 

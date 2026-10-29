@@ -14,7 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/guide-shared.css">
-<link rel="stylesheet" href="css/bezpecnost.css">
+<link rel="stylesheet" href="css/bezpecnost.css?v=4">
 <link rel="stylesheet" href="css/search.css">
 <link rel="stylesheet" href="css/navbar-mobile-v2.css">
 </head>
@@ -29,7 +29,7 @@
 
       <ul class="navbar-links">
         <li class="nav-dropdown">
-          <a href="index.html#pruvodce" class="nav-dropdown__trigger">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></a>
+          <span class="nav-dropdown__trigger" tabindex="0" aria-haspopup="true">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></span>
           <ul class="nav-dropdown__menu">
             <div class="nav-dropdown__menu-inner">
               <li><a href="pruvodce-jom.html">Jednotné odběrné místo (JOM)</a></li>
@@ -41,7 +41,7 @@
           </ul>
         </li>
         <li class="nav-dropdown">
-          <a href="bezpecnost.html" class="nav-dropdown__trigger">Poradna <span class="nav-dropdown__arrow">▾</span></a>
+          <span class="nav-dropdown__trigger" tabindex="0" aria-haspopup="true">Poradna <span class="nav-dropdown__arrow">▾</span></span>
           <ul class="nav-dropdown__menu">
             <div class="nav-dropdown__menu-inner">
               <li><a href="bezpecnost.html">Bezpečnost</a></li>
@@ -143,6 +143,7 @@
         <p class="bsec-topic__intro">Pro instalaci a provoz Li-ion baterií platí samostatná norma ČSN EN IEC 62485-5. Revize se řídí obecnými pravidly pro revize elektrických zařízení a FVE. Při výběru revizního technika se vyplatí vyžádat si reference u bateriových systémů, samostatnou kvalifikaci pro Li-ion ale předpisy nevyžadují.</p>
         <ul class="bsec-topic__list">
           <li>Výchozí revizi FVE vyžaduje distributor jako podmínku připojení.</li>
+          <li>Revize bateriového úložiště je povinnou součástí výchozí revize vyhrazeného elektrického zařízení dle zákona č. 250/2021 Sb. a příslušných technických norem, nikoliv pouze nezávazným doporučením.</li>
           <li>Revizní firmy uvádějí, že výchozí revize je před uvedením do provozu povinná pro připojení k distribuční síti. Distributor může požadovat konkrétní podklady, ověřte je u něj.</li>
           <li>Neprovedená nebo negativní revize může způsobit zásadní problém při pojistném plnění. Konkrétní požadavky pojišťovny vyplývají z pojistné smlouvy, proto je vhodné je ověřit předem.</li>
           <li>Revize je potřeba znovu při rozšíření nebo úpravě systému (například doplnění baterie) a při podezření na poškození po bouři nebo zásahu bleskem.</li>
@@ -181,7 +182,7 @@
       <div class="bsec-topic__subsect" id="s05-5">
         <h2 data-search-keys="postup SVJ revize baterie, objednání revize baterie" class="bsec-sub__heading">Praktický postup pro SVJ</h2>
         <ul class="bsec-topic__list">
-          <li>První revize se provádí před uvedením systému do provozu. Intervaly dalších revizí určuje revizní technik podle prostředí a ČSN 33 2000-6 a podle pokynů výrobce baterie; závazné jednotné lhůty pro FVE předpis neuvádí a revizní firmy doporučují obvykle 2 až 4 roky.</li>
+          <li>První revize se provádí před uvedením systému do provozu. Závazné jednotné lhůty přímo pro technologii FVE samostatný řádek v předpisu nemají, provozovatel je však povinen dodržet maximální stanovené lhůty (v praxi obvykle 2 až 4 roky).</li>
           <li>Revizní zprávu je vhodné uchovávat spolu se statickým posudkem, PBŘ a projektovou dokumentací jako součást jednoho celku – usnadní to budoucí servis, reklamaci i jednání s pojišťovnou.</li>
           <li>Revizi objednejte s uvedením rozsahu (FVE i bateriové úložiště, AC i DC strana) a předejte reviznímu technikovi projektovou dokumentaci včetně schémat a technických listů.</li>
           <li>Při převzetí zprávy zkontrolujte, že rozlišuje závažnost zjištěných závad.</li>

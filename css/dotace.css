@@ -86,3 +86,7 @@
 .dotace-link:hover {
   text-decoration: underline;
 }
+
+/* Mezery mezi bloky – stejné jako na podstránkách FVE a JOM */
+#faq.home-faq{padding-bottom:0}
+@media(max-width:1100px){body .dotace-page{padding-bottom:56px!important}}

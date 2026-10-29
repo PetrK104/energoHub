@@ -360,6 +360,14 @@
     "category": "Dotace"
   },
   {
+    "title": "Nejčastější otázky",
+    "page": "Dotace a financování energetických úprav",
+    "url": "/dotace#nejcastejsi-otazky",
+    "text": "nejčastější otázky",
+    "keywords": "Nová zelená úsporám, NZÚ, bezúročný úvěr, dotace na renovaci, zateplení bytový dům, SVJ dotace, financování energetických úprav, NZÚ Light, renovace bytového domu, renovace rodinný dům, SFŽP",
+    "category": "Dotace"
+  },
+  {
     "title": "Diskuzní fórum",
     "page": "",
     "url": "/forum",
@@ -496,6 +504,14 @@
     "category": "Jednotné odběrné místo (JOM)"
   },
   {
+    "title": "Jak se bytový dům po přechodu na JOM změní",
+    "page": "Přechod na JOM – realizace a technické podmínky – Průvodce JOM",
+    "url": "/jom-jak-funguje-prechod#jak-se-bytovy-dum-po-prechodu-na-jom-zmeni",
+    "text": "jak se bytový dům po přechodu na jom změní",
+    "keywords": "po přechodu na JOM, výsledek přechodu, před a po JOM, změna po zavedení JOM, jedno odběrné místo",
+    "category": "Jednotné odběrné místo (JOM)"
+  },
+  {
     "title": "Jak JOM snižuje náklady a proč záleží na pořadí",
     "page": "Přechod na JOM – realizace a technické podmínky – Průvodce JOM",
     "url": "/jom-jak-funguje-prechod#jak-jom-snizuje-naklady-a-proc-zalezi-na-poradi",
@@ -624,38 +640,6 @@
     "category": "Fotovoltaika"
   },
   {
-    "title": "Kolik stojí FVE pro bytový dům?",
-    "page": "Fotovoltaika pro bytové domy",
-    "url": "/pruvodce-fve#kolik-stoji-fve-pro-bytovy-dum",
-    "text": "kolik stojí fve pro bytový dům?",
-    "keywords": "náklady FVE, cena FVE, kolik stojí FVE, investice do FVE, orientační cena, rozpočet FVE",
-    "category": "Fotovoltaika"
-  },
-  {
-    "title": "Podmínky a legislativní rámec",
-    "page": "Fotovoltaika pro bytové domy",
-    "url": "/pruvodce-fve#podminky-a-legislativni-ramec",
-    "text": "podmínky a legislativní rámec",
-    "keywords": "NZÚ podmínky, Nová zelená úsporám, bezúročný úvěr FVE, vzorec NZÚ, legislativa FVE, zákon, způsobilost SVJ",
-    "category": "Fotovoltaika"
-  },
-  {
-    "title": "Hranice 100 kW a co z ní plyne",
-    "page": "Fotovoltaika pro bytové domy",
-    "url": "/pruvodce-fve#hranice-100-kw-a-co-z-ni-plyne",
-    "text": "hranice 100 kw a co z ní plyne",
-    "keywords": "100 kW hranice, limit výkonu FVE, licenční povinnost, přetoky, omezení výkonu, ERÚ",
-    "category": "Fotovoltaika"
-  },
-  {
-    "title": "Na co se zaměřit při hodnocení nabídky",
-    "page": "Fotovoltaika pro bytové domy",
-    "url": "/pruvodce-fve#na-co-se-zamerit-pri-hodnoceni-nabidky",
-    "text": "na co se zaměřit při hodnocení nabídky",
-    "keywords": "hodnocení nabídky FVE, výběr dodavatele FVE, jak porovnat nabídky FVE, cenová nabídka",
-    "category": "Fotovoltaika"
-  },
-  {
     "title": "Kolik FVE ušetří ročně?",
     "page": "Fotovoltaika pro bytové domy",
     "url": "/pruvodce-fve#kolik-fve-usetri-rocne",
@@ -701,46 +685,6 @@
     "url": "/pruvodce-jom#pro-koho-se-jom-nejvice-vyplati",
     "text": "pro koho se jom nejvíce vyplatí",
     "keywords": "pro koho JOM, vhodnost JOM, ideální kandidát, bytový dům, SVJ, podmínky JOM",
-    "category": "Jednotné odběrné místo (JOM)"
-  },
-  {
-    "title": "Plný přínos JOM se projeví v kombinaci s FVE na střeše",
-    "page": "Jednotné odběrné místo",
-    "url": "/pruvodce-jom#plny-prinos-jom-se-projevi-v-kombinaci-s-fve-na-strese",
-    "text": "plný přínos jom se projeví v kombinaci s fve na střeše",
-    "keywords": "JOM a FVE, přínos JOM, fotovoltaika, kombinace JOM FVE, výhody",
-    "category": "Jednotné odběrné místo (JOM)"
-  },
-  {
-    "title": "EDC nebo JOM?",
-    "page": "Jednotné odběrné místo",
-    "url": "/pruvodce-jom#edc-nebo-jom",
-    "text": "edc nebo jom?",
-    "keywords": "EDC, JOM, srovnání EDC JOM, rozdíl, distribuce, komunitní sdílení, virtuální, fyzické",
-    "category": "Jednotné odběrné místo (JOM)"
-  },
-  {
-    "title": "Od samostatných odběrů k jednomu JOM",
-    "page": "Jednotné odběrné místo",
-    "url": "/pruvodce-jom#od-samostatnych-odberu-k-jednomu-jom",
-    "text": "od samostatných odběrů k jednomu jom",
-    "keywords": "přechod na JOM, postup, od samostatných odběrů, jeden odběr, JOM přechod",
-    "category": "Jednotné odběrné místo (JOM)"
-  },
-  {
-    "title": "Jak probíhá přechod na JOM",
-    "page": "Jednotné odběrné místo",
-    "url": "/pruvodce-jom#jak-probiha-prechod-na-jom",
-    "text": "jak probíhá přechod na jom",
-    "keywords": "přechod JOM, jak probíhá přechod, fáze přechodu, smlouva distributor, JOM postup",
-    "category": "Jednotné odběrné místo (JOM)"
-  },
-  {
-    "title": "Jak JOM snižuje náklady a proč záleží na pořadí",
-    "page": "Jednotné odběrné místo",
-    "url": "/pruvodce-jom#jak-jom-snizuje-naklady-a-proc-zalezi-na-poradi",
-    "text": "jak jom snižuje náklady a proč záleží na pořadí",
-    "keywords": "úspory JOM, snížení nákladů, pořadí odečtů, distribuční poplatek, jak JOM šetří",
     "category": "Jednotné odběrné místo (JOM)"
   },
   {

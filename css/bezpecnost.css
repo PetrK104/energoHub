@@ -176,3 +176,16 @@
   .bsec-hero__title{text-align:center;margin-bottom:12px}
   .bsec-hero__lead{text-align:center;margin-left:auto;margin-right:auto}
 }
+
+.jom-edc__tip{position:relative;display:inline-flex;align-items:center;vertical-align:middle;margin-left:5px}
+.jom-edc__tip-icon{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);font:600 12px/1 var(--font-body);color:rgba(255,255,255,.55);cursor:default;flex-shrink:0;align-self:center}
+.jom-edc__tip-popup{position:absolute;bottom:calc(100% + 8px);left:0;width:280px;background:#13151e;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:14px 16px;font:400 13px/1.6 var(--font-body);color:rgba(255,255,255,.7);box-shadow:0 8px 32px rgba(0,0,0,.6);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s,visibility .2s;z-index:30}
+.jom-edc__tip:hover .jom-edc__tip-popup,.jom-edc__tip:focus-within .jom-edc__tip-popup{opacity:1;visibility:visible}
+
+.home-faq__a p+p{margin-top:1.7em}
+
+/* Mezery mezi bloky – stejné jako na podstránkách FVE a JOM (160 px desktop, 112 px do 1100 px) */
+body .bsec-hero{padding-top:100px}
+body .bsec-hero .bsec-nav__grid{margin-top:0}
+body .bsec-topic{padding-bottom:160px!important}
+@media(max-width:1100px){body .bsec-topic{padding-bottom:112px!important}}

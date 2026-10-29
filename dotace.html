@@ -15,8 +15,8 @@
 <link rel="stylesheet" href="css/style.css"><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 <link rel="stylesheet" href="css/guide-shared.css">
 <link rel="stylesheet" href="css/fve.css">
-<link rel="stylesheet" href="css/bezpecnost.css">
-<link rel="stylesheet" href="css/dotace.css">
+<link rel="stylesheet" href="css/bezpecnost.css?v=4">
+<link rel="stylesheet" href="css/dotace.css?v=2">
 <link rel="stylesheet" href="css/search.css">
 <link rel="stylesheet" href="css/navbar-mobile-v2.css">
 </head>
@@ -31,7 +31,7 @@
 
       <ul class="navbar-links">
         <li class="nav-dropdown">
-          <a href="index.html#pruvodce" class="nav-dropdown__trigger">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></a>
+          <span class="nav-dropdown__trigger" tabindex="0" aria-haspopup="true">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></span>
           <ul class="nav-dropdown__menu">
             <div class="nav-dropdown__menu-inner">
               <li><a href="pruvodce-jom.html">Jednotné odběrné místo (JOM)</a></li>
@@ -43,7 +43,7 @@
           </ul>
         </li>
         <li class="nav-dropdown">
-          <a href="bezpecnost.html" class="nav-dropdown__trigger">Poradna <span class="nav-dropdown__arrow">▾</span></a>
+          <span class="nav-dropdown__trigger" tabindex="0" aria-haspopup="true">Poradna <span class="nav-dropdown__arrow">▾</span></span>
           <ul class="nav-dropdown__menu">
             <div class="nav-dropdown__menu-inner">
               <li><a href="bezpecnost.html">Bezpečnost</a></li>
@@ -129,7 +129,7 @@
   </div>
 </section>
 
-<section class="dotace-page" style="padding-top:80px;padding-bottom:80px">
+<section class="dotace-page" style="padding-top:100px;padding-bottom:80px">
   <div class="bsec-topic__container">
 
     <!-- Tři čísla -->
@@ -161,7 +161,7 @@
         <ul class="bsec-topic__list">
           <li>Úvěr poskytuje zapojená banka nebo stavební spořitelna, stát jí kompenzuje úroky i poplatky.</li>
           <li>Úvěr nesnižuje cenu opatření, odstraňuje jen náklady na financování. Dotace se nevrací, úvěr ano.</li>
-          <li>Novostavby se nepodporují.</li>
+          <li>Běžné novostavby se nepodporují (výjimkou je novostavba nahrazující původní odstraněný dům u komplexního řešení).</li>
           <li>SFŽP přijímá žádosti od 25.&nbsp;6.&nbsp;2026 do 31.&nbsp;10.&nbsp;2029 nebo do vyčerpání prostředků. Banky úvěry spouštějí postupně od podzimu 2026.</li>
         </ul>
       </div>
@@ -304,56 +304,64 @@
         </div>
       </div>
 
-      <!-- FAQ -->
-      <div class="fve-grants__faq">
-        <h3 class="fve-grants__faq-title">Nejčastější otázky</h3>
+    </div>
+  </div>
+</section>
 
-        <details class="fve-grants__faq-item">
-          <summary class="fve-grants__faq-q">Čím se bezúročný úvěr liší od dotace?</summary>
-          <div class="fve-grants__faq-a">
+<section class="home-faq" id="faq">
+  <div class="home-faq__container">
+
+    <div class="home-faq__header">
+      <p class="fve-eyebrow">FAQ</p>
+      <h2 class="home-faq__title" id="nejcastejsi-otazky">Nejčastější otázky</h2>
+    </div>
+
+    <div class="home-faq__list">
+
+      <details class="home-faq__item">
+          <summary class="home-faq__q">Čím se bezúročný úvěr liší od dotace?</summary>
+          <div class="home-faq__a">
             <p>Dotace se nevrací, úvěr ano. Stát u úvěru hradí úroky a poplatky, takže se splácí jen půjčená částka. Výhodou oproti běžnému úvěru je nulové úrokové zatížení – pořizovací cena renovace tak neklesá, ale celkové finanční náklady ano.</p>
           </div>
-        </details>
+      </details>
 
-        <details class="fve-grants__faq-item">
-          <summary class="fve-grants__faq-q">Může o podporu žádat jednotlivý vlastník bytu?</summary>
-          <div class="fve-grants__faq-a">
+      <details class="home-faq__item">
+          <summary class="home-faq__q">Může o podporu žádat jednotlivý vlastník bytu?</summary>
+          <div class="home-faq__a">
             <p>U bytového domu ne – žádá SVJ nebo bytové družstvo jako celek. Majitelé rodinných domů žádají sami. Vlastník bytu v bytovém domě se na žádosti nepodílí přímo, záleží na rozhodnutí SVJ.</p>
           </div>
-        </details>
+      </details>
 
-        <details class="fve-grants__faq-item">
-          <summary class="fve-grants__faq-q">Lze úvěr kombinovat s dalším financováním?</summary>
-          <div class="fve-grants__faq-a">
+      <details class="home-faq__item">
+          <summary class="home-faq__q">Lze úvěr kombinovat s dalším financováním?</summary>
+          <div class="home-faq__a">
             <p>Ano. Úvěr lze sjednat na vyšší částku, než program kompenzuje – stát pak hradí úroky jen do stanovených limitů. Zbývající část lze hradit z fondu oprav, vlastních zdrojů nebo běžného bankovního úvěru.</p>
           </div>
-        </details>
+      </details>
 
-        <details class="fve-grants__faq-item">
-          <summary class="fve-grants__faq-q">Od kdy banky úvěry poskytují?</summary>
-          <div class="fve-grants__faq-a">
+      <details class="home-faq__item">
+          <summary class="home-faq__q">Od kdy banky úvěry poskytují?</summary>
+          <div class="home-faq__a">
             <p>Podmínky zapojení bank zveřejnilo Ministerstvo životního prostředí 16.&nbsp;9.&nbsp;2026 a první instituce úvěry spouštějí od podzimu 2026. Aktuální seznam zapojených bank je na webu programu <a href="https://www.novazelenausporam.cz" target="_blank" rel="noopener" class="dotace-link">novazelenausporam.cz</a>.</p>
           </div>
-        </details>
+      </details>
 
-        <div class="home-faq__search">
-          <h3 class="home-faq__search-title">Nenašli jste odpověď na svou otázku?</h3>
-          <p class="home-faq__search-sub">Zkuste vyhledat dané téma na webu.</p>
-          <div class="search-input-wrap home-faq__search-wrap">
-            <span class="search-icon-wrap" aria-hidden="true"><span class="ms-icon">search</span></span>
-            <input class="search-input" id="searchCtaInput"
-                   type="search" autocomplete="off" autocorrect="off"
-                   autocapitalize="off" spellcheck="false"
-                   placeholder="Hledat na webu…"
-                   aria-label="Hledat na webu">
-            <button class="search-clear" id="searchCtaClear" aria-label="Smazat" hidden type="button"><span class="ms-icon" aria-hidden="true">close</span></button>
-          </div>
-          <span class="search-live" id="searchCtaLive" aria-live="polite" aria-atomic="true"></span>
-          <div class="search-body search-cta__body" id="searchCtaBody" hidden></div>
-        </div>
+    </div>
 
+    <div class="home-faq__search">
+      <h3 class="home-faq__search-title">Nenašli jste odpověď na svou otázku?</h3>
+      <p class="home-faq__search-sub">Zkuste vyhledat dané téma na webu.</p>
+      <div class="search-input-wrap home-faq__search-wrap">
+        <span class="search-icon-wrap" aria-hidden="true"><span class="ms-icon">search</span></span>
+        <input class="search-input" id="searchCtaInput"
+               type="search" autocomplete="off" autocorrect="off"
+               autocapitalize="off" spellcheck="false"
+               placeholder="Hledat na webu…"
+               aria-label="Hledat na webu">
+        <button class="search-clear" id="searchCtaClear" aria-label="Smazat" hidden type="button"><span class="ms-icon" aria-hidden="true">close</span></button>
       </div>
-
+      <span class="search-live" id="searchCtaLive" aria-live="polite" aria-atomic="true"></span>
+      <div class="search-body search-cta__body" id="searchCtaBody" hidden></div>
     </div>
   </div>
 </section>

@@ -88,7 +88,25 @@ body {
 .nav-dropdown__trigger {
   display:flex;
   align-items:center;
-  gap:5px
+  gap:5px;
+  font-family:var(--font-body);
+  font-weight:500;
+  font-size:15px;
+  color:var(--text-muted);
+  cursor:default;
+  transition:color .2s ease
+}
+.nav-dropdown:hover .nav-dropdown__trigger,.nav-dropdown:focus-within .nav-dropdown__trigger {
+  color:var(--text-white)
+}
+.nav-dropdown:focus-within .nav-dropdown__arrow {
+  transform:rotate(180deg)
+}
+.nav-dropdown:focus-within .nav-dropdown__menu {
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transform:translateY(0)
 }
 .nav-dropdown__arrow {
   font-size:10px;
@@ -329,7 +347,7 @@ body {
 
 
   .process-step__title { font-size:20px }
-  .process-step__desc { font-size:15px }
+  .process-step__desc { font-size:16px }
 }
 .hero {
   --hero-title-color: var(--text-white);
@@ -624,6 +642,7 @@ body {
   display:inline-flex;
   align-items:center;
   justify-content:center;
+  cursor:pointer;
   transition:transform .15s ease,background .15s ease,border-color .15s ease,color .6s ease
 }
 .btn:hover {
@@ -1327,7 +1346,6 @@ body {
   padding:0 80px
 }
 .process-heading {
-  max-width:clamp(640px,44.4vw,852px);
   margin-bottom:32px
 }
 .process-title {
@@ -1411,14 +1429,14 @@ body {
 .process-step__title {
   font-family:var(--font-heading);
   font-weight:700;
-  font-size:clamp(18px,1.4vw,24px);
+  font-size:clamp(20px,1.4vw,24px);
   color:#ffffff47;
   margin-bottom:8px;
   transition:color .4s ease
 }
 .process-step__desc {
   font-family:var(--font-body);
-  font-size:clamp(14px,1vw,16px);
+  font-size:clamp(16px,1vw,18px);
   line-height:1.6;
   color:#ffffff2e;
   transition:color .4s ease
@@ -2205,3 +2223,15 @@ p,.hero-nav__item-desc,.guide-qa__card-desc,.home-faq__a p{text-wrap:pretty}
 .home-faq { padding: var(--space-section) 0; }
 .home-faq__title { margin: 8px 0 var(--space-head); }
 .home-faq__search { margin-top: var(--space-head); }
+
+/* Mezery mezi sekcemi hlavní stránky – stejné jako u průvodců (160 px desktop, 112 px do 1100 px) */
+:root{--sec-half:80px}
+@media(max-width:1100px){:root{--sec-half:56px}}
+.home-about{padding-top:var(--sec-half);padding-bottom:var(--sec-half)}
+.calc-section{margin-top:var(--sec-half);margin-bottom:var(--sec-half)}
+.calc-section .calc-section__center{padding-top:var(--sec-half)}
+.calc-section .calc-section__full{padding-bottom:var(--sec-half)}
+.process{padding-top:var(--sec-half);padding-bottom:var(--sec-half)}
+.showcase{padding-top:var(--sec-half);padding-bottom:var(--sec-half)}
+.home-faq{padding-top:var(--sec-half)}
+@media(max-width:1100px){.home-about{padding-top:112px}}

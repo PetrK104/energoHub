@@ -67,3 +67,20 @@
   .guide-qa__card{padding:20px 20px}
 }
 .guide-qa__card--back{background:transparent;border-color:rgba(183,241,61,.35)}.guide-qa__card--back:hover{background:rgba(183,241,61,.05);border-color:rgba(183,241,61,.6)}@media(max-width:1100px){.guide-qa__title{font-size:28px}}@media(max-width:760px){.fve-explain__title,.fve-faq__title,.guide-qa__title{font-size:26px}.guide-qa__card-icon{display:none}}.fve-phases__lead{font:400 17px/1.65 var(--font-body);color:var(--text-muted);margin-top:16px}
+
+/* Mezery mezi sekcemi – desktop 160 px (80 + 80), do 1 100 px 112 px (56 + 56) */
+body .fve-phases--guide{padding-bottom:160px}
+body .fve-case{padding-top:160px}
+body .fve-faq--spaced{padding-top:160px}
+@media(max-width:1100px){
+  body .fve-explain,body .fve-compare,body .fve-faq,body .jom-compare,body .jom-ideal,body .jom-quiz,body .fve-calc,body .guide-qa{padding-top:56px;padding-bottom:56px}
+  body .fve-explain{padding-top:112px}
+  body .fve-phases--guide{padding-top:56px;padding-bottom:56px}
+  body .fve-case{padding-top:56px;padding-bottom:56px}
+  body .fve-faq--spaced{padding-top:56px}
+  body .fve-glossary{padding-top:56px}
+  body .guide-sub-hero+section{padding-top:64px!important}
+  body .guide-qa--footer{padding-top:112px}
+  body .guide-qa--footer::before{top:56px}
+  body .site-search{padding-top:56px}
+}
