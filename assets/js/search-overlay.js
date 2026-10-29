@@ -315,7 +315,22 @@ function open(openerEl) {
   overlay.setAttribute('aria-hidden', 'false');
   overlay.classList.add('is-open');
   document.body.style.overflow = 'hidden';
+  syncViewport();
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', syncViewport);
+    window.visualViewport.addEventListener('scroll', syncViewport);
+  }
   requestAnimationFrame(() => inputEl.focus());
+}
+
+// Na mobilu se po otevření klávesnice zmenší vizuální viewport – overlay se podle něj
+// přizpůsobí, aby výsledky nezmizely pod klávesnicí.
+function syncViewport() {
+  const vv = window.visualViewport;
+  if (!overlay || !vv) return;
+  overlay.style.top = vv.offsetTop + 'px';
+  overlay.style.height = vv.height + 'px';
+  overlay.style.bottom = 'auto';
 }
 
 function close() {
@@ -323,6 +338,11 @@ function close() {
   overlay.classList.remove('is-open');
   overlay.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
+  if (window.visualViewport) {
+    window.visualViewport.removeEventListener('resize', syncViewport);
+    window.visualViewport.removeEventListener('scroll', syncViewport);
+  }
+  overlay.style.top = overlay.style.height = overlay.style.bottom = '';
   if (openedByPointer) {
     lastOpener?.blur();
   } else {

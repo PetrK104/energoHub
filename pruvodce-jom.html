@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/guide-shared.css?v=8">
 <link rel="stylesheet" href="css/jom.css">
-<link rel="stylesheet" href="css/search.css">
+<link rel="stylesheet" href="css/search.css?v=2">
 <link rel="stylesheet" href="css/navbar-mobile-v2.css">
 </head>
 <body>
@@ -670,7 +670,7 @@
 <script src="js/jom-quiz.js" defer></script>
 <script>(function(){var frame=document.querySelector('.fve-hero__3d-frame');var poster=document.getElementById('jomPoster');if(!frame||!poster)return;var done=false;function hide(){if(done)return;done=true;poster.classList.add('is-loaded');setTimeout(function(){poster.remove();},600);}window.addEventListener('message',function(e){if(e.data&&e.data.type==='hero3d:ready'&&e.source===frame.contentWindow)hide();});var t0=Date.now();(function poll(){var w;try{w=frame.contentWindow;}catch(e){}if((w&&w.__heroReady)||Date.now()-t0>10000){hide();return;}setTimeout(poll,150);})();})();</script>
 <script>(function(){if(!('ontouchstart' in window))return;var frame=document.querySelector('.fve-hero__3d-frame');if(!frame)return;var ov=document.createElement('div');ov.style.cssText='position:fixed;left:0;right:0;top:0;height:0;z-index:90;touch-action:pan-y;';document.body.appendChild(ov);function update(){var r=frame.getBoundingClientRect();var top=Math.max(0,r.top);var bottom=Math.min(window.innerHeight,r.bottom);if(bottom>top+4){ov.style.top=top+'px';ov.style.height=(bottom-top)+'px';}else{ov.style.height='0';}}update();window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);window.addEventListener('load',update);setTimeout(update,400);setTimeout(update,1200);var sx,sy;ov.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});ov.addEventListener('touchend',function(e){var t=e.changedTouches[0],dx=Math.abs(t.clientX-sx),dy=Math.abs(t.clientY-sy);if(dx<30&&dy<30){try{var r=frame.getBoundingClientRect(),cx=t.clientX-r.left,cy=t.clientY-r.top,el=frame.contentDocument.elementFromPoint(cx,cy);if(el){var btn=el.closest?el.closest('button,[role=button]'):null;(btn||el).click();}}catch(err){}}},{passive:true});})();</script>
-<script type="module" src="assets/js/search-overlay.js"></script>
+<script type="module" src="assets/js/search-overlay.js?v=2"></script>
 <script type="module" src="assets/js/search-inline.js"></script>
 </body>
 </html>

@@ -19,6 +19,7 @@
 
 /* ── Overlay ────────────────────────────────────────────────────────────── */
 #searchOverlay {
+  box-sizing: border-box;
   position: fixed;
   inset: 0;
   z-index: 500;
@@ -45,6 +46,7 @@
 .search-dialog {
   width: 100%;
   max-width: 680px;
+  min-width: 0;
   margin: 0 20px;
   display: flex;
   flex-direction: column;
@@ -128,6 +130,9 @@
   scrollbar-color: rgba(255,255,255,.12) transparent;
   flex: 1 1 auto;
   min-height: 0;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* ── Výsledek ───────────────────────────────────────────────────────────── */
@@ -179,6 +184,7 @@
   justify-content: space-between;
   gap: 12px;
   padding: 12px 20px 6px;
+  min-width: 0;
 }
 /* oddělovač mezi skupinami */
 .search-result + .search-group__header {
@@ -196,7 +202,10 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  min-width: 0;
+  flex: 1 1 auto;
 }
+.search-group__header .search-result__cat { flex-shrink: 0; }
 
 /* Sekce pod skupinou — o stupeň nižší vizuální váha */
 .search-result--grouped {
@@ -286,5 +295,16 @@ mark {
   .search-dialog {
     margin: 0 16px;
     max-height: calc(100dvh - 88px);
+    max-height: calc(100% - 12px);
   }
+  /* Vyhledávání na konci stránky – výsledky se nesmí rozšířit za šířku obrazovky */
+  .search-cta__body {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .search-result { padding: 12px 16px; overflow-wrap: anywhere; }
+  .search-group__header { padding: 12px 16px 6px; }
+  .search-result--grouped { padding-left: 20px; }
 }
