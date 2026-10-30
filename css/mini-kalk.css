@@ -134,7 +134,7 @@
 .mini-kalk__val {
   font-family: var(--font-heading);
   font-size: clamp(16px, 1.5vw, 20px);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-white);
   line-height: 1.2;
 }
@@ -147,8 +147,8 @@
 /* ── Note ───────────────────────────────────────────────────── */
 .mini-kalk__note {
   font-family: var(--font-body);
-  font-size: 12px;
-  line-height: 1.6;
+  font-size:var(--fs-caption);
+  line-height:var(--lh-caption);
   color: rgba(185,185,194,.45);
   margin-top: 24px;
 }
