@@ -4,6 +4,7 @@
   --lime-dark: #9fe024;
   --text-white: #ffffff;
   --text-muted: #b9b9c2;
+  --text-dim: #8c8c97;
   --card-bg: rgba(24, 24, 26, .55);
   --card-border: rgba(255, 255, 255, .09);
   --font-heading: "Figtree", sans-serif;
@@ -120,7 +121,7 @@ button,input,select,textarea {
 .nav-dropdown__trigger {
   display:flex;
   align-items:center;
-  gap:5px;
+  gap:4px;
   font-family:var(--font-body);
   font-weight:500;
   font-size:15px;
@@ -214,10 +215,10 @@ button,input,select,textarea {
   font-weight:600;
   letter-spacing:.06em;
   text-transform:uppercase;
-  color:#ffffff59;
+  color:var(--text-dim);
   border:1px solid rgba(255,255,255,.15);
   border-radius:8px;
-  padding:2px 6px;
+  padding:var(--chip-pad-xs);
   white-space:nowrap;
   flex-shrink:0
 }
@@ -232,7 +233,6 @@ button,input,select,textarea {
     padding:0 20px
   }
 
-
   .guides-title { font-size:28px }
   .guide-card-title { font-size:20px }
   .process-step__num { font-size:64px }
@@ -242,7 +242,7 @@ button,input,select,textarea {
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  gap:5px;
+  gap:4px;
   width:40px;
   height:40px;
   border:none;
@@ -307,7 +307,7 @@ button,input,select,textarea {
 }
 .navbar-mobile__links a {
   display:block;
-  padding:11px 8px;
+  padding:12px 8px;
   font:500 16px/1 var(--font-body);
   color:var(--text-muted);
   text-decoration:none;
@@ -321,7 +321,7 @@ button,input,select,textarea {
 .navbar-mobile__links a[href^=pruvodce-] {
   font-size:14px;
   padding-left:20px;
-  color:#fff6
+  color:var(--text-dim)
 }
 .navbar-mobile__links a[href^=pruvodce-]:hover {
   color:#ffffffbf
@@ -329,7 +329,7 @@ button,input,select,textarea {
 .navbar-mobile__divider {
   height:1px;
   background:#ffffff12;
-  margin:6px 0
+  margin:8px 0
 }
 .navbar-mobile__cta {
   display:block;
@@ -372,7 +372,6 @@ button,input,select,textarea {
   .navbar-container {
     padding:0 16px
   }
-
 
   .process-step__title { font-size:20px }
 }
@@ -634,26 +633,8 @@ button,input,select,textarea {
   max-width:clamp(540px,37.5vw,720px);
   pointer-events:auto
 }
-.hero-title {
-  font-family:var(--font-heading);
-  font-weight:700;
-  font-size:46px;
-  line-height:var(--lh-h1);
-  letter-spacing:-.01em;
-  color:var(--hero-title-color);
-  margin-bottom:24px;
-  transition:color .6s ease
-}
-.hero-text {
-  font-family:var(--font-body);
-  font-weight:400;
-  font-size:var(--fs-perex);
-  line-height:var(--lh-perex);
-  color:var(--hero-text-color);
-  max-width:clamp(460px,31.9vw,614px);
-  margin-bottom:36px;
-  transition:color .6s ease
-}
+.hero-title {font-family:var(--font-heading);font-weight:700;font-size:46px;line-height:var(--lh-h1);letter-spacing:0;color:var(--hero-title-color);transition:color .6s ease}
+.hero-text {font-family:var(--font-body);font-weight:400;font-size:var(--fs-perex);line-height:var(--lh-perex);color:var(--hero-text-color);max-width:clamp(460px,31.9vw,614px);transition:color .6s ease}
 .hero-buttons {
   display:flex;
   gap:14px;
@@ -662,8 +643,8 @@ button,input,select,textarea {
 .btn {
   font-family:var(--font-body);
   font-weight:600;
-  font-size:clamp(15px,1.04vw,20px);
-  padding:clamp(15px,1.04vw,20px) clamp(26px,1.8vw,34px);
+  font-size:16px;
+  padding:var(--btn-pad-l);
   border-radius:8px;
   text-decoration:none;
   display:inline-flex;
@@ -732,7 +713,7 @@ button,input,select,textarea {
 .calc-field {
   display:flex;
   flex-direction:column;
-  gap:7px;
+  gap:8px;
   min-width:0
 }
 .calc-field label {
@@ -807,7 +788,7 @@ button,input,select,textarea {
   background:transparent;
   border:1px solid var(--hero-card-border);
   border-radius:8px;
-  padding:11px 16px;
+  padding:var(--btn-pad-m);
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -825,14 +806,7 @@ button,input,select,textarea {
 .calc-secondary:hover .calc-secondary-arrow {
   transform:translate(3px)
 }
-.calc-section {
-  position:relative;
-  padding:clamp(48px,5vw,80px) 0;
-  display:grid;
-  grid-template-columns:clamp(240px,28vw,460px) 1fr clamp(240px,28vw,460px);
-  align-items:center;
-  overflow:hidden
-}
+.calc-section {position:relative;display:grid;grid-template-columns:clamp(240px,28vw,460px) 1fr clamp(240px,28vw,460px);align-items:center;overflow:hidden}
 .calc-section__img-left,.calc-section__img-right {
   position:relative;
   align-self:stretch;
@@ -888,11 +862,11 @@ button,input,select,textarea {
 .calc-section__btn {
   display:inline-flex;
   align-items:center;
-  padding:clamp(16px,1.2vw,22px) clamp(32px,2.5vw,52px);
+  padding:var(--btn-pad-l);
   border-radius:8px;
   background:var(--lime, #b7f13d);
   color:#0a0a0a;
-  font:600 clamp(16px,1.1vw,20px)/1 var(--font-body);
+  font:600 16px/1 var(--font-body);
   text-decoration:none;
   transition:background .2s,transform .15s
 }
@@ -912,9 +886,7 @@ button,input,select,textarea {
   }
 }
 @media(max-width:760px) {
-  .calc-section {
-    padding:160px 0
-  }
+  
   .calc-section__center {
     padding:0 16px
   }
@@ -924,11 +896,11 @@ button,input,select,textarea {
 .hero-nav {
   display:flex;
   flex-direction:column;
-  gap:6px
+  gap:var(--grid-gap-s)
 }
 .hero-nav__label {
   font:600 var(--fs-label)/1 var(--font-body, "Figtree", sans-serif);
-  color:#ffffff59;
+  color:var(--text-dim);
   text-transform:uppercase;
   letter-spacing:.09em;
   margin-bottom:4px
@@ -966,7 +938,7 @@ button,input,select,textarea {
   color:var(--hero-title-color, #fff)
 }
 .hero-nav__item-desc {
-  font:400 12px/1.4 var(--font-body, "Figtree", sans-serif);
+  font:400 var(--fs-caption)/var(--lh-caption) var(--font-body, "Figtree", sans-serif);
   color:var(--hero-text-color, rgba(255,255,255,.45))
 }
 .hero-nav__item-arrow {
@@ -1148,7 +1120,7 @@ button,input,select,textarea {
   display:grid;
   grid-template-columns:repeat(2,1fr);
   grid-auto-rows:clamp(280px,19.5vw,380px);
-  gap:clamp(24px,1.67vw,32px)
+  gap:var(--grid-gap-l)
 }
 .guide-card {
   position:relative;
@@ -1246,7 +1218,7 @@ button,input,select,textarea {
 .guide-link {
   display:inline-flex;
   align-items:center;
-  gap:6px;
+  gap:8px;
   font-family:var(--font-body);
   font-weight:600;
   font-size:clamp(14px,.97vw,18px);
@@ -1340,12 +1312,7 @@ button,input,select,textarea {
   }
 
 }
-.process {
-  position:relative;
-  background:#05050a;
-  height:auto;
-  padding:160px 0
-}
+.process {position:relative;background:#05050a;height:auto}
 .process-pin {
   position:static;
   height:auto;
@@ -1470,10 +1437,7 @@ button,input,select,textarea {
   box-shadow:0 0 10px #b7f13d8c,0 0 24px #b7f13d2e
 }
 @media(max-width:1100px) {
-  .process {
-    height:auto;
-    padding:80px 0
-  }
+  .process {height:auto}
   .process-pin {
     position:static;
     height:auto;
@@ -1493,9 +1457,7 @@ button,input,select,textarea {
 
 }
 @media(max-width:760px) {
-  .process {
-    padding:120px 0 64px
-  }
+  
   .process-step:nth-child(odd) .process-step__num-cell {
     justify-content:flex-start
   }
@@ -1517,7 +1479,7 @@ button,input,select,textarea {
   .process-step {
     display:flex;
     flex-direction:column;
-    gap:6px
+    gap:8px
   }
   .process-step__dot {
     display:none
@@ -1536,11 +1498,7 @@ button,input,select,textarea {
 
   .process-title { font-size:26px }
 }
-.showcase {
-  position:relative;
-  background:#05050a;
-  padding:64px 0
-}
+.showcase {position:relative;background:#05050a}
 .showcase-frame {
   position:relative;
   width:100%;
@@ -1592,16 +1550,9 @@ button,input,select,textarea {
   color:#0a0a0a;
   transform:translateY(-1px)
 }
-@media(max-width:1100px) {
-  .showcase {
-    padding:80px 0
-  }
 
-}
 @media(max-width:760px) {
-  .showcase {
-    padding:64px 0
-  }
+  
   .showcase-frame {
     aspect-ratio:4 / 3
   }
@@ -1634,7 +1585,7 @@ button,input,select,textarea {
   width:100%;
   max-width:1440px;
   margin:0 auto;
-  padding:80px 80px 32px
+  padding:var(--sec-half) 80px 24px
 }
 .footer-grid {
   display:grid;
@@ -1667,14 +1618,14 @@ button,input,select,textarea {
   font-weight:600;
   letter-spacing:.08em;
   text-transform:uppercase;
-  color:#fff6;
-  margin-bottom:22px
+  color:var(--text-dim);
+  margin-bottom:var(--subhead-gap)
 }
 .footer-links {
   list-style:none;
   display:flex;
   flex-direction:column;
-  gap:14px
+  gap:var(--list-gap)
 }
 .footer-links a {
   font-family:var(--font-body);
@@ -1690,8 +1641,8 @@ button,input,select,textarea {
 }
 .footer-social {
   display:flex;
-  gap:10px;
-  margin-bottom:22px
+  gap:var(--list-gap);
+  margin-bottom:var(--subhead-gap)
 }
 .footer-social-icon {
   width:36px;
@@ -1720,18 +1671,18 @@ button,input,select,textarea {
 }
 .footer-newsletter input {
   width:100%;
-  padding:12px 46px 12px 16px;
+  padding:10px 46px 10px 16px;
   border-radius:999px;
   background:#ffffff0d;
   border:1px solid var(--card-border);
   color:var(--text-white);
   font-family:var(--font-body);
-  font-size:14px;
+  font-size:var(--field-fs);
   outline:none;
   transition:border-color .2s ease
 }
 .footer-newsletter input::placeholder {
-  color:#ffffff59
+  color:var(--text-dim)
 }
 .footer-newsletter input:focus {
   border-color:var(--lime)
@@ -1762,7 +1713,7 @@ button,input,select,textarea {
   transform:translateY(-50%) scale(1.08)
 }
 .footer-bottom {
-  padding-top:26px;
+  padding-top:24px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -1772,11 +1723,11 @@ button,input,select,textarea {
 .footer-bottom p {
   font-family:var(--font-body);
   font-size:var(--fs-caption);
-  color:#ffffff59
+  color:var(--text-dim)
 }
 @media(max-width:1100px) {
   .footer-container {
-    padding:48px 20px 24px
+    padding:var(--sec-half) 20px 24px
   }
   .footer-grid {
     grid-template-columns:1fr 1fr;
@@ -1806,7 +1757,7 @@ button,input,select,textarea {
 .guide-steps__item {
   display:flex;
   align-items:center;
-  gap:7px;
+  gap:8px;
   padding:8px 14px;
   border-radius:8px;
   background:rgba(255,255,255,.05);
@@ -1821,7 +1772,7 @@ button,input,select,textarea {
   font-family:var(--font-body);
   font-size:var(--fs-label);
   font-weight:500;
-  color:rgba(255,255,255,.28);
+  color:var(--text-dim);
   line-height:1;
   letter-spacing:.04em
 }
@@ -1831,7 +1782,7 @@ button,input,select,textarea {
   font-weight:700;
   letter-spacing:.1em;
   text-transform:uppercase;
-  color:rgba(255,255,255,.38);
+  color:var(--text-dim);
   line-height:1
 }
 .guide-steps__item--active {
@@ -1861,15 +1812,13 @@ a.guide-steps__item:hover .guide-steps__label {
 }
 @media(max-width:760px) {
   .guide-steps {
-    gap:3px
+    gap:4px
   }
   .guide-steps__item {
-    padding:7px 11px
+    padding:8px 12px
   }
 }
-.home-faq {
-  padding:80px 0 80px
-}
+
 .home-faq__container {
   width:100%;
   max-width:1440px;
@@ -1939,9 +1888,7 @@ a.guide-steps__item:hover .guide-steps__label {
   width: 100%;
   max-width: 560px;
 }
-.site-search {
-  padding: 80px 24px;
-}
+
 .site-search__container {
   max-width: 720px;
   margin: 0 auto;
@@ -1995,19 +1942,7 @@ a.guide-steps__item:hover .guide-steps__label {
 .home-faq__item:first-of-type {
   border-top:1px solid rgba(255,255,255,.08)
 }
-.home-faq__q {
-  font-family:var(--font-heading);
-  font-size:20px;
-  font-weight:500;
-  color:var(--text-white);
-  padding:26px 0;
-  cursor:pointer;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:16px;
-  list-style:none;
-  transition:color .2s ease;line-height:var(--lh-question)}
+.home-faq__q {font-family:var(--font-heading);font-weight:500;color:var(--text-white);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;list-style:none;transition:color .2s ease;line-height:var(--lh-question)}
 .home-faq__q::-webkit-details-marker {
   display:none
 }
@@ -2036,17 +1971,13 @@ a.guide-steps__item:hover .guide-steps__label {
   margin:0
 }
 @media(max-width:1100px) {
-  .home-faq {
-    padding:80px 0
-  }
+  
   .home-faq__container {
     padding:0 20px
   }
 }
 @media(max-width:760px) {
-  .home-faq {
-    padding:56px 0
-  }
+  
   .home-faq__container {
     padding:0 16px
   }
@@ -2064,17 +1995,7 @@ a.guide-steps__item:hover .guide-steps__label {
 }
 
 /* ── Calc section redesign — full-width, lime glow + glass ── */
-.calc-section {
-  display:block;
-  padding:0;
-  background:rgba(255,255,255,.035);
-  border-top:1px solid rgba(183,241,61,.14);
-  border-bottom:1px solid rgba(183,241,61,.14);
-  overflow:hidden;
-  backdrop-filter:blur(24px) saturate(140%);
-  -webkit-backdrop-filter:blur(24px) saturate(140%);
-  box-shadow:0 0 120px rgba(183,241,61,.05),inset 0 1px 0 rgba(255,255,255,.06)
-}
+.calc-section {display:block;background:rgba(255,255,255,.035);border-top:1px solid rgba(183,241,61,.14);border-bottom:1px solid rgba(183,241,61,.14);overflow:hidden;backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);box-shadow:0 0 120px rgba(183,241,61,.05),inset 0 1px 0 rgba(255,255,255,.06)}
 
 .calc-section::before {
   content:"";
@@ -2107,7 +2028,6 @@ a.guide-steps__item:hover .guide-steps__label {
   width:100%;
   max-width:720px;
   margin:0 auto;
-  padding:100px 48px;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -2126,8 +2046,7 @@ a.guide-steps__item:hover .guide-steps__label {
     padding:56px 20px
   }
 
-
-  .home-faq__q { font-size:18px }
+  
 }
 
 .search-cta__body {
@@ -2186,7 +2105,7 @@ a.guide-steps__item:hover .guide-steps__label {
 }
 
 /* ── Co je EnergoHub? ────────────────────────────────────────────────── */
-.home-about{background:#05050a;padding:160px 0}
+.home-about{background:#05050a}
 .home-about__container{width:100%;max-width:1440px;margin:0 auto;padding:0 80px}
 .home-about__header{margin-bottom:64px}
 .home-about__title{font:600 36px/var(--lh-heading) var(--font-heading);color:var(--text-white);margin:0 0 16px}
@@ -2202,8 +2121,7 @@ a.guide-steps__item:hover .guide-steps__label {
 .home-about__popular .home-faq__search-title,.home-about__popular .home-faq__search-sub{text-align:left}
 .home-about__popular-cards{width:100%;margin-top:20px}
 @media(max-width:1100px){.home-about__container{padding:0 20px}.home-about__goals{gap:28px}}
-@media(max-width:760px){.home-about{padding:80px 0}.home-about__container{padding:0 16px}.home-about__title{font-size:26px}.home-about__goals{grid-template-columns:1fr;gap:32px}.home-about__goal{flex-direction:row;align-items:flex-start;text-align:left;gap:20px}.home-about__goal-text{align-items:flex-start}}
-
+@media(max-width:760px){.home-about__container{padding:0 16px}.home-about__title{font-size:26px}.home-about__goals{grid-template-columns:1fr;gap:32px}.home-about__goal{flex-direction:row;align-items:flex-start;text-align:left;gap:20px}.home-about__goal-text{align-items:flex-start}}
 
 /* ── Typografie a neaktivní položky ──────────────────────────────────── */
 h1,h2,h3,.hero-title,.hero-nav__item-title{text-wrap:balance}
@@ -2213,38 +2131,221 @@ p,.hero-nav__item-desc,.guide-qa__card-desc,.home-faq__a p{text-wrap:pretty}
 
 /* ── Rytmus mezer mezi sekcemi ───────────────────────────────────────── */
 :root {
-  --space-section: clamp(64px, 8vw, 120px);
   --space-head:    clamp(32px, 4vw, 56px);
 }
 
-.home-about { padding: var(--space-section) 0; }
 .home-about__header { margin-bottom: var(--space-head); }
-.home-about__popular { margin-top: var(--space-section); }
+.home-about__popular { margin-top: var(--sec-half); }
 
-.calc-section__center { padding: var(--space-section) 24px; }
+.calc-section__center { padding: var(--sec-half) 24px; }
 
-.process { padding: var(--space-section) 0; }
 .process-heading { margin-bottom: var(--space-head); }
 .process-steps { row-gap: clamp(40px, 5vw, 72px); }
 
-.showcase { padding: 0; }
-
-.home-faq { padding: var(--space-section) 0; }
 .home-faq__title { margin: 8px 0 var(--space-head); }
 .home-faq__search { margin-top: var(--space-head); }
 
-/* Mezery mezi sekcemi hlavní stránky – stejné jako u průvodců (160 px desktop, 112 px do 1100 px) */
-:root{--sec-half:80px}
-@media(max-width:1100px){:root{--sec-half:56px}}
-.home-about{padding-top:var(--sec-half);padding-bottom:var(--sec-half)}
-.calc-section{margin-top:var(--sec-half);margin-bottom:var(--sec-half)}
 .calc-section .calc-section__center{padding-top:var(--sec-half)}
 .calc-section .calc-section__full{padding-bottom:var(--sec-half)}
-.process{padding-top:var(--sec-half);padding-bottom:var(--sec-half)}
-.showcase{padding-top:var(--sec-half);padding-bottom:var(--sec-half)}
-.home-faq{padding-top:var(--sec-half)}
-@media(max-width:1100px){.home-about{padding-top:112px}}
 
 /* „Nejčtenější témata na webu" – stejný styl jako „Doporučené pořadí realizace" */
 .home-about__popular .home-faq__search-title{font:600 28px/var(--lh-heading) var(--font-heading)}
 @media(max-width:760px){.home-about__popular .home-faq__search-title{font-size:22px}}
+
+/* ── Boční odsazení (gutter) – jeden token pro celý web ───────────────── */
+:root{--gutter:80px}
+@media(max-width:1100px){:root{--gutter:20px}}
+@media(max-width:760px){:root{--gutter:16px}}
+body .navbar-container,
+body .hero-container,
+body .home-about__container,
+body .process-container,
+body .home-faq__container,
+body .footer-container,
+body .calc-section__center,
+body .calc-section__full,
+body .fve-hero__container,
+body .fve-hero__topbar,
+body .fve-subnav__inner,
+body .fve-explain__container,
+body .guide-qa__container,
+body .fve-compare__container,
+body .fve-phases__container,
+body .fve-case__container,
+body .fve-faq__container,
+body .fve-battery__container,
+body .fve-costs__container,
+body .fve-grants__container,
+body .fve-price__container,
+body .fve-worth__container,
+body .jom-worth__container,
+body .jom-compare__container,
+body .jom-ideal__container,
+body .jom-how__container,
+body .jom-impact__container,
+body .jom-edc__container,
+body .bsec-hero__container,
+body .bsec-topic__container,
+body .bsec-highlight__container,
+body .forum-hero__container,
+body .forum-mode-select__container,
+body .guide-sub-hero__container,
+body .kontakt-hero__content,
+body .fve-calc__container,
+body .jom-quiz__container,
+body .kalk-wizard,
+body .kontakt-form-section__container,
+body .slovnik-hero,
+body .slovnik-main,
+body .fve-glossary,
+body .site-search{padding-left:var(--gutter);padding-right:var(--gutter)}
+/* užší sloupce přes max-width, ne přes menší padding (šířka obsahu zůstává) */
+body .calc-section__center{max-width:calc(672px + 2 * var(--gutter))}
+body .forum-poll .forum-poll__inner{max-width:calc(912px + 2 * var(--gutter))}
+body .fve-calc__container,body .jom-quiz__container,body .kalk-wizard{max-width:calc(1104px + 2 * var(--gutter))}
+body .kontakt-form-section__container{max-width:calc(632px + 2 * var(--gutter))}
+
+/* ── Mezera hlavička sekce → obsah (jednotné tokeny pro celý web) ──────── */
+:root{--head-gap:56px;--head-gap-sm:32px;--title-gap:16px}
+@media(max-width:760px){:root{--head-gap:40px;--head-gap-sm:24px}}
+/* velká hlavička (hlavní sekce) */
+body .home-about__header,
+body .process-heading,
+body .home-faq__title,
+body .fve-explain__header,
+body .fve-calc__header,
+body .fve-case__title,
+body .fve-faq__title,
+body .fve-costs__header,
+body .fve-worth__header,
+body .fve-price__intro,
+body .fve-price .fve-costs__desc,
+body .jom-impact__header,
+body .jom-how__header,
+body .jom-edc__header,
+body .jom-sharing__desc{margin-bottom:var(--head-gap)}
+/* malá hlavička (jen nadpis nebo krátký úvod) */
+body .guide-qa__title,
+body #pruvodce-do-hloubky .guide-qa__title,
+body .fve-compare__header,
+body .fve-phases__header,
+body .fve-grants__header,
+body .fve-limit__header,
+body .jom-compare__header,
+body .jom-ideal__header,
+body .jom-quiz__header,
+body .kontakt-form-section__title{margin-bottom:var(--head-gap-sm)}
+/* zrušené „hacky" margin-top u h2 */
+body .home-faq__title,
+body .calc-section__title,
+body .fve-phases__title,
+body .fve-case__title,
+body .fve-faq__title,
+body .jom-quiz__title{margin-top:0}
+/* h2 → perex a eyebrow → h2 = 16 px */
+body .calc-section__title,
+body .fve-calc__title,
+body .jom-sharing__title,
+body .jom-worth__title{margin-bottom:var(--title-gap)}
+body .fve-explain__title + .fve-explain__lead{margin-top:var(--title-gap)}
+body .calc-section__text{margin-bottom:calc(var(--head-gap) - 20px)}
+
+/* ── Rytmus sekcí – JEDINÝ zdroj pravdy pro svislé odsazení sekcí ─────── */
+/* Mezi dvěma sekcemi = padding-bottom + padding-top = 160 px (do 1100 px 112 px). */
+:root{--sec-half:80px;--sec-full:160px;--sec-extra:160px}
+@media(max-width:1100px){:root{--sec-half:56px;--sec-full:112px;--sec-extra:56px}}
+
+/* základ: všechny sekce stránek */
+body .home-about,body .process,body .showcase,body .home-faq,
+body .fve-explain,body .guide-qa,body .fve-compare,body .fve-phases,body .fve-calc,
+body .fve-case,body .fve-faq,body .fve-glossary,
+body .jom-compare,body .jom-ideal,body .jom-quiz,body .jom-how,body .jom-impact,
+body .fve-worth,body .fve-costs,body .fve-battery,body .fve-grants,body .fve-price,
+body .jom-worth,body .jom-edc,body .jom-sharing-page,
+body .bsec-hero,body .bsec-topic,body .bsec-highlight,body .dotace-page,
+body .guide-qa--footer,body .site-search,body .kalk-wizard-section,body .slovnik-main,
+body .forum-mode-select,body .kontakt-form-section{padding-top:var(--sec-half);padding-bottom:var(--sec-half)}
+
+/* hlavní stránka: sekce s vnějším marginem */
+body .calc-section{margin-top:var(--sec-half);margin-bottom:var(--sec-half)}
+body .calc-section.forum-poll{margin-bottom:0}
+
+/* první sekce za sub-hero: horní odsazení 100 px, do 1100 px 64 px */
+
+/* výjimky – záměrně větší nebo menší mezera */
+body .home-about,body .fve-explain{padding-top:var(--sec-half)}
+@media(max-width:1100px){body .home-about,body .fve-explain{padding-top:var(--sec-full)}} /* průvodci a hlavní stránka: pod hero */
+body .fve-case,body .fve-faq--spaced{padding-top:var(--sec-extra)}           /* zdůrazněný předěl */
+body .fve-phases--guide,body .jom-ideal{padding-bottom:var(--sec-extra)}     /* zdůrazněný předěl */
+body .bsec-topic{padding-bottom:var(--sec-full)}                             /* Bezpečnost: delší mezera před zvýrazněným blokem */
+/* „Zjistěte více…" patří k dalším článkům, ne k obsahu stránky – větší předěl na všech stránkách (240 / 168 px) */
+body .guide-qa--footer{padding-top:var(--sec-full)}
+body .guide-qa--footer::before{top:calc(var(--sec-full) / 2)}
+body .kalk-wizard-section{padding-top:var(--hero-pt)}                                  /* pod fixním navbarem */
+
+
+
+body .slovnik-main{padding-top:0}
+
+/* ── Padding karet – 3 velikosti pro celý web ─────────────────────────── */
+:root{--card-pad-s:24px;--card-pad-m:32px;--card-pad-l:40px}
+@media(max-width:760px){:root{--card-pad-s:20px;--card-pad-m:24px;--card-pad-l:24px}}
+/* S – odkazové karty, řádky, callouty */
+body .guide-qa__card,body .bsec-nav__card,body .kalk-select-card,body .kontakt-card,
+body .jom-sharing__price,body .bsec-topic__note,body .bsec-verdict__item,body .jom-impact__step{padding:var(--card-pad-s)}
+/* M – běžné obsahové karty a panely */
+body .fve-costs__summary,body .fve-costs__breakdown,body .fve-costs__info-card,
+body .jom-panel__col,body .jom-worth__card,body .fve-calc__field,body .mini-kalk{padding:var(--card-pad-m)}
+/* L – velké karty s hlavním obsahem */
+body .fve-compare__panel,body .fve-worth-card,body .fve-grants__nzu-card,body .fve-limit-card,
+body .jom-compare__card,body .jom-quiz__card,body .jom-edc__variant-text,body .forum-mode-card{padding:var(--card-pad-l)}
+
+/* ── FAQ komponenta – jednotná otázka a vyhledávání (kromě menších FAQ v podsekcích: Dotace FVE a podstránky Bezpečnosti) ── */
+:root{--faq-q-pad:26px;--faq-q-fs:20px;--faq-plus-fs:26px}
+@media(max-width:760px){:root{--faq-q-fs:18px}}
+body .home-faq__q,body .fve-faq__q{padding:var(--faq-q-pad) 0;font-size:var(--faq-q-fs)}
+body .home-faq__q:after,body .fve-faq__q:after{font-size:var(--faq-plus-fs)}
+body .home-faq__search,body .fve-faq__search{margin-top:var(--head-gap)}
+
+/* ── Hero – jednotné mezery pro všechny typy hero ─────────────────────── */
+:root{--hero-pt:140px;--hero-pb:80px;--hero-crumb-gap:32px;--hero-title-gap:20px;--hero-text-gap:32px}
+@media(max-width:760px){:root{--hero-pt:120px;--hero-crumb-gap:24px;--hero-title-gap:16px;--hero-text-gap:24px}}
+/* horní a spodní padding hero (hlavní stránka a průvodci mají hero přes celou obrazovku – vlastní padding) */
+body .guide-sub-hero{padding-top:var(--hero-pt);padding-bottom:var(--subhero-pb)}  /* spodek 100 / 88 px: s horním paddingem první sekce (80 / 56) dává mezeru 180 / 144 px */
+body .slovnik-hero{padding-top:var(--hero-pt);padding-bottom:var(--hero-pb)}
+body .forum-hero__container,body .kontakt-hero__content{padding-top:var(--hero-pt);padding-bottom:var(--hero-pb)}
+/* breadcrumb → h1 → perex */
+body .guide-sub-hero__breadcrumb{margin-bottom:var(--hero-crumb-gap)}
+body .guide-sub-hero__title,body .forum-hero__title,body .kontakt-hero__title,body .slovnik-hero__title,
+body .hero-title,body .fve-hero__title{margin-top:0;margin-bottom:var(--hero-title-gap)}
+body .guide-sub-hero__desc,body .slovnik-hero__perex,body .hero-text,body .fve-hero__text{margin-top:0;margin-bottom:var(--hero-text-gap)}
+
+/* ── Rytmus bloků a podnadpisů uvnitř sekce – tokeny (48 / 32 px a 24 px) ── */
+:root{--block-gap:48px;--subhead-gap:24px}
+@media(max-width:760px){:root{--block-gap:32px}}
+
+/* ── Spodní padding sub-hero: symetrické sekce pod ním (100 px, do 1100 px 88 px) ── */
+:root{--subhero-pb:100px}
+@media(max-width:1100px){:root{--subhero-pb:88px}}
+
+/* ── Gap seznamů – 3 velikosti (8 / 12 / 16 px) ───────────────────────── */
+:root{--list-gap-s:8px;--list-gap:12px;--list-gap-l:16px}
+
+/* ── Formuláře – jednotná pole, label a mezery (tokeny) ────────────────── */
+:root{--field-pad-y:14px;--field-pad-x:16px;--field-pad-compact:10px 12px;--field-fs:16px;--label-gap:8px;--field-gap:24px}
+
+/* ── Mezera mezi odstavci za sebou – 16 px ───────────────────────────── */
+:root{--para-gap:16px}
+body .fve-explain__lead + .fve-explain__lead,
+body .fve-worth__note--next,
+body .bsec-topic__intro--after{margin-top:var(--para-gap)}
+
+/* ── Tlačítka a chipy – velikosti (tlačítka L / M, chipy M / S / XS) ───── */
+:root{--btn-pad-l:16px 32px;--btn-pad-m:12px 24px;--chip-pad-m:8px 16px;--chip-pad-s:6px 12px;--chip-pad-xs:4px 12px}
+
+/* ── Gap mřížek karet – 3 hodnoty (8 / 16 / 24 px) ─────────────────────── */
+:root{--grid-gap-s:8px;--grid-gap:16px;--grid-gap-l:24px}
+
+/* ── Zrušení výjimek z rytmu sekcí (zatím jen stránky s třídou rhythm-pilot) ── */
+body.rhythm-pilot .bsec-topic{padding-bottom:var(--sec-half)}
+body.rhythm-pilot .jom-savecalc{margin-bottom:0}

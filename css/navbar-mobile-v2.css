@@ -82,12 +82,12 @@
 /* ── Sub-položky ────────────────────────────────────────────── */
 .nm2__sub {
   list-style: none;
-  margin: 2px 0 6px 20px;
+  margin: 2px 0 8px 20px;
   padding: 0 0 0 20px;
   border-left: 1px solid rgba(183,241,61,.2);
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 2px;
   animation: nm2-fadein .18s ease;
 }
 @keyframes nm2-fadein {

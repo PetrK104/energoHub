@@ -10,18 +10,10 @@
   padding: 0 clamp(24px, 4vw, 80px) 80px;
 }
 .calc-section__full .calc-section__btn {
-  margin-top: 40px;
+  margin-top: var(--head-gap-sm);
 }
 
-.mini-kalk {
-  background: #0f1014;
-  border: 1px solid rgba(255,255,255,.09);
-  border-radius: 8px;
-  padding: 32px;
-  max-width: 1100px;
-  margin: 0 auto;
-  text-align: left;
-}
+.mini-kalk {background: #0f1014;border: 1px solid rgba(255,255,255,.09);border-radius: 8px;max-width: 1100px;margin: 0 auto;text-align: left}
 
 /* ── Slider row ─────────────────────────────────────────────── */
 .mini-kalk__slider-header {
@@ -42,7 +34,7 @@
   background: rgba(255,255,255,.08);
   border: 1px solid rgba(255,255,255,.15);
   border-radius: 6px;
-  padding: 6px 10px;
+  padding: var(--field-pad-compact);
   font-family: var(--font-heading);
   font-size: 16px;
   font-weight: 600;
@@ -111,7 +103,7 @@
 .mini-kalk__col {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
   padding: 0 24px;
 }
 .mini-kalk__col:first-child {
@@ -149,15 +141,13 @@
   font-family: var(--font-body);
   font-size:var(--fs-caption);
   line-height:var(--lh-caption);
-  color: rgba(185,185,194,.45);
+  color:var(--text-dim);
   margin-top: 24px;
 }
 
 /* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 600px) {
-  .mini-kalk {
-    padding: 24px 20px;
-  }
+  
   .mini-kalk__outputs {
     grid-template-columns: 1fr;
   }

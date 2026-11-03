@@ -80,7 +80,7 @@ for (const filepath of files) {
   let sectionsAdded = 0;
   let htmlModified  = false;
 
-  $('h2').each((_, el) => {
+  $('h2, h3[data-search-keys]').each((_, el) => {
     const $el = $(el);
 
     // Skip headings inside navigation/UI containers

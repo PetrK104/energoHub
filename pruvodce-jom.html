@@ -666,6 +666,7 @@
 <script>(function(){var menu=document.getElementById('navMobile');var navbar=document.querySelector('.navbar');if(!menu||!navbar)return;new MutationObserver(function(){navbar.classList.toggle('navbar--menu-open',menu.classList.contains('is-open'));}).observe(menu,{attributes:true,attributeFilter:['class']});})();</script>
 <script src="js/kalk-constants.js"></script>
 <script src="js/footer.js" defer></script>
+<script src="js/tooltip.js" defer></script>
 <script src="js/navbar.js" defer></script>
 <script src="js/jom-quiz.js" defer></script>
 <script>(function(){var frame=document.querySelector('.fve-hero__3d-frame');var poster=document.getElementById('jomPoster');if(!frame||!poster)return;var done=false;function hide(){if(done)return;done=true;poster.classList.add('is-loaded');setTimeout(function(){poster.remove();},600);}window.addEventListener('message',function(e){if(e.data&&e.data.type==='hero3d:ready'&&e.source===frame.contentWindow)hide();});var t0=Date.now();(function poll(){var w;try{w=frame.contentWindow;}catch(e){}if((w&&w.__heroReady)||Date.now()-t0>10000){hide();return;}setTimeout(poll,150);})();})();</script>
