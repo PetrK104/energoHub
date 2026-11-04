@@ -194,3 +194,4 @@ body .bsec-hero .bsec-nav__grid{margin-top:0}
 
 .jom-edc__tip-popup.is-below{bottom:auto;top:calc(100% + 8px)}
 @media(pointer:coarse){.jom-edc__tip:before{content:"";position:absolute;inset:-12px}}
+@media(max-width:900px){.bsec-sub__img-layout--partial .bsec-sub__img-wrap{min-height:0;max-width:520px;width:100%;margin:0 auto}.bsec-sub__img-layout--partial .bsec-sub__img-wrap img{position:static;inset:auto;top:auto;bottom:auto;width:100%;height:auto;border-radius:8px}}

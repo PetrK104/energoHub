@@ -98,7 +98,8 @@
 /* ── Three-column outputs ───────────────────────────────────── */
 .mini-kalk__outputs {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 20px;
 }
 .mini-kalk__col {
   display: flex;
@@ -107,28 +108,29 @@
   padding: 0 24px;
 }
 .mini-kalk__col:first-child {
-  padding-left: 0;
-  border-right: 1px solid rgba(255,255,255,.08);
+  grid-column: 1 / -1;
+  padding: 0 0 20px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
 }
 .mini-kalk__col:nth-child(2) {
+  padding-left: 0;
   border-right: 1px solid rgba(255,255,255,.08);
 }
 .mini-kalk__col:last-child {
   padding-right: 0;
 }
-.mini-kalk__val--main {
-  font-family: var(--font-heading);
-  font-size: clamp(20px, 2vw, 26px);
-  font-weight: 700;
-  color: var(--lime);
-  line-height: 1.2;
-}
 .mini-kalk__val {
   font-family: var(--font-heading);
-  font-size: clamp(16px, 1.5vw, 20px);
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: 800;
   color: var(--text-white);
   line-height: 1.2;
+}
+.mini-kalk__val--main {
+  color: var(--lime);
+}
+@media (max-width: 760px) {
+  .mini-kalk__val { font-size: 24px; }
 }
 .mini-kalk__sublabel {
   font-family: var(--font-body);
@@ -150,6 +152,10 @@
   
   .mini-kalk__outputs {
     grid-template-columns: 1fr;
+  }
+  .mini-kalk__col:first-child {
+    grid-column: auto;
+    padding: 16px 0;
   }
   .mini-kalk__col {
     padding: 16px 0;

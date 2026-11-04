@@ -231,7 +231,7 @@
     })
 
     // Hero — explore button (nepřihlášený stav)
-    heroExploreBtn.addEventListener('click', function () {
+    if (heroExploreBtn) heroExploreBtn.addEventListener('click', function () {
       var el = document.getElementById('forumModeSelect')
       var r = el.getBoundingClientRect()
       window.scrollTo({ top: window.scrollY + r.top - 160, behavior: 'smooth' })
@@ -403,14 +403,14 @@
 
   function updateAuthUI() {
     if (currentUser) {
-      heroExplorePanel.hidden = true
+      if (heroExplorePanel) heroExplorePanel.hidden = true
       heroUserCard.hidden = false
       heroUserEmail.textContent        = currentUsername || '…'
       heroUserEmailAddress.textContent = currentUser.email
       forumNewBtn.hidden = false
       deleteAccountWrap.hidden = false
     } else {
-      heroExplorePanel.hidden = false
+      if (heroExplorePanel) heroExplorePanel.hidden = false
       heroUserCard.hidden = true
       forumNewBtn.hidden = false
       deleteAccountWrap.hidden = true

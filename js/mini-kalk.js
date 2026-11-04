@@ -25,7 +25,7 @@
   }
 
   function fmtRange(lo, hi) {
-    return fmtNum(lo) + '–' + fmtNum(hi) + ' Kč';
+    return fmtNum(lo) + '\u00a0– ' + fmtNum(hi) + '\u00a0Kč';
   }
 
   function updateSliderFill(range) {

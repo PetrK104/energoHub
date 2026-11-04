@@ -263,7 +263,7 @@
     if (animate) {
       barIds.forEach(function (id) {
         var el = document.getElementById(id);
-        if (el) { el.style.transition = 'none'; el.style.height = '0%'; }
+        if (el) { el.style.transition = 'none'; el.style.height = '0%'; el.style.setProperty('--bar', '0%'); }
       });
       requestAnimationFrame(function () {
         requestAnimationFrame(function () {
@@ -272,6 +272,7 @@
             if (el) {
               el.style.transition = 'height 0.7s cubic-bezier(0.4, 0, 0.2, 1)';
               el.style.height = heights[i];
+              el.style.setProperty('--bar', heights[i]);
             }
           });
         });
@@ -279,7 +280,7 @@
     } else {
       barIds.forEach(function (id, i) {
         var el = document.getElementById(id);
-        if (el) el.style.height = heights[i];
+        if (el) { el.style.height = heights[i]; el.style.setProperty('--bar', heights[i]); }
       });
     }
   }
