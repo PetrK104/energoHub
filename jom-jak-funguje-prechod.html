@@ -8,10 +8,11 @@
 <meta name="keywords" content="jak přejít na JOM, kroky k JOM, registrace JOM distributor, souhlas SVJ JOM, technická příprava JOM, jak dlouho trvá přechod na JOM, podmínky JOM, sloučení elektroměrů postup, administrativa jom, technická příprava na jom, nastavení rozúčtování jom, přechod na jom, ">
 <meta name="category" content="Jednotné odběrné místo (JOM)">
 <title>Přechod na JOM – realizace a technické podmínky – Průvodce JOM – Energohub.info</title>
+<link rel="icon" type="image/png" href="assets/images/fav_icon.png">
+<link rel="apple-touch-icon" href="assets/images/fav_icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=account_circle,add,arrow_forward,battery_charging_20,battery_charging_full,call,chat_bubble,check,check_circle,checklist,chevron_left,chevron_right,close,compare_arrows,description,eco,engineering,expand_less,expand_more,fact_check,fire_extinguisher,gavel,gpp_bad,handshake,hub,info,local_fire_department,location_on,mail,menu_book,north_east,open_in_new,receipt_long,remove,roofing,schedule,search,security,solar_power,south_east,swap_horiz,table_chart,trending_up,visibility,visibility_off,work&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/guide-shared.css?v=8">
 <link rel="stylesheet" href="css/jom.css?v=5">
@@ -19,6 +20,7 @@
 <link rel="stylesheet" href="css/navbar-mobile-v2.css">
 </head>
 <body>
+<a class="skip-link" href="#obsah">Přeskočit na obsah</a>
 
 <header class="site-header">
   <div class="navbar-container">
@@ -29,7 +31,7 @@
 
       <ul class="navbar-links">
         <li class="nav-dropdown">
-          <span class="nav-dropdown__trigger" tabindex="0" aria-haspopup="true">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></span>
+          <button type="button" class="nav-dropdown__trigger" aria-haspopup="true" aria-expanded="false">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></button>
           <ul class="nav-dropdown__menu">
             <div class="nav-dropdown__menu-inner">
               <li><a href="pruvodce-jom.html">Jednotné odběrné místo (JOM)</a></li>
@@ -41,7 +43,7 @@
           </ul>
         </li>
         <li class="nav-dropdown">
-          <span class="nav-dropdown__trigger" tabindex="0" aria-haspopup="true">Poradna <span class="nav-dropdown__arrow">▾</span></span>
+          <button type="button" class="nav-dropdown__trigger" aria-haspopup="true" aria-expanded="false">Poradna <span class="nav-dropdown__arrow">▾</span></button>
           <ul class="nav-dropdown__menu">
             <div class="nav-dropdown__menu-inner">
               <li><a href="bezpecnost.html">Bezpečnost</a></li>
@@ -75,7 +77,7 @@
       <!-- Průvodci — accordion -->
       <details class="nm2__accordion">
         <summary class="nm2__row">
-          <span class="nm2__title">Průvodci</span>
+          <span class="nm2__title">Průvodci opatření</span>
           <span class="ms-icon nm2__arrow" aria-hidden="true">expand_more</span>
         </summary>
         <ul class="nm2__sub">
@@ -112,6 +114,8 @@
   </div>
 </header>
 
+<main class="page-main"><span id="obsah" tabindex="-1"></span>
+
 <!-- ── Sub-page hero ── -->
 <section class="guide-sub-hero">
   <div class="guide-sub-hero__container">
@@ -135,7 +139,7 @@
     <h2 data-search-keys="přechod JOM, jak probíhá přechod, fáze přechodu, smlouva, distributor, bytový dům JOM" class="guide-section-title" id="jak-probiha-prechod-bytoveho-domu-na-jom">Jak probíhá přechod bytového domu na JOM</h2>
 
     <div class="fve-phases__header">
-      <p class="fve-phases__lead">Přechod bytového domu na JOM probíhá v pěti navazujících fázích – od prvního průzkumu a hlasování SVJ až po spuštění systému a nastavení rozúčtování. Každý krok má jasně definované technické i administrativní požadavky.</p>
+      <p class="fve-phases__lead">Přechod bytového domu na JOM probíhá v pěti navazujících fázích&nbsp;– od prvního průzkumu a hlasování SVJ až po spuštění systému a nastavení rozúčtování. Každý krok má jasně definované technické i administrativní požadavky.</p>
     </div>
 
     <div class="fve-phases__accordion" id="fvePhases">
@@ -151,7 +155,7 @@
           <h3 class="fve-phase__etitle">Průzkum, nabídka a souhlas</h3>
           <ul class="fve-phase__elist">
             <li>Zpracování technického a ekonomického průzkumu proveditelnosti JOM pro daný subjekt (SVJ / bytové družstvo)</li>
-            <li>Příprava nabídky pro subjekt, včetně podkladů pro schvalovací proces – technický popis JOM a ekonomická analýza</li>
+            <li>Příprava nabídky pro subjekt, včetně podkladů pro schvalovací proces&nbsp;– technický popis JOM a ekonomická analýza</li>
             <li>Svolání shromáždění SVJ nebo bytového družstva</li>
             <li>Hlasování o technických úpravách se řídí stanovami SVJ, avšak pro úplný přechod všech bytů na JOM je nutný 100% souhlas, neboť právo na volbu vlastního dodavatele nelze přehlasovat</li>
             <li>Vlastníci, kteří nesouhlasí, musí zůstat připojeni samostatně mimo JOM</li>
@@ -178,9 +182,9 @@
           <h3 class="fve-phase__etitle">Administrativa</h3>
           <ul class="fve-phase__elist">
             <li>Zpracování projektové dokumentace v rozsahu potřebném pro sloučení odběrných míst</li>
-            <li>Podání žádosti o sloučení odběrných míst u distributora (ČEZ Distribuce, EG.D nebo PREdistribuce) – vyřizuje se u distributora, ne u obchodníka s elektřinou</li>
+            <li>Podání žádosti o sloučení odběrných míst u distributora (ČEZ Distribuce, EG.D nebo PREdistribuce)&nbsp;– vyřizuje se u distributora, ne u obchodníka s elektřinou</li>
             <li>Sloučením původní jednotlivá odběrná místa bytů zanikají</li>
-            <li>Vyčkání na předložení návrhu smlouvy o připojení ze strany provozovatele distribuční soustavy – dle vyhlášky o připojení (č. 16/2016 Sb.) do 30 dnů u nízkého napětí, resp. do 60 dnů u vyšší napěťové hladiny od podání úplné žádosti</li>
+            <li>Vyčkání na předložení návrhu smlouvy o připojení ze strany provozovatele distribuční soustavy&nbsp;– dle vyhlášky o připojení (č. 16/2016 Sb.) do 30 dnů u nízkého napětí, resp. do 60 dnů u vyšší napěťové hladiny od podání úplné žádosti</li>
             <li>Výběr a sjednání nového dodavatele elektřiny pro nové sloučené odběrné místo, domluvené předem, aby nedošlo k výpadku dodávky</li>
           </ul>
           <div class="fve-phase__nav">
@@ -206,9 +210,9 @@
           <span class="fve-phase__enum">03</span>
           <h3 class="fve-phase__etitle">Technická příprava</h3>
           <ul class="fve-phase__elist">
-            <li>Vybudování nového společného odběrného místa – skříň s fakturačním elektroměrem na patici</li>
+            <li>Vybudování nového společného odběrného místa&nbsp;– skříň s fakturačním elektroměrem na patici</li>
             <li>Renovace vnitřní elektroinstalace (stoupačky, jističe), aby prošla revizí</li>
-            <li>Výchozí revize elektroinstalace – povinná podmínka pro připojení k distribuční síti</li>
+            <li>Výchozí revize elektroinstalace&nbsp;– povinná podmínka pro připojení k distribuční síti</li>
           </ul>
           <div class="fve-phase__nav">
             <button class="fve-phase__btn fve-phase__btn--prev" type="button" aria-label="Předchozí fáze">
@@ -235,8 +239,8 @@
           <ul class="fve-phase__elist">
             <li>V domluvený den distributor odpojí všechny původní elektroměry a osadí hlavní fakturační elektroměr na patici</li>
             <li>Současně se instalují certifikovaná stanovená měřidla (podružné elektroměry) s platným úředním ověřením (u moderních elektronických elektroměrů v přímém zapojení platí ověření 12 let dle vyhlášky č. 345/2002 Sb.), aby bylo rozúčtování právně nezpochybnitelné</li>
-            <li>Propojení měřidel s FVE systémem – střídač, případně bateriové úložiště</li>
-            <li>Vše musí proběhnout v jeden den – nelze měřit dvakrát ani nechat proces rozpracovaný</li>
+            <li>Propojení měřidel s FVE systémem&nbsp;– střídač, případně bateriové úložiště</li>
+            <li>Vše musí proběhnout v jeden den&nbsp;– nelze měřit dvakrát ani nechat proces rozpracovaný</li>
             <li>Přejímka technického řešení distributorem a předání systému do provozu</li>
           </ul>
           <div class="fve-phase__nav">
@@ -262,11 +266,11 @@
           <span class="fve-phase__enum">05</span>
           <h3 class="fve-phase__etitle">Nastavení rozúčtování</h3>
           <ul class="fve-phase__elist">
-            <li>Rozúčtování spotřebované energie (odběr): dané kalibrovaným fakturačním měřidlem u každé jednotky – každá jednotka platí to, co skutečně spotřebovala, s rozlišením síťové a FVE sazby, obdobně jako u rozúčtování vody nebo tepla</li>
-            <li>Rozúčtování vlastní výrobny (FVE): nárok na vyrobenou elektřinu se dělí podle vlastnického podílu jednotlivých jednotek – stejný princip, jaký subjekt už používá u fondu oprav; technické nastavení v systému zajišťuje poskytovatel řešení</li>
+            <li>Rozúčtování spotřebované energie (odběr): dané kalibrovaným fakturačním měřidlem u každé jednotky&nbsp;– každá jednotka platí to, co skutečně spotřebovala, s rozlišením síťové a FVE sazby, obdobně jako u rozúčtování vody nebo tepla</li>
+            <li>Rozúčtování vlastní výrobny (FVE): nárok na vyrobenou elektřinu se dělí podle vlastnického podílu jednotlivých jednotek&nbsp;– stejný princip, jaký subjekt už používá u fondu oprav; technické nastavení v systému zajišťuje poskytovatel řešení</li>
             <li>Dodavatel elektřiny vystavuje fakturu pouze za celé odběrné místo domu jako celek; interní podružná měřidla v bytech distributor nesleduje, proto musí mít SVJ zajištěn vlastní software nebo externí službu na rozúčtování nákladů mezi jednotky</li>
             <li>Příprava vzorového ročního vyúčtování pro vlastníky</li>
-            <li>Úprava záloh na energie podle výsledků první sezóny provozu – klíč rozúčtování je vhodné po prvním roce zkontrolovat a případně doladit</li>
+            <li>Úprava záloh na energie podle výsledků první sezóny provozu&nbsp;– klíč rozúčtování je vhodné po prvním roce zkontrolovat a případně doladit</li>
           </ul>
           <div class="fve-phase__nav">
             <button class="fve-phase__btn fve-phase__btn--prev" type="button" aria-label="Předchozí fáze">
@@ -287,7 +291,7 @@
     <div class="jom-how__header">
       <h2 data-search-keys="po přechodu na JOM, výsledek přechodu, před a po JOM, změna po zavedení JOM, jedno odběrné místo" class="guide-section-title" id="jak-se-bytovy-dum-po-prechodu-na-jom-zmeni">Jak se bytový dům po přechodu na JOM změní</h2>
       <p class="jom-how__lead">
-        Dnes má každý byt vlastní elektroměr a smlouvu s dodavatelem – distributor vidí každou jednotku odděleně. Po přechodu na JOM vznikne jedno hlavní odběrné místo pro celý dům s podružnými měřidly v bytech. Posuvník na obrázku přepíná pohled mezi stavem před zavedením JOM a po něm.
+        Dnes má každý byt vlastní elektroměr a smlouvu s dodavatelem&nbsp;– distributor vidí každou jednotku odděleně. Po přechodu na JOM vznikne jedno hlavní odběrné místo pro celý dům s podružnými měřidly v bytech. Posuvník na obrázku přepíná pohled mezi stavem před zavedením JOM a po něm.
       </p>
     </div>
 
@@ -348,7 +352,7 @@
     <div class="jom-impact__header">
       <h2 data-search-keys="úspory JOM, snížení nákladů, pořadí odečtů, distribuční poplatek, jak JOM šetří, ekonomika JOM" class="jom-impact__title" id="jak-jom-snizuje-naklady-a-proc-zalezi-na-poradi">Jak JOM snižuje náklady a proč záleží na pořadí</h2>
       <p class="jom-impact__lead">
-        JOM přináší dvojí efekt: vyjednávací sílu jednoho odběratele místo desítek drobných smluv, a hlavně schopnost sdílet elektřinu z vlastní FVE napříč celým domem bez ztrát. Plný ekonomický dopad JOM se projeví teprve v kombinaci s fotovoltaikou – právě proto se JOM typicky realizuje jako první krok, který otevírá cestu k dalším opatřením.
+        JOM přináší dvojí efekt: vyjednávací sílu jednoho odběratele místo desítek drobných smluv, a hlavně schopnost sdílet elektřinu z vlastní FVE napříč celým domem bez ztrát. Plný ekonomický dopad JOM se projeví teprve v kombinaci s fotovoltaikou&nbsp;– právě proto se JOM typicky realizuje jako první krok, který otevírá cestu k dalším opatřením.
       </p>
     </div>
 
@@ -361,7 +365,7 @@
           <div class="jom-impact__bar-track">
             <div class="jom-impact__bar jom-impact__bar--jom" style="width: 8%"></div>
           </div>
-          <span class="jom-impact__bar-val">50 – 300 tis. Kč</span>
+          <span class="jom-impact__bar-val">50&nbsp;– 300 tis. Kč</span>
         </div>
 
         <div class="jom-impact__bar-row">
@@ -369,7 +373,7 @@
           <div class="jom-impact__bar-track">
             <div class="jom-impact__bar jom-impact__bar--fve" style="width: 48%"></div>
           </div>
-          <span class="jom-impact__bar-val">1,2 – 1,9 mil. Kč</span>
+          <span class="jom-impact__bar-val">1,2&nbsp;– 1,9 mil. Kč</span>
         </div>
 
         <div class="jom-impact__bar-row">
@@ -377,7 +381,7 @@
           <div class="jom-impact__bar-track">
             <div class="jom-impact__bar jom-impact__bar--tc" style="width: 100%"></div>
           </div>
-          <span class="jom-impact__bar-val">1,5 – 4 mil. Kč</span>
+          <span class="jom-impact__bar-val">1,5&nbsp;– 4 mil. Kč</span>
         </div>
 
       </div>
@@ -450,8 +454,8 @@
       <a href="jom-edc-nebo-jom.html" class="guide-qa__card">
         <span class="guide-qa__card-icon" aria-hidden="true">compare_arrows</span>
         <div class="guide-qa__card-body">
-          <p class="guide-qa__card-title">EDC nebo JOM – srovnání obou variant sdílení elektřiny</p>
-          <p class="guide-qa__card-desc">Podrobné srovnání obou variant sdílení elektřiny – technické, ekonomické i administrativní rozdíly.</p>
+          <p class="guide-qa__card-title">EDC nebo JOM&nbsp;– srovnání obou variant sdílení elektřiny</p>
+          <p class="guide-qa__card-desc">Podrobné srovnání obou variant sdílení elektřiny&nbsp;– technické, ekonomické i administrativní rozdíly.</p>
           <p class="guide-qa__card-meta"><span class="ms-icon" aria-hidden="true">schedule</span> Doba čtení: 5 min.</p>
         </div>
         <div class="guide-qa__card-arrow">→</div>
@@ -467,7 +471,7 @@
       </a>
       <a href="pruvodce-jom.html" class="guide-qa__card guide-qa__card--back">
         <div class="guide-qa__card-body">
-          <p class="guide-qa__card-title">Průvodce JOM – přehled všech témat</p>
+          <p class="guide-qa__card-title">Průvodce JOM&nbsp;– přehled všech témat</p>
           <p class="guide-qa__card-desc">Zpět na přehled témat JOM pro bytové domy.</p>
         </div>
         <div class="guide-qa__card-arrow">→</div>
@@ -493,6 +497,8 @@
     <div class="search-body search-cta__body" id="searchCtaBody" hidden></div>
   </div>
 </section>
+</main>
+
 <footer class="site-footer">
   <div class="footer-glow"></div>
   <div class="footer-container">
@@ -501,7 +507,7 @@
         <a href="index.html" class="footer-logo">
           <img src="assets/images/Logo.svg" alt="Energohub">
         </a>
-        <p class="footer-tagline">Nezávislý průvodce energetickými opatřeními pro bytové domy a SVJ.</p>
+        <p class="footer-tagline">Nezávislý průvodce energetickými opatřeními pro bytové domy a SVJ.</p>
       </div>
 
       <div class="footer-col">

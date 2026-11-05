@@ -8,10 +8,11 @@
 <meta name="keywords" content="kdy se FVE vyplatí, návratnost fotovoltaiky, orientace střechy, kdy fotovoltaika nedává smysl, co tvoří cenu fotovoltaiky, je pro nás fve vhodná, fotovoltaika plusy, fotovoltaika minusy">
 <meta name="category" content="Fotovoltaika">
 <title>Ekonomická návratnost FVE pro bytový dům – Průvodce FVE – Energohub.info</title>
+<link rel="icon" type="image/png" href="assets/images/fav_icon.png">
+<link rel="apple-touch-icon" href="assets/images/fav_icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=account_circle,add,arrow_forward,battery_charging_20,battery_charging_full,call,chat_bubble,check,check_circle,checklist,chevron_left,chevron_right,close,compare_arrows,description,eco,engineering,expand_less,expand_more,fact_check,fire_extinguisher,gavel,gpp_bad,handshake,hub,info,local_fire_department,location_on,mail,menu_book,north_east,open_in_new,receipt_long,remove,roofing,schedule,search,security,solar_power,south_east,swap_horiz,table_chart,trending_up,visibility,visibility_off,work&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/guide-shared.css?v=8">
 <link rel="stylesheet" href="css/fve.css">
@@ -19,6 +20,7 @@
 <link rel="stylesheet" href="css/navbar-mobile-v2.css">
 </head>
 <body>
+<a class="skip-link" href="#obsah">Přeskočit na obsah</a>
 
 <header class="site-header">
   <div class="navbar-container">
@@ -29,7 +31,7 @@
 
       <ul class="navbar-links">
         <li class="nav-dropdown">
-          <span class="nav-dropdown__trigger" tabindex="0" aria-haspopup="true">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></span>
+          <button type="button" class="nav-dropdown__trigger" aria-haspopup="true" aria-expanded="false">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></button>
           <ul class="nav-dropdown__menu">
             <div class="nav-dropdown__menu-inner">
               <li><a href="pruvodce-jom.html">Jednotné odběrné místo (JOM)</a></li>
@@ -41,7 +43,7 @@
           </ul>
         </li>
         <li class="nav-dropdown">
-          <span class="nav-dropdown__trigger" tabindex="0" aria-haspopup="true">Poradna <span class="nav-dropdown__arrow">▾</span></span>
+          <button type="button" class="nav-dropdown__trigger" aria-haspopup="true" aria-expanded="false">Poradna <span class="nav-dropdown__arrow">▾</span></button>
           <ul class="nav-dropdown__menu">
             <div class="nav-dropdown__menu-inner">
               <li><a href="bezpecnost.html">Bezpečnost</a></li>
@@ -75,7 +77,7 @@
       <!-- Průvodci — accordion -->
       <details class="nm2__accordion">
         <summary class="nm2__row">
-          <span class="nm2__title">Průvodci</span>
+          <span class="nm2__title">Průvodci opatření</span>
           <span class="ms-icon nm2__arrow" aria-hidden="true">expand_more</span>
         </summary>
         <ul class="nm2__sub">
@@ -112,6 +114,8 @@
   </div>
 </header>
 
+<main class="page-main"><span id="obsah" tabindex="-1"></span>
+
 <section class="guide-sub-hero">
   <div class="guide-sub-hero__container">
     <nav class="guide-sub-hero__breadcrumb" aria-label="Drobečková navigace">
@@ -134,7 +138,7 @@
 
     <div class="fve-worth__header">
     <h2 data-search-keys="kdy se FVE vyplatí, podmínky FVE, výnosnost FVE, návratnost FVE, vhodnost FVE, rentabilita" class="guide-section-title" id="kdy-se-fve-pro-bytovy-dum-skutecne-vyplati">Kdy se FVE pro bytový dům skutečně vyplatí</h2>
-      <p class="fve-worth__note">Bateriové úložiště dokáže zachytit část denní výroby, která by jinak beze zbytku odešla do sítě, a uvolnit ji v hodinách skutečné spotřeby. U bytových domů se ale poměr kapacity baterie k výkonu FVE obvykle drží nižší než u rodinných domů, protože zapojení více bytových jednotek a společných prostor (ať už formou komunitního sdílení přes EDC, nebo sloučením do jednoho odběrného místa – JOM) samo o sobě zvyšuje okamžitou vlastní spotřebu. Jestli se baterie vyplatí a v jaké velikosti, je vhodné posoudit případ od případu – ne jako automatickou součást každé instalace.</p>
+      <p class="fve-worth__note">Bateriové úložiště dokáže zachytit část denní výroby, která by jinak beze zbytku odešla do sítě, a uvolnit ji v hodinách skutečné spotřeby. U bytových domů se ale poměr kapacity baterie k výkonu FVE obvykle drží nižší než u rodinných domů, protože zapojení více bytových jednotek a společných prostor (ať už formou komunitního sdílení přes EDC, nebo sloučením do jednoho odběrného místa&nbsp;– JOM) samo o sobě zvyšuje okamžitou vlastní spotřebu. Jestli se baterie vyplatí a v jaké velikosti, je vhodné posoudit případ od případu&nbsp;– ne jako automatickou součást každé instalace.</p>
     </div>
 
     <div class="fve-worth__grid">
@@ -151,8 +155,8 @@
             <h3 class="fve-worth-card__title">Kdy se to vyplatí</h3>
           </div>
           <ul class="fve-worth-list fve-worth-list--yes">
-            <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Střecha míří na jih nebo jihovýchod – nebo je plochá (konstrukce umožňuje nasměrovat panely libovolně)</li>
-            <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Volná plocha střechy odpovídá plánovanému výkonu – orientačně 5 m² na 1 kWp u šikmé střechy, 10 m² na 1 kWp u ploché</li>
+            <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Střecha míří na jih nebo jihovýchod&nbsp;– nebo je plochá (konstrukce umožňuje nasměrovat panely libovolně)</li>
+            <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Volná plocha střechy odpovídá plánovanému výkonu&nbsp;– orientačně 5 m² na 1 kWp u šikmé střechy, 10 m² na 1 kWp u ploché</li>
             <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Roční spotřeba elektřiny domu přesahuje 20&nbsp;000&nbsp;kWh</li>
             <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>SVJ nebo družstvo uvažuje v horizontu 10 a více let</li>
             <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>V plánu je zavedení sdílení elektřiny mezi byty (přes EDC) / sloučení do JOM nebo rozvoj elektromobility.</li>
@@ -175,17 +179,17 @@
             <li>Střecha je silně zastíněna nebo míří na sever<span class="ms-icon fve-worth-arrow fve-worth-arrow--no" aria-hidden="true">south_east</span></li>
             <li>Střecha čeká v příštích 3–5 letech rekonstrukci<span class="ms-icon fve-worth-arrow fve-worth-arrow--no" aria-hidden="true">south_east</span></li>
             <li>Spotřeba elektřiny domu je pod 10&nbsp;000&nbsp;kWh ročně<span class="ms-icon fve-worth-arrow fve-worth-arrow--no" aria-hidden="true">south_east</span></li>
-            <li>SVJ nemůže investici financovat ani úvěrem – v takovém případě zůstává možností pronájem FVE, který počáteční kapitál nevyžaduje<span class="ms-icon fve-worth-arrow fve-worth-arrow--no" aria-hidden="true">south_east</span></li>
+            <li>SVJ nemůže investici financovat ani úvěrem&nbsp;– v takovém případě zůstává možností pronájem FVE, který počáteční kapitál nevyžaduje<span class="ms-icon fve-worth-arrow fve-worth-arrow--no" aria-hidden="true">south_east</span></li>
             <li>Plánuje se demolice nebo prodej budovy<span class="ms-icon fve-worth-arrow fve-worth-arrow--no" aria-hidden="true">south_east</span></li>
-            <li>Nízkonákladový nebo energeticky úsporný dům – návratnost velmi dlouhá, investice se nemusí vrátit<span class="ms-icon fve-worth-arrow fve-worth-arrow--no" aria-hidden="true">south_east</span></li>
+            <li>Nízkonákladový nebo energeticky úsporný dům&nbsp;– návratnost velmi dlouhá, investice se nemusí vrátit<span class="ms-icon fve-worth-arrow fve-worth-arrow--no" aria-hidden="true">south_east</span></li>
           </ul>
         </div>
       </div>
 
     </div>
 
-    <p class="fve-worth__note" style="margin-top:24px">Cenu fotovoltaiky netvoří hlavně panely, ale všechno kolem nich – rozvaděč, střídač, kabeláž, projektová dokumentace, revize a uvedení do provozu. Tahle základní část zůstává u menších systémů prakticky stejná bez ohledu na to, jestli má instalace 5, nebo 7&nbsp;kWp – rozdíl v ceně mezi nimi je proto malý.</p>
-    <p class="fve-worth__note fve-worth__note--next">Z toho plyne, že u domu s nízkou roční spotřebou nejde jen o to, že vychází menší FVE. Menší systém sice sníží náklad na panely, ale fixní náklady na „věci okolo" se nezmenší úměrně tomu. Výsledkem je, že u nízkých spotřeb tvoří fixní část ceny neúměrně velký podíl celkové investice – a návratnost se prodlužuje natolik, že se instalace objektivně nevyplatí, i kdyby byla navržená technicky správně.</p>
+    <p class="fve-worth__note" style="margin-top:24px">Cenu fotovoltaiky netvoří hlavně panely, ale všechno kolem nich&nbsp;– rozvaděč, střídač, kabeláž, projektová dokumentace, revize a uvedení do provozu. Tahle základní část zůstává u menších systémů prakticky stejná bez ohledu na to, jestli má instalace 5, nebo 7&nbsp;kWp&nbsp;– rozdíl v ceně mezi nimi je proto malý.</p>
+    <p class="fve-worth__note fve-worth__note--next">Z toho plyne, že u domu s nízkou roční spotřebou nejde jen o to, že vychází menší FVE. Menší systém sice sníží náklad na panely, ale fixní náklady na „věci okolo" se nezmenší úměrně tomu. Výsledkem je, že u nízkých spotřeb tvoří fixní část ceny neúměrně velký podíl celkové investice&nbsp;– a návratnost se prodlužuje natolik, že se instalace objektivně nevyplatí, i kdyby byla navržená technicky správně.</p>
 </div>
 </section>
 
@@ -196,7 +200,7 @@
       <a href="fve-baterie.html" class="guide-qa__card">
         <span class="guide-qa__card-icon" aria-hidden="true">battery_charging_full</span>
         <div class="guide-qa__card-body">
-          <p class="guide-qa__card-title">Baterie k FVE – dimenzování a podmínky výnosnosti</p>
+          <p class="guide-qa__card-title">Baterie k FVE&nbsp;– dimenzování a podmínky výnosnosti</p>
           <p class="guide-qa__card-desc">Kdy baterie přidává hodnotu, jak dimenzovat kapacitu a co znamená záloha pro výpadek sítě.</p>
           <p class="guide-qa__card-meta"><span class="ms-icon" aria-hidden="true">schedule</span> Doba čtení: 4 min.</p>
         </div>
@@ -215,14 +219,14 @@
         <span class="guide-qa__card-icon" aria-hidden="true">gavel</span>
         <div class="guide-qa__card-body">
           <p class="guide-qa__card-title">Podmínky a legislativa pro FVE</p>
-          <p class="guide-qa__card-desc">Podmínky bezúročného úvěru NZÚ – výpočtový vzorec, způsobilost SVJ a legislativní rámec.</p>
+          <p class="guide-qa__card-desc">Podmínky bezúročného úvěru NZÚ&nbsp;– výpočtový vzorec, způsobilost SVJ a legislativní rámec.</p>
           <p class="guide-qa__card-meta"><span class="ms-icon" aria-hidden="true">schedule</span> Doba čtení: 7 min.</p>
         </div>
         <div class="guide-qa__card-arrow">→</div>
       </a>
       <a href="pruvodce-fve.html" class="guide-qa__card guide-qa__card--back">
         <div class="guide-qa__card-body">
-          <p class="guide-qa__card-title">Průvodce FVE – přehled všech témat</p>
+          <p class="guide-qa__card-title">Průvodce FVE&nbsp;– přehled všech témat</p>
           <p class="guide-qa__card-desc">Zpět na přehled témat fotovoltaiky pro bytové domy.</p>
         </div>
         <div class="guide-qa__card-arrow">→</div>
@@ -248,6 +252,8 @@
     <div class="search-body search-cta__body" id="searchCtaBody" hidden></div>
   </div>
 </section>
+</main>
+
 <footer class="site-footer">
   <div class="footer-glow"></div>
 
@@ -257,7 +263,7 @@
         <a href="index.html" class="footer-logo">
           <img src="assets/images/Logo.svg" alt="Energohub">
         </a>
-        <p class="footer-tagline">Nezávislý průvodce úsporami energie pro SVJ a bytová družstva.</p>
+        <p class="footer-tagline">Nezávislý průvodce energetickými opatřeními pro bytové domy a SVJ.</p>
       </div>
 
       <div class="footer-col">

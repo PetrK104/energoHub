@@ -12,6 +12,10 @@
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (!this.checkValidity()) {
+        this.reportValidity();
+        return;
+      }
       var fields = this.querySelector('.kontakt-form__fields');
       var success = this.querySelector('.kontakt-form__success');
       if (fields) fields.hidden = true;

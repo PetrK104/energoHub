@@ -1,5 +1,5 @@
 [build]
-  command = "node build-search.mjs"
+  command = "node build-icons.mjs && node build-search.mjs"
   functions = "netlify/functions"
   publish = "."
   environment = { SECRETS_SCAN_OMIT_KEYS = "SUPABASE_ANON_KEY,SUPABASE_URL" }

@@ -57,6 +57,9 @@
       var item = document.createElement('div');
       item.className = 'kalk-step-item';
       item.setAttribute('data-step-key', key);
+      item.setAttribute('role', 'button');
+      item.setAttribute('tabindex', '0');
+      item.setAttribute('aria-label', 'Přejít na krok ' + (i + 1) + ': ' + STEP_META[key].label);
       item.innerHTML =
         '<div class="kalk-step-dot">' + (i + 1) + '</div>' +
         '<span class="kalk-step-label">' + STEP_META[key].label + '</span>';
@@ -364,27 +367,56 @@
     backToSelect.addEventListener('click', showSelectScreen);
   }
 
+  // Ověří a uloží základní údaje; při chybě zaostří chybné pole
+  function applyBasic() {
+    var bytyEl    = document.getElementById('kalkByty');
+    var spotEl    = document.getElementById('kalkSpotreba');
+    var strechaEl = document.querySelector('input[name="kalkStrecha"]:checked');
+
+    var byty     = parseInt(bytyEl && bytyEl.value, 10);
+    var spotreba = parseInt(spotEl && spotEl.value, 10);
+    var strecha  = strechaEl ? strechaEl.value : 'medium';
+
+    if (!byty || byty < 2)           { bytyEl && bytyEl.focus(); return false; }
+    if (!spotreba || spotreba < 1000) { spotEl && spotEl.focus(); return false; }
+
+    state.byty     = byty;
+    state.spotreba = spotreba;
+    state.strecha  = strecha;
+
+    calculate();
+    return true;
+  }
+
   // Start (Spočítat úspory) → první vybraný krok
   var startBtn = document.getElementById('kalkStart');
   if (startBtn) {
     startBtn.addEventListener('click', function () {
-      var bytyEl    = document.getElementById('kalkByty');
-      var spotEl    = document.getElementById('kalkSpotreba');
-      var strechaEl = document.querySelector('input[name="kalkStrecha"]:checked');
+      if (applyBasic()) goNext('basic');
+    });
+  }
 
-      var byty     = parseInt(bytyEl && bytyEl.value, 10);
-      var spotreba = parseInt(spotEl && spotEl.value, 10);
-      var strecha  = strechaEl ? strechaEl.value : 'medium';
-
-      if (!byty || byty < 2)           { bytyEl && bytyEl.focus(); return; }
-      if (!spotreba || spotreba < 1000) { spotEl && spotEl.focus(); return; }
-
-      state.byty     = byty;
-      state.spotreba = spotreba;
-      state.strecha  = strecha;
-
-      calculate();
-      goNext('basic');
+  // Kliknutí na krok v horní liště → přejde na daný krok
+  var stepperEl = document.getElementById('kalkStepper');
+  function goToStepFromStepper(item) {
+    var key = item && item.getAttribute('data-step-key');
+    if (!key) return;
+    var active = stepperEl.querySelector('.kalk-step-item.is-active');
+    var current = active && active.getAttribute('data-step-key');
+    if (key === current) return;
+    if (current === 'basic' && !applyBasic()) return;
+    showStep(key);
+  }
+  if (stepperEl) {
+    stepperEl.addEventListener('click', function (e) {
+      goToStepFromStepper(e.target.closest('.kalk-step-item'));
+    });
+    stepperEl.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      var item = e.target.closest('.kalk-step-item');
+      if (!item) return;
+      e.preventDefault();
+      goToStepFromStepper(item);
     });
   }
 

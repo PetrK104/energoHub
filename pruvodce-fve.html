@@ -8,10 +8,11 @@
 <meta name="keywords" content="fotovoltaika bytový dům, solární panely střecha, jak funguje FVE, výroba elektřiny ze slunce, FVE pro SVJ, přebytek výroby elektřiny, vlastní spotřeba elektřiny, FVE průvodce krok za krokem, co je FVE, koupě FVE, pronájem FVE, realizace FVE, instalace FVE, jaké jsoi fáze návrhu fotovoltaiky, návrh řešení fve">
 <meta name="category" content="Fotovoltaika">
 <title>Fotovoltaika pro bytové domy – Energohub.info</title>
+<link rel="icon" type="image/png" href="assets/images/fav_icon.png">
+<link rel="apple-touch-icon" href="assets/images/fav_icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=account_circle,add,arrow_forward,battery_charging_20,battery_charging_full,call,chat_bubble,check,check_circle,checklist,chevron_left,chevron_right,close,compare_arrows,description,eco,engineering,expand_less,expand_more,fact_check,fire_extinguisher,gavel,gpp_bad,handshake,hub,info,local_fire_department,location_on,mail,menu_book,north_east,open_in_new,receipt_long,remove,roofing,schedule,search,security,solar_power,south_east,swap_horiz,table_chart,trending_up,visibility,visibility_off,work&display=swap" rel="stylesheet">
 <link rel="preload" href="embed_2/assets/index-q1j9l2i6.js" as="script" crossorigin fetchpriority="high">
 <link rel="preload" href="embed_2/assets/index-n_mh-w3Q.css" as="style">
 <link rel="preload" href="/hdri/dikhololo_night_512.hdr" as="fetch" crossorigin>
@@ -22,6 +23,7 @@
 <link rel="stylesheet" href="css/navbar-mobile-v2.css">
 </head>
 <body>
+<a class="skip-link" href="#obsah">Přeskočit na obsah</a>
 
 
 <header class="site-header">
@@ -33,7 +35,7 @@
 
       <ul class="navbar-links">
         <li class="nav-dropdown">
-          <span class="nav-dropdown__trigger" tabindex="0" aria-haspopup="true">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></span>
+          <button type="button" class="nav-dropdown__trigger" aria-haspopup="true" aria-expanded="false">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></button>
           <ul class="nav-dropdown__menu">
             <div class="nav-dropdown__menu-inner">
               <li><a href="pruvodce-jom.html">Jednotné odběrné místo (JOM)</a></li>
@@ -45,7 +47,7 @@
           </ul>
         </li>
         <li class="nav-dropdown">
-          <span class="nav-dropdown__trigger" tabindex="0" aria-haspopup="true">Poradna <span class="nav-dropdown__arrow">▾</span></span>
+          <button type="button" class="nav-dropdown__trigger" aria-haspopup="true" aria-expanded="false">Poradna <span class="nav-dropdown__arrow">▾</span></button>
           <ul class="nav-dropdown__menu">
             <div class="nav-dropdown__menu-inner">
               <li><a href="bezpecnost.html">Bezpečnost</a></li>
@@ -79,7 +81,7 @@
       <!-- Průvodci — accordion -->
       <details class="nm2__accordion">
         <summary class="nm2__row">
-          <span class="nm2__title">Průvodci</span>
+          <span class="nm2__title">Průvodci opatření</span>
           <span class="ms-icon nm2__arrow" aria-hidden="true">expand_more</span>
         </summary>
         <ul class="nm2__sub">
@@ -116,6 +118,8 @@
   </div>
 </header>
 
+<main class="page-main"><span id="obsah" tabindex="-1"></span>
+
 <section class="fve-hero">
   <iframe
     class="fve-hero__3d-frame"
@@ -130,7 +134,6 @@
   <div id="fvePoster" class="fve-hero__poster" aria-hidden="true"></div>
 
   <div class="fve-hero__topbar">
-    <a class="fve-breadcrumb" href="index.html#pruvodce">← Zpět na přehled průvodců</a>
     <nav class="guide-steps" aria-label="Postup úspor">
       <a href="pruvodce-jom.html" class="guide-steps__item"><span class="guide-steps__num">01</span><span class="guide-steps__label">JOM</span></a>
       <span class="guide-steps__sep" aria-hidden="true">›</span>
@@ -146,7 +149,7 @@
 
     <h1 class="fve-hero__title">Fotovoltaika pro bytový dům</h1>
     <p class="fve-hero__text">
-      Zjistěte, jak střecha vašeho domu může vyrábět elektřinu pro společné prostory nebo přímo pro byty – a kdy se investice reálně vrátí.
+      Zjistěte, jak střecha vašeho domu může vyrábět elektřinu pro společné prostory nebo přímo pro byty&nbsp;– a kdy se investice reálně vrátí.
     </p>
   </div>
 
@@ -174,8 +177,8 @@
     <div class="fve-explain__header">
       <p class="fve-eyebrow">Co je FVE</p>
       <h2 data-search-keys="FVE princip, fotovoltaika jak funguje, bytový dům FVE, elektřina ze slunce, solární panely" class="fve-explain__title" id="jak-fotovoltaika-v-bytovem-dome-funguje">Jak fotovoltaika v bytovém domě funguje</h2>
-      <p class="fve-explain__lead">FV panely na střeše vyrábí elektřinu ze slunečního světla. Střídač ji převede do podoby, kterou budova spotřebuje, a rozvaděč ji rozdělí tam, kde je zrovna potřeba – do společných prostor, do&nbsp;bytů nebo do baterie. Přebytky odchází do distribuční sítě.</p>
-      <p class="fve-explain__lead">Přebytky výroby, které budova v daný moment nespotřebuje, putují do bateriového úložiště nebo do sítě. Baterie zachytí denní přebytky a uvolní je v hodinách, kdy panely nevyrábí – čímž snižuje množství elektřiny, které musí budova nakoupit od distributora.</p>
+      <p class="fve-explain__lead">FV panely na střeše vyrábí elektřinu ze slunečního světla. Střídač ji převede do podoby, kterou budova spotřebuje, a rozvaděč ji rozdělí tam, kde je zrovna potřeba&nbsp;– do společných prostor, do&nbsp;bytů nebo do baterie. Přebytky odchází do distribuční sítě.</p>
+      <p class="fve-explain__lead">Přebytky výroby, které budova v daný moment nespotřebuje, putují do bateriového úložiště nebo do sítě. Baterie zachytí denní přebytky a uvolní je v hodinách, kdy panely nevyrábí&nbsp;– čímž snižuje množství elektřiny, které musí budova nakoupit od distributora.</p>
     </div>
 
     <div class="fve-explain__photo">
@@ -204,7 +207,7 @@
       <a href="fve-baterie.html" class="guide-qa__card">
         <span class="guide-qa__card-icon" aria-hidden="true">battery_charging_full</span>
         <div class="guide-qa__card-body">
-          <p class="guide-qa__card-title">Baterie k FVE – dimenzování a podmínky výnosnosti</p>
+          <p class="guide-qa__card-title">Baterie k FVE&nbsp;– dimenzování a podmínky výnosnosti</p>
           <p class="guide-qa__card-desc">Kdy baterie přidává hodnotu, jak dimenzovat kapacitu a co znamená záloha pro výpadek sítě.</p>
           <p class="guide-qa__card-meta"><span class="ms-icon" aria-hidden="true">schedule</span> Doba čtení: 4 min.</p>
         </div>
@@ -225,7 +228,7 @@
         <span class="guide-qa__card-icon" aria-hidden="true">gavel</span>
         <div class="guide-qa__card-body">
           <p class="guide-qa__card-title">Podmínky a legislativa pro FVE</p>
-          <p class="guide-qa__card-desc">Podmínky bezúročného úvěru NZÚ – výpočtový vzorec, způsobilost SVJ a legislativní rámec.</p>
+          <p class="guide-qa__card-desc">Podmínky bezúročného úvěru NZÚ&nbsp;– výpočtový vzorec, způsobilost SVJ a legislativní rámec.</p>
           <p class="guide-qa__card-meta"><span class="ms-icon" aria-hidden="true">schedule</span> Doba čtení: 7 min.</p>
         </div>
         <div class="guide-qa__card-arrow">→</div>
@@ -245,7 +248,7 @@
       <a href="bezpecnost.html" class="guide-qa__card guide-qa__card--back">
         <div class="guide-qa__card-body">
           <p class="guide-qa__card-title">Bezpečnost FVE</p>
-          <p class="guide-qa__card-desc">Statický posudek, PBŘ, projektová dokumentace, revize a hasicí přístroj – co musí každá instalace splnit.</p>
+          <p class="guide-qa__card-desc">Statický posudek, PBŘ, projektová dokumentace, revize a hasicí přístroj&nbsp;– co musí každá instalace splnit.</p>
         </div>
         <div class="guide-qa__card-arrow">→</div>
       </a>
@@ -267,12 +270,12 @@
       <div class="fve-compare__panel">
         <h3 class="fve-compare__panel-title">Pronájem</h3>
         <ul class="fve-worth-list fve-worth-list--yes">
-          <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span><strong>Cena elektřiny o 10–20 % nižší než distribuční tarif – zbytek hodnoty zůstává poskytovateli systému.</strong></li>
+          <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span><strong>Cena elektřiny o 10–20 % nižší než distribuční tarif&nbsp;– zbytek hodnoty zůstává poskytovateli systému.</strong></li>
           <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Zbytek výnosů ze systému zůstává poskytovateli.</li>
           <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Typický model s odpisem cca 10 let.</li>
           <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Možnost dřívějšího odkupu (např. po 5 letech) za poměrovou část zůstatkové ceny.</li>
-          <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Baterie má kratší životnost než panely (10–15 let oproti 25–30 u panelů) – smlouva by měla výslovně uvádět, kdo nese náklad výměny a za jakých podmínek.</li>
-          <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Nevyžaduje počáteční investici SVJ – systém financuje poskytovatel.</li>
+          <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Baterie má kratší životnost než panely (10–15 let oproti 25–30 u panelů)&nbsp;– smlouva by měla výslovně uvádět, kdo nese náklad výměny a za jakých podmínek.</li>
+          <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Nevyžaduje počáteční investici SVJ&nbsp;– systém financuje poskytovatel.</li>
           <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Smlouva by měla řešit i mimořádné situace: co se stane při prodeji budovy, zániku SVJ jako právnické osoby nebo při ukončení činnosti poskytovatele.</li>
         </ul>
       </div>
@@ -280,9 +283,9 @@
       <div class="fve-compare__panel">
         <h3 class="fve-compare__panel-title">Vlastní koupě</h3>
         <ul class="fve-worth-list fve-worth-list--yes">
-          <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span><strong>Cena elektřiny klidně o 50 % a více nižší než distribuční tarif – veškerá hodnota vyrobené elektřiny zůstává v domě.</strong></li>
+          <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span><strong>Cena elektřiny klidně o 50 % a více nižší než distribuční tarif&nbsp;– veškerá hodnota vyrobené elektřiny zůstává v domě.</strong></li>
           <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>SVJ je vlastníkem zařízení od prvního dne.</li>
-          <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Financování je od roku 2026 dostupné především formou bezúročného úvěru z programu Nová zelená úsporám – stát hradí bance úroky po celou dobu splácení, SVJ splácí jen půjčenou částku. Přímá dotace zůstává jen pro byty obývané nízkopříjmovými domácnostmi.</li>
+          <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Financování je od roku 2026 dostupné především formou bezúročného úvěru z programu Nová zelená úsporám&nbsp;– stát hradí bance úroky po celou dobu splácení, SVJ splácí jen půjčenou částku. Přímá dotace zůstává jen pro byty obývané nízkopříjmovými domácnostmi.</li>
           <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Počáteční investice je vyšší než u pronájmu; ekonomika závisí na způsobu financování (vlastní zdroje, úvěr, kombinace s fondem oprav).</li>
           <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Výměna baterie po 10–15 letech je předvídatelný náklad, který je vhodné zahrnout do ekonomické analýzy projektu při rozhodování.</li>
           <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Životnost samotných panelů se pohybuje kolem 25–30 let, výrazně déle než u baterie.</li>
@@ -321,9 +324,9 @@
                 <li>Simulace výroby a spotřeby elektřiny</li>
                 <li>Ekonomická analýza návratnosti</li>
                 <li>Výpočet optimálního výkonu v kWp</li>
-                <li>Zohlednění plánovaného JOM v návrhu – ovlivňuje optimální výkon systému i to, jestli má smysl doplnit bateriové úložiště</li>
-                <li>Předběžné posouzení, do které výkonové kategorie (do 100 kW / nad 100 kW) instalace spadá – určuje rozsah povolovacích kroků v dalším bodě</li>
-                <li>Zvážení varianty FVE umístěné mimo bytový dům se sdílením vyrobené elektřiny do objektu (např. větší dostupná střecha jinde) – i s ohledem na ztráty spojené s přenosem přes distribuční síť může být tato varianta ekonomicky výhodná</li>
+                <li>Zohlednění plánovaného JOM v návrhu&nbsp;– ovlivňuje optimální výkon systému i to, jestli má smysl doplnit bateriové úložiště</li>
+                <li>Předběžné posouzení, do které výkonové kategorie (do 100 kW / nad 100 kW) instalace spadá&nbsp;– určuje rozsah povolovacích kroků v dalším bodě</li>
+                <li>Zvážení varianty FVE umístěné mimo bytový dům se sdílením vyrobené elektřiny do objektu (např. větší dostupná střecha jinde)&nbsp;– i s ohledem na ztráty spojené s přenosem přes distribuční síť může být tato varianta ekonomicky výhodná</li>
                 <li>Instalace nad 100 kW mimo bytový dům je v tomto uspořádání možná, ale vyžaduje stavební povolení (viz <a href="fve-dotace-a-legislativa.html#hranice-100-kw-co-z-ni-plyne-v-praxi" class="fve-phase__link">karty Do 100 kW / Nad 100 kW</a>)</li>
               </ul>
             </div>
@@ -339,7 +342,7 @@
           <div class="fve-phase__estat">
             <strong>10–55 %</strong>orientační úspora nákladů na elektřinu v závislosti na formě financování
             <ul style="list-style:none;padding:0;margin:10px 0 0;display:flex;flex-direction:column;gap:4px;font-size:var(--fs-small);line-height:var(--lh-small);color:#0a0a0a99">
-              <li>– Pronájem typicky 10–20 % – část výnosu připadá poskytovateli</li>
+              <li>– Pronájem typicky 10–20 %&nbsp;– část výnosu připadá poskytovateli</li>
               <li>– Vlastní koupě s JOM 35–55 %</li>
               <li>– Konkrétní hodnota závisí také na výkonu systému a spotřebě domu</li>
             </ul>
@@ -367,12 +370,12 @@
             <div class="fve-phase__scroll" id="phase02List">
               <ul class="fve-phase__elist">
                 <li>Souhlas shromáždění SVJ nebo bytového družstva a podpis závazné smlouvy o realizaci FVE</li>
-                <li>Podání žádosti o připojení k distributorovi (ČEZ Distribuce, EG.D nebo PREdistribuce) – distributor posoudí, zda je instalace na daném místě možná, povolí přetoky do sítě a schválí umístění zařízení</li>
+                <li>Podání žádosti o připojení k distributorovi (ČEZ Distribuce, EG.D nebo PREdistribuce)&nbsp;– distributor posoudí, zda je instalace na daném místě možná, povolí přetoky do sítě a schválí umístění zařízení</li>
                 <li>Uzavření smlouvy o připojení po kladném vyjádření distributora</li>
-                <li>Zpracování kompletní projektové dokumentace – návrh nosné konstrukce, technická zpráva, statický posudek střechy a požárně bezpečnostní řešení (PBŘ)</li>
-                <li>Do výkonu 100 kW nevyžaduje zákon ani stavební povolení, ani ohlášení stavby – stačí žádost o připojení k distributorovi a splnění technických požadavků</li>
-                <li>U SVJ jde téměř vždy o instalace do 100 kW; nad tuto hranici je nutné stavební povolení, což se týká jen výjimečných případů – i sloučené vchody se kvůli bateriím a napájení společných prostor obvykle realizují jako dílčí instalace pod tímto limitem</li>
-                <li>Zákon do 100 kW nenařizuje zpracování <a href="bezpecnost.html" class="fve-phase__link">PBŘ ani statického posudku střechy</a> formou samostatného řízení, přesto se doporučuje na obojím trvat – bez nich pojišťovna při škodě plnění často krátí nebo zamítá</li>
+                <li>Zpracování kompletní projektové dokumentace&nbsp;– návrh nosné konstrukce, technická zpráva, statický posudek střechy a požárně bezpečnostní řešení (PBŘ)</li>
+                <li>Do výkonu 100 kW nevyžaduje zákon ani stavební povolení, ani ohlášení stavby&nbsp;– stačí žádost o připojení k distributorovi a splnění technických požadavků</li>
+                <li>U SVJ jde téměř vždy o instalace do 100 kW; nad tuto hranici je nutné stavební povolení, což se týká jen výjimečných případů&nbsp;– i sloučené vchody se kvůli bateriím a napájení společných prostor obvykle realizují jako dílčí instalace pod tímto limitem</li>
+                <li>Zákon do 100 kW nenařizuje zpracování <a href="bezpecnost.html" class="fve-phase__link">PBŘ ani statického posudku střechy</a> formou samostatného řízení, přesto se doporučuje na obojím trvat&nbsp;– bez nich pojišťovna při škodě plnění často krátí nebo zamítá</li>
               </ul>
             </div>
             <div class="fve-phase__scroll-arrows">
@@ -416,8 +419,8 @@
                 <li>Montáž nosné konstrukce a FV panelů</li>
                 <li>Instalace střídačů a případně bateriových úložišť</li>
                 <li>Elektroinstalace ve společných prostorách</li>
-                <li>Realizace požárně bezpečnostního řešení – kabeláž v kovovém žlabu, nouzové odpojení přístupné na střeše, oddělený prostor pro technologii</li>
-                <li>Protipožární ucpávky ve všech místech, kde kabeláž prochází mezi požárními úseky (např. mezi venkovní částí, vnitřkem domu a technickou místností) – se štítkováním a zahrnuté do plánu pravidelných revizí</li>
+                <li>Realizace požárně bezpečnostního řešení&nbsp;– kabeláž v kovovém žlabu, nouzové odpojení přístupné na střeše, oddělený prostor pro technologii</li>
+                <li>Protipožární ucpávky ve všech místech, kde kabeláž prochází mezi požárními úseky (např. mezi venkovní částí, vnitřkem domu a technickou místností)&nbsp;– se štítkováním a zahrnuté do plánu pravidelných revizí</li>
                 <li>Montáž hlavního elektroměru a podružných měřidel, pokud se instalace realizuje současně se zavedením JOM</li>
                 <li>Nastavení monitorovacího systému</li>
               </ul>
@@ -432,7 +435,7 @@
             </div>
           </div>
           <div class="fve-phase__estat">
-            <strong>5–10 dní</strong>orientační doba montáže – u systémů 20–30 kWp přibližně týden na střešní konstrukci a panely, další týden na elektroinstalaci; bez zohlednění čekací doby na povolení a připojení k síti.
+            <strong>5–10 dní</strong>orientační doba montáže&nbsp;– u systémů 20–30 kWp přibližně týden na střešní konstrukci a panely, další týden na elektroinstalaci; bez zohlednění čekací doby na povolení a připojení k síti.
           </div>
           <div class="fve-phase__nav">
             <button class="fve-phase__btn fve-phase__btn--prev" type="button" aria-label="Předchozí fáze">
@@ -460,11 +463,11 @@
           <div class="fve-phase__scroll-wrap">
             <div class="fve-phase__scroll" id="phase04List" style="max-height:320px">
               <ul class="fve-phase__elist">
-                <li>Výchozí elektrotechnická revize celého fotovoltaického systému – povinná podmínka pro připojení k distribuční síti; týká se všech instalací bez ohledu na to, zda je součástí baterie</li>
+                <li>Výchozí elektrotechnická revize celého fotovoltaického systému&nbsp;– povinná podmínka pro připojení k distribuční síti; týká se všech instalací bez ohledu na to, zda je součástí baterie</li>
                 <li>Revize elektrických rozvodů navíc tehdy, pokud byla realizována současně s JOM nebo bylo-li zasahováno do hlavního rozvaděče; revize dílčího rozvaděče jen výjimečně, při přímém zásahu do jeho části</li>
                 <li>Přejímka technického řešení distributorem a výměna nebo instalace elektroměru</li>
-                <li>První paralelní připojení: technik distributora vymění elektroměr, zaplombuje hlavní rozvaděč a vystaví potvrzující dokument – tímto úkonem se dosavadní smlouva o smlouvě budoucí mění na řádný smluvní vztah</li>
-                <li>Uzavření smlouvy s obchodníkem elektřiny – obchodník přebírá odpovědnost za odchylku (za nespotřebované přetoky odcházející do sítě) a nastaví tarif; i FVE bez JOM musí mít elektroměr (obvykle ve společných prostorách) napojený na tarif a odchylku u obchodníka</li>
+                <li>První paralelní připojení: technik distributora vymění elektroměr, zaplombuje hlavní rozvaděč a vystaví potvrzující dokument&nbsp;– tímto úkonem se dosavadní smlouva o smlouvě budoucí mění na řádný smluvní vztah</li>
+                <li>Uzavření smlouvy s obchodníkem elektřiny&nbsp;– obchodník přebírá odpovědnost za odchylku (za nespotřebované přetoky odcházející do sítě) a nastaví tarif; i FVE bez JOM musí mít elektroměr (obvykle ve společných prostorách) napojený na tarif a odchylku u obchodníka</li>
                 <li>Distributor zajišťuje fyzické připojení k síti a první paralelní připojení</li>
                 <li>Obchodník s elektřinou uzavírá smlouvu o nákupu a prodeji elektřiny, včetně odchylky a tarifu</li>
                 <li>Proškolení správce budovy</li>
@@ -590,28 +593,28 @@
 
         <div class="fve-calc__bignums">
           <div class="fve-calc__result">
-            <span class="fve-calc__result-value" id="resPayback">7 – 10</span>
+            <span class="fve-calc__result-value" id="resPayback">7&nbsp;– 10</span>
             <div class="fve-calc__result-meta">
               <span class="fve-calc__result-unit">let návratnost</span>
               <span class="fve-calc__result-label">Orientační doba návratnosti</span>
             </div>
           </div>
           <div class="fve-calc__result">
-            <span class="fve-calc__result-value" id="resSavingsYear">80 – 130</span>
+            <span class="fve-calc__result-value" id="resSavingsYear">80&nbsp;– 130</span>
             <div class="fve-calc__result-meta">
               <span class="fve-calc__result-unit">tis. Kč / rok</span>
               <span class="fve-calc__result-label">Ušetřeno za rok</span>
             </div>
           </div>
           <div class="fve-calc__result">
-            <span class="fve-calc__result-value" id="resSavingsMth">550 – 750</span>
+            <span class="fve-calc__result-value" id="resSavingsMth">550&nbsp;– 750</span>
             <div class="fve-calc__result-meta">
               <span class="fve-calc__result-unit">Kč / měsíc / byt</span>
               <span class="fve-calc__result-label">Úspora na jeden byt</span>
             </div>
           </div>
           <div class="fve-calc__result">
-            <span class="fve-calc__result-value" id="resCostTotal">380 – 510</span>
+            <span class="fve-calc__result-value" id="resCostTotal">380&nbsp;– 510</span>
             <div class="fve-calc__result-meta">
               <span class="fve-calc__result-unit">tis. Kč instalace</span>
               <span class="fve-calc__result-label">Orientační cena systému</span>
@@ -625,13 +628,13 @@
             <div class="fve-calc__chart-bar fve-calc__chart-bar--jom" id="barJom" style="height:300px">
               <div class="fve-calc__bar-inner fve-calc__bar-inner--jom">
                 <span class="fve-calc__bar-name">S JOM</span>
-                <span class="fve-calc__bar-val" id="barJomVal">80 – 130 tis. Kč</span>
+                <span class="fve-calc__bar-val" id="barJomVal">80&nbsp;– 130 tis. Kč</span>
               </div>
             </div>
             <div class="fve-calc__chart-bar fve-calc__chart-bar--nojom" id="barNoJom" style="height:113px">
               <div class="fve-calc__bar-inner fve-calc__bar-inner--nojom">
                 <span class="fve-calc__bar-name">Bez JOM</span>
-                <span class="fve-calc__bar-val" id="barNoJomVal">48 – 65 tis. Kč</span>
+                <span class="fve-calc__bar-val" id="barNoJomVal">48&nbsp;– 65 tis. Kč</span>
               </div>
             </div>
           </div>
@@ -643,8 +646,8 @@
       <div class="fve-price__flag-note" style="margin-bottom:32px">
         <strong>Referenční cena FVE: 27 000–31 000 Kč/kWp</strong>
         <ul class="fve-insight__list" style="margin-top:10px">
-          <li>S baterií (LFP = lithium-železo-fosfát, dnes nejběžnější typ) – bez baterie je cena nižší</li>
-          <li>Vydělte celkovou cenu nabídky počtem kWp – výsledek by měl vyjít v tomto rozmezí</li>
+          <li>S baterií (LFP = lithium-železo-fosfát, dnes nejběžnější typ)&nbsp;– bez baterie je cena nižší</li>
+          <li>Vydělte celkovou cenu nabídky počtem kWp&nbsp;– výsledek by měl vyjít v tomto rozmezí</li>
         </ul>
       </div>
 
@@ -775,15 +778,15 @@
       <div class="fve-case__left">
         <h3 class="fve-case__subtitle">Korunní 47, Praha 2</h3>
         <p class="fve-case__desc">
-          Šestipodlažní bytový dům s 24 byty, orientace střechy na jihojihovýchod. SVJ hledalo způsob, jak trvale snížit zálohy na energie. Kombinace FVE, baterie a JOM dnes pokrývá 58 % roční spotřeby celého domu – zálohy klesly první rok provozu přesně dle projektu.
+          Šestipodlažní bytový dům s 24 byty, orientace střechy na jihojihovýchod. SVJ hledalo způsob, jak trvale snížit zálohy na energie. Kombinace FVE, baterie a JOM dnes pokrývá 58 % roční spotřeby celého domu&nbsp;– zálohy klesly první rok provozu přesně dle projektu.
         </p>
         <p class="fve-case__desc">
-          Klíčem k pokrytí 58 % roční spotřeby není jen výkon panelů – bez baterie 30 kWh by výrobní špičky z poledne odcházely do sítě nevyužity. Baterie zachytí denní přebytky a prostřednictvím JOM je uvolní do bytů večer, čímž minimalizuje množství elektřiny nakoupené od distributora.
+          Klíčem k pokrytí 58 % roční spotřeby není jen výkon panelů&nbsp;– bez baterie 30 kWh by výrobní špičky z poledne odcházely do sítě nevyužity. Baterie zachytí denní přebytky a prostřednictvím JOM je uvolní do bytů večer, čímž minimalizuje množství elektřiny nakoupené od distributora.
         </p>
         <ul class="fve-case__list">
           <li>FVE 42 kWp, cca 95 panelů o výkonu 440 Wp na střeše</li>
           <li>Bateriové úložiště 30 kWh</li>
-          <li>JOM – sdílení vyrobené elektřiny napříč byty</li>
+          <li>JOM&nbsp;– sdílení vyrobené elektřiny napříč byty</li>
           <li>4 nabíjecí stanice pro elektromobily v suterénu</li>
           <li>Energetický management (EMS)</li>
         </ul>
@@ -824,21 +827,21 @@
       <details class="fve-faq__item">
         <summary class="fve-faq__q">Je FVE v bytovém domě vůbec možná?</summary>
         <div class="fve-faq__a">
-          <p>Ano – pro SVJ je to dnes standardní cesta. Instalace na střechu bytového domu do výkonu 100 kW nevyžaduje ani stavební povolení, ani ohlášení stavby. Nutné je hlasování vlastníků; potřebná většina se řídí stanovami SVJ, nejčastěji jde o nadpoloviční většinu přítomných nebo o kvalifikovanou většinu (např. 2/3) u rozsáhlejších technických zásahů.</p>
+          <p>Ano&nbsp;– pro SVJ je to dnes standardní cesta. Instalace na střechu bytového domu do výkonu 100 kW nevyžaduje ani stavební povolení, ani ohlášení stavby. Nutné je hlasování vlastníků; potřebná většina se řídí stanovami SVJ, nejčastěji jde o nadpoloviční většinu přítomných nebo o kvalifikovanou většinu (např. 2/3) u rozsáhlejších technických zásahů.</p>
         </div>
       </details>
 
       <details class="fve-faq__item">
         <summary class="fve-faq__q">Jak funguje sdílení elektřiny a čím se liší od JOM?</summary>
         <div class="fve-faq__a">
-          <p>Existují dva různé modely. Jednotné odběrné místo (JOM) sloučí celý dům do jednoho odběrného místa vůči distributorovi – elektřina se pak rozvádí mezi byty uvnitř domu, bez průchodu přes distribuční síť. Sdílení elektřiny (komunitní energetika) naopak ponechává každému bytu vlastní odběrné místo a virtuálně mezi nimi přerozděluje vyrobenou elektřinu přes distribuční síť pomocí Elektroenergetického datového centra, podle klíče nastaveného SVJ. Přebytky nad rámec nastavené alokace se prodávají nebo ukládají do baterie.</p>
+          <p>Existují dva různé modely. Jednotné odběrné místo (JOM) sloučí celý dům do jednoho odběrného místa vůči distributorovi&nbsp;– elektřina se pak rozvádí mezi byty uvnitř domu, bez průchodu přes distribuční síť. Sdílení elektřiny (komunitní energetika) naopak ponechává každému bytu vlastní odběrné místo a virtuálně mezi nimi přerozděluje vyrobenou elektřinu přes distribuční síť pomocí Elektroenergetického datového centra, podle klíče nastaveného SVJ. Přebytky nad rámec nastavené alokace se prodávají nebo ukládají do baterie.</p>
         </div>
       </details>
 
       <details class="fve-faq__item">
         <summary class="fve-faq__q">Je potřeba souhlas všech vlastníků?</summary>
         <div class="fve-faq__a">
-          <p>Ne, k rozhodnutí o instalaci FVE stačí kvorum určené stanovami SVJ, nejčastěji nadpoloviční většina přítomných na shromáždění nebo kvalifikovaná většina vlastnických podílů. U zavedení JOM je ale potřeba počítat s tím, že jednotlivec, který souhlas neudělí, může technicky zůstat na svém původním samostatném odběrném místě – jde totiž o jeho osobní smlouvu s dodavatelem elektřiny.</p>
+          <p>Ne, k rozhodnutí o instalaci FVE stačí kvorum určené stanovami SVJ, nejčastěji nadpoloviční většina přítomných na shromáždění nebo kvalifikovaná většina vlastnických podílů. U zavedení JOM je ale potřeba počítat s tím, že jednotlivec, který souhlas neudělí, může technicky zůstat na svém původním samostatném odběrném místě&nbsp;– jde totiž o jeho osobní smlouvu s dodavatelem elektřiny.</p>
         </div>
       </details>
 
@@ -852,42 +855,42 @@
       <details class="fve-faq__item">
         <summary class="fve-faq__q">Co se děje s přebytky elektřiny, které budova nespotřebuje?</summary>
         <div class="fve-faq__a">
-          <p>Přebytky, které nezachytí baterie a nespotřebují byty, se prodávají zpět do distribuční sítě za výkupní cenu, typicky 1–1,5 Kč/kWh. Bateriové úložiště zachytí špičky výroby a přesune je do večerních hodin – snižuje tím množství prodávané energie za nízkou cenu a zvyšuje míru vlastní spotřeby.</p>
+          <p>Přebytky, které nezachytí baterie a nespotřebují byty, se prodávají zpět do distribuční sítě za výkupní cenu, typicky 1–1,5 Kč/kWh. Bateriové úložiště zachytí špičky výroby a přesune je do večerních hodin&nbsp;– snižuje tím množství prodávané energie za nízkou cenu a zvyšuje míru vlastní spotřeby.</p>
         </div>
       </details>
 
       <details class="fve-faq__item">
         <summary class="fve-faq__q">Jaká je životnost FVE systému?</summary>
         <div class="fve-faq__a">
-          <p>Solární panely jsou nejdlouhověčnější částí systému – výrobci garantují minimálně 80 % výkonu po 25 letech, reálná životnost přesahuje 30 let. Střídač (invertor) vydrží 10–15 let a bývá jedinou větší výměnou za dobu provozu. Baterie mají životnost 10–15 let dle hloubky vybíjení.</p>
+          <p>Solární panely jsou nejdlouhověčnější částí systému&nbsp;– výrobci garantují minimálně 80 % výkonu po 25 letech, reálná životnost přesahuje 30 let. Střídač (invertor) vydrží 10–15 let a bývá jedinou větší výměnou za dobu provozu. Baterie mají životnost 10–15 let dle hloubky vybíjení.</p>
         </div>
       </details>
 
       <details class="fve-faq__item">
         <summary class="fve-faq__q">Jak se rozdělují úspory mezi jednotlivé byty?</summary>
         <div class="fve-faq__a">
-          <p>SVJ si sám nastaví klíč rozdělení – nejčastěji podle podílu na společných částech domu (stejně jako fond oprav) nebo podle skutečné spotřeby jednotlivých bytů. Klíč lze kdykoli změnit rozhodnutím shromáždění. Detailní pravidla se zapracují do interní směrnice SVJ nebo smlouvy o JOM.</p>
+          <p>SVJ si sám nastaví klíč rozdělení&nbsp;– nejčastěji podle podílu na společných částech domu (stejně jako fond oprav) nebo podle skutečné spotřeby jednotlivých bytů. Klíč lze kdykoli změnit rozhodnutím shromáždění. Detailní pravidla se zapracují do interní směrnice SVJ nebo smlouvy o JOM.</p>
         </div>
       </details>
 
       <details class="fve-faq__item">
         <summary class="fve-faq__q">Ovlivní instalace FVE pojistné bytového domu?</summary>
         <div class="fve-faq__a">
-          <p>Zpravidla ne – FVE je dnes standardní technologie a většina pojišťoven ji do pojistné smlouvy zahrne bez navýšení pojistného. Před instalací je vhodné informovat pojišťovnu a ověřit, zda smlouva pokrývá i technologii na střeše. Některé pojišťovny nabízejí rozšíření o připojištění FVE systému.</p>
+          <p>Zpravidla ne&nbsp;– FVE je dnes standardní technologie a většina pojišťoven ji do pojistné smlouvy zahrne bez navýšení pojistného. Před instalací je vhodné informovat pojišťovnu a ověřit, zda smlouva pokrývá i technologii na střeše. Některé pojišťovny nabízejí rozšíření o připojištění FVE systému.</p>
         </div>
       </details>
 
       <details class="fve-faq__item">
         <summary class="fve-faq__q">Jak dlouho vydrží baterie a co se děje, když kapacita klesne?</summary>
         <div class="fve-faq__a">
-          <p>Výrobci LFP baterií garantují typicky 3 000–6 000 plných cyklů při 80% hloubce vybití – při jednom cyklu denně to odpovídá přibližně 8–16 letům provozu. Kapacita baterie v průběhu let postupně klesá; po dosažení zárukou stanovené hranice (obvykle 70–80 % původní kapacity) je baterie funkční, ale ukládá méně energie. Výměna celého úložiště nebo jeho části je předvídatelný náklad – kvalitní nabídky ji vyčíslují předem jako součást ekonomické analýzy projektu.</p>
+          <p>Výrobci LFP baterií garantují typicky 3 000–6 000 plných cyklů při 80% hloubce vybití&nbsp;– při jednom cyklu denně to odpovídá přibližně 8–16 letům provozu. Kapacita baterie v průběhu let postupně klesá; po dosažení zárukou stanovené hranice (obvykle 70–80 % původní kapacity) je baterie funkční, ale ukládá méně energie. Výměna celého úložiště nebo jeho části je předvídatelný náklad&nbsp;– kvalitní nabídky ji vyčíslují předem jako součást ekonomické analýzy projektu.</p>
         </div>
       </details>
 
       <details class="fve-faq__item">
         <summary class="fve-faq__q">Jaké je požární riziko Li-ion baterie v bytovém domě?</summary>
         <div class="fve-faq__a">
-          <p>Li-ion baterie při poruše nebo přehřátí mohou způsobit tzv. tepelný únik (thermal runaway) – intenzivní hoření, které je obtížné hasit standardními prostředky. Proto se baterie v bytových domech umísťují do oddělených větraných technických místností s požárními dveřmi a specifickým požárně bezpečnostním řešením (PBŘ). LFP chemie (lithium-železo-fosfát) je v tomto ohledu výrazně bezpečnější než starší NMC nebo NCA chemie. V místnosti s baterií je vhodné mít hasicí přístroj určený pro lithiové baterie a provádět pravidelné revize.</p>
+          <p>Li-ion baterie při poruše nebo přehřátí mohou způsobit tzv. tepelný únik (thermal runaway)&nbsp;– intenzivní hoření, které je obtížné hasit standardními prostředky. Proto se baterie v bytových domech umísťují do oddělených větraných technických místností s požárními dveřmi a specifickým požárně bezpečnostním řešením (PBŘ). LFP chemie (lithium-železo-fosfát) je v tomto ohledu výrazně bezpečnější než starší NMC nebo NCA chemie. V místnosti s baterií je vhodné mít hasicí přístroj určený pro lithiové baterie a provádět pravidelné revize.</p>
         </div>
       </details>
 
@@ -931,6 +934,8 @@
   </div>
 </section>
 
+</main>
+
 <footer class="site-footer">
   <div class="footer-glow"></div>
 
@@ -940,7 +945,7 @@
         <a href="index.html" class="footer-logo">
           <img src="assets/images/Logo.svg" alt="Energohub">
         </a>
-        <p class="footer-tagline">Nezávislý průvodce úsporami energie pro SVJ a bytová družstva.</p>
+        <p class="footer-tagline">Nezávislý průvodce energetickými opatřeními pro bytové domy a SVJ.</p>
       </div>
 
       <div class="footer-col">

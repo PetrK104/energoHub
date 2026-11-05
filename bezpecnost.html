@@ -8,18 +8,20 @@
 <meta name="description" content="Bezpečná fotovoltaika na bytovém domě: statický posudek střechy, PBŘ, projektová dokumentace, hasicí přístroj a revize baterií. Průvodce pro SVJ.">
 <meta name="keywords" content="bezpečnost fotovoltaiky, statický posudek střechy, požárně bezpečnostní řešení PBŘ, revize FVE, hasicí přístroj fotovoltaika, pojistné plnění FVE, bezpečná instalace solárních panelů, revize baterií, požár FVE, projektová dokumentace, bezpečnostní chyby u fve, ochrana fve, jak mít fve bez problémů, kdy je potřeba posudek střechy?, co řeší pbř, co obsahuje projektová dokumentace, jaký hasici přistroj k fve, kdy je potřeba revize baterie u fve, co revize baterie ověřuje, zatížení střechy FVE, posudek nosné konstrukce střechy, technický list FVE, kategorie stavby požární bezpečnost, dokumentace FVE, ">
 <meta name="category" content="Fotovoltaika">
+<link rel="icon" type="image/png" href="assets/images/fav_icon.png">
+<link rel="apple-touch-icon" href="assets/images/fav_icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=account_circle,add,arrow_forward,battery_charging_20,battery_charging_full,call,chat_bubble,check,check_circle,checklist,chevron_left,chevron_right,close,compare_arrows,description,eco,engineering,expand_less,expand_more,fact_check,fire_extinguisher,gavel,gpp_bad,handshake,hub,info,local_fire_department,location_on,mail,menu_book,north_east,open_in_new,receipt_long,remove,roofing,schedule,search,security,solar_power,south_east,swap_horiz,table_chart,trending_up,visibility,visibility_off,work&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/guide-shared.css?v=8">
 <link rel="stylesheet" href="css/fve.css">
-<link rel="stylesheet" href="css/bezpecnost.css?v=6">
+<link rel="stylesheet" href="css/bezpecnost.css?v=7">
 <link rel="stylesheet" href="css/search.css?v=2">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" rel="stylesheet">
 <link rel="stylesheet" href="css/navbar-mobile-v2.css">
 </head>
 <body>
+<a class="skip-link" href="#obsah">Přeskočit na obsah</a>
 
 <header class="site-header">
   <div class="navbar-container">
@@ -30,7 +32,7 @@
 
       <ul class="navbar-links">
         <li class="nav-dropdown">
-          <span class="nav-dropdown__trigger" tabindex="0" aria-haspopup="true">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></span>
+          <button type="button" class="nav-dropdown__trigger" aria-haspopup="true" aria-expanded="false">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></button>
           <ul class="nav-dropdown__menu">
             <div class="nav-dropdown__menu-inner">
               <li><a href="pruvodce-jom.html">Jednotné odběrné místo (JOM)</a></li>
@@ -42,7 +44,7 @@
           </ul>
         </li>
         <li class="nav-dropdown">
-          <span class="nav-dropdown__trigger" tabindex="0" aria-haspopup="true">Poradna <span class="nav-dropdown__arrow">▾</span></span>
+          <button type="button" class="nav-dropdown__trigger" aria-haspopup="true" aria-expanded="false">Poradna <span class="nav-dropdown__arrow">▾</span></button>
           <ul class="nav-dropdown__menu">
             <div class="nav-dropdown__menu-inner">
               <li><a href="bezpecnost.html">Bezpečnost</a></li>
@@ -75,7 +77,7 @@
       <!-- Průvodci — accordion -->
       <details class="nm2__accordion">
         <summary class="nm2__row">
-          <span class="nm2__title">Průvodci</span>
+          <span class="nm2__title">Průvodci opatření</span>
           <span class="ms-icon nm2__arrow" aria-hidden="true">expand_more</span>
         </summary>
         <ul class="nm2__sub">
@@ -112,6 +114,8 @@
   </div>
 </header>
 
+<main class="page-main"><span id="obsah" tabindex="-1"></span>
+
 <section class="guide-sub-hero">
   <div class="guide-sub-hero__container">
     <nav class="guide-sub-hero__breadcrumb" aria-label="Drobečková navigace">
@@ -120,7 +124,7 @@
       <span aria-current="page">Bezpečnost</span>
     </nav>
     <h1 class="guide-sub-hero__title">Bezpečnost FVE</h1>
-    <p class="guide-sub-hero__desc">Přehled toho, co bezpečná instalace vyžaduje – od statického posudku po revize. Co v ní chybí, může při škodě stát SVJ pojistné plnění i odpovědnost.</p>
+    <p class="guide-sub-hero__desc">Přehled toho, co bezpečná instalace vyžaduje&nbsp;– od statického posudku po revize. Co v ní chybí, může při škodě stát SVJ pojistné plnění i odpovědnost.</p>
     <p class="guide-sub-hero__meta">
       <span class="ms-icon guide-sub-hero__clock" aria-hidden="true">schedule</span>
       Doba čtení: 4 min.
@@ -131,12 +135,13 @@
 <!-- Navigační karty témat -->
 <section class="bsec-hero">
   <div class="bsec-hero__container">
+    <h2 data-search-keys="bezpečnost FVE, co řešit, témata bezpečnosti, přehled opatření" class="guide-section-title" id="co-resit-u-bezpecnosti-fve">Co řešit u bezpečnosti FVE</h2>
     <div class="bsec-nav__grid">
 
       <a href="bezpecnost-staticky-posudek.html" class="bsec-nav__card">
         <span class="bsec-nav__num">01</span>
         <div class="bsec-nav__card-body">
-          <h2 data-search-keys="statický posudek, střecha, nosnost střechy, statik, FVE bezpečnost, posudek konstrukce" class="bsec-nav__title" id="staticky-posudek-strechy">Statický posudek střechy</h2>
+          <h3 data-search-keys="statický posudek, střecha, nosnost střechy, statik, FVE bezpečnost, posudek konstrukce" class="bsec-nav__title" id="staticky-posudek-strechy">Statický posudek střechy</h3>
           <p class="bsec-nav__desc">Posudek statika o únosnosti střechy. Do 100&nbsp;kW je FVE bez povolení, jen pokud nezasahuje do nosných konstrukcí; zatížení ověřuje statik.</p>
         </div>
       </a>
@@ -144,7 +149,7 @@
       <a href="bezpecnost-pbr.html" class="bsec-nav__card">
         <span class="bsec-nav__num">02</span>
         <div class="bsec-nav__card-body">
-          <h2 data-search-keys="PBŘ, požárně bezpečnostní řešení, požární ochrana, FVE bezpečnost, požár, protipožární" class="bsec-nav__title" id="pozarne-bezpecnostni-reseni">Požárně bezpečnostní řešení</h2>
+          <h3 data-search-keys="PBŘ, požárně bezpečnostní řešení, požární ochrana, FVE bezpečnost, požár, protipožární" class="bsec-nav__title" id="pozarne-bezpecnostni-reseni">Požárně bezpečnostní řešení</h3>
           <p class="bsec-nav__desc">Projekt od autorizované osoby, který určuje, kde technologie stojí, jak jsou vedeny kabely, jak funguje vypínání a jaké jsou bezpečnostní požadavky pro hasiče.</p>
         </div>
       </a>
@@ -152,7 +157,7 @@
       <a href="bezpecnost-projektova-dokumentace.html" class="bsec-nav__card">
         <span class="bsec-nav__num">03</span>
         <div class="bsec-nav__card-body">
-          <h2 data-search-keys="projektová dokumentace, projekt FVE, dokumentace, stavební povolení, elektroprojekt" class="bsec-nav__title" id="projektova-dokumentace">Projektová dokumentace</h2>
+          <h3 data-search-keys="projektová dokumentace, projekt FVE, dokumentace, stavební povolení, elektroprojekt" class="bsec-nav__title" id="projektova-dokumentace">Projektová dokumentace</h3>
           <p class="bsec-nav__desc">Výkresy a technický popis instalace. Do 100&nbsp;kW ji stavební zákon úředně nevyžaduje, schéma zapojení a technické řešení jsou ale povinné pro připojení k distribuční soustavě a výchozí revizi.</p>
         </div>
       </a>
@@ -160,15 +165,15 @@
       <a href="bezpecnost-hasici-pristroj.html" class="bsec-nav__card">
         <span class="bsec-nav__num">04</span>
         <div class="bsec-nav__card-body">
-          <h2 data-search-keys="hasicí přístroj, hasící přístroj, požár FVE, hasič, hašení, bezpečnost FVE" class="bsec-nav__title" id="hasici-pristroj">Hasicí přístroj</h2>
-          <p class="bsec-nav__desc">Přenosný hasicí přístroj u technické místnosti. Nejlevnější opatření – starší domy ho historicky mít nemusely, pro FVE ho ale vyžadují požadavky požární prevence a normy pro elektrická zařízení.</p>
+          <h3 data-search-keys="hasicí přístroj, hasící přístroj, požár FVE, hasič, hašení, bezpečnost FVE" class="bsec-nav__title" id="hasici-pristroj">Hasicí přístroj</h3>
+          <p class="bsec-nav__desc">Přenosný hasicí přístroj u technické místnosti. Nejlevnější opatření&nbsp;– starší domy ho historicky mít nemusely, pro FVE ho ale vyžadují požadavky požární prevence a normy pro elektrická zařízení.</p>
         </div>
       </a>
 
       <a href="bezpecnost-revize-baterie.html" class="bsec-nav__card">
         <span class="bsec-nav__num">05</span>
         <div class="bsec-nav__card-body">
-          <h2 data-search-keys="revize baterie, bateriové úložiště, revize, bezpečnost baterie, kontrola baterie" class="bsec-nav__title" id="revize-baterioveho-uloziste">Revize bateriového úložiště</h2>
+          <h3 data-search-keys="revize baterie, bateriové úložiště, revize, bezpečnost baterie, kontrola baterie" class="bsec-nav__title" id="revize-baterioveho-uloziste">Revize bateriového úložiště</h3>
           <p class="bsec-nav__desc">Revize od technika způsobilého pro Li-ion baterie, která ověřuje stav BMS, ochrany proti přebití a hlubokému vybití a odvětrání místnosti. Je povinnou součástí výchozí revize elektrického zařízení (zákon č. 250/2021 Sb.).</p>
         </div>
       </a>
@@ -206,7 +211,7 @@
       <details class="home-faq__item">
         <summary class="home-faq__q">Kdo hradí posudek, PBŘ a projektovou dokumentaci: SVJ, nebo dodavatel?</summary>
         <div class="home-faq__a">
-          <p>Záleží na smlouvě. Dodavatelé dokumenty někdy nabízejí jako součást zakázky. Doporučuje se, aby byly zpracované nezávisle na dodavateli a adresované přímo SVJ – SVJ je může objednat samo, nebo je alespoň zkontrolovat před podpisem smlouvy.</p>
+          <p>Záleží na smlouvě. Dodavatelé dokumenty někdy nabízejí jako součást zakázky. Doporučuje se, aby byly zpracované nezávisle na dodavateli a adresované přímo SVJ&nbsp;– SVJ je může objednat samo, nebo je alespoň zkontrolovat před podpisem smlouvy.</p>
         </div>
       </details>
 
@@ -227,7 +232,7 @@
       <details class="home-faq__item">
         <summary class="home-faq__q">Platí posudek, PBŘ nebo projektová dokumentace i po rozšíření FVE?</summary>
         <div class="home-faq__a">
-          <p>Ne automaticky. Každý dokument se vztahuje ke konkrétní instalaci, výkonu a umístění technologie. Při změně – rozšíření panelů, doplnění baterie, výměna střídače – je potřeba posoudit, zda je nutné dokument aktualizovat nebo zpracovat nový. U rozšíření panelů se mění zatížení střechy, u doplnění baterie umístění technologie a požární řešení.</p>
+          <p>Ne automaticky. Každý dokument se vztahuje ke konkrétní instalaci, výkonu a umístění technologie. Při změně&nbsp;– rozšíření panelů, doplnění baterie, výměna střídače&nbsp;– je potřeba posoudit, zda je nutné dokument aktualizovat nebo zpracovat nový. U rozšíření panelů se mění zatížení střechy, u doplnění baterie umístění technologie a požární řešení.</p>
         </div>
       </details>
 
@@ -253,6 +258,7 @@
 
 
 </main>
+
 <footer class="site-footer">
   <div class="footer-glow"></div>
 
@@ -262,7 +268,7 @@
         <a href="index.html" class="footer-logo">
           <img src="assets/images/Logo.svg" alt="Energohub">
         </a>
-        <p class="footer-tagline">Nezávislý průvodce úsporami energie pro SVJ a bytová družstva.</p>
+        <p class="footer-tagline">Nezávislý průvodce energetickými opatřeními pro bytové domy a SVJ.</p>
       </div>
 
       <div class="footer-col">

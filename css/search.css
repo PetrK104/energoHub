@@ -14,7 +14,7 @@
   transition: color .2s ease, background .18s;
   padding: 0;
 }
-.navbar-search:hover { color: var(--text-white); background: rgba(255,255,255,.08); }
+.navbar-search:hover { color: var(--text-white); background: var(--surface-2); }
 .navbar-search:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
 
 /* ── Overlay ────────────────────────────────────────────────────────────── */
@@ -70,7 +70,7 @@
 .search-input {
   width: 100%;
   background: rgba(18,18,20,.98);
-  border: 1px solid rgba(255,255,255,.16);
+  border: 1px solid var(--border-strong);
   border-radius: 8px;
   padding: var(--field-pad-y) 44px var(--field-pad-y) 48px;
   font-family: var(--font-body);
@@ -140,14 +140,14 @@
   display: block;
   padding: 14px 20px;
   text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,.05);
+  border-bottom: 1px solid var(--border);
   outline: none;
   transition: background .1s;
 }
 .search-result:last-child { border-bottom: none; }
 .search-result:hover,
 .search-result[aria-selected="true"] {
-  background: rgba(255,255,255,.055);
+  background: var(--surface-1);
 }
 .search-result:focus-visible {
   box-shadow: inset 0 0 0 2px var(--lime);
@@ -188,7 +188,7 @@
 }
 /* oddělovač mezi skupinami */
 .search-result + .search-group__header {
-  border-top: 1px solid rgba(255,255,255,.07);
+  border-top: 1px solid var(--border);
   margin-top: 4px;
   padding-top: 16px;
 }
@@ -245,7 +245,7 @@ mark {
 .search-hint-item {
   background: none;
   border: none;
-  border-bottom: 1px solid rgba(255,255,255,.05);
+  border-bottom: 1px solid var(--border);
   padding: 12px 0;
   font-family: var(--font-body);
   font-size: 14px;

@@ -8,10 +8,11 @@
 <meta name="keywords" content="jak porovnat nabídky FVE, cena FVE za kWp, kolik stojí fotovoltaika, předražená nabídka FVE, jak vybrat dodavatele solárních panelů, záruky na panely, servis fotovoltaika, co má obsahovat smlouva FVE, ověřit cenu nabídky, položkový rozpis fve, Na co si dát pozor u nabídky za fve, nabídka fve pro rodinný dům, nabídka fev pro obce, nabídka fve pro firmy, rizika nabídky fve, posouzení nabídky fve">
 <meta name="category" content="Fotovoltaika">
 <title>Hodnocení nabídky od dodavatele FVE – Průvodce FVE – Energohub.info</title>
+<link rel="icon" type="image/png" href="assets/images/fav_icon.png">
+<link rel="apple-touch-icon" href="assets/images/fav_icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=account_circle,add,arrow_forward,battery_charging_20,battery_charging_full,call,chat_bubble,check,check_circle,checklist,chevron_left,chevron_right,close,compare_arrows,description,eco,engineering,expand_less,expand_more,fact_check,fire_extinguisher,gavel,gpp_bad,handshake,hub,info,local_fire_department,location_on,mail,menu_book,north_east,open_in_new,receipt_long,remove,roofing,schedule,search,security,solar_power,south_east,swap_horiz,table_chart,trending_up,visibility,visibility_off,work&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/guide-shared.css?v=8">
 <link rel="stylesheet" href="css/fve.css?v=2">
@@ -19,6 +20,7 @@
 <link rel="stylesheet" href="css/navbar-mobile-v2.css">
 </head>
 <body>
+<a class="skip-link" href="#obsah">Přeskočit na obsah</a>
 
 <header class="site-header">
   <div class="navbar-container">
@@ -29,7 +31,7 @@
 
       <ul class="navbar-links">
         <li class="nav-dropdown">
-          <span class="nav-dropdown__trigger" tabindex="0" aria-haspopup="true">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></span>
+          <button type="button" class="nav-dropdown__trigger" aria-haspopup="true" aria-expanded="false">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></button>
           <ul class="nav-dropdown__menu">
             <div class="nav-dropdown__menu-inner">
               <li><a href="pruvodce-jom.html">Jednotné odběrné místo (JOM)</a></li>
@@ -41,7 +43,7 @@
           </ul>
         </li>
         <li class="nav-dropdown">
-          <span class="nav-dropdown__trigger" tabindex="0" aria-haspopup="true">Poradna <span class="nav-dropdown__arrow">▾</span></span>
+          <button type="button" class="nav-dropdown__trigger" aria-haspopup="true" aria-expanded="false">Poradna <span class="nav-dropdown__arrow">▾</span></button>
           <ul class="nav-dropdown__menu">
             <div class="nav-dropdown__menu-inner">
               <li><a href="bezpecnost.html">Bezpečnost</a></li>
@@ -74,7 +76,7 @@
       <!-- Průvodci — accordion -->
       <details class="nm2__accordion">
         <summary class="nm2__row">
-          <span class="nm2__title">Průvodci</span>
+          <span class="nm2__title">Průvodci opatření</span>
           <span class="ms-icon nm2__arrow" aria-hidden="true">expand_more</span>
         </summary>
         <ul class="nm2__sub">
@@ -111,6 +113,8 @@
   </div>
 </header>
 
+<main class="page-main"><span id="obsah" tabindex="-1"></span>
+
 <section class="guide-sub-hero">
   <div class="guide-sub-hero__container">
     <nav class="guide-sub-hero__breadcrumb" aria-label="Drobečková navigace">
@@ -133,11 +137,11 @@
     <h2 data-search-keys="hodnocení nabídky FVE, výběr dodavatele FVE, jak porovnat nabídky, cenová nabídka FVE, ověřit cenu" class="guide-section-title" id="jak-spravne-posoudit-nabidku-dodavatele-fve">Jak správně posoudit nabídku dodavatele FVE</h2>
 
     <div class="fve-price__intro">
-      <p>FVE vždy navrhujte na základě reálného vyúčtování, ne od oka. Firmy občas záměrně nabízejí zbytečně velké FVE – přebytek nad rámec vlastní spotřeby se totiž prodává do sítě za výrazně nižší cenu, než za kolik se elektřina nakupuje.</p>
+      <p>FVE vždy navrhujte na základě reálného vyúčtování, ne od oka. Firmy občas záměrně nabízejí zbytečně velké FVE&nbsp;– přebytek nad rámec vlastní spotřeby se totiž prodává do sítě za výrazně nižší cenu, než za kolik se elektřina nakupuje.</p>
       <p><strong><span style="color:var(--lime)">→</span> Cílem pro vás je co nejrychlejší návratnost, ne co největší instalace.</strong></p>
 
       <h3 class="fve-price__col-title">Jak ověřit cenu nabídky</h3>
-      <p>Vydělte celkovou částku instalovaným výkonem v kWp – výsledek by měl vyjít <strong>27 000–31 000 Kč/kWp</strong> (kompletní FVE s LFP baterií; bez baterie méně, s backup funkcí více).</p>
+      <p>Vydělte celkovou částku instalovaným výkonem v kWp&nbsp;– výsledek by měl vyjít <strong>27 000–31 000 Kč/kWp</strong> (kompletní FVE s LFP baterií; bez baterie méně, s backup funkcí více).</p>
 
       <h3 class="fve-price__col-title">Typické rozsahy podle segmentu</h3>
       <ul class="fve-price__intro-list">
@@ -146,7 +150,7 @@
       </ul>
 
       <h3 class="fve-price__col-title">Příklad</h3>
-      <p>Nabídka 1 200 000 Kč na 40 kWp vychází na 30 000 Kč/kWp – cena je v normě, problém je jinde. Rodinný dům většinou potřebuje jen 8–20 kWp; přebytek výroby se prodává do sítě za zlomek ceny nakupované elektřiny a návratnost se zbytečně prodlužuje.</p>
+      <p>Nabídka 1 200 000 Kč na 40 kWp vychází na 30 000 Kč/kWp&nbsp;– cena je v normě, problém je jinde. Rodinný dům většinou potřebuje jen 8–20 kWp; přebytek výroby se prodává do sítě za zlomek ceny nakupované elektřiny a návratnost se zbytečně prodlužuje.</p>
       <p><strong><span style="color:var(--lime)">→</span> Vhodná velikost by byla 8–20 kWp za ~220 000–620 000 Kč s výrazně kratší dobou návratnosti.</strong></p>
     </div>
 
@@ -236,12 +240,12 @@
               <details class="fve-price__battery-details">
                 <summary>
                   <span class="ms-icon fve-price__check" aria-hidden="true">check</span>
-                  Baterie – jako samostatná vyčíslená položka, ne skrytá v základní ceně
+                  Baterie&nbsp;– jako samostatná vyčíslená položka, ne skrytá v základní ceně
                   <span class="ms-icon fve-price__battery-chevron" aria-hidden="true">expand_more</span>
                 </summary>
                 <ul class="fve-price__checklist fve-price__checklist--sub">
-                  <li>Kapacita baterie: rozlišit instalovanou (brutto) a užitnou (netto) kapacitu – rozdíl bývá 10–20 %</li>
-                  <li>Garantovaný počet cyklů při 80% hloubce vybití – typicky 3 000–6 000 u LFP chemie</li>
+                  <li>Kapacita baterie: rozlišit instalovanou (brutto) a užitnou (netto) kapacitu&nbsp;– rozdíl bývá 10–20 %</li>
+                  <li>Garantovaný počet cyklů při 80% hloubce vybití&nbsp;– typicky 3 000–6 000 u LFP chemie</li>
                   <li>Záruka na zbývající kapacitu: minimálně 70 % po 10 letech nebo po stanoveném počtu cyklů</li>
                   <li>Chemie článků: LFP (lithium-železo-fosfát) je pro obytné budovy bezpečnější variantou než NMC</li>
                 </ul>
@@ -347,7 +351,7 @@
               <span class="fve-price__example-value">5–8 let</span>
             </li>
           </ul>
-          <p class="fve-price__flag-note" style="margin-top:16px">Firmy často využívají FVE bez baterií – výkon se záměrně volí nižší než spotřeba firmy, aby se vše lokálně spotřebovalo za provozu.</p>
+          <p class="fve-price__flag-note" style="margin-top:16px">Firmy často využívají FVE bez baterií&nbsp;– výkon se záměrně volí nižší než spotřeba firmy, aby se vše lokálně spotřebovalo za provozu.</p>
         </div>
 
         <div>
@@ -381,14 +385,14 @@
               <details class="fve-price__battery-details">
                 <summary>
                   <span class="ms-icon fve-price__check" aria-hidden="true">check</span>
-                  Bateriové úložiště – jako samostatná vyčíslená položka, ne skrytá v základní ceně
+                  Bateriové úložiště&nbsp;– jako samostatná vyčíslená položka, ne skrytá v základní ceně
                   <span class="ms-icon fve-price__battery-chevron" aria-hidden="true">expand_more</span>
                 </summary>
                 <ul class="fve-price__checklist fve-price__checklist--sub">
-                  <li>Peak-shaving: baterie krátkodobě dodá energii při nárazových proudech (např. rozběh klimatizace nebo chlazení) a zabrání tím překročení rezervovaného příkonu (RP) – nižší potřebný RP znamená citelnou úsporu, protože jde o jednu z dražších položek na faktuře</li>
-                  <li>U firem jde u baterií především o ekonomiku provozu – pokrývají vícesměnný provoz mimo dobu slunečního svitu a využívají rozdíly ve spotových cenách elektřiny: nabíjení v levných hodinách, využití nabité energie ve špičce (příklad: nákup za průměrných cca 3,75 Kč/kWh nahrazený využitím baterie nabité za cca 1,80 Kč/kWh). To je jiný přístup než u rodinných a bytových domů, kde jde u baterií spíš o bezpečnost provozu a komfort (nezávislost na síti, záložní napájení)</li>
+                  <li>Peak-shaving: baterie krátkodobě dodá energii při nárazových proudech (např. rozběh klimatizace nebo chlazení) a zabrání tím překročení rezervovaného příkonu (RP)&nbsp;– nižší potřebný RP znamená citelnou úsporu, protože jde o jednu z dražších položek na faktuře</li>
+                  <li>U firem jde u baterií především o ekonomiku provozu&nbsp;– pokrývají vícesměnný provoz mimo dobu slunečního svitu a využívají rozdíly ve spotových cenách elektřiny: nabíjení v levných hodinách, využití nabité energie ve špičce (příklad: nákup za průměrných cca 3,75 Kč/kWh nahrazený využitím baterie nabité za cca 1,80 Kč/kWh). To je jiný přístup než u rodinných a bytových domů, kde jde u baterií spíš o bezpečnost provozu a komfort (nezávislost na síti, záložní napájení)</li>
                   <li>Baterie primárně slouží k&nbsp;maximalizaci vlastní spotřeby a&nbsp;peak-shavingu, v&nbsp;rámci povolených přetoků do&nbsp;sítě (rezervovaného výkonu) však může dodávat energii zpět bez dodatečné licenční administrativy.</li>
-                  <li>Garantovaný počet cyklů při 80% hloubce vybití – typicky 3 000–6 000 u LFP chemie</li>
+                  <li>Garantovaný počet cyklů při 80% hloubce vybití&nbsp;– typicky 3 000–6 000 u LFP chemie</li>
                   <li>Záruka na zbývající kapacitu: minimálně 70 % po 10 letech nebo po stanoveném počtu cyklů</li>
                   <li>Chemie článků: LFP je pro provozní budovy bezpečnější variantou než NMC</li>
                 </ul>
@@ -535,9 +539,9 @@
                   <span class="ms-icon fve-price__battery-chevron" aria-hidden="true">expand_more</span>
                 </summary>
                 <ul class="fve-price__checklist fve-price__checklist--sub">
-                  <li>U obcí a příspěvkových organizací je povinné podle výše zakázky – na rozdíl od firem a SVJ</li>
+                  <li>U obcí a příspěvkových organizací je povinné podle výše zakázky&nbsp;– na rozdíl od firem a SVJ</li>
                   <li>Hodnoticí kritéria lze nastavit s&nbsp;důrazem na&nbsp;kvalitu, záruky a&nbsp;technické parametry komponent, nikoliv pouze na&nbsp;nejnižší nabídkovou cenu.</li>
-                  <li>Velmi náročná příprava slepého rozpočtu do detailu (svorky, kabely, vše); po vysoutěžení se typy panelů ani technologie těžko mění – dotace trvá na doložení přesně dle vysoutěžených podmínek</li>
+                  <li>Velmi náročná příprava slepého rozpočtu do detailu (svorky, kabely, vše); po vysoutěžení se typy panelů ani technologie těžko mění&nbsp;– dotace trvá na doložení přesně dle vysoutěžených podmínek</li>
                 </ul>
               </details>
             </li>
@@ -606,7 +610,7 @@
 
     <!-- Červené vlajky -->
     <h2 data-search-keys="pozor FVE nabídka, rizika FVE, záruky FVE, smlouva FVE, podmínky dodavatele" class="guide-section-title" id="na-co-si-dat-pozor">Dvě varovné situace v nabídce</h2>
-    <p class="fve-costs__desc">Dvě situace, které by měly vzbudit pozornost – jedna signalizuje skryté náklady, druhá zbytečně předražený nebo předimenzovaný systém.</p>
+    <p class="fve-costs__desc">Dvě situace, které by měly vzbudit pozornost&nbsp;– jedna signalizuje skryté náklady, druhá zbytečně předražený nebo předimenzovaný systém.</p>
     <div class="fve-price__flags-list">
 
       <div class="fve-price__flag">
@@ -615,7 +619,7 @@
           <h3 class="fve-price__flag-heading">Příliš nízká cena</h3>
         </div>
         <ul class="fve-price__flag-list">
-          <li>Chybějící položky v rozpočtu – revize, projektová dokumentace nebo připojení k síti</li>
+          <li>Chybějící položky v rozpočtu&nbsp;– revize, projektová dokumentace nebo připojení k síti</li>
           <li>Nižší třída komponentů (panely bez certifikace IEC, neznačkový střídač)</li>
           <li>Cena se dodatečně dorovnává vícepracemi po podpisu smlouvy</li>
         </ul>
@@ -633,8 +637,8 @@
           <h3 class="fve-price__flag-heading">Příliš vysoká cena</h3>
         </div>
         <ul class="fve-price__flag-list">
-          <li>Prodej „za dotaci" – základní cena nafouknutá v očekávání dotačního příspěvku</li>
-          <li>Zbytečně předimenzovaný systém – výkon neodpovídá skutečné spotřebě domu</li>
+          <li>Prodej „za dotaci"&nbsp;– základní cena nafouknutá v očekávání dotačního příspěvku</li>
+          <li>Zbytečně předimenzovaný systém&nbsp;– výkon neodpovídá skutečné spotřebě domu</li>
           <li>Položky v ceně nejsou specifikovány nebo jsou sloučeny do globální sumy</li>
         </ul>
         <div class="fve-price__flag-solution">
@@ -666,7 +670,7 @@
       <a href="fve-baterie.html" class="guide-qa__card">
         <span class="guide-qa__card-icon" aria-hidden="true">battery_charging_full</span>
         <div class="guide-qa__card-body">
-          <p class="guide-qa__card-title">Baterie k FVE – dimenzování a podmínky výnosnosti</p>
+          <p class="guide-qa__card-title">Baterie k FVE&nbsp;– dimenzování a podmínky výnosnosti</p>
           <p class="guide-qa__card-desc">Kdy baterie přidává hodnotu, jak dimenzovat kapacitu a co znamená záloha pro výpadek sítě.</p>
           <p class="guide-qa__card-meta"><span class="ms-icon" aria-hidden="true">schedule</span> Doba čtení: 4 min.</p>
         </div>
@@ -676,14 +680,14 @@
         <span class="guide-qa__card-icon" aria-hidden="true">gavel</span>
         <div class="guide-qa__card-body">
           <p class="guide-qa__card-title">Podmínky a legislativa pro FVE</p>
-          <p class="guide-qa__card-desc">Podmínky bezúročného úvěru NZÚ – výpočtový vzorec, způsobilost SVJ a legislativní rámec.</p>
+          <p class="guide-qa__card-desc">Podmínky bezúročného úvěru NZÚ&nbsp;– výpočtový vzorec, způsobilost SVJ a legislativní rámec.</p>
           <p class="guide-qa__card-meta"><span class="ms-icon" aria-hidden="true">schedule</span> Doba čtení: 7 min.</p>
         </div>
         <div class="guide-qa__card-arrow">→</div>
       </a>
       <a href="pruvodce-fve.html" class="guide-qa__card guide-qa__card--back">
         <div class="guide-qa__card-body">
-          <p class="guide-qa__card-title">Průvodce FVE – přehled všech témat</p>
+          <p class="guide-qa__card-title">Průvodce FVE&nbsp;– přehled všech témat</p>
           <p class="guide-qa__card-desc">Zpět na přehled témat fotovoltaiky pro bytové domy.</p>
         </div>
         <div class="guide-qa__card-arrow">→</div>
@@ -709,6 +713,8 @@
     <div class="search-body search-cta__body" id="searchCtaBody" hidden></div>
   </div>
 </section>
+</main>
+
 <footer class="site-footer">
   <div class="footer-glow"></div>
 
@@ -718,7 +724,7 @@
         <a href="index.html" class="footer-logo">
           <img src="assets/images/Logo.svg" alt="Energohub">
         </a>
-        <p class="footer-tagline">Nezávislý průvodce úsporami energie pro SVJ a bytová družstva.</p>
+        <p class="footer-tagline">Nezávislý průvodce energetickými opatřeními pro bytové domy a SVJ.</p>
       </div>
 
       <div class="footer-col">

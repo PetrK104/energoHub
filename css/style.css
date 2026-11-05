@@ -6,7 +6,14 @@
   --text-muted: #b9b9c2;
   --text-dim: #8c8c97;
   --card-bg: rgba(24, 24, 26, .55);
-  --card-border: rgba(255, 255, 255, .09);
+  --bg-alt: #05050a;
+  --surface-1: rgba(255, 255, 255, .05);
+  --surface-2: rgba(255, 255, 255, .08);
+  --border: rgba(255, 255, 255, .09);
+  --border-strong: rgba(255, 255, 255, .15);
+  --danger: #e03a2f;
+  --on-lime: #0a0a0a;
+  --card-border: var(--border);
   --font-heading: "Figtree", sans-serif;
   --font-body: "Inter", sans-serif;
   /* Stupnice základního textu – desktop */
@@ -15,6 +22,9 @@
   --fs-text:16px;
   --fs-small:15px;
   --fs-caption:13px;
+  /* Nadpisy – desktop */
+  --fs-h1:46px;
+  --fs-h2:36px;
   --fs-label:12px;
   --lh-perex:1.6;
   --lh-lead:1.6;
@@ -35,6 +45,8 @@
     --fs-lead:16px;
     --fs-text:15px;
     --fs-small:15px;
+    --fs-h1:32px;
+    --fs-h2:28px;
     --lh-h1:1.15
   }
 }
@@ -82,8 +94,8 @@ button,input,select,textarea {
   gap:24px;
   padding:12px 16px 12px 24px;
   border-radius:8px;
-  background:#ffffff0f;
-  border:1px solid rgba(255,255,255,.12);
+  background:var(--surface-1);
+  border:1px solid var(--border-strong);
   backdrop-filter:blur(20px) saturate(160%);
   -webkit-backdrop-filter:blur(20px) saturate(160%);
   box-shadow:0 8px 32px #00000059
@@ -126,16 +138,19 @@ button,input,select,textarea {
   font-weight:500;
   font-size:15px;
   color:var(--text-muted);
-  cursor:default;
+  cursor:pointer;
+  background:none;
+  border:0;
+  padding:0;
   transition:color .2s ease
 }
-.nav-dropdown:hover .nav-dropdown__trigger,.nav-dropdown:focus-within .nav-dropdown__trigger {
+.nav-dropdown:hover .nav-dropdown__trigger,.nav-dropdown.is-open .nav-dropdown__trigger {
   color:var(--text-white)
 }
-.nav-dropdown:focus-within .nav-dropdown__arrow {
+.nav-dropdown.is-open .nav-dropdown__arrow {
   transform:rotate(180deg)
 }
-.nav-dropdown:focus-within .nav-dropdown__menu {
+.nav-dropdown.is-open .nav-dropdown__menu {
   opacity:1;
   visibility:visible;
   pointer-events:auto;
@@ -168,7 +183,7 @@ button,input,select,textarea {
   background:#0c0d12f5;
   backdrop-filter:blur(24px) saturate(160%);
   -webkit-backdrop-filter:blur(24px) saturate(160%);
-  border:1px solid rgba(255,255,255,.1);
+  border:1px solid var(--border);
   border-radius:8px;
   padding:8px;
   box-shadow:0 12px 40px #00000080
@@ -192,7 +207,7 @@ button,input,select,textarea {
 }
 .nav-dropdown__menu a:hover {
   color:var(--text-white);
-  background:#ffffff0f
+  background:var(--surface-1)
 }
 .nav-dropdown__item--soon {
   display:flex;
@@ -216,7 +231,7 @@ button,input,select,textarea {
   letter-spacing:.06em;
   text-transform:uppercase;
   color:var(--text-dim);
-  border:1px solid rgba(255,255,255,.15);
+  border:1px solid var(--border-strong);
   border-radius:8px;
   padding:var(--chip-pad-xs);
   white-space:nowrap;
@@ -254,7 +269,7 @@ button,input,select,textarea {
   transition:background .15s
 }
 .navbar-burger:hover {
-  background:#ffffff12
+  background:var(--surface-2)
 }
 .navbar-burger__bar {
   display:block;
@@ -316,7 +331,7 @@ button,input,select,textarea {
 }
 .navbar-mobile__links a:hover {
   color:var(--text-white);
-  background:#ffffff0d
+  background:var(--surface-1)
 }
 .navbar-mobile__links a[href^=pruvodce-] {
   font-size:14px;
@@ -328,7 +343,7 @@ button,input,select,textarea {
 }
 .navbar-mobile__divider {
   height:1px;
-  background:#ffffff12;
+  background:var(--surface-2);
   margin:8px 0
 }
 .navbar-mobile__cta {
@@ -383,11 +398,11 @@ button,input,select,textarea {
   --hero-card-text: var(--text-white);
   --hero-card-label: var(--text-muted);
   --hero-input-bg: rgba(255, 255, 255, .06);
-  --hero-input-border: rgba(255, 255, 255, .16);
+  --hero-input-border: var(--border-strong);
   --hero-input-text: var(--text-white);
   --hero-input-placeholder: rgba(255, 255, 255, .35);
   --hero-secondary-color: var(--lime);
-  --hero-bg: #05050a;
+  --hero-bg: var(--bg-alt);
   position:relative;
   overflow:hidden;
   background:var(--hero-bg);
@@ -568,7 +583,7 @@ button,input,select,textarea {
   padding:4px;
   border-radius:999px;
   background:#14141673;
-  border:1px solid rgba(255,255,255,.14);
+  border:1px solid var(--border-strong);
   backdrop-filter:blur(16px) saturate(160%);
   -webkit-backdrop-filter:blur(16px) saturate(160%);
   box-shadow:0 8px 24px #0000004d
@@ -598,7 +613,7 @@ button,input,select,textarea {
   background:none;
   border:none;
   cursor:pointer;
-  color:#ffffff80;
+  color:var(--text-dim);
   transition:color .3s ease
 }
 .toggle-btn svg {
@@ -633,7 +648,7 @@ button,input,select,textarea {
   max-width:clamp(540px,37.5vw,720px);
   pointer-events:auto
 }
-.hero-title {font-family:var(--font-heading);font-weight:700;font-size:46px;line-height:var(--lh-h1);letter-spacing:0;color:var(--hero-title-color);transition:color .6s ease}
+.hero-title {font-family:var(--font-heading);font-weight:700;font-size:var(--fs-h1);line-height:var(--lh-h1);letter-spacing:0;color:var(--hero-title-color);transition:color .6s ease}
 .hero-text {font-family:var(--font-body);font-weight:400;font-size:var(--fs-perex);line-height:var(--lh-perex);color:var(--hero-text-color);max-width:clamp(460px,31.9vw,614px);transition:color .6s ease}
 .hero-buttons {
   display:flex;
@@ -655,6 +670,9 @@ button,input,select,textarea {
 }
 .btn:hover {
   transform:translateY(-1px)
+}
+.btn:active {
+  transform:translateY(1px)
 }
 .btn-primary {
   background:var(--lime);
@@ -847,7 +865,7 @@ button,input,select,textarea {
 .calc-section__title {
   font-family:var(--font-heading);
   font-weight:600;
-  font-size:36px;
+  font-size:var(--fs-h2);
   line-height:var(--lh-heading);
   color:var(--text-white);
   margin:12px 0 16px
@@ -858,21 +876,6 @@ button,input,select,textarea {
   line-height:var(--lh-lead);
   color:var(--text-muted);
   margin-bottom:32px
-}
-.calc-section__btn {
-  display:inline-flex;
-  align-items:center;
-  padding:var(--btn-pad-l);
-  border-radius:8px;
-  background:var(--lime, #b7f13d);
-  color:#0a0a0a;
-  font:600 16px/1 var(--font-body);
-  text-decoration:none;
-  transition:background .2s,transform .15s
-}
-.calc-section__btn:hover {
-  background:var(--lime-dark, #9fd630);
-  transform:translateY(-1px)
 }
 @media(max-width:860px) {
   .calc-section {
@@ -891,7 +894,7 @@ button,input,select,textarea {
     padding:0 16px
   }
 
-  .calc-section__title { font-size:26px }
+  .calc-section__title { font-size:var(--fs-h2) }
 }
 .hero-nav {
   display:flex;
@@ -1080,7 +1083,7 @@ button,input,select,textarea {
     padding-right:16px
   }
 
-  .hero-title { font-size:32px }
+  .hero-title { font-size:var(--fs-h1) }
 }
 @media(max-width:560px) {
   .hero-toggle-wrap {
@@ -1089,7 +1092,7 @@ button,input,select,textarea {
 }
 .guides {
   position:relative;
-  background:#05050a;
+  background:var(--bg-alt);
   padding:320px 0 160px
 }
 .guides-container {
@@ -1105,7 +1108,7 @@ button,input,select,textarea {
 .guides-title {
   font-family:var(--font-heading);
   font-weight:600;
-  font-size:clamp(36px,2.5vw,48px);
+  font-size:var(--fs-h2);
   line-height:1.2;
   color:var(--text-white);
   margin-bottom:16px
@@ -1130,7 +1133,7 @@ button,input,select,textarea {
   justify-content:flex-start;
   gap:clamp(32px,2.5vw,48px);
   height:100%;
-  background:#ffffff08;
+  background:var(--surface-1);
   border:1px solid var(--card-border);
   border-radius:8px;
   padding:clamp(32px,2.5vw,48px);
@@ -1145,7 +1148,7 @@ button,input,select,textarea {
 .guide-card:hover {
   transform:translateY(-4px);
   border-color:#b7f13d59;
-  background:#ffffff0d;
+  background:var(--surface-1);
   box-shadow:0 16px 40px #00000059
 }
 .guide-card--soon .guide-card-body,.guide-card--soon .guide-card-illustration-wrap {
@@ -1289,7 +1292,7 @@ button,input,select,textarea {
     padding:64px 0 120px
   }
 
-  .guides-title { font-size:26px }
+  .guides-title { font-size:var(--fs-h2) }
 }
 @media(max-width:640px) {
   .guides-grid {
@@ -1312,7 +1315,7 @@ button,input,select,textarea {
   }
 
 }
-.process {position:relative;background:#05050a;height:auto}
+.process {position:relative;background:var(--bg-alt);height:auto}
 .process-pin {
   position:static;
   height:auto;
@@ -1333,7 +1336,7 @@ button,input,select,textarea {
 .process-title {
   font-family:var(--font-heading);
   font-weight:600;
-  font-size:36px;
+  font-size:var(--fs-h2);
   line-height:var(--lh-heading);
   color:var(--text-white);
   margin-bottom:16px
@@ -1393,8 +1396,8 @@ button,input,select,textarea {
   width:14px;
   height:14px;
   border-radius:50%;
-  background:#ffffff14;
-  border:2px solid rgba(255,255,255,.18);
+  background:var(--surface-2);
+  border:2px solid var(--border-strong);
   transition:background .4s ease,border-color .4s ease,box-shadow .4s ease
 }
 .process-step__num {
@@ -1496,9 +1499,9 @@ button,input,select,textarea {
     margin-bottom:10px
   }
 
-  .process-title { font-size:26px }
+  .process-title { font-size:var(--fs-h2) }
 }
-.showcase {position:relative;background:#05050a}
+.showcase {position:relative;background:var(--bg-alt)}
 .showcase-frame {
   position:relative;
   width:100%;
@@ -1533,7 +1536,7 @@ button,input,select,textarea {
   align-items:center;
   justify-content:center;
   background:#14141680;
-  border:1px solid rgba(255,255,255,.16);
+  border:1px solid var(--border-strong);
   color:#fff;
   cursor:pointer;
   backdrop-filter:blur(16px) saturate(160%);
@@ -1568,7 +1571,7 @@ button,input,select,textarea {
 }
 .site-footer {
   position:relative;
-  background:#05050a;
+  background:var(--bg-alt);
   overflow:hidden
 }
 .footer-glow {
@@ -1666,6 +1669,7 @@ button,input,select,textarea {
   transform:translateY(-3px)
 }
 .footer-newsletter {
+  display:none; /* UX-04: skryto do napojení odesílání */
   position:relative;
   max-width:260px
 }
@@ -1673,7 +1677,7 @@ button,input,select,textarea {
   width:100%;
   padding:10px 46px 10px 16px;
   border-radius:999px;
-  background:#ffffff0d;
+  background:var(--surface-1);
   border:1px solid var(--card-border);
   color:var(--text-white);
   font-family:var(--font-body);
@@ -1760,8 +1764,8 @@ button,input,select,textarea {
   gap:8px;
   padding:8px 14px;
   border-radius:8px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.08);
+  background:var(--surface-1);
+  border:1px solid var(--border);
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
   white-space:nowrap;
@@ -1797,8 +1801,8 @@ button,input,select,textarea {
   color:#0c0e08
 }
 a.guide-steps__item:hover {
-  background:rgba(255,255,255,.09);
-  border-color:rgba(255,255,255,.13)
+  background:var(--surface-2);
+  border-color:var(--border-strong)
 }
 a.guide-steps__item:hover .guide-steps__label {
   color:rgba(255,255,255,.65)
@@ -1830,7 +1834,7 @@ a.guide-steps__item:hover .guide-steps__label {
 }
 .home-faq__title {
   font-family:var(--font-heading);
-  font-size:36px;
+  font-size:var(--fs-h2);
   font-weight:600;
   color:var(--text-white);
   margin:10px 0 48px;line-height:var(--lh-heading)}
@@ -1937,10 +1941,10 @@ a.guide-steps__item:hover .guide-steps__label {
 .hero-nav__item-arrow .ms-icon { font-size: 20px; }
 .showcase-arrow .ms-icon { font-size: 24px; }
 .home-faq__item {
-  border-bottom:1px solid rgba(255,255,255,.08)
+  border-bottom:1px solid var(--border)
 }
 .home-faq__item:first-of-type {
-  border-top:1px solid rgba(255,255,255,.08)
+  border-top:1px solid var(--border)
 }
 .home-faq__q {font-family:var(--font-heading);font-weight:500;color:var(--text-white);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;list-style:none;transition:color .2s ease;line-height:var(--lh-question)}
 .home-faq__q::-webkit-details-marker {
@@ -1981,7 +1985,7 @@ a.guide-steps__item:hover .guide-steps__label {
   .home-faq__container {
     padding:0 16px
   }
-  .home-faq__title { font-size:26px }
+  .home-faq__title { font-size:var(--fs-h2) }
 
 }
 .fve-eyebrow {
@@ -1995,7 +1999,7 @@ a.guide-steps__item:hover .guide-steps__label {
 }
 
 /* ── Calc section redesign — full-width, lime glow + glass ── */
-.calc-section {display:block;background:rgba(255,255,255,.035);border-top:1px solid rgba(183,241,61,.14);border-bottom:1px solid rgba(183,241,61,.14);overflow:hidden;backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);box-shadow:0 0 120px rgba(183,241,61,.05),inset 0 1px 0 rgba(255,255,255,.06)}
+.calc-section {display:block;background:var(--surface-1);border-top:1px solid rgba(183,241,61,.14);border-bottom:1px solid rgba(183,241,61,.14);overflow:hidden;backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);box-shadow:0 0 120px rgba(183,241,61,.05),inset 0 1px 0 rgba(255,255,255,.06)}
 
 .calc-section::before {
   content:"";
@@ -2060,7 +2064,7 @@ a.guide-steps__item:hover .guide-steps__label {
   position:fixed;
   inset:0;
   z-index:9999;
-  background:#05050a;
+  background:var(--bg-alt);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -2097,7 +2101,7 @@ a.guide-steps__item:hover .guide-steps__label {
   z-index:1;
   pointer-events:none;
   transition:opacity .6s ease;
-  background:radial-gradient(ellipse 65% 85% at 72% 50%,rgba(55,95,175,.2) 0%,rgba(35,65,135,.08) 45%,transparent 68%),radial-gradient(ellipse 38% 52% at 60% 22%,rgba(70,110,195,.1) 0%,transparent 55%),#05050a
+  background:radial-gradient(ellipse 65% 85% at 72% 50%,rgba(55,95,175,.2) 0%,rgba(35,65,135,.08) 45%,transparent 68%),radial-gradient(ellipse 38% 52% at 60% 22%,rgba(70,110,195,.1) 0%,transparent 55%),var(--bg-alt)
 }
 
 .hero-3d-poster.is-loaded {
@@ -2105,28 +2109,30 @@ a.guide-steps__item:hover .guide-steps__label {
 }
 
 /* ── Co je EnergoHub? ────────────────────────────────────────────────── */
-.home-about{background:#05050a}
+.home-about{background:var(--bg-alt)}
 .home-about__container{width:100%;max-width:1440px;margin:0 auto;padding:0 80px}
 .home-about__header{margin-bottom:64px}
-.home-about__title{font:600 36px/var(--lh-heading) var(--font-heading);color:var(--text-white);margin:0 0 16px}
+.home-about__title{font:600 var(--fs-h2)/var(--lh-heading) var(--font-heading);color:var(--text-white);margin:0 0 16px}
 .home-about__text{font:400 var(--fs-lead)/var(--lh-lead) var(--font-body);color:var(--text-muted);margin:0}
 .home-about__text--mt{margin-top:16px}
 .home-about__goals{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
-.home-about__goal{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px}
+.home-about__goal{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:12px}
 .home-about__goal-icon{font-family:'Material Symbols Outlined';font-size:48px;line-height:1;font-weight:400;font-style:normal;font-variation-settings:'opsz' 48,'wght' 300,'FILL' 1,'GRAD' -25;background:linear-gradient(150deg,#f0ffb0 0%,#c8f050 35%,#8ec828 65%,#4a6e10 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 12px rgba(183,241,61,.28)) drop-shadow(0 3px 6px rgba(0,0,0,.45));user-select:none;letter-spacing:normal;text-transform:none;white-space:nowrap}
-.home-about__goal-text{display:flex;flex-direction:column;gap:8px;align-items:center}
+.home-about__goal-text{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
 .home-about__goal-title{font:700 clamp(18px,1.4vw,22px)/var(--lh-card-title) var(--font-heading);color:var(--text-white);margin:0}
 .home-about__goal-desc{font:400 var(--fs-text)/var(--lh-text) var(--font-body);color:var(--text-muted);margin:0}
 .home-about__popular{margin-top:140px;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
 .home-about__popular .home-faq__search-title,.home-about__popular .home-faq__search-sub{text-align:left}
 .home-about__popular-cards{width:100%;margin-top:20px}
 @media(max-width:1100px){.home-about__container{padding:0 20px}.home-about__goals{gap:28px}}
-@media(max-width:760px){.home-about__container{padding:0 16px}.home-about__title{font-size:26px}.home-about__goals{grid-template-columns:1fr;gap:32px}.home-about__goal{flex-direction:row;align-items:flex-start;text-align:left;gap:20px}.home-about__goal-text{align-items:flex-start}}
+@media(max-width:760px){.home-about__container{padding:0 16px}.home-about__title{font-size:var(--fs-h2)}.home-about__goals{grid-template-columns:1fr;gap:32px}}
 
 /* ── Typografie a neaktivní položky ──────────────────────────────────── */
 h1,h2,h3,.hero-title,.hero-nav__item-title{text-wrap:balance}
 p,.hero-nav__item-desc,.guide-qa__card-desc,.home-faq__a p{text-wrap:pretty}
 .hero-nav__item--soon{cursor:default}
+.hero-nav__item--soon .hero-nav__item-text{opacity:.6}
+.hero-nav__badge{flex-shrink:0;padding:4px 8px;border:1px solid var(--border-strong);border-radius:8px;font:600 var(--fs-label)/1 var(--font-body);letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);white-space:nowrap}
 .hero-nav__item--soon:hover{background:var(--hero-card-bg);border-color:var(--hero-card-border)}
 
 /* ── Rytmus mezer mezi sekcemi ───────────────────────────────────────── */
@@ -2187,10 +2193,9 @@ body .jom-edc__container,
 body .bsec-hero__container,
 body .bsec-topic__container,
 body .bsec-highlight__container,
-body .forum-hero__container,
 body .forum-mode-select__container,
 body .guide-sub-hero__container,
-body .kontakt-hero__content,
+body .kontakt-layout,
 body .fve-calc__container,
 body .jom-quiz__container,
 body .kalk-wizard,
@@ -2291,7 +2296,7 @@ body .slovnik-main{padding-top:0}
 :root{--card-pad-s:24px;--card-pad-m:32px;--card-pad-l:40px}
 @media(max-width:760px){:root{--card-pad-s:20px;--card-pad-m:24px;--card-pad-l:24px}}
 /* S – odkazové karty, řádky, callouty */
-body .guide-qa__card,body .bsec-nav__card,body .kalk-select-card,body .kontakt-card,
+body .guide-qa__card,body .bsec-nav__card,body .kalk-select-card,
 body .jom-sharing__price,body .bsec-topic__note,body .bsec-verdict__item,body .jom-impact__step{padding:var(--card-pad-s)}
 /* M – běžné obsahové karty a panely */
 body .fve-costs__summary,body .fve-costs__breakdown,body .fve-costs__info-card,
@@ -2313,10 +2318,9 @@ body .home-faq__search,body .fve-faq__search{margin-top:var(--head-gap)}
 /* horní a spodní padding hero (hlavní stránka a průvodci mají hero přes celou obrazovku – vlastní padding) */
 body .guide-sub-hero{padding-top:var(--hero-pt);padding-bottom:var(--subhero-pb)}  /* spodek 100 / 88 px: s horním paddingem první sekce (80 / 56) dává mezeru 180 / 144 px */
 body .slovnik-hero{padding-top:var(--hero-pt);padding-bottom:var(--hero-pb)}
-body .forum-hero__container,body .kontakt-hero__content{padding-top:var(--hero-pt);padding-bottom:var(--hero-pb)}
 /* breadcrumb → h1 → perex */
 body .guide-sub-hero__breadcrumb{margin-bottom:var(--hero-crumb-gap)}
-body .guide-sub-hero__title,body .forum-hero__title,body .kontakt-hero__title,body .slovnik-hero__title,
+body .guide-sub-hero__title,body .slovnik-hero__title,
 body .hero-title,body .fve-hero__title{margin-top:0;margin-bottom:var(--hero-title-gap)}
 body .guide-sub-hero__desc,body .slovnik-hero__perex,body .hero-text,body .fve-hero__text{margin-top:0;margin-bottom:var(--hero-text-gap)}
 
@@ -2349,3 +2353,22 @@ body .bsec-topic__intro--after{margin-top:var(--para-gap)}
 /* ── Zrušení výjimek z rytmu sekcí (zatím jen stránky s třídou rhythm-pilot) ── */
 body.rhythm-pilot .bsec-topic{padding-bottom:var(--sec-half)}
 body.rhythm-pilot .jom-savecalc{margin-bottom:0}
+
+/* Přístupnost: skip-link a <main> bez vlivu na vzhled */
+.skip-link{position:fixed;top:-100px;left:16px;z-index:10000;padding:12px 20px;background:var(--lime);color:#0a0a0a;font:600 15px/1 var(--font-body);border-radius:8px;text-decoration:none}
+.skip-link:focus{top:16px}
+.page-main{display:contents}
+#obsah:focus{outline:none}
+
+/* UX-01: viditelný focus jen pro ovládání klávesnicí (myš a dotyk beze změny) */
+:where(a,button,summary,select,[tabindex]):focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+
+/* UX-08: respektuje systémové nastavení „Omezit pohyb“ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

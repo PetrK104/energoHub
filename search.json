@@ -280,6 +280,14 @@
     "category": "Bezpečnost FVE"
   },
   {
+    "title": "Co řešit u bezpečnosti FVE",
+    "page": "Bezpečnost FVE instalací",
+    "url": "/bezpecnost#co-resit-u-bezpecnosti-fve",
+    "text": "co řešit u bezpečnosti fve",
+    "keywords": "bezpečnost FVE, co řešit, témata bezpečnosti, přehled opatření",
+    "category": "Fotovoltaika"
+  },
+  {
     "title": "Statický posudek střechy",
     "page": "Bezpečnost FVE instalací",
     "url": "/bezpecnost#staticky-posudek-strechy",
@@ -544,10 +552,10 @@
     "category": "Jednotné odběrné místo (JOM)"
   },
   {
-    "title": "Jaké opatření chcete spočítat?",
+    "title": "Vypočítejte si úspory pro váš dům",
     "page": "Kalkulačka úspor",
     "url": "/kalkulacka#co-chcete-resit",
-    "text": "jaké opatření chcete spočítat?",
+    "text": "vypočítejte si úspory pro váš dům",
     "keywords": "kalkulačka úspor, výběr opatření, co chcete řešit, JOM, FVE, teplo, okna, energetická opatření",
     "category": "Obecné"
   },
@@ -597,6 +605,14 @@
     "url": "/kalkulacka#vas-plan-uspor",
     "text": "váš plán úspor",
     "keywords": "plán úspor, výsledek kalkulace, přehled úspor, shrnutí, celkové úspory, doporučení",
+    "category": "Obecné"
+  },
+  {
+    "title": "Potřebujete poradit?",
+    "page": "Kontakt",
+    "url": "/kontakty#potrebujete-poradit",
+    "text": "potřebujete poradit?",
+    "keywords": "kontakt, napište nám, email, telefon, dotaz, dotazy, otázky, konzultace, kontaktní formulář, spojit se, ozývat se",
     "category": "Obecné"
   },
   {

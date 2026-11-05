@@ -1,4 +1,4 @@
-/* ── Mobile nav v2 — pouze index.html ───────────────────────── */
+/* ── Mobile nav v2 — mobilní menu na všech stránkách ─────────── */
 
 .navbar-mobile--v2 {
   left: 20px;
@@ -6,10 +6,10 @@
   margin-top: -1px;
 }
 .navbar-mobile--v2.is-open {
-  background: #ffffff0f;
+  background: var(--surface-1);
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border: 1px solid rgba(255,255,255,.12);
+  border: 1px solid var(--border-strong);
   border-top: none;
   border-radius: 0 0 8px 8px;
 }
@@ -44,7 +44,7 @@
   transition: background .15s;
 }
 .nm2__row:hover {
-  background: rgba(255,255,255,.05);
+  background: var(--surface-1);
 }
 
 /* skrýt výchozí šipku <summary> */
@@ -64,7 +64,7 @@
 /* ── Šipka accordionu ───────────────────────────────────────── */
 .nm2__arrow {
   font-size: 18px;
-  color: rgba(255,255,255,.3);
+  color: var(--text-dim);
   transition: transform .2s ease, color .15s;
   margin-left: auto;
 }
@@ -100,12 +100,12 @@
   font-family: var(--font-body);
   font-size: 15px;
   font-weight: 400;
-  color: rgba(255,255,255,.5);
+  color: var(--text-dim);
   text-decoration: none;
   border-radius: 6px;
   transition: color .15s, background .15s;
 }
 .nm2__sub-link:hover {
   color: rgba(255,255,255,.9);
-  background: rgba(255,255,255,.04);
+  background: var(--surface-1);
 }

@@ -8,10 +8,11 @@
 <meta name="keywords" content="NZÚ podmínky FVE, bezúročný úvěr FVE, Nová zelená úsporám bytový dům, podmínky způsobilosti FVE, vzorec NZÚ FVE, legislativa FVE, Lex OZE II, stavební povolení FVE, hranice 100 kW FVE, sdílení elektřiny SVJ, ERÚ, certifikace FVE, podmínky financování FVE">
 <meta name="category" content="Fotovoltaika">
 <title>Podmínky a legislativa pro FVE – Průvodce FVE – Energohub.info</title>
+<link rel="icon" type="image/png" href="assets/images/fav_icon.png">
+<link rel="apple-touch-icon" href="assets/images/fav_icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=account_circle,add,arrow_forward,battery_charging_20,battery_charging_full,call,chat_bubble,check,check_circle,checklist,chevron_left,chevron_right,close,compare_arrows,description,eco,engineering,expand_less,expand_more,fact_check,fire_extinguisher,gavel,gpp_bad,handshake,hub,info,local_fire_department,location_on,mail,menu_book,north_east,open_in_new,receipt_long,remove,roofing,schedule,search,security,solar_power,south_east,swap_horiz,table_chart,trending_up,visibility,visibility_off,work&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/guide-shared.css?v=8">
 <link rel="stylesheet" href="css/fve.css?v=2">
@@ -19,6 +20,7 @@
 <link rel="stylesheet" href="css/navbar-mobile-v2.css">
 </head>
 <body>
+<a class="skip-link" href="#obsah">Přeskočit na obsah</a>
 
 <header class="site-header">
   <div class="navbar-container">
@@ -29,7 +31,7 @@
 
       <ul class="navbar-links">
         <li class="nav-dropdown">
-          <span class="nav-dropdown__trigger" tabindex="0" aria-haspopup="true">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></span>
+          <button type="button" class="nav-dropdown__trigger" aria-haspopup="true" aria-expanded="false">Průvodci opatření <span class="nav-dropdown__arrow">▾</span></button>
           <ul class="nav-dropdown__menu">
             <div class="nav-dropdown__menu-inner">
               <li><a href="pruvodce-jom.html">Jednotné odběrné místo (JOM)</a></li>
@@ -41,7 +43,7 @@
           </ul>
         </li>
         <li class="nav-dropdown">
-          <span class="nav-dropdown__trigger" tabindex="0" aria-haspopup="true">Poradna <span class="nav-dropdown__arrow">▾</span></span>
+          <button type="button" class="nav-dropdown__trigger" aria-haspopup="true" aria-expanded="false">Poradna <span class="nav-dropdown__arrow">▾</span></button>
           <ul class="nav-dropdown__menu">
             <div class="nav-dropdown__menu-inner">
               <li><a href="bezpecnost.html">Bezpečnost</a></li>
@@ -74,7 +76,7 @@
       <!-- Průvodci — accordion -->
       <details class="nm2__accordion">
         <summary class="nm2__row">
-          <span class="nm2__title">Průvodci</span>
+          <span class="nm2__title">Průvodci opatření</span>
           <span class="ms-icon nm2__arrow" aria-hidden="true">expand_more</span>
         </summary>
         <ul class="nm2__sub">
@@ -111,6 +113,8 @@
   </div>
 </header>
 
+<main class="page-main"><span id="obsah" tabindex="-1"></span>
+
 <section class="guide-sub-hero">
   <div class="guide-sub-hero__container">
     <nav class="guide-sub-hero__breadcrumb" aria-label="Drobečková navigace">
@@ -119,7 +123,7 @@
       <span aria-current="page">Legislativa</span>
     </nav>
     <h1 class="guide-sub-hero__title">Podmínky a legislativa pro FVE</h1>
-    <p class="guide-sub-hero__desc">Bezúročný úvěr NZÚ – vzorec výpočtu, podmínky způsobilosti, legislativní rámec a hranice 100 kW pro FVE v bytovém domě.</p>
+    <p class="guide-sub-hero__desc">Bezúročný úvěr NZÚ&nbsp;– vzorec výpočtu, podmínky způsobilosti, legislativní rámec a hranice 100 kW pro FVE v bytovém domě.</p>
     <p class="guide-sub-hero__meta">
       <span class="ms-icon guide-sub-hero__clock" aria-hidden="true">schedule</span>
       Doba čtení: 7 min.
@@ -146,7 +150,7 @@
       </div>
       <div class="fve-grants__stat">
         <span class="fve-grants__stat-value">0 %</span>
-        <span class="fve-grants__stat-label">úrok bezúročného úvěru NZÚ – SVJ splácí jen půjčenou částku, úroky hradí stát</span>
+        <span class="fve-grants__stat-label">úrok bezúročného úvěru NZÚ&nbsp;– SVJ splácí jen půjčenou částku, úroky hradí stát</span>
       </div>
       <div class="fve-grants__stat">
         <span class="fve-grants__stat-value">100</span>
@@ -173,7 +177,7 @@
           </li>
           <li>
             <span class="ms-icon" aria-hidden="true">check</span>
-            Výše úvěru: 350 000 Kč za prvních 5 kWp, + 40 000 Kč za každý další kWp, + 15 000 Kč za každou kWh bateriového úložiště – celkově nejvýše 250 000 Kč na byt (strop úvěru u dílčí renovace). U samotné FVE obvykle rozhoduje limit 3 kWp na byt
+            Výše úvěru: 350 000 Kč za prvních 5 kWp, + 40 000 Kč za každý další kWp, + 15 000 Kč za každou kWh bateriového úložiště&nbsp;– celkově nejvýše 250 000 Kč na byt (strop úvěru u dílčí renovace). U samotné FVE obvykle rozhoduje limit 3 kWp na byt
           </li>
           <li>
             <span class="ms-icon" aria-hidden="true">check</span>
@@ -193,7 +197,7 @@
           </li>
           <li>
             <span class="ms-icon" aria-hidden="true">check</span>
-            Přímá dotace bez povinnosti splácet je dostupná jen pro byty s nízkopříjmovými domácnostmi (program NZÚ Light) jako součást komplexní renovace domu – netýká se samostatné FVE
+            Přímá dotace bez povinnosti splácet je dostupná jen pro byty s nízkopříjmovými domácnostmi (program NZÚ Light) jako součást komplexní renovace domu&nbsp;– netýká se samostatné FVE
           </li>
         </ul>
 
@@ -269,7 +273,7 @@
         <div class="fve-limit-card">
           <h3 class="fve-limit-card__kw">Do 100 kW</h3>
           <ul class="fve-worth-list fve-worth-list--yes">
-            <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Instalace nevyžaduje stavební povolení ani ohlášení stavby – stačí žádost o připojení k distributorovi a splnění technických a požárních předpisů.</li>
+            <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Instalace nevyžaduje stavební povolení ani ohlášení stavby&nbsp;– stačí žádost o připojení k distributorovi a splnění technických a požárních předpisů.</li>
             <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Licenci ERÚ nepotřebujete až do&nbsp;100&nbsp;kW za&nbsp;předpokladu, že vyrobenou elektřinu v&nbsp;domě sami spotřebujete nebo bezúplatně sdílíte. Možnost regulace výkonu však distributor může požadovat v&nbsp;připojovacích podmínkách i&nbsp;pod touto hranicí.</li>
             <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Připojení k síti probíhá standardním způsobem přes provozovatele sítě, který má na vyřízení žádosti zákonem daný čas.</li>
           </ul>
@@ -279,9 +283,9 @@
         <div class="fve-limit-card">
           <h3 class="fve-limit-card__kw">Nad 100 kW</h3>
           <ul class="fve-worth-list fve-worth-list--yes">
-            <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Instalace vyžaduje stavební povolení – do 250 kW ve zjednodušeném řízení, nad touto hranicí v plném rozsahu.</li>
+            <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Instalace vyžaduje stavební povolení&nbsp;– do 250 kW ve zjednodušeném řízení, nad touto hranicí v plném rozsahu.</li>
             <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>K řízení se vyjadřuje i hasičský záchranný sbor.</li>
-            <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Pokud se panely staví přímo na zemědělské půdě, a ne na střeše domu, je navíc potřeba souhlas úřadu s vynětím pozemku ze zemědělského fondu – u bytových domů jde o výjimečnou situaci.</li>
+            <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Pokud se panely staví přímo na zemědělské půdě, a ne na střeše domu, je navíc potřeba souhlas úřadu s vynětím pozemku ze zemědělského fondu&nbsp;– u bytových domů jde o výjimečnou situaci.</li>
             <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>U domů v památkově chráněných oblastech se k záměru vyjadřuje i památkový úřad, a to bez ohledu na velikost elektrárny.</li>
             <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Ze zákona musí být elektrárna vybavená zařízením, které umožní provozovateli sítě na dálku omezit její výkon kvůli stabilitě sítě.</li>
             <li><span class="ms-icon fve-worth-arrow fve-worth-arrow--yes" aria-hidden="true">north_east</span>Celá příprava a povolení trvá déle než u menších instalací do 100 kW.</li>
@@ -318,14 +322,14 @@
       <details class="fve-grants__faq-item">
         <summary class="fve-grants__faq-q">Potřebujeme stavební povolení?</summary>
         <div class="fve-grants__faq-a">
-          <p>Pro FVE do výkonu 100 kW na stávající budově není potřeba ani stavební povolení, ani ohlášení záměru. Nad 100 kW je nutné stavební povolení – do 250 kW ve zjednodušeném řízení, nad touto hranicí v plném rozsahu. Většina bytových domů s 12–30 byty se s běžně navrhovaným výkonem FVE do tohoto limitu pohodlně vejde.</p>
+          <p>Pro FVE do výkonu 100 kW na stávající budově není potřeba ani stavební povolení, ani ohlášení záměru. Nad 100 kW je nutné stavební povolení&nbsp;– do 250 kW ve zjednodušeném řízení, nad touto hranicí v plném rozsahu. Většina bytových domů s 12–30 byty se s běžně navrhovaným výkonem FVE do tohoto limitu pohodlně vejde.</p>
         </div>
       </details>
 
       <details class="fve-grants__faq-item">
         <summary class="fve-grants__faq-q">Kolik FVE lze na bytový dům podpořit?</summary>
         <div class="fve-grants__faq-a">
-          <p>Podmínky NZÚ stanovují maximálně 3 kWp na jednu bytovou jednotku. Dům s 20 byty tedy může získat bezúročný úvěr na FVE o výkonu nejvýše 60 kWp. Zároveň platí dolní hranice 5 kWp – menší instalace nejsou způsobilé. Výše úvěru odpovídá vzorci: 350 000 Kč za prvních 5 kWp + 40 000 Kč za každý další kWp + 15 000 Kč za každou kWh bateriového úložiště (u 60 kWp to je 2 550 000 Kč bez baterie). Celkový úvěr na dílčí renovaci nesmí překročit 250 000 Kč na byt, u samotné FVE ale obvykle rozhoduje limit 3 kWp na byt.</p>
+          <p>Podmínky NZÚ stanovují maximálně 3 kWp na jednu bytovou jednotku. Dům s 20 byty tedy může získat bezúročný úvěr na FVE o výkonu nejvýše 60 kWp. Zároveň platí dolní hranice 5 kWp&nbsp;– menší instalace nejsou způsobilé. Výše úvěru odpovídá vzorci: 350 000 Kč za prvních 5 kWp + 40 000 Kč za každý další kWp + 15 000 Kč za každou kWh bateriového úložiště (u 60 kWp to je 2 550 000 Kč bez baterie). Celkový úvěr na dílčí renovaci nesmí překročit 250 000 Kč na byt, u samotné FVE ale obvykle rozhoduje limit 3 kWp na byt.</p>
         </div>
       </details>
 
@@ -366,7 +370,7 @@
       </a>
       <a href="pruvodce-fve.html" class="guide-qa__card guide-qa__card--back">
         <div class="guide-qa__card-body">
-          <p class="guide-qa__card-title">Průvodce FVE – přehled všech témat</p>
+          <p class="guide-qa__card-title">Průvodce FVE&nbsp;– přehled všech témat</p>
           <p class="guide-qa__card-desc">Zpět na přehled témat fotovoltaiky pro bytové domy.</p>
         </div>
         <div class="guide-qa__card-arrow">→</div>
@@ -392,6 +396,8 @@
     <div class="search-body search-cta__body" id="searchCtaBody" hidden></div>
   </div>
 </section>
+</main>
+
 <footer class="site-footer">
   <div class="footer-glow"></div>
 
@@ -401,7 +407,7 @@
         <a href="index.html" class="footer-logo">
           <img src="assets/images/Logo.svg" alt="Energohub">
         </a>
-        <p class="footer-tagline">Nezávislý průvodce úsporami energie pro SVJ a bytová družstva.</p>
+        <p class="footer-tagline">Nezávislý průvodce energetickými opatřeními pro bytové domy a SVJ.</p>
       </div>
 
       <div class="footer-col">
