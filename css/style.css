@@ -258,8 +258,8 @@ button,input,select,textarea {
   justify-content:center;
   align-items:center;
   gap:4px;
-  width:40px;
-  height:40px;
+  width:44px;
+  height:44px;
   border:none;
   background:none;
   cursor:pointer;
@@ -1937,7 +1937,7 @@ a.guide-steps__item:hover .guide-steps__label {
   user-select: none;
   font-variation-settings: 'opsz' 20, 'wght' 400, 'FILL' 0, 'GRAD' 0;
 }
-.navbar-search .ms-icon { font-size: 22px; }
+.navbar-search .ms-icon { font-size: 25px; }
 .hero-nav__item-arrow .ms-icon { font-size: 20px; }
 .showcase-arrow .ms-icon { font-size: 24px; }
 .home-faq__item {
@@ -2218,7 +2218,6 @@ body .home-about__header,
 body .process-heading,
 body .home-faq__title,
 body .fve-explain__header,
-body .fve-calc__header,
 body .fve-case__title,
 body .fve-faq__title,
 body .fve-costs__header,
@@ -2239,6 +2238,7 @@ body .fve-limit__header,
 body .jom-compare__header,
 body .jom-ideal__header,
 body .jom-quiz__header,
+body .fve-calc__header,
 body .kontakt-form-section__title{margin-bottom:var(--head-gap-sm)}
 /* zrušené „hacky" margin-top u h2 */
 body .home-faq__title,
@@ -2372,3 +2372,19 @@ body.rhythm-pilot .jom-savecalc{margin-bottom:0}
     scroll-behavior: auto !important;
   }
 }
+
+/* Formuláře: chybová hláška a skryté pole proti botům */
+.form-consent{display:flex;align-items:flex-start;gap:10px;cursor:pointer;font:400 var(--fs-caption)/var(--lh-caption) var(--font-body);color:var(--text-muted)}
+.form-consent input[type=checkbox]{-webkit-appearance:none;appearance:none;width:16px;height:16px;border:2px solid rgba(255,255,255,.25);border-radius:8px;flex-shrink:0;margin-top:2px;cursor:pointer;background-color:transparent;transition:border-color .2s,background .2s}
+.form-consent input[type=checkbox]:hover{border-color:rgba(255,255,255,.45)}
+.form-consent input[type=checkbox]:checked{background-color:var(--lime);border-color:var(--lime);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='8' viewBox='0 0 10 8'%3E%3Cpath d='M1 4l3 3 5-6' stroke='%2305050a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
+.form-consent input[type=checkbox]:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+.form-consent a{color:var(--text-white);font-weight:inherit;text-decoration:underline;text-underline-offset:2px}
+.form-consent a:hover{color:var(--lime)}
+.kalk-form .form-consent{margin-bottom:24px}
+.fve-form__form .form-consent{margin-top:28px}
+.form-error{margin-top:12px;font:500 var(--fs-small)/var(--lh-small) var(--font-body);color:var(--danger)}
+.form-error[hidden]{display:none}
+.form-note{margin-top:12px;font:400 var(--fs-caption)/var(--lh-caption) var(--font-body);color:var(--text-dim)}
+.form-note a{color:var(--text-white);font-weight:inherit;text-decoration:underline;text-underline-offset:2px}
+.form-hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}

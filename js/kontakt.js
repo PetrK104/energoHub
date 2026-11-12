@@ -18,8 +18,20 @@
       }
       var fields = this.querySelector('.kontakt-form__fields');
       var success = this.querySelector('.kontakt-form__success');
-      if (fields) fields.hidden = true;
-      if (success) success.hidden = false;
+      var ui = EH.formUi(this);
+      var hp = this.querySelector('input[name="website"]');
+      ui.start();
+      EH.submitForm('contact', {
+        name: EH.val('kontakt-name'),
+        email: EH.val('kontakt-email'),
+        message: EH.val('kontakt-message')
+      }, hp && hp.value).then(function () {
+        ui.done();
+        if (fields) fields.hidden = true;
+        if (success) success.hidden = false;
+      }).catch(function (err) {
+        ui.fail(err.message);
+      });
     });
   }
 })();

@@ -18,7 +18,7 @@
 <link rel="preload" href="/hdri/venice_sunset_512.hdr" as="fetch" crossorigin>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/guide-shared.css?v=8">
-<link rel="stylesheet" href="css/jom.css">
+<link rel="stylesheet" href="css/jom.css?v=19">
 <link rel="stylesheet" href="css/search.css?v=2">
 <link rel="stylesheet" href="css/navbar-mobile-v2.css">
 </head>
@@ -30,7 +30,7 @@
   <div class="navbar-container">
     <nav class="navbar">
       <a href="index.html" class="navbar-logo">
-        <img src="assets/images/Logo.svg" alt="Energohub">
+        <img src="assets/images/Logo.svg" width="248" height="199" alt="Energohub">
       </a>
 
       <ul class="navbar-links">
@@ -183,7 +183,7 @@
     </div>
 
     <div class="fve-explain__photo">
-      <img src="assets/images/jom_main.webp" alt="Schéma fungování jednotného odběrného místa" loading="lazy">
+      <img src="assets/images/jom_main.webp" width="3548" height="1774" alt="Schéma fungování jednotného odběrného místa" loading="lazy">
     </div>
 
   </div>
@@ -363,8 +363,11 @@
           <div class="jom-quiz__col">
             <div class="jom-quiz__field">
               <label class="fve-calc__label" for="quizApts">Počet bytů v domě</label>
-              <input type="number" class="jom-quiz__input" id="quizApts" min="2" max="500" placeholder="Zadejte počet">
+              <input type="number" class="jom-quiz__input" id="quizApts" min="4" max="300" placeholder="Zadejte počet">
             </div>
+          </div>
+
+          <div class="jom-quiz__col">
             <div class="jom-quiz__field">
               <label class="fve-calc__label" for="quizType">Typ domu</label>
               <select class="jom-quiz__select" id="quizType">
@@ -376,6 +379,21 @@
               </select>
             </div>
           </div>
+
+          <div class="jom-quiz__col">
+            <div class="jom-quiz__field">
+              <label class="fve-calc__label" for="quizDistributor">Distribuční území</label>
+              <select class="jom-quiz__select" id="quizDistributor">
+                <option value="">Nevím</option>
+                <option value="cez">ČEZ Distribuce</option>
+                <option value="egd">EG.D (E.ON)</option>
+                <option value="pre">PREdistribuce (Praha)</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+        <div class="jom-quiz__grid jom-quiz__grid--3">
 
           <div class="jom-quiz__col">
             <div class="jom-quiz__field">
@@ -407,17 +425,13 @@
 
       <!-- Panel 2 -->
       <div class="jom-quiz__panel" id="quizPanel2" hidden>
-        <div class="jom-quiz__grid jom-quiz__grid--3">
+        <div class="jom-quiz__grid jom-quiz__grid--4">
 
           <div class="jom-quiz__col">
             <div class="jom-quiz__field">
-              <label class="fve-calc__label">Odhadovaná měsíční spotřeba domu</label>
-              <div class="jom-quiz__radios" role="group">
-                <label class="jom-quiz__radio"><input type="radio" name="quizConsumption" value="low"><span>do 1 000 kWh</span></label>
-                <label class="jom-quiz__radio"><input type="radio" name="quizConsumption" value="mid"><span>1 000–3 000 kWh</span></label>
-                <label class="jom-quiz__radio"><input type="radio" name="quizConsumption" value="high"><span>nad 3 000 kWh</span></label>
-                <label class="jom-quiz__radio"><input type="radio" name="quizConsumption" value="unknown"><span>Nevím</span></label>
-              </div>
+              <label class="fve-calc__label" for="quizAnnual">Roční spotřeba elektřiny domu (kWh) <span class="jom-quiz__optional">(nepovinné)</span></label>
+              <input type="number" class="jom-quiz__input" id="quizAnnual" min="1000" max="5000000" placeholder="např. 130 000">
+              <p class="jom-quiz__hint">Najdete ji na ročním vyúčtování. Pokud ji neznáte, nechte prázdné, odhadneme ji z počtu bytů.</p>
             </div>
           </div>
 
@@ -432,10 +446,47 @@
             </div>
           </div>
 
+          <div class="jom-quiz__col">
+            <div class="jom-quiz__field">
+              <label class="fve-calc__label">Typický jistič v bytech</label>
+              <div class="jom-quiz__radios" role="group">
+                <label class="jom-quiz__radio"><input type="radio" name="quizBreaker" value="1x25"><span>1×25 A (jednofázový)</span></label>
+                <label class="jom-quiz__radio"><input type="radio" name="quizBreaker" value="3x20"><span>3×20 A</span></label>
+                <label class="jom-quiz__radio"><input type="radio" name="quizBreaker" value="unknown"><span>Různé / nevím</span></label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="jom-quiz__fve-extra" id="quizFveExtra" hidden>
+          <p class="fve-calc__label jom-quiz__fve-extra-title">Upřesnění k fotovoltaice <span class="jom-quiz__optional">(nepovinné)</span></p>
+          <div class="jom-quiz__grid jom-quiz__grid--3">
+            <div class="jom-quiz__col">
+              <div class="jom-quiz__field">
+                <label class="fve-calc__label" for="quizKwp">Výkon FVE (kWp)</label>
+                <input type="number" class="jom-quiz__input" id="quizKwp" min="1" max="500" step="0.1" placeholder="např. 40">
+              </div>
+            </div>
+            <div class="jom-quiz__col">
+              <div class="jom-quiz__field">
+                <label class="fve-calc__label" for="quizOrient">Orientace střechy</label>
+                <select class="jom-quiz__select" id="quizOrient">
+                  <option value="">Nevím</option>
+                  <option value="J">Jih&nbsp;– nejlepší výnos</option>
+                  <option value="JV">Jihovýchod</option>
+                  <option value="JZ">Jihozápad</option>
+                  <option value="V">Východ</option>
+                  <option value="Z">Západ</option>
+                  <option value="S">Sever</option>
+                </select>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="jom-quiz__footer">
-          <button type="button" class="jom-quiz__btn-back" data-back="1">← Zpět</button>
           <button type="button" class="btn btn-primary jom-quiz__btn-next" data-next="3">Ukázat výsledek</button>
+          <button type="button" class="jom-quiz__btn-back" data-back="1">← Zpět</button>
         </div>
       </div>
 
@@ -445,6 +496,23 @@
         <div class="jom-quiz__result-banner" id="quizResultBanner">
           <div class="jom-quiz__result-badge" id="quizResultBadge"></div>
           <p class="jom-quiz__result-text" id="quizResultText"></p>
+        </div>
+
+        <div class="jom-quiz__estimate" id="quizEstimate" hidden>
+          <p class="jom-quiz__est-lead">Ušetřit můžete přibližně</p>
+          <div class="jom-quiz__est-figures">
+            <div class="jom-quiz__est-fig">
+              <p class="jom-quiz__est-num"><span id="quizEstYear"></span> Kč</p>
+              <p class="jom-quiz__est-unit">ročně</p>
+            </div>
+            <div class="jom-quiz__est-fig">
+              <p class="jom-quiz__est-num"><span id="quizEstMonth"></span> Kč</p>
+              <p class="jom-quiz__est-unit">měsíčně</p>
+            </div>
+          </div>
+          <p class="jom-quiz__est-fve" id="quizEstFve" hidden></p>
+          <p class="jom-quiz__est-note" id="quizEstNote"></p>
+          <p class="jom-quiz__est-note jom-quiz__est-note--link"><a href="kalkulacka.html" id="quizToMain">Spočítat podrobně investici a návratnost v kalkulačce</a></p>
         </div>
 
         <form id="quizForm" novalidate>
@@ -466,14 +534,16 @@
               <input type="text" class="jom-quiz__input" id="quizOrg" autocomplete="organization">
             </div>
           </div>
-          <label class="jom-quiz__consent">
+          <label class="form-consent">
             <input type="checkbox" id="quizConsent" required>
-            <span>Souhlasím se zpracováním osobních údajů pro účely odpovědi na poptávku.</span>
+            <span id="quizConsentText">Souhlasím se zpracováním svých osobních údajů (jméno, e-mail, telefon, organizace a odpovědi z kvízu) společností EnergoHub za účelem zaslání vyhodnocení a nabídky služeb k jednotnému odběrnému místu. Souhlas mohu kdykoli odvolat. Více v <a href="ochrana-osobnich-udaju.html">Zásadách ochrany osobních údajů</a>.</span>
           </label>
           <div class="jom-quiz__footer">
-            <button type="button" class="jom-quiz__btn-back" data-back="2">← Zpět</button>
             <button type="submit" class="btn btn-primary">Odeslat poptávku</button>
+            <button type="button" class="jom-quiz__btn-back" data-back="2">← Zpět</button>
           </div>
+          <div class="form-hp" aria-hidden="true"><label>Web <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+          <p class="form-error" role="alert" hidden></p>
         </form>
 
       </div>
@@ -481,8 +551,8 @@
       <!-- Poděkování -->
       <div class="jom-quiz__thankyou" id="quizThankyou" hidden>
         <div class="jom-quiz__thankyou-icon">✓</div>
-        <h3 class="jom-quiz__thankyou-title">Odpověď přijde do 2 pracovních dnů</h3>
-        <p class="jom-quiz__thankyou-text">Poptávka byla odeslána. K dispozici je celý průvodce JOM a kalkulačka FVE.</p>
+        <h3 class="jom-quiz__thankyou-title">Poptávka byla odeslána</h3>
+        <p class="jom-quiz__thankyou-text">Děkujeme, vaše zpráva byla odeslána. Ozveme se vám co nejdříve, obvykle do 2 pracovních dnů.</p>
         <a href="#co-je-jom" class="btn btn-primary">Zpět na průvodce</a>
       </div>
 
@@ -546,7 +616,7 @@
       <details class="fve-faq__item">
         <summary class="fve-faq__q">Jak rychlá je návratnost investice do JOM?</summary>
         <div class="fve-faq__a">
-          <p>Samotný přechod na JOM (bez FVE) přináší úsporu z výhodnějšího tarifu a snížené administrativy&nbsp;– u větších domů se investice může vrátit i pod 1 rok, u menších domů obvykle v řádu jednotek let. V kombinaci s fotovoltaikou se celková investice vrátí za 5–7 let, záleží na velikosti domu, výkonu FVE a způsobu financování. Právě proto doporučujeme realizovat JOM jako první krok&nbsp;– jeho úspory pak spolufinancují pořízení fotovoltaiky.</p>
+          <p>Samotný přechod na JOM (bez FVE) přináší úsporu z nižších stálých plateb a výhodnějšího tarifu. Investice se obvykle vrátí za 4 až 6 let, u větších domů dříve, u menších později. V kombinaci s fotovoltaikou se celková investice vrátí za 5–7 let, záleží na velikosti domu, výkonu FVE a způsobu financování. Právě proto doporučujeme realizovat JOM jako první krok&nbsp;– jeho úspory pak spolufinancují pořízení fotovoltaiky.</p>
         </div>
       </details>
 
@@ -604,7 +674,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="footer-logo">
-          <img src="assets/images/Logo.svg" alt="Energohub">
+          <img src="assets/images/Logo.svg" width="248" height="199" alt="Energohub">
         </a>
         <p class="footer-tagline">Nezávislý průvodce energetickými opatřeními pro bytové domy a SVJ.</p>
       </div>
@@ -629,7 +699,7 @@
         <h3 class="footer-col-title">Informace</h3>
         <ul class="footer-links">
           <li><a href="#">Podmínky použití</a></li>
-          <li><a href="#">Ochrana osobních údajů</a></li>
+          <li><a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a></li>
           <li><a href="#">Reklamační řád</a></li>
         </ul>
       </div>
@@ -666,11 +736,14 @@
 
 <script src="js/fve-subnav.js" defer></script>
 <script>(function(){var menu=document.getElementById('navMobile');var navbar=document.querySelector('.navbar');if(!menu||!navbar)return;new MutationObserver(function(){navbar.classList.toggle('navbar--menu-open',menu.classList.contains('is-open'));}).observe(menu,{attributes:true,attributeFilter:['class']});})();</script>
-<script src="js/kalk-constants.js"></script>
+<script src="js/kalk-constants.js?v=11"></script>
 <script src="js/footer.js" defer></script>
 <script src="js/tooltip.js" defer></script>
+<script src="js/submit-form.js" defer></script>
 <script src="js/navbar.js" defer></script>
-<script src="js/jom-quiz.js" defer></script>
+<script src="js/kalk-ceny.js?v=3"></script>
+<script src="js/kalk-engine.js?v=10"></script>
+<script src="js/jom-quiz.js?v=13" defer></script>
 <script>(function(){var frame=document.querySelector('.fve-hero__3d-frame');var poster=document.getElementById('jomPoster');if(!frame||!poster)return;var done=false;function hide(){if(done)return;done=true;poster.classList.add('is-loaded');setTimeout(function(){poster.remove();},600);}window.addEventListener('message',function(e){if(e.data&&e.data.type==='hero3d:ready'&&e.source===frame.contentWindow)hide();});var t0=Date.now();(function poll(){var w;try{w=frame.contentWindow;}catch(e){}if((w&&w.__heroReady)||Date.now()-t0>10000){hide();return;}setTimeout(poll,150);})();})();</script>
 <script>(function(){if(!('ontouchstart' in window))return;var frame=document.querySelector('.fve-hero__3d-frame');if(!frame)return;var ov=document.createElement('div');ov.style.cssText='position:fixed;left:0;right:0;top:0;height:0;z-index:90;touch-action:pan-y;';document.body.appendChild(ov);function update(){var r=frame.getBoundingClientRect();var top=Math.max(0,r.top);var bottom=Math.min(window.innerHeight,r.bottom);if(bottom>top+4){ov.style.top=top+'px';ov.style.height=(bottom-top)+'px';}else{ov.style.height='0';}}update();window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);window.addEventListener('load',update);setTimeout(update,400);setTimeout(update,1200);var sx,sy;ov.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});ov.addEventListener('touchend',function(e){var t=e.changedTouches[0],dx=Math.abs(t.clientX-sx),dy=Math.abs(t.clientY-sy);if(dx<30&&dy<30){try{var r=frame.getBoundingClientRect(),cx=t.clientX-r.left,cy=t.clientY-r.top,el=frame.contentDocument.elementFromPoint(cx,cy);if(el){var btn=el.closest?el.closest('button,[role=button]'):null;(btn||el).click();}}catch(err){}}},{passive:true});})();</script>
 <script type="module" src="assets/js/search-overlay.js?v=2"></script>

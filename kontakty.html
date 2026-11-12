@@ -26,7 +26,7 @@
   <div class="navbar-container">
     <nav class="navbar">
       <a href="index.html" class="navbar-logo">
-        <img src="assets/images/Logo.svg" alt="Energohub">
+        <img src="assets/images/Logo.svg" width="248" height="199" alt="Energohub">
       </a>
 
       <ul class="navbar-links">
@@ -181,15 +181,18 @@
           <label for="kontakt-message">Zpráva *</label>
           <textarea id="kontakt-message" name="message" rows="6" placeholder="Váš dotaz nebo zpráva..." required></textarea>
         </div>
+        <div class="form-hp" aria-hidden="true"><label>Web <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <button type="submit" class="btn btn-primary kontakt-form__submit">Odeslat zprávu</button>
+        <p class="form-error" role="alert" hidden></p>
+        <p class="form-note">Vaše údaje použijeme jen k odpovědi na váš dotaz a uchováme je nejdéle 12 měsíců. Více v <a href="ochrana-osobnich-udaju.html">Zásadách ochrany osobních údajů</a>.</p>
       </div>
 
       <div class="kontakt-form__success" hidden>
         <div class="kontakt-form__success-icon">
           <span class="ms-icon" aria-hidden="true">check_circle</span>
         </div>
-        <h3 class="kontakt-form__success-title">Zpráva odeslána!</h3>
-        <p class="kontakt-form__success-text">Ozveme se vám co nejdříve,<br>obvykle do 24 hodin v pracovní dny.</p>
+        <h3 class="kontakt-form__success-title">Zpráva odeslána</h3>
+        <p class="kontakt-form__success-text">Děkujeme, vaše zpráva byla odeslána. Ozveme se vám co nejdříve, obvykle do 2 pracovních dnů.</p>
       </div>
     </form>
     </div>
@@ -269,7 +272,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="footer-logo">
-          <img src="assets/images/Logo.svg" alt="Energohub">
+          <img src="assets/images/Logo.svg" width="248" height="199" alt="Energohub">
         </a>
         <p class="footer-tagline">Nezávislý průvodce energetickými opatřeními pro bytové domy a SVJ.</p>
       </div>
@@ -294,7 +297,7 @@
         <h3 class="footer-col-title">Informace</h3>
         <ul class="footer-links">
           <li><a href="#">Podmínky použití</a></li>
-          <li><a href="#">Ochrana osobních údajů</a></li>
+          <li><a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a></li>
           <li><a href="#">Reklamační řád</a></li>
         </ul>
       </div>
@@ -329,6 +332,7 @@
   </div>
 </footer>
 
+<script src="js/submit-form.js" defer></script>
 <script src="js/navbar.js" defer></script>
 <script>(function(){var menu=document.getElementById('navMobile');var navbar=document.querySelector('.navbar');if(!menu||!navbar)return;new MutationObserver(function(){navbar.classList.toggle('navbar--menu-open',menu.classList.contains('is-open'));}).observe(menu,{attributes:true,attributeFilter:['class']});})();</script>
 <script src="js/footer.js" defer></script>

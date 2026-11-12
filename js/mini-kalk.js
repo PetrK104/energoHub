@@ -1,17 +1,17 @@
 (function () {
 
+  // Stejné jádro výpočtu jako hlavní kalkulačka (JOM + FVE); spotřeba i orientace jsou odhadnuté, proto rozpětí ±25 %
   function calcMini(byty) {
-    var vykon    = Math.min(Math.max(byty * KALK.FVE_VYKON_NA_BYT, KALK.FVE_MIN_VYKON), KALK.FVE_MAX_VYKON);
-    var spotreba = byty * KALK.SPOTREBA_NA_BYT;
-    var jom      = byty * KALK.JOM_NA_BYT;
-
-    var vyrobaH = vykon * KALK.FVE_VYROBA_NA_KWP * KALK.FVE_ORIENT_H;
-    var vyrobaL = vykon * KALK.FVE_VYROBA_NA_KWP * KALK.FVE_ORIENT_L;
-
-    var fveH = Math.min(vyrobaH * KALK.FVE_VLASTNI_PODIL, spotreba * KALK.FVE_VLASTNI_PODIL) * KALK.FVE_CENA_EL;
-    var fveL = Math.min(vyrobaL * KALK.FVE_VLASTNI_PODIL, spotreba * KALK.FVE_VLASTNI_PODIL) * KALK.FVE_CENA_EL;
-
-    return { rocniL: jom + fveL, rocniH: jom + fveH };
+    var e = KALK_ENGINE.compute({
+      byty: byty,
+      spotreba: byty * KALK.SPOTREBA_NA_BYT,
+      orient: KALK.ORIENT.J,
+      cenaEl: KALK.FVE_CENA_EL,
+      rozpeti: KALK.rozpeti(2),
+      selected: { jom: true, fve: true }
+    });
+    var r = KALK.rozpeti(2);
+    return { rocniL: e.uspora_celkem * (1 - r), rocniH: e.uspora_celkem * (1 + r) };
   }
 
   function roundTo(val, step, dir) {
@@ -49,6 +49,9 @@
     elMesicni.textContent = fmtRange(mesL, mesH);
     elByt.textContent     = fmtRange(bytL, bytH);
 
+    var toMain = document.getElementById('miniToMain');
+    KALK.nastavOdkaz(toMain, { byty: byty, reseni: ['jom', 'fve'] });
+
     slider.setAttribute('aria-valuetext', byty + ' bytů');
     updateSliderFill(slider);
   }
@@ -69,14 +72,14 @@
   numInput.addEventListener('input', function () {
     var val = parseInt(numInput.value, 10);
     if (isNaN(val)) return;
-    val = Math.min(Math.max(val, 6), 80);
+    val = Math.min(Math.max(val, KALK.BYTY_MIN), KALK.BYTY_MINI_MAX);
     slider.value = val;
     update();
   });
 
   numInput.addEventListener('change', function () {
     var val = parseInt(numInput.value, 10) || 6;
-    val = Math.min(Math.max(val, 6), 80);
+    val = Math.min(Math.max(val, KALK.BYTY_MIN), KALK.BYTY_MINI_MAX);
     numInput.value = val;
     slider.value   = val;
     update();

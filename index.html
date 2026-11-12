@@ -30,7 +30,7 @@
   <div class="navbar-container">
     <nav class="navbar">
       <a href="index.html" class="navbar-logo">
-        <img src="assets/images/Logo.svg" alt="Energohub">
+        <img src="assets/images/Logo.svg" width="248" height="199" alt="Energohub">
       </a>
 
       <ul class="navbar-links">
@@ -278,10 +278,10 @@
         <div class="mini-kalk__slider-header">
           <label class="mini-kalk__label" for="miniKalkByty">Počet bytů v domě</label>
           <input class="mini-kalk__num" type="number" id="miniKalkNum"
-                 min="6" max="80" step="1" value="24" aria-label="Počet bytů">
+                 min="4" max="120" step="1" value="24" aria-label="Počet bytů">
         </div>
         <input class="mini-kalk__range" type="range" id="miniKalkByty"
-               min="6" max="80" step="1" value="24"
+               min="4" max="120" step="1" value="24"
                aria-label="Počet bytů v domě" aria-valuetext="24 bytů">
       </div>
 
@@ -302,11 +302,11 @@
         </div>
       </div>
 
-      <p class="mini-kalk__note">Orientační výpočet pro fotovoltaiku s jednotným odběrným místem JOM a interním rozúčtováním mezi byty, při referenční ceně elektřiny <b data-kalk-cena="1" style="font:inherit">6,0</b> Kč/kWh. Skutečná úspora závisí na výkonu FVE, orientaci střechy, spotřebě domu a podmínkách smlouvy.</p>
+      <p class="mini-kalk__note">Orientační výpočet pro fotovoltaiku s jednotným odběrným místem JOM a interním rozúčtováním mezi byty, při referenční ceně elektřiny <b data-kalk-cena="1" style="font:inherit">6,0</b> Kč/kWh. Spotřebu domu a orientaci střechy odhadujeme, proto je rozpětí ±25 %. Skutečná úspora závisí na výkonu FVE, orientaci střechy, spotřebě domu a podmínkách smlouvy.</p>
 
     </div>
 
-    <a href="kalkulacka.html" class="btn btn-primary">Spočítat úspory kompletně</a>
+    <a href="kalkulacka.html" class="btn btn-primary" id="miniToMain">Spočítat úspory kompletně</a>
   </div>
 </section>
 
@@ -375,9 +375,9 @@
 
 <section class="showcase" id="showcase">
   <div class="showcase-frame">
-    <img class="showcase-image is-active" src="assets/images/case1.webp" alt="Bytový dům se solární elektrárnou na střeše" data-index="0" loading="lazy">
-    <img class="showcase-image" src="assets/images/case2.webp" alt="Fotovoltaická elektrárna na ploché střeše bytového domu" data-index="1" loading="lazy">
-    <img class="showcase-image" src="assets/images/case3.webp" alt="Detail zateplení fasády bytového domu" data-index="2" loading="lazy">
+    <img class="showcase-image is-active" src="assets/images/case1.webp" width="1074" height="375" alt="Bytový dům se solární elektrárnou na střeše" data-index="0" loading="lazy">
+    <img class="showcase-image" src="assets/images/case2.webp" width="2880" height="750" alt="Fotovoltaická elektrárna na ploché střeše bytového domu" data-index="1" loading="lazy">
+    <img class="showcase-image" src="assets/images/case3.webp" width="1440" height="375" alt="Detail zateplení fasády bytového domu" data-index="2" loading="lazy">
 
     <div class="showcase-controls">
       <button type="button" class="showcase-arrow" id="showcasePrev" aria-label="Předchozí fotografie">
@@ -485,7 +485,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="footer-logo">
-          <img src="assets/images/Logo.svg" alt="Energohub">
+          <img src="assets/images/Logo.svg" width="248" height="199" alt="Energohub">
         </a>
         <p class="footer-tagline">Nezávislý průvodce energetickými opatřeními pro bytové domy a SVJ.</p>
       </div>
@@ -510,7 +510,7 @@
         <h3 class="footer-col-title">Informace</h3>
         <ul class="footer-links">
           <li><a href="#">Podmínky použití</a></li>
-          <li><a href="#">Ochrana osobních údajů</a></li>
+          <li><a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a></li>
           <li><a href="#">Reklamační řád</a></li>
         </ul>
       </div>
@@ -546,8 +546,10 @@
 </footer>
 
 <script>(function(){var menu=document.getElementById('navMobile');var navbar=document.querySelector('.navbar');if(!menu||!navbar)return;new MutationObserver(function(){navbar.classList.toggle('navbar--menu-open',menu.classList.contains('is-open'));}).observe(menu,{attributes:true,attributeFilter:['class']});})();</script>
-<script src="js/kalk-constants.js"></script>
-<script src="js/mini-kalk.js" defer></script>
+<script src="js/kalk-constants.js?v=11"></script>
+<script src="js/kalk-ceny.js?v=3"></script>
+<script src="js/kalk-engine.js?v=10"></script>
+<script src="js/mini-kalk.js?v=5" defer></script>
 <script src="js/showcase.js" defer></script>
 <script src="js/process.js?v=2" defer></script>
 <script src="js/footer.js" defer></script>

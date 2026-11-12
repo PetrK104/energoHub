@@ -584,19 +584,19 @@
     "category": "Obecné"
   },
   {
-    "title": "Teplo a TUV",
+    "title": "Teplo a TUV",
     "page": "Kalkulačka úspor",
     "url": "/kalkulacka#teplo-a-tuv",
-    "text": "teplo a tuv",
+    "text": "teplo a tuv",
     "keywords": "teplo kalkulace, teplá voda TUV, vytápění výpočet, úspory tepla, tepelné čerpadlo",
     "category": "Obecné"
   },
   {
-    "title": "Okna a dveře",
+    "title": "Okna a dveře",
     "page": "Kalkulačka úspor",
     "url": "/kalkulacka#okna-a-dvere",
-    "text": "okna a dveře",
-    "keywords": "okna kalkulace, výměna oken, dveře, zateplení, úspory tepla, rekonstrukce",
+    "text": "okna a dveře",
+    "keywords": "okna kalkulace, výměna oken, dveře, úspory tepla, rekonstrukce",
     "category": "Obecné"
   },
   {
@@ -629,6 +629,54 @@
     "url": "/kontakty#nejcastejsi-otazky",
     "text": "nejčastější otázky",
     "keywords": "faq kontakty, časté otázky, jak nás kontaktovat, dotazy, odpovědi",
+    "category": "Obecné"
+  },
+  {
+    "title": "Kdo údaje zpracovává",
+    "page": "Ochrana osobních údajů",
+    "url": "/ochrana-osobnich-udaju#spravce",
+    "text": "kdo údaje zpracovává",
+    "keywords": "ochrana osobních údajů, GDPR, zpracování osobních údajů, souhlas, práva subjektu údajů",
+    "category": "Obecné"
+  },
+  {
+    "title": "Jaké údaje a proč zpracováváme",
+    "page": "Ochrana osobních údajů",
+    "url": "/ochrana-osobnich-udaju#ucely",
+    "text": "jaké údaje a proč zpracováváme",
+    "keywords": "ochrana osobních údajů, GDPR, zpracování osobních údajů, souhlas, práva subjektu údajů",
+    "category": "Obecné"
+  },
+  {
+    "title": "Komu údaje předáváme",
+    "page": "Ochrana osobních údajů",
+    "url": "/ochrana-osobnich-udaju#prijemci",
+    "text": "komu údaje předáváme",
+    "keywords": "ochrana osobních údajů, GDPR, zpracování osobních údajů, souhlas, práva subjektu údajů",
+    "category": "Obecné"
+  },
+  {
+    "title": "Cookies a analytika",
+    "page": "Ochrana osobních údajů",
+    "url": "/ochrana-osobnich-udaju#cookies",
+    "text": "cookies a analytika",
+    "keywords": "ochrana osobních údajů, GDPR, zpracování osobních údajů, souhlas, práva subjektu údajů",
+    "category": "Obecné"
+  },
+  {
+    "title": "Vaše práva",
+    "page": "Ochrana osobních údajů",
+    "url": "/ochrana-osobnich-udaju#prava",
+    "text": "vaše práva",
+    "keywords": "ochrana osobních údajů, GDPR, zpracování osobních údajů, souhlas, práva subjektu údajů",
+    "category": "Obecné"
+  },
+  {
+    "title": "Zabezpečení",
+    "page": "Ochrana osobních údajů",
+    "url": "/ochrana-osobnich-udaju#zabezpeceni",
+    "text": "zabezpečení",
+    "keywords": "ochrana osobních údajů, GDPR, zpracování osobních údajů, souhlas, práva subjektu údajů",
     "category": "Obecné"
   },
   {

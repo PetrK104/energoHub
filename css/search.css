@@ -16,6 +16,11 @@
 }
 .navbar-search:hover { color: var(--text-white); background: var(--surface-2); }
 .navbar-search:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
+/* Mobil: lupa má stejnou plochu i vizuální velikost jako burger */
+@media (max-width: 960px) {
+  .navbar-search { width: 44px; height: 44px; }
+  .navbar-search .ms-icon { font-size: 26px; }
+}
 
 /* ── Overlay ────────────────────────────────────────────────────────────── */
 #searchOverlay {
