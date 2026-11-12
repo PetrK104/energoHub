@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=account_circle,add,arrow_forward,battery_charging_20,battery_charging_full,call,chat_bubble,check,check_circle,checklist,chevron_left,chevron_right,close,compare_arrows,description,eco,engineering,expand_less,expand_more,fact_check,fire_extinguisher,gavel,gpp_bad,handshake,hub,info,local_fire_department,location_on,mail,menu_book,north_east,open_in_new,receipt_long,remove,roofing,schedule,search,security,solar_power,south_east,swap_horiz,table_chart,trending_up,visibility,visibility_off,work&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/kalkulacka.css?v=48">
+<link rel="stylesheet" href="css/kalkulacka.css?v=53">
 <link rel="stylesheet" href="css/search.css?v=2">
 <link rel="stylesheet" href="css/navbar-mobile-v2.css">
 </head>
@@ -222,12 +222,12 @@
       <div class="kalk-fields">
         <div class="kalk-field">
           <label class="kalk-label" for="kalkByty">Počet bytů / odběrných míst</label>
-          <input type="number" id="kalkByty" class="kalk-input" min="4" max="300" placeholder="např. 24">
+          <input type="number" id="kalkByty" class="kalk-input" min="4" max="300" placeholder="např. 24" data-input="int" inputmode="numeric">
           <p class="form-error" id="kalkBytyErr" role="alert" hidden></p>
         </div>
         <div class="kalk-field">
           <label class="kalk-label" for="kalkSpotreba">Roční spotřeba elektřiny celého domu<span class="kalk-unit"> (kWh)</span> <span class="kalk-optional">(nepovinné)</span></label>
-          <span class="kalk-input-wrap"><input type="text" inputmode="numeric" id="kalkSpotreba" class="kalk-input" placeholder="např. 85 000"><button type="button" class="kalk-input-clear" aria-label="Vymazat pole"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button></span>
+          <span class="kalk-input-wrap"><input type="text" inputmode="numeric" id="kalkSpotreba" class="kalk-input" placeholder="např. 85 000" data-input="int"><button type="button" class="kalk-input-clear" aria-label="Vymazat pole"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button></span>
           <p class="form-error" id="kalkSpotrebaErr" role="alert" hidden></p>
           <span class="kalk-hint">Najdete ji na ročním vyúčtování. Pokud ji neznáte, nechte prázdné, odhadneme ji z počtu bytů.</span>
         </div>
@@ -300,7 +300,7 @@
             <select id="fveOrientace"></select>
           </label>
           <label class="kalk-refine__field"><span>Cena elektřiny ze sítě<span class="kalk-unit"> (Kč/kWh)</span></span>
-            <span class="kalk-input-wrap"><input type="text" inputmode="decimal" id="fveCenaEl" value="6,0"><button type="button" class="kalk-input-clear" aria-label="Vymazat pole"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button></span>
+            <span class="kalk-input-wrap"><input type="text" inputmode="decimal" id="fveCenaEl" value="6,0" data-input="dec"><button type="button" class="kalk-input-clear" aria-label="Vymazat pole"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button></span>
           </label>
         </div>
       </details>
@@ -380,10 +380,10 @@
         <summary>Upřesnit výpočet</summary>
         <div class="kalk-refine__body">
           <label class="kalk-refine__field"><span>Roční náklady na teplo a TUV dnes<span class="kalk-unit"> (Kč)</span></span>
-            <span class="kalk-input-wrap"><input type="text" inputmode="numeric" id="tcNakladyInput" placeholder="např. 700 000"><button type="button" class="kalk-input-clear" aria-label="Vymazat pole"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button></span>
+            <span class="kalk-input-wrap"><input type="text" inputmode="numeric" id="tcNakladyInput" placeholder="např. 700 000" data-input="int"><button type="button" class="kalk-input-clear" aria-label="Vymazat pole"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button></span>
           </label>
           <label class="kalk-refine__field"><span>Cena elektřiny ze sítě<span class="kalk-unit"> (Kč/kWh)</span></span>
-            <span class="kalk-input-wrap"><input type="text" inputmode="decimal" id="tcCenaEl" value="6,0"><button type="button" class="kalk-input-clear" aria-label="Vymazat pole"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button></span>
+            <span class="kalk-input-wrap"><input type="text" inputmode="decimal" id="tcCenaEl" value="6,0" data-input="dec"><button type="button" class="kalk-input-clear" aria-label="Vymazat pole"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button></span>
           </label>
           <label class="kalk-refine__field">Zateplení domu
             <select id="tcDum">
@@ -469,7 +469,7 @@
         <summary>Upřesnit výpočet</summary>
         <div class="kalk-refine__body">
           <label class="kalk-refine__field"><span>Roční náklady na teplo a TUV dnes<span class="kalk-unit"> (Kč)</span></span>
-            <span class="kalk-input-wrap"><input type="text" inputmode="numeric" id="zatNakladyInput" placeholder="např. 700 000"><button type="button" class="kalk-input-clear" aria-label="Vymazat pole"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button></span>
+            <span class="kalk-input-wrap"><input type="text" inputmode="numeric" id="zatNakladyInput" placeholder="např. 700 000" data-input="int"><button type="button" class="kalk-input-clear" aria-label="Vymazat pole"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button></span>
           </label>
           <label class="kalk-refine__field">Současný stav oken a dveří v budově
             <select id="zatStav">
@@ -479,7 +479,7 @@
             </select>
           </label>
           <label class="kalk-refine__field"><span>Plocha oken a dveří na byt<span class="kalk-unit"> (m²)</span></span>
-            <span class="kalk-input-wrap"><input type="text" inputmode="decimal" id="zatPlochaInput" placeholder="8"><button type="button" class="kalk-input-clear" aria-label="Vymazat pole"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button></span>
+            <span class="kalk-input-wrap"><input type="text" inputmode="decimal" id="zatPlochaInput" placeholder="8" data-input="dec"><button type="button" class="kalk-input-clear" aria-label="Vymazat pole"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button></span>
           </label>
         </div>
       </details>
@@ -694,7 +694,7 @@
             </div>
             <div class="kalk-field">
               <label class="kalk-label" for="kalkTel">Telefon <span class="kalk-optional">(nepovinné)</span></label>
-              <input type="tel" id="kalkTel" class="kalk-input" placeholder="+420 777 000 000">
+              <input type="tel" id="kalkTel" class="kalk-input" placeholder="+420 777 000 000" data-input="tel">
             </div>
           </div>
           <label class="form-consent">
@@ -789,10 +789,11 @@
 <script src="js/footer.js" defer></script>
 <script src="js/submit-form.js" defer></script>
 <script src="js/navbar.js" defer></script>
+<script src="js/input-filter.js?v=1" defer></script>
 <script src="js/kalk-constants.js?v=11"></script>
 <script src="js/kalk-ceny.js?v=3"></script>
-<script src="js/kalk-engine.js?v=10"></script>
-<script src="js/kalkulacka.js?v=47" defer></script>
+<script src="js/kalk-engine.js?v=11"></script>
+<script src="js/kalkulacka.js?v=49" defer></script>
 <script type="module" src="assets/js/search-overlay.js?v=2"></script>
 </body>
 </html>

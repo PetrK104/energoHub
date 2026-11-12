@@ -152,5 +152,110 @@ var KALK_ENGINE = (function () {
     };
   }
 
-  return { compute: compute, regulovane: regulovane };
+
+  // ── Export pro uložení (Supabase): přehledná struktura jen pro vybrané kroky + věta „summary“ ──
+  // Částky jsou v Kč s DPH, doby v letech; rozpětí mají tvar { lo, hi }. Nekonečno se ukládá jako null.
+  function _n(v) { return (v == null || !isFinite(v)) ? null : v; }
+  function _kc(v) { v = _n(v); return v == null ? null : Math.round(v); }
+  function _let(v) { v = _n(v); return v == null ? null : Math.round(v * 10) / 10; }
+  function _rk(o) { return o ? { lo: _kc(o.lo), hi: _kc(o.hi) } : null; }
+  function _rl(o) { return o ? { lo: _let(o.lo), hi: _let(o.hi) } : null; }
+  function _cz(n, d) { return n.toLocaleString('cs-CZ', { minimumFractionDigits: d || 0, maximumFractionDigits: d || 0 }); }
+
+  // Rozpětí částky větou: „306 – 414 tis. Kč“ nebo „1,4 – 2,0 mil. Kč“
+  function fmtKc(lo, hi) {
+    if (_n(lo) == null || _n(hi) == null) return 'neurčeno';
+    var nb = ' ';
+    if (lo >= 1e6) return _cz(lo / 1e6, 1) + nb + '–' + nb + _cz(hi / 1e6, 1) + ' mil. Kč';
+    return _cz(Math.round(lo / 1000)) + nb + '–' + nb + _cz(Math.round(hi / 1000)) + ' tis. Kč';
+  }
+  function fmtLet(lo, hi) {
+    if (_n(lo) == null) return 'neurčeno';
+    var nb = ' ';
+    return _cz(lo, 1) + (_n(hi) == null ? nb + '+' : nb + '–' + nb + _cz(hi, 1)) + ' let';
+  }
+
+  var KROKY = { jom: 'JOM', fve: 'FVE', tc: 'Teplo a TUV', zatepleni: 'Okna a dveře' };
+
+  // inp = vstup do compute(), r = výsledek compute(), extra = { spotrebaZadana, spotrebaOdhad, orientKlic, orientTouched }
+  function exportUlozeni(inp, r, extra) {
+    extra = extra || {};
+    var sel = inp.selected || {};
+    var kroky = ['jom', 'fve', 'tc', 'zatepleni'].filter(function (k) { return sel[k]; });
+    var plan = r.plan, rows = {};
+    plan.rows.forEach(function (rw) { rows[rw.key] = rw; });
+
+    var inputs = {
+      schema: 2,
+      apartments: inp.byty,
+      annual_consumption_kwh: extra.spotrebaOdhad ? null : _kc(inp.spotreba),
+      consumption_estimated: !!extra.spotrebaOdhad,
+      selected: kroky.map(function (k) { return k === 'zatepleni' ? 'windows' : k; }),
+      orientation: extra.orientKlic || null,
+      orientation_touched: !!extra.orientTouched,
+      electricity_price_czk_kwh: inp.cenaEl,
+      spread: inp.rozpeti
+    };
+    if (sel.tc || sel.zatepleni) {
+      inputs.heat = { annual_cost_czk: inp.tcNakladyRucne > 0 ? _kc(inp.tcNakladyRucne) : null, house_insulated: inp.domZateplen !== false };
+    }
+    if (sel.zatepleni) {
+      inputs.windows = { state: inp.zatStav || 'stara', area_m2_per_apartment: r.plocha_byt };
+    }
+    if (typeof KALK !== 'undefined' && KALK.predpoklady) inputs.assumptions = KALK.predpoklady();
+
+    function krok(rw) { return rw ? { investment_czk: _rk(rw.inv), saving_year_czk: _rk(rw.us), payback_years: _rl(rw.nav) } : null; }
+    var result = { schema: 2 };
+    if (sel.jom) result.jom = krok(rows.jom);
+    if (sel.fve) {
+      result.fve = krok(rows.fve);
+      result.fve.fve_kwp = r.vykon;
+      result.fve.limited_by = r.fveOmezeni || null;
+      result.fve.includes_jom = !sel.jom;
+      result.fve.nzu_loan_czk = _kc(r.uver);
+      result.fve.loan_years = r.splatnostLet;
+      result.fve.loan_monthly_czk = _kc(r.splatka_mes);
+    }
+    if (sel.tc) {
+      result.tc = krok(rows.tc);
+      result.tc.heat_cost_today_czk = r.tcZnamo ? _kc(r.naklady_dnes) : null;
+      result.tc.heat_cost_with_heat_pump_czk = r.tcZnamo ? _kc(r.naklady_tc) : null;
+      result.tc.heat_pump_electricity_kwh = _kc(r.tc_el_kwh);
+      result.tc.nzu_loan_czk = _kc(r.tc_uver);
+      result.tc.loan_years = r.tc_splatnost;
+      result.tc.loan_monthly_czk = _kc(r.tc_splatka_mes);
+    }
+    if (sel.zatepleni) {
+      result.windows = krok(rows.zat);
+      result.windows.nzu_loan_czk = _kc(r.zat_uver);
+      result.windows.loan_years = r.zat_splatnost;
+      result.windows.loan_monthly_czk = _kc(r.zat_splatka_mes);
+    }
+    result.total = {
+      investment_czk: _rk(plan.inv),
+      saving_year_czk: plan.vseZname ? _rk(plan.us) : null,
+      saving_apt_month_czk: plan.vseZname ? _rk(plan.naBytMes) : null,
+      payback_years: plan.vseZname ? _rl(plan.nav) : null,
+      all_steps_known: !!plan.vseZname,
+      nzu_loan_czk: plan.uver > 0 ? _kc(plan.uver) : null,
+      nzu_loan_capped: !!plan.uverOmezen,
+      loan_years: plan.uver > 0 ? plan.splatnost : null,
+      loan_monthly_czk: plan.uver > 0 ? _kc(plan.splatka_mes) : null
+    };
+
+    // Věta pro sloupec summary
+    var casti = [inp.byty + ' bytů'];
+    casti.push(extra.spotrebaOdhad ? 'spotřeba odhadnutá' : _cz(Math.round(inp.spotreba / 1000)) + ' MWh');
+    var txt = casti.join(', ') + ': ' + kroky.map(function (k) { return KROKY[k]; }).join(' + ') + '.';
+    if (plan.vseZname) {
+      txt += ' Úspora ' + fmtKc(plan.us.lo, plan.us.hi) + ' ročně, investice ' + fmtKc(plan.inv.lo, plan.inv.hi) +
+        (plan.nav ? ', návratnost ' + fmtLet(plan.nav.lo, plan.nav.hi) : '') + '.';
+    } else {
+      txt += ' Investice ' + fmtKc(plan.inv.lo, plan.inv.hi) + '; úspora a návratnost neúplné (nezadané náklady na teplo).';
+    }
+    if (plan.uver > 0) txt += ' Úvěr NZÚ ' + (plan.uver >= 1e6 ? _cz(plan.uver / 1e6, 1) + ' mil. Kč' : _cz(Math.round(plan.uver / 1000)) + ' tis. Kč') + ' na ' + plan.splatnost + ' let.';
+    return { inputs: inputs, result: result, summary: txt };
+  }
+
+  return { compute: compute, regulovane: regulovane, exportUlozeni: exportUlozeni, fmtKc: fmtKc, fmtLet: fmtLet, rk: _rk, rl: _rl, kc: _kc, let: _let };
 })();

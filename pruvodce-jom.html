@@ -363,7 +363,7 @@
           <div class="jom-quiz__col">
             <div class="jom-quiz__field">
               <label class="fve-calc__label" for="quizApts">Počet bytů v domě</label>
-              <input type="number" class="jom-quiz__input" id="quizApts" min="4" max="300" placeholder="Zadejte počet">
+              <input type="number" class="jom-quiz__input" id="quizApts" min="4" max="300" placeholder="Zadejte počet" data-input="int" inputmode="numeric">
             </div>
           </div>
 
@@ -430,7 +430,7 @@
           <div class="jom-quiz__col">
             <div class="jom-quiz__field">
               <label class="fve-calc__label" for="quizAnnual">Roční spotřeba elektřiny domu (kWh) <span class="jom-quiz__optional">(nepovinné)</span></label>
-              <input type="number" class="jom-quiz__input" id="quizAnnual" min="1000" max="5000000" placeholder="např. 130 000">
+              <input type="number" class="jom-quiz__input" id="quizAnnual" min="1000" max="5000000" placeholder="např. 130 000" data-input="int" inputmode="numeric">
               <p class="jom-quiz__hint">Najdete ji na ročním vyúčtování. Pokud ji neznáte, nechte prázdné, odhadneme ji z počtu bytů.</p>
             </div>
           </div>
@@ -465,7 +465,7 @@
             <div class="jom-quiz__col">
               <div class="jom-quiz__field">
                 <label class="fve-calc__label" for="quizKwp">Výkon FVE (kWp)</label>
-                <input type="number" class="jom-quiz__input" id="quizKwp" min="1" max="500" step="0.1" placeholder="např. 40">
+                <input type="number" class="jom-quiz__input" id="quizKwp" min="1" max="500" step="0.1" placeholder="např. 40" data-input="dec" inputmode="decimal">
               </div>
             </div>
             <div class="jom-quiz__col">
@@ -527,7 +527,7 @@
             </div>
             <div class="jom-quiz__field">
               <label class="fve-calc__label" for="quizPhone">Telefon <span class="jom-quiz__optional">(nepovinný)</span></label>
-              <input type="tel" class="jom-quiz__input" id="quizPhone" autocomplete="tel">
+              <input type="tel" class="jom-quiz__input" id="quizPhone" autocomplete="tel" data-input="tel">
             </div>
             <div class="jom-quiz__field">
               <label class="fve-calc__label" for="quizOrg">Název SVJ / organizace</label>
@@ -736,14 +736,15 @@
 
 <script src="js/fve-subnav.js" defer></script>
 <script>(function(){var menu=document.getElementById('navMobile');var navbar=document.querySelector('.navbar');if(!menu||!navbar)return;new MutationObserver(function(){navbar.classList.toggle('navbar--menu-open',menu.classList.contains('is-open'));}).observe(menu,{attributes:true,attributeFilter:['class']});})();</script>
+<script src="js/input-filter.js?v=1" defer></script>
 <script src="js/kalk-constants.js?v=11"></script>
 <script src="js/footer.js" defer></script>
 <script src="js/tooltip.js" defer></script>
 <script src="js/submit-form.js" defer></script>
 <script src="js/navbar.js" defer></script>
 <script src="js/kalk-ceny.js?v=3"></script>
-<script src="js/kalk-engine.js?v=10"></script>
-<script src="js/jom-quiz.js?v=13" defer></script>
+<script src="js/kalk-engine.js?v=11"></script>
+<script src="js/jom-quiz.js?v=14" defer></script>
 <script>(function(){var frame=document.querySelector('.fve-hero__3d-frame');var poster=document.getElementById('jomPoster');if(!frame||!poster)return;var done=false;function hide(){if(done)return;done=true;poster.classList.add('is-loaded');setTimeout(function(){poster.remove();},600);}window.addEventListener('message',function(e){if(e.data&&e.data.type==='hero3d:ready'&&e.source===frame.contentWindow)hide();});var t0=Date.now();(function poll(){var w;try{w=frame.contentWindow;}catch(e){}if((w&&w.__heroReady)||Date.now()-t0>10000){hide();return;}setTimeout(poll,150);})();})();</script>
 <script>(function(){if(!('ontouchstart' in window))return;var frame=document.querySelector('.fve-hero__3d-frame');if(!frame)return;var ov=document.createElement('div');ov.style.cssText='position:fixed;left:0;right:0;top:0;height:0;z-index:90;touch-action:pan-y;';document.body.appendChild(ov);function update(){var r=frame.getBoundingClientRect();var top=Math.max(0,r.top);var bottom=Math.min(window.innerHeight,r.bottom);if(bottom>top+4){ov.style.top=top+'px';ov.style.height=(bottom-top)+'px';}else{ov.style.height='0';}}update();window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);window.addEventListener('load',update);setTimeout(update,400);setTimeout(update,1200);var sx,sy;ov.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});ov.addEventListener('touchend',function(e){var t=e.changedTouches[0],dx=Math.abs(t.clientX-sx),dy=Math.abs(t.clientY-sy);if(dx<30&&dy<30){try{var r=frame.getBoundingClientRect(),cx=t.clientX-r.left,cy=t.clientY-r.top,el=frame.contentDocument.elementFromPoint(cx,cy);if(el){var btn=el.closest?el.closest('button,[role=button]'):null;(btn||el).click();}}catch(err){}}},{passive:true});})();</script>
 <script type="module" src="assets/js/search-overlay.js?v=2"></script>

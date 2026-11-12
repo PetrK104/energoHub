@@ -33,7 +33,9 @@ function common(data) {
     name: str(data.name, 200),
     email: str(data.email, 320),
     phone: str(data.phone, 50) || null,
-    page_url: str(data.page_url, 500) || null
+    page_url: str(data.page_url, 500) || null,
+    // Čitelná věta o poptávce (sloupec summary), jen u formulářů s kalkulací
+    summary: str(data.summary, 1000) || null
   };
 }
 
@@ -86,6 +88,7 @@ const FORMS = {
         horizon: oneOf(data.horizon, ['6m', '12m', '2r', 'zjistuju']),
         note: str(data.note, 5000) || null,
         calc_inputs: jsonField(data.calc_inputs),
+        summary: c.summary,
         page_url: c.page_url
       };
       if (!row.name || !row.email || !row.street || !row.city) return { error: 'Vyplňte všechna povinná pole' };
@@ -107,6 +110,7 @@ const FORMS = {
         organization: str(data.organization, 200) || null,
         answers: jsonField(data.answers),
         result: str(data.result, 50) || null,
+        summary: c.summary,
         page_url: c.page_url
       };
       if (!row.name || !row.email) return { error: 'Vyplňte jméno a e-mail' };

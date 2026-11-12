@@ -190,11 +190,12 @@
   function show(el, on) { if (el) el.style.display = on ? '' : 'none'; }
 
   // ── Calculations ─────────────────────────────────────────
+  var lastInp = null;
   function calculate() {
     // Jedno pravidlo rozpětí: neznámé vstupy = odhadnutá spotřeba a nezměněná orientace střechy
     RP = KALK.rozpeti((state.spotrebaOdhad ? 1 : 0) + (state.orientTouched ? 0 : 1));
     state.rozpeti = RP;
-    results = KALK_ENGINE.compute({
+    lastInp = {
       rozpeti: RP,
       byty: state.byty,
       spotreba: state.spotreba,
@@ -205,7 +206,8 @@
       domZateplen: state.domZateplen !== false,
       zatPlocha: state.zatPlocha,
       selected: state.selected
-    });
+    };
+    results = KALK_ENGINE.compute(lastInp);
   }
 
   // ── Panel renderers ───────────────────────────────────────
@@ -318,7 +320,7 @@
       cf.innerHTML = '<strong>Úvěr NZÚ ' + fmtRound(r.uver) + ' na ' + r.splatnostLet + ' let, měsíční splátka ' + fmtRound(sMes) + '.</strong> ' +
         (zb >= 0 ? 'Úspora ji pokryje a zbývá asi ' + fmtRound(zb) + ' měsíčně.' : 'Úspora splátku nepokryje, chybí asi ' + fmtRound(-zb) + ' měsíčně.') +
         ' Úvěr se počítá z ceny FVE bez JOM.' +
-        ' NZÚ je program Nová zelená úsporám (<a href="slovnik.html#term-nzu">slovník</a>).';
+        ' NZÚ je program Nová zelená úsporám.';
     }
 
     // Graf 2: kumulativní úspory proti investici
@@ -571,7 +573,7 @@
           (!pl.vseZname ? '' : zb >= 0 ? 'Úspora splátku pokryje a zbývá asi ' + fmtRound(zb) + ' měsíčně. ' : 'Úspora splátku nepokryje, chybí asi ' + fmtRound(-zb) + ' měsíčně. ') +
           (pl.uverOmezen ? 'Úvěr je omezen stropem ' + nf(KALK.NZU_DILCI_NA_BYT) + ' Kč na byt pro dílčí opatření, zbytek investice je třeba financovat jinak. ' : '') +
           'JOM se z úvěru neplatí.' +
-          ' NZÚ je program Nová zelená úsporám (<a href="slovnik.html#term-nzu">slovník</a>).';
+          ' NZÚ je program Nová zelená úsporám.';
       }
     }
   }
@@ -863,6 +865,11 @@ document.querySelectorAll('.kalk-input-wrap').forEach(function (wrap) {
       var ui = EH.formUi(form);
       var hp = form.querySelector('input[name="website"]');
       var consentEl = document.getElementById('kalkConsentText');
+      var ulozeno = KALK_ENGINE.exportUlozeni(lastInp, results, {
+        spotrebaOdhad: !!state.spotrebaOdhad,
+        orientKlic: state.fveOrientaceKlic,
+        orientTouched: !!state.orientTouched
+      });
       ui.start();
       EH.submitForm('savings', {
         name: EH.val('kalkJmeno'),
@@ -870,8 +877,9 @@ document.querySelectorAll('.kalk-input-wrap').forEach(function (wrap) {
         phone: EH.val('kalkTel'),
         consent: document.getElementById('kalkConsent').checked,
         consent_text: consentEl ? consentEl.textContent.trim() : '',
-        inputs: Object.assign(JSON.parse(JSON.stringify(state)), { assumptions: KALK.predpoklady() }),
-        result: JSON.parse(JSON.stringify(results))
+        inputs: ulozeno.inputs,
+        result: ulozeno.result,
+        summary: ulozeno.summary
       }, hp && hp.value).then(function () {
         ui.done();
         document.getElementById('kalkPanel5').hidden = true;

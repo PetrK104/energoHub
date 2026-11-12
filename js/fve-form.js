@@ -82,6 +82,23 @@
     });
   }
 
+  // Věta pro sloupec summary (Supabase): co uživatel spočítal a jak chce postupovat
+  function fveSummary(last, financing, horizon) {
+    var FIN = { koupe: 'koupě', pronajem: 'pronájem', nevim: 'zatím neví' };
+    var HOR = { '6m': 'do 6 měsíců', '12m': 'do 12 měsíců', '2r': 'do 2 let', zjistuju: 'jen zjišťuje' };
+    var txt = 'FVE';
+    if (last) {
+      var i = last.inputs, f = last.result.fve, E = KALK_ENGINE;
+      txt += ': ' + i.apartments + ' bytů, ' + (i.annual_consumption_kwh ? Math.round(i.annual_consumption_kwh / 1000).toLocaleString('cs-CZ') + ' MWh' : 'spotřeba odhadnutá') +
+        ', ' + f.fve_kwp + ' kWp, ' + (f.includes_jom ? 's JOM' : 'bez JOM') + ', ' + (f.battery ? 's baterií' : 'bez baterie') +
+        '. Investice ' + E.fmtKc(f.investment_czk.lo, f.investment_czk.hi) + ', úspora ' + E.fmtKc(f.saving_year_czk.lo, f.saving_year_czk.hi) +
+        ' ročně, návratnost ' + E.fmtLet(f.payback_years.lo, f.payback_years.hi) + '.';
+    } else txt += '.';
+    if (FIN[financing]) txt += ' Financování: ' + FIN[financing] + '.';
+    if (HOR[horizon]) txt += ' Realizace: ' + HOR[horizon] + '.';
+    return txt;
+  }
+
   function fillResults() {
     var row = document.getElementById('formResultsRow');
     if (!row) return;
@@ -103,6 +120,16 @@
       var hp = form.querySelector('input[name="website"]');
       var consentEl = document.getElementById('fveConsentText');
       var field = function (name) { var el = form.elements[name]; return el && el.value ? el.value.trim() : ''; };
+      var last = window.EH_FVE_LAST || null;
+      var assumptions = (window.KALK && KALK.predpoklady) ? KALK.predpoklady() : null;
+      var inputsOut = last ? Object.assign({}, last.inputs, { assumptions: assumptions }) : { apartments: EH.val('calcAptsNum'), assumptions: assumptions };
+      var calcInputs = {
+        schema: 2,
+        inputs: inputsOut,
+        result: last ? last.result : null,
+        displayed: readResults().map(function (r) { return r.label + ': ' + r.value + ' ' + r.unit.replace(/\s*(návratnost|instalace)$/, ''); })
+      };
+      var summary = fveSummary(last, EH.checked('financovani'), EH.checked('horizont'));
       ui.start();
       EH.submitForm('fve', {
         name: field('jmeno'),
@@ -115,16 +142,8 @@
         financing: EH.checked('financovani'),
         horizon: EH.checked('horizont'),
         note: field('poznamka'),
-        calc_inputs: {
-          apartments: EH.val('calcAptsNum'),
-          annual_consumption_kwh: EH.val('calcConsumption'),
-          orientation: EH.checked('calcOrient'),
-          battery: EH.checked('calcBattery'),
-          jom: EH.checked('calcJom'),
-          result: readResults(),
-          numeric: window.EH_FVE_LAST || null,
-          assumptions: (window.KALK && KALK.predpoklady) ? KALK.predpoklady() : null
-        },
+        calc_inputs: calcInputs,
+        summary: summary,
         consent: form.elements['gdpr'].checked,
         consent_text: consentEl ? consentEl.textContent.trim() : ''
       }, hp && hp.value).then(function () {

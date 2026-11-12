@@ -18,7 +18,7 @@
 <link rel="preload" href="/hdri/dikhololo_night_512.hdr" as="fetch" crossorigin>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/guide-shared.css?v=8">
-<link rel="stylesheet" href="css/fve.css?v=34">
+<link rel="stylesheet" href="css/fve.css?v=36">
 <link rel="stylesheet" href="css/search.css?v=2">
 <link rel="stylesheet" href="css/navbar-mobile-v2.css">
 </head>
@@ -530,7 +530,7 @@
         <label class="fve-calc__label">Počet bytových jednotek</label>
         <div class="fve-calc__slider-row">
           <input type="range" class="fve-calc__slider" id="calcApts" min="4" max="300" value="12" step="1">
-          <input type="number" class="fve-calc__number" id="calcAptsNum" min="4" max="300" value="12">
+          <input type="number" class="fve-calc__number" id="calcAptsNum" min="4" max="300" value="12" data-input="int" inputmode="numeric">
         </div>
       </div>
 
@@ -571,7 +571,7 @@
           <label class="fve-calc__label" for="calcConsumption">Roční spotřeba elektřiny domu</label>
           <div class="fve-calc__consumption-row">
             <div class="fve-calc__input-unit">
-              <input type="number" class="fve-calc__number fve-calc__number--wide" id="calcConsumption" min="1000" max="5000000" placeholder="např. 40 000">
+              <input type="number" class="fve-calc__number fve-calc__number--wide" id="calcConsumption" min="1000" max="5000000" placeholder="např. 40 000" data-input="int" inputmode="numeric">
               <span class="fve-calc__unit">kWh</span>
             </div>
             <p class="fve-calc__battery-note">Najdete ji na ročním vyúčtování. Pokud ji neznáte, nechte prázdné, odhadneme ji z počtu bytů.</p>
@@ -692,7 +692,7 @@
               </div>
               <div class="fve-form__field">
                 <label class="fve-form__label" for="fTel">Telefon</label>
-                <input class="fve-form__input" id="fTel" name="telefon" type="tel">
+                <input class="fve-form__input" id="fTel" name="telefon" type="tel" data-input="tel">
               </div>
             </div>
           </div>
@@ -710,7 +710,7 @@
               </div>
               <div class="fve-form__field">
                 <label class="fve-form__label" for="fPsc">PSČ</label>
-                <input class="fve-form__input" id="fPsc" name="psc" type="text" pattern="[0-9]{5}" required>
+                <input class="fve-form__input" id="fPsc" name="psc" type="text" pattern="[0-9]{5}" required data-input="int" inputmode="numeric" maxlength="5">
               </div>
             </div>
           </div>
@@ -1025,11 +1025,12 @@
 <script src="js/fve-phases.js" defer></script>
 <script src="js/fve-demand.js" defer></script>
 <script src="js/fve-costs.js" defer></script>
+<script src="js/input-filter.js?v=1" defer></script>
 <script src="js/kalk-constants.js?v=11"></script>
 <script src="js/kalk-ceny.js?v=3"></script>
-<script src="js/kalk-engine.js?v=10"></script>
-<script src="js/fve-calc.js?v=14" defer></script>
-<script src="js/fve-form.js?v=12" defer></script><script>(function(){var menu=document.getElementById('navMobile');var navbar=document.querySelector('.navbar');if(!menu||!navbar)return;new MutationObserver(function(){navbar.classList.toggle('navbar--menu-open',menu.classList.contains('is-open'));}).observe(menu,{attributes:true,attributeFilter:['class']});})();</script>
+<script src="js/kalk-engine.js?v=11"></script>
+<script src="js/fve-calc.js?v=15" defer></script>
+<script src="js/fve-form.js?v=14" defer></script><script>(function(){var menu=document.getElementById('navMobile');var navbar=document.querySelector('.navbar');if(!menu||!navbar)return;new MutationObserver(function(){navbar.classList.toggle('navbar--menu-open',menu.classList.contains('is-open'));}).observe(menu,{attributes:true,attributeFilter:['class']});})();</script>
 <script src="js/footer.js" defer></script>
 <script src="js/submit-form.js" defer></script>
 <script src="js/navbar.js" defer></script>

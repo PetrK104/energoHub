@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="css/style.css?v=10">
 <link rel="stylesheet" href="css/guide-shared.css?v=8">
 <link rel="stylesheet" href="css/search.css?v=2">
-<link rel="stylesheet" href="css/mini-kalk.css">
+<link rel="stylesheet" href="css/mini-kalk.css?v=2">
 <link rel="stylesheet" href="css/navbar-mobile-v2.css">
 </head>
 <body>
@@ -278,7 +278,7 @@
         <div class="mini-kalk__slider-header">
           <label class="mini-kalk__label" for="miniKalkByty">Počet bytů v domě</label>
           <input class="mini-kalk__num" type="number" id="miniKalkNum"
-                 min="4" max="120" step="1" value="24" aria-label="Počet bytů">
+                 min="4" max="120" step="1" value="24" aria-label="Počet bytů" data-input="int" inputmode="numeric">
         </div>
         <input class="mini-kalk__range" type="range" id="miniKalkByty"
                min="4" max="120" step="1" value="24"
@@ -546,9 +546,10 @@
 </footer>
 
 <script>(function(){var menu=document.getElementById('navMobile');var navbar=document.querySelector('.navbar');if(!menu||!navbar)return;new MutationObserver(function(){navbar.classList.toggle('navbar--menu-open',menu.classList.contains('is-open'));}).observe(menu,{attributes:true,attributeFilter:['class']});})();</script>
+<script src="js/input-filter.js?v=1" defer></script>
 <script src="js/kalk-constants.js?v=11"></script>
 <script src="js/kalk-ceny.js?v=3"></script>
-<script src="js/kalk-engine.js?v=10"></script>
+<script src="js/kalk-engine.js?v=11"></script>
 <script src="js/mini-kalk.js?v=5" defer></script>
 <script src="js/showcase.js" defer></script>
 <script src="js/process.js?v=2" defer></script>

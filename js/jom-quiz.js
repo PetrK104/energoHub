@@ -248,6 +248,59 @@
     });
   });
 
+  // ── Uložení do Supabase: čitelná struktura (schema 2) a věta summary ──
+  function numOrNull(id) { var v = parseFloat(document.getElementById(id).value); return v > 0 ? v : null; }
+  function buildAnswers(score) {
+    var est = calcEstimate(), E = KALK_ENGINE;
+    var estimate = null;
+    if (est) {
+      estimate = {
+        saving_year_czk: { lo: est.year_lo, hi: est.year_hi },
+        saving_month_czk: { lo: est.month_lo, hi: est.month_hi },
+        saving_apt_month_czk: { lo: est.per_apartment_month_lo, hi: est.per_apartment_month_hi },
+        spread: est.spread,
+        fixed_fees_year_czk: est.fixed_year != null ? est.fixed_year : null,
+        fixed_fees_zone: est.fixed_zone || null,
+        fve_mode: est.fve_mode,
+        fve_part_year_czk: est.fve_part_year_lo != null ? { lo: est.fve_part_year_lo, hi: est.fve_part_year_hi } : null,
+        estimated_items: est.estimated
+      };
+    }
+    return {
+      schema: 2,
+      inputs: {
+        apartments: parseInt(EH.val('quizApts'), 10) || null,
+        house_type: EH.val('quizType') || null,
+        distributor: EH.val('quizDistributor') || null,
+        fve: EH.checked('quizFve'),
+        contracts: EH.checked('quizContracts'),
+        battery: EH.checked('quizBattery'),
+        breaker: EH.checked('quizBreaker'),
+        annual_consumption_kwh: numOrNull('quizAnnual'),
+        fve_kwp: numOrNull('quizKwp'),
+        fve_orientation: EH.val('quizOrient') || null
+      },
+      score: score,
+      score_max: 11,
+      estimate: estimate,
+      assumptions: (window.KALK && KALK.predpoklady) ? KALK.predpoklady() : null
+    };
+  }
+  function buildSummary(a, level) {
+    var TYPE = { svj: 'SVJ', druzstvo: 'bytové družstvo', obecni: 'obecní dům', jine: 'jiný typ domu' };
+    var FVE = { have: 'FVE mají', plan: 'FVE plánují', none: 'FVE nemají' };
+    var LEVEL = { high: 'JOM se pravděpodobně velmi vyplatí', mid: 'JOM má smysl', low: 'JOM zatím nemusí být ideální' };
+    var i = a.inputs, t = 'JOM dotazník: ' + (i.apartments || '?') + ' bytů';
+    if (TYPE[i.house_type]) t += ', ' + TYPE[i.house_type];
+    if (FVE[i.fve]) t += ', ' + FVE[i.fve];
+    t += '. Výsledek: ' + LEVEL[level] + ' (skóre ' + a.score + ' z ' + a.score_max + ').';
+    if (a.estimate) {
+      var e = a.estimate;
+      t += ' Odhad úspory ' + KALK_ENGINE.fmtKc(e.saving_year_czk.lo, e.saving_year_czk.hi) + ' ročně (±' + Math.round(e.spread * 100) + ' %).';
+    }
+    return t;
+  }
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (!form.checkValidity()) { form.reportValidity(); return; }
@@ -255,27 +308,17 @@
     var hp = form.querySelector('input[name="website"]');
     var consentEl = document.getElementById('quizConsentText');
     var score = calcScore();
+    var level = score >= 7 ? 'high' : score >= 4 ? 'mid' : 'low';
+    var answers = buildAnswers(score);
+    var summary = buildSummary(answers, level);
     ui.start();
     EH.submitForm('jom_quiz', {
       name: EH.val('quizName'),
       email: EH.val('quizEmail'),
       phone: EH.val('quizPhone'),
       organization: EH.val('quizOrg'),
-      answers: {
-        apartments: EH.val('quizApts'),
-        house_type: EH.val('quizType'),
-        distributor: EH.val('quizDistributor'),
-        fve: EH.checked('quizFve'),
-        contracts: EH.checked('quizContracts'),
-        battery: EH.checked('quizBattery'),
-        breaker: EH.checked('quizBreaker'),
-        score: score,
-        annual_consumption_kwh: EH.val('quizAnnual'),
-        fve_kwp: EH.val('quizKwp'),
-        fve_orientation: EH.val('quizOrient'),
-        estimate: lastEstimate,
-        assumptions: (window.KALK && KALK.predpoklady) ? KALK.predpoklady() : null
-      },
+      answers: answers,
+      summary: summary,
       result: score >= 7 ? 'high' : score >= 4 ? 'mid' : 'low',
       consent: document.getElementById('quizConsent').checked,
       consent_text: consentEl ? consentEl.textContent.trim() : ''

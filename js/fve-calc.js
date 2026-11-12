@@ -99,23 +99,36 @@
     var costMin = Math.round(costLo / 1000);
     var costMax = Math.round(costHi / 1000);
 
-    // Číselné výsledky pro uložení spolu s poptávkou (fve-form.js)
+    // Čitelné vstupy a výsledky pro uložení spolu s poptávkou (fve-form.js), stejný styl jako hlavní kalkulačka
+    var E = KALK_ENGINE;
     window.EH_FVE_LAST = {
-      apartments: apts,
-      annual_consumption_kwh: annualInput || null,
-      consumption_estimated: !annualInput,
-      orientation: orient,
-      orientation_touched: orientTouched,
-      battery: hasBattery,
-      jom: hasJom,
-      spread: RANGE,
-      fve_kwp: eSel.vykon,
-      investment_czk: { lo: Math.round(costLo), hi: Math.round(costHi) },
-      saving_year_czk: { lo: Math.round(savingsSel * (1 - RANGE)), hi: Math.round(savingsSel * (1 + RANGE)) },
-      saving_apt_month_czk: { lo: Math.round(mthPerApt * (1 - RANGE)), hi: Math.round(mthPerApt * (1 + RANGE)) },
-      payback_years: { lo: Math.round(payMin * 10) / 10, hi: isFinite(payMax) ? Math.round(payMax * 10) / 10 : null },
-      saving_with_jom_czk: Math.round(eSel.uspora_celkem),
-      saving_without_jom_czk: Math.round(eSel.uspora_bez_jom)
+      inputs: {
+        apartments: apts,
+        annual_consumption_kwh: annualInput || null,
+        consumption_estimated: !annualInput,
+        selected: ['fve'],
+        orientation: orient,
+        orientation_touched: orientTouched,
+        battery: hasBattery,
+        jom: hasJom,
+        spread: RANGE
+      },
+      result: {
+        fve: {
+          fve_kwp: eSel.vykon,
+          limited_by: eSel.fveOmezeni || null,
+          battery: hasBattery,
+          includes_jom: hasJom,
+          investment_czk: { lo: E.kc(costLo), hi: E.kc(costHi) },
+          saving_year_czk: { lo: E.kc(savingsSel * (1 - RANGE)), hi: E.kc(savingsSel * (1 + RANGE)) },
+          saving_apt_month_czk: { lo: E.kc(mthPerApt * (1 - RANGE)), hi: E.kc(mthPerApt * (1 + RANGE)) },
+          payback_years: { lo: E.let(payMin), hi: E.let(payMax) }
+        },
+        comparison: {
+          saving_with_jom_czk: E.kc(eSel.uspora_celkem),
+          saving_without_jom_czk: E.kc(eSel.uspora_bez_jom)
+        }
+      }
     };
 
     var comma = function (v) { return v.toFixed(1).replace('.', ','); };
