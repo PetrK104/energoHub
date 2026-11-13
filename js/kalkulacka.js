@@ -819,7 +819,9 @@ document.querySelectorAll('.kalk-input-wrap').forEach(function (wrap) {
 
   // Kliknutí na krok v horní liště → přejde na daný krok
   var stepperEl = document.getElementById('kalkStepper');
+  var submitted = false;  // po odeslání poptávky se do kroků nedá vracet
   function goToStepFromStepper(item) {
+    if (submitted) return;
     var key = item && item.getAttribute('data-step-key');
     if (!key) return;
     var active = stepperEl.querySelector('.kalk-step-item.is-active');
@@ -877,10 +879,12 @@ document.querySelectorAll('.kalk-input-wrap').forEach(function (wrap) {
         phone: EH.val('kalkTel'),
         consent: document.getElementById('kalkConsent').checked,
         consent_text: consentEl ? consentEl.textContent.trim() : '',
-        inputs: ulozeno.inputs,
-        result: ulozeno.result,
+        vstupy: ulozeno.inputs,
+        vysledek: ulozeno.result,
+        sloupce: ulozeno.sloupce,
         summary: ulozeno.summary
       }, hp && hp.value).then(function () {
+        submitted = true;
         ui.done();
         document.getElementById('kalkPanel5').hidden = true;
         document.getElementById('kalkThankyou').hidden = false;

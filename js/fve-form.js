@@ -31,7 +31,9 @@
     });
   });
 
+  var done = false;  // po odeslání poptávky se do kroků nedá vracet
   function showStep(step) {
+    if (done) return;
     markStepper(step);
     if (step === 1) {
       stepCalc.hidden = false;
@@ -82,21 +84,46 @@
     });
   }
 
-  // Věta pro sloupec summary (Supabase): co uživatel spočítal a jak chce postupovat
+  // Přehledné shrnutí na více řádků (sloupec shrnuti v Supabase): co uživatel spočítal a jak chce postupovat
   function fveSummary(last, financing, horizon) {
-    var FIN = { koupe: 'koupě', pronajem: 'pronájem', nevim: 'zatím neví' };
-    var HOR = { '6m': 'do 6 měsíců', '12m': 'do 12 měsíců', '2r': 'do 2 let', zjistuju: 'jen zjišťuje' };
-    var txt = 'FVE';
+    var FIN = { koupe: 'vlastní koupě', pronajem: 'pronájem (PPA)', nevim: 'zatím neví' };
+    var HOR = { '6m': 'do 6 měsíců', '12m': '6–12 měsíců', '2r': '1–2 roky', zjistuju: 'zatím zjišťuje' };
+    var ORIENT = { J: 'jih', JV: 'jihovýchod', JZ: 'jihozápad', V: 'východ', Z: 'západ', S: 'sever' };
+    var L = [];
     if (last) {
-      var i = last.inputs, f = last.result.fve, E = KALK_ENGINE;
-      txt += ': ' + i.apartments + ' bytů, ' + (i.annual_consumption_kwh ? Math.round(i.annual_consumption_kwh / 1000).toLocaleString('cs-CZ') + ' MWh' : 'spotřeba odhadnutá') +
-        ', ' + f.fve_kwp + ' kWp, ' + (f.includes_jom ? 's JOM' : 'bez JOM') + ', ' + (f.battery ? 's baterií' : 'bez baterie') +
-        '. Investice ' + E.fmtKc(f.investment_czk.lo, f.investment_czk.hi) + ', úspora ' + E.fmtKc(f.saving_year_czk.lo, f.saving_year_czk.hi) +
-        ' ročně, návratnost ' + E.fmtLet(f.payback_years.lo, f.payback_years.hi) + '.';
-    } else txt += '.';
-    if (FIN[financing]) txt += ' Financování: ' + FIN[financing] + '.';
-    if (HOR[horizon]) txt += ' Realizace: ' + HOR[horizon] + '.';
-    return txt;
+      var i = last.inputs, f = last.result.fve, c = last.result.comparison, E = KALK_ENGINE;
+      var cz = function (n) { return n.toLocaleString('cs-CZ'); };
+      L.push('Vstupy: ' + i.apartments + ' bytů, roční spotřeba ' +
+        (i.annual_consumption_kwh ? cz(Math.round(i.annual_consumption_kwh / 1000)) + ' MWh (zadáno)' : 'odhadnutá') +
+        (ORIENT[i.orientation] ? ', orientace střechy ' + ORIENT[i.orientation] + (i.orientation_touched ? '' : ' (nezměněno)') : '') + '.');
+      L.push('Varianta: FVE ' + cz(f.fve_kwp) + ' kWp' + (f.limited_by === 'max' ? ' (horní mez výkonu)' : f.limited_by === 'min' ? ' (spodní mez výkonu)' : '') +
+        ', ' + (f.includes_jom ? 's JOM' : 'bez JOM') + ', ' + (f.battery ? 's baterií' : 'bez baterie') + '.');
+      L.push('Investice ' + E.fmtKc(f.investment_czk.lo, f.investment_czk.hi) + ', úspora ' + E.fmtKc(f.saving_year_czk.lo, f.saving_year_czk.hi) +
+        ' ročně (' + cz(f.saving_apt_month_czk.lo) + ' – ' + cz(f.saving_apt_month_czk.hi) + ' Kč na byt měsíčně), návratnost ' +
+        E.fmtLet(f.payback_years.lo, f.payback_years.hi) + '.');
+      if (c && c.saving_with_jom_czk != null && c.saving_without_jom_czk != null) {
+        L.push('Srovnání: úspora s JOM ' + cz(c.saving_with_jom_czk) + ' Kč ročně, bez JOM ' + cz(c.saving_without_jom_czk) + ' Kč ročně.');
+      }
+      L.push('Rozpětí výpočtu ±' + Math.round((i.spread || 0) * 100) + ' %, částky včetně DPH, verze výpočtu ' + ((window.KALK && KALK.VERZE) || '?') + '.');
+    } else L.push('Výpočet nebyl k dispozici.');
+    if (FIN[financing]) L.push('Financování: ' + FIN[financing] + '.');
+    if (HOR[horizon]) L.push('Realizace: ' + HOR[horizon] + '.');
+    return L.join('\n');
+  }
+
+  // Hodnoty pro samostatné sloupce tabulky poptavky_fve
+  function fveColumns(last) {
+    if (!last) return {};
+    var i = last.inputs, f = last.result.fve;
+    return {
+      pocet_bytu: i.apartments,
+      rocni_spotreba_kwh: i.annual_consumption_kwh,
+      vykon_kwp: f.fve_kwp,
+      investice_od_kc: f.investment_czk.lo, investice_do_kc: f.investment_czk.hi,
+      uspora_rocne_od_kc: f.saving_year_czk.lo, uspora_rocne_do_kc: f.saving_year_czk.hi,
+      navratnost_od_roky: f.payback_years.lo, navratnost_do_roky: f.payback_years.hi,
+      verze_vypoctu: (window.KALK && KALK.VERZE) || null
+    };
   }
 
   function fillResults() {
@@ -142,14 +169,19 @@
         financing: EH.checked('financovani'),
         horizon: EH.checked('horizont'),
         note: field('poznamka'),
-        calc_inputs: calcInputs,
+        vstupy: inputsOut,
+        vysledek: { schema: 2, vypocet: last ? last.result : null, zobrazeno: calcInputs.displayed },
+        sloupce: fveColumns(last),
         summary: summary,
         consent: form.elements['gdpr'].checked,
         consent_text: consentEl ? consentEl.textContent.trim() : ''
       }, hp && hp.value).then(function () {
+        done = true;
         ui.done();
         form.hidden = true;
         thanks.hidden = false;
+        var fs = document.getElementById('fveStepper'); if (fs) fs.style.display = 'none';
+        var tt = thanks.querySelector('.fve-form__thanks-title'); if (tt) { tt.setAttribute('tabindex', '-1'); tt.focus(); }
       }).catch(function (err) {
         ui.fail(err.message);
       });

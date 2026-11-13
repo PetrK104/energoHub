@@ -201,7 +201,9 @@
     box.hidden = !(fve === 'plan' || fve === 'have');
   }
 
+  var submitted = false;  // po odeslání poptávky se do kroků nedá vracet
   function showStep(n) {
+    if (submitted) return;
     if (n === 2) syncFveExtra();
     for (var i = 1; i <= 3; i++) {
       var panel = document.getElementById('quizPanel' + i);
@@ -286,19 +288,51 @@
       assumptions: (window.KALK && KALK.predpoklady) ? KALK.predpoklady() : null
     };
   }
+  // Přehledné shrnutí na více řádků (sloupec shrnuti): odpovědi z dotazníku a vyhodnocení
+  var TYPE = { svj: 'SVJ', druzstvo: 'bytové družstvo', obecni: 'obecní dům', jine: 'jiný' };
+  var FVE_STAV = { have: 'mají', plan: 'plánují', none: 'nemají' };
+  var LEVEL = { high: 'vysoká', mid: 'střední', low: 'nízká' };
   function buildSummary(a, level) {
-    var TYPE = { svj: 'SVJ', druzstvo: 'bytové družstvo', obecni: 'obecní dům', jine: 'jiný typ domu' };
-    var FVE = { have: 'FVE mají', plan: 'FVE plánují', none: 'FVE nemají' };
-    var LEVEL = { high: 'JOM se pravděpodobně velmi vyplatí', mid: 'JOM má smysl', low: 'JOM zatím nemusí být ideální' };
-    var i = a.inputs, t = 'JOM dotazník: ' + (i.apartments || '?') + ' bytů';
-    if (TYPE[i.house_type]) t += ', ' + TYPE[i.house_type];
-    if (FVE[i.fve]) t += ', ' + FVE[i.fve];
-    t += '. Výsledek: ' + LEVEL[level] + ' (skóre ' + a.score + ' z ' + a.score_max + ').';
+    var DIST = { cez: 'ČEZ Distribuce', egd: 'EG.D (E.ON)', pre: 'PREdistribuce' };
+    var CONTR = { individual: 'každý byt má vlastní smlouvu', common: 'společná smlouva už existuje', unknown: 'nevědí' };
+    var BAT = { have: 'mají', plan: 'plánují', none: 'nemají' };
+    var BREAKER = { '1x25': '1×25 A', '3x20': '3×20 A', unknown: 'různé / nevědí' };
+    var ORIENT = { J: 'jih', JV: 'jihovýchod', JZ: 'jihozápad', V: 'východ', Z: 'západ', S: 'sever' };
+    var cz = function (n) { return n.toLocaleString('cs-CZ'); };
+    var i = a.inputs, L = [];
+    L.push('Dům: ' + (i.apartments || '?') + ' bytů' + (TYPE[i.house_type] ? ', ' + TYPE[i.house_type] : '') +
+      (DIST[i.distributor] ? ', distributor ' + DIST[i.distributor] : ', distributor neuveden') +
+      (i.annual_consumption_kwh ? ', roční spotřeba ' + cz(Math.round(i.annual_consumption_kwh / 1000)) + ' MWh' : ', spotřeba nezadána') + '.');
+    var fve = 'FVE: ' + (FVE_STAV[i.fve] || 'neuvedeno');
+    if (i.fve_kwp) fve += ', ' + cz(i.fve_kwp) + ' kWp';
+    if (ORIENT[i.fve_orientation]) fve += ', orientace ' + ORIENT[i.fve_orientation];
+    L.push(fve + '.');
+    L.push('Baterie: ' + (BAT[i.battery] || 'neuvedeno') + '. Smlouvy: ' + (CONTR[i.contracts] || 'neuvedeno') +
+      '. Hlavní jistič: ' + (BREAKER[i.breaker] || 'neuvedeno') + '.');
+    L.push('Vyhodnocení: ' + LEVEL[level] + ' vhodnost JOM (skóre ' + a.score + ' z ' + a.score_max + ').');
     if (a.estimate) {
-      var e = a.estimate;
-      t += ' Odhad úspory ' + KALK_ENGINE.fmtKc(e.saving_year_czk.lo, e.saving_year_czk.hi) + ' ročně (±' + Math.round(e.spread * 100) + ' %).';
-    }
-    return t;
+      var e = a.estimate, E = KALK_ENGINE;
+      L.push('Odhad úspory: ' + E.fmtKc(e.saving_year_czk.lo, e.saving_year_czk.hi) + ' ročně (' + cz(e.saving_apt_month_czk.lo) + ' – ' +
+        cz(e.saving_apt_month_czk.hi) + ' Kč na byt měsíčně), rozpětí ±' + Math.round(e.spread * 100) + ' %.');
+    } else L.push('Odhad úspory nebylo možné spočítat (chybí počet bytů nebo spotřeba).');
+    L.push('Částky včetně DPH, verze výpočtu ' + ((window.KALK && KALK.VERZE) || '?') + '.');
+    return L.join('\n');
+  }
+
+  // Hodnoty pro samostatné sloupce tabulky poptavky_jom
+  function buildColumns(a, level) {
+    var i = a.inputs, e = a.estimate;
+    return {
+      pocet_bytu: i.apartments,
+      typ_domu: TYPE[i.house_type] || null,
+      stav_fve: FVE_STAV[i.fve] || null,
+      rocni_spotreba_kwh: i.annual_consumption_kwh,
+      skore: a.score,
+      vyhodnoceni: LEVEL[level],
+      uspora_rocne_od_kc: e ? e.saving_year_czk.lo : null,
+      uspora_rocne_do_kc: e ? e.saving_year_czk.hi : null,
+      verze_vypoctu: (window.KALK && KALK.VERZE) || null
+    };
   }
 
   form.addEventListener('submit', function (e) {
@@ -317,15 +351,19 @@
       email: EH.val('quizEmail'),
       phone: EH.val('quizPhone'),
       organization: EH.val('quizOrg'),
-      answers: answers,
+      vstupy: answers.inputs,
+      vysledek: { schema: 2, score: answers.score, score_max: answers.score_max, estimate: answers.estimate, assumptions: answers.assumptions },
+      sloupce: buildColumns(answers, level),
       summary: summary,
-      result: score >= 7 ? 'high' : score >= 4 ? 'mid' : 'low',
       consent: document.getElementById('quizConsent').checked,
       consent_text: consentEl ? consentEl.textContent.trim() : ''
     }, hp && hp.value).then(function () {
+      submitted = true;
       ui.done();
       document.getElementById('quizPanel3').hidden = true;
       document.getElementById('quizThankyou').hidden = false;
+      var qs = document.querySelector('.jom-quiz__stepper'); if (qs) qs.style.display = 'none';
+      var qt = document.querySelector('.jom-quiz__thankyou-title'); if (qt) { qt.setAttribute('tabindex', '-1'); qt.focus(); }
     }).catch(function (err) {
       ui.fail(err.message);
     });

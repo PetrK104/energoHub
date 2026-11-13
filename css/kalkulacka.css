@@ -160,3 +160,6 @@
 
 /* Text v polích „Upřesnit“: stejná šedá u zástupného textu jako v ostatních polích webu */
 .kalk-refine__field input::placeholder{color:var(--text-dim);font-weight:400}
+
+/* Tlačítka po odeslání poptávky: spočítat znovu a zpět na hlavní stránku */
+.thankyou-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--grid-gap)}

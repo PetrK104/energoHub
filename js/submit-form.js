@@ -22,6 +22,19 @@
     });
   };
 
+  // Po odeslání poptávky: nové čisté načtení stránky (bez uložených hodnot), případně na kalkulačku/dotazník
+  window.EH.restart = function (anchor) {
+    try { sessionStorage.removeItem('eh_prefill'); } catch (e) {}
+    location.assign(location.pathname + '?nova=1' + (anchor ? '#' + anchor : ''));
+  };
+  if (/[?&]nova=1/.test(location.search)) {
+    try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target && e.target.closest ? e.target.closest('[data-restart]') : null;
+    if (b) window.EH.restart(b.getAttribute('data-restart'));
+  });
+
   // Pomocník: zobrazí/skryje chybu ve formuláři a zamkne tlačítko po dobu odesílání
   window.EH.formUi = function (form) {
     var btn = form.querySelector('button[type="submit"]');

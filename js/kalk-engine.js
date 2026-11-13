@@ -243,18 +243,59 @@ var KALK_ENGINE = (function () {
       loan_monthly_czk: plan.uver > 0 ? _kc(plan.splatka_mes) : null
     };
 
-    // Věta pro sloupec summary
-    var casti = [inp.byty + ' bytů'];
-    casti.push(extra.spotrebaOdhad ? 'spotřeba odhadnutá' : _cz(Math.round(inp.spotreba / 1000)) + ' MWh');
-    var txt = casti.join(', ') + ': ' + kroky.map(function (k) { return KROKY[k]; }).join(' + ') + '.';
-    if (plan.vseZname) {
-      txt += ' Úspora ' + fmtKc(plan.us.lo, plan.us.hi) + ' ročně, investice ' + fmtKc(plan.inv.lo, plan.inv.hi) +
-        (plan.nav ? ', návratnost ' + fmtLet(plan.nav.lo, plan.nav.hi) : '') + '.';
-    } else {
-      txt += ' Investice ' + fmtKc(plan.inv.lo, plan.inv.hi) + '; úspora a návratnost neúplné (nezadané náklady na teplo).';
+    // ── Sloupce tabulky poptavky_uspora (rozpětí od–do) ──
+    var nav = plan.vseZname ? _rl(plan.nav) : null;
+    var inv = _rk(plan.inv), us = plan.vseZname ? _rk(plan.us) : null;
+    var sloupce = {
+      pocet_bytu: inp.byty,
+      rocni_spotreba_kwh: extra.spotrebaOdhad ? null : _kc(inp.spotreba),
+      vybrane_kroky: kroky.map(function (k) { return KROKY[k]; }).join(' + '),
+      investice_od_kc: inv.lo, investice_do_kc: inv.hi,
+      uspora_rocne_od_kc: us ? us.lo : null, uspora_rocne_do_kc: us ? us.hi : null,
+      navratnost_od_roky: nav ? nav.lo : null, navratnost_do_roky: nav ? nav.hi : null,
+      verze_vypoctu: (typeof KALK !== 'undefined' && KALK.VERZE) || null
+    };
+
+    // ── Přehledné shrnutí na více řádků (sloupec shrnuti) ──
+    var ORIENT = { J: 'jih', JV: 'jihovýchod', JZ: 'jihozápad', V: 'východ', Z: 'západ', S: 'sever' };
+    var STAV = { stara: 'stará okna (před rokem 1990)', castecne: 'částečně vyměněná (1990–2010)', nova: 'nová okna (po roce 2010)' };
+    function krokTxt(rw) {
+      var t = 'investice ' + fmtKc(rw.inv.lo, rw.inv.hi);
+      if (rw.us) {
+        t += ', úspora ' + fmtKc(rw.us.lo, rw.us.hi) + ' ročně';
+        if (rw.nav) t += ', návratnost ' + fmtLet(rw.nav.lo, rw.nav.hi);
+      } else t += ', úspora neurčena (nezadané náklady na teplo)';
+      return t;
     }
-    if (plan.uver > 0) txt += ' Úvěr NZÚ ' + (plan.uver >= 1e6 ? _cz(plan.uver / 1e6, 1) + ' mil. Kč' : _cz(Math.round(plan.uver / 1000)) + ' tis. Kč') + ' na ' + plan.splatnost + ' let.';
-    return { inputs: inputs, result: result, summary: txt };
+    var L = [];
+    L.push('Vstupy: ' + inp.byty + ' bytů, roční spotřeba ' +
+      (extra.spotrebaOdhad ? 'odhadnutá (' + _cz(Math.round(inp.spotreba / 1000)) + ' MWh)' : _cz(Math.round(inp.spotreba / 1000)) + ' MWh (zadáno)') +
+      (extra.orientKlic && ORIENT[extra.orientKlic] ? ', orientace střechy ' + ORIENT[extra.orientKlic] + (extra.orientTouched ? '' : ' (nezměněno)') : '') +
+      (inp.cenaEl ? ', cena elektřiny ' + _cz(inp.cenaEl, 2) + ' Kč/kWh' : '') + '.');
+    L.push('Vybrané kroky: ' + kroky.map(function (k) { return KROKY[k]; }).join(' + ') + '.');
+    if (sel.tc || sel.zatepleni) {
+      L.push('Teplo: ' + (inp.tcNakladyRucne > 0 ? 'náklady ' + _cz(Math.round(inp.tcNakladyRucne / 1000)) + ' tis. Kč ročně' : 'náklady nezadány') +
+        ', dům ' + (inp.domZateplen === false ? 'nezateplený' : 'zateplený') + '.');
+    }
+    if (sel.zatepleni) L.push('Stav oken a dveří: ' + (STAV[inp.zatStav] || STAV.stara) + ', plocha ' + _cz(r.plocha_byt, 1) + ' m² na byt.');
+    if (rows.jom) L.push('JOM: ' + krokTxt(rows.jom) + '.');
+    if (rows.fve) {
+      L.push('FVE' + (rows.fve.name.indexOf('JOM') > -1 ? ' včetně JOM' : '') + ': ' + _cz(r.vykon, 1) + ' kWp' +
+        (r.fveOmezeni === 'max' ? ' (horní mez výkonu)' : r.fveOmezeni === 'min' ? ' (spodní mez výkonu)' : '') + ', ' + krokTxt(rows.fve) + '.');
+    }
+    if (rows.tc)  L.push('Teplo a TUV (tepelné čerpadlo): ' + krokTxt(rows.tc) + '.');
+    if (rows.zat) L.push('Okna a dveře: ' + krokTxt(rows.zat) + '.');
+    if (plan.vseZname) {
+      L.push('Celkem: investice ' + fmtKc(plan.inv.lo, plan.inv.hi) + ', úspora ' + fmtKc(plan.us.lo, plan.us.hi) + ' ročně (' +
+        _cz(Math.round(plan.naBytMes.lo)) + ' – ' + _cz(Math.round(plan.naBytMes.hi)) + ' Kč na byt měsíčně)' +
+        (plan.nav ? ', návratnost ' + fmtLet(plan.nav.lo, plan.nav.hi) : '') + '.');
+    } else {
+      L.push('Celkem: investice ' + fmtKc(plan.inv.lo, plan.inv.hi) + '; úspora a návratnost neúplné (nezadané náklady na teplo).');
+    }
+    if (plan.uver > 0) L.push('Úvěr NZÚ: ' + _cz(Math.round(plan.uver / 1000)) + ' tis. Kč na ' + plan.splatnost + ' let, splátka ' + _cz(Math.round(plan.splatka_mes)) + ' Kč měsíčně' + (plan.uverOmezen ? ' (omezeno stropem na byt)' : '') + '.');
+    L.push('Rozpětí výpočtu ±' + Math.round((inp.rozpeti || 0) * 100) + ' %, částky včetně DPH, verze výpočtu ' + (sloupce.verze_vypoctu || '?') + '.');
+    var txt = L.join('\n');
+    return { inputs: inputs, result: result, summary: txt, sloupce: sloupce };
   }
 
   return { compute: compute, regulovane: regulovane, exportUlozeni: exportUlozeni, fmtKc: fmtKc, fmtLet: fmtLet, rk: _rk, rl: _rl, kc: _kc, let: _let };

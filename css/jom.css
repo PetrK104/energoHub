@@ -46,3 +46,6 @@
 .jom-quiz__step-item:not(.is-active):hover .jom-quiz__step-dot{border-color:#ffffff59}
 .jom-quiz__step-item:focus-visible{outline:2px solid var(--lime);outline-offset:6px;border-radius:8px}
 .jom-quiz__est-note--link{font:500 var(--fs-small)/var(--lh-small) var(--font-body);color:var(--text-muted)}.jom-quiz__est-note--link a{color:var(--text-white);text-underline-offset:3px}
+
+/* Tlačítka po odeslání poptávky: spočítat znovu a zpět na hlavní stránku */
+.thankyou-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--grid-gap)}

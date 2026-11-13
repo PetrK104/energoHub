@@ -116,3 +116,6 @@
 .fve-calc__step-item:not(.is-active):hover .fve-calc__step-dot{border-color:#ffffff59}
 .fve-calc__step-item:focus-visible{outline:2px solid var(--lime);outline-offset:6px;border-radius:8px}
 .fve-calc__cta-note--link{font-size:var(--fs-small);line-height:var(--lh-small);font-weight:500;color:var(--text-muted)}.fve-calc__cta-note--link a{color:var(--text-white);text-underline-offset:3px}
+
+/* Tlačítka po odeslání poptávky: spočítat znovu a zpět na hlavní stránku */
+.thankyou-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--grid-gap)}
