@@ -521,28 +521,22 @@
       show(pr, !pl.vseZname);
     }
 
-    // Pruhy a rozpis po krocích
+    renderWaterfall(r, pl);
+
+    // Rozpis po krocích
     var ids = { jom: 'Jom', fve: 'Fve', tc: 'Tc', zat: 'Zat' };
-    var maxHi = 1;
-    pl.rows.forEach(function (rw) { if (rw.us && rw.us.hi > maxHi) maxHi = rw.us.hi; });
     Object.keys(ids).forEach(function (k) {
       var rw = byKey[k], id = ids[k];
-      show(document.getElementById('sumHb' + id), !!rw);
       show(document.getElementById('sumRow' + id), !!rw);
       if (!rw) return;
-      var fill = document.getElementById('sumFill' + id);
-      if (fill) fill.style.width = (rw.us ? Math.max(2, rw.us.hi / maxHi * 100) : 0) + '%';
       // Krok v minusu se vykreslí šedě
       var minus = !!(rw.us && rw.us.hi <= 0);
-      if (fill) { fill.classList.toggle('kalk-hbar-fill--lime', !minus); fill.classList.toggle('kalk-hbar-fill--dim', minus); }
-      ['sumHb', 'sumRow'].forEach(function (pre) { var el = document.getElementById(pre + id); if (el) el.classList.toggle('is-negative', minus); });
-      setText('sumVal' + id, rw.us ? kc(rw.us.lo, rw.us.hi) : '—');
+      var row = document.getElementById('sumRow' + id);
+      if (row) row.classList.toggle('is-negative', minus);
       setText('sumInv' + id, kc(rw.inv.lo, rw.inv.hi));
       setText('sumUs' + id, rw.us ? kc(rw.us.lo, rw.us.hi) : '—');
       setText('sumNav' + id, navText(rw.nav));
     });
-    var nameFve = byKey.fve && document.querySelector('#sumHbFve .kalk-hbar-label');
-    if (nameFve) nameFve.textContent = byKey.fve.name;
     var rowFve = byKey.fve && document.querySelector('#sumRowFve td');
     if (rowFve) rowFve.textContent = byKey.fve.name;
     setText('sumInvTotal', kc(pl.inv.lo, pl.inv.hi));
@@ -575,6 +569,60 @@
           'JOM se z úvěru neplatí.' +
           ' NZÚ je program Nová zelená úsporám.';
       }
+    }
+  }
+
+  // ── Souhrn: vodopád ročních nákladů domu ──────────────────
+  // Elektřina dnes = spotřeba × cena elektřiny + stálé měsíční platby za jistič a provoz měření v bytech
+  // (sazba D02d, jistič 1×25 A, s DPH). Teplo = náklady, které uživatel zadal. Každý krok ubírá svou
+  // střední úsporu z nákladů, které zbyly po předchozím kroku (stejná čísla jako v rozpisu).
+  function stalePlatby(byty) {
+    var c = (typeof KALK_CENY !== 'undefined') ? KALK_CENY : null;
+    var t = c && c.distribuce && c.distribuce.cez && c.distribuce.cez.D02d;
+    if (!t || t.jistic['1x25'] == null) return 0;
+    return byty * (t.jistic['1x25'] + c.provoz_nesitove_infrastruktury) * 12 * KALK.DPH;
+  }
+  function renderWaterfall(r, pl) {
+    var box = document.getElementById('sumWf'), note = document.getElementById('sumWfNote');
+    var block = document.getElementById('sumWfBlock');
+    show(block, pl.rows.length > 0);
+    if (!box || !pl.rows.length) return;
+    var elektrina = state.spotreba * (state.fveCenaEl || KALK.FVE_CENA_EL) + stalePlatby(state.byty);
+    var teplo = r.tcZnamo ? r.naklady_dnes : 0;
+    var start = elektrina + teplo;
+    var NAMES = { jom: 'JOM', fve: null, tc: 'Tepelné čerpadlo', zat: 'Okna a dveře' };
+    var steps = [], chybiTeplo = false, cur = start, peak = start;
+    pl.rows.forEach(function (rw) {
+      if (!rw.us) { chybiTeplo = true; return; }
+      var s = (rw.us.lo + rw.us.hi) / 2, prev = cur;
+      cur = prev - s;
+      if (cur > peak) peak = cur;
+      steps.push({ name: NAMES[rw.key] || rw.name, prev: prev, next: cur, s: s });
+    });
+    var mx = Math.max(peak, 1);
+    function pct(v) { return Math.max(0, v) / mx * 100; }
+    function row(label, from, to, cls, val) {
+      var lo = Math.min(from, to), w = Math.max(0.6, pct(Math.max(from, to)) - pct(lo));
+      return '<div class="kalk-hbar-row"><span class="kalk-hbar-label">' + label + '</span>' +
+        '<div class="kalk-hbar-track"><div class="kalk-hbar-fill ' + cls + '" style="margin-left:' + pct(lo).toFixed(2) + '%;width:' + w.toFixed(2) + '%"></div></div>' +
+        '<span class="kalk-hbar-val">' + val + '</span></div>';
+    }
+    var html = row(teplo ? 'Dnes (elektřina a teplo)' : 'Dnes (elektřina)', 0, start, 'kalk-hbar-fill--dim', fmtRound(start));
+    steps.forEach(function (st) {
+      var up = st.s < 0;
+      html += row((up ? '+ ' : '− ') + st.name, st.prev, st.next, up ? 'kalk-hbar-fill--dim' : 'kalk-hbar-fill--lime',
+        (up ? '+' : '−') + fmtRound(Math.abs(st.s)));
+    });
+    html += row('Po vybraných krocích', 0, cur, 'kalk-hbar-fill--mid', fmtRound(cur));
+    box.innerHTML = html;
+    var pctUspora = start > 0 ? Math.round((start - cur) / start * 100) : 0;
+    box.setAttribute('aria-label', 'Graf: roční náklady domu na energie dnes ' + fmtRound(start) + ', po vybraných krocích ' + fmtRound(cur) + ', o ' + pctUspora + ' % méně');
+    if (note) {
+      note.innerHTML = '<strong>Po vybraných krocích zaplatí dům za energie asi ' + fmtRound(cur) + ' ročně místo ' + fmtRound(start) +
+        ', tedy o ' + pctUspora + NB + '% méně.</strong> Každý krok se počítá z nákladů, které zbyly po předchozím kroku. ' +
+        'Elektřina je odhad ze spotřeby domu, ceny elektřiny a stálých měsíčních plateb za jističe v bytech' +
+        (teplo ? ', teplo jsou náklady, které jste zadali' : '') + '. Graf ukazuje střední odhad, bez změn cen energií.' +
+        (chybiTeplo ? ' Teplo a okna v grafu nejsou, chybí roční náklady na teplo a TUV.' : '');
     }
   }
 
@@ -858,6 +906,23 @@ document.querySelectorAll('.kalk-input-wrap').forEach(function (wrap) {
     });
   });
 
+  // Tlačítko „Stáhnout výsledky (PDF)“ na děkovné stránce (knihovna se načte až po kliknutí)
+  function initPdfButton(ulozeno, kontakt) {
+    var btn = document.getElementById('kalkPdfBtn'), err = document.getElementById('kalkPdfError');
+    if (!btn || typeof KALK_PDF === 'undefined') return;
+    var label = btn.textContent;
+    btn.addEventListener('click', function () {
+      if (btn.disabled) return;
+      btn.disabled = true; btn.textContent = 'Připravuji PDF…';
+      if (err) err.hidden = true;
+      KALK_PDF.stahnout(ulozeno, kontakt).catch(function () {
+        if (err) err.hidden = false;
+      }).then(function () {
+        btn.disabled = false; btn.textContent = label;
+      });
+    });
+  }
+
   // Form submit
   var form = document.getElementById('kalkForm');
   if (form) {
@@ -872,6 +937,7 @@ document.querySelectorAll('.kalk-input-wrap').forEach(function (wrap) {
         orientKlic: state.fveOrientaceKlic,
         orientTouched: !!state.orientTouched
       });
+      var kontaktPdf = { name: EH.val('kalkJmeno'), email: EH.val('kalkEmail'), phone: EH.val('kalkTel') };
       ui.start();
       EH.submitForm('savings', {
         name: EH.val('kalkJmeno'),
@@ -885,6 +951,7 @@ document.querySelectorAll('.kalk-input-wrap').forEach(function (wrap) {
         summary: ulozeno.summary
       }, hp && hp.value).then(function () {
         submitted = true;
+        initPdfButton(ulozeno, kontaktPdf);
         ui.done();
         document.getElementById('kalkPanel5').hidden = true;
         document.getElementById('kalkThankyou').hidden = false;

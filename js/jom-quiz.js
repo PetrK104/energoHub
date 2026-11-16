@@ -345,6 +345,11 @@
     var level = score >= 7 ? 'high' : score >= 4 ? 'mid' : 'low';
     var answers = buildAnswers(score);
     var summary = buildSummary(answers, level);
+    var pdfData = {
+      inputs: Object.assign({}, answers.inputs, { assumptions: answers.assumptions }),
+      result: { score: answers.score, score_max: answers.score_max, level: level, estimate: answers.estimate }
+    };
+    var pdfContact = { name: EH.val('quizName'), email: EH.val('quizEmail'), phone: EH.val('quizPhone'), organization: EH.val('quizOrg') };
     ui.start();
     EH.submitForm('jom_quiz', {
       name: EH.val('quizName'),
@@ -359,6 +364,7 @@
       consent_text: consentEl ? consentEl.textContent.trim() : ''
     }, hp && hp.value).then(function () {
       submitted = true;
+      if (window.KALK_PDF) KALK_PDF.tlacitko('quizPdfBtn', 'quizPdfError', pdfData, pdfContact, 'jom');
       ui.done();
       document.getElementById('quizPanel3').hidden = true;
       document.getElementById('quizThankyou').hidden = false;

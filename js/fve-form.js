@@ -157,6 +157,12 @@
         displayed: readResults().map(function (r) { return r.label + ': ' + r.value + ' ' + r.unit.replace(/\s*(návratnost|instalace)$/, ''); })
       };
       var summary = fveSummary(last, EH.checked('financovani'), EH.checked('horizont'));
+      var pdfData = { inputs: inputsOut, result: last ? last.result : null };
+      var pdfContact = {
+        name: field('jmeno'), email: field('email'), phone: field('telefon'), role: EH.checked('role'),
+        street: field('ulice'), city: field('mesto'), zip: field('psc'),
+        financing: EH.checked('financovani'), horizon: EH.checked('horizont'), note: field('poznamka')
+      };
       ui.start();
       EH.submitForm('fve', {
         name: field('jmeno'),
@@ -177,6 +183,7 @@
         consent_text: consentEl ? consentEl.textContent.trim() : ''
       }, hp && hp.value).then(function () {
         done = true;
+        if (window.KALK_PDF) KALK_PDF.tlacitko('fvePdfBtn', 'fvePdfError', pdfData, pdfContact, 'fve');
         ui.done();
         form.hidden = true;
         thanks.hidden = false;

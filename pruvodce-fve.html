@@ -18,7 +18,7 @@
 <link rel="preload" href="/hdri/dikhololo_night_512.hdr" as="fetch" crossorigin>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/guide-shared.css?v=8">
-<link rel="stylesheet" href="css/fve.css?v=37">
+<link rel="stylesheet" href="css/fve.css?v=41">
 <link rel="stylesheet" href="css/search.css?v=2">
 <link rel="stylesheet" href="css/navbar-mobile-v2.css">
 </head>
@@ -684,15 +684,15 @@
             <div class="fve-form__stack">
               <div class="fve-form__field">
                 <label class="fve-form__label" for="fJmeno">Jméno a příjmení</label>
-                <input class="fve-form__input" id="fJmeno" name="jmeno" type="text" required>
+                <input class="fve-form__input" id="fJmeno" name="jmeno" type="text" placeholder="Jan Novák" required>
               </div>
               <div class="fve-form__field">
                 <label class="fve-form__label" for="fEmail">E-mail</label>
-                <input class="fve-form__input" id="fEmail" name="email" type="email" required>
+                <input class="fve-form__input" id="fEmail" name="email" type="email" placeholder="jan@svj-example.cz" required>
               </div>
               <div class="fve-form__field">
                 <label class="fve-form__label" for="fTel">Telefon</label>
-                <input class="fve-form__input" id="fTel" name="telefon" type="tel" data-input="tel">
+                <input class="fve-form__input" id="fTel" name="telefon" type="tel" placeholder="+420 777 000 000" data-input="tel">
               </div>
             </div>
           </div>
@@ -702,15 +702,15 @@
             <div class="fve-form__stack">
               <div class="fve-form__field">
                 <label class="fve-form__label" for="fUlice">Ulice a č. p.</label>
-                <input class="fve-form__input" id="fUlice" name="ulice" type="text" required>
+                <input class="fve-form__input" id="fUlice" name="ulice" type="text" placeholder="Příkladná 123" required>
               </div>
               <div class="fve-form__field">
                 <label class="fve-form__label" for="fMesto">Město</label>
-                <input class="fve-form__input" id="fMesto" name="mesto" type="text" required>
+                <input class="fve-form__input" id="fMesto" name="mesto" type="text" placeholder="Praha" required>
               </div>
               <div class="fve-form__field">
                 <label class="fve-form__label" for="fPsc">PSČ</label>
-                <input class="fve-form__input" id="fPsc" name="psc" type="text" pattern="[0-9]{5}" required data-input="int" inputmode="numeric" maxlength="5">
+                <input class="fve-form__input" id="fPsc" name="psc" type="text" placeholder="110 00" pattern="[0-9]{5}" required data-input="int" inputmode="numeric" maxlength="5">
               </div>
             </div>
           </div>
@@ -767,13 +767,15 @@
       </form>
 
       <div class="fve-form__thanks" id="formThanks" hidden>
-        <span class="ms-icon fve-form__thanks-icon" aria-hidden="true">check_circle</span>
+        <div class="fve-form__thanks-icon">✓</div>
         <h3 class="fve-form__thanks-title">Formulář byl odeslán</h3>
         <p class="fve-form__thanks-desc">Děkujeme, vaše zpráva byla odeslána. Ozveme se vám co nejdříve, obvykle do 2 pracovních dnů.</p>
         <div class="thankyou-actions">
-          <button type="button" class="btn btn-primary" data-restart="kalkulacka">Spočítat znovu</button>
-          <a href="index.html" class="btn btn-secondary">Zpět na hlavní stránku</a>
+          <a href="index.html" class="btn btn-primary">Zpět na hlavní stránku</a>
+          <button type="button" class="btn btn-secondary" id="fvePdfBtn">Stáhnout výsledky (PDF)</button>
         </div>
+        <p class="form-note" id="fvePdfNote">Výsledky si můžete stáhnout do PDF. Po opuštění stránky už se k nim nevrátíte.</p>
+        <p class="form-error" id="fvePdfError" role="alert" hidden>PDF se nepodařilo vytvořit. Zkuste to prosím znovu.</p>
       </div>
 
     </div><!-- /stepForm -->
@@ -1034,7 +1036,8 @@
 <script src="js/kalk-ceny.js?v=3"></script>
 <script src="js/kalk-engine.js?v=12"></script>
 <script src="js/fve-calc.js?v=15" defer></script>
-<script src="js/fve-form.js?v=16" defer></script><script>(function(){var menu=document.getElementById('navMobile');var navbar=document.querySelector('.navbar');if(!menu||!navbar)return;new MutationObserver(function(){navbar.classList.toggle('navbar--menu-open',menu.classList.contains('is-open'));}).observe(menu,{attributes:true,attributeFilter:['class']});})();</script>
+<script src="js/kalk-pdf.js?v=12" defer></script>
+<script src="js/fve-form.js?v=17" defer></script><script>(function(){var menu=document.getElementById('navMobile');var navbar=document.querySelector('.navbar');if(!menu||!navbar)return;new MutationObserver(function(){navbar.classList.toggle('navbar--menu-open',menu.classList.contains('is-open'));}).observe(menu,{attributes:true,attributeFilter:['class']});})();</script>
 <script src="js/footer.js" defer></script>
 <script src="js/submit-form.js" defer></script>
 <script src="js/navbar.js" defer></script>
