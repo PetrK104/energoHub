@@ -123,7 +123,7 @@ const FORMS = {
         role_zadatele: role[data.role] || null,
         ulice: str(data.street, 200),
         mesto: str(data.city, 200),
-        psc: str(data.zip, 5),
+        psc: str(data.zip, 10).replace(/\s/g, '').slice(0, 5),
         financovani: financing[data.financing] || null,
         horizont: horizon[data.horizon] || null,
         poznamka: str(data.note, 5000) || null,
@@ -188,6 +188,10 @@ exports.handler = async (event) => {
   const built = form.build(data);
   if (built.error) return json(400, { error: built.error });
   if (!EMAIL_RE.test(built.row.email)) return json(400, { error: 'Zadejte platný e-mail' });
+  // Telefon (nepovinný): 9 číslic, případně s předvolbou (+420…); mezery se ignorují
+  if (built.row.telefon && !/^(\+\d{3})?\d{9}$/.test(built.row.telefon.replace(/\s/g, ''))) {
+    return json(400, { error: 'Zadejte telefon o 9 číslicích, případně s předvolbou, např. +420 777 123 456.' });
+  }
 
   const { error } = await adminClient().from(form.table).insert(built.row);
   if (error) {

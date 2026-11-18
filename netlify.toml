@@ -1,5 +1,5 @@
 [build]
-  command = "node build-icons.mjs && node build-search.mjs"
+  command = "node build-icons.mjs && node build-og.mjs && node build-search.mjs"
   functions = "netlify/functions"
   publish = "."
   environment = { SECRETS_SCAN_OMIT_KEYS = "SUPABASE_ANON_KEY,SUPABASE_URL" }
@@ -91,6 +91,12 @@
 
 [[redirects]]
   from = "/build-icons.mjs"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/build-og.mjs"
   to = "/404.html"
   status = 404
   force = true

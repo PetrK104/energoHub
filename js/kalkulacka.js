@@ -124,12 +124,12 @@
     var tcDum   = document.getElementById('tcDum');
 
     if (orient)  { state.fveOrientace = KALK.ORIENT[orient.value] || 1.0; state.fveOrientaceKlic = KALK.ORIENT[orient.value] ? orient.value : 'J'; }
-    if (cenaEl)  state.fveCenaEl      = parseNum(cenaEl.value) || KALK.FVE_CENA_EL;
+    if (cenaEl)  state.fveCenaEl      = (window.EH && EH.numIn ? EH.numIn(cenaEl) : parseNum(cenaEl.value)) || KALK.FVE_CENA_EL;
     if (tcRuc) state.tcNakladyRucne = Math.round(parseNum(tcRuc.value)) || 0;
     if (zatStav) state.zatStav        = zatStav.value || 'stara';
     if (tcDum)   state.domZateplen    = tcDum.value !== 'ne';
     var zatPl = document.getElementById('zatPlochaInput');
-    if (zatPl) state.zatPlocha        = parseNum(zatPl.value) || 0;
+    if (zatPl) state.zatPlocha        = (window.EH && EH.numIn ? EH.numIn(zatPl) : parseNum(zatPl.value)) || 0;
   }
 
   // ── Zápis částek: rozpětí ±KALK.ROZPETI, od 1 mil. Kč v milionech ──
@@ -171,10 +171,10 @@
     if (!isFinite(lo) || lo > 100) return 'více než' + NB + '100';
     return f(lo) + NB + '–' + NB + ((!isFinite(hi) || hi > 100) ? '100+' : f(hi));
   }
-  // Věta pod čárovým grafem: rozpětí návratnosti (stejný vzorec jako v souhrnu) a střední odhad, který graf ukazuje
-  function lineNote(lo, hi, mid) {
-    return '<strong>Investice se vrátí za ' + navRange(lo, hi) + ' roku.</strong> Graf ukazuje střední odhad, ' +
-      mid.toFixed(1).replace('.', ',') + ' roku. Počítá se s konstantní úsporou, bez změn cen energií.';
+  // Věta pod čárovým grafem: rozpětí návratnosti (stejný vzorec jako v souhrnu) a co pásy znamenají
+  function lineNote(lo, hi) {
+    return '<strong>Investice se vrátí za ' + navRange(lo, hi) + ' roku.</strong> ' +
+      'Pásy ukazují rozpětí odhadu úspory a investice. Návratnost začíná, kde se pásy překryjí. Počítá se s konstantní úsporou, bez změn cen energií.';
   }
   // Rozpětí Kč s možnými zápornými hodnotami (tisíce, od 1 mil. v milionech)
   function rangeSigned(lo, hi) {
@@ -227,69 +227,157 @@
     // Návratnost: rozpětí investice proti rozpětí úspory (stejný vzorec jako v souhrnu)
     var loY = inv.lo / (r.uspora_jom * (1 + RP)), hiY = inv.hi / (r.uspora_jom * (1 - RP));
     setText('jomNavratnost', navRange(loY, hiY));
-    lineData.jomLine = { u: r.uspora_jom, inv: inv.mid };
+    // Graf s rozpětím: stejné hranice úspory, investice i návratnosti jako v číslech nad grafem
+    lineData.jomLine = { uLo: r.uspora_jom * (1 - RP), uHi: r.uspora_jom * (1 + RP), invLo: inv.lo, invHi: inv.hi, navLo: loY, navHi: hiY };
     drawLine('jomLine');
     var note = document.getElementById('jomHbNote');
-    if (note) note.innerHTML = lineNote(loY, hiY, inv.mid / r.uspora_jom);
+    if (note) note.innerHTML = lineNote(loY, hiY);
   }
+
+  // „Hezký“ krok osy Y (1, 2, 2,5, 5 × 10^n)
+  function niceStep(raw) {
+    var p = Math.pow(10, Math.floor(Math.log10(raw))), f = raw / p;
+    return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p;
+  }
+  function tickKc(n) {
+    if (n === 0) return '0';
+    if (n >= 1e6) return (n / 1e6).toLocaleString('cs-CZ', { maximumFractionDigits: 2 }) + NB + 'mil.';
+    return (n / 1000).toLocaleString('cs-CZ', { maximumFractionDigits: 1 }) + NB + 'tis.';
+  }
+  function svgEl(tag, cls, attrs) {
+    var s = '<' + tag + (cls ? ' class="' + cls + '"' : '');
+    for (var k in attrs) s += ' ' + k + '="' + attrs[k] + '"';
+    return s + '/>';
+  }
+
+  // Čárový graf s rozpětím: pás nasbíraných úspor, pás investice a vyznačená oblast návratnosti.
+  // Hodnoty jsou v kompaktní legendě nad grafem (HTML), takže je čáry nikdy nepřekryjí.
+  function drawBand(box, d) {
+    var W = box.clientWidth || 560, narrow = W < 480, H = narrow ? 220 : 250;
+    var m = { l: narrow ? 56 : 64, r: 8, t: 12, b: 40 };
+    var iw = W - m.l - m.r, ih = H - m.t - m.b;
+    var hasPb = d.uLo > 0 && isFinite(d.navHi);
+    // Horizont: nejmenší „hezké“ číslo s rezervou za horní hranicí návratnosti (nejvýš 50 let)
+    var YEARS = 50, cand = [5, 10, 15, 20, 25, 30, 40, 50];
+    for (var ci = 0; ci < cand.length; ci++) { if (hasPb && cand[ci] >= d.navHi * 1.15) { YEARS = cand[ci]; break; } }
+    var top = Math.max(d.invHi, d.uHi * YEARS);
+    // Osa Y: ze 3–6 dílků vybere ten, který nechá nad nejvyšší hodnotou nejmíň prázdného místa
+    var step = 0, yMax = Infinity;
+    for (var nt = 3; nt <= 6; nt++) {
+      var st = niceStep(top / nt), ym = Math.ceil(top / st - 1e-9) * st;
+      if (ym / st > 5.001) continue; // víc než 5 dílků je na nízký graf moc husté
+      // při stejné výšce osy dává přednost počtu dílků blíž ke 4
+      if (ym < yMax - 1e-6 || (Math.abs(ym - yMax) < 1e-6 && Math.abs(ym / st - 4) < Math.abs(yMax / step - 4))) { yMax = ym; step = st; }
+    }
+    var X = function (yr) { return m.l + Math.min(yr, YEARS) / YEARS * iw; };
+    var Y = function (v) { return m.t + ih - Math.max(0, v) / yMax * ih; };
+    var f = function (n) { return n.toFixed(1); };
+    var xEnd = W - m.r, out = '';
+
+    for (var v = 0; v <= yMax + 1e-6; v += step) {
+      out += svgEl('line', 'kalk-lc-grid', { x1: m.l, x2: xEnd, y1: f(Y(v)), y2: f(Y(v)) });
+      out += '<text class="kalk-lc-tick" x="' + (m.l - 8) + '" y="' + f(Y(v) + 4) + '" text-anchor="end">' + tickKc(v) + '</text>';
+    }
+    var tickStep = YEARS <= 5 ? 1 : (YEARS <= 10 ? 2 : (YEARS <= 25 ? 5 : 10));
+    if (narrow && YEARS / tickStep > 5) tickStep *= 2;
+    for (var ty = 0; ty <= YEARS; ty += tickStep) {
+      if (ty !== YEARS && X(YEARS) - X(ty) < 48) continue; // nesmí se dotýkat popisku „N let“
+      out += '<text class="kalk-lc-tick" x="' + f(X(ty)) + '" y="' + (H - 12) + '" text-anchor="' + (ty === 0 ? 'start' : ty === YEARS ? 'end' : 'middle') + '">' + (ty === YEARS ? ty + NB + 'let' : ty) + '</text>';
+    }
+
+    // oblast návratnosti: svislý pruh přes celou výšku grafu
+    var nav = hasPb ? navRange(d.navLo, d.navHi) : 'více než' + NB + '100';
+    if (hasPb) {
+      var x0 = X(d.navLo), x1 = X(d.navHi);
+      out += svgEl('rect', 'kalk-lc-pbzone', { x: f(x0), y: m.t, width: f(Math.max(1, x1 - x0)), height: f(ih) });
+    }
+    // pás investice
+    out += svgEl('rect', 'kalk-lc-invband', { x: m.l, y: f(Y(d.invHi)), width: iw, height: f(Math.max(1, Y(d.invLo) - Y(d.invHi))) });
+    out += svgEl('line', 'kalk-lc-inv', { x1: m.l, x2: xEnd, y1: f(Y(d.invHi)), y2: f(Y(d.invHi)) });
+    out += svgEl('line', 'kalk-lc-inv', { x1: m.l, x2: xEnd, y1: f(Y(d.invLo)), y2: f(Y(d.invLo)) });
+    // pás úspor: od nuly lineárně, horní a dolní hranice rozpětí
+    if (d.uHi > 0) {
+      var pts = [[0, 0], [YEARS, d.uHi * YEARS], [YEARS, Math.max(0, d.uLo) * YEARS]];
+      out += '<polygon class="kalk-lc-saveband" points="' + pts.map(function (p) { return f(X(p[0])) + ',' + f(Y(p[1])); }).join(' ') + '"/>';
+      out += svgEl('line', 'kalk-lc-save', { x1: X(0), y1: Y(0), x2: f(X(YEARS)), y2: f(Y(d.uHi * YEARS)) });
+      out += svgEl('line', 'kalk-lc-save', { x1: X(0), y1: Y(0), x2: f(X(YEARS)), y2: f(Y(Math.max(0, d.uLo) * YEARS)) });
+    }
+
+    // body návratnosti; neviditelný větší kruh je cíl pro najetí myší, dotyk i klávesnici
+    var pbPts = [];
+    if (hasPb) {
+      pbPts.push({ x: X(d.navLo), y: Y(d.invLo), title: 'Nejrychlejší návratnost', note: 'nižší investice, optimistická úspora', yrs: d.navLo, inv: d.invLo, u: d.uHi });
+      if (d.navHi <= YEARS) pbPts.push({ x: X(d.navHi), y: Y(d.invHi), title: 'Nejpomalejší návratnost', note: 'vyšší investice, pesimistická úspora', yrs: d.navHi, inv: d.invHi, u: d.uLo });
+    }
+    // jedna hodnota ve stejném zaokrouhlení jako rozpětí ve výsledcích kroku (hi = horní mez rozpětí)
+    var kOne = function (v, hi) {
+      if (hi >= 1e6) return mil(v) + NB + 'mil.' + NB + 'Kč';
+      return (v / 1000).toFixed(hi < 20000 ? 1 : 0).replace('.', ',') + NB + 'tis.' + NB + 'Kč';
+    };
+    pbPts.forEach(function (p, i) {
+      out += svgEl('circle', 'kalk-lc-dot', { cx: f(p.x), cy: f(p.y), r: 5 });
+      out += '<circle class="kalk-lc-hit" data-i="' + i + '" cx="' + f(p.x) + '" cy="' + f(p.y) + '" r="16" tabindex="0" role="button" aria-label="' + p.title + ': ' + p.yrs.toFixed(1).replace('.', ',') + ' roku"/>';
+    });
+
+    var usp = fmtThousandsRange(d.uLo * YEARS, d.uHi * YEARS), inv = fmtThousandsRange(d.invLo, d.invHi);
+    box.setAttribute('aria-label', 'Graf: investice ' + inv.text + ' ' + inv.unit + ', úspory za ' + YEARS + ' let ' + usp.text + ' ' + usp.unit + ', návratnost ' + nav + ' roku');
+    box._lcW = box.clientWidth;
+    var legend =
+      '<li class="kalk-lc-key kalk-lc-key--save">Úspory za ' + YEARS + NB + 'let <strong>' + usp.text + NB + usp.unit + '</strong></li>' +
+      '<li class="kalk-lc-key kalk-lc-key--inv">Investice <strong>' + inv.text + NB + inv.unit + '</strong></li>' +
+      (hasPb ? '<li class="kalk-lc-key kalk-lc-key--pb">Návratnost <strong>' + nav + NB + 'roku</strong></li>' : '');
+    box.innerHTML = '<ul class="kalk-lc-legend" aria-hidden="true">' + legend + '</ul><svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg">' + out + '</svg>' +
+      '<div class="kalk-lc-tip" hidden></div>';
+
+    // tabulka po najetí na bod návratnosti
+    var tip = box.querySelector('.kalk-lc-tip'), active = null;
+    var showTip = function (i) {
+      var p = pbPts[i];
+      active = i;
+      tip.innerHTML = '<p class="kalk-lc-tip__title">' + p.title + '</p><p class="kalk-lc-tip__note">' + p.note + '</p>' +
+        '<table><tr><th>Návratnost od začátku</th><td>' + p.yrs.toFixed(1).replace('.', ',') + NB + 'roku</td></tr>' +
+        '<tr><th>Investice</th><td>' + kOne(p.inv, d.invHi) + '</td></tr>' +
+        '<tr><th>Úspora za rok</th><td>' + kOne(p.u, d.uHi) + '</td></tr></table>';
+      tip.hidden = false;
+      var tw2 = tip.offsetWidth, th2 = tip.offsetHeight;
+      var left = Math.min(Math.max(p.x - tw2 / 2, 0), W - tw2);
+      var svgTop = box.querySelector('svg').getBoundingClientRect().top - box.getBoundingClientRect().top;
+      var topY = p.y - th2 - 14;
+      if (topY + svgTop < 0) topY = p.y + 14;
+      tip.style.left = left + 'px';
+      tip.style.top = (topY + svgTop) + 'px';
+    };
+    var hideTip = function () { tip.hidden = true; active = null; };
+    box.querySelectorAll('.kalk-lc-hit').forEach(function (c) {
+      var i = +c.getAttribute('data-i');
+      c.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') showTip(i); });
+      c.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') hideTip(); });
+      c.addEventListener('pointerdown', function (e) { if (e.pointerType !== 'mouse') showTip(i); });
+      c.addEventListener('click', function () { showTip(i); });
+      c.addEventListener('focus', function () { showTip(i); });
+      c.addEventListener('blur', hideTip);
+      c.addEventListener('keydown', function (e) { if (e.key === 'Escape') hideTip(); });
+    });
+  }
+
+  // Dotyk mimo bod návratnosti zavře otevřenou tabulku (jeden posluchač pro všechny grafy)
+  document.addEventListener('pointerdown', function (e) {
+    if (e.target.closest && e.target.closest('.kalk-lc-hit')) return;
+    document.querySelectorAll('.kalk-lc-tip').forEach(function (t) { t.hidden = true; });
+  });
 
   // Čárový graf: nasbírané úspory v čase proti investici (SVG, barvy webu)
   var lineData = {};
-  function shortKc(n) {
-    return n >= 1e6 ? mil(n) + NB + 'mil.' : Math.round(n / 1000) + NB + 'tis.';
-  }
   function drawLine(boxId) {
     var box = document.getElementById(boxId), d = lineData[boxId];
-    if (!box || !d) return;
-    var W = box.clientWidth || 560, H = 276;
-    var m = { l: 62, r: 12, t: 10, b: 40 };
-    var iw = W - m.l - m.r, ih = H - m.t - m.b;
-    var u = d.u, inv = d.inv;
-    // Horizont grafu podle návratnosti: nejmenší „hezké“ číslo, které dá za bodem návratnosti rezervu
-    var pbYears = u > 0 ? inv / u : Infinity;
-    var YEARS = 50, cand = [5, 10, 15, 20, 25, 30, 40, 50];
-    for (var ci = 0; ci < cand.length; ci++) { if (cand[ci] >= pbYears * 1.25) { YEARS = cand[ci]; break; } }
-    var tickStep = YEARS <= 5 ? 1 : (YEARS <= 10 ? 2 : (YEARS <= 25 ? 5 : 10));
-    var yMax = Math.max(inv, u * YEARS) * 1.08;
-    var X = function (yr) { return m.l + yr / YEARS * iw; };
-    var Y = function (v) { return m.t + ih - v / yMax * ih; };
-    var out = '';
-
-    // vodorovné čáry a popisky osy Y
-    for (var i = 0; i <= 4; i++) {
-      var v = yMax / 1.08 * i / 4, y = Y(v);
-      out += '<line class="kalk-lc-grid" x1="' + m.l + '" x2="' + (W - m.r) + '" y1="' + y + '" y2="' + y + '"/>';
-      out += '<text class="kalk-lc-tick" x="' + (m.l - 8) + '" y="' + (y + 4) + '" text-anchor="end">' + (i === 0 ? '0' : shortKc(v)) + '</text>';
-    }
-    // osa X (roky)
-    var ticks = [];
-    for (var ty = 0; ty <= YEARS; ty += tickStep) ticks.push(ty);
-    if (ticks[ticks.length - 1] !== YEARS) ticks.push(YEARS);
-    ticks.forEach(function (yr) {
-      out += '<text class="kalk-lc-tick" x="' + X(yr) + '" y="' + (H - 12) + '" text-anchor="' + (yr === 0 ? 'start' : yr === YEARS ? 'end' : 'middle') + '">' + (yr === YEARS ? yr + NB + 'let' : yr) + '</text>';
-    });
-    // investice (vodorovná přerušovaná čára)
-    out += '<line class="kalk-lc-inv" x1="' + X(0) + '" x2="' + X(YEARS) + '" y1="' + Y(inv) + '" y2="' + Y(inv) + '"/>';
-    out += '<text class="kalk-lc-label" x="' + (X(0) + 8) + '" y="' + (Y(inv) - 8) + '" text-anchor="start">Investice ' + shortKc(inv) + ' Kč</text>';
-    // úspory (rostoucí čára)
-    out += '<line class="kalk-lc-save" x1="' + X(0) + '" y1="' + Y(0) + '" x2="' + X(YEARS) + '" y2="' + Y(u * YEARS) + '"/>';
-    out += '<text class="kalk-lc-label kalk-lc-label--lime" x="' + X(YEARS) + '" y="' + (Y(u * YEARS) - 12) + '" text-anchor="end">Úspory za ' + YEARS + ' let ' + shortKc(u * YEARS) + ' Kč</text>';
-    // bod návratnosti
-    var pb = inv / u;
-    if (pb <= YEARS) {
-      out += '<line class="kalk-lc-drop" x1="' + X(pb) + '" x2="' + X(pb) + '" y1="' + Y(inv) + '" y2="' + Y(0) + '"/>';
-      out += '<circle class="kalk-lc-dot" cx="' + X(pb) + '" cy="' + Y(inv) + '" r="5"/>';
-      var ta = pb > YEARS * 0.6 ? 'end' : 'start', tx = X(pb) + (ta === 'end' ? -10 : 10);
-      out += '<text class="kalk-lc-label" x="' + tx + '" y="' + (Y(0) - 8) + '" text-anchor="' + ta + '">Návratnost ' + pb.toFixed(1).replace('.', ',') + NB + 'roku</text>';
-    }
-    box.setAttribute('aria-label', 'Graf: investice ' + shortKc(inv) + ' Kč, úspory za ' + YEARS + ' let ' + shortKc(u * YEARS) + ' Kč' +
-      (pbYears <= YEARS ? ', investice se vrátí asi za ' + pbYears.toFixed(1).replace('.', ',') + ' roku' : ', investice se v tomto období nevrátí'));
-    box.innerHTML = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg">' + out + '</svg>';
+    if (box && d) drawBand(box, d);
   }
   window.addEventListener('resize', function () {
     [['jomLine', 'kalkPanel1'], ['fveLine', 'kalkPanel2'], ['tcLine', 'kalkPanel3']].forEach(function (x) {
       var panel = document.getElementById(x[1]);
-      if (panel && !panel.hidden) drawLine(x[0]);
+      var b = document.getElementById(x[0]);
+      // jen při změně šířky (mobilní prohlížeč posílá resize i při schování adresního řádku)
+      if (panel && !panel.hidden && b && b.clientWidth !== b._lcW) drawLine(x[0]);
     });
   });
 
@@ -324,10 +412,10 @@
     }
 
     // Graf 2: kumulativní úspory proti investici
-    lineData.fveLine = { u: total, inv: r.investice_fve };
+    lineData.fveLine = { uLo: total * (1 - RP), uHi: total * (1 + RP), invLo: r.investice_fve * (1 - RP), invHi: r.investice_fve * (1 + RP), navLo: fveNavLo, navHi: fveNavHi };
     drawLine('fveLine');
     var ln = document.getElementById('fveLineNote');
-    if (ln) ln.innerHTML = lineNote(fveNavLo, fveNavHi, r.investice_fve / total);
+    if (ln) ln.innerHTML = lineNote(fveNavLo, fveNavHi);
 
 
     var note = document.getElementById('fveLimitNote');
@@ -385,10 +473,11 @@
       });
       setText('tcCfNote', 'Provoz tepelného čerpadla je počítaný za cenu elektřiny ze sítě ' + String(state.fveCenaEl).replace('.', ',') + ' Kč/kWh.');
       if (plus) {
-        lineData.tcLine = { u: u, inv: inv.mid };
+        var tcLo = inv.lo / (u * (1 + RP)), tcHi = inv.hi / (u * (1 - RP));
+        lineData.tcLine = { uLo: u * (1 - RP), uHi: u * (1 + RP), invLo: inv.lo, invHi: inv.hi, navLo: tcLo, navHi: tcHi };
         drawLine('tcLine');
         var ln = document.getElementById('tcLineNote');
-        if (ln) ln.innerHTML = lineNote(inv.lo / (u * (1 + RP)), inv.hi / (u * (1 - RP)), inv.mid / u);
+        if (ln) ln.innerHTML = lineNote(tcLo, tcHi);
         show(prompt, false);
       } else {
         setText('tcPrompt', u < 0

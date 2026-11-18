@@ -7,6 +7,7 @@
   --text-dim: #8c8c97;
   --card-bg: rgba(24, 24, 26, .55);
   --bg-alt: #05050a;
+  --bg-panel: #111318;
   --surface-1: rgba(255, 255, 255, .05);
   --surface-2: rgba(255, 255, 255, .08);
   --border: rgba(255, 255, 255, .09);
@@ -1592,7 +1593,7 @@ button,input,select,textarea {
 }
 .footer-grid {
   display:grid;
-  grid-template-columns:1.6fr 1fr 1fr 1.3fr;
+  grid-template-columns:1.6fr 1fr 1fr;
   gap:40px;
   padding-bottom:56px;
   border-bottom:1px solid var(--card-border)
@@ -1642,80 +1643,6 @@ button,input,select,textarea {
   color:var(--lime);
   transform:translate(3px)
 }
-.footer-social {
-  display:flex;
-  gap:var(--list-gap);
-  margin-bottom:var(--subhead-gap)
-}
-.footer-social-icon {
-  width:36px;
-  height:36px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid var(--card-border);
-  color:#ffffffb3;
-  transition:background .25s ease,border-color .25s ease,color .25s ease,transform .25s ease
-}
-.footer-social-icon svg {
-  width:16px;
-  height:16px
-}
-.footer-social-icon:hover {
-  background:var(--lime);
-  border-color:var(--lime);
-  color:#0a0a0a;
-  transform:translateY(-3px)
-}
-.footer-newsletter {
-  display:none; /* UX-04: skryto do napojení odesílání */
-  position:relative;
-  max-width:260px
-}
-.footer-newsletter input {
-  width:100%;
-  padding:10px 46px 10px 16px;
-  border-radius:999px;
-  background:var(--surface-1);
-  border:1px solid var(--card-border);
-  color:var(--text-white);
-  font-family:var(--font-body);
-  font-size:var(--field-fs);
-  outline:none;
-  transition:border-color .2s ease
-}
-.footer-newsletter input::placeholder {
-  color:var(--text-dim)
-}
-.footer-newsletter input:focus {
-  border-color:var(--lime)
-}
-.footer-newsletter button {
-  position:absolute;
-  right:4px;
-  top:50%;
-  transform:translateY(-50%);
-  width:32px;
-  height:32px;
-  border-radius:50%;
-  background:var(--lime);
-  border:none;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#0a0a0a;
-  cursor:pointer;
-  transition:background .2s ease,transform .2s ease
-}
-.footer-newsletter button svg {
-  width:16px;
-  height:16px
-}
-.footer-newsletter button:hover {
-  background:var(--lime-dark);
-  transform:translateY(-50%) scale(1.08)
-}
 .footer-bottom {
   padding-top:24px;
   display:flex;
@@ -1747,9 +1674,6 @@ button,input,select,textarea {
   .footer-grid {
     grid-template-columns:1fr;
     row-gap:40px
-  }
-  .footer-newsletter {
-    max-width:none
   }
 
 }
@@ -2388,3 +2312,36 @@ body.rhythm-pilot .jom-savecalc{margin-bottom:0}
 .form-note{margin-top:12px;font:400 var(--fs-caption)/var(--lh-caption) var(--font-body);color:var(--text-dim)}
 .form-note a{color:var(--text-white);font-weight:inherit;text-decoration:underline;text-underline-offset:2px}
 .form-hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* Automatické vyplnění z prohlížeče (e-mail, jméno, telefon…): pole zůstává vzhledově stejné jako při ručním psaní.
+   Prohlížeč jinak přebarví pozadí (na mobilu žlutě nebo modře) a text na tmavou. Pozadí překryjeme jeho původní barvou:
+   zpožděný přechod stačí na počítači, na mobilu je potřeba plný stín. Barvu pole dopočítá js/autofill.js (--af-bg). */
+@keyframes eh-autofill{from{opacity:1}to{opacity:1}}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus{
+  -webkit-text-fill-color:var(--text-white);
+  caret-color:var(--text-white);
+  -webkit-box-shadow:0 0 0 1000px var(--af-bg,rgb(24,25,29)) inset!important;
+  box-shadow:0 0 0 1000px var(--af-bg,rgb(24,25,29)) inset!important;
+  transition:background-color 600000s 0s,color 600000s 0s;
+  animation-name:eh-autofill;
+  animation-duration:1ms
+}
+input:autofill,
+textarea:autofill,
+select:autofill{
+  -webkit-text-fill-color:var(--text-white);
+  caret-color:var(--text-white);
+  box-shadow:0 0 0 1000px var(--af-bg,rgb(24,25,29)) inset!important;
+  transition:background-color 600000s 0s,color 600000s 0s;
+  animation-name:eh-autofill;
+  animation-duration:1ms
+}

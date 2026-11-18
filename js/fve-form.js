@@ -160,7 +160,7 @@
       var pdfData = { inputs: inputsOut, result: last ? last.result : null };
       var pdfContact = {
         name: field('jmeno'), email: field('email'), phone: field('telefon'), role: EH.checked('role'),
-        street: field('ulice'), city: field('mesto'), zip: field('psc'),
+        street: field('ulice'), city: field('mesto'), zip: field('psc').replace(/\s/g, ''),
         financing: EH.checked('financovani'), horizon: EH.checked('horizont'), note: field('poznamka')
       };
       ui.start();
@@ -171,7 +171,7 @@
         role: EH.checked('role'),
         street: field('ulice'),
         city: field('mesto'),
-        zip: field('psc'),
+        zip: field('psc').replace(/\s/g, ''),
         financing: EH.checked('financovani'),
         horizon: EH.checked('horizont'),
         note: field('poznamka'),

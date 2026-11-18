@@ -23,7 +23,7 @@
     if (contracts && contracts.value === 'individual') score += 2;
 
     // Roční spotřeba domu (kWh) → měsíční průměr: nad 3 000 kWh/měs. +2, 1 000–3 000 kWh/měs. +1
-    var annualKwh = parseFloat(document.getElementById('quizAnnual').value) || 0;
+    var annualKwh = (window.EH && EH.numIn ? EH.numIn(document.getElementById('quizAnnual')) : parseFloat(document.getElementById('quizAnnual').value)) || 0;
     var monthlyKwh = annualKwh / 12;
     if (monthlyKwh > 3000) score += 2;
     else if (monthlyKwh >= 1000) score += 1;
@@ -49,8 +49,8 @@
     var breaker = EH.checked('quizBreaker');
     var fve = EH.checked('quizFve');
 
-    var annual = parseFloat(document.getElementById('quizAnnual').value) || 0;
-    var kwp = parseFloat(document.getElementById('quizKwp').value) || 0;
+    var annual = (window.EH && EH.numIn ? EH.numIn(document.getElementById('quizAnnual')) : parseFloat(document.getElementById('quizAnnual').value)) || 0;
+    var kwp = (window.EH && EH.numIn ? EH.numIn(document.getElementById('quizKwp')) : parseFloat(document.getElementById('quizKwp').value)) || 0;
     var orient = KALK.ORIENT[EH.val('quizOrient')] || 0;
     var CONS_NOTE = 'spotřeba odhadnutá z počtu bytů';
 
@@ -157,7 +157,7 @@
       var fveMode = EH.checked('quizFve');
       KALK.nastavOdkaz(toMain, {
         byty: e.apartments,
-        spotreba: parseFloat(document.getElementById('quizAnnual').value) || 0,
+        spotreba: (window.EH && EH.numIn ? EH.numIn(document.getElementById('quizAnnual')) : parseFloat(document.getElementById('quizAnnual').value)) || 0,
         orientace: EH.val('quizOrient'),
         reseni: (fveMode === 'have' || fveMode === 'plan') ? ['jom', 'fve'] : ['jom']
       });
@@ -201,6 +201,31 @@
     box.hidden = !(fve === 'plan' || fve === 'have');
   }
 
+  // Počet bytů (nepovinný): pokud je zadaný, musí být v rozsahu kalkulaček (8 až 300)
+  function checkApts() {
+    var el = document.getElementById('quizApts'), err = document.getElementById('quizAptsErr');
+    if (!el || typeof KALK === 'undefined') return true;
+    var v = parseInt(el.value, 10), bad = !!el.value && (!v || v < KALK.BYTY_MIN || v > KALK.BYTY_MAX);
+    if (err) { err.textContent = bad ? 'Zadejte počet bytů od ' + KALK.BYTY_MIN + ' do ' + KALK.BYTY_MAX + '.' : ''; err.hidden = !bad; }
+    if (bad) { el.setAttribute('aria-invalid', 'true'); el.setAttribute('aria-describedby', 'quizAptsErr'); showStep(1); el.focus(); }
+    else { el.removeAttribute('aria-invalid'); el.removeAttribute('aria-describedby'); }
+    return !bad;
+  }
+  // Pole s rozsahem (spotřeba, výkon FVE): chybná hodnota zastaví přechod dál a ukáže hlášku v příslušném kroku
+  function checkRanges() {
+    if (!window.EH || !EH.validateIn) return true;
+    var p1 = document.getElementById('quizPanel1'), bad = EH.validateIn((p1 && p1.parentNode) || document);
+    if (!bad) return true;
+    var panel = bad.closest('.jom-quiz__panel');
+    if (panel) showStep(parseInt(panel.id.replace('quizPanel', ''), 10));
+    bad.focus();
+    return false;
+  }
+  (function () {
+    var el = document.getElementById('quizApts');
+    if (el) el.addEventListener('input', function () { var err = document.getElementById('quizAptsErr'); if (err) err.hidden = true; el.removeAttribute('aria-invalid'); });
+  })();
+
   var submitted = false;  // po odeslání poptávky se do kroků nedá vracet
   function showStep(n) {
     if (submitted) return;
@@ -227,6 +252,7 @@
     el.setAttribute('aria-label', 'Přejít na krok ' + el.dataset.step + ': ' + (lab ? lab.textContent.trim() : ''));
     function go() {
       var n = parseInt(el.dataset.step, 10);
+      if (n > 1 && (!checkApts() || !checkRanges())) return;
       if (n === 3) showResult(calcScore());
       showStep(n);
     }
@@ -239,6 +265,7 @@
   document.querySelectorAll('.jom-quiz__btn-next').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var next = parseInt(btn.dataset.next, 10);
+      if (!checkApts() || !checkRanges()) return;
       if (next === 3) showResult(calcScore());
       showStep(next);
     });
@@ -251,7 +278,7 @@
   });
 
   // ── Uložení do Supabase: čitelná struktura (schema 2) a věta summary ──
-  function numOrNull(id) { var v = parseFloat(document.getElementById(id).value); return v > 0 ? v : null; }
+  function numOrNull(id) { var el = document.getElementById(id), v = (window.EH && EH.numIn) ? EH.numIn(el) : parseFloat(el.value); return v > 0 ? v : null; }
   function buildAnswers(score) {
     var est = calcEstimate(), E = KALK_ENGINE;
     var estimate = null;
@@ -337,6 +364,7 @@
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    if (!checkApts() || !checkRanges()) return;
     if (!form.checkValidity()) { form.reportValidity(); return; }
     var ui = EH.formUi(form);
     var hp = form.querySelector('input[name="website"]');

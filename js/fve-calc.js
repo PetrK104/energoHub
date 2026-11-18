@@ -50,7 +50,7 @@
 
   function recalculate() {
     var apts       = parseInt(sliderApts.value, 10) || 12;
-    var annualInput = parseFloat(numConsump.value) || 0;
+    var annualInput = (window.EH && EH.numIn ? EH.numIn(numConsump) : parseFloat(numConsump.value)) || 0;
     var orient     = radio('calcOrient') || 'J';
     var hasBattery = radio('calcBattery') === 'yes';
     var hasJom     = radio('calcJom') !== 'no';
