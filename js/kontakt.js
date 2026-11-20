@@ -29,9 +29,16 @@
         ui.done();
         if (fields) fields.hidden = true;
         if (success) success.hidden = false;
+        var st = success && success.querySelector('.kontakt-form__success-title');
+        if (st) st.focus();
       }).catch(function (err) {
         ui.fail(err.message);
       });
     });
   }
+
+  // Po návratu na stránku (bfcache) formulář vždy začíná znovu
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) window.location.reload();
+  });
 })();

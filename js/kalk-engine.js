@@ -202,6 +202,7 @@ var KALK_ENGINE = (function () {
     if (sel.zatepleni) {
       inputs.windows = { state: inp.zatStav || 'stara', area_m2_per_apartment: r.plocha_byt };
     }
+    if (sel.jom) inputs.connection = { distributor: extra.jomDistributor || null, apartment_connection: extra.jomPripojeni || null };
     if (typeof KALK !== 'undefined' && KALK.predpoklady) inputs.assumptions = KALK.predpoklady();
 
     function krok(rw) { return rw ? { investment_czk: _rk(rw.inv), saving_year_czk: _rk(rw.us), payback_years: _rl(rw.nav) } : null; }
@@ -279,6 +280,10 @@ var KALK_ENGINE = (function () {
     }
     if (sel.zatepleni) L.push('Stav oken a dveří: ' + (STAV[inp.zatStav] || STAV.stara) + ', plocha ' + _cz(r.plocha_byt, 1) + ' m² na byt.');
     if (rows.jom) L.push('JOM: ' + krokTxt(rows.jom) + '.');
+    if (sel.jom && (extra.jomDistributor || extra.jomPripojeni)) {
+      var DISTR = { cez: 'ČEZ Distribuce', egd: 'EG.D (E.ON)', pre: 'PREdistribuce' }, PRIP = { '1x25': '1fázové (1×25 A)', '3x20': '3fázové (3×20 A)' };
+      L.push('Upřesnění k JOM: distribuční území ' + (DISTR[extra.jomDistributor] || 'neuvedeno') + ', připojení bytů ' + (PRIP[extra.jomPripojeni] || 'různé / neuvedeno') + '.');
+    }
     if (rows.fve) {
       L.push('FVE' + (rows.fve.name.indexOf('JOM') > -1 ? ' včetně JOM' : '') + ': ' + _cz(r.vykon, 1) + ' kWp' +
         (r.fveOmezeni === 'max' ? ' (horní mez výkonu)' : r.fveOmezeni === 'min' ? ' (spodní mez výkonu)' : '') + ', ' + krokTxt(rows.fve) + '.');

@@ -7,6 +7,8 @@
     orientTouched: false,
     fveCenaEl: KALK.FVE_CENA_EL,
     tcNakladyRucne: 0,
+    jomDistributor: '',
+    jomPripojeni: '',
     zatStav: 'stara',
     zatPlocha: 0,
     period: 'rok',
@@ -125,6 +127,9 @@
 
     if (orient)  { state.fveOrientace = KALK.ORIENT[orient.value] || 1.0; state.fveOrientaceKlic = KALK.ORIENT[orient.value] ? orient.value : 'J'; }
     if (cenaEl)  state.fveCenaEl      = (window.EH && EH.numIn ? EH.numIn(cenaEl) : parseNum(cenaEl.value)) || KALK.FVE_CENA_EL;
+    var jDist = document.getElementById('jomDistributor'), jPrip = document.getElementById('jomPripojeni');
+    if (jDist) state.jomDistributor = jDist.value;
+    if (jPrip) state.jomPripojeni = jPrip.value;
     if (tcRuc) state.tcNakladyRucne = Math.round(parseNum(tcRuc.value)) || 0;
     if (zatStav) state.zatStav        = zatStav.value || 'stara';
     if (tcDum)   state.domZateplen    = tcDum.value !== 'ne';
@@ -772,7 +777,7 @@ document.querySelectorAll('.kalk-input-wrap').forEach(function (wrap) {
     });
   });
 })();
-['fveOrientace', 'fveCenaEl', 'tcCenaEl', 'tcNakladyInput', 'zatNakladyInput', 'zatStav', 'tcDum', 'zatPlochaInput'].forEach(function (id) {
+['fveOrientace', 'jomDistributor', 'jomPripojeni', 'fveCenaEl', 'tcCenaEl', 'tcNakladyInput', 'zatNakladyInput', 'zatStav', 'tcDum', 'zatPlochaInput'].forEach(function (id) {
     var el = document.getElementById(id);
     if (el) { el.addEventListener('input', recalcCurrent); el.addEventListener('change', recalcCurrent); }
   });
@@ -911,6 +916,20 @@ document.querySelectorAll('.kalk-input-wrap').forEach(function (wrap) {
       input.removeAttribute('aria-invalid'); input.removeAttribute('aria-describedby');
     }
   }
+  // Nápověda v polích nákladů na teplo: orientační částka podle počtu bytů (nepočítá se s ní)
+  function updateNakladyHint() {
+    var byty = parseInt((document.getElementById('kalkByty') || {}).value, 10);
+    var ok = byty >= KALK.BYTY_MIN && byty <= KALK.BYTY_MAX;
+    var txt = 'např. ' + (ok ? Math.round(byty * KALK.TEPLO_NAKLADY_NAPOVEDA_NA_BYT / 10000) * 10000 : 700000).toLocaleString('cs-CZ').replace(/\s/g, '\u00a0');
+    ['tcNakladyInput', 'zatNakladyInput'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.setAttribute('placeholder', txt);
+    });
+  }
+  var bytyHintEl = document.getElementById('kalkByty');
+  if (bytyHintEl) { bytyHintEl.addEventListener('input', updateNakladyHint); updateNakladyHint(); }
+  KALK.vazNapovedu(['kalkByty'], ['kalkSpotreba'], KALK.SPOTREBA_NA_BYT, 5000, 85000);
+
   ['kalkByty', 'kalkSpotreba'].forEach(function (id) {
     var el = document.getElementById(id);
     if (el) el.addEventListener('input', function () { setFieldError(id, id + 'Err', ''); });
@@ -1024,6 +1043,8 @@ document.querySelectorAll('.kalk-input-wrap').forEach(function (wrap) {
       var ulozeno = KALK_ENGINE.exportUlozeni(lastInp, results, {
         spotrebaOdhad: !!state.spotrebaOdhad,
         orientKlic: state.fveOrientaceKlic,
+        jomDistributor: state.jomDistributor,
+        jomPripojeni: state.jomPripojeni,
         orientTouched: !!state.orientTouched
       });
       var kontaktPdf = { name: EH.val('kalkJmeno'), email: EH.val('kalkEmail'), phone: EH.val('kalkTel') };

@@ -245,6 +245,27 @@
       <h2 data-search-keys="JOM kalkulace, sloučení odběrných míst, výpočet JOM, úspory JOM, kalkulačka JOM" class="kalk-panel__title" id="slouceni-odbernych-mist-jom">Sloučení odběrných míst (JOM)</h2>
       <p class="kalk-panel__lead"><a href="slovnik.html#term-jom">JOM</a> (jednotné odběrné místo) sjednotí všechna odběrná místa pod jednu smlouvu. Dům přestane platit distribuční poplatky zvlášť za každý byt&nbsp;– a&nbsp;to je základ pro efektivní sdílení energie z&nbsp;FVE.</p>
 
+      <details class="kalk-refine">
+        <summary>Upřesnit výpočet</summary>
+        <div class="kalk-refine__body">
+          <label class="kalk-refine__field">Distribuční území
+            <select id="jomDistributor">
+              <option value="">Nevím</option>
+              <option value="cez">ČEZ Distribuce</option>
+              <option value="egd">EG.D (E.ON)</option>
+              <option value="pre">PREdistribuce (Praha)</option>
+            </select>
+          </label>
+          <label class="kalk-refine__field">Připojení bytů
+            <select id="jomPripojeni">
+              <option value="">Různé / nevím</option>
+              <option value="1x25">1fázové (1×25 A)</option>
+              <option value="3x20">3fázové (3×20 A)</option>
+            </select>
+          </label>
+        </div>
+      </details>
+
       <div class="kalk-result-row kalk-result-row--inline">
         <div class="kalk-result-box">
           <span class="kalk-result-label">Orientační roční úspora</span>
@@ -679,7 +700,7 @@
           </div>
           <label class="form-consent">
             <input type="checkbox" id="kalkConsent" required>
-            <span id="kalkConsentText">Souhlasím se zpracováním svých osobních údajů (jméno, e-mail, telefon a&nbsp;zadané parametry domu) společností EnergoHub za účelem zpracování mé poptávky a&nbsp;jejich předání dodavatelům energetických řešení, kteří mi na ni odpoví. Souhlas mohu kdykoli odvolat. Více v&nbsp;<a href="ochrana-osobnich-udaju.html">Zásadách ochrany osobních údajů</a>.</span>
+            <span id="kalkConsentText">Souhlasím se zpracováním svých osobních údajů (jméno, e-mail, telefon a&nbsp;zadané parametry domu) společností EnergoHub za účelem zpracování mé poptávky a&nbsp;jejich předání dodavatelům energetických řešení, kteří mi na ni odpoví. Souhlas mohu kdykoli odvolat. Více v&nbsp;<a href="ochrana-osobnich-udaju.html" target="_blank" rel="noopener">Zásadách ochrany osobních údajů</a>.</span>
           </label>
           <div class="form-hp" aria-hidden="true"><label>Web <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
           <button type="submit" class="btn btn-primary">Odeslat plán úspor</button>
@@ -754,11 +775,11 @@
 <script src="js/navbar.js" defer></script>
 <script src="js/autofill.js" defer></script>
 <script src="js/input-filter.js?v=5" defer></script>
-<script src="js/kalk-constants.js?v=13"></script>
+<script src="js/kalk-constants.js?v=16"></script>
 <script src="js/kalk-ceny.js?v=3"></script>
-<script src="js/kalk-engine.js?v=12"></script>
+<script src="js/kalk-engine.js?v=13"></script>
 <script src="js/kalk-pdf.js?v=12" defer></script>
-<script src="js/kalkulacka.js?v=57" defer></script>
+<script src="js/kalkulacka.js?v=60" defer></script>
 <script type="module" src="assets/js/search-overlay.js?v=2"></script>
 <script src="js/input-clear.js?v=3" defer></script>
 </body>

@@ -55,6 +55,8 @@ var KALK = {
   TEPLO_KWH_ZATEPLENY:     8000,
   TEPLO_KWH_NEZATEPLENY:   12000,
   TEPLO_KWH_NA_BYT:        8000,   // výchozí hodnota (zateplený dům)
+  // Jen nápověda v poli „Roční náklady na teplo a TUV dnes“ (placeholder), do výpočtu nevstupuje. ODHAD, neověřeno.
+  TEPLO_NAKLADY_NAPOVEDA_NA_BYT: 29000,   // Kč/byt/rok (včetně DPH)
   TC_COP:                  3.0,    // konzervativní hodnota
 
   // Okna a dveře (orientační odhady, neověřené). Úspora = podíl z nákladů na teplo podle stavu oken,
@@ -217,4 +219,20 @@ KALK.predpoklady = function () {
     rozpeti: KALK.ROZPETI,
     rozpeti_nevim: KALK.ROZPETI_NEVIM
   };
+};
+
+// Nápověda (placeholder) v polích podle počtu bytů: orientační částka, nevstupuje do výpočtu.
+// bytyIds: pole id vstupů s počtem bytů, cile: id polí s nápovědou, perByt: hodnota na byt, krok: zaokrouhlení, vychozi: text bez platného počtu bytů
+KALK.vazNapovedu = function (bytyIds, cile, perByt, krok, vychozi) {
+  function upd(e) {
+    // Při změně se bere hodnota pole, které ji vyvolalo (posuvník a číslo se synchronizují později)
+    var src = e && e.target && e.target.id ? e.target : document.getElementById(bytyIds[bytyIds.length - 1]);
+    var byty = src ? parseInt(src.value, 10) : 0;
+    var ok = byty >= KALK.BYTY_MIN && byty <= KALK.BYTY_MAX;
+    var n = ok ? Math.round(byty * perByt / krok) * krok : vychozi;
+    var txt = 'např. ' + n.toLocaleString('cs-CZ').replace(/\s/g, ' ');
+    cile.forEach(function (id) { var el = document.getElementById(id); if (el) el.setAttribute('placeholder', txt); });
+  }
+  bytyIds.forEach(function (id) { var el = document.getElementById(id); if (el) el.addEventListener('input', upd); });
+  upd();
 };

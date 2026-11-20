@@ -754,7 +754,7 @@
 
         <label class="form-consent">
           <input type="checkbox" name="gdpr" required>
-          <span id="fveConsentText">Souhlasím se zpracováním svých osobních údajů (jméno, e-mail, telefon, adresa domu a&nbsp;údaje z&nbsp;formuláře) společností EnergoHub za účelem vyřízení mé poptávky fotovoltaiky a&nbsp;jejich předání dodavatelům, kteří mi na ni odpoví. Souhlas mohu kdykoli odvolat. Více v&nbsp;<a href="ochrana-osobnich-udaju.html">Zásadách ochrany osobních údajů</a>.</span>
+          <span id="fveConsentText">Souhlasím se zpracováním svých osobních údajů (jméno, e-mail, telefon, adresa domu a&nbsp;údaje z&nbsp;formuláře) společností EnergoHub za účelem vyřízení mé poptávky fotovoltaiky a&nbsp;jejich předání dodavatelům, kteří mi na ni odpoví. Souhlas mohu kdykoli odvolat. Více v&nbsp;<a href="ochrana-osobnich-udaju.html" target="_blank" rel="noopener">Zásadách ochrany osobních údajů</a>.</span>
         </label>
 
         <div class="form-hp" aria-hidden="true"><label>Web <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
@@ -1008,9 +1008,10 @@
 <script src="js/fve-demand.js" defer></script>
 <script src="js/fve-costs.js" defer></script>
 <script src="js/input-filter.js?v=5" defer></script>
-<script src="js/kalk-constants.js?v=13"></script>
+<script src="js/kalk-constants.js?v=16"></script>
+<script>KALK.vazNapovedu(['calcApts','calcAptsNum'],['calcConsumption'],KALK.SPOTREBA_NA_BYT,5000,40000);</script>
 <script src="js/kalk-ceny.js?v=3"></script>
-<script src="js/kalk-engine.js?v=12"></script>
+<script src="js/kalk-engine.js?v=13"></script>
 <script src="js/fve-calc.js?v=16" defer></script>
 <script src="js/kalk-pdf.js?v=12" defer></script>
 <script src="js/fve-form.js?v=18" defer></script><script>(function(){var menu=document.getElementById('navMobile');var navbar=document.querySelector('.navbar');if(!menu||!navbar)return;new MutationObserver(function(){navbar.classList.toggle('navbar--menu-open',menu.classList.contains('is-open'));}).observe(menu,{attributes:true,attributeFilter:['class']});})();</script>

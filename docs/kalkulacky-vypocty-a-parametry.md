@@ -94,8 +94,8 @@ Zdroj: cenové výměry ERÚ č. 13/2025 a 14/2025, **převzato z ceníku dodava
 | 46 | PRE, jistič 1×25 A | Měsíční plat za jistič | 87 Kč/měs. | PŘEVZATO | | `distribuce.pre.D02d.jistic` |
 | 47 | PRE, jistič 3×20 A | totéž | 173 Kč/měs. | PŘEVZATO | | totéž |
 | 48 | Provoz nesíťové infrastruktury | Měsíční platba za odběrné místo | 12,87 Kč/měs. | PŘEVZATO | | `provoz_nesitove_infrastruktury` |
-| 49 | POZE podle jističe | Platba za ampér a fázi (platí se nižší z #49 a #50) | 8,32 Kč/A/fáze/měs. | PŘEVZATO | | `poze_jistic` |
-| 50 | POZE podle spotřeby | Platba za spotřebu | 495 Kč/MWh | PŘEVZATO | | `poze_spotreba` |
+| 49 | POZE podle jističe | Platba za ampér a fázi (platí se nižší z #49 a #50). **Od 1. 1. 2026 nejspíš nulová** (viz D7) | 8,32 Kč/A/fáze/měs. | PŘEVZATO, ZASTARALÉ | | `poze_jistic` |
+| 50 | POZE podle spotřeby | Platba za spotřebu. **Od 1. 1. 2026 nulová** podle ERÚ (viz D7) | 495 Kč/MWh | PŘEVZATO, ZASTARALÉ | | `poze_spotreba` |
 | 51 | Systémové služby | Platba za spotřebu | 164,24 Kč/MWh | PŘEVZATO | | `systemove_sluzby` |
 
 ### A7. Pravidla modelu
@@ -209,3 +209,16 @@ Vyhodnocení: **7 a více** = vysoká vhodnost, **4 až 6** = střední, **0 až
 4. **Rozpětí v dotazníku JOM** se zvětší na ±25 % i kvůli nevybranému distributorovi a jističi, které odhad vůbec neovlivňují.
 5. **Pevné platby uložené z dotazníku jsou bez DPH**, zbytek výpočtů je s DPH.
 6. **Při každé změně cen nebo vzorců zvýšit `KALK.VERZE`** v `js/kalk-constants.js`, aby šlo u uložené poptávky poznat, z čeho byla spočítaná.
+7. **POZE [49, 50] jsou hodnoty z roku 2025.** Tisková zpráva ERÚ z 29. 12. 2025 (https://eru.gov.cz/sites/default/files/obsah/prilohy/20251229tzzmenovycenovyvymer.docx) uvádí, že od 1. 1. 2026 neplatí odběratelé žádné příspěvky na POZE (financuje je stát; u domácností šlo o 495 Kč/MWh bez DPH). Zbývá ověřit v cenovém výměru č. 15/2025 (věstník 19/2025), že zaniká i platba podle jističe [49], a zkontrolovat pozdější změnu, cenový výměr č. 1/2026 z 30. 4. 2026 (věstník 2/2026). Dopad v kódu: jen údaj „náklady domu bez JOM“ v `regulovane()`, úspora JOM ani investice se nemění. Při ověření nastavit obě hodnoty na 0 a zvýšit `KALK.VERZE`.
+8. **Srovnání úspory JOM na byt a rok [13]** (jen k ověření, nic z toho není převzaté do kódu):
+
+   | Zdroj | Úspora na byt a rok | Poznámka |
+   |---|---|---|
+   | Náš kód (údaj majitele) | 2 000 Kč | plošná hodnota |
+   | Helioware, vzorové domy z jejich článku | asi 2 600 Kč (32 bytů, 1fázové), asi 4 800 Kč (20 bytů, 3fázové) | údaje dodavatele, neověřeno |
+   | TZB-info / estav.cz, dům s 21 byty | asi 3 000 Kč včetně DPH | skutečný případ, zahrnuje i zrušení stálých plateb dodavatele |
+   | Vložený text od majitele | 3 500 Kč (1fázové), 7 000 Kč (3fázové) | původ neznámý; horní hodnota je nad vlastním výpočtem níže |
+   | Výpočet z ověřených cen distribuce 2026 (jistič a provoz, včetně DPH) | 1fázové 1×25 A asi 1 450 až 1 670 Kč, 3fázové 3×20 A asi 2 700 až 3 160 Kč | bez stálého platu dodavatele a bez nákladů nového odběrného místa; ceny jističů ještě ověřit |
+
+   Rozdíl mezi 1fázovým a 3fázovým připojením je skutečný (zhruba dvojnásobný). Návrh na později: počítat úsporu JOM z pevných plateb podle distribučního území a připojení, až budou ověřené ceny jističů a stálý plat dodavatele.
+9. **Hlavní kalkulačka má v kroku JOM pole „Distribuční území“ a „Připojení bytů“** (Upřesnit výpočet). Zatím se jen ukládají k poptávce a do výpočtu nevstupují.
