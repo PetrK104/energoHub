@@ -87,9 +87,11 @@
   transition: border-color .15s;
   /* prevent zoom on iOS */
   -webkit-appearance: none;
+  min-height:var(--field-h);
+  box-sizing:border-box;
 }
 .search-input::placeholder        { color: var(--text-muted); opacity: .55; }
-.search-input:focus               { border-color: rgba(183,241,61,.45); }
+.search-input:focus               { border-color: var(--lime);outline:none;box-shadow:0 0 0 1px var(--lime) }
 /* hide native × in search inputs */
 .search-input::-webkit-search-cancel-button { display: none; }
 
@@ -143,7 +145,7 @@
 /* ── Výsledek ───────────────────────────────────────────────────────────── */
 .search-result {
   display: block;
-  padding: 14px 20px;
+  padding: 16px 20px;
   text-decoration: none;
   border-bottom: 1px solid var(--border);
   outline: none;
@@ -177,7 +179,7 @@
   font-family: var(--font-body);
   font-size: 10px;
   font-weight: 600;
-  letter-spacing: .07em;
+  letter-spacing: .06em;
   text-transform: uppercase;
   color: rgba(183,241,61,.65);
 }
@@ -214,16 +216,16 @@
 
 /* Sekce pod skupinou — o stupeň nižší vizuální váha */
 .search-result--grouped {
-  padding-left: 24px;
+  padding-left: 20px;
 }
 .search-result--grouped .search-result__title {
   font-weight: 500;
-  color: rgba(255,255,255,.82);
+  color: rgba(255,255,255,.85);
 }
 
 /* Zvýraznění shody */
 mark {
-  background: rgba(183,241,61,.18);
+  background: rgba(183,241,61,.2);
   color: var(--lime);
   border-radius: 2px;
   padding: 0 2px;
@@ -238,7 +240,7 @@ mark {
   font-family: var(--font-body);
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: .07em;
+  letter-spacing: .06em;
   text-transform: uppercase;
   color: rgba(185,185,194,.45);
   margin-bottom: 4px;
@@ -278,7 +280,7 @@ mark {
   font-size: 13px;
   color: rgba(185,185,194,.6);
   line-height: 1.9;
-  padding-left: 18px;
+  padding-left: 20px;
   margin: 0 0 16px;
 }
 .search-empty-link {
@@ -309,7 +311,7 @@ mark {
     min-width: 0;
     box-sizing: border-box;
   }
-  .search-result { padding: 12px 16px; overflow-wrap: anywhere; }
+  .search-result { padding: 16px 20px; overflow-wrap: anywhere; }
   .search-group__header { padding: 12px 16px 8px; }
   .search-result--grouped { padding-left: 20px; }
 }

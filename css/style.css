@@ -99,7 +99,7 @@ button,input,select,textarea {
   border:1px solid var(--border-strong);
   backdrop-filter:blur(20px) saturate(160%);
   -webkit-backdrop-filter:blur(20px) saturate(160%);
-  box-shadow:0 8px 32px #00000059
+  box-shadow:var(--shadow-md)
 }
 .navbar-logo {
   display:flex;
@@ -187,7 +187,7 @@ button,input,select,textarea {
   border:1px solid var(--border);
   border-radius:8px;
   padding:8px;
-  box-shadow:0 12px 40px #00000080
+  box-shadow:var(--shadow-md)
 }
 .nav-dropdown:hover .nav-dropdown__menu {
   opacity:1;
@@ -197,7 +197,7 @@ button,input,select,textarea {
 }
 .nav-dropdown__menu a {
   display:block;
-  padding:10px 14px;
+  padding:12px 16px;
   border-radius:8px;
   font-size:14px;
   font-weight:500;
@@ -215,7 +215,7 @@ button,input,select,textarea {
   align-items:center;
   justify-content:space-between;
   gap:12px;
-  padding:10px 14px;
+  padding:12px 16px;
   border-radius:8px;
   opacity:.4;
   cursor:default
@@ -250,7 +250,7 @@ button,input,select,textarea {
   }
 
   .guides-title { font-size:28px }
-  .guide-card-title { font-size:20px }
+  .guide-card-title { font-size:var(--h3-md) }
   .process-step__num { font-size:64px }
 }
 .navbar-burger {
@@ -368,7 +368,7 @@ button,input,select,textarea {
     display:none
   }
   .navbar {
-    padding:10px 12px 10px 18px
+    padding:12px 12px 12px 20px
   }
   .navbar-actions {
     margin-left:auto
@@ -389,7 +389,7 @@ button,input,select,textarea {
     padding:0 16px
   }
 
-  .process-step__title { font-size:20px }
+  .process-step__title { font-size:var(--h3-md) }
 }
 .hero {
   --hero-title-color: var(--text-white);
@@ -695,22 +695,22 @@ button,input,select,textarea {
 }
 .btn-secondary:hover {
   border-color:var(--lime);
-  background:#b7f13d14
+  background:rgba(183,241,61,.06)
 }
 .calc-card {
   display:flex;
   flex-direction:column;
-  gap:14px;
+  gap:16px;
   width:100%;
   max-width:clamp(460px,31.9vw,614px);
   margin-top:32px;
-  padding:22px 24px 20px;
+  padding:24px 24px 20px;
   border-radius:8px;
   background:var(--hero-card-bg);
   border:1px solid var(--hero-card-border);
   backdrop-filter:blur(20px) saturate(160%);
   -webkit-backdrop-filter:blur(20px) saturate(160%);
-  box-shadow:0 20px 50px #00000059;
+  box-shadow:var(--shadow-lg);
   transition:background .6s ease,border-color .6s ease
 }
 .calc-title {
@@ -914,7 +914,7 @@ button,input,select,textarea {
   align-items:center;
   justify-content:space-between;
   gap:24px;
-  padding:14px 16px;
+  padding:16px 16px;
   border-radius:8px;
   text-decoration:none;
   cursor:pointer;
@@ -924,8 +924,8 @@ button,input,select,textarea {
   transition:background .15s,border-color .15s
 }
 .hero-nav__item:hover {
-  background:#b7f13d12;
-  border-color:#b7f13d47
+  background:rgba(183,241,61,.06);
+  border-color:rgba(183,241,61,.3)
 }
 .hero-nav__item-text {
   display:flex;
@@ -943,7 +943,7 @@ button,input,select,textarea {
 }
 .hero-nav__item-desc {
   font:400 var(--fs-caption)/var(--lh-caption) var(--font-body, "Figtree", sans-serif);
-  color:var(--hero-text-color, rgba(255,255,255,.45))
+  color:var(--hero-text-color, rgba(255,255,255,.6))
 }
 .hero-nav__item-arrow {
   flex-shrink:0;
@@ -1061,8 +1061,11 @@ button,input,select,textarea {
   .hero[data-mode=day] .hero-title,.hero[data-mode=day] .hero-text {
     color:var(--hero-title-color)
   }
-  .hero-title,.hero-text {
-    text-shadow:0 2px 16px rgba(0,0,0,.55)
+  .hero-text{
+    text-shadow:0 2px 16px rgba(0,0,0,.5)
+  }
+.hero-title{
+    text-shadow:0 2px 16px rgba(0,0,0,.5)
   }
   .hero[data-mode=day] .hero-title,.hero[data-mode=day] .hero-text {
     text-shadow:0 2px 16px rgba(255,255,255,.6)
@@ -1148,9 +1151,9 @@ button,input,select,textarea {
 }
 .guide-card:hover {
   transform:translateY(-4px);
-  border-color:#b7f13d59;
+  border-color:rgba(183,241,61,.3);
   background:var(--surface-1);
-  box-shadow:0 16px 40px #00000059
+  box-shadow:var(--shadow-md)
 }
 .guide-card--soon .guide-card-body,.guide-card--soon .guide-card-illustration-wrap {
   opacity:.28;
@@ -1206,10 +1209,10 @@ button,input,select,textarea {
 .guide-card-title {
   font-family:var(--font-heading);
   font-weight:600;
-  font-size:clamp(21px,1.46vw,28px);
-  line-height:1.3;
+  font-size:var(--h3-md);
+  line-height:var(--lh-card-title);
   color:var(--text-white);
-  margin-bottom:10px
+  margin-bottom:12px
 }
 .guide-card-text {
   font-family:var(--font-body);
@@ -1404,7 +1407,7 @@ button,input,select,textarea {
 .process-step__num {
   display:block;
   font-family:var(--font-heading);
-  font-weight:800;
+  font-weight:700;
   font-size:clamp(72px,8vw,110px);
   line-height:.9;
   color:#ffffff12;
@@ -1414,8 +1417,8 @@ button,input,select,textarea {
 }
 .process-step__title {
   font-family:var(--font-heading);
-  font-weight:700;
-  font-size:clamp(20px,1.4vw,24px);
+  font-weight:600;
+  font-size:var(--h3-md);
   color:#ffffff47;
   margin-bottom:8px;
   transition:color .4s ease;line-height:var(--lh-card-title)}
@@ -1497,7 +1500,7 @@ button,input,select,textarea {
     padding:0
   }
   .process-step__num {
-    margin-bottom:10px
+    margin-bottom:12px
   }
 
   .process-title { font-size:var(--fs-h2) }
@@ -1527,7 +1530,7 @@ button,input,select,textarea {
   right:24px;
   bottom:24px;
   display:flex;
-  gap:10px
+  gap:12px
 }
 .showcase-arrow {
   width:44px;
@@ -1582,7 +1585,7 @@ button,input,select,textarea {
   right:0;
   height:1px;
   background:linear-gradient(90deg,transparent 0%,rgba(183,241,61,.65) 50%,transparent 100%);
-  box-shadow:0 0 24px 3px #b7f13d4d;
+  box-shadow:0 0 24px 3px rgba(183,241,61,.3);
   pointer-events:none
 }
 .footer-container {
@@ -1620,7 +1623,7 @@ button,input,select,textarea {
   font-family:var(--font-body);
   font-size:12px;
   font-weight:600;
-  letter-spacing:.08em;
+  letter-spacing:.1em;
   text-transform:uppercase;
   color:var(--text-dim);
   margin-bottom:var(--subhead-gap)
@@ -1686,7 +1689,7 @@ button,input,select,textarea {
   display:flex;
   align-items:center;
   gap:8px;
-  padding:8px 14px;
+  padding:8px 16px;
   border-radius:8px;
   background:var(--surface-1);
   border:1px solid var(--border);
@@ -1702,7 +1705,7 @@ button,input,select,textarea {
   font-weight:500;
   color:var(--text-dim);
   line-height:1;
-  letter-spacing:.04em
+  letter-spacing:.06em
 }
 .guide-steps__label {
   font-family:var(--font-body);
@@ -1716,10 +1719,10 @@ button,input,select,textarea {
 .guide-steps__item--active {
   background:var(--lime);
   border-color:transparent;
-  box-shadow:0 0 20px rgba(183,241,61,.28),0 0 6px rgba(183,241,61,.12)
+  box-shadow:0 0 20px rgba(183,241,61,.3),0 0 6px rgba(183,241,61,.12)
 }
 .guide-steps__item--active .guide-steps__num {
-  color:rgba(0,0,0,.4)
+  color:rgba(0,0,0,.6)
 }
 .guide-steps__item--active .guide-steps__label {
   color:#0c0e08
@@ -1729,10 +1732,10 @@ a.guide-steps__item:hover {
   border-color:var(--border-strong)
 }
 a.guide-steps__item:hover .guide-steps__label {
-  color:rgba(255,255,255,.65)
+  color:rgba(255,255,255,.7)
 }
 .guide-steps__sep {
-  color:rgba(255,255,255,.16);
+  color:rgba(255,255,255,.6);
   font-size:12px;
   flex-shrink:0;
   line-height:1;
@@ -1761,12 +1764,12 @@ a.guide-steps__item:hover .guide-steps__label {
   font-size:var(--fs-h2);
   font-weight:600;
   color:var(--text-white);
-  margin:10px 0 48px;line-height:var(--lh-heading)}
+  margin:12px 0 48px;line-height:var(--lh-heading)}
 .home-faq__list {
   width:100%
 }
 .home-faq__search {
-  margin-top: 64px;
+  margin-top: var(--search-gap);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1777,6 +1780,9 @@ a.guide-steps__item:hover .guide-steps__label {
   color: var(--text-white);
   text-align: center;
   margin: 0;
+  font-size:var(--h3-lg);
+  font-weight:600;
+  line-height:var(--lh-heading);
 }
 .home-faq__search-sub {
   font:400 var(--fs-small)/var(--lh-small) var(--font-body);
@@ -1789,12 +1795,12 @@ a.guide-steps__item:hover .guide-steps__label {
   max-width: 560px;
 }
 @media(max-width:760px) {
-  .home-faq__search-title { font-size:22px }
+  .home-faq__search-title { font-size:var(--h3-lg) }
 }
 .fve-faq .fve-eyebrow,
 .fve-faq__title { text-align: center; }
 .fve-faq__search {
-  margin-top: 64px;
+  margin-top: var(--search-gap);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1805,6 +1811,9 @@ a.guide-steps__item:hover .guide-steps__label {
   color: var(--text-white);
   text-align: center;
   margin: 0;
+  font-size:var(--h3-lg);
+  font-weight:600;
+  line-height:var(--lh-heading);
 }
 .fve-faq__search-sub {
   font:400 var(--fs-small)/var(--lh-small) var(--font-body);
@@ -1832,7 +1841,9 @@ a.guide-steps__item:hover .guide-steps__label {
   margin: 0;
 }
 @media(max-width:760px) {
-  .home-faq__search-title,.fve-faq__search-title,.site-search__title { font-size:22px }
+  .site-search__title{ font-size:22px }
+.fve-faq__search-title{ font-size:var(--h3-lg) }
+.home-faq__search-title{ font-size:var(--h3-lg) }
 }
 .site-search__sub {
   font:400 var(--fs-small)/var(--lh-small) var(--font-body);
@@ -1916,14 +1927,14 @@ a.guide-steps__item:hover .guide-steps__label {
   font-family:var(--font-body);
   font-size:13px;
   font-weight:600;
-  letter-spacing:.08em;
+  letter-spacing:.1em;
   text-transform:uppercase;
   color:var(--lime);
   margin-bottom:16px
 }
 
 /* ── Calc section redesign — full-width, lime glow + glass ── */
-.calc-section {display:block;background:var(--surface-1);border-top:1px solid rgba(183,241,61,.14);border-bottom:1px solid rgba(183,241,61,.14);overflow:hidden;backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);box-shadow:0 0 120px rgba(183,241,61,.05),inset 0 1px 0 rgba(255,255,255,.06)}
+.calc-section {display:block;background:var(--surface-1);border-top:1px solid rgba(183,241,61,.12);border-bottom:1px solid rgba(183,241,61,.12);overflow:hidden;backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);box-shadow:0 0 120px rgba(183,241,61,.06),inset 0 1px 0 rgba(255,255,255,.04)}
 
 .calc-section::before {
   content:"";
@@ -1933,7 +1944,7 @@ a.guide-steps__item:hover .guide-steps__label {
   transform:translate(-50%,-50%);
   width:min(1000px,120vw);
   height:500px;
-  background:radial-gradient(ellipse at center,rgba(183,241,61,.12) 0%,rgba(183,241,61,.04) 40%,transparent 70%);
+  background:radial-gradient(ellipse at center,rgba(183,241,61,.12) 0%,rgba(183,241,61,.06) 40%,transparent 70%);
   pointer-events:none
 }
 
@@ -1945,7 +1956,7 @@ a.guide-steps__item:hover .guide-steps__label {
   transform:translate(-50%,-50%);
   width:600px;
   height:600px;
-  background:radial-gradient(ellipse at center,rgba(183,241,61,.05) 0%,transparent 60%);
+  background:radial-gradient(ellipse at center,rgba(183,241,61,.06) 0%,transparent 60%);
   pointer-events:none;
   border-radius:50%
 }
@@ -2043,7 +2054,7 @@ a.guide-steps__item:hover .guide-steps__label {
 .home-about__goal{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:12px}
 .home-about__goal-icon{font-family:'Material Symbols Outlined';font-size:48px;line-height:1;font-weight:400;font-style:normal;font-variation-settings:'opsz' 48,'wght' 300,'FILL' 1,'GRAD' -25;background:linear-gradient(150deg,#f0ffb0 0%,#c8f050 35%,#8ec828 65%,#4a6e10 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 12px rgba(183,241,61,.28)) drop-shadow(0 3px 6px rgba(0,0,0,.45));user-select:none;letter-spacing:normal;text-transform:none;white-space:nowrap}
 .home-about__goal-text{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
-.home-about__goal-title{font:700 clamp(18px,1.4vw,22px)/var(--lh-card-title) var(--font-heading);color:var(--text-white);margin:0}
+.home-about__goal-title{font:700 clamp(18px,1.4vw,22px)/var(--lh-card-title) var(--font-heading);color:var(--text-white);margin:0;font-size:var(--h3-md);font-weight:600;line-height:var(--lh-card-title)}
 .home-about__goal-desc{font:400 var(--fs-text)/var(--lh-text) var(--font-body);color:var(--text-muted);margin:0}
 .home-about__popular{margin-top:140px;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
 .home-about__popular .home-faq__search-title,.home-about__popular .home-faq__search-sub{text-align:left}
@@ -2072,8 +2083,8 @@ p,.hero-nav__item-desc,.guide-qa__card-desc,.home-faq__a p{text-wrap:pretty}
 .process-heading { margin-bottom: var(--space-head); }
 .process-steps { row-gap: clamp(40px, 5vw, 72px); }
 
-.home-faq__title { margin: 8px 0 var(--space-head); }
-.home-faq__search { margin-top: var(--space-head); }
+.home-faq__title { margin: 12px 0 48px; }
+.home-faq__search { margin-top: var(--search-gap); }
 
 .calc-section .calc-section__center{padding-top:var(--sec-half)}
 .calc-section .calc-section__full{padding-bottom:var(--sec-half)}
@@ -2138,20 +2149,10 @@ body .kontakt-form-section__container{max-width:calc(632px + 2 * var(--gutter))}
 :root{--head-gap:56px;--head-gap-sm:32px;--title-gap:16px}
 @media(max-width:760px){:root{--head-gap:40px;--head-gap-sm:24px}}
 /* velká hlavička (hlavní sekce) */
-body .home-about__header,
-body .process-heading,
-body .home-faq__title,
-body .fve-explain__header,
-body .fve-case__title,
-body .fve-faq__title,
-body .fve-costs__header,
-body .fve-worth__header,
-body .fve-price__intro,
-body .fve-price .fve-costs__desc,
-body .jom-impact__header,
-body .jom-how__header,
-body .jom-edc__header,
-body .jom-sharing__desc{margin-bottom:var(--head-gap)}
+body .home-about__header, body .process-heading, body .fve-explain__header, body .fve-costs__header, body .fve-worth__header, body .fve-price__intro, body .fve-price .fve-costs__desc, body .jom-impact__header, body .jom-how__header, body .jom-edc__header, body .jom-sharing__desc{margin-bottom:var(--head-gap)}
+body .fve-case__title{margin-bottom:40px}
+body .fve-faq__title{margin-bottom:48px}
+body .home-faq__title{margin-bottom:48px}
 /* malá hlavička (jen nadpis nebo krátký úvod) */
 body .guide-qa__title,
 body #pruvodce-do-hloubky .guide-qa__title,
@@ -2165,12 +2166,10 @@ body .jom-quiz__header,
 body .fve-calc__header,
 body .kontakt-form-section__title{margin-bottom:var(--head-gap-sm)}
 /* zrušené „hacky" margin-top u h2 */
-body .home-faq__title,
-body .calc-section__title,
-body .fve-phases__title,
-body .fve-case__title,
-body .fve-faq__title,
-body .jom-quiz__title{margin-top:0}
+body .calc-section__title, body .fve-phases__title, body .jom-quiz__title{margin-top:0}
+body .fve-case__title{margin-top:12px}
+body .fve-faq__title{margin-top:12px}
+body .home-faq__title{margin-top:12px}
 /* h2 → perex a eyebrow → h2 = 16 px */
 body .calc-section__title,
 body .fve-calc__title,
@@ -2234,7 +2233,8 @@ body .jom-compare__card,body .jom-quiz__card,body .jom-edc__variant-text,body .f
 @media(max-width:760px){:root{--faq-q-fs:18px}}
 body .home-faq__q,body .fve-faq__q{padding:var(--faq-q-pad) 0;font-size:var(--faq-q-fs)}
 body .home-faq__q:after,body .fve-faq__q:after{font-size:var(--faq-plus-fs)}
-body .home-faq__search,body .fve-faq__search{margin-top:var(--head-gap)}
+body .fve-faq__search{margin-top:var(--search-gap)}
+body .home-faq__search{margin-top:var(--search-gap)}
 
 /* ── Hero – jednotné mezery pro všechny typy hero ─────────────────────── */
 :root{--hero-pt:140px;--hero-pb:80px;--hero-crumb-gap:32px;--hero-title-gap:20px;--hero-text-gap:32px}
@@ -2298,9 +2298,9 @@ body.rhythm-pilot .jom-savecalc{margin-bottom:0}
 }
 
 /* Formuláře: chybová hláška a skryté pole proti botům */
-.form-consent{display:flex;align-items:flex-start;gap:10px;cursor:pointer;font:400 var(--fs-caption)/var(--lh-caption) var(--font-body);color:var(--text-muted)}
-.form-consent input[type=checkbox]{-webkit-appearance:none;appearance:none;width:16px;height:16px;border:2px solid rgba(255,255,255,.25);border-radius:8px;flex-shrink:0;margin-top:2px;cursor:pointer;background-color:transparent;transition:border-color .2s,background .2s}
-.form-consent input[type=checkbox]:hover{border-color:rgba(255,255,255,.45)}
+.form-consent{display:flex;align-items:flex-start;gap:12px;cursor:pointer;font:400 var(--fs-caption)/var(--lh-caption) var(--font-body);color:var(--text-muted)}
+.form-consent input[type=checkbox]{-webkit-appearance:none;appearance:none;width:16px;height:16px;border:2px solid rgba(255,255,255,.25);border-radius:4px;flex-shrink:0;margin-top:2px;cursor:pointer;background-color:transparent;transition:border-color .2s,background .2s}
+.form-consent input[type=checkbox]:hover{border-color:rgba(255,255,255,.4)}
 .form-consent input[type=checkbox]:checked{background-color:var(--lime);border-color:var(--lime);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='8' viewBox='0 0 10 8'%3E%3Cpath d='M1 4l3 3 5-6' stroke='%2305050a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
 .form-consent input[type=checkbox]:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
 .form-consent a{color:var(--text-white);font-weight:inherit;text-decoration:underline;text-underline-offset:2px}
@@ -2345,3 +2345,61 @@ select:autofill{
   animation-name:eh-autofill;
   animation-duration:1ms
 }
+.search-input:focus-visible{outline:none;border-color:var(--lime);box-shadow:0 0 0 1px var(--lime)}
+
+/* ── Sjednocení (přesunuto z unify*.css) ───────────────────────────── */
+:root{--danger:#ff6b5e;                 /* jedna chyba, min. 6,6:1 i na panelu */
+  --fs-lead:18px;                   /* zrušen mezistupeň 17 px → splývá s perexem */
+  --h3-lg:24px; --h3-md:20px; --h3-sm:17px;
+  --field-h:54px;                   /* plné pole = výška primárního tlačítka */
+  --field-h-compact:44px;           /* kompaktní pole (čísla v kalkulačkách) */}
+@media(max-width:760px){:root{--fs-lead:16px;--h3-lg:22px}}
+:root{--search-gap:64px}
+@media(max-width:760px){:root{--search-gap:48px}}
+:root{--shadow-sm:0 8px 24px rgba(0,0,0,.3);--shadow-md:0 12px 32px rgba(0,0,0,.45);--shadow-lg:0 24px 60px rgba(0,0,0,.55)}
+html body :is(input,textarea,select)[class]:focus-visible,
+html body :is(.kontakt-form,.forum-modal,.forum-hero__auth,.kalk-refine__field) :is(input,textarea,select):focus-visible{outline:none;border-color:var(--lime);box-shadow:0 0 0 1px var(--lime)}
+html body :is(input,textarea,select)[class][aria-invalid=true],
+html body :is(input,textarea,select)[class][aria-invalid=true]:focus,
+html body :is(input,textarea,select)[class][aria-invalid=true]:focus-visible,
+html body :is(.kontakt-form,.forum-modal,.forum-hero__auth,.kalk-refine__field) :is(input,textarea,select)[aria-invalid=true]:focus-visible{outline:none;border-color:var(--danger);box-shadow:0 0 0 1px var(--danger)}
+html body input[type=search]::-webkit-search-cancel-button,
+html body input[type=search]::-webkit-search-decoration{display:none;-webkit-appearance:none}
+
+/* ── Křížek pro vymazání textových polí (js/input-clear.js) ───────────── */
+.has-input-clear{position:relative}
+.search-clear.input-clear{z-index:2}
+html body input.has-clear.has-clear{padding-right:44px}
+html body input[type=number].has-clear{-moz-appearance:textfield;appearance:textfield}
+input.has-clear::-webkit-outer-spin-button,
+input.has-clear::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+
+/* ── Rozbalovací pole: vlastní šipka, odstup zprava 16 px (jako vnitřní odsazení polí) ── */
+html body select:not([multiple]){
+  -webkit-appearance:none;-moz-appearance:none;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.6)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 16px center;background-size:12px 8px;
+  padding-right:44px
+}
+.forum-modal__field--checkbox input[type=checkbox]:hover{border-color:rgba(255,255,255,.45)}
+.forum-modal__field--checkbox input[type=checkbox]:focus-visible{outline:2px solid var(--lime);outline-offset:3px;box-shadow:none}
+.forum-pagination__page::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:44px;transform:translate(-50%,-50%)}
+.forum-search-wrap #forumSearch{padding-right:44px}
+.forum-search-wrap .search-clear{right:12px}
+.forum-search-wrap .search-clear .ms-icon{position:static;transform:none;left:auto;top:auto;pointer-events:auto;font-size:16px;color:inherit}
+.forum-modal__pw{position:relative;display:block}
+.forum-modal .forum-modal__pw input{width:100%;padding-right:48px}
+.forum-modal__pw .forum-hero__eye-btn{right:12px;min-width:24px;min-height:24px;color:rgba(255,255,255,.6)}
+.forum-modal__pw .forum-hero__eye-btn:hover{color:rgba(255,255,255,.85)}
+.forum-modal__pw .forum-hero__eye-btn:focus-visible{outline:2px solid var(--lime);outline-offset:2px;border-radius:4px}
+.fve-toggle-btn::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:44px;transform:translate(-50%,-50%)}
+.fve-costs__jom-btn::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:44px;transform:translate(-50%,-50%)}
+.jom-stoggle__btn::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:44px;transform:translate(-50%,-50%)}
+.fve-phase__scroll-btn::after{content:"";position:absolute;left:50%;top:50%;width:44px;height:44px;transform:translate(-50%,-50%)}
+@media(max-width:374px){.guide-steps{gap:2px}}
+@media(max-width:374px){.guide-steps__item{padding:8px 8px;gap:6px}}
+@media(max-width:374px){.guide-steps__sep{padding:0}}
+.guide-qa--footer:has(+ .site-search){padding-bottom:var(--search-gap)}
+.guide-qa--footer + .site-search{padding-top:0}
+.jom-worth__toggle-btn::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:44px;transform:translate(-50%,-50%)}
+.slovnik__letter-btn::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:44px;transform:translate(-50%,-50%)}

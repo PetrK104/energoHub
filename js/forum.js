@@ -192,6 +192,8 @@
       searchQuery = ''
       activeFilter = ''
       if (forumSearch) forumSearch.value = ''
+      var fsClear = document.getElementById('forumSearchClear')
+      if (fsClear) fsClear.hidden = true
       var activeTabs = document.querySelectorAll('.forum-filter-tab')
       activeTabs.forEach(function (t) { t.classList.toggle('is-active', t.dataset.filter === '') })
       var modeLabel = document.getElementById('forumModeNavLabel')
@@ -293,11 +295,20 @@
     })
 
     // Vyhledávání
+    var forumSearchClear = document.getElementById('forumSearchClear')
     forumSearch.addEventListener('input', function () {
       searchQuery = forumSearch.value.trim().toLowerCase()
       currentPage = 1
+      if (forumSearchClear) forumSearchClear.hidden = !forumSearch.value
       renderThreads(allThreads)
     })
+    if (forumSearchClear) {
+      forumSearchClear.addEventListener('click', function () {
+        forumSearch.value = ''
+        forumSearch.dispatchEvent(new Event('input'))
+        forumSearch.focus()
+      })
+    }
 
     // Filtry průvodců
     document.querySelectorAll('.forum-filter-tab').forEach(function (btn) {
@@ -423,8 +434,60 @@
     }
   }
 
+  // Překlad chyb Supabase Auth do češtiny
+  function czAuthError(err, fallback) {
+    var m = String((err && err.message) || '').toLowerCase()
+    var map = [
+      ['missing email or phone', 'Zadejte e-mail a heslo.'],
+      ['invalid login credentials', 'Nesprávný e-mail nebo heslo.'],
+      ['email not confirmed', 'E-mail zatím není potvrzen. Zkontrolujte svou schránku.'],
+      ['user already registered', 'Účet s tímto e-mailem již existuje.'],
+      ['already been registered', 'Účet s tímto e-mailem již existuje.'],
+      ['password should be at least', 'Heslo musí mít alespoň 6 znaků.'],
+      ['unable to validate email', 'Zadejte platnou e-mailovou adresu.'],
+      ['invalid email', 'Zadejte platnou e-mailovou adresu.'],
+      ['signup requires a valid password', 'Zadejte platné heslo.'],
+      ['rate limit', 'Příliš mnoho pokusů. Zkuste to prosím za chvíli.'],
+      ['too many requests', 'Příliš mnoho pokusů. Zkuste to prosím za chvíli.'],
+      ['for security purposes', 'Příliš mnoho pokusů. Zkuste to prosím za chvíli.'],
+      ['failed to fetch', 'Chyba připojení. Zkontrolujte internet a zkuste to znovu.'],
+      ['network', 'Chyba připojení. Zkontrolujte internet a zkuste to znovu.'],
+      ['signups not allowed', 'Registrace je dočasně vypnutá.'],
+      ['user not found', 'Účet s tímto e-mailem neexistuje.']
+    ]
+    for (var i = 0; i < map.length; i++) { if (m.indexOf(map[i][0]) !== -1) return map[i][1] }
+    return fallback || 'Něco se nepovedlo. Zkuste to prosím znovu.'
+  }
+
+  // Zobrazit / skrýt heslo (ikona oka)
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest && e.target.closest('[data-pw-toggle]')
+    if (!btn) return
+    var input = document.getElementById(btn.getAttribute('data-pw-toggle'))
+    if (!input) return
+    var show = input.type === 'password'
+    input.type = show ? 'text' : 'password'
+    btn.setAttribute('aria-pressed', show ? 'true' : 'false')
+    btn.setAttribute('aria-label', show ? 'Skrýt heslo' : 'Zobrazit heslo')
+    var ic = btn.querySelector('.ms-icon')
+    if (ic) ic.textContent = show ? 'visibility_off' : 'visibility'
+  })
+  function resetPwToggles() {
+    document.querySelectorAll('[data-pw-toggle]').forEach(function (b) {
+      var i = document.getElementById(b.getAttribute('data-pw-toggle'))
+      if (i) i.type = 'password'
+      b.setAttribute('aria-pressed', 'false'); b.setAttribute('aria-label', 'Zobrazit heslo')
+      var ic = b.querySelector('.ms-icon'); if (ic) ic.textContent = 'visibility'
+    })
+  }
+
   async function handleSignIn(email, password, errorEl, formEl) {
     errorEl.hidden = true
+    if (!String(email || '').trim() || !password) {
+      errorEl.textContent = 'Zadejte e-mail a heslo.'
+      errorEl.hidden = false
+      return
+    }
     var submitBtn = formEl.querySelector('button[type=submit]')
     submitBtn.disabled = true
 
@@ -432,7 +495,7 @@
     submitBtn.disabled = false
 
     if (result.error) {
-      errorEl.textContent = result.error.message || 'Přihlášení se nezdařilo.'
+      errorEl.textContent = czAuthError(result.error, 'Přihlášení se nezdařilo.')
       errorEl.hidden = false
       return
     }
@@ -488,7 +551,7 @@
     var result = await sb.auth.signUp({ email: email, password: password })
 
     if (result.error) {
-      heroRegisterError.textContent = result.error.message
+      heroRegisterError.textContent = czAuthError(result.error, 'Registrace se nezdařila.')
       heroRegisterError.hidden = false
       submitBtn.disabled = false
       return
@@ -548,7 +611,7 @@
     var result = await sb.auth.signUp({ email: email, password: password })
 
     if (result.error) {
-      showErr(result.error.message)
+      showErr(czAuthError(result.error, 'Registrace se nezdařila.'))
       submitBtn.disabled = false
       return
     }
@@ -664,6 +727,7 @@
   function closeAuthModal() {
     authModal.hidden = true
     document.body.style.overflow = ''
+    resetPwToggles()
   }
 
   // === LIST VIEW ===

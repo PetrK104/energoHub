@@ -6,7 +6,7 @@
 .nf__title{margin:0 0 16px;font:700 36px/var(--lh-h1) var(--font-heading);color:var(--text-white);letter-spacing:0}
 .nf__text{margin:0 auto 32px;max-width:480px;font:400 var(--fs-perex)/var(--lh-perex) var(--font-body);color:var(--text-muted)}
 .nf__actions{display:flex;flex-wrap:wrap;justify-content:center;gap:16px}
-.nf__btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;border-radius:8px;font:600 16px/1 var(--font-body);text-decoration:none;transition:transform .15s ease,background .15s ease,border-color .15s ease}
+.nf__btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:var(--btn-pad-l);border-radius:8px;font:600 16px/1 var(--font-body);text-decoration:none;transition:transform .15s ease,background .15s ease,border-color .15s ease;min-height:54px}
 .nf__btn:hover{transform:translateY(-1px)}
 .nf__btn .ms-icon{font-size:20px}
 .nf__btn--primary{background:var(--lime);border:1px solid var(--lime);color:#0a0a0a}

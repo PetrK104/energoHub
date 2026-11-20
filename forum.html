@@ -13,10 +13,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=account_circle,add,arrow_forward,battery_charging_20,battery_charging_full,call,chat_bubble,check,check_circle,checklist,chevron_left,chevron_right,close,compare_arrows,description,eco,engineering,expand_less,expand_more,fact_check,fire_extinguisher,gavel,gpp_bad,handshake,hub,info,local_fire_department,location_on,mail,menu_book,north_east,open_in_new,receipt_long,remove,roofing,schedule,search,security,solar_power,south_east,swap_horiz,table_chart,trending_up,visibility,visibility_off,work&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/guide-shared.css?v=8">
-<link rel="stylesheet" href="css/forum.css">
-<link rel="stylesheet" href="css/search.css?v=2">
+<link rel="stylesheet" href="css/style.css?v=25">
+<link rel="stylesheet" href="css/guide-shared.css?v=14">
+<link rel="stylesheet" href="css/forum.css?v=6">
+<link rel="stylesheet" href="css/search.css?v=5">
 <link rel="stylesheet" href="css/navbar-mobile-v2.css">
 </head>
 <body>
@@ -125,7 +125,7 @@
       <span aria-current="page">Fórum</span>
     </nav>
     <h1 class="guide-sub-hero__title">Diskuzní fórum</h1>
-    <p class="guide-sub-hero__desc">Ptejte se, sdílejte zkušenosti a pomáhejte ostatním SVJ a bytovým družstvům.</p>
+    <p class="guide-sub-hero__desc">Ptejte se, sdílejte zkušenosti a&nbsp;pomáhejte ostatním SVJ a&nbsp;bytovým družstvům.</p>
 
     <!-- Přihlášený stav: user panel -->
     <div class="forum-hero__auth" id="heroUserCard" hidden>
@@ -217,6 +217,7 @@
         <div class="forum-search-wrap">
           <span class="ms-icon" aria-hidden="true" style="font-size:16px">search</span>
           <input type="search" id="forumSearch" placeholder="Hledat v diskuzi…" autocomplete="off" aria-label="Vyhledat příspěvky">
+          <button type="button" class="search-clear" id="forumSearchClear" aria-label="Smazat" hidden><span class="ms-icon" aria-hidden="true">close</span></button>
         </div>
         <button type="button" class="btn btn-primary" id="forumNewBtn">+ Nové vlákno</button>
       </div>
@@ -293,7 +294,10 @@
         </div>
         <div class="forum-modal__field">
           <label for="authPasswordInput">Heslo *</label>
-          <input type="password" id="authPasswordInput" name="password" placeholder="••••••••" required autocomplete="current-password">
+          <div class="forum-modal__pw">
+            <input type="password" id="authPasswordInput" name="password" placeholder="••••••••" required autocomplete="current-password">
+            <button type="button" class="forum-hero__eye-btn" data-pw-toggle="authPasswordInput" aria-label="Zobrazit heslo" aria-pressed="false"><span class="ms-icon" aria-hidden="true">visibility</span></button>
+          </div>
         </div>
         <p class="forum-modal__error" id="authError" hidden></p>
         <button type="submit" class="btn btn-primary">Přihlásit se</button>
@@ -312,7 +316,10 @@
         </div>
         <div class="forum-modal__field">
           <label for="authRegPasswordInput">Heslo *</label>
-          <input type="password" id="authRegPasswordInput" placeholder="••••••••" required autocomplete="new-password">
+          <div class="forum-modal__pw">
+            <input type="password" id="authRegPasswordInput" placeholder="••••••••" required autocomplete="new-password">
+            <button type="button" class="forum-hero__eye-btn" data-pw-toggle="authRegPasswordInput" aria-label="Zobrazit heslo" aria-pressed="false"><span class="ms-icon" aria-hidden="true">visibility</span></button>
+          </div>
         </div>
         <p class="forum-modal__error" id="authRegError" hidden></p>
         <p class="forum-modal__success" id="authRegSuccess" hidden></p>
@@ -434,27 +441,27 @@
         <a href="index.html" class="footer-logo">
           <img src="assets/images/Logo.svg" width="248" height="199" alt="Energohub">
         </a>
-        <p class="footer-tagline">Nezávislý průvodce energetickými opatřeními pro bytové domy a SVJ.</p>
+        <p class="footer-tagline">Nezávislý průvodce energetickými opatřeními pro bytové domy a&nbsp;SVJ.</p>
       </div>
 
       <div class="footer-col">
-        <h3 class="footer-col-title">Mapa stránek</h3>
+        <p class="footer-col-title">Mapa stránek</p>
         <ul class="footer-links">
           <li><a href="index.html">Hlavní stránka</a></li>
           <li><a href="pruvodce-jom.html">Jednotné odběrné místo</a></li>
           <li><a href="pruvodce-fve.html">Fotovoltaika</a></li>
           <li><a href="bezpecnost.html">Bezpečnost</a></li>
-          <li><a href="dotace.html">Dotace a financování</a></li>
+          <li><a href="dotace.html">Dotace a&nbsp;financování</a></li>
           <li><a href="slovnik.html">Slovník pojmů</a></li>
           <li><a href="forum.html">Diskuzní fórum</a></li>
           <li><a href="kalkulacka.html">Kalkulačka úspor</a></li>
-          <li><a href="index.html#o-nas">O nás</a></li>
+          <li><a href="index.html#o-nas">O&nbsp;nás</a></li>
           <li><a href="kontakty.html">Kontakty</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
-        <h3 class="footer-col-title">Informace</h3>
+        <p class="footer-col-title">Informace</p>
         <ul class="footer-links">
           <li><a href="podminky-pouziti.html">Podmínky použití</a></li>
           <li><a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a></li>
@@ -550,5 +557,6 @@
 </script>
 
 <script type="module" src="assets/js/search-overlay.js?v=2"></script>
+<script src="js/input-clear.js?v=3" defer></script>
 </body>
 </html>
