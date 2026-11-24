@@ -12,9 +12,9 @@
 <link rel="apple-touch-icon" href="assets/images/fav_icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=account_circle,add,arrow_forward,battery_charging_20,battery_charging_full,call,chat_bubble,check,check_circle,checklist,chevron_left,chevron_right,close,compare_arrows,description,eco,engineering,expand_less,expand_more,fact_check,fire_extinguisher,gavel,gpp_bad,handshake,hub,info,local_fire_department,location_on,mail,menu_book,north_east,open_in_new,receipt_long,remove,roofing,schedule,search,security,solar_power,south_east,swap_horiz,table_chart,trending_up,visibility,visibility_off,work&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=account_circle,add,arrow_forward,battery_charging_20,battery_charging_full,call,chat_bubble,check,check_circle,checklist,chevron_left,chevron_right,close,compare_arrows,description,eco,engineering,expand_content,expand_less,expand_more,fact_check,fire_extinguisher,gavel,gpp_bad,handshake,hub,info,local_fire_department,location_on,mail,menu_book,north_east,open_in_new,receipt_long,remove,roofing,schedule,search,security,solar_power,south_east,swap_horiz,table_chart,trending_up,visibility,visibility_off,work&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css?v=25">
-<link rel="stylesheet" href="css/guide-shared.css?v=14">
+<link rel="stylesheet" href="css/guide-shared.css?v=26">
 <link rel="stylesheet" href="css/fve.css?v=8">
 <link rel="stylesheet" href="css/bezpecnost.css?v=8">
 <link rel="stylesheet" href="css/dotace.css?v=4">
@@ -154,7 +154,9 @@
       </div>
     </div>
 
-    <img src="assets/images/promena.webp" width="3340" height="1884" alt="Bytový dům před a po renovaci" loading="lazy" style="width:100%;height:auto;display:block;border-radius:8px;margin-bottom:var(--block-gap)">
+    <div class="lightbox-wrap">
+      <img class="js-lightbox" src="assets/images/promena.webp" width="3340" height="1884" alt="Bytový dům před a po renovaci" loading="lazy" style="width:100%;height:auto;display:block;border-radius:8px">
+    </div>
 
     <div class="bsec-topic__body">
 
@@ -452,6 +454,7 @@
 
 <script src="js/navbar.js" defer></script>
 <script src="js/autofill.js" defer></script>
+<script src="js/lightbox.js?v=7" defer></script>
 <script>(function(){var menu=document.getElementById('navMobile');var navbar=document.querySelector('.navbar');if(!menu||!navbar)return;new MutationObserver(function(){navbar.classList.toggle('navbar--menu-open',menu.classList.contains('is-open'));}).observe(menu,{attributes:true,attributeFilter:['class']});})();</script>
 <script type="module" src="assets/js/search-overlay.js?v=2"></script>
 <script type="module" src="assets/js/search-inline.js"></script>
