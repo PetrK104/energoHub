@@ -82,11 +82,19 @@ exports.handler = async (event) => {
         })
       });
 
-      if (aiResponse.ok) {
-        const aiData = await aiResponse.json();
-        const text = (aiData.content || []).filter(b => b.type === 'text').map(b => b.text).join('\n').trim();
-        if (text) {
-          await supabase.from('messages').insert({ thread_id, sender_type: 'bot', bot_id: bot.id, text });
+      if (!aiResponse.ok) {
+        const errText = await aiResponse.text();
+        console.error('[add-bot] Claude API error', aiResponse.status, errText);
+        return { statusCode: 502, body: JSON.stringify({ error: `Claude API ${aiResponse.status}: ${errText}` }) };
+      }
+
+      const aiData = await aiResponse.json();
+      const text = (aiData.content || []).filter(b => b.type === 'text').map(b => b.text).join('\n').trim();
+      if (text) {
+        const { error: msgErr } = await supabase.from('messages').insert({ thread_id, sender_type: 'bot', bot_id: bot.id, text });
+        if (msgErr) {
+          console.error('[add-bot] Supabase insert error', msgErr.message);
+          return { statusCode: 500, body: JSON.stringify({ error: '[messages insert] ' + msgErr.message }) };
         }
       }
     }

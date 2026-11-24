@@ -17,3 +17,4 @@ search.json
 
 # Zálohy
 *.bak
+.DS_Store
