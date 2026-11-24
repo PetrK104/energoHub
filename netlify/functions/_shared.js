@@ -12,12 +12,51 @@ const BOUNDARY_INSTRUCTIONS = "\n\nVěcné hranice: Odpovídej jen na témata ko
 
 const CLOSING_INSTRUCTION = "\n\nToto je tvůj poslední příspěvek v této diskuzi. Uzavři ji přirozeně — třeba krátkým vyjádřením svého celkového pohledu, postřehem k zamyšlení nebo větou, která dá tématu tečku. Nekladuj žádnou otázku, na kterou by ostatní čekali odpověď. Vůbec nezmiňuj, že je to tvůj poslední příspěvek.";
 
-function pickStyle() {
+function pickStyle(noQuestion) {
   const r = Math.random();
   if (r < 0.30) return 'Odpověz 1–2 větami.';
   if (r < 0.75) return 'Odpověz 3–5 větami.';
-  if (r < 0.90) return 'Odpověz podrobněji, max. 2 odstavce.';
+  if (r < 0.90 || noQuestion) return 'Odpověz podrobněji, max. 2 odstavce.';
   return 'Odpověz stručně a polož uživateli jednu doplňující otázku.';
+}
+
+// Rozmanitost odpovědí: model už nepřijímá parametr temperature, proto náhodnost vkládáme my.
+// Ke každé odpovědi se náhodně vybere úhel pohledu, začátek, zaměření a tón.
+function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+const ANGLES = [
+  'Doplň nebo upřesni to, co řekl předchozí účastník.',
+  'Mírně nesouhlas s tím, co zaznělo, a stručně uveď důvod.',
+  'Polož jednu konkrétní doplňující otázku k tématu.',
+  'Jednoduše vysvětli pojem nebo krok, který by mohl být pro laika nejasný.',
+  'Upozorni na jednu věc, na kterou se při tomto tématu často zapomíná.',
+  'Shrň, na čem se diskutující zatím shodují, a co zůstává otevřené.',
+  'Reaguj jen na jeden konkrétní bod z poslední zprávy a ostatní vynech.'
+];
+const OPENINGS = [
+  'Začni rovnou věcí, bez úvodní reakce.',
+  'Začni krátkou reakcí na předchozí zprávu.',
+  'Začni otázkou.',
+  'Začni zasazením do praxe SVJ.',
+  'Začni jedním konkrétním faktem nebo číslem (s upozorněním, že je orientační).'
+];
+const FOCUSES = [
+  'Zaměř se na praktický dopad pro SVJ a vlastníky bytů.',
+  'Zaměř se na peníze: náklady, úspory, návratnost.',
+  'Zaměř se na postup a to, co se musí udělat v jakém pořadí.',
+  'Zaměř se na pravidla a povinnosti (bez právního poradenství).'
+];
+const TONES = [
+  'Piš věcně.',
+  'Piš lehce neformálně.',
+  'Piš trochu skepticky, opatrně k velkým slibům.'
+];
+
+// noQuestion: poslední příspěvek vlákna se nemá ptát, jen uzavřít
+function pickVariety(noQuestion) {
+  const angles = noQuestion ? ANGLES.filter(a => !/otázk/i.test(a)) : ANGLES;
+  const openings = noQuestion ? OPENINGS.filter(o => !/otázk/i.test(o)) : OPENINGS;
+  return '\n' + [pick(angles), pick(openings), pick(FOCUSES), pick(TONES)].join(' ');
 }
 
 function adminClient() {
@@ -101,7 +140,7 @@ async function botReply(supabase, thread_id) {
   }
 
   // 7. Sestavit dynamické instrukce a zavolat Claude API
-  const styleInstruction = '\n\n' + pickStyle();
+  const styleInstruction = '\n\n' + pickStyle(isLastReply) + pickVariety(isLastReply);
 
   const contextRef = Math.random() < 0.25
     ? '\nNavaž na něco konkrétního, co uživatel řekl dříve v tomto vlákně.'
@@ -116,8 +155,14 @@ async function botReply(supabase, thread_id) {
       + prevBotTexts.map(t => '— ' + t).join('\n')
     : '';
 
+  // Poslední odpověď jiného účastníka: nestavět větu ani začátek podobně
+  const lastOther = [...(messages || [])].reverse().find(m => m.sender_type === 'bot' && m.bot_id !== bot.id);
+  const otherContext = lastOther
+    ? '\nNaposledy napsal jiný účastník, nestav začátek ani větu podobně:\n— ' + lastOther.text.substring(0, 160)
+    : '';
+
   const systemPrompt = bot.persona + '\n\n' + GLOBAL_INSTRUCTIONS + BOUNDARY_INSTRUCTIONS
-    + styleInstruction + contextRef + prevBotContext
+    + styleInstruction + contextRef + prevBotContext + otherContext
     + (isLastReply ? CLOSING_INSTRUCTION : '');
   const aiResponse = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
@@ -129,7 +174,6 @@ async function botReply(supabase, thread_id) {
     body: JSON.stringify({
       model: AI_MODEL,
       max_tokens: 1000,
-      temperature: 0.9,
       system: systemPrompt,
       messages: merged
     })
