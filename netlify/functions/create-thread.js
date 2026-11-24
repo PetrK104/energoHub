@@ -1,4 +1,4 @@
-const { adminClient, getUserFromEvent } = require('./_shared');
+const { adminClient, getUserFromEvent, isAdmin, checkBot, BOT_MAX_PER_THREAD } = require('./_shared');
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
@@ -27,6 +27,20 @@ exports.handler = async (event) => {
 
     const supabase = adminClient();
 
+    // Boty smí do vlákna přidat jen admin (zbytek lidí bot sekci v dialogu ani nevidí)
+    if (botList.length > 0) {
+      if (!(await isAdmin(supabase, user.id))) {
+        return { statusCode: 403, body: JSON.stringify({ error: 'Boty může přidat jen admin.' }) };
+      }
+      if (botList.length > BOT_MAX_PER_THREAD) {
+        return { statusCode: 400, body: JSON.stringify({ error: 'Ve vlákně může být nejvýše ' + BOT_MAX_PER_THREAD + ' botů.' }) };
+      }
+      for (const b of botList) {
+        const err = checkBot(b && b.name, b && b.persona);
+        if (err) return { statusCode: 400, body: JSON.stringify({ error: err }) };
+      }
+    }
+
     const botReplyLimit = botList.length > 0 ? Math.floor(Math.random() * 14) + 3 : null; // 3–16
 
     const { data: thread, error: threadErr } = await supabase
@@ -41,7 +55,7 @@ exports.handler = async (event) => {
 
     if (botList.length > 0) {
       const botRows = botList.map((b, i) => ({
-        thread_id: thread.id, name: b.name, persona: b.persona, color: b.color || '#6C8EF5', turn_order: i
+        thread_id: thread.id, name: b.name.trim(), persona: b.persona.trim(), color: /^#[0-9a-fA-F]{6}$/.test(b.color || '') ? b.color : '#6C8EF5', turn_order: i
       }));
       const { error: botsErr } = await supabase.from('bots').insert(botRows);
       if (botsErr) {

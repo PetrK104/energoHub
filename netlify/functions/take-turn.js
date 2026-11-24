@@ -1,4 +1,4 @@
-const { adminClient, botReply } = require('./_shared');
+const { adminClient, getUserFromEvent, botReply } = require('./_shared');
 
 async function decideShouldReply(supabase, thread_id, thread, userText) {
   const streak = thread.bot_skipped_streak || 0;
@@ -21,6 +21,13 @@ async function decideShouldReply(supabase, thread_id, thread, userText) {
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: JSON.stringify({ error: 'Method not allowed' }) };
+  }
+
+  // Odpověď bota spouští prohlížeč přihlášeného uživatele (po jeho příspěvku nebo při založení vlákna).
+  // Anonymní volání se odmítne, aby nikdo zvenčí nemohl čerpat z AI klíče.
+  const user = await getUserFromEvent(event);
+  if (!user) {
+    return { statusCode: 401, body: JSON.stringify({ error: 'Musíš být přihlášený' }) };
   }
 
   try {

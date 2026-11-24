@@ -1,4 +1,4 @@
-const { adminClient, getUserFromEvent } = require('./_shared');
+const { adminClient, getUserFromEvent, checkBot, BOUNDARY_INSTRUCTIONS, AI_MODEL, BOT_MAX_PER_THREAD } = require('./_shared');
 
 const GLOBAL_INSTRUCTIONS = "Odpovídej vždy v češtině. Veď přirozený konverzační příspěvek do diskuzního vlákna, reaguj konkrétně na to, co bylo řečeno naposled. Buď stručný: 2 až 5 vět. Nepředstavuj se jménem, jen piš svůj příspěvek přímo. Zůstaň důsledně ve své roli.";
 const BOT_COLORS = ['#b7f13d', '#3db4f1', '#f59e0b', '#a78bfa', '#f87171'];
@@ -27,6 +27,16 @@ exports.handler = async (event) => {
       return { statusCode: 403, body: JSON.stringify({ error: 'Pouze admin může přidat bota' }) };
     }
 
+    const botErr0 = checkBot(name, persona);
+    if (botErr0) {
+      return { statusCode: 400, body: JSON.stringify({ error: botErr0 }) };
+    }
+    const { count: botCount } = await supabase
+      .from('bots').select('*', { count: 'exact', head: true }).eq('thread_id', thread_id);
+    if ((botCount || 0) >= BOT_MAX_PER_THREAD) {
+      return { statusCode: 400, body: JSON.stringify({ error: 'Ve vlákně může být nejvýše ' + BOT_MAX_PER_THREAD + ' botů.' }) };
+    }
+
     const { data: thread, error: threadErr } = await supabase
       .from('threads').select('*').eq('id', thread_id).single();
     if (threadErr || !thread) {
@@ -39,7 +49,7 @@ exports.handler = async (event) => {
     const color = BOT_COLORS[nextTurnOrder % BOT_COLORS.length];
 
     const { data: bot, error: botErr } = await supabase
-      .from('bots').insert({ thread_id, name, persona, color, turn_order: nextTurnOrder }).select().single();
+      .from('bots').insert({ thread_id, name: name.trim(), persona: persona.trim(), color, turn_order: nextTurnOrder }).select().single();
     if (botErr) {
       return { statusCode: 500, body: JSON.stringify({ error: botErr.message }) };
     }
@@ -75,9 +85,9 @@ exports.handler = async (event) => {
           'anthropic-version': '2023-06-01'
         },
         body: JSON.stringify({
-          model: 'claude-sonnet-4-6',
+          model: AI_MODEL,
           max_tokens: 1000,
-          system: bot.persona + '\n\n' + GLOBAL_INSTRUCTIONS,
+          system: bot.persona + '\n\n' + GLOBAL_INSTRUCTIONS + BOUNDARY_INSTRUCTIONS,
           messages: merged
         })
       });

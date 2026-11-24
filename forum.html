@@ -15,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=account_circle,add,arrow_forward,battery_charging_20,battery_charging_full,call,chat_bubble,check,check_circle,checklist,chevron_left,chevron_right,close,compare_arrows,description,eco,engineering,expand_content,expand_less,expand_more,fact_check,fire_extinguisher,gavel,gpp_bad,handshake,hub,info,local_fire_department,location_on,mail,menu_book,north_east,open_in_new,receipt_long,remove,roofing,schedule,search,security,solar_power,south_east,swap_horiz,table_chart,trending_up,visibility,visibility_off,work&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css?v=25">
 <link rel="stylesheet" href="css/guide-shared.css?v=14">
-<link rel="stylesheet" href="css/forum.css?v=6">
+<link rel="stylesheet" href="css/forum.css?v=8">
 <link rel="stylesheet" href="css/search.css?v=5">
 <link rel="stylesheet" href="css/navbar-mobile-v2.css">
 </head>
@@ -275,6 +275,9 @@
 
     </div>
 
+    <!-- Jediná poznámka k AI pro celou stránku (jen v části AI asistenti) -->
+    <p class="forum-ai-note" id="forumAiNote" hidden></p>
+
   </div>
 </section>
 
@@ -342,11 +345,11 @@
       <div class="forum-modal__fields">
         <div class="forum-modal__field">
           <label for="addBotName">Jméno bota *</label>
-          <input type="text" id="addBotName" placeholder="Např. Skeptický uživatel" required>
+          <input type="text" id="addBotName" placeholder="Např. Skeptický uživatel" maxlength="60" required>
         </div>
         <div class="forum-modal__field">
           <label for="addBotPersona">Persona *</label>
-          <textarea id="addBotPersona" rows="4" placeholder="Popiš roli a chování bota…" required></textarea>
+          <textarea id="addBotPersona" rows="4" placeholder="Popiš roli a chování bota…" maxlength="3000" required></textarea>
         </div>
         <div class="forum-modal__field forum-modal__field--checkbox">
           <label for="addBotWriteComment">

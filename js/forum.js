@@ -26,6 +26,8 @@
   var currentPage     = 1
   var THREADS_PER_PAGE = 5
   var currentMode     = null  // 'users' | 'ai'
+  var AI_NOTE = 'Příspěvky v diskuzích s AI se odesílají poskytovateli AI (Anthropic) ke zpracování. Nepište do nich osobní údaje. ' +
+                '<a href="ochrana-osobnich-udaju.html#prijemci" target="_blank" rel="noopener">Více v zásadách ochrany osobních údajů</a>.'
 
   // === DOM — hero auth ===
   var heroAuthPanel        = document.getElementById('heroAuthPanel')
@@ -188,6 +190,8 @@
 
     window.forumSetMode = function (mode) {
       currentMode = mode
+      var aiNote = document.getElementById('forumAiNote')
+      if (aiNote) { aiNote.innerHTML = AI_NOTE; aiNote.hidden = mode !== 'ai' }
       currentPage = 1
       searchQuery = ''
       activeFilter = ''
@@ -1102,13 +1106,16 @@
     var res = await sb.from('threads').select('bot_mode').eq('id', currentThread.id).single()
     if (!res.data || res.data.bot_mode !== 'active') return
 
+    var token = await getToken()
+    if (!token) return
+
     var body = { thread_id: currentThread.id }
     if (userText !== undefined) body.user_text = userText
 
     try {
       var r = await fetch('/.netlify/functions/take-turn', {
         method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
         body:    JSON.stringify(body)
       })
       if (!r.ok) {
@@ -1162,8 +1169,8 @@
     var row = document.createElement('div')
     row.className = 'forum-bot-row'
     row.innerHTML =
-      '<input type="text" name="botName" placeholder="Jméno bota" required>' +
-      '<input type="text" name="botPersona" placeholder="Persona (popis role a chování)" required>' +
+      '<input type="text" name="botName" placeholder="Jméno bota" maxlength="60" required>' +
+      '<input type="text" name="botPersona" placeholder="Persona (popis role a chování)" maxlength="3000" required>' +
       '<button type="button" class="forum-bot-row__remove" aria-label="Odebrat bota">✕</button>'
 
     row.querySelector('.forum-bot-row__remove').addEventListener('click', function () {
