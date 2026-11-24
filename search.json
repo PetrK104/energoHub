@@ -1,0 +1,778 @@
+[
+  {
+    "title": "Co je a proč ho mít",
+    "page": "Hasicí přístroj k FVE",
+    "url": "/bezpecnost-hasici-pristroj#s04-1",
+    "text": "co je a proč ho mít",
+    "keywords": "hasicí přístroj FVE, co je hasicí přístroj, proč mít hasicí přístroj",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Kdy je povinný, kdy jen doporučený",
+    "page": "Hasicí přístroj k FVE",
+    "url": "/bezpecnost-hasici-pristroj#s04-2",
+    "text": "kdy je povinný, kdy jen doporučený",
+    "keywords": "povinný hasicí přístroj, vyhláška hasííc přístroj",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Jaký typ hasicího přístroje zvolit",
+    "page": "Hasicí přístroj k FVE",
+    "url": "/bezpecnost-hasici-pristroj#s04-3",
+    "text": "jaký typ hasicího přístroje zvolit",
+    "keywords": "typ hasicího přístroje, jaký hasicí přístroj",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Proč se to vyplatí",
+    "page": "Hasicí přístroj k FVE",
+    "url": "/bezpecnost-hasici-pristroj#s04-4",
+    "text": "proč se to vyplatí",
+    "keywords": "proč hasicí přístroj, výhody hasícího přístroje",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Praktický postup pro SVJ",
+    "page": "Hasicí přístroj k FVE",
+    "url": "/bezpecnost-hasici-pristroj#s04-5",
+    "text": "praktický postup pro svj",
+    "keywords": "postup SVJ hasicí přístroj, umístění přístroje",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Co je PBŘ a proč je potřeba",
+    "page": "Požárně bezpečnostní řešení (PBŘ)",
+    "url": "/bezpecnost-pbr#s02-1",
+    "text": "co je pbř a proč je potřeba",
+    "keywords": "PBŘ, požárně bezpečnostní řešení, co je PBŘ",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Kdy je PBŘ potřeba",
+    "page": "Požárně bezpečnostní řešení (PBŘ)",
+    "url": "/bezpecnost-pbr#s02-2",
+    "text": "kdy je pbř potřeba",
+    "keywords": "kdy PBŘ potřeba, povinnost PBŘ, podmínky PBŘ, požadavky PBŘ",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Co PBŘ řeší",
+    "page": "Požárně bezpečnostní řešení (PBŘ)",
+    "url": "/bezpecnost-pbr#s02-3",
+    "text": "co pbř řeší",
+    "keywords": "co PBŘ řeší, obsah PBŘ, protipožární opatření FVE",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Kdo ho zpracovává a kdy objednat",
+    "page": "Požárně bezpečnostní řešení (PBŘ)",
+    "url": "/bezpecnost-pbr#s02-4",
+    "text": "kdo ho zpracovává a kdy objednat",
+    "keywords": "kdo zpracuje PBŘ, požární specialista, kdy objednat PBŘ",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Klíčová opatření, která PBŘ určuje",
+    "page": "Požárně bezpečnostní řešení (PBŘ)",
+    "url": "/bezpecnost-pbr#s02-5",
+    "text": "klíčová opatření, která pbř určuje",
+    "keywords": "klíčová opatření PBŘ, požární opatření, bezpečnostní opatření FVE",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Co by v hotovém PBŘ nemělo chybět",
+    "page": "Požárně bezpečnostní řešení (PBŘ)",
+    "url": "/bezpecnost-pbr#s02-6",
+    "text": "co by v hotovém pbř nemělo chybět",
+    "keywords": "obsah PBŘ, co musí PBŘ obsahovat, kontrola dokumentace",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Časté chyby",
+    "page": "Požárně bezpečnostní řešení (PBŘ)",
+    "url": "/bezpecnost-pbr#s02-7",
+    "text": "časté chyby",
+    "keywords": "časté chyby PBŘ, chyby v dokumentaci, co nedělat v požárně bezpečnostním řešení, PBŘ problémy",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Praktický postup pro SVJ",
+    "page": "Požárně bezpečnostní řešení (PBŘ)",
+    "url": "/bezpecnost-pbr#s02-8",
+    "text": "praktický postup pro svj",
+    "keywords": "postup SVJ pro PBŘ, jak objednat PBŘ",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Provoz a kontroly po instalaci",
+    "page": "Požárně bezpečnostní řešení (PBŘ)",
+    "url": "/bezpecnost-pbr#s02-9",
+    "text": "provoz a kontroly po instalaci",
+    "keywords": ".",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Nejčastější otázky",
+    "page": "Požárně bezpečnostní řešení (PBŘ)",
+    "url": "/bezpecnost-pbr#s02-10",
+    "text": "nejčastější otázky",
+    "keywords": "faq PBŘ, časté otázky PBŘ, otázky a odpovědi, požárně bezpečnostní",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Co je projektová dokumentace a proč ji potřebujete",
+    "page": "Projektová dokumentace FVE",
+    "url": "/bezpecnost-projektova-dokumentace#s03-1",
+    "text": "co je projektová dokumentace a proč ji potřebujete",
+    "keywords": "projektová dokumentace FVE, stavební povolení, technická dokumentace",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Kdy je potřeba",
+    "page": "Projektová dokumentace FVE",
+    "url": "/bezpecnost-projektova-dokumentace#s03-2",
+    "text": "kdy je potřeba",
+    "keywords": "kdy projektová dokumentace, povinnost projektové dokumentace",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Co dokumentace obsahuje",
+    "page": "Projektová dokumentace FVE",
+    "url": "/bezpecnost-projektova-dokumentace#s03-3",
+    "text": "co dokumentace obsahuje",
+    "keywords": "obsah projektové dokumentace, co obsahuje, položky projektové dokumentace, seznam projektová dokumentace",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Kdo ji zpracovává a kdy objednat",
+    "page": "Projektová dokumentace FVE",
+    "url": "/bezpecnost-projektova-dokumentace#s03-4",
+    "text": "kdo ji zpracovává a kdy objednat",
+    "keywords": "kdo zpracuje dokumentaci",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Praktický postup pro SVJ",
+    "page": "Projektová dokumentace FVE",
+    "url": "/bezpecnost-projektova-dokumentace#s03-5",
+    "text": "praktický postup pro svj",
+    "keywords": "postup SVJ projektová dokumentace, objednání projektové dokumentace",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Kontrolní seznam při převzetí",
+    "page": "Projektová dokumentace FVE",
+    "url": "/bezpecnost-projektova-dokumentace#s03-6",
+    "text": "kontrolní seznam při převzetí",
+    "keywords": "kontrolní seznam dokumentace, předání projektu, co zkontrolovat projektová dokumentace",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Co je a proč ji potřebujete",
+    "page": "Revize bateriového úložiště FVE",
+    "url": "/bezpecnost-revize-baterie#s05-1",
+    "text": "co je a proč ji potřebujete",
+    "keywords": "revize baterie, co je revize baterie, revizní zpráva, bateriové úložiště bezpečnost",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Kdy je potřeba",
+    "page": "Revize bateriového úložiště FVE",
+    "url": "/bezpecnost-revize-baterie#s05-2",
+    "text": "kdy je potřeba",
+    "keywords": "kdy revize baterie, povinnost revize baterie",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Co revize ověřuje",
+    "page": "Revize bateriového úložiště FVE",
+    "url": "/bezpecnost-revize-baterie#s05-3",
+    "text": "co revize ověřuje",
+    "keywords": "co revize baterie ověřuje, obsah revize baterie, co se kontroluje, bezpečnost baterie",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Proč se to vyplatí",
+    "page": "Revize bateriového úložiště FVE",
+    "url": "/bezpecnost-revize-baterie#s05-4",
+    "text": "proč se to vyplatí",
+    "keywords": "proč revize baterie, výhody revize, bezpečnost bateriového úložiště",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Praktický postup pro SVJ",
+    "page": "Revize bateriového úložiště FVE",
+    "url": "/bezpecnost-revize-baterie#s05-5",
+    "text": "praktický postup pro svj",
+    "keywords": "postup SVJ revize baterie, objednání revize baterie",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Co si vyžádat od revizního technika",
+    "page": "Revize bateriového úložiště FVE",
+    "url": "/bezpecnost-revize-baterie#s05-6",
+    "text": "co si vyžádat od revizního technika",
+    "keywords": "revizní technik baterie, co požadovat, revizní zpráva, protokol, doklady",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Co je statický posudek a proč ho potřebujete",
+    "page": "Statický posudek střechy",
+    "url": "/bezpecnost-staticky-posudek#s01-1",
+    "text": "co je statický posudek a proč ho potřebujete",
+    "keywords": "statický posudek, co je statický posudek, nosnost střechy, střecha FVE, posudek konstrukce",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Kdy je posudek potřeba",
+    "page": "Statický posudek střechy",
+    "url": "/bezpecnost-staticky-posudek#s01-2",
+    "text": "kdy je posudek potřeba",
+    "keywords": "kdy statický posudek, povinnost posudku, podmínky",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Co posudek zkoumá",
+    "page": "Statický posudek střechy",
+    "url": "/bezpecnost-staticky-posudek#s01-3",
+    "text": "co posudek zkoumá",
+    "keywords": "co zkoumá statický posudek, obsah posudku, zatížení střechy, nosné prvky",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Kdo ho smí zpracovat a kdy ho objednat",
+    "page": "Statický posudek střechy",
+    "url": "/bezpecnost-staticky-posudek#s01-4",
+    "text": "kdo ho smí zpracovat a kdy ho objednat",
+    "keywords": "kdo zpracuje posudek, statik, projektant, kdy objednat posudek",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Jak číst závěr posudku",
+    "page": "Statický posudek střechy",
+    "url": "/bezpecnost-staticky-posudek#s01-5",
+    "text": "jak číst závěr posudku",
+    "keywords": "jak číst posudek, závěr posudku, výsledek statického posudku",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Jakou formu posudek může mít",
+    "page": "Statický posudek střechy",
+    "url": "/bezpecnost-staticky-posudek#s01-6",
+    "text": "jakou formu posudek může mít",
+    "keywords": "forma posudku, typy posudku, písemný posudek",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Jak poznat kvalitní posudek",
+    "page": "Statický posudek střechy",
+    "url": "/bezpecnost-staticky-posudek#s01-7",
+    "text": "jak poznat kvalitní posudek",
+    "keywords": "kvalitní posudek, jak poznat dobrý posudek, co musí posudek obsahovat",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Praktický postup pro SVJ",
+    "page": "Statický posudek střechy",
+    "url": "/bezpecnost-staticky-posudek#s01-8",
+    "text": "praktický postup pro svj",
+    "keywords": "postup SVJ statický posudek, postup při statickém posudku, jak objednat posudek",
+    "category": "Bezpečnost FVE"
+  },
+  {
+    "title": "Co řešit u bezpečnosti FVE",
+    "page": "Bezpečnost FVE instalací",
+    "url": "/bezpecnost#co-resit-u-bezpecnosti-fve",
+    "text": "co řešit u bezpečnosti fve",
+    "keywords": "bezpečnost FVE, co řešit, témata bezpečnosti, přehled opatření",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Statický posudek střechy",
+    "page": "Bezpečnost FVE instalací",
+    "url": "/bezpecnost#staticky-posudek-strechy",
+    "text": "statický posudek střechy",
+    "keywords": "statický posudek, střecha, nosnost střechy, statik, FVE bezpečnost, posudek konstrukce",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Požárně bezpečnostní řešení",
+    "page": "Bezpečnost FVE instalací",
+    "url": "/bezpecnost#pozarne-bezpecnostni-reseni",
+    "text": "požárně bezpečnostní řešení",
+    "keywords": "PBŘ, požárně bezpečnostní řešení, požární ochrana, FVE bezpečnost, požár, protipožární",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Projektová dokumentace",
+    "page": "Bezpečnost FVE instalací",
+    "url": "/bezpecnost#projektova-dokumentace",
+    "text": "projektová dokumentace",
+    "keywords": "projektová dokumentace, projekt FVE, dokumentace, stavební povolení, elektroprojekt",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Hasicí přístroj",
+    "page": "Bezpečnost FVE instalací",
+    "url": "/bezpecnost#hasici-pristroj",
+    "text": "hasicí přístroj",
+    "keywords": "hasicí přístroj, hasící přístroj, požár FVE, hasič, hašení, bezpečnost FVE",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Revize bateriového úložiště",
+    "page": "Bezpečnost FVE instalací",
+    "url": "/bezpecnost#revize-baterioveho-uloziste",
+    "text": "revize bateriového úložiště",
+    "keywords": "revize baterie, bateriové úložiště, revize, bezpečnost baterie, kontrola baterie",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Časté otázky",
+    "page": "Bezpečnost FVE instalací",
+    "url": "/bezpecnost#caste-otazky",
+    "text": "časté otázky",
+    "keywords": "faq, časté otázky, otázky, bezpečnost FVE, odpovědi",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Jak podpora funguje",
+    "page": "Dotace a financování energetických úprav",
+    "url": "/dotace#jak-podpora-funguje",
+    "text": "jak podpora funguje",
+    "keywords": "NZÚ, Nová zelená úsporám, bezúročný úvěr, jak podpora funguje, SFŽP, dotace na renovaci",
+    "category": "Dotace"
+  },
+  {
+    "title": "Kdo má nárok?",
+    "page": "Dotace a financování energetických úprav",
+    "url": "/dotace#kdo-ma-narok",
+    "text": "kdo má nárok?",
+    "keywords": "kdo má nárok NZÚ, SVJ nárok dotace, rodinný dům NZÚ, NZÚ Light, domácnosti s nižšími příjmy",
+    "category": "Dotace"
+  },
+  {
+    "title": "Co lze v programu financovat?",
+    "page": "Dotace a financování energetických úprav",
+    "url": "/dotace#co-lze-financovat",
+    "text": "co lze v programu financovat?",
+    "keywords": "co lze financovat NZÚ, zateplení, výměna oken, zdroje tepla, fotovoltaika NZÚ, větrání rekuperace",
+    "category": "Dotace"
+  },
+  {
+    "title": "Jak probíhá žádost?",
+    "page": "Dotace a financování energetických úprav",
+    "url": "/dotace#jak-probíhá-žádost",
+    "text": "jak probíhá žádost?",
+    "keywords": "žádost NZÚ, postup žádosti, portál SFŽP, renovační pas, banka úvěr NZÚ",
+    "category": "Dotace"
+  },
+  {
+    "title": "Nejčastější otázky",
+    "page": "Dotace a financování energetických úprav",
+    "url": "/dotace#nejcastejsi-otazky",
+    "text": "nejčastější otázky",
+    "keywords": "Nová zelená úsporám, NZÚ, bezúročný úvěr, dotace na renovaci, zateplení bytový dům, SVJ dotace, financování energetických úprav, NZÚ Light, renovace bytového domu, renovace rodinný dům, SFŽP",
+    "category": "Dotace"
+  },
+  {
+    "title": "Diskuzní fórum",
+    "page": "",
+    "url": "/forum",
+    "text": "diskuzní fórum ptejte se, sdílejte zkušenosti a pomáhejte ostatním svj a bytovým družstvům. diskuzní fórum o energetických opatřeních.",
+    "keywords": "diskuzní fórum, diskuze, diskuze uživatelů, komunita, vlákno, příspěvky, anketa, otázky a odpovědi, sdílení zkušeností, poradna, AI asistent",
+    "category": "Obecné"
+  },
+  {
+    "title": "Kdy řešit baterii k FVE",
+    "page": "Baterie k FVE – dimenzování a podmínky výnosnosti – Průvodce FVE",
+    "url": "/fve-baterie#kdy-resit-baterii-k-fve",
+    "text": "kdy řešit baterii k fve",
+    "keywords": "baterie k FVE, akumulace, bateriové úložiště, kdy pořídit baterii, baterie fotovoltaika",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Kdy baterie smysl nedává",
+    "page": "Baterie k FVE – dimenzování a podmínky výnosnosti – Průvodce FVE",
+    "url": "/fve-baterie#kdy-baterie-smysl-nedava",
+    "text": "kdy baterie smysl nedává",
+    "keywords": "kdy baterie nevhodná, baterie nedává smysl, FVE bez baterie, nevýhody baterie",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Jak velkou baterii k FVE vybrat?",
+    "page": "Baterie k FVE – dimenzování a podmínky výnosnosti – Průvodce FVE",
+    "url": "/fve-baterie#jak-velkou-baterii-k-fve-vybrat",
+    "text": "jak velkou baterii k fve vybrat?",
+    "keywords": "velikost baterie FVE, kapacita baterie, výběr baterie, kolik kWh baterie, dimenzování",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Rezervace kapacity pro backup",
+    "page": "Baterie k FVE – dimenzování a podmínky výnosnosti – Průvodce FVE",
+    "url": "/fve-baterie#rezervace-kapacity-pro-backup",
+    "text": "rezervace kapacity pro backup",
+    "keywords": "záložní zdroj, backup FVE, záloha při výpadku, výpadek elektřiny, rezerva baterie",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Financování FVE z NZÚ",
+    "page": "Podmínky a legislativa pro FVE – Průvodce FVE",
+    "url": "/fve-dotace-a-legislativa#financovani-fve-z-nzu",
+    "text": "financování fve z nzú",
+    "keywords": "NZÚ, Nová zelená úsporám, bezúročný úvěr FVE, podmínky NZÚ, vzorec NZÚ, financování FVE, způsobilost SVJ",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Hranice 100 kW – co z ní plyne v praxi",
+    "page": "Podmínky a legislativa pro FVE – Průvodce FVE",
+    "url": "/fve-dotace-a-legislativa#hranice-100-kw-co-z-ni-plyne-v-praxi",
+    "text": "hranice 100 kw – co z ní plyne v praxi",
+    "keywords": "100 kW limit, hranice výkonu FVE, licenční povinnost, přetoky, omezení, ERÚ, energie v praxi",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Jak správně posoudit nabídku dodavatele FVE",
+    "page": "Hodnocení nabídky od dodavatele FVE – Průvodce FVE",
+    "url": "/fve-hodnoceni-nabidky#jak-spravne-posoudit-nabidku-dodavatele-fve",
+    "text": "jak správně posoudit nabídku dodavatele fve",
+    "keywords": "hodnocení nabídky FVE, výběr dodavatele FVE, jak porovnat nabídky, cenová nabídka FVE, ověřit cenu",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Dvě varovné situace v nabídce",
+    "page": "Hodnocení nabídky od dodavatele FVE – Průvodce FVE",
+    "url": "/fve-hodnoceni-nabidky#na-co-si-dat-pozor",
+    "text": "dvě varovné situace v nabídce",
+    "keywords": "pozor FVE nabídka, rizika FVE, záruky FVE, smlouva FVE, podmínky dodavatele",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Kdy se FVE pro bytový dům skutečně vyplatí",
+    "page": "Ekonomická návratnost FVE pro bytový dům – Průvodce FVE",
+    "url": "/fve-kdy-ma-smysl#kdy-se-fve-pro-bytovy-dum-skutecne-vyplati",
+    "text": "kdy se fve pro bytový dům skutečně vyplatí",
+    "keywords": "kdy se FVE vyplatí, podmínky FVE, výnosnost FVE, návratnost FVE, vhodnost FVE, rentabilita",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Orientační náklady na FVE pro bytový dům",
+    "page": "Náklady na FVE pro bytový dům – Průvodce FVE",
+    "url": "/fve-naklady#orientacni-naklady-na-fve-pro-bytovy-dum",
+    "text": "orientační náklady na fve pro bytový dům",
+    "keywords": "náklady FVE, cena FVE, kolik stojí FVE, orientační cena, investice FVE, náklady na instalaci",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Co je platforma EnergoHub?",
+    "page": "Energohub.info – Srozumitelně k úsporám ve vašem domě",
+    "url": "/#co-je-platforma-energohub",
+    "text": "co je platforma energohub?",
+    "keywords": "co je energohub, platforma, edukační portál, SVJ, společenství vlastníků, výbor, správce domu, průvodci",
+    "category": "Obecné"
+  },
+  {
+    "title": "Kolik ušetří bytový dům na energiích?",
+    "page": "Energohub.info – Srozumitelně k úsporám ve vašem domě",
+    "url": "/#kolik-usetri-bytovy-dum-na-energiich",
+    "text": "kolik ušetří bytový dům na energiích?",
+    "keywords": "výpočet úspor, orientační kalkulace, kolik ušetřím, úspory energií, bytový dům, spotřeba elektřiny",
+    "category": "Obecné"
+  },
+  {
+    "title": "Jak EnergoHub funguje",
+    "page": "Energohub.info – Srozumitelně k úsporám ve vašem domě",
+    "url": "/#jak-energohub-funguje",
+    "text": "jak energohub funguje",
+    "keywords": "jak to funguje, postup, kroky, posouzení potenciálu, výběr opatření, výběr dodavatele, rozúčtování",
+    "category": "Obecné"
+  },
+  {
+    "title": "Nejčastější otázky",
+    "page": "Energohub.info – Srozumitelně k úsporám ve vašem domě",
+    "url": "/#nejcastejsi-otazky",
+    "text": "nejčastější otázky",
+    "keywords": "faq, časté otázky, otázky a odpovědi, bezplatný, zdarma",
+    "category": "Obecné"
+  },
+  {
+    "title": "EDC a JOM: srovnání dvou způsobů sdílení elektřiny v bytovém domě",
+    "page": "EDC nebo JOM – srovnání variant sdílení elektřiny – Průvodce JOM",
+    "url": "/jom-edc-nebo-jom#edc-a-jom-srovnani-dvou-zpusobu-sdileni-elektriny-v-bytovem-",
+    "text": "edc a jom: srovnání dvou způsobů sdílení elektřiny v bytovém domě",
+    "keywords": "EDC, JOM, srovnání EDC JOM, rozdíl EDC JOM, sdílení elektřiny, komunitní energetika, virtuální, fyzické",
+    "category": "Jednotné odběrné místo (JOM)"
+  },
+  {
+    "title": "Jak probíhá přechod bytového domu na JOM",
+    "page": "Přechod na JOM – realizace a technické podmínky – Průvodce JOM",
+    "url": "/jom-jak-funguje-prechod#jak-probiha-prechod-bytoveho-domu-na-jom",
+    "text": "jak probíhá přechod bytového domu na jom",
+    "keywords": "přechod JOM, jak probíhá přechod, fáze přechodu, smlouva, distributor, bytový dům JOM",
+    "category": "Jednotné odběrné místo (JOM)"
+  },
+  {
+    "title": "Jak se bytový dům po přechodu na JOM změní",
+    "page": "Přechod na JOM – realizace a technické podmínky – Průvodce JOM",
+    "url": "/jom-jak-funguje-prechod#jak-se-bytovy-dum-po-prechodu-na-jom-zmeni",
+    "text": "jak se bytový dům po přechodu na jom změní",
+    "keywords": "po přechodu na JOM, výsledek přechodu, před a po JOM, změna po zavedení JOM, jedno odběrné místo",
+    "category": "Jednotné odběrné místo (JOM)"
+  },
+  {
+    "title": "Jak JOM snižuje náklady a proč záleží na pořadí",
+    "page": "Přechod na JOM – realizace a technické podmínky – Průvodce JOM",
+    "url": "/jom-jak-funguje-prechod#jak-jom-snizuje-naklady-a-proc-zalezi-na-poradi",
+    "text": "jak jom snižuje náklady a proč záleží na pořadí",
+    "keywords": "úspory JOM, snížení nákladů, pořadí odečtů, distribuční poplatek, jak JOM šetří, ekonomika JOM",
+    "category": "Jednotné odběrné místo (JOM)"
+  },
+  {
+    "title": "Plný přínos JOM se projeví v kombinaci s FVE na střeše",
+    "page": "Ekonomická výhodnost JOM pro bytový dům – Průvodce JOM",
+    "url": "/jom-kdy-ma-smysl#plny-prinos-jom-se-projevi-v-kombinaci-s-fve-na-strese",
+    "text": "plný přínos jom se projeví v kombinaci s fve na střeše",
+    "keywords": "JOM a FVE, přínos JOM s fotovoltaikou, kombinace JOM FVE, kdy JOM dává smysl",
+    "category": "Jednotné odběrné místo (JOM)"
+  },
+  {
+    "title": "Kolik dům skutečně ušetří",
+    "page": "Ekonomická výhodnost JOM pro bytový dům – Průvodce JOM",
+    "url": "/jom-kdy-ma-smysl#kolik-dum-skutecne-usetri",
+    "text": "kolik dům skutečně ušetří",
+    "keywords": "kolik ušetří JOM, úspory JOM, výpočet úspor, orientační kalkulace JOM",
+    "category": "Jednotné odběrné místo (JOM)"
+  },
+  {
+    "title": "Jak výroba přechází mezi byty",
+    "page": "Sdílení elektřiny a úspory v bytovém domě na JOM – Průvodce JOM",
+    "url": "/jom-sdileni-a-uspory#jak-vyroba-prechazi-mezi-byty",
+    "text": "jak výroba přechází mezi byty",
+    "keywords": "sdílení elektřiny JOM, sdílení výroby, distribuce mezi byty, přechod výroby, JOM algoritmus",
+    "category": "Jednotné odběrné místo (JOM)"
+  },
+  {
+    "title": "Vypočítejte si úspory pro váš dům",
+    "page": "Kalkulačka úspor",
+    "url": "/kalkulacka#co-chcete-resit",
+    "text": "vypočítejte si úspory pro váš dům",
+    "keywords": "kalkulačka úspor, výběr opatření, co chcete řešit, JOM, FVE, teplo, okna, energetická opatření",
+    "category": "Obecné"
+  },
+  {
+    "title": "Základní údaje o domě",
+    "page": "Kalkulačka úspor",
+    "url": "/kalkulacka#kalkPanel0",
+    "text": "základní údaje o domě",
+    "keywords": "základní údaje, bytový dům, počet bytů, spotřeba, podlaží, parametry domu",
+    "category": "Obecné"
+  },
+  {
+    "title": "Sloučení odběrných míst (JOM)",
+    "page": "Kalkulačka úspor",
+    "url": "/kalkulacka#slouceni-odbernych-mist-jom",
+    "text": "sloučení odběrných míst (jom)",
+    "keywords": "JOM kalkulace, sloučení odběrných míst, výpočet JOM, úspory JOM, kalkulačka JOM",
+    "category": "Obecné"
+  },
+  {
+    "title": "Fotovoltaická elektrárna (FVE)",
+    "page": "Kalkulačka úspor",
+    "url": "/kalkulacka#fotovoltaicka-elektrarna-fve",
+    "text": "fotovoltaická elektrárna (fve)",
+    "keywords": "FVE kalkulace, fotovoltaika výpočet, úspory FVE, výpočet fotovoltaiky, kalkulačka FVE",
+    "category": "Obecné"
+  },
+  {
+    "title": "Teplo a TUV",
+    "page": "Kalkulačka úspor",
+    "url": "/kalkulacka#teplo-a-tuv",
+    "text": "teplo a tuv",
+    "keywords": "teplo kalkulace, teplá voda TUV, vytápění výpočet, úspory tepla, tepelné čerpadlo",
+    "category": "Obecné"
+  },
+  {
+    "title": "Okna a dveře",
+    "page": "Kalkulačka úspor",
+    "url": "/kalkulacka#okna-a-dvere",
+    "text": "okna a dveře",
+    "keywords": "okna kalkulace, výměna oken, dveře, úspory tepla, rekonstrukce",
+    "category": "Obecné"
+  },
+  {
+    "title": "Váš plán úspor",
+    "page": "Kalkulačka úspor",
+    "url": "/kalkulacka#vas-plan-uspor",
+    "text": "váš plán úspor",
+    "keywords": "plán úspor, výsledek kalkulace, přehled úspor, shrnutí, celkové úspory, doporučení",
+    "category": "Obecné"
+  },
+  {
+    "title": "Potřebujete poradit?",
+    "page": "Kontakt",
+    "url": "/kontakty#potrebujete-poradit",
+    "text": "potřebujete poradit?",
+    "keywords": "kontakt, napište nám, email, telefon, dotaz, dotazy, otázky, konzultace, kontaktní formulář, spojit se, ozývat se",
+    "category": "Obecné"
+  },
+  {
+    "title": "Napište nám",
+    "page": "Kontakt",
+    "url": "/kontakty#napiste-nam",
+    "text": "napište nám",
+    "keywords": "kontaktní formulář, napsat, dotaz, zpráva, email, kontakt, spojit se",
+    "category": "Obecné"
+  },
+  {
+    "title": "Nejčastější otázky",
+    "page": "Kontakt",
+    "url": "/kontakty#nejcastejsi-otazky",
+    "text": "nejčastější otázky",
+    "keywords": "faq kontakty, časté otázky, jak nás kontaktovat, dotazy, odpovědi",
+    "category": "Obecné"
+  },
+  {
+    "title": "Kdo údaje zpracovává",
+    "page": "Ochrana osobních údajů",
+    "url": "/ochrana-osobnich-udaju#spravce",
+    "text": "kdo údaje zpracovává",
+    "keywords": "ochrana osobních údajů, GDPR, zpracování osobních údajů, souhlas, práva subjektu údajů",
+    "category": "Obecné"
+  },
+  {
+    "title": "Jaké údaje a proč zpracováváme",
+    "page": "Ochrana osobních údajů",
+    "url": "/ochrana-osobnich-udaju#ucely",
+    "text": "jaké údaje a proč zpracováváme",
+    "keywords": "ochrana osobních údajů, GDPR, zpracování osobních údajů, souhlas, práva subjektu údajů",
+    "category": "Obecné"
+  },
+  {
+    "title": "Komu údaje předáváme",
+    "page": "Ochrana osobních údajů",
+    "url": "/ochrana-osobnich-udaju#prijemci",
+    "text": "komu údaje předáváme",
+    "keywords": "ochrana osobních údajů, GDPR, zpracování osobních údajů, souhlas, práva subjektu údajů",
+    "category": "Obecné"
+  },
+  {
+    "title": "Cookies a analytika",
+    "page": "Ochrana osobních údajů",
+    "url": "/ochrana-osobnich-udaju#cookies",
+    "text": "cookies a analytika",
+    "keywords": "ochrana osobních údajů, GDPR, zpracování osobních údajů, souhlas, práva subjektu údajů",
+    "category": "Obecné"
+  },
+  {
+    "title": "Vaše práva",
+    "page": "Ochrana osobních údajů",
+    "url": "/ochrana-osobnich-udaju#prava",
+    "text": "vaše práva",
+    "keywords": "ochrana osobních údajů, GDPR, zpracování osobních údajů, souhlas, práva subjektu údajů",
+    "category": "Obecné"
+  },
+  {
+    "title": "Zabezpečení",
+    "page": "Ochrana osobních údajů",
+    "url": "/ochrana-osobnich-udaju#zabezpeceni",
+    "text": "zabezpečení",
+    "keywords": "ochrana osobních údajů, GDPR, zpracování osobních údajů, souhlas, práva subjektu údajů",
+    "category": "Obecné"
+  },
+  {
+    "title": "Jak fotovoltaika v bytovém domě funguje",
+    "page": "Fotovoltaika pro bytové domy",
+    "url": "/pruvodce-fve#jak-fotovoltaika-v-bytovem-dome-funguje",
+    "text": "jak fotovoltaika v bytovém domě funguje",
+    "keywords": "FVE princip, fotovoltaika jak funguje, bytový dům FVE, elektřina ze slunce, solární panely",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Dva způsoby pořízení fotovoltaiky",
+    "page": "Fotovoltaika pro bytové domy",
+    "url": "/pruvodce-fve#dva-zpusoby-porizeni-fotovoltaiky",
+    "text": "dva způsoby pořízení fotovoltaiky",
+    "keywords": "pořízení FVE, koupě FVE, pronájem FVE, PPA, způsoby pořízení, vlastnictví FVE",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Jak probíhá realizace FVE",
+    "page": "Fotovoltaika pro bytové domy",
+    "url": "/pruvodce-fve#jak-probiha-realizace-fve",
+    "text": "jak probíhá realizace fve",
+    "keywords": "realizace FVE, postup instalace FVE, fáze realizace, jak probíhá instalace, projekt FVE",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Kolik FVE ušetří ročně?",
+    "page": "Fotovoltaika pro bytové domy",
+    "url": "/pruvodce-fve#kolik-fve-usetri-rocne",
+    "text": "kolik fve ušetří ročně?",
+    "keywords": "kalkulačka FVE, úspory FVE, kolik ušetří FVE, výpočet roční úspory, výnos FVE",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Bytový dům v Praze 2",
+    "page": "Fotovoltaika pro bytové domy",
+    "url": "/pruvodce-fve#bytovy-dum-v-praze-2",
+    "text": "bytový dům v praze 2",
+    "keywords": "případová studie FVE, příklad realizace, reálný příklad, Praha bytový dům FVE",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Odpovědi na nejčastější otázky",
+    "page": "Fotovoltaika pro bytové domy",
+    "url": "/pruvodce-fve#odpovedi-na-nejcastejsi-otazky",
+    "text": "odpovědi na nejčastější otázky",
+    "keywords": "faq FVE, časté otázky FVE, otázky a odpovědi FVE, fotovoltaika dotazy",
+    "category": "Fotovoltaika"
+  },
+  {
+    "title": "Celý dům jako jeden odběratel",
+    "page": "Jednotné odběrné místo",
+    "url": "/pruvodce-jom#cely-dum-jako-jeden-odberatel",
+    "text": "celý dům jako jeden odběratel",
+    "keywords": "JOM, jeden odběratel, celý dům, elektroměr, odběrné místo, sloučení odběrů, sdílení elektřiny",
+    "category": "Jednotné odběrné místo (JOM)"
+  },
+  {
+    "title": "JOM nebo komunitní energetika?",
+    "page": "Jednotné odběrné místo",
+    "url": "/pruvodce-jom#jom-nebo-komunitni-energetika",
+    "text": "jom nebo komunitní energetika?",
+    "keywords": "JOM vs komunitní energetika, komunitní energetika, sdílení elektřiny, rozdíl, EDC",
+    "category": "Jednotné odběrné místo (JOM)"
+  },
+  {
+    "title": "Pro koho se JOM nejvíce vyplatí",
+    "page": "Jednotné odběrné místo",
+    "url": "/pruvodce-jom#pro-koho-se-jom-nejvice-vyplati",
+    "text": "pro koho se jom nejvíce vyplatí",
+    "keywords": "pro koho JOM, vhodnost JOM, ideální kandidát, bytový dům, SVJ, podmínky JOM",
+    "category": "Jednotné odběrné místo (JOM)"
+  },
+  {
+    "title": "Za jakých podmínek se JOM vyplatí",
+    "page": "Jednotné odběrné místo",
+    "url": "/pruvodce-jom#za-jakych-podminek-se-jom-vyplati",
+    "text": "za jakých podmínek se jom vyplatí",
+    "keywords": "podmínky JOM, kdy se JOM vyplatí, výpočet JOM, kolik ušetří JOM, rentabilita",
+    "category": "Jednotné odběrné místo (JOM)"
+  },
+  {
+    "title": "Odpovědi na nejčastější otázky",
+    "page": "Jednotné odběrné místo",
+    "url": "/pruvodce-jom#odpovedi-na-nejcastejsi-otazky",
+    "text": "odpovědi na nejčastější otázky",
+    "keywords": "faq JOM, časté otázky, JOM odpovědi, otázky a odpovědi",
+    "category": "Jednotné odběrné místo (JOM)"
+  },
+  {
+    "title": "Slovník pojmů",
+    "page": "",
+    "url": "/slovnik",
+    "text": "slovník pojmů slovník energetických pojmů pro svj – přehledný výklad termínů jako jom, fve, edc, kwp, distributor a dalších.",
+    "keywords": "slovník JOM, co je JOM, co je FVE, co je EDC, co je kWp, distributor elektřiny definice, energetické zkratky, pojmy sdílení elektřiny, výkladový slovník fotovoltaika",
+    "category": "Obecné"
+  }
+]

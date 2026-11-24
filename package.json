@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "icons": "node build-icons.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -12,7 +13,9 @@
   "dependencies": {
     "@netlify/functions": "^6.0.0",
     "@supabase/supabase-js": "^2.112.4",
-    "dotenv": "^17.4.2"
+    "cheerio": "^1.2.0",
+    "dotenv": "^17.4.2",
+    "fuse.js": "^7.5.0"
   },
   "devDependencies": {
     "esbuild": "^0.28.2"

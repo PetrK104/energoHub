@@ -2,7 +2,7 @@ const { schedule } = require('@netlify/functions');
 const { adminClient, botReply, BOT_REPLY_LIMIT } = require('./_shared');
 
 const STALE_REPLY_DAYS = 3;
-const MAX_THREADS_PER_RUN = 1;
+const MAX_THREADS_PER_RUN = 3;
 
 const handler = async () => {
   const supabase = adminClient();
@@ -74,4 +74,4 @@ const handler = async () => {
   return { statusCode: 200 };
 };
 
-exports.handler = schedule('0 10 */3 * *', handler);
+exports.handler = schedule('0 10 */2 * *', handler);

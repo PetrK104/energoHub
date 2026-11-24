@@ -1,0 +1,2 @@
+# Ruční doplnění ikon Material Symbols (jeden název na řádek).
+# Sem patří jen ikony, které build-icons.mjs sám nenajde (např. název ikony složený v JS).

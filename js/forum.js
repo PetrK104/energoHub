@@ -59,7 +59,6 @@
   var forumNewBtn     = document.getElementById('forumNewBtn')
 
   var backBtn         = document.getElementById('backBtn')
-  var forumBackToMode = document.getElementById('forumBackToMode')
   var threadHeader    = document.getElementById('threadHeader')
   var botBar          = document.getElementById('botBar')
   var botModeLabel    = document.getElementById('botModeLabel')
@@ -193,8 +192,12 @@
       searchQuery = ''
       activeFilter = ''
       if (forumSearch) forumSearch.value = ''
+      var fsClear = document.getElementById('forumSearchClear')
+      if (fsClear) fsClear.hidden = true
       var activeTabs = document.querySelectorAll('.forum-filter-tab')
       activeTabs.forEach(function (t) { t.classList.toggle('is-active', t.dataset.filter === '') })
+      var modeLabel = document.getElementById('forumModeNavLabel')
+      if (modeLabel) modeLabel.textContent = mode === 'ai' ? 'AI asistenti' : mode === 'users' ? 'Reálná diskuze' : ''
       showListView()
       renderThreads(allThreads)
     }
@@ -230,20 +233,10 @@
     })
 
     // Hero — explore button (nepřihlášený stav)
-    heroExploreBtn.addEventListener('click', function () {
-      var modeSelect = document.getElementById('forumModeSelect')
-      var forumMain  = document.getElementById('forumMain')
-      if (forumMain && !forumMain.hidden) {
-        forumMain.hidden  = true
-        modeSelect.hidden = false
-        window.forumMode  = null
-        if (window.forumSetMode) window.forumSetMode(null)
-      }
-      if (modeSelect) {
-        var navH = (document.querySelector('.navbar') || { offsetHeight: 80 }).offsetHeight
-        var top = modeSelect.getBoundingClientRect().top + window.scrollY - navH - 48
-        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
-      }
+    if (heroExploreBtn) heroExploreBtn.addEventListener('click', function () {
+      var el = document.getElementById('forumModeSelect')
+      var r = el.getBoundingClientRect()
+      window.scrollTo({ top: window.scrollY + r.top - 160, behavior: 'smooth' })
     })
 
     // Hero auth — user panel
@@ -302,11 +295,20 @@
     })
 
     // Vyhledávání
+    var forumSearchClear = document.getElementById('forumSearchClear')
     forumSearch.addEventListener('input', function () {
       searchQuery = forumSearch.value.trim().toLowerCase()
       currentPage = 1
+      if (forumSearchClear) forumSearchClear.hidden = !forumSearch.value
       renderThreads(allThreads)
     })
+    if (forumSearchClear) {
+      forumSearchClear.addEventListener('click', function () {
+        forumSearch.value = ''
+        forumSearch.dispatchEvent(new Event('input'))
+        forumSearch.focus()
+      })
+    }
 
     // Filtry průvodců
     document.querySelectorAll('.forum-filter-tab').forEach(function (btn) {
@@ -412,14 +414,14 @@
 
   function updateAuthUI() {
     if (currentUser) {
-      heroExplorePanel.hidden = true
+      if (heroExplorePanel) heroExplorePanel.hidden = true
       heroUserCard.hidden = false
       heroUserEmail.textContent        = currentUsername || '…'
       heroUserEmailAddress.textContent = currentUser.email
       forumNewBtn.hidden = false
       deleteAccountWrap.hidden = false
     } else {
-      heroExplorePanel.hidden = false
+      if (heroExplorePanel) heroExplorePanel.hidden = false
       heroUserCard.hidden = true
       forumNewBtn.hidden = false
       deleteAccountWrap.hidden = true
@@ -432,8 +434,60 @@
     }
   }
 
+  // Překlad chyb Supabase Auth do češtiny
+  function czAuthError(err, fallback) {
+    var m = String((err && err.message) || '').toLowerCase()
+    var map = [
+      ['missing email or phone', 'Zadejte e-mail a heslo.'],
+      ['invalid login credentials', 'Nesprávný e-mail nebo heslo.'],
+      ['email not confirmed', 'E-mail zatím není potvrzen. Zkontrolujte svou schránku.'],
+      ['user already registered', 'Účet s tímto e-mailem již existuje.'],
+      ['already been registered', 'Účet s tímto e-mailem již existuje.'],
+      ['password should be at least', 'Heslo musí mít alespoň 6 znaků.'],
+      ['unable to validate email', 'Zadejte platnou e-mailovou adresu.'],
+      ['invalid email', 'Zadejte platnou e-mailovou adresu.'],
+      ['signup requires a valid password', 'Zadejte platné heslo.'],
+      ['rate limit', 'Příliš mnoho pokusů. Zkuste to prosím za chvíli.'],
+      ['too many requests', 'Příliš mnoho pokusů. Zkuste to prosím za chvíli.'],
+      ['for security purposes', 'Příliš mnoho pokusů. Zkuste to prosím za chvíli.'],
+      ['failed to fetch', 'Chyba připojení. Zkontrolujte internet a zkuste to znovu.'],
+      ['network', 'Chyba připojení. Zkontrolujte internet a zkuste to znovu.'],
+      ['signups not allowed', 'Registrace je dočasně vypnutá.'],
+      ['user not found', 'Účet s tímto e-mailem neexistuje.']
+    ]
+    for (var i = 0; i < map.length; i++) { if (m.indexOf(map[i][0]) !== -1) return map[i][1] }
+    return fallback || 'Něco se nepovedlo. Zkuste to prosím znovu.'
+  }
+
+  // Zobrazit / skrýt heslo (ikona oka)
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest && e.target.closest('[data-pw-toggle]')
+    if (!btn) return
+    var input = document.getElementById(btn.getAttribute('data-pw-toggle'))
+    if (!input) return
+    var show = input.type === 'password'
+    input.type = show ? 'text' : 'password'
+    btn.setAttribute('aria-pressed', show ? 'true' : 'false')
+    btn.setAttribute('aria-label', show ? 'Skrýt heslo' : 'Zobrazit heslo')
+    var ic = btn.querySelector('.ms-icon')
+    if (ic) ic.textContent = show ? 'visibility_off' : 'visibility'
+  })
+  function resetPwToggles() {
+    document.querySelectorAll('[data-pw-toggle]').forEach(function (b) {
+      var i = document.getElementById(b.getAttribute('data-pw-toggle'))
+      if (i) i.type = 'password'
+      b.setAttribute('aria-pressed', 'false'); b.setAttribute('aria-label', 'Zobrazit heslo')
+      var ic = b.querySelector('.ms-icon'); if (ic) ic.textContent = 'visibility'
+    })
+  }
+
   async function handleSignIn(email, password, errorEl, formEl) {
     errorEl.hidden = true
+    if (!String(email || '').trim() || !password) {
+      errorEl.textContent = 'Zadejte e-mail a heslo.'
+      errorEl.hidden = false
+      return
+    }
     var submitBtn = formEl.querySelector('button[type=submit]')
     submitBtn.disabled = true
 
@@ -441,7 +495,7 @@
     submitBtn.disabled = false
 
     if (result.error) {
-      errorEl.textContent = result.error.message || 'Přihlášení se nezdařilo.'
+      errorEl.textContent = czAuthError(result.error, 'Přihlášení se nezdařilo.')
       errorEl.hidden = false
       return
     }
@@ -497,7 +551,7 @@
     var result = await sb.auth.signUp({ email: email, password: password })
 
     if (result.error) {
-      heroRegisterError.textContent = result.error.message
+      heroRegisterError.textContent = czAuthError(result.error, 'Registrace se nezdařila.')
       heroRegisterError.hidden = false
       submitBtn.disabled = false
       return
@@ -557,7 +611,7 @@
     var result = await sb.auth.signUp({ email: email, password: password })
 
     if (result.error) {
-      showErr(result.error.message)
+      showErr(czAuthError(result.error, 'Registrace se nezdařila.'))
       submitBtn.disabled = false
       return
     }
@@ -673,6 +727,7 @@
   function closeAuthModal() {
     authModal.hidden = true
     document.body.style.overflow = ''
+    resetPwToggles()
   }
 
   // === LIST VIEW ===
@@ -680,8 +735,6 @@
   function showListView() {
     viewList.hidden = false
     viewDetail.hidden = true
-    if (forumBackToMode) forumBackToMode.hidden = false
-    window.scrollTo({ top: 0, behavior: 'instant' })
     currentThread = null
     autoStartTurns = 0
     unsubscribeRealtime()
@@ -736,8 +789,8 @@
     var start = (currentPage - 1) * THREADS_PER_PAGE
     var paged = filtered.slice(start, start + THREADS_PER_PAGE)
 
-    var personIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path></svg>'
-    var bubbleIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>'
+    var personIcon = '<span class="ms-icon" aria-hidden="true" style="font-size:16px">account_circle</span>'
+    var bubbleIcon = '<span class="ms-icon" aria-hidden="true" style="font-size:16px">chat_bubble</span>'
 
     forumList.innerHTML = paged.map(function (t) {
       var msgs  = t.messages || []
@@ -806,8 +859,8 @@
       forumPagination.hidden = true
     } else {
       forumPagination.hidden = false
-      var prevSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>'
-      var nextSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>'
+      var prevSvg = '<span class="ms-icon" style="font-size:16px">chevron_left</span>'
+      var nextSvg = '<span class="ms-icon" style="font-size:16px">chevron_right</span>'
 
       var pages = ''
       for (var p = 1; p <= totalPages; p++) {
@@ -881,17 +934,13 @@
     currentThread = thread
     viewList.hidden = true
     viewDetail.hidden = false
-    if (forumBackToMode) forumBackToMode.hidden = true
+    var rect = viewDetail.getBoundingClientRect()
+    window.scrollTo({ top: window.scrollY + rect.top - 160, behavior: 'smooth' })
     renderThreadHeader(thread)
     updateAuthUI()
     updateBotBar()
     await loadMessages(thread.id)
     subscribeRealtime(thread.id)
-    if (backBtn) {
-      var navH = document.querySelector('.navbar') ? document.querySelector('.navbar').offsetHeight : 80
-      var top = backBtn.getBoundingClientRect().top + window.scrollY - navH - 48
-      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
-    }
     history.pushState({ threadId: thread.id }, '', '#' + thread.id)
   }
 
@@ -947,7 +996,7 @@
     scrollMessages()
   }
 
-  var AVATAR_ICON = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8"/></svg>'
+  var AVATAR_ICON = '<span class="ms-icon" aria-hidden="true" style="font-size:20px">account_circle</span>'
 
   function buildMessageEl(msg) {
     var isHuman     = msg.sender_type === 'human'
@@ -1046,18 +1095,21 @@
     }
 
     submitBtn.disabled = false
-    maybeTriggerBot()
+    maybeTriggerBot(text)
   }
 
-  async function maybeTriggerBot() {
+  async function maybeTriggerBot(userText) {
     var res = await sb.from('threads').select('bot_mode').eq('id', currentThread.id).single()
     if (!res.data || res.data.bot_mode !== 'active') return
+
+    var body = { thread_id: currentThread.id }
+    if (userText !== undefined) body.user_text = userText
 
     try {
       var r = await fetch('/.netlify/functions/take-turn', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ thread_id: currentThread.id })
+        body:    JSON.stringify(body)
       })
       if (!r.ok) {
         var d = await r.json().catch(function () { return {} })
@@ -1185,8 +1237,7 @@
     if (newThread) {
       await showDetailView(newThread)
       if (bots.length > 0) {
-        autoStartTurns = bots.length - 1
-        setTimeout(function () { maybeTriggerBot() }, 800)
+        setTimeout(function () { if (currentThread) maybeTriggerBot() }, 800)
       }
     }
   }

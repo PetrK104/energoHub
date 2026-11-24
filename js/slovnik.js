@@ -2,6 +2,7 @@
   var searchInput = document.getElementById('slovnikSearch');
   var sections    = document.querySelectorAll('.slovnik__section');
   var letterBtns  = document.querySelectorAll('.slovnik__letter-btn');
+  var clearBtn    = document.getElementById('slovnikClear');
 
   // Smooth scroll to letter section
   letterBtns.forEach(function (btn) {
@@ -37,10 +38,21 @@
         section.hidden = (visible === 0);
       });
 
-      // Hide alphabet nav while searching
+      // Při hledání schovat písmena a přiblížit výsledky k poli
       var alphabet = document.getElementById('slovnikAlphabet');
-      if (alphabet) alphabet.style.visibility = query ? 'hidden' : '';
+      if (alphabet) alphabet.hidden = !!query;
+      var hero = document.querySelector('.slovnik-hero');
+      if (hero) hero.classList.toggle('is-searching', !!query);
+      if (clearBtn) clearBtn.hidden = !searchInput.value;
     });
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', function () {
+        searchInput.value = '';
+        searchInput.dispatchEvent(new Event('input'));
+        searchInput.focus();
+      });
+    }
   }
 
   // Highlight active letter on scroll
