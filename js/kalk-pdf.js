@@ -53,7 +53,7 @@ var KALK_PDF = (function () {
   function letText(o) { var p = letParts(o); return p ? p.val + ' ' + p.unit : 'neurčeno'; }
   function kcFull(v) { return cz(Math.round(v)) + ' Kč'; }
 
-  var ORIENT = { J: 'jih', JV: 'jihovýchod', JZ: 'jihozápad', V: 'východ', Z: 'západ', S: 'sever' };
+  var ORIENT = KALK.ORIENT_NAZVY;
   var STAV = { stara: 'stará okna (před rokem 1990)', castecne: 'částečně vyměněná okna (1990–2010)', nova: 'nová okna (po roce 2010)' };
   var KROK = { jom: 'JOM (jednotné odběrné místo)', fve: 'Fotovoltaika (FVE)', tc: 'Tepelné čerpadlo (teplo a TUV)', windows: 'Výměna oken a dveří' };
 
@@ -312,7 +312,7 @@ var KALK_PDF = (function () {
       rows.push(['Počet bytů', String(inp.apartments)]);
       rows.push(['Roční spotřeba elektřiny', inp.consumption_estimated
         ? 'odhad z počtu bytů (' + cz(Math.round(inp.apartments * (A.spotreba_na_byt || 2200) / 1000)) + '\u00a0MWh)'
-        : cz(Math.round((inp.annual_consumption_kwh || 0) / 1000)) + '\u00a0MWh (zadáno)']);
+        : cz(Math.round((inp.annual_consumption_kwh || 0) / 1000)) + '\u00a0MWh (' + (inp.monthly_advance_czk ? 'odhad ze zálohy ' + cz(inp.monthly_advance_czk) + '\u00a0Kč/měs. na byt' : 'zadáno') + ')']);
       rows.push(['Orientace střechy', (ORIENT[inp.orientation] || 'jih') + (inp.orientation_touched ? '' : ' (nebylo upřesněno)')]);
       rows.push(['Bateriové úložiště', inp.battery ? 's baterií' : 'bez baterie']);
       rows.push(['Sdílení elektřiny (JOM)', inp.jom ? 's JOM' : 'bez JOM']);
@@ -375,7 +375,7 @@ var KALK_PDF = (function () {
     rows.push(['Roční spotřeba elektřiny', i.annual_consumption_kwh ? cz(Math.round(i.annual_consumption_kwh / 1000)) + '\u00a0MWh' : 'nezadána']);
     var fve = FVE[i.fve] || 'neuvedeno';
     if (i.fve_kwp) fve += ', ' + cz(i.fve_kwp) + '\u00a0kWp';
-    if (ORIENT[i.fve_orientation]) fve += ', orientace ' + ORIENT[i.fve_orientation];
+    if (KALK.orientVeta(i.fve_orientation)) fve += ', ' + KALK.orientVeta(i.fve_orientation);
     rows.push(['Fotovoltaika', fve]);
     rows.push(['Bateriové úložiště', BAT[i.battery] || 'neuvedeno']);
     rows.push(['Smlouvy na elektřinu', CONTR[i.contracts] || 'neuvedeno']);

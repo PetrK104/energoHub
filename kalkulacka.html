@@ -236,7 +236,7 @@
       <div class="kalk-footer">
         <button type="button" class="btn btn-primary" id="kalkStart">Spočítat úspory</button>
         <button type="button" class="kalk-btn-back" id="kalkBackToSelect">Změnit výběr</button>
-        <p class="kalk-disclaimer">Výsledky jsou orientační odhady. Rozpětí je ±15 %, při neznámých údajích (spotřeba, orientace střechy) ±25 %, u&nbsp;tepla a&nbsp;oken je širší, protože vychází z&nbsp;odhadů. Částky jsou včetně DPH. Přesná čísla závisí na velikosti domu, spotřebě, orientaci střechy a&nbsp;podmínkách tarifu (ceníky 2026).</p>
+        <p class="kalk-disclaimer">Výsledky jsou orientační odhady. Rozpětí je zhruba ±10 %, při neznámých údajích (spotřeba, orientace střechy, distributor) až ±21 %, u&nbsp;tepla a&nbsp;oken je širší, protože vychází z&nbsp;odhadů. Částky jsou včetně DPH. Přesná čísla závisí na velikosti domu, spotřebě, orientaci střechy a&nbsp;podmínkách tarifu (ceníky 2026).</p>
       </div>
     </div>
 
@@ -259,8 +259,8 @@
           <label class="kalk-refine__field">Připojení bytů
             <select id="jomPripojeni">
               <option value="">Různé / nevím</option>
-              <option value="1x25">1fázové (1×25 A)</option>
-              <option value="3x20">3fázové (3×20 A)</option>
+              <option value="1x25">1×25 A</option>
+              <option value="3x20">3×20 A</option>
             </select>
           </label>
         </div>
@@ -312,7 +312,7 @@
     <!-- Panel 2: FVE -->
     <div class="kalk-card kalk-panel" id="kalkPanel2" data-step-key="fve" hidden>
       <h2 data-search-keys="FVE kalkulace, fotovoltaika výpočet, úspory FVE, výpočet fotovoltaiky, kalkulačka FVE" class="kalk-panel__title" id="fotovoltaicka-elektrarna-fve">Fotovoltaická elektrárna (FVE)</h2>
-      <p class="kalk-panel__lead"><a href="slovnik.html#term-jom">JOM</a> (jednotné odběrné místo) umožní sdílet elektřinu napříč všemi byty&nbsp;– vlastní spotřeba z&nbsp;FVE stoupne z ~20&nbsp;% na ~65&nbsp;%, což výrazně zkracuje návratnost.</p>
+      <p class="kalk-panel__lead"><a href="slovnik.html#term-jom">JOM</a> (jednotné odběrné místo) umožní sdílet elektřinu napříč všemi byty&nbsp;– vlastní spotřeba z&nbsp;FVE stoupne z ~25&nbsp;% na ~60&nbsp;%, což výrazně zkracuje návratnost.</p>
 
       <details class="kalk-refine">
         <summary>Upřesnit výpočet</summary>
@@ -676,7 +676,7 @@
         </table>
       </div>
 
-      <p class="kalk-sum-disclaimer">Všechny výsledky jsou orientační odhady. Financování počítá s&nbsp;bezúročným úvěrem NZÚ, dotační bonusy ani konkrétní nabídky dodavatelů nezohledňuje. Rozpětí je ±15 %, při neznámých údajích (spotřeba, orientace střechy) ±25 %, u&nbsp;tepla a&nbsp;oken je širší, protože čísla vycházejí z&nbsp;odhadů a&nbsp;z&nbsp;nákladů, které jste zadali. Přesná čísla závisí na velikosti domu, spotřebě, orientaci střechy a&nbsp;stavu technologií.</p>
+      <p class="kalk-sum-disclaimer">Všechny výsledky jsou orientační odhady. Financování počítá s&nbsp;bezúročným úvěrem NZÚ, dotační bonusy ani konkrétní nabídky dodavatelů nezohledňuje. Rozpětí je zhruba ±10 %, při neznámých údajích (spotřeba, orientace střechy, distributor) až ±21 %, u&nbsp;tepla a&nbsp;oken je širší, protože čísla vycházejí z&nbsp;odhadů a&nbsp;z&nbsp;nákladů, které jste zadali. Přesná čísla závisí na velikosti domu, spotřebě, orientaci střechy a&nbsp;stavu technologií.</p>
 
       <!-- Kontaktní formulář -->
       <div class="kalk-contact">
@@ -775,11 +775,11 @@
 <script src="js/navbar.js" defer></script>
 <script src="js/autofill.js" defer></script>
 <script src="js/input-filter.js?v=5" defer></script>
-<script src="js/kalk-constants.js?v=16"></script>
-<script src="js/kalk-ceny.js?v=3"></script>
-<script src="js/kalk-engine.js?v=13"></script>
-<script src="js/kalk-pdf.js?v=12" defer></script>
-<script src="js/kalkulacka.js?v=60" defer></script>
+<script src="js/kalk-constants.js?v=25"></script>
+<script src="js/kalk-ceny.js?v=4"></script>
+<script src="js/kalk-engine.js?v=24"></script>
+<script src="js/kalk-pdf.js?v=17" defer></script>
+<script src="js/kalkulacka.js?v=65" defer></script>
 <script type="module" src="assets/js/search-overlay.js?v=2"></script>
 <script src="js/input-clear.js?v=3" defer></script>
 </body>

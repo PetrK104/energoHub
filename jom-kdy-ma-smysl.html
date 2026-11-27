@@ -15,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=account_circle,add,arrow_forward,battery_charging_20,battery_charging_full,call,chat_bubble,check,check_circle,checklist,chevron_left,chevron_right,close,compare_arrows,description,eco,engineering,expand_content,expand_less,expand_more,fact_check,fire_extinguisher,gavel,gpp_bad,handshake,hub,info,local_fire_department,location_on,mail,menu_book,north_east,open_in_new,receipt_long,remove,roofing,schedule,search,security,solar_power,south_east,swap_horiz,table_chart,trending_up,visibility,visibility_off,work&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css?v=25">
 <link rel="stylesheet" href="css/guide-shared.css?v=14">
-<link rel="stylesheet" href="css/jom.css?v=7">
+<link rel="stylesheet" href="css/jom.css?v=8">
 <link rel="stylesheet" href="css/search.css?v=5">
 <link rel="stylesheet" href="css/navbar-mobile-v2.css">
 </head>
@@ -318,16 +318,18 @@
         <li>Třífázový elektroměr mívají byty s vyšším příkonem (elektrické vytápění, varná deska, nabíjecí stanice)&nbsp;– platí se za něj vyšší paušální poplatky (rezervovaný příkon, jistič), proto je i úspora z jejich zrušení po zavedení JOM vyšší</li>
       </ul>
 
-      <p class="jom-savecalc__example-label">Konkrétní ukázkový příklad</p>
-      <p class="jom-savecalc__example-desc">Dům s 12 bytovými jednotkami, z toho 8 s jednofázovým elektroměrem a 4 s třífázovým.</p>
-
-      <div class="jom-savecalc__table-wrap">
-        <div class="jom-savecalc__table-head">
-          <div class="jom-stoggle">
+      <div class="jom-savecalc__example-head">
+        <div class="jom-savecalc__example-text">
+          <p class="jom-savecalc__example-label">Konkrétní ukázkový příklad</p>
+          <p class="jom-savecalc__example-desc">Dům s 12 bytovými jednotkami, z toho 8 s jednofázovým elektroměrem a 4 s třífázovým.</p>
+        </div>
+        <div class="jom-stoggle">
             <button class="jom-stoggle__btn is-active" data-panel="jom" type="button">JOM</button>
             <button class="jom-stoggle__btn" data-panel="jom-fve" type="button">JOM + FVE</button>
           </div>
-        </div>
+      </div>
+
+      <div class="jom-savecalc__table-wrap">
 
         <div class="jom-stoggle__panel is-active" id="jstPanel-jom">
           <div class="jom-savecalc__rows">
@@ -491,7 +493,7 @@
   </div>
 </footer>
 
-<script src="js/kalk-constants.js"></script>
+<script src="js/kalk-constants.js?v=25"></script>
 <script src="js/navbar.js" defer></script>
 <script src="js/autofill.js" defer></script>
 <script>(function(){var menu=document.getElementById('navMobile');var navbar=document.querySelector('.navbar');if(!menu||!navbar)return;new MutationObserver(function(){navbar.classList.toggle('navbar--menu-open',menu.classList.contains('is-open'));}).observe(menu,{attributes:true,attributeFilter:['class']});})();</script>

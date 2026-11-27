@@ -51,7 +51,7 @@
     var list    = document.getElementById('formSummaryList');
     if (!list) return;
     var apts    = document.getElementById('calcAptsNum');
-    var consump = document.getElementById('calcConsumption');
+    var consump = document.getElementById('calcAdvance');
     var orient  = document.querySelector('input[name="calcOrient"]:checked');
     var battery = document.querySelector('input[name="calcBattery"]:checked');
     var jom     = document.querySelector('input[name="calcJom"]:checked');
@@ -59,7 +59,7 @@
     list.innerHTML = [
       '<li>' + (apts ? apts.value : '—') + ' bytů</li>',
       '<li>Orientace: ' + (orient ? orient.value : '—') + '</li>',
-      (consump && consump.value ? '<li>Roční spotřeba: ' + consump.value + ' kWh</li>' : ''),
+      (consump && consump.value ? '<li>Záloha na elektřinu v bytě: ' + consump.value + ' Kč / měsíc</li>' : ''),
       '<li>' + (battery ? battLabel[battery.value] : '—') + '</li>',
       '<li>' + (jom && jom.value === 'no' ? 'Bez JOM' : 'S JOM') + '</li>',
     ].join('');
@@ -88,14 +88,13 @@
   function fveSummary(last, financing, horizon) {
     var FIN = { koupe: 'vlastní koupě', pronajem: 'pronájem (PPA)', nevim: 'zatím neví' };
     var HOR = { '6m': 'do 6 měsíců', '12m': '6–12 měsíců', '2r': '1–2 roky', zjistuju: 'zatím zjišťuje' };
-    var ORIENT = { J: 'jih', JV: 'jihovýchod', JZ: 'jihozápad', V: 'východ', Z: 'západ', S: 'sever' };
     var L = [];
     if (last) {
       var i = last.inputs, f = last.result.fve, c = last.result.comparison, E = KALK_ENGINE;
       var cz = function (n) { return n.toLocaleString('cs-CZ'); };
       L.push('Vstupy: ' + i.apartments + ' bytů, roční spotřeba ' +
-        (i.annual_consumption_kwh ? cz(Math.round(i.annual_consumption_kwh / 1000)) + ' MWh (zadáno)' : 'odhadnutá') +
-        (ORIENT[i.orientation] ? ', orientace střechy ' + ORIENT[i.orientation] + (i.orientation_touched ? '' : ' (nezměněno)') : '') + '.');
+        (i.monthly_advance_czk ? cz(Math.round(i.annual_consumption_kwh / 1000)) + ' MWh (odhad ze zálohy ' + cz(i.monthly_advance_czk) + ' Kč/měs. na byt)' : i.annual_consumption_kwh ? cz(Math.round(i.annual_consumption_kwh / 1000)) + ' MWh (zadáno)' : 'odhadnutá') +
+        (KALK.orientVeta(i.orientation) ? ', ' + KALK.orientVeta(i.orientation) + (i.orientation_touched ? '' : ' (nezměněno)') : '') + '.');
       L.push('Varianta: FVE ' + cz(f.fve_kwp) + ' kWp' + (f.limited_by === 'max' ? ' (horní mez výkonu)' : f.limited_by === 'min' ? ' (spodní mez výkonu)' : '') +
         ', ' + (f.includes_jom ? 's JOM' : 'bez JOM') + ', ' + (f.battery ? 's baterií' : 'bez baterie') + '.');
       L.push('Investice ' + E.fmtKc(f.investment_czk.lo, f.investment_czk.hi) + ', úspora ' + E.fmtKc(f.saving_year_czk.lo, f.saving_year_czk.hi) +

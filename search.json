@@ -280,10 +280,10 @@
     "category": "Bezpečnost FVE"
   },
   {
-    "title": "Co řešit u bezpečnosti FVE",
+    "title": "Co řešit u bezpečnosti FVE",
     "page": "Bezpečnost FVE instalací",
     "url": "/bezpecnost#co-resit-u-bezpecnosti-fve",
-    "text": "co řešit u bezpečnosti fve",
+    "text": "co řešit u bezpečnosti fve",
     "keywords": "bezpečnost FVE, co řešit, témata bezpečnosti, přehled opatření",
     "category": "Fotovoltaika"
   },
@@ -385,7 +385,7 @@
   },
   {
     "title": "Kdy řešit baterii k FVE",
-    "page": "Baterie k FVE – dimenzování a podmínky výnosnosti – Průvodce FVE",
+    "page": "Baterie k FVE – dimenzování a podmínky výnosnosti – Průvodce FVE",
     "url": "/fve-baterie#kdy-resit-baterii-k-fve",
     "text": "kdy řešit baterii k fve",
     "keywords": "baterie k FVE, akumulace, bateriové úložiště, kdy pořídit baterii, baterie fotovoltaika",
@@ -393,7 +393,7 @@
   },
   {
     "title": "Kdy baterie smysl nedává",
-    "page": "Baterie k FVE – dimenzování a podmínky výnosnosti – Průvodce FVE",
+    "page": "Baterie k FVE – dimenzování a podmínky výnosnosti – Průvodce FVE",
     "url": "/fve-baterie#kdy-baterie-smysl-nedava",
     "text": "kdy baterie smysl nedává",
     "keywords": "kdy baterie nevhodná, baterie nedává smysl, FVE bez baterie, nevýhody baterie",
@@ -401,7 +401,7 @@
   },
   {
     "title": "Jak velkou baterii k FVE vybrat?",
-    "page": "Baterie k FVE – dimenzování a podmínky výnosnosti – Průvodce FVE",
+    "page": "Baterie k FVE – dimenzování a podmínky výnosnosti – Průvodce FVE",
     "url": "/fve-baterie#jak-velkou-baterii-k-fve-vybrat",
     "text": "jak velkou baterii k fve vybrat?",
     "keywords": "velikost baterie FVE, kapacita baterie, výběr baterie, kolik kWh baterie, dimenzování",
@@ -409,7 +409,7 @@
   },
   {
     "title": "Rezervace kapacity pro backup",
-    "page": "Baterie k FVE – dimenzování a podmínky výnosnosti – Průvodce FVE",
+    "page": "Baterie k FVE – dimenzování a podmínky výnosnosti – Průvodce FVE",
     "url": "/fve-baterie#rezervace-kapacity-pro-backup",
     "text": "rezervace kapacity pro backup",
     "keywords": "záložní zdroj, backup FVE, záloha při výpadku, výpadek elektřiny, rezerva baterie",
@@ -417,7 +417,7 @@
   },
   {
     "title": "Financování FVE z NZÚ",
-    "page": "Podmínky a legislativa pro FVE – Průvodce FVE",
+    "page": "Podmínky a legislativa pro FVE – Průvodce FVE",
     "url": "/fve-dotace-a-legislativa#financovani-fve-z-nzu",
     "text": "financování fve z nzú",
     "keywords": "NZÚ, Nová zelená úsporám, bezúročný úvěr FVE, podmínky NZÚ, vzorec NZÚ, financování FVE, způsobilost SVJ",
@@ -425,7 +425,7 @@
   },
   {
     "title": "Hranice 100 kW – co z ní plyne v praxi",
-    "page": "Podmínky a legislativa pro FVE – Průvodce FVE",
+    "page": "Podmínky a legislativa pro FVE – Průvodce FVE",
     "url": "/fve-dotace-a-legislativa#hranice-100-kw-co-z-ni-plyne-v-praxi",
     "text": "hranice 100 kw – co z ní plyne v praxi",
     "keywords": "100 kW limit, hranice výkonu FVE, licenční povinnost, přetoky, omezení, ERÚ, energie v praxi",
@@ -440,10 +440,10 @@
     "category": "Fotovoltaika"
   },
   {
-    "title": "Dvě varovné situace v nabídce",
+    "title": "Dvě varovné situace v nabídce",
     "page": "Hodnocení nabídky od dodavatele FVE – Průvodce FVE",
     "url": "/fve-hodnoceni-nabidky#na-co-si-dat-pozor",
-    "text": "dvě varovné situace v nabídce",
+    "text": "dvě varovné situace v nabídce",
     "keywords": "pozor FVE nabídka, rizika FVE, záruky FVE, smlouva FVE, podmínky dodavatele",
     "category": "Fotovoltaika"
   },
@@ -505,7 +505,7 @@
   },
   {
     "title": "Jak probíhá přechod bytového domu na JOM",
-    "page": "Přechod na JOM – realizace a technické podmínky – Průvodce JOM",
+    "page": "Přechod na JOM – realizace a technické podmínky – Průvodce JOM",
     "url": "/jom-jak-funguje-prechod#jak-probiha-prechod-bytoveho-domu-na-jom",
     "text": "jak probíhá přechod bytového domu na jom",
     "keywords": "přechod JOM, jak probíhá přechod, fáze přechodu, smlouva, distributor, bytový dům JOM",
@@ -513,7 +513,7 @@
   },
   {
     "title": "Jak se bytový dům po přechodu na JOM změní",
-    "page": "Přechod na JOM – realizace a technické podmínky – Průvodce JOM",
+    "page": "Přechod na JOM – realizace a technické podmínky – Průvodce JOM",
     "url": "/jom-jak-funguje-prechod#jak-se-bytovy-dum-po-prechodu-na-jom-zmeni",
     "text": "jak se bytový dům po přechodu na jom změní",
     "keywords": "po přechodu na JOM, výsledek přechodu, před a po JOM, změna po zavedení JOM, jedno odběrné místo",
@@ -521,7 +521,7 @@
   },
   {
     "title": "Jak JOM snižuje náklady a proč záleží na pořadí",
-    "page": "Přechod na JOM – realizace a technické podmínky – Průvodce JOM",
+    "page": "Přechod na JOM – realizace a technické podmínky – Průvodce JOM",
     "url": "/jom-jak-funguje-prechod#jak-jom-snizuje-naklady-a-proc-zalezi-na-poradi",
     "text": "jak jom snižuje náklady a proč záleží na pořadí",
     "keywords": "úspory JOM, snížení nákladů, pořadí odečtů, distribuční poplatek, jak JOM šetří, ekonomika JOM",
@@ -545,7 +545,7 @@
   },
   {
     "title": "Jak výroba přechází mezi byty",
-    "page": "Sdílení elektřiny a úspory v bytovém domě na JOM – Průvodce JOM",
+    "page": "Sdílení elektřiny a úspory v bytovém domě na JOM – Průvodce JOM",
     "url": "/jom-sdileni-a-uspory#jak-vyroba-prechazi-mezi-byty",
     "text": "jak výroba přechází mezi byty",
     "keywords": "sdílení elektřiny JOM, sdílení výroby, distribuce mezi byty, přechod výroby, JOM algoritmus",
@@ -584,18 +584,18 @@
     "category": "Obecné"
   },
   {
-    "title": "Teplo a TUV",
+    "title": "Teplo a TUV",
     "page": "Kalkulačka úspor",
     "url": "/kalkulacka#teplo-a-tuv",
-    "text": "teplo a tuv",
+    "text": "teplo a tuv",
     "keywords": "teplo kalkulace, teplá voda TUV, vytápění výpočet, úspory tepla, tepelné čerpadlo",
     "category": "Obecné"
   },
   {
-    "title": "Okna a dveře",
+    "title": "Okna a dveře",
     "page": "Kalkulačka úspor",
     "url": "/kalkulacka#okna-a-dvere",
-    "text": "okna a dveře",
+    "text": "okna a dveře",
     "keywords": "okna kalkulace, výměna oken, dveře, úspory tepla, rekonstrukce",
     "category": "Obecné"
   },
@@ -640,10 +640,10 @@
     "category": "Obecné"
   },
   {
-    "title": "Jaké údaje a proč zpracováváme",
+    "title": "Jaké údaje a proč zpracováváme",
     "page": "Ochrana osobních údajů",
     "url": "/ochrana-osobnich-udaju#ucely",
-    "text": "jaké údaje a proč zpracováváme",
+    "text": "jaké údaje a proč zpracováváme",
     "keywords": "ochrana osobních údajů, GDPR, zpracování osobních údajů, souhlas, práva subjektu údajů",
     "category": "Obecné"
   },
@@ -656,10 +656,18 @@
     "category": "Obecné"
   },
   {
-    "title": "Cookies a analytika",
+    "title": "Předávání údajů mimo EU",
+    "page": "Ochrana osobních údajů",
+    "url": "/ochrana-osobnich-udaju#predani-mimo-eu",
+    "text": "předávání údajů mimo eu",
+    "keywords": "ochrana osobních údajů, GDPR, zpracování osobních údajů, souhlas, práva subjektu údajů",
+    "category": "Obecné"
+  },
+  {
+    "title": "Cookies a analytika",
     "page": "Ochrana osobních údajů",
     "url": "/ochrana-osobnich-udaju#cookies",
-    "text": "cookies a analytika",
+    "text": "cookies a analytika",
     "keywords": "ochrana osobních údajů, GDPR, zpracování osobních údajů, souhlas, práva subjektu údajů",
     "category": "Obecné"
   },
@@ -677,6 +685,94 @@
     "url": "/ochrana-osobnich-udaju#zabezpeceni",
     "text": "zabezpečení",
     "keywords": "ochrana osobních údajů, GDPR, zpracování osobních údajů, souhlas, práva subjektu údajů",
+    "category": "Obecné"
+  },
+  {
+    "title": "Kdo web provozuje",
+    "page": "Podmínky použití",
+    "url": "/podminky-pouziti#provozovatel",
+    "text": "kdo web provozuje",
+    "keywords": "podmínky použití, pravidla webu, pravidla fóra, odpovědnost, orientační výpočty",
+    "category": "Obecné"
+  },
+  {
+    "title": "Co web je a co není",
+    "page": "Podmínky použití",
+    "url": "/podminky-pouziti#o-webu",
+    "text": "co web je a co není",
+    "keywords": "podmínky použití, pravidla webu, pravidla fóra, odpovědnost, orientační výpočty",
+    "category": "Obecné"
+  },
+  {
+    "title": "Cena a financování webu",
+    "page": "Podmínky použití",
+    "url": "/podminky-pouziti#cena",
+    "text": "cena a financování webu",
+    "keywords": "podmínky použití, pravidla webu, pravidla fóra, odpovědnost, orientační výpočty",
+    "category": "Obecné"
+  },
+  {
+    "title": "Kalkulačky a výpočty",
+    "page": "Podmínky použití",
+    "url": "/podminky-pouziti#vypocty",
+    "text": "kalkulačky a výpočty",
+    "keywords": "podmínky použití, pravidla webu, pravidla fóra, odpovědnost, orientační výpočty",
+    "category": "Obecné"
+  },
+  {
+    "title": "Poptávky a dodavatelé",
+    "page": "Podmínky použití",
+    "url": "/podminky-pouziti#poptavky",
+    "text": "poptávky a dodavatelé",
+    "keywords": "podmínky použití, pravidla webu, pravidla fóra, odpovědnost, orientační výpočty",
+    "category": "Obecné"
+  },
+  {
+    "title": "Diskuzní fórum",
+    "page": "Podmínky použití",
+    "url": "/podminky-pouziti#forum",
+    "text": "diskuzní fórum",
+    "keywords": "podmínky použití, pravidla webu, pravidla fóra, odpovědnost, orientační výpočty",
+    "category": "Obecné"
+  },
+  {
+    "title": "AI asistenti",
+    "page": "Podmínky použití",
+    "url": "/podminky-pouziti#ai",
+    "text": "ai asistenti",
+    "keywords": "podmínky použití, pravidla webu, pravidla fóra, odpovědnost, orientační výpočty",
+    "category": "Obecné"
+  },
+  {
+    "title": "Autorská práva a odkazy",
+    "page": "Podmínky použití",
+    "url": "/podminky-pouziti#obsah",
+    "text": "autorská práva a odkazy",
+    "keywords": "podmínky použití, pravidla webu, pravidla fóra, odpovědnost, orientační výpočty",
+    "category": "Obecné"
+  },
+  {
+    "title": "Odpovědnost",
+    "page": "Podmínky použití",
+    "url": "/podminky-pouziti#odpovednost",
+    "text": "odpovědnost",
+    "keywords": "podmínky použití, pravidla webu, pravidla fóra, odpovědnost, orientační výpočty",
+    "category": "Obecné"
+  },
+  {
+    "title": "Osobní údaje",
+    "page": "Podmínky použití",
+    "url": "/podminky-pouziti#osobni-udaje",
+    "text": "osobní údaje",
+    "keywords": "podmínky použití, pravidla webu, pravidla fóra, odpovědnost, orientační výpočty",
+    "category": "Obecné"
+  },
+  {
+    "title": "Změny podmínek a rozhodné právo",
+    "page": "Podmínky použití",
+    "url": "/podminky-pouziti#zmeny",
+    "text": "změny podmínek a rozhodné právo",
+    "keywords": "podmínky použití, pravidla webu, pravidla fóra, odpovědnost, orientační výpočty",
     "category": "Obecné"
   },
   {

@@ -1,19 +1,21 @@
 (function () {
   var PRICE      = (window.KALK && KALK.FVE_CENA_EL) || 6.0;    // Kč/kWh, zdroj: js/kalk-constants.js
   var RANGE      = (window.KALK && KALK.ROZPETI) || 0.15;       // upřesní se v recalculate() podle neznámých vstupů
-  var CHART_H    = 300;    // px
 
   // Podíly vlastní spotřeby jen pro krátké poznámky pod přepínači; výpočet dělá společné jádro (js/kalk-engine.js)
-  var SELF_NO_BATTERY = (window.KALK && KALK.FVE_VLASTNI_PODIL) || 0.65;   // s JOM, bez baterie
-  var SELF_NO_JOM     = (window.KALK && KALK.FVE_VLASTNI_BEZ_JOM) || 0.20; // bez JOM, bez baterie
+  var SELF_NO_BATTERY = (window.KALK && KALK.FVE_VLASTNI_PODIL) || 0.60;   // s JOM, bez baterie
+  var SELF_NO_JOM     = (window.KALK && KALK.FVE_VLASTNI_BEZ_JOM) || 0.25; // bez JOM, bez baterie
   var BATTERY_BOOST   = (window.KALK && KALK.BATERIE_PODIL) || 0.15;       // baterie přidává procentní body
 
   var CONSUMPTION_PER_APT = (window.KALK && KALK.SPOTREBA_NA_BYT) || 2200;  // kWh/byt/rok, když uživatel nezadá roční spotřebu domu
   var orientTouched = false;
+  var aptsTouched = false;   // výsledky se ukážou až po vyplnění počtu bytů, spotřeby a orientace střechy
+  var noConsump = document.getElementById('calcConsumptionUnknown');
+  var stepCalc = document.getElementById('stepCalc');
 
   var sliderApts = document.getElementById('calcApts');
   var numApts    = document.getElementById('calcAptsNum');
-  var numConsump = document.getElementById('calcConsumption');
+  var numConsump = document.getElementById('calcAdvance');   // měsíční záloha na elektřinu v typickém bytě (Kč)
 
   var elPayback      = document.getElementById('resPayback');
   var elSavingsYear  = document.getElementById('resSavingsYear');
@@ -48,10 +50,41 @@
     return el ? el.value : null;
   }
 
+  // Dokud chybí povinné vstupy: pomlčky místo čísel, grafy jen připravené (vyprázdněné)
+  function showEmpty() {
+    window.EH_FVE_LAST = null;
+    elPayback.textContent = '–';
+    elSavingsYear.textContent = '–';  setUnit(elSavingsYear, 'tis. Kč', ' / rok');
+    elSavingsMth.textContent = '–';
+    var ec = document.getElementById('resCostTotal');
+    if (ec) { ec.textContent = '–'; setUnit(ec, 'tis. Kč', ' instalace'); }
+    barJomV.textContent = '–'; barNoJomV.textContent = '–';
+    barJom.style.height = '0%'; barNoJom.style.height = '0%';
+    var eb = document.getElementById('bdBar'), el = document.getElementById('bdList');
+    if (eb) eb.innerHTML = '';
+    if (el) el.innerHTML = ['Společné prostory', 'Byty (FVE + JOM)', 'Baterie'].map(function (n) {
+      return '<li class="fve-calc__bd-item is-off"><span class="fve-calc__bd-name"><i class="fve-calc__bd-dot"></i>' + n + '</span><span class="fve-calc__bd-val">–</span></li>';
+    }).join('');
+    var rn = document.getElementById('calcRangeNote'); if (rn) rn.textContent = '';
+    var jomOn = radio('calcJom') !== 'no', batOn = radio('calcBattery') === 'yes';
+    if (elJomNote) elJomNote.textContent = jomOn
+      ? 'Dům sdílí vyrobenou elektřinu mezi byty (využití ~' + Math.round(SELF_NO_BATTERY * 100) + ' %).'
+      : 'Výrobu využijí hlavně společné prostory (~' + Math.round(SELF_NO_JOM * 100) + ' %). Úvěr NZÚ takovou FVE nepodporuje.';
+    if (elBatteryNote) elBatteryNote.textContent = batOn
+      ? 'Baterie uloží přebytky na večer, využití výroby roste o ~' + Math.round(BATTERY_BOOST * 100) + ' p. b.'
+      : 'Přebytky odchází do distribuční sítě.';
+    if (elChartNote) elChartNote.textContent = '';
+  }
+
   function recalculate() {
+    var advance    = (noConsump && noConsump.checked) ? 0 : ((window.EH && EH.numIn ? EH.numIn(numConsump) : parseFloat(numConsump.value)) || 0);
+    var orientVal  = radio('calcOrient');            // null = nevybráno, 'N' = nevím
+    var ready = aptsTouched && (advance > 0 || (noConsump && noConsump.checked)) && !!orientVal;
+    if (stepCalc) stepCalc.classList.toggle('is-empty', !ready);
+    if (!ready) { showEmpty(); return; }
     var apts       = parseInt(sliderApts.value, 10) || 12;
-    var annualInput = (window.EH && EH.numIn ? EH.numIn(numConsump) : parseFloat(numConsump.value)) || 0;
-    var orient     = radio('calcOrient') || 'J';
+    var annualInput = advance > 0 ? KALK.spotrebaZeZalohy(apts, advance) : 0;   // kWh/rok z měsíční zálohy
+    var orient     = orientVal === 'N' ? 'J' : orientVal;
     var hasBattery = radio('calcBattery') === 'yes';
     var hasJom     = radio('calcJom') !== 'no';
 
@@ -61,7 +94,7 @@
     var totalAnnual = annualInput || apts * CONSUMPTION_PER_APT;
 
     // Jedno pravidlo rozpětí: neznámé vstupy = nevyplněná spotřeba a nezměněná orientace
-    RANGE = KALK.rozpeti((annualInput ? 0 : 1) + (orientTouched ? 0 : 1));
+    RANGE = KALK.rozpeti([annualInput ? 'zaloha' : 'spotreba', orientTouched ? '' : 'orientace']);
 
     // Podíl vlastní spotřeby podle varianty (JOM × baterie), jen pro poznámky pod přepínači
     function selfRatio(jom, battery) {
@@ -89,12 +122,24 @@
     var fveCost = eSel.investice_fve_bez_jom;
     var costLo  = fveCost * (1 - RANGE) + jomR.lo;
     var costHi  = fveCost * (1 + RANGE) + jomR.hi;
-    var payMin  = Math.max(1, costLo / (savingsSel * (1 + RANGE)));
-    var payMax  = costHi / (savingsSel * (1 - RANGE));
-    var savYMin = Math.round(savingsSel / 1000 * (1 - RANGE));
-    var savYMax = Math.round(savingsSel / 1000 * (1 + RANGE));
-    var savMMin = Math.round(mthPerApt * (1 - RANGE));
-    var savMMax = Math.round(mthPerApt * (1 + RANGE));
+    // Úspora z JOM vychází z průměru (distributora ani jistič se tu neptáme), proto má širší rozpětí než zbytek (jako v hlavní kalkulačce)
+    var RANGE_JOM = KALK.rozpeti(['distributor', 'pripojeni']);
+    function band(val, jomPart) {
+      var rest = val - jomPart;
+      return { lo: rest * (1 - RANGE) + jomPart * (1 - RANGE_JOM), hi: rest * (1 + RANGE) + jomPart * (1 + RANGE_JOM) };
+    }
+    var jomUs   = hasJom ? eSel.uspora_jom : 0;
+    var bSel    = band(savingsSel, jomUs);
+    // Návratnost: investice a úspora rostou spolu s velikostí FVE (spotřeba se v poměru zkrátí),
+    // proto se do jejího rozpětí nepočítá nejistota spotřeby, jen cena, orientace a podíl JOM
+    var payC    = (costLo + costHi) / 2 / savingsSel;
+    var rPay    = Math.sqrt(Math.pow(KALK.NEJISTOTA.zaklad, 2) + Math.pow(KALK.rozpeti([orientTouched ? '' : 'orientace', hasJom ? 'distributor' : '', hasJom ? 'pripojeni' : '']), 2));
+    var payMin  = Math.max(1, payC * (1 - rPay));
+    var payMax  = payC * (1 + rPay);
+    var savYMin = Math.round(bSel.lo / 1000);
+    var savYMax = Math.round(bSel.hi / 1000);
+    var savMMin = Math.round(bSel.lo / 12 / apts);
+    var savMMax = Math.round(bSel.hi / 12 / apts);
 
     var costMin = Math.round(costLo / 1000);
     var costMax = Math.round(costHi / 1000);
@@ -105,6 +150,7 @@
       inputs: {
         apartments: apts,
         annual_consumption_kwh: annualInput || null,
+        monthly_advance_czk: advance || null,
         consumption_estimated: !annualInput,
         selected: ['fve'],
         orientation: orient,
@@ -120,8 +166,8 @@
           battery: hasBattery,
           includes_jom: hasJom,
           investment_czk: { lo: E.kc(costLo), hi: E.kc(costHi) },
-          saving_year_czk: { lo: E.kc(savingsSel * (1 - RANGE)), hi: E.kc(savingsSel * (1 + RANGE)) },
-          saving_apt_month_czk: { lo: E.kc(mthPerApt * (1 - RANGE)), hi: E.kc(mthPerApt * (1 + RANGE)) },
+          saving_year_czk: { lo: E.kc(bSel.lo), hi: E.kc(bSel.hi) },
+          saving_apt_month_czk: { lo: E.kc(bSel.lo / 12 / apts), hi: E.kc(bSel.hi / 12 / apts) },
           payback_years: { lo: E.let(payMin), hi: E.let(payMax) }
         },
         comparison: {
@@ -143,9 +189,14 @@
 
     var elRange = document.getElementById('calcRangeNote');
     if (elRange) {
-      elRange.textContent = RANGE > (KALK.ROZPETI + 0.001)
-        ? 'Rozpětí ±' + Math.round(RANGE * 100) + ' %, protože spotřebu domu a orientaci střechy odhadujeme.'
-        : 'Rozpětí ±' + Math.round(RANGE * 100) + ' %.';
+      var odhad = [];
+      if (!annualInput) odhad.push('spotřebu domu'); else odhad.push('spotřebu z výše zálohy');
+      if (!orientTouched) odhad.push('orientaci střechy');
+      var base = 'Rozpětí ±' + Math.round(RANGE * 100) + ' %, protože ' + odhad.join(' a ') + ' odhadujeme.';
+      var jomTxt = hasJom && RANGE_JOM > RANGE + 0.001
+        ? base + ' Úspora z JOM má ±' + Math.round(RANGE_JOM * 100) + ' %, protože neznáme distributora ani jistič.'
+        : base;
+      elRange.textContent = jomTxt + ' Od úspory je odečten provoz FVE (servis, revize, připojení), asi ' + Math.round(eSel.provoz_fve / 1000) + ' tis. Kč ročně' + (hasJom ? ', rozúčtování JOM je už v úspoře z JOM.' : '.');
     }
 
     var elCostTotal = document.getElementById('resCostTotal');
@@ -160,17 +211,19 @@
     var savJom   = eSel.uspora_celkem;     // s JOM včetně úspory z poplatků JOM
     var savNoJom = eSel.uspora_bez_jom;    // stejný systém bez JOM
     var maxSav   = Math.max(savJom, savNoJom);
-    barJom.style.height   = Math.max(6, Math.round(savJom   / maxSav * CHART_H)) + 'px';
-    barNoJom.style.height = Math.max(6, Math.round(savNoJom / maxSav * CHART_H)) + 'px';
+    barJom.style.height  = Math.max(3, Math.round(savJom   / maxSav * 100)) + '%';
+    barNoJom.style.height= Math.max(3, Math.round(savNoJom / maxSav * 100)) + '%';
     barJom.style.opacity   = hasJom ? '1' : '.4';
     barNoJom.style.opacity = hasJom ? '.4' : '1';
 
     // Rozpis úspory: společné prostory (vždy), byty díky JOM, baterie
+    // Společné prostory: odhad spotřeby na byt × podíl pokrytý FVE × ocenění kWh; zbytek úspory z FVE patří bytům (díky JOM)
+    var spolecne = Math.min(apts * KALK.SPOLECNE_KWH_NA_BYT * KALK.SPOLECNE_PODIL * KALK.FVE_OCENENI_KWH * (PRICE / KALK.FVE_CENA_EL), eNoBat.uspora_fve);
     var elBar = document.getElementById('bdBar'), elList = document.getElementById('bdList');
     if (elBar && elList) {
       var parts = [
-        { cls: 'common',  name: 'Společné prostory', off: '',             val: eNoBat.uspora_bez_jom },
-        { cls: 'flats',   name: 'Byty díky JOM',     off: 'bez JOM',      val: hasJom ? (eNoBat.uspora_fve - eNoBat.uspora_bez_jom) + eNoBat.uspora_jom : 0 },
+        { cls: 'common',  name: 'Společné prostory', off: '',             val: spolecne },
+        { cls: 'flats',   name: 'Byty (FVE + JOM)',     off: 'bez JOM',      val: hasJom ? (eNoBat.uspora_fve - spolecne) + eNoBat.uspora_jom : 0, jom: hasJom ? eNoBat.uspora_jom : 0 },
         { cls: 'battery', name: 'Baterie',           off: 'bez baterie',  val: hasBattery ? (hasJom ? eSel.uspora_fve - eNoBat.uspora_fve : eSel.uspora_bez_jom - eNoBat.uspora_bez_jom) : 0 }
       ];
       var sum = parts.reduce(function (a, x) { return a + x.val; }, 0) || 1;
@@ -179,14 +232,16 @@
       }).join('');
       elList.innerHTML = parts.map(function (x) {
         var on = x.val > 0;
-        var f = on ? fmtThousands(Math.round(x.val / 1000 * (1 - RANGE)), Math.round(x.val / 1000 * (1 + RANGE))) : null;
+        var bp = band(x.val, x.jom || 0);
+        var f = on ? fmtThousands(Math.round(bp.lo / 1000), Math.round(bp.hi / 1000)) : null;
         return '<li class="fve-calc__bd-item' + (on ? '' : ' is-off') + '"><span class="fve-calc__bd-name"><i class="fve-calc__bd-dot fve-calc__bd-dot--' + x.cls + '"></i>' + x.name + '</span>' +
           '<span class="fve-calc__bd-val">' + (on ? f.text + ' ' + f.unit : x.off) + '</span></li>';
       }).join('');
     }
 
-    var bj = fmtThousands(Math.round(savJom / 1000 * (1 - RANGE)), Math.round(savJom / 1000 * (1 + RANGE)));
-    var bn = fmtThousands(Math.round(savNoJom / 1000 * (1 - RANGE)), Math.round(savNoJom / 1000 * (1 + RANGE)));
+    var bjB = band(savJom, eSel.uspora_jom), bnB = band(savNoJom, 0);
+    var bj = fmtThousands(Math.round(bjB.lo / 1000), Math.round(bjB.hi / 1000));
+    var bn = fmtThousands(Math.round(bnB.lo / 1000), Math.round(bnB.hi / 1000));
     barJomV.textContent   = bj.text + ' ' + bj.unit;
     barNoJomV.textContent = bn.text + ' ' + bn.unit;
     if (elChartNote) {
@@ -209,22 +264,30 @@
   }
 
   sliderApts.addEventListener('input', function () {
+    aptsTouched = true;
     numApts.value = sliderApts.value;
     recalculate();
   });
 
   numApts.addEventListener('input', function () {
+    if (numApts.value === '') { aptsTouched = false; recalculate(); return; }   // vymazané pole = zase bez výsledků
+    aptsTouched = true;
     var v = Math.min(KALK.BYTY_MAX, Math.max(KALK.BYTY_MIN, parseInt(numApts.value, 10) || KALK.BYTY_MIN));
     sliderApts.value = v;
     recalculate();
   });
 
-  numApts.addEventListener('change', function () { numApts.value = sliderApts.value; });
+  numApts.addEventListener('change', function () { if (aptsTouched) numApts.value = sliderApts.value; });
 
   numConsump.addEventListener('input', recalculate);
+  if (noConsump) noConsump.addEventListener('change', function () {
+    numConsump.disabled = noConsump.checked;
+    if (noConsump.checked) numConsump.value = '';
+    recalculate();
+  });
 
   document.querySelectorAll('input[name="calcOrient"]').forEach(function (el) {
-    el.addEventListener('change', function () { orientTouched = true; recalculate(); });
+    el.addEventListener('change', function () { orientTouched = el.value !== 'N'; recalculate(); });
   });
   document.querySelectorAll('input[name="calcJom"]').forEach(function (el) {
     el.addEventListener('change', recalculate);

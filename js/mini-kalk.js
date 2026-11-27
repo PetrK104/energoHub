@@ -1,16 +1,16 @@
 (function () {
 
-  // Stejné jádro výpočtu jako hlavní kalkulačka (JOM + FVE); spotřeba i orientace jsou odhadnuté, proto rozpětí ±25 %
+  // Stejné jádro výpočtu jako hlavní kalkulačka (JOM + FVE); spotřeba i orientace jsou odhadnuté, proto rozpětí ±21 %
   function calcMini(byty) {
     var e = KALK_ENGINE.compute({
       byty: byty,
       spotreba: byty * KALK.SPOTREBA_NA_BYT,
       orient: KALK.ORIENT.J,
       cenaEl: KALK.FVE_CENA_EL,
-      rozpeti: KALK.rozpeti(2),
+      rozpeti: KALK.rozpeti(['spotreba', 'orientace']),
       selected: { jom: true, fve: true }
     });
-    var r = KALK.rozpeti(2);
+    var r = KALK.rozpeti(['spotreba', 'orientace']);
     return { rocniL: e.uspora_celkem * (1 - r), rocniH: e.uspora_celkem * (1 + r) };
   }
 

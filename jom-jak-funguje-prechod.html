@@ -15,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=account_circle,add,arrow_forward,battery_charging_20,battery_charging_full,call,chat_bubble,check,check_circle,checklist,chevron_left,chevron_right,close,compare_arrows,description,eco,engineering,expand_content,expand_less,expand_more,fact_check,fire_extinguisher,gavel,gpp_bad,handshake,hub,info,local_fire_department,location_on,mail,menu_book,north_east,open_in_new,receipt_long,remove,roofing,schedule,search,security,solar_power,south_east,swap_horiz,table_chart,trending_up,visibility,visibility_off,work&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css?v=25">
 <link rel="stylesheet" href="css/guide-shared.css?v=14">
-<link rel="stylesheet" href="css/jom.css?v=9">
+<link rel="stylesheet" href="css/jom.css?v=13">
 <link rel="stylesheet" href="css/search.css?v=5">
 <link rel="stylesheet" href="css/navbar-mobile-v2.css">
 </head>
@@ -358,32 +358,23 @@
 
     <div class="jom-impact__chart">
       <p class="jom-impact__chart-title">Orientační počáteční investice</p>
-      <div class="jom-impact__bars">
-
-        <div class="jom-impact__bar-row">
-          <span class="jom-impact__bar-label">JOM</span>
-          <div class="jom-impact__bar-track">
-            <div class="jom-impact__bar jom-impact__bar--jom" style="width: 12%"></div>
-          </div>
-          <span class="jom-impact__bar-val">140&nbsp;– 540 tis. Kč</span>
+      <div class="jom-range" role="img" aria-label="Orientační počáteční investice: JOM 140 až 540 tisíc Kč, FVE 0,6 až 2,0 milionu Kč, tepelné čerpadlo 1,5 až 4,4 milionu Kč">
+        <div class="jom-range__row">
+          <span class="jom-range__label">JOM</span>
+          <div class="jom-range__track"><span class="jom-range__fill jom-range__fill--jom" style="left:3.1%;width:8.9%"></span></div>
+          <span class="jom-range__val">140&nbsp;– 540 tis. Kč</span>
         </div>
-
-        <div class="jom-impact__bar-row">
-          <span class="jom-impact__bar-label">FVE</span>
-          <div class="jom-impact__bar-track">
-            <div class="jom-impact__bar jom-impact__bar--fve" style="width: 45%"></div>
-          </div>
-          <span class="jom-impact__bar-val">0,6&nbsp;– 2,0 mil. Kč</span>
+        <div class="jom-range__row">
+          <span class="jom-range__label">FVE</span>
+          <div class="jom-range__track"><span class="jom-range__fill jom-range__fill--fve" style="left:13.3%;width:31.1%"></span></div>
+          <span class="jom-range__val">0,6&nbsp;– 2,0 mil. Kč</span>
         </div>
-
-        <div class="jom-impact__bar-row">
-          <span class="jom-impact__bar-label">TČ</span>
-          <div class="jom-impact__bar-track">
-            <div class="jom-impact__bar jom-impact__bar--tc" style="width: 100%"></div>
-          </div>
-          <span class="jom-impact__bar-val">1,5&nbsp;– 4,4 mil. Kč</span>
+        <div class="jom-range__row">
+          <span class="jom-range__label">TČ</span>
+          <div class="jom-range__track"><span class="jom-range__fill jom-range__fill--tc" style="left:33.3%;width:64.4%"></span></div>
+          <span class="jom-range__val">1,5&nbsp;– 4,4 mil. Kč</span>
         </div>
-
+        <div class="jom-range__axis" aria-hidden="true"><span></span><div class="jom-range__ticks"><i style="left:0">0</i><i style="left:22.2%">1</i><i style="left:44.4%">2</i><i style="left:66.7%">3</i><i style="left:88.9%">4 mil. Kč</i></div><span></span></div>
       </div>
       <p class="jom-impact__chart-note">Hodnoty jsou orientační pro bytový dům od 15 do 48 jednotek, včetně DPH. Skutečná výše závisí na konkrétním projektu, stavu domu a podmínkách financování.</p>
     </div>
@@ -394,45 +385,28 @@
         Správné pořadí umožňuje financovat každý další krok z úspor toho předchozího.
       </p>
 
-      <div class="jom-impact__steps">
-
-        <div class="jom-impact__step jom-impact__step--active">
-          <span class="jom-impact__step-num">01</span>
-          <h4 class="jom-impact__step-name">JOM</h4>
-          <p class="jom-impact__step-desc">Administrativně nenáročný první krok, předpoklad pro sdílení FVE</p>
-        </div>
-
-        <div class="jom-impact__arrow jom-impact__arrow--d0" aria-hidden="true">
-          <div class="jom-impact__arrow-line"><div class="jom-impact__arrow-pulse"></div></div>
-        </div>
-
-        <div class="jom-impact__step">
-          <span class="jom-impact__step-num">02</span>
-          <h4 class="jom-impact__step-name">FVE</h4>
-          <p class="jom-impact__step-desc">Vlastní výroba elektřiny, JOM zajistí její efektivní využití v celém domě</p>
-        </div>
-
-        <div class="jom-impact__arrow jom-impact__arrow--d1" aria-hidden="true">
-          <div class="jom-impact__arrow-line"><div class="jom-impact__arrow-pulse"></div></div>
-        </div>
-
-        <div class="jom-impact__step">
-          <span class="jom-impact__step-num">03</span>
-          <h4 class="jom-impact__step-name">Tepelné čerpadlo</h4>
-          <p class="jom-impact__step-desc">Využívá levnější elektřinu z FVE, kondenzační kotel jako záloha</p>
-        </div>
-
-        <div class="jom-impact__arrow jom-impact__arrow--d2" aria-hidden="true">
-          <div class="jom-impact__arrow-line"><div class="jom-impact__arrow-pulse"></div></div>
-        </div>
-
-        <div class="jom-impact__step">
-          <span class="jom-impact__step-num">04</span>
-          <h4 class="jom-impact__step-name">Zateplení</h4>
-          <p class="jom-impact__step-desc">Výrazná dlouhodobá úspora tepla, realizuje se jako poslední</p>
-        </div>
-
-      </div>
+      <ol class="jom-path">
+        <li class="jom-path__step jom-path__step--first">
+          <span class="jom-path__num" aria-hidden="true">01</span>
+          <h4 class="jom-path__name">JOM</h4>
+          <p class="jom-path__desc">Administrativně nenáročný první krok, předpoklad pro sdílení FVE</p>
+        </li>
+        <li class="jom-path__step">
+          <span class="jom-path__num" aria-hidden="true">02</span>
+          <h4 class="jom-path__name">FVE</h4>
+          <p class="jom-path__desc">Vlastní výroba elektřiny, JOM zajistí její efektivní využití v celém domě</p>
+        </li>
+        <li class="jom-path__step">
+          <span class="jom-path__num" aria-hidden="true">03</span>
+          <h4 class="jom-path__name">Tepelné čerpadlo</h4>
+          <p class="jom-path__desc">Využívá levnější elektřinu z FVE, kondenzační kotel jako záloha</p>
+        </li>
+        <li class="jom-path__step">
+          <span class="jom-path__num" aria-hidden="true">04</span>
+          <h4 class="jom-path__name">Zateplení</h4>
+          <p class="jom-path__desc">Výrazná dlouhodobá úspora tepla, realizuje se jako poslední</p>
+        </li>
+      </ol>
     </div>
 </div>
 </section>

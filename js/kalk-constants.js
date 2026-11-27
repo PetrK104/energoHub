@@ -1,15 +1,37 @@
 var KALK = {
   JOM_NA_BYT:        2000,
   FVE_VYROBA_NA_KWP: 1000,
-  FVE_VLASTNI_PODIL: 0.65,   // vlastní spotřeba FVE s JOM (bez baterie)
-  FVE_VLASTNI_BEZ_JOM: 0.20, // vlastní spotřeba FVE bez JOM, jen společné prostory (bez baterie)
+  FVE_VLASTNI_PODIL: 0.60,   // podíl VYROBENÉ elektřiny využitý v domě s JOM (bez baterie); stejná hodnota v hlavní kalkulačce, kalkulačce FVE i dotazníku JOM
+  FVE_VLASTNI_BEZ_JOM: 0.25, // podíl vyrobené elektřiny využitý bez JOM, jen společné prostory (bez baterie)
   // Cena elektřiny nahrazené FVE (Kč/kWh, proměnná část vč. DPH).
   // JEDINÉ místo, kde se cena mění: používají ji kalkulačky i texty s atributem data-kalk-cena.
   FVE_CENA_EL:       6.0,
+  // Ocenění 1 kWh z vlastní FVE (Kč, vč. DPH): rozdíl nákupní ceny a ušlého výkupu přebytku. Používá se pro úsporu z FVE
+  // v hlavní kalkulačce, kalkulačce FVE i v dotazníku JOM (cena ze sítě FVE_CENA_EL zůstává pro tepelné čerpadlo a náklady dnes).
+  FVE_OCENENI_KWH:   4.8,
+  // Přetoky (výroba, kterou dům nespotřebuje) se prodávají do sítě za výkupní cenu (Kč/kWh). ODHAD, K OVĚŘENÍ
+  // (obecně se uvádí 1 až 1,5 Kč/kWh, 0,80 je opatrnější hodnota).
+  FVE_VYKUP_KWH:     0.80,
+  // Horní mez výkonu FVE: asi 1,5 kWp na byt podle plochy střechy (ODHAD, K OVĚŘENÍ) a 99 kWp, aby systém nespadl
+  // nad hranici 100 kW (výrobna nad 100 kW potřebuje licenci ERÚ a stavební povolení).
+  FVE_STRECHA_KWP_NA_BYT: 1.5,
+  FVE_MAX_KWP:       99,
+  // Provoz FVE (servis, revize, konektivita): 0,5 % investice do FVE ročně, nejméně 3 000 Kč (ODHAD, K OVĚŘENÍ).
+  // Rozúčtování JOM se neodečítá zvlášť, je už v úspoře z JOM (KALK_CENY.rozuctovani_dum a rozuctovani_na_byt).
+  FVE_PROVOZ_PODIL:  0.005,
+  FVE_PROVOZ_MIN:    3000,
+  // Společné prostory: roční spotřeba na byt a podíl, který pokryje FVE přímo (ODHAD, K OVĚŘENÍ); jen pro rozpis úspory
+  SPOLECNE_KWH_NA_BYT: 300,
+  SPOLECNE_PODIL:    0.5,
   // Koeficient výnosu podle orientace střechy (jedna tabulka pro všechny nástroje)
-  ORIENT: { J: 1.00, JZ: 0.93, JV: 0.93, V: 0.77, Z: 0.77, S: 0.58 },
+  // Klíče JZ a Z zůstávají kvůli starým odkazům a uloženým poptávkám, ve výběru se nabízejí sloučené (JV = JV / JZ, V = V / Z).
+  // P = plochá střecha: průměr jižního uspořádání panelů (asi 0,91) a východo-západního (asi 0,83) podle PVGIS (JRC).
+  ORIENT: { J: 1.00, JZ: 0.93, JV: 0.93, V: 0.77, Z: 0.77, S: 0.58, P: 0.87 },
+  // Volby ve formulářích (pořadí a popisky) a názvy do textů, PDF a shrnutí poptávek
+  ORIENT_VOLBY: [['J', 'Jih'], ['JV', 'Jihovýchod / jihozápad'], ['V', 'Východ / západ'], ['S', 'Sever'], ['P', 'Plochá střecha']],
+  ORIENT_NAZVY: { J: 'jih', JV: 'jihovýchod nebo jihozápad', JZ: 'jihozápad', V: 'východ nebo západ', Z: 'západ', S: 'sever', P: 'plochá střecha' },
   // Baterie: zvýšení podílu vlastní spotřeby (procentní body) a orientační cena na byt (0,5 kWh × 20 000 Kč/kWh), neověřeno
-  BATERIE_PODIL:     0.15,
+  BATERIE_PODIL:     0.18,
   BATERIE_NA_BYT:    10000,   // bez DPH
   FVE_ORIENT_H:      1.0,
   FVE_ORIENT_L:      0.75,
@@ -86,6 +108,18 @@ KALK.BYTY_MIN = 4;   // minimální počet bytů ve všech kalkulačkách a dota
 KALK.BYTY_MAX = 300;
 KALK.BYTY_MINI_MAX = 120;
 
+// Dotazník JOM verze B: model FVE (odhad zadaný majitelem webu, neověřeno).
+// Využití výroby bez JOM 25 %, s JOM 60 %, ušetřená kWh 4,80 Kč včetně DPH, přetok 0,80 Kč; bez znalosti výkonu 1 kWp na byt.
+KALK.JOM_B = { vlastni_bez_jom: KALK.FVE_VLASTNI_BEZ_JOM, vlastni_s_jom: KALK.FVE_VLASTNI_PODIL, kc_kwh: KALK.FVE_OCENENI_KWH, vykup_kwh: KALK.FVE_VYKUP_KWH, kwp_na_byt: 1 };
+
+// Stará volba (JZ, Z) se ve výběru zobrazí jako sloučená (JV, V)
+KALK.orientVolba = function (k) { return k === 'JZ' ? 'JV' : k === 'Z' ? 'V' : k; };
+// Věta do shrnutí a poptávek: "orientace střechy jih" / "plochá střecha"; prázdná, pokud klíč neznáme
+KALK.orientVeta = function (k) {
+  var n = KALK.ORIENT_NAZVY[k];
+  return n ? (k === 'P' ? n : 'orientace střechy ' + n) : '';
+};
+
 // Odkaz do hlavní kalkulačky s předvyplněnými údaji (parametry v adrese): byty, spotreba, orientace, reseni (jom,fve,tc,okna)
 KALK.odkazKalkulacka = function (o) {
   o = o || {};
@@ -129,9 +163,36 @@ KALK.nactiParametry = function (search) {
   return (r.byty || r.spotreba || r.orientace || r.reseni.length) ? r : null;
 };
 
-// Jedno pravidlo rozpětí pro všechny nástroje: ±15 %, při dvou a více neznámých vstupech (spotřeba, orientace…) ±25 %
-KALK.rozpeti = function (pocetNeznamych) {
-  return pocetNeznamych >= 2 ? KALK.ROZPETI_NEVIM : KALK.ROZPETI;
+// Nejistoty jednotlivých vstupů (± podíl). Základ = ceny nabídek a nepřesnost modelu, když uživatel zná všechno.
+// Každý neznámý (odhadnutý) vstup přidá svou nejistotu; skládají se v kvadratuře, protože na sobě nezávisí
+// a málokdy jsou všechny odhady špatně současně (odmocnina ze součtu čtverců, ne prostý součet).
+KALK.NEJISTOTA = { zaklad: 0.10, spotreba: 0.15, zaloha: 0.10, orientace: 0.10, distributor: 0.10, pripojeni: 0.08 };
+
+// Roční spotřeba domu z měsíční zálohy na elektřinu v typickém bytě (Kč vč. DPH).
+// Záloha obsahuje stálé platby (jistič, provoz nesíťové infrastruktury, stálá platba dodavateli); ty se odečtou
+// (průměr distributorů a jističů 1×25 A a 3×20 A z KALK_CENY, vč. DPH 21 %) a zbytek se vydělí cenou 1 kWh.
+// ODHAD: předpokládá, že záloha odpovídá skutečným nákladům; spodní mez 800 kWh na byt a rok.
+KALK.stalePlatbyBytuMesic = function () {
+  var C = window.KALK_CENY;
+  if (!C || !C.distribuce) return 0;
+  var js = Object.keys(C.distribuce).map(function (d) { return C.distribuce[d].D02d.jistic; });
+  function prumer(k) { return js.reduce(function (a, j) { return a + j[k]; }, 0) / js.length; }
+  var jistic = (prumer('1x25') + prumer('3x20')) / 2;
+  return Math.round((jistic + C.provoz_nesitove_infrastruktury + (C.dodavatel_stala_platba || 0)) * 1.21);   // zaokrouhleno na celé Kč (≈ 336)
+};
+KALK.spotrebaZeZalohy = function (byty, zaloha) {
+  var rocniKc = Math.max(0, zaloha * 12 - KALK.stalePlatbyBytuMesic() * 12);
+  var naByt = Math.max(800, rocniKc / KALK.FVE_CENA_EL);
+  return Math.round(byty * naByt);
+};
+
+// Rozpětí podle neznámých vstupů: KALK.rozpeti(['spotreba', 'orientace']) → např. 0,21.
+// Číslo (počet neznámých) zůstává jen pro dotazník JOM: 0–1 neznámé ±15 %, 2 a více ±25 %.
+KALK.rozpeti = function (neznamy) {
+  if (typeof neznamy === 'number') return neznamy >= 2 ? KALK.ROZPETI_NEVIM : KALK.ROZPETI;
+  var N = KALK.NEJISTOTA, q = N.zaklad * N.zaklad;
+  (neznamy || []).forEach(function (k) { if (k && N[k]) q += N[k] * N[k]; });
+  return Math.round(Math.sqrt(q) * 100) / 100;
 };
 
 // Investice do zřízení JOM = ceny z js/kalk-ceny.js (jsou bez DPH) převedené na ceny s DPH:
@@ -197,7 +258,7 @@ KALK.tcInvestice = function (byty) {
 
 // Verze výpočtu a snímek předpokladů. Ukládá se spolu s poptávkou (Supabase), aby šlo zpětně poznat,
 // z jakých cen a konstant byl výsledek spočítaný. Při změně cen nebo vzorců zvyšte KALK.VERZE.
-KALK.VERZE = '2026-11-12';
+KALK.VERZE = '2026-11-27e';
 KALK.predpoklady = function () {
   var ceny = (typeof KALK_CENY !== 'undefined') ? KALK_CENY : null;
   return {
@@ -206,6 +267,7 @@ KALK.predpoklady = function () {
     jom_na_byt: KALK.JOM_NA_BYT,
     spotreba_na_byt: KALK.SPOTREBA_NA_BYT,
     cena_el: KALK.FVE_CENA_EL,
+    oceneni_kwh: KALK.FVE_OCENENI_KWH,
     fve_cena_kwp_bez_dph: KALK.FVE_CENA_KWP,
     baterie_na_byt_bez_dph: KALK.BATERIE_NA_BYT,
     vlastni_podil_s_jom: KALK.FVE_VLASTNI_PODIL,

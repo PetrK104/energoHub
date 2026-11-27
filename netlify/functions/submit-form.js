@@ -139,6 +139,7 @@ const FORMS = {
     }
   },
 
+  // Dotazník JOM (tabulka poptavky_jom, struktura v Supabase)
   jom_quiz: {
     table: 'poptavky_jom',
     build(data) {
@@ -147,13 +148,18 @@ const FORMS = {
         ...commonColumns(c, data),
         organizace: str(data.organization, 200) || null,
         ...pickColumns(data.sloupce, {
-          pocet_bytu: 'int', rocni_spotreba_kwh: 'int', skore: 'int',
-          uspora_rocne_od_kc: 'int', uspora_rocne_do_kc: 'int', verze_vypoctu: 'text',
-          typ_domu: ['SVJ', 'bytové družstvo', 'obecní dům', 'jiný'],
+          pocet_bytu: 'int', verze_vypoctu: 'text',
           stav_fve: ['mají', 'plánují', 'nemají'],
-          vyhodnoceni: ['vysoká', 'střední', 'nízká']
+          vyhodnoceni: ['vysoká', 'střední', 'nízká'],
+          distributor: ['ČEZ Distribuce', 'EG.D (E.ON)', 'PREdistribuce'],
+          jistic_v_bytech: ['1×25 A (vaření na plynu)', '3×20 A až 3×25 A (el. vaření)'],
+          stav_smluv: ['každý byt má vlastní smlouvu', 'společná smlouva už existuje', 'nevědí'],
+          hlavni_jistic_a: 'int',
+          uspora_rocne_od_kc: 'int', uspora_rocne_do_kc: 'int',
+          uspora_mesicne_od_kc: 'int', uspora_mesicne_do_kc: 'int',
+          uspora_na_byt_mesicne_od_kc: 'int', uspora_na_byt_mesicne_do_kc: 'int',
+          naklady_dnes_kc: 'int', naklady_po_jom_kc: 'int', cista_uspora_kc: 'int', prinos_fve_kc: 'int', rozpeti_procent: 'int'
         }),
-        vstupy: jsonField(data.vstupy),
         vysledek: jsonField(data.vysledek)
       };
       if (!row.jmeno || !row.email) return { error: 'Vyplňte jméno a e-mail' };

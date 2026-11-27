@@ -15,6 +15,67 @@ var KALK_ENGINE = (function () {
     return byty * (pevne + promenne + poze) * KALK.DPH;
   }
 
+  // ── Dotazník JOM, verze B: čistá roční bilance (částky včetně DPH) ──
+  // o = { byty, zona: '' | 'cez' | 'egd' | 'pre' (prázdné = průměr), vareni: '' | 'plyn' | 'el' (prázdné = průměr),
+  //       fve: 'none' | 'plan' | 'have' }
+  // Dnes: jistič a provoz každého bytu + stálá platba dodavateli za každý byt.
+  // Po JOM: hlavní jistič + provoz + jedna stálá platba + rozúčtování podružných měřidel.
+  // Hlavní jistič podle počtu bytů a způsobu vaření (plyn = byty 1×25 A, elektřina = byty 3×20 A).
+  function hlavniJisticB(byty, vareni) {
+    if (vareni === 'plyn') return byty <= 15 ? 40 : byty <= 30 ? 63 : byty <= 50 ? 80 : 125;
+    return byty <= 15 ? 63 : byty <= 30 ? 100 : byty <= 50 ? 125 : 160;
+  }
+  function cenaHlavniD02d(t, a) {
+    if (a === 40) return t.jistic['3x40'];
+    if (a === 63) return t.hlavni.a63;
+    return a * t.hlavni.kc_na_a;
+  }
+  function jomBilance(o) {
+    var c = (typeof KALK_CENY !== 'undefined') ? KALK_CENY : null;
+    if (!c || c.provoz_nesitove_infrastruktury == null || c.dodavatel_stala_platba == null || c.rozuctovani_na_byt == null || c.rozuctovani_dum == null) return null;
+    var zones = o.zona ? [o.zona] : ['cez', 'egd', 'pre'];
+    var vars = o.vareni ? [o.vareni] : ['plyn', 'el'];
+    var provoz = c.provoz_nesitove_infrastruktury, D = KALK.DPH, byty = o.byty;
+    var sum = null, n = 0, aLo = Infinity, aHi = 0;
+    zones.forEach(function (zk) {
+      var t = c.distribuce[zk] && c.distribuce[zk].D02d;
+      vars.forEach(function (v) {
+        if (!t || !t.hlavni || t.jistic['3x40'] == null || t.jistic[c.spolecne_om_jistic] == null) return;
+        var a = hlavniJisticB(byty, v);
+        var hlavni = cenaHlavniD02d(t, a);
+        var r = {
+          jistice_dnes: byty * (t.jistic[v === 'plyn' ? '1x25' : '3x20'] + provoz) * 12 * D,
+          dodavatel_dnes: byty * c.dodavatel_stala_platba * 12 * D,
+          spolecne_dnes: (t.jistic[c.spolecne_om_jistic] + provoz + c.dodavatel_stala_platba) * 12 * D,
+          jistic_po: (hlavni + provoz) * 12 * D,
+          dodavatel_po: c.dodavatel_stala_platba * 12 * D,
+          rozuctovani: (c.rozuctovani_dum + byty * c.rozuctovani_na_byt) * 12 * D
+        };
+        if (!sum) sum = { jistice_dnes: 0, dodavatel_dnes: 0, spolecne_dnes: 0, jistic_po: 0, dodavatel_po: 0, rozuctovani: 0 };
+        Object.keys(sum).forEach(function (k) { sum[k] += r[k]; });
+        n++; aLo = Math.min(aLo, a); aHi = Math.max(aHi, a);
+      });
+    });
+    if (!n) return null;
+    Object.keys(sum).forEach(function (k) { sum[k] /= n; });
+    sum.dnes = sum.jistice_dnes + sum.dodavatel_dnes + sum.spolecne_dnes;
+    sum.po = sum.jistic_po + sum.dodavatel_po + sum.rozuctovani;
+    sum.cista = sum.dnes - sum.po;
+    sum.hlavni_a_lo = aLo; sum.hlavni_a_hi = aHi;
+    // FVE: jen při „Již máme“; výkon neznáme, odhad 1 kWp na byt
+    var B = KALK.JOM_B;
+    sum.fve = 0;
+    if (o.fve === 'have') {
+      sum.fve_kwp = byty * B.kwp_na_byt;
+      // Přínos JOM: víc využité výroby (místo přetoku do sítě za výkup)
+      sum.fve = sum.fve_kwp * KALK.FVE_VYROBA_NA_KWP * (B.vlastni_s_jom - B.vlastni_bez_jom) * (B.kc_kwh - B.vykup_kwh);
+    }
+    sum.celkem = sum.cista + sum.fve;
+    // Neznámé vstupy rozšiřují rozpětí (pravidlo ±15 % / ±25 %)
+    sum.neznamych = (o.zona ? 0 : 1) + (o.vareni ? 0 : 1) + (o.fve === 'have' ? 1 : 0);
+    return sum;
+  }
+
   function compute(inp) {
     var N = KALK.NZU;
     var byty = inp.byty, spotreba = inp.spotreba;
@@ -22,7 +83,11 @@ var KALK_ENGINE = (function () {
     var sel = inp.selected;
 
     // JOM
-    var uspora_jom    = byty * KALK.JOM_NA_BYT;
+    // Úspora JOM = čistá roční bilance jako v dotazníku JOM (distribuční území a připojení bytů; když je uživatel
+    // nezná, počítá se průměrem). Bez ověřených cen se použije pevná úspora na byt.
+    var PRIP = { '1x25': 'plyn', '3x20': 'el' };
+    var jomBil        = jomBilance({ byty: byty, zona: inp.jomZona || '', vareni: PRIP[inp.jomPripojeni] || '', fve: 'none' });
+    var uspora_jom    = jomBil ? jomBil.cista : byty * KALK.JOM_NA_BYT;
     var naklady_bez   = regulovane(byty, spotreba);
     var naklady_s_jom = naklady_bez - uspora_jom;
     var jom_investice = KALK.jomInvestice(byty);
@@ -33,22 +98,30 @@ var KALK_ENGINE = (function () {
     var podilS     = KALK.FVE_VLASTNI_PODIL + bonusBat;
     var podilBez   = KALK.FVE_VLASTNI_BEZ_JOM + bonusBat;
     var vykonIdeal = spotreba * podilS / (KALK.FVE_VYROBA_NA_KWP * orient);
-    var vykonMax   = byty * N.MAX_KWP_NA_BYT;
+    // Horní mez: NZÚ (3 kWp na byt), střecha (asi 1,5 kWp na byt) a 99 kWp (limit bez licence ERÚ)
+    var vykonMax   = Math.min(byty * N.MAX_KWP_NA_BYT, byty * KALK.FVE_STRECHA_KWP_NA_BYT, KALK.FVE_MAX_KWP);
     var vykon      = Math.round(Math.max(N.MIN_KWP, Math.min(vykonIdeal, vykonMax)));
     var fveOmezeni = vykonIdeal > vykonMax ? 'max' : (vykonIdeal < N.MIN_KWP ? 'min' : '');
     // Existující systém (zadaný výkon) přebije dopočtený výkon
     if (inp.vykonFix > 0) { vykon = inp.vykonFix; fveOmezeni = ''; }
     var vyroba     = vykon * KALK.FVE_VYROBA_NA_KWP * orient;
-    var vlastni_s_jom   = Math.min(vyroba, spotreba * podilS);
-    var vlastni_bez_jom = Math.min(vyroba, spotreba * podilBez);
-    var uspora_fve      = vlastni_s_jom * cena;
+    // Využitá výroba = pevný podíl výroby (souběh se spotřebou), zbytek jsou přetoky se symbolickým výkupem
+    var vlastni_s_jom   = vyroba * podilS;
+    var vlastni_bez_jom = vyroba * podilBez;
+    // Hodnota 1 kWh z FVE: ocenění KALK.FVE_OCENENI_KWH, při ruční změně ceny elektřiny úměrně upravené
+    var hodnotaKwh      = KALK.FVE_OCENENI_KWH * (cena / KALK.FVE_CENA_EL);
+    var vykup           = KALK.FVE_VYKUP_KWH;
     var investice_fve_sam = vykon * KALK.FVE_CENA_KWP * KALK.DPH_SNIZENA;
     var jomInv          = KALK.jomInvestice(byty);
     var investice_baterie = inp.baterie ? byty * KALK.BATERIE_NA_BYT * KALK.DPH_SNIZENA : 0;
     var investice_fve_bez_jom = investice_fve_sam + investice_baterie;
     var investice_fve   = investice_fve_bez_jom + jomInv.mid;
+    // Provoz FVE (servis, revize, konektivita) se odečítá od úspory
+    var provoz_fve      = Math.max(KALK.FVE_PROVOZ_MIN, KALK.FVE_PROVOZ_PODIL * investice_fve_bez_jom);
+    var uspora_fve_hruba = vlastni_s_jom * hodnotaKwh + (vyroba - vlastni_s_jom) * vykup;
+    var uspora_fve      = uspora_fve_hruba - provoz_fve;
     var uspora_celkem   = uspora_fve + uspora_jom;
-    var uspora_bez_jom  = vlastni_bez_jom * cena;
+    var uspora_bez_jom  = vlastni_bez_jom * hodnotaKwh + (vyroba - vlastni_bez_jom) * vykup - provoz_fve;
     var navratnost_fve  = investice_fve / uspora_celkem;
 
     // Bezúročný úvěr NZÚ: menší z investice a vzorce, jen jistina
@@ -94,8 +167,9 @@ var KALK_ENGINE = (function () {
     // Souhrn plánu: investice, úspora, návratnost a financování po vybraných krocích
     var RPk = inp.rozpeti || KALK.ROZPETI;
     function band(c) { var a = c * (1 - RPk), b = c * (1 + RPk); return { lo: Math.min(a, b), hi: Math.max(a, b) }; }
+    var RPj = inp.rozpetiJom != null ? inp.rozpetiJom : RPk;
     var rows = [];
-    if (sel.jom) rows.push({ key: 'jom', name: 'JOM', odhad: false, inv: { lo: jom_investice.lo, hi: jom_investice.hi }, us: band(uspora_jom) });
+    if (sel.jom) rows.push({ key: 'jom', name: 'JOM', odhad: false, inv: { lo: jom_investice.lo, hi: jom_investice.hi }, us: { lo: uspora_jom * (1 - RPj), hi: uspora_jom * (1 + RPj) } });
     if (sel.fve) {
       var fveInv = band(investice_fve_sam), withJom = !sel.jom;
       rows.push({
@@ -135,12 +209,12 @@ var KALK_ENGINE = (function () {
       (sel.zatepleni ? uspora_zatepleni : 0);
 
     return {
-      uspora_jom: uspora_jom, naklady_bez: naklady_bez, naklady_s_jom: naklady_s_jom,
+      uspora_jom: uspora_jom, jomBil: jomBil, naklady_bez: naklady_bez, naklady_s_jom: naklady_s_jom,
       jom_investice: jom_investice, jom_navratnost: jom_navratnost,
       vykon: vykon, vyroba: vyroba, fveOmezeni: fveOmezeni, vykonIdeal: vykonIdeal, vykonMax: vykonMax,
       vlastni_bez_jom: vlastni_bez_jom, vlastni_s_jom: vlastni_s_jom,
       investice_baterie: investice_baterie, investice_fve_bez_jom: investice_fve_bez_jom,
-      uspora_fve: uspora_fve, uspora_celkem: uspora_celkem, uspora_bez_jom: uspora_bez_jom, investice_fve: investice_fve, navratnost_fve: navratnost_fve,
+      uspora_fve: uspora_fve, uspora_fve_hruba: uspora_fve_hruba, provoz_fve: provoz_fve, uspora_celkem: uspora_celkem, uspora_bez_jom: uspora_bez_jom, investice_fve: investice_fve, navratnost_fve: navratnost_fve,
       uver: uver, uverVzorec: uverVzorec, splatnostLet: splatnostLet, splatka_mes: splatka_mes,
       splatka: splatka_mes * 12, pokryti: pokryti,
       tcZnamo: tcZnamo, teplo_na_byt: teplo_na_byt, naklady_dnes: naklady_dnes, naklady_tc: naklady_tc, tc_el_kwh: tc_el_kwh, uspora_tc: uspora_tc,
@@ -258,7 +332,6 @@ var KALK_ENGINE = (function () {
     };
 
     // ── Přehledné shrnutí na více řádků (sloupec shrnuti) ──
-    var ORIENT = { J: 'jih', JV: 'jihovýchod', JZ: 'jihozápad', V: 'východ', Z: 'západ', S: 'sever' };
     var STAV = { stara: 'stará okna (před rokem 1990)', castecne: 'částečně vyměněná (1990–2010)', nova: 'nová okna (po roce 2010)' };
     function krokTxt(rw) {
       var t = 'investice ' + fmtKc(rw.inv.lo, rw.inv.hi);
@@ -271,7 +344,7 @@ var KALK_ENGINE = (function () {
     var L = [];
     L.push('Vstupy: ' + inp.byty + ' bytů, roční spotřeba ' +
       (extra.spotrebaOdhad ? 'odhadnutá (' + _cz(Math.round(inp.spotreba / 1000)) + ' MWh)' : _cz(Math.round(inp.spotreba / 1000)) + ' MWh (zadáno)') +
-      (extra.orientKlic && ORIENT[extra.orientKlic] ? ', orientace střechy ' + ORIENT[extra.orientKlic] + (extra.orientTouched ? '' : ' (nezměněno)') : '') +
+      (KALK.orientVeta(extra.orientKlic) ? ', ' + KALK.orientVeta(extra.orientKlic) + (extra.orientTouched ? '' : ' (nezměněno)') : '') +
       (inp.cenaEl ? ', cena elektřiny ' + _cz(inp.cenaEl, 2) + ' Kč/kWh' : '') + '.');
     L.push('Vybrané kroky: ' + kroky.map(function (k) { return KROKY[k]; }).join(' + ') + '.');
     if (sel.tc || sel.zatepleni) {
@@ -281,7 +354,7 @@ var KALK_ENGINE = (function () {
     if (sel.zatepleni) L.push('Stav oken a dveří: ' + (STAV[inp.zatStav] || STAV.stara) + ', plocha ' + _cz(r.plocha_byt, 1) + ' m² na byt.');
     if (rows.jom) L.push('JOM: ' + krokTxt(rows.jom) + '.');
     if (sel.jom && (extra.jomDistributor || extra.jomPripojeni)) {
-      var DISTR = { cez: 'ČEZ Distribuce', egd: 'EG.D (E.ON)', pre: 'PREdistribuce' }, PRIP = { '1x25': '1fázové (1×25 A)', '3x20': '3fázové (3×20 A)' };
+      var DISTR = { cez: 'ČEZ Distribuce', egd: 'EG.D (E.ON)', pre: 'PREdistribuce' }, PRIP = { '1x25': '1×25 A', '3x20': '3×20 A' };
       L.push('Upřesnění k JOM: distribuční území ' + (DISTR[extra.jomDistributor] || 'neuvedeno') + ', připojení bytů ' + (PRIP[extra.jomPripojeni] || 'různé / neuvedeno') + '.');
     }
     if (rows.fve) {
@@ -303,5 +376,5 @@ var KALK_ENGINE = (function () {
     return { inputs: inputs, result: result, summary: txt, sloupce: sloupce };
   }
 
-  return { compute: compute, regulovane: regulovane, exportUlozeni: exportUlozeni, fmtKc: fmtKc, fmtLet: fmtLet, rk: _rk, rl: _rl, kc: _kc, let: _let };
+  return { compute: compute, regulovane: regulovane, jomBilance: jomBilance, exportUlozeni: exportUlozeni, fmtKc: fmtKc, fmtLet: fmtLet, rk: _rk, rl: _rl, kc: _kc, let: _let };
 })();

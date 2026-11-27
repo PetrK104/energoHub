@@ -1,7 +1,7 @@
 # Kalkulačky: parametry a výpočty k ověření
 
 Interní dokument (složka `docs/` se na web nenasazuje). Účel: ověřit všechny hodnoty a vzorce, podle kterých počítají kalkulačky a dotazník, a nastavit je správně.
-Stav k verzi výpočtu `2026-11-12`. Všechny částky ve výsledcích jsou **s DPH**, ceny investic jsou níže uvedené **bez DPH** (DPH přičítá výpočet).
+Stav k verzi výpočtu `2026-11-27`. Všechny částky ve výsledcích jsou **s DPH**, ceny investic jsou níže uvedené **bez DPH** (DPH přičítá výpočet).
 
 **Stav původu hodnoty:**
 - **OVĚŘENO** – z primárního dokumentu (Závazné pokyny NZÚ)
@@ -19,24 +19,26 @@ Sloupec **Nová hodnota** je prázdný, vyplňte ho tam, kde se má hodnota změ
 
 | # | Parametr | Co to je | Aktuální hodnota | Stav | Nová hodnota | Klíč v kódu |
 |---|---|---|---|---|---|---|
-| 1 | Cena elektřiny | Proměnná část s DPH, kterou FVE nahradí, a za kterou se počítá provoz tepelného čerpadla | 6,0 Kč/kWh | PŘEVZATO (srovnávače, rozsah 5,6–6,6) | | `FVE_CENA_EL` |
+| 1 | Cena elektřiny | Cena ze sítě (proměnná část s DPH): za ni se počítá provoz tepelného čerpadla a náklady „elektřina dnes“. Ocenění kWh z FVE je samostatné, viz řádek 1a | 6,0 Kč/kWh | PŘEVZATO (srovnávače, rozsah 5,6–6,6) | | `FVE_CENA_EL` |
+| 1a | Ocenění 1 kWh z vlastní FVE | Hodnota ušetřené kWh (nákupní cena minus ušlý výkup přebytku, s DPH). Používá se pro úsporu z FVE v hlavní kalkulačce, kalkulačce FVE i dotazníku JOM; při ruční změně ceny elektřiny se úměrně upraví | 4,80 Kč/kWh | ODHAD (majitel, 27. 11. 2026) | | `FVE_OCENENI_KWH` |
 | 2 | Výroba FVE | Roční výroba z 1 kWp při orientaci na jih | 1 000 kWh/kWp | ODHAD | | `FVE_VYROBA_NA_KWP` |
-| 3 | Vlastní spotřeba s JOM | Podíl výroby, který spotřebuje dům, když je zavedeno JOM (bez baterie) | 65 % | ODHAD | | `FVE_VLASTNI_PODIL` |
-| 4 | Vlastní spotřeba bez JOM | Podíl výroby spotřebovaný jen ve společných prostorách (bez baterie) | 20 % | ODHAD | | `FVE_VLASTNI_BEZ_JOM` |
+| 3 | Vlastní spotřeba s JOM | Podíl výroby, který spotřebuje dům, když je zavedeno JOM (bez baterie); stejná hodnota v dotazníku JOM | 60 % | ODHAD (majitel, 27. 11. 2026) | | `FVE_VLASTNI_PODIL` |
+| 4 | Vlastní spotřeba bez JOM | Podíl výroby spotřebovaný jen ve společných prostorách (bez baterie); stejná hodnota v dotazníku JOM | 25 % | ODHAD (majitel, 27. 11. 2026) | | `FVE_VLASTNI_BEZ_JOM` |
 | 5 | Přírůstek s baterií | O kolik procentních bodů baterie zvýší podíl vlastní spotřeby | +15 p. b. | ODHAD | | `BATERIE_PODIL` |
 | 6 | Cena FVE | Cena instalace za 1 kWp, bez baterie, bez DPH | 25 500 Kč/kWp | ODHAD | | `FVE_CENA_KWP` |
 | 7 | Cena baterie | Cena na jeden byt (0,5 kWh × 20 000 Kč/kWh), bez DPH | 10 000 Kč/byt | PŘEVZATO | | `BATERIE_NA_BYT` |
 | 8 | Spotřeba na byt | Roční spotřeba elektřiny na byt, když uživatel nezadá spotřebu domu | 2 200 kWh/byt | ODHAD | | `SPOTREBA_NA_BYT` |
 | 9 | Orientace: jih | Koeficient výroby podle orientace střechy | 1,00 | ODHAD | | `ORIENT.J` |
-| 10 | Orientace: jihovýchod, jihozápad | totéž | 0,93 | ODHAD | | `ORIENT.JV`, `JZ` |
-| 11 | Orientace: východ, západ | totéž | 0,77 | ODHAD | | `ORIENT.V`, `Z` |
+| 10 | Orientace: jihovýchod, jihozápad | totéž (ve výběru sloučeno do volby JV / JZ) | 0,93 | ODHAD | | `ORIENT.JV`, `JZ` |
+| 11 | Orientace: východ, západ | totéž (ve výběru sloučeno do volby V / Z) | 0,77 | ODHAD | | `ORIENT.V`, `Z` |
 | 12 | Orientace: sever | totéž | 0,58 | ODHAD | | `ORIENT.S` |
+| 12a | Orientace: plochá střecha | totéž; průměr jižního uspořádání panelů (cca 0,91) a východo-západního (cca 0,83) | 0,87 | ODHAD (podle PVGIS, JRC, 4 města) | PVGIS 5.3, sklon 10°, ztráty 14 %; poměr k jihu 35° | `ORIENT.P` |
 
 ### A2. Jednotné odběrné místo (JOM)
 
 | # | Parametr | Co to je | Aktuální hodnota | Stav | Nová hodnota | Klíč v kódu |
 |---|---|---|---|---|---|---|
-| 13 | Úspora JOM | Roční úspora na jeden byt (plošná, nepočítá se z poplatků) | 2 000 Kč/byt/rok | ODHAD | | `JOM_NA_BYT` |
+| 13 | Úspora JOM, náhradní hodnota | Plošná roční úspora na byt. Používá se jen tehdy, když nejsou ověřené ceny pro bilanci z A8 a B9 (hlavní kalkulačka a dotazník JOM ji běžně nepoužívají) | 2 000 Kč/byt/rok | ODHAD | | `JOM_NA_BYT` |
 | 14 | Gateway | Datová brána, za celý dům, bez DPH | 15 000 Kč | PŘEVZATO | | `investice.gateway` |
 | 15 | Projekt | Projekt JOM, za celý dům, bez DPH | 35 000 Kč | PŘEVZATO | | `investice.projekt` |
 | 16 | Hlavní jistič | Hlavní jistič JOM, za celý dům, bez DPH | 8 000 až 16 000 Kč | PŘEVZATO | | `investice.hlavni_jistic` |
@@ -82,7 +84,7 @@ Sloupec **Nová hodnota** je prázdný, vyplňte ho tam, kde se má hodnota změ
 
 ### A6. Regulované ceny elektřiny (platnost od 1. 1. 2026, sazba D02d, bez DPH)
 
-Zdroj: cenové výměry ERÚ č. 13/2025 a 14/2025, **převzato z ceníku dodavatele** (Yello Watt). Ovlivňují jen graf ročních nákladů v hlavní kalkulačce a pevné platby uložené z dotazníku JOM, ne hlavní výsledek úspory.
+Zdroj: cenové výměry ERÚ č. 13/2025 a 14/2025, **převzato z ceníku dodavatele** (Yello Watt). Ovlivňují graf ročních nákladů v hlavní kalkulačce, výpočet úspory v dotazníku JOM (viz A8 a B9).
 
 | # | Parametr | Co to je | Aktuální hodnota | Stav | Nová hodnota | Klíč v kódu |
 |---|---|---|---|---|---|---|
@@ -104,9 +106,32 @@ Zdroj: cenové výměry ERÚ č. 13/2025 a 14/2025, **převzato z ceníku dodava
 |---|---|---|---|---|---|---|
 | 52 | DPH 21 % | Elektřina, regulované platby, gateway, projekt, elektroměry | 1,21 | PRAVIDLO | | `DPH` |
 | 53 | DPH 12 % | Stavebně-montážní práce: FVE, baterie, TČ, okna, montáž JOM, hlavní jistič | 1,12 | PRAVIDLO | | `DPH_SNIZENA` |
-| 54 | Rozpětí | Výsledky jsou střed ±15 % | 15 % | PRAVIDLO | | `ROZPETI` |
+| 54 | Rozpětí | Základ ±10 %, neznámé vstupy se přičítají v kvadratuře (spotřeba 15 %, orientace 10 %, distributor 10 %, jistič 8 %) | 10 % + | PRAVIDLO | | `KALK.NEJISTOTA`, `KALK.rozpeti()` |
 | 55 | Rozpětí při neznámých údajích | Použije se při dvou a více neznámých vstupech | 25 % | PRAVIDLO | | `ROZPETI_NEVIM` |
 | 56 | Počet bytů | Povolený rozsah ve všech nástrojích (mini kalkulačka nejvýše 120) | 4 až 300 | PRAVIDLO | | `BYTY_MIN`, `BYTY_MAX` |
+
+### A8. Dotazník JOM (od 26. 11. 2026, sekce `#dotaznik`)
+
+Ceny jističů a stálé platby jsou bez DPH, DPH přičítá výpočet ([52]). Řádky označené **NEOVĚŘENO** pocházejí z textů bez primárního zdroje.
+
+| # | Parametr | Co to je | Aktuální hodnota | Stav | Nová hodnota | Klíč v kódu |
+|---|---|---|---|---|---|---|
+| 57 | Stálá platba dodavateli | Měsíčně za odběrné místo (dnes platí každý byt i společný elektroměr, po JOM jedna), bez DPH | 120 Kč/měs. | ODHAD (majitel, 27. 11. 2026; nejlevnější tarify 100 Kč, běžně 120 až 145 Kč; Enerooo 115 Kč) | | `dodavatel_stala_platba` |
+| 58 | Rozúčtování podružných měřidel | Po JOM měsíčně, bez DPH: pevná část za dům + část za byt (u 12 bytů vychází 70 Kč na byt, u 36 bytů asi 53 Kč; Helioware asi 20 Kč, Enerooo 89 Kč včetně vlastní služby) | 300 Kč/dům + 45 Kč/byt | ODHAD (majitel, 27. 11. 2026) | | `rozuctovani_dum`, `rozuctovani_na_byt` |
+| 58a | Společné odběrné místo domu | Dnes platí každý dům jeden společný elektroměr, po zavedení JOM zaniká. Počítá se jen v „Dnes“: jistič 3×16 A (D02d zvoleného distributora: ČEZ 164, EG.D 160, PRE 139 Kč bez DPH, tabulka A6) + provoz nesíťové infrastruktury + stálá platba dodavateli [57]. Konzervativní minimum, větší domy s výtahem mívají 3×20 až 3×25 A | 3×16 A | ODHAD (majitel, 27. 11. 2026), ceny jističe z tabulky A6 | | `spolecne_om_jistic` |
+| 59 | ČEZ, jistič 3×40 A | Měsíční plat za jistič (D02d) | 409 Kč/měs. | PŘEVZATO, NEOVĚŘENO | | `distribuce.cez.D02d.jistic['3x40']` |
+| 60 | EG.D, jistič 3×40 A | totéž | 400 Kč/měs. | PŘEVZATO, NEOVĚŘENO | | totéž |
+| 61 | PRE, jistič 3×40 A | totéž | 347 Kč/měs. | PŘEVZATO, NEOVĚŘENO | | totéž |
+| 62 | ČEZ, hlavní jistič 3×63 A | Měsíční plat (D02d) | 644 Kč/měs. | PŘEVZATO (souhlasí s výstupy Enerooo 644 Kč a Helioware 780 Kč s DPH), NEOVĚŘENO | | `distribuce.cez.D02d.hlavni.a63` |
+| 63 | EG.D, hlavní jistič 3×63 A | totéž | 629 Kč/měs. | PŘEVZATO, NEOVĚŘENO | | totéž |
+| 64 | PRE, hlavní jistič 3×63 A | totéž | 551 Kč/měs. | PŘEVZATO, NEOVĚŘENO | | totéž |
+| 65 | Hlavní jistič nad 63 A | Platba za 1 A nad 63 A (ČEZ / EG.D / PRE); hodnoty nad 63 A jsou dopočítané (ampéry × sazba), ne z rozhodnutí ERÚ | 10,23 / 9,99 / 8,74 Kč/A/měs. | PŘEVZATO, NEOVĚŘENO | | `distribuce.*.D02d.hlavni.kc_na_a` |
+| 66 | Velikost hlavního jističe | Podle počtu bytů a způsobu vaření (byty 1×25 A na plyn / 3×20 A až 3×25 A elektřina): do 15 bytů 3×40 A / 63 A, 16 až 30 bytů 63 A / 100 A, 31 až 50 bytů 80 A / 125 A, nad 50 bytů 125 A / 160 A (z „100 až 125 A“ a „160 A a více“ vzat horní konec) | tabulka | ODHAD (majitel) | | `hlavniJisticB` v `js/kalk-engine.js` |
+| 67 | Vlastní spotřeba bez JOM (dotazník) | Stejná hodnota jako řádek 4 | 25 % | ODHAD (majitel) | | `JOM_B.vlastni_bez_jom` = `FVE_VLASTNI_BEZ_JOM` |
+| 68 | Vlastní spotřeba s JOM (dotazník) | Stejná hodnota jako řádek 3 | 60 % | ODHAD (majitel) | | `JOM_B.vlastni_s_jom` = `FVE_VLASTNI_PODIL` |
+| 69 | Ocenění ušetřené kWh (dotazník) | Stejná hodnota jako řádek 1a | 4,80 Kč/kWh | ODHAD (majitel) | | `JOM_B.kc_kwh` = `FVE_OCENENI_KWH` |
+| 70 | Výkon FVE bez zadání (B) | Odhad, když uživatel kWp nezná (strop dán střechou) | 1 kWp/byt | ODHAD (majitel) | | `JOM_B.kwp_na_byt` |
+| 71 | Hranice verdiktu | Čistá roční úspora: nad 50 000 Kč „velmi zajímavá“, pod 25 000 Kč „sporné“, bez úspory „ne“ | 50 000 / 25 000 Kč | PRAVIDLO | | `js/jom-quiz.js` |
 
 ---
 
@@ -121,7 +146,7 @@ Zdroj: cenové výměry ERÚ č. 13/2025 a 14/2025, **převzato z ceníku dodava
 - **DPH:** ceny investic (bez DPH) × [53]; gateway, projekt a elektroměry × [52].
 
 ### B2. JOM
-- **Úspora za rok** = počet bytů × [13]
+- **Úspora za rok** = čistá roční bilance JOM z B9 (distribuční území a připojení bytů z „Upřesnit výpočet“, když je uživatel nezná, průměr přes všechna území a oba způsoby vaření); bez ověřených cen záložně počet bytů × [13]. Rozpětí úspory JOM: ±15 %, když jsou známy distributor i připojení, jinak ±25 %.
 - **Investice od** = ([14] + [15]) × [52] + [16 dolní] × [53] + byty × ([17 dolní] × [53] + [18] × [52])
 - **Investice do** = ([14] + [15]) × [52] + [16 horní] × [53] + byty × ([17 horní] × [53] + [19] × [52])
 - **Návratnost** = investice ÷ úspora
@@ -165,23 +190,24 @@ JOM + FVE, spotřeba = počet bytů × [8], orientace jih, rozpětí vždy [55].
 ### B8. FVE průvodce
 Stejný postup jako B3 s přepínači baterie a JOM. Investice = FVE v rozpětí ±r + investice JOM (od–do), pokud je JOM zapnuté.
 
-### B9. JOM dotazník
+### B9. JOM dotazník (`js/jom-quiz.js`, `KALK_ENGINE.jomBilance`)
 
-**Odhad úspory:** střed = počet bytů × [13] + (jen když už mají FVE) (využitá výroba s JOM − využitá výroba bez JOM) × [1]. Rozpětí podle B1.
+**Vstupy:** počet bytů (4 až 300), distribuční území (ČEZ / EG.D / PRE), typický jistič v bytech (1×25 A plyn / 3×20 A až 3×25 A elektřina), FVE (nemáme / plánujeme / již máme, nepovinné), stav smluv (nepovinné, do výpočtu nevstupuje). Nic se nepředvyplňuje a není volba „Nevím“.
 
-**Skóre vhodnosti JOM (0 až 11), pravidlo modelu:**
+**Roční bilance (s DPH):**
+- Jističe bytů dnes = byty × (plat za jistič [41–47: 1×25 A nebo 3×20 A zvolené oblasti] + [48]) × 12 × [52]
+- Stálé platby dodavatelům dnes = byty × [57] × 12 × [52]
+- Společný elektroměr domu dnes = (plat za jistič 3×16 A zvolené oblasti + [48] + [57]) × 12 × [52]
+- Hlavní jistič po JOM: velikost podle [66]; cena = 3×40 A [59–61], 3×63 A [62–64], nad 63 A ampéry × [65]; (cena + [48]) × 12 × [52]
+- Jedna stálá platba dodavateli po JOM = [57] × 12 × [52]
+- Rozúčtování = (300 + byty × 45) × 12 × [52]  ([58])
+- **Čistá úspora** = (jističe dnes + dodavatelé dnes + společný elektroměr) − (hlavní jistič po JOM + dodavatel po JOM + rozúčtování)
+- **Přínos FVE** (jen „již máme“) = byty × [70] × [2] × ([68] − [67]) × [69]; celkem = čistá úspora + přínos FVE
+- **Rozpětí:** [54]; neznámé vstupy je jen „FVE již máme“ (výkon se odhaduje), takže při jednom neznámém je rozpětí vždy ±15 % ([55] by nastalo až při dvou).
+- Na byt měsíčně = čistá úspora (bez FVE) ÷ byty ÷ 12 ± rozpětí.
+- **Verdikt** podle celku: [71].
 
-| Odpověď | Body |
-|---|---|
-| Počet bytů: 15 až 30 / 31 až 49 / 50 a více | 1 / 2 / 3 |
-| FVE: plánují / už mají | 2 / 3 |
-| Smlouvy: každý byt má vlastní | 2 |
-| Měsíční spotřeba domu: 1 000 až 3 000 kWh / nad 3 000 kWh | 1 / 2 |
-| Baterie: plánují nebo mají | 1 |
-
-Vyhodnocení: **7 a více** = vysoká vhodnost, **4 až 6** = střední, **0 až 3** = nízká.
-
-**Ukládané pevné platby** (neukazují se uživateli) = ([plat za jistič 1×25 A nebo 3×20 A zvolené oblasti] + [48]) × 12 × počet bytů, **bez DPH**.
+**Ukládání:** tabulka `poptavky_jom` (struktura v Supabase), čitelné sloupce místo JSON `vstupy`; `vysledek` obsahuje jen rozpis bilance a použité předpoklady (schema v3).
 
 ---
 
@@ -189,22 +215,40 @@ Vyhodnocení: **7 a více** = vysoká vhodnost, **4 až 6** = střední, **0 až
 
 | Krok | Výpočet | Výsledek |
 |---|---|---|
-| Úspora JOM | 24 × 2 000 | 48 000 Kč/rok |
-| Ideální výkon FVE | 80 000 × 0,65 ÷ (1 000 × 1,00) | 52 kWp (povolený rozsah 5 až 72) |
-| Využitá výroba | menší z 52 000 a 80 000 × 0,65 | 52 000 kWh |
-| Úspora FVE | 52 000 × 6,0 | 312 000 Kč/rok |
-| Úspora celkem | 48 000 + 312 000 = 360 000, ±15 % | **306 až 414 tis. Kč/rok** |
-| Investice FVE samotná | 52 × 25 500 × 1,12 | 1 485 120 Kč |
+| Úspora JOM | bilance z B9 pro ČEZ a 3×20 A (viz C2) | 85 231 Kč/rok |
+| Ideální výkon FVE | 80 000 × 0,60 ÷ (1 000 × 1,00) | 48 kWp (povolený rozsah 5 až 72) |
+| Využitá výroba | menší z 48 000 a 80 000 × 0,60 | 48 000 kWh |
+| Úspora FVE | 48 000 × 4,80 | 230 400 Kč/rok |
+| Úspora celkem | 85 231 + 230 400 = 315 631, ±15 % | **268 až 363 tis. Kč/rok** |
+| Investice FVE samotná | 48 × 25 500 × 1,12 | 1 370 880 Kč |
 | Investice JOM | podle B2 | 178 768 až 310 812 Kč |
-| Investice celkem | FVE ±15 % + JOM | **1,4 až 2,0 mil. Kč** |
-| Návratnost | | **3,5 až 6,6 let** |
-| Úvěr NZÚ | menší z 1 485 120 a 350 000 + 40 000 × 47 | 1 485 120 Kč na 10 let, splátka **12 376 Kč/měs.** |
+| Investice celkem | FVE ±15 % + JOM | **1,3 až 1,9 mil. Kč** |
+| Návratnost | | **3,7 až 7,0 let** |
+| Úvěr NZÚ | menší z 1 370 880 a 350 000 + 40 000 × 43 | 1 370 880 Kč na 10 let, splátka **11 424 Kč/měs.** |
+
+(Příklad předpokládá zadané distribuční území ČEZ a připojení bytů 3×20 A, jinak se JOM počítá průměrem a s rozpětím ±25 %.)
+
+### C2. Kontrolní příklad dotazníku JOM: 24 bytů, ČEZ, 3×20 A (elektřina), bez FVE
+
+| Krok | Výpočet | Výsledek |
+|---|---|---|
+| Jističe bytů dnes | 24 × (205 + 12,87) × 12 × 1,21 | 75 923 Kč |
+| Stálé platby dodavatelům dnes | 24 × 120 × 12 × 1,21 | 41 818 Kč |
+| Společný elektroměr domu dnes | (164 + 12,87 + 120) × 12 × 1,21 | 4 311 Kč |
+| Celkem dnes | | 122 051 Kč |
+| Hlavní jistič po JOM | 24 bytů, elektřina → 3×100 A; (100 × 10,23 + 12,87) × 12 × 1,21 | 15 041 Kč |
+| Stálá platba dodavateli (jedna) | 120 × 12 × 1,21 | 1 742 Kč |
+| Rozúčtování | (300 + 24 × 45) × 12 × 1,21 | 20 038 Kč |
+| Celkem po JOM | | 36 821 Kč |
+| **Čistá úspora** | 122 051 − 36 821 | **85 231 Kč/rok**, ±15 % = **72 až 98 tis. Kč** (6 000 až 8 200 Kč měsíčně, 250 až 340 Kč na byt) |
+
+Stejný dům s jističi 1×25 A (plyn): hlavní jistič 3×63 A, čistá úspora 54 840 Kč, rozpětí 47 až 63 tis. Kč. S FVE „již máme“ (elektřina): přínos FVE 24 × 1 000 × (0,60 − 0,25) × 4,80 = 40 320 Kč.
 
 ---
 
 ## D. Na co si dát při ověření pozor
 1. **Cena oken [31]** je 8 000 až 12 000 Kč/m², jediná dohledaná zakázka SVJ vycházela na asi 3 600 Kč/m². Rozpor je velký.
-2. **Úspora JOM [13]** je plošná, ne vypočtená z poplatků, a určuje celý krok JOM i odhad v dotazníku.
+2. **Úspora JOM** se od 27. 11. 2026 počítá v hlavní kalkulačce, mini kalkulačce i dotazníku stejně z bilance poplatků (B9); plošná [13] zůstává jen jako záložní hodnota.
 3. **Hlavní kalkulačka počítá vždy s ČEZ, D02d a jističem 1×25 A** (jen graf nákladů), i pro uživatele jiného distributora.
 4. **Rozpětí v dotazníku JOM** se zvětší na ±25 % i kvůli nevybranému distributorovi a jističi, které odhad vůbec neovlivňují.
 5. **Pevné platby uložené z dotazníku jsou bez DPH**, zbytek výpočtů je s DPH.
@@ -222,3 +266,7 @@ Vyhodnocení: **7 a více** = vysoká vhodnost, **4 až 6** = střední, **0 až
 
    Rozdíl mezi 1fázovým a 3fázovým připojením je skutečný (zhruba dvojnásobný). Návrh na později: počítat úsporu JOM z pevných plateb podle distribučního území a připojení, až budou ověřené ceny jističů a stálý plat dodavatele.
 9. **Hlavní kalkulačka má v kroku JOM pole „Distribuční území“ a „Připojení bytů“** (Upřesnit výpočet). Zatím se jen ukládají k poptávce a do výpočtu nevstupují.
+
+10. **K ověření u dotazníku JOM (A8):** hlavní jistič 3×63 A a nad 63 A včetně toho, zda se v JOM platí v sazbě D02d (u C02d by byly platby vyšší; konstanta `hlavni_jistic_sazba_c02d` 1 800 až 2 400 Kč zůstává v kódu nepoužitá), cena 3×40 A, velikost hlavního jističe podle počtu bytů a vaření [66], stálá platba dodavateli [57], rozúčtování [58] a model FVE [67 až 70].
+11. **Rozpětí v dotazníku JOM** je vždy ±15 %, protože jediný možný neznámý vstup je výkon FVE u odpovědi „již máme“. Hodnota 25 % z tabulky v databázi je povolená, ale v dotazníku nenastane.
+12. **Model FVE je od 27. 11. 2026 v hlavní kalkulačce, kalkulačce FVE i dotazníku JOM stejný** (vlastní spotřeba 60 % s JOM a 25 % bez JOM, ocenění kWh 4,80 Kč). Výkon FVE se liší záměrně: hlavní kalkulačka ho dopočítává, dotazník u existující FVE odhaduje 1 kWp na byt.

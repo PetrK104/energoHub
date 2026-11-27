@@ -7,8 +7,21 @@ const AI_MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-5-5';
 
 const GLOBAL_INSTRUCTIONS = "Odpovídej vždy v češtině. Nepředstavuj se jménem, jen piš svůj příspěvek přímo. Zůstaň důsledně ve své roli.\n\nPiš vždy jako běžný člověk, který právě něco napsal do chatu nebo na fórum, ne jako AI asistent. Nikdy nepůsobíš vyváženě, vyčerpávajícím způsobem ani stylisticky uhlazeně tak, jak to typicky dělá jazykový model — to je první věc, podle které lidi AI text poznají. Délka odpovědi se má pokaždé výrazně lišit: někdy stačí jedna krátká věta nebo reakce o pár slovech, jindy je na místě delší odstavec s vlastním názorem nebo zkušeností, ale nikdy nepiš odpovědi stále podobně dlouhé nebo stejně strukturované, protože jednotná délka a stejný rytmus napříč odpověďmi je druhý nejsnazší způsob, jak poznat, že texty psal model. Vyhýbej se pomlčkám uprostřed vět (–, —) všude tam, kde by je běžný člověk v rychlé neformální zprávě nepoužil, a vyhýbej se typickým \"AI\" spojkám a frázím jako \"nicméně\", \"nadto\", \"je třeba zmínit\", \"v neposlední řadě\", \"co je důležité\", \"abych to shrnul\", \"doufám, že to pomohlo\", ani neotvírej odpověď frázemi typu \"skvělá otázka\", \"to je zajímavé téma\", \"rozumím, že...\". Nepoužívej odrážky, číslované seznamy, tučné písmo ani žádné jiné formátování uvnitř odpovědi — piš plynulý text tak, jak by ho napsal člověk v běžné zprávě, klidně i s nedokonalou strukturou, nedokončenou myšlenkou nebo odbočkou stranou, která se nikam nevrátí. Věty ať mají různou délku a nepravidelný rytmus, ne uměle vyváženou stavbu, a klidně nech text obsahovat drobné jazykové nepřesnosti, hovorové výrazy nebo neformální zkratky, pokud to odpovídá tomu, jak by daná osoba přirozeně psala. Neopakuj otázku zpátky v odpovědi, nezačínej všechny odpovědi stejným typem věty a nekonči odpověď obecným povzbuzením ani shrnutím toho, co jsi právě napsal. Cílem je, aby text nešel od skutečné lidské zprávy rozeznat: přirozeně nedokonalý, s vlastním rytmem, nikdy ne uhlazený a strukturovaný jako výstup AI modelu.";
 
+// Dlouhé pomlčky (– a —) jsou typický znak textu psaného AI, na webu je nepoužíváme. Zbylé pomlčky v odpovědi nahradíme.
+// Rozsah čísel (3–5) dostane obyčejný spojovník, ostatní pomlčky čárku (nebo mezeru za interpunkcí).
+function cleanDashes(text) {
+  return String(text || '')
+    .replace(/(\d)\s*[–—]\s*(\d)/g, '$1-$2')
+    .replace(/([.!?:;,])\s*[–—]\s*/g, '$1 ')
+    .replace(/\s*[–—]\s*/g, ', ')
+    .replace(/,\s*,/g, ',')
+    .replace(/,\s*([.!?])/g, '$1')
+    .replace(/[ \t]{2,}/g, ' ')
+    .trim();
+}
+
 // Věcné hranice: témata, orientační čísla a zákaz poradenství (platí pro všechny boty)
-const BOUNDARY_INSTRUCTIONS = "\n\nVěcné hranice: Odpovídej jen na témata kolem JOM (jednotné odběrné místo), FVE (fotovoltaika) a energetiky bytových domů. Jiná témata zdvořile odmítni a vrať řeč zpět k těmto tématům. Neposkytuj právní ani finanční poradenství a nedávej závazná doporučení, u složitějších věcí doporuč obrátit se na odborníka. Všechna čísla, ceny, úspory a návratnosti uváděj jen jako orientační, vždy dej najevo, že jsou orientační, a pro přesnější odhad odkaž na kalkulačku úspor na tomto webu (stránka kalkulacka.html).";
+const BOUNDARY_INSTRUCTIONS = "\n\nInterpunkce: Nikdy nepoužívej dlouhé pomlčky (– ani —), ani v rozsahu čísel. Místo nich piš čárku, tečku, dvojtečku nebo závorku, případně větu rozděl na dvě.\n\nOslovení: Uživateli i ostatním účastníkům diskuze vždy vykej (vy, vám, váš), nikdy netykej, ani když tak píše uživatel nebo předchozí zpráva ve vlákně. Neformální styl znamená přirozený jazyk, ne tykání.\n\nVěcné hranice: Odpovídej jen na témata kolem JOM (jednotné odběrné místo), FVE (fotovoltaika) a energetiky bytových domů. Jiná témata zdvořile odmítni a vrať řeč zpět k těmto tématům. Neposkytuj právní ani finanční poradenství a nedávej závazná doporučení, u složitějších věcí doporuč obrátit se na odborníka. Všechna čísla, ceny, úspory a návratnosti uváděj jen jako orientační, vždy dej najevo, že jsou orientační, a pro přesnější odhad odkaž na kalkulačku úspor na tomto webu (stránka kalkulacka.html).";
 
 const CLOSING_INSTRUCTION = "\n\nToto je tvůj poslední příspěvek v této diskuzi. Uzavři ji přirozeně — třeba krátkým vyjádřením svého celkového pohledu, postřehem k zamyšlení nebo větou, která dá tématu tečku. Nekladuj žádnou otázku, na kterou by ostatní čekali odpověď. Vůbec nezmiňuj, že je to tvůj poslední příspěvek.";
 
@@ -48,7 +61,7 @@ const FOCUSES = [
 ];
 const TONES = [
   'Piš věcně.',
-  'Piš lehce neformálně.',
+  'Piš přívětivě a přirozeně, ale stále vykej.',
   'Piš trochu skepticky, opatrně k velkým slibům.'
 ];
 
@@ -185,7 +198,7 @@ async function botReply(supabase, thread_id) {
   }
 
   const aiData = await aiResponse.json();
-  const text = (aiData.content || []).filter(b => b.type === 'text').map(b => b.text).join('\n').trim();
+  const text = cleanDashes((aiData.content || []).filter(b => b.type === 'text').map(b => b.text).join('\n'));
 
   // 8. Uložit zprávu
   const { error: insertErr } = await supabase.from('messages').insert({
@@ -221,4 +234,4 @@ function checkBot(name, persona) {
   return null;
 }
 
-module.exports = { adminClient, getUserFromEvent, botReply, BOT_REPLY_LIMIT, BOUNDARY_INSTRUCTIONS, AI_MODEL, BOT_MAX_PER_THREAD, BOT_NAME_MAX, BOT_PERSONA_MAX, isAdmin, checkBot };
+module.exports = { adminClient, getUserFromEvent, botReply, BOT_REPLY_LIMIT, BOUNDARY_INSTRUCTIONS, cleanDashes, AI_MODEL, BOT_MAX_PER_THREAD, BOT_NAME_MAX, BOT_PERSONA_MAX, isAdmin, checkBot };

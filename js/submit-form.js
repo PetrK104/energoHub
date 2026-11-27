@@ -60,6 +60,7 @@
   };
   window.EH.checked = function (name) {
     var el = document.querySelector('input[name="' + name + '"]:checked');
+    if (!el) { var sl = document.querySelector('select[name="' + name + '"]'); if (sl && sl.value) return sl.value; }
     return el ? el.value : null;
   };
 })();

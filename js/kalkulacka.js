@@ -108,10 +108,10 @@
   (function () {
     var sel = document.getElementById('fveOrientace');
     if (!sel) return;
-    var labels = { J: 'Jih – nejlepší výnos', JV: 'Jihovýchod', JZ: 'Jihozápad', V: 'Východ', Z: 'Západ', S: 'Sever' };
-    ['J', 'JV', 'JZ', 'V', 'Z', 'S'].forEach(function (k) {
+    KALK.ORIENT_VOLBY.forEach(function (v) {
+      var k = v[0];
       var o = document.createElement('option');
-      o.value = k; o.textContent = labels[k];
+      o.value = k; o.textContent = k === 'J' ? 'Jih – nejlepší výnos' : v[1];
       sel.appendChild(o);
     });
     sel.value = 'J';
@@ -198,14 +198,18 @@
   var lastInp = null;
   function calculate() {
     // Jedno pravidlo rozpětí: neznámé vstupy = odhadnutá spotřeba a nezměněná orientace střechy
-    RP = KALK.rozpeti((state.spotrebaOdhad ? 1 : 0) + (state.orientTouched ? 0 : 1));
+    RP = KALK.rozpeti([state.spotrebaOdhad ? 'spotreba' : '', state.orientTouched ? '' : 'orientace']);
     state.rozpeti = RP;
+    state.rozpetiJom = KALK.rozpeti([state.jomDistributor ? '' : 'distributor', state.jomPripojeni ? '' : 'pripojeni']);
     lastInp = {
       rozpeti: RP,
+      rozpetiJom: state.rozpetiJom,
       byty: state.byty,
       spotreba: state.spotreba,
       orient: state.fveOrientace,
       cenaEl: state.fveCenaEl,
+      jomZona: state.jomDistributor,
+      jomPripojeni: state.jomPripojeni,
       tcNakladyRucne: state.tcNakladyRucne,
       zatStav: state.zatStav,
       domZateplen: state.domZateplen !== false,
@@ -216,7 +220,13 @@
   }
 
   // ── Panel renderers ───────────────────────────────────────
+  // JOM má vlastní rozpětí: závisí jen na tom, zda je znám distributor a připojení bytů (spotřeba a orientace se ho netýkají)
   function renderPanel1() {
+    var keep = RP;
+    if (state.rozpetiJom != null) RP = state.rozpetiJom;
+    try { renderPanel1Body(); } finally { RP = keep; }
+  }
+  function renderPanel1Body() {
     var r = results;
     var inv = r.jom_investice;
     // Čísla bez jednotky; jednotka je pod číslem (tis. Kč / mil. Kč), stejný princip jako ve FVE kalkulačce
@@ -427,7 +437,7 @@
     if (note) {
       var txt = '';
       if (r.fveOmezeni === 'max') {
-        txt = 'Podle spotřeby by byl vhodný výkon asi ' + Math.round(r.vykonIdeal) + ' kWp, NZÚ ale umožňuje nejvýše ' + KALK.NZU.MAX_KWP_NA_BYT + ' kWp na byt, tedy ' + Math.round(r.vykonMax) + ' kWp.';
+        txt = 'Podle spotřeby by byl vhodný výkon asi ' + Math.round(r.vykonIdeal) + ' kWp, počítáme ale nejvýše ' + Math.round(r.vykonMax) + ' kWp (asi ' + String(KALK.FVE_STRECHA_KWP_NA_BYT).replace('.', ',') + ' kWp na byt podle plochy střechy a nejvýše ' + KALK.FVE_MAX_KWP + ' kWp, aby výrobna nepotřebovala licenci ERÚ).';
       } else if (r.fveOmezeni === 'min') {
         txt = 'Podle spotřeby by stačil menší systém, NZÚ vyžaduje nejméně ' + KALK.NZU.MIN_KWP + ' kWp.';
       }
@@ -671,6 +681,9 @@
   // (sazba D02d, jistič 1×25 A, s DPH). Teplo = náklady, které uživatel zadal. Každý krok ubírá svou
   // střední úsporu z nákladů, které zbyly po předchozím kroku (stejná čísla jako v rozpisu).
   function stalePlatby(byty) {
+    // Stejný model jako úspora JOM: jističe a stálé platby bytů a společný elektroměr domu (distribuční území a připojení, jinak průměr)
+    var jb = KALK_ENGINE.jomBilance({ byty: byty, zona: state.jomDistributor, vareni: ({ '1x25': 'plyn', '3x20': 'el' })[state.jomPripojeni] || '', fve: 'none' });
+    if (jb) return jb.dnes;
     var c = (typeof KALK_CENY !== 'undefined') ? KALK_CENY : null;
     var t = c && c.distribuce && c.distribuce.cez && c.distribuce.cez.D02d;
     if (!t || t.jistic['1x25'] == null) return 0;
@@ -877,7 +890,7 @@ document.querySelectorAll('.kalk-input-wrap').forEach(function (wrap) {
     var bytyEl = document.getElementById('kalkByty'), spotEl = document.getElementById('kalkSpotreba'), sel = document.getElementById('fveOrientace');
     if (p.byty && bytyEl) bytyEl.value = p.byty;
     if (p.spotreba && spotEl) spotEl.value = nf(p.spotreba);
-    if (p.orientace && sel) { sel.value = p.orientace; state.orientTouched = true; }
+    if (p.orientace && sel) { sel.value = KALK.orientVolba(p.orientace); state.orientTouched = true; }
     p.reseni.forEach(function (key) {
       var card = document.querySelector('.kalk-select-card[data-key="' + key + '"]');
       var cb = card && card.querySelector('input[type=checkbox]');

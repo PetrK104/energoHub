@@ -1,4 +1,4 @@
-const { adminClient, getUserFromEvent, checkBot, BOUNDARY_INSTRUCTIONS, AI_MODEL, BOT_MAX_PER_THREAD } = require('./_shared');
+const { adminClient, getUserFromEvent, checkBot, BOUNDARY_INSTRUCTIONS, cleanDashes, AI_MODEL, BOT_MAX_PER_THREAD } = require('./_shared');
 
 const GLOBAL_INSTRUCTIONS = "Odpovídej vždy v češtině. Veď přirozený konverzační příspěvek do diskuzního vlákna, reaguj konkrétně na to, co bylo řečeno naposled. Buď stručný: 2 až 5 vět. Nepředstavuj se jménem, jen piš svůj příspěvek přímo. Zůstaň důsledně ve své roli.";
 const BOT_COLORS = ['#b7f13d', '#3db4f1', '#f59e0b', '#a78bfa', '#f87171'];
@@ -99,7 +99,7 @@ exports.handler = async (event) => {
       }
 
       const aiData = await aiResponse.json();
-      const text = (aiData.content || []).filter(b => b.type === 'text').map(b => b.text).join('\n').trim();
+      const text = cleanDashes((aiData.content || []).filter(b => b.type === 'text').map(b => b.text).join('\n'));
       if (text) {
         const { error: msgErr } = await supabase.from('messages').insert({ thread_id, sender_type: 'bot', bot_id: bot.id, text });
         if (msgErr) {
